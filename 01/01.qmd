@@ -1,0 +1,245 @@
+---
+title: "1 – Grundlagen"
+subtitle: "Einführung in Python und PsychoPy"
+author: "Clemens Brunner"
+date: 2022-10-06
+format: html
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
+fig-cap-location: margin
+---
+
+## Überblick
+
+In dieser Lehrveranstaltung werden Sie die Programmiersprache [Python](https://www.python.org/) kennenlernen. Zunächst werden wichtige Sprachelemente wie z.B. Schleifen, Funktionen und Bedingungen sowie grundlegende Datentypen vorgestellt. Nach einer ausführlichen Behandlung dieser Grundlagen werden Sie lernen, wie man Python für die Analyse von Daten einsetzen kann (z.B. Einlesen von Textdateien, Repräsentieren von numerischen Daten, Erstellen von Grafiken). Abschließend werden Sie mit dem in der Psychologie populären Python-Paket [PsychoPy](https://www.psychopy.org/) einfache Experimente erstellen.
+
+Diese Lehrveranstaltung setzt keinerlei Programmierkenntnisse voraus. Die Grundlagen des Programmierens werden praxisnah erläutert – dieses Wissen können Sie danach auch auf die meisten anderen Programmiersprachen übertragen. Aufgrund des begrenzten Umfangs werden allerdings nur grundlegende Konzepte in Python abgedeckt, die aber Voraussetzung für alle komplexeren Anwendungen sind. Sie werden durch ein umfassendes Basiswissen darauf vorbereitet, sich fortgeschrittenere Methoden selbst anzueignen.
+
+![© [xkcd](https://xkcd.com/353/), CC BY-NC 2.5](python-xkcd.png)
+
+
+## Was ist Python?
+
+Folgende (positive) Eigenschaften werden oft mit Python in Verbindung gebracht:
+
+- Einfach zu erlernende Programmiersprache
+- Open Source (freie Software)
+- Plattformübergreifend (läuft auf Windows, macOS, Linux)
+- Vielfältige Einsatzgebiete (nicht spezialisiert auf nur einen Bereich wie z.B. Datenanalyse)
+- Sehr gut geeignet für reproduzierbare Datenanalysen im wissenschaftlichen Bereich
+- Umfangreiche Standardbibliothek
+- Große und hilfsbereite Community
+- Riesige Anzahl an Zusatzpaketen verfügbar
+
+Python ist eine generische Programmiersprache, d.h. Python ist nicht spezialisiert auf ein eingeschränktes Gebiet, so wie z.B. [R](https://www.r-project.org/) auf Datenanalyse/Statistik ausgerichtet ist. Mit spezialisierten Programmiersprachen kann man manche Dinge schneller, besser, eleganter oder kürzer lösen als generische Programmiersprachen. Im Gegensatz dazu ist man mit generischen Programmiersprachen aber nicht auf ein bestimmtes Gebiet eingeschränkt. Mit Python kann man neben Datenanalysen, numerischen Berechnungen und Statistik auch z.B. Webanwendungen oder Programme mit grafischen Oberflächen erstellen. Bevor man ein konkretes Problem lösen möchte, sollte man sich also unter anderem auch überlegen, welches Tool bzw. welche Programmiersprache dafür geeignet ist.
+
+
+## Popularität
+
+Python ist mittlerweile eine der populärsten Programmiersprachen weltweit. Verschiedene Versuche, die Beliebtheit von Programmiersprachen abzuschätzen (z.B. [PYPL](https://pypl.github.io/PYPL.html), [IEEE Spectrum Top Programming Languages](https://spectrum.ieee.org/top-programming-languages/) und [TIOBE](https://www.tiobe.com/tiobe-index/)), sehen Python seit Jahren auf einem der vordersten Plätze (oft sogar auf dem ersten Platz).
+
+Die Popularität einer Programmiersprache ist auch in der Praxis durchaus relevant, denn je größer und aktiver die Community einer Sprache ist, desto einfacher wird man existierende Lösungen zu Problemen finden bzw. desto schneller wird man eine Antwort auf eine noch nicht beantwortete Frage bekommen.
+
+
+## Wie sieht Python-Code aus?
+
+Im Folgenden sind beispielhaft einige Zeilen Python-Code dargestellt. Vieles ist vielleicht intuitiv verständlich, manches ist aber wahrscheinlich (noch) komplett unverständlich. Alle Beispiele werden im Laufe der Lehrveranstaltung erklärt, im Moment sollen diese nur der Veranschaulichung dienen.
+
+Die grauen Kästchen zeigen Python-Befehle, unmittelbar darunter folgt das Ergebnis des jeweiligen Befehls.
+
+```{python}
+print("Hello World!")
+```
+
+```{python}
+"lauter kleinbuchstaben".upper()
+```
+
+```{python}
+for i in range(10):
+    print(i, end=", ")
+```
+
+```{python}
+print(", ".join([str(i) for i in range(10)]))
+```
+
+```{python}
+[k**2 for k in range(0, 100, 10)]
+```
+
+
+## Installation
+
+Auf der [offiziellen Python-Website](https://www.python.org/) findet man alles rund um Python. Dort kann man auch Installationspakete für diverse Betriebssysteme herunterladen. Außerdem gibt es dort auch die sehr umfangreiche offizielle Dokumentation mit vielen Beispielen und Tutorials. Mittlerweile ist die Installation auf Windows und macOS so einfach, dass man die offiziellen Installer bedenkenlos empfehlen kann (unter Linux ist es aber nach wie vor besser, die distributionseigenen Paketmanager dafür zu verwenden, falls Python nicht ohnehin schon vorinstalliert ist).
+
+Am besten wählt man im Installationsfenster die Standard-Installation aus, aber setzt unbedingt das Häkchen bei *"Add Python 3.10 to PATH"*. Das folgende Bild zeigt diese Einstellungen für die Installation unter Windows:
+
+![](install_python_windows.png)
+
+Unter macOS sollte man nach der Installation die folgenden zwei Scripts durch Doppelklick ausführen, erst dann ist die Installation komplett:
+
+![](install_python_mac.png)
+
+
+## Erste Schritte
+
+Nachdem Sie Python installiert haben können Sie den sogenannten Python-Interpreter starten. Dabei handelt es sich um ein Programm, welches Python-Befehle verstehen und verarbeiten kann. Man kann mit dem Python-Interpreter auch interaktiv arbeiten. Interaktiv bedeutet, dass man einen Befehl eintippt und mit der Eingabetaste bestätigt. Danach wird der eingegebene Befehl direkt verarbeitet und das Ergebnis ausgegeben.
+
+Es gibt einige Möglichkeiten, den Python-Interpreter zu verwenden – mehr dazu in der nächsten Einheit. Fürs erste ist es am einfachsten, wenn Sie unter Windows das Programm "Python 3.10 (64-bit)" starten (es befindet sich im Startmenü im Ordner "Python 3.10").
+
+![](python_windows.png)
+
+Unter macOS bzw. Linux öffnen Sie ein Terminal und tippen dort `python` gefolgt von der Eingabetaste. Es kann sein, dass Sie den Befehl `python3` verwenden müssen, um die korrekte Version von Python zu starten – achten Sie auf die vom Interpreter angezeigte Versionsnummer um sicherzustellen, dass die korrekte Python-Version gestartet wurde.
+
+![](python_macos.png)
+
+Wir können nun Python-Befehle eintippen und mit der Eingabetaste bestätigen. Der sogenannte Prompt `>>>` signalisiert dabei, dass Python bereit für Eingaben ist (dieser Prompt ist *nicht* Teil eines Python-Befehls). Der Python-Interpreter läuft im Hintergrund und führt Ihre Befehle aus. So können Sie Python z.B. als Taschenrechner verwenden. Die vier Grundrechenarten Addition, Subtraktion, Multiplikation und Division können wie folgt verwendet werden:
+
+```{python}
+1 + 1
+```
+
+```{python}
+10 - 7
+```
+
+```{python}
+7 * 8
+```
+
+```{python}
+120 / 7
+```
+
+Die ganzzahlige Division hat einen eigenen Operator, der aus zwei Zeichen besteht:
+
+```{python}
+120 // 7
+```
+
+Der ganzzahlige Rest einer Division wird mit dem Rest-Operator berechnet:
+
+```{python}
+120 % 7
+```
+
+Potenzieren (also eine Zahl hoch eine andere Zahl) ist ebenso möglich:
+
+```{python}
+2**64
+```
+
+Python kennt die Vorrangs- und Klammerregeln:
+
+
+```{python}
+(13 + 6) * 8 - 12 / (2.5 + 1.6)
+```
+
+Bei der Eingabe von Zahlen ist darauf zu achten, dass Python die *englische* Zahlenschreibweise mit einem *Punkt* als Dezimaltrennzeichen verwendet.
+
+Wenn Sie mathematische Funktionen wie beispielsweise Sinus oder Cosinus verwenden möchten, müssen Sie zuerst das `math`-Modul importieren, in dem Sie (einmalig) folgende Zeile eintippen:
+
+```{python}
+import math
+```
+
+Danach stehen Ihnen viele mathematische Funktionen wie z.B. `sqrt()` (Wurzel), `log()` (Logarithmus), `sin()` (Sinus), `pi` (die Kreiszahl $\pi$) oder `e` (die [Eulersche Zahl](https://de.wikipedia.org/wiki/Eulersche_Zahl)) zur Verfügung, die man mit einem vorangestellten `math.` verwendet:
+
+```{python}
+math.sqrt(2)
+```
+
+```{python}
+math.pi
+```
+
+```{python}
+math.e
+```
+
+```{python}
+1 + math.sqrt(5) * 7 - 2 * math.pi * 1.222
+```
+
+
+## Anwendungsbeispiele
+
+Python wird heutzutage in vielen verschiedenen Bereichen verwendet. Um Ihnen zu verdeutlichen, was man mit Python in der Psychologie und den Neurowissenschaften machen kann, sind hier einige prominente Beispiele angeführt, die vielleicht für Sie relevant sein könnten. Diese Auswahl ist jedoch bei weitem nicht vollständig und spiegelt vor allem meine persönliche Erfahrung wider.
+
+
+### Präsentation von Stimuli
+
+[PsychoPy](http://www.psychopy.org/) ist ein Programm zur Präsentation von Stimuli für psychophysiologische Untersuchungen. Beispielsweise kann man mit PsychoPy Experimente erstellen, um Reaktionszeiten zu messen. Das Programm kann aber auch für fMRI- bzw. EEG-Untersuchungen verwendet werden, um die dort benötigten (visuellen bzw. auditorischen) Stimuli zeitpräzise zu präsentieren. PsychoPy kann über eine grafische Oberfläche bedient werden, aber spezielle Versuchsdesigns, die über die mitgelieferten Standardparadigmen hinausgehen, erstellt man am besten direkt mit Python-Code. Wir werden uns in den letzten beiden Einheiten mit PsychoPy beschäftigen.
+
+![](psychopy.png)
+
+Eine Alternative zu PsychoPy ist as ebenfalls in Python geschriebene Tool [OpenSesame](http://osdoc.cogsci.nl/).
+
+
+### Neurowissenschaften
+
+Python ist sehr populär in den Neurowissenschaften. Auf der [NIPY-Website](https://nipy.org/) (Neuroimaging for Python) haben sich einzelne Projekte zusammengeschlossen, welche spezifische Aufgaben im Bereich der Neurowissenschaften abdecken. Besonders viele Pakete gibt es für die Auswertung von fMRI-Daten. Hier gibt es z.B. [NiBabel](https://nipy.org/nibabel/) zum Einlesen verschiedenster Neuroimaging-Datenformate, [Nipype](https://www.mit.edu/~satra/nipype-nightly/) zur einheitlichen Verwendung unterschiedlicher fMRI-Analyseprogramme, sowie [Nipy](https://nipy.org/nipy/), [Nitime](https://nipy.org/nitime/) und [Nilearn](https://nilearn.github.io/) zur Analyse von fMRI-Daten.
+
+![](nilearn.png)
+
+[MNE-Python](https://mne.tools/) kann man zur Analyse von EEG- bzw. MEG-Signalen verwenden. Es werden eine Vielzahl an Methoden unterstützt, welche in der Verarbeitung von elektrophysiologischen Gehirnsignalen eine Rolle spielen, wie z.B. Filterung, Artefaktbereinigung, Quelllokalisation und Konnektivitätsanalysen. Es gibt dafür auch eine grafische Oberfläche names [MNELAB](https://github.com/cbrnr/mnelab).
+
+
+### Statistische Datenanalyse
+
+Zur statistischen Auswertung von Daten gibt es in Python ebenfalls eine große Anzahl an Paketen. Besonders wichtig sind dafür [NumPy](https://www.numpy.org/), [SciPy](https://scipy.org/), [pandas](https://pandas.pydata.org/), [statsmodels](https://www.statsmodels.org/stable/index.html), [Matplotlib](https://matplotlib.org/), [seaborn](https://seaborn.pydata.org/) und [scikit-learn](https://scikit-learn.org/stable/). Einige dieser Pakete werden wir im Rahmen dieses Seminars kennenlernen (wenn auch nur sehr oberflächlich).
+
+![](scatter.png)
+
+
+### Grafische Oberflächen
+
+In Python kann man auch eigenständige Programme mit grafischen Oberflächen erstellen. Ein Beispiel dafür ist [Spyder](https://www.spyder-ide.org/), eine grafische Entwicklungsumgebung für Python, welche selbst komplett in Python geschrieben ist. Auch die grafische Oberfläche von [PsychoPy](http://www.psychopy.org/) ist in Python geschrieben.
+
+
+### Astronomie
+
+Obwohl wahrscheinlich wenig relevant für die Psychologie dürfen zwei sehr prominente Beispiele hier nicht fehlen: das [erste Bild eines schwarzen Lochs](https://eventhorizontelescope.org/press-release-april-10-2019-astronomers-capture-first-image-black-hole) (im Zentrum der Galaxie [Messier 87](https://de.wikipedia.org/wiki/Messier_87)) wurde [mit Hilfe von Python](https://numpy.org/case-studies/blackhole-image/) erzeugt:
+
+![© [EHT](https://eventhorizontelescope.org/press-release-april-10-2019-astronomers-capture-first-image-black-hole), CC BY 4.0](m87.png)
+
+Auch bei der Visualisierung des [schwarzen Lochs Sagittarius A*](https://eventhorizontelescope.org/blog/astronomers-reveal-first-image-black-hole-heart-our-galaxy) im Zentrum unser eigenen Galaxie wurde [Python](https://doi.org/10.3847/2041-8213/ac6736) verwendet:
+
+![© [EHT](https://eventhorizontelescope.org/blog/astronomers-reveal-first-image-black-hole-heart-our-galaxy), CC BY 4.0](sgr_astar.png)
+
+## Übungen
+
+### Übung 1
+Installieren Sie Python auf Ihrem Rechner. Starten Sie dann den Python-Interpreter. Welche Version von Python meldet der Interpreter? Ist dies die aktuellste Version?
+
+### Übung 2
+Tippen Sie im Python-Interpreter `import antigravity` ein. Was passiert? Was geschieht, wenn Sie `import this` eingeben? Welchen Effekt hat `import math`?
+
+### Übung 3
+Berechnen Sie mit Python das Ergebnis der Division $4 : 0.4$. Berechnen Sie außerdem das ganzzahlige Ergebnis und den Rest. Was fällt Ihnen auf?
+
+### Übung 4
+Gegeben seien folgende Messwerte: 11, 27, 15, 10, 33, 18, 25, 22, 39, 11. Berechnen Sie den arithmetischen Mittelwert $\bar{x}$. Verwenden Sie dafür keine fertigen Funktionen, sondern nur Grundrechenarten und führen Sie diese Berechnung mit einem Befehl (ohne Zwischenergebnisse) durch.
+
+### Übung 5
+Berechnen Sie das Ergebnis des folgenden Ausdrucks mit einem Befehl (in einer Zeile):
+
+$$\frac{(5^5 - \pi) \cdot \frac{19}{3}}{\sqrt{13} + 7^\frac{2}{3}}$$
+
+*Hinweis:* Achten Sie auf die Klammersetzung! Das richtige Ergebnis beträgt ungefähr 2722.
+
+### Übung 6
+Warum funktioniert der folgende Befehl nicht (unter der Annahme dass vorher `import math` ausgeführt wurde)?
+
+```python
+math.Sqrt(4)
+```
