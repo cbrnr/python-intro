@@ -1,0 +1,4 @@
+- source: 01.qmd
+  quarto-pub:
+    - id: a78850ed-d224-412f-a6cc-8b3c4735d263
+      url: 'https://quartopub.com/sites/cbrnr/python-22w-01'
