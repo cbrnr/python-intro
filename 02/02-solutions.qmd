@@ -1,0 +1,99 @@
+---
+title: "2 – Lösungen"
+subtitle: "Einführung in Python und PsychoPy"
+author: "Clemens Brunner"
+date: 2022-10-13
+format: html
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
+---
+
+## Übung 1
+
+Eine Liste aller installierten Pakete bekommt man, indem man in ein Terminal bzw. Eingabeaufforderung folgenden Befehl eingibt:
+
+```
+pip list
+```
+
+Bei einer frischen Python-Installation sind nur wenige Pakete installiert, die Ausgabe des Befehls könnte wie folgt aussehen:
+
+```
+Package    Version
+---------- -------
+pip        22.2.2
+setuptools 65.4.0
+```
+
+
+## Übung 2
+
+Das Aktualisieren aller installierten Pakete muss für jedes Paket separat erfolgen. Dazu lässt man sich zunächst einmal eine Liste aller Pakete ausgeben, die aktualisiert werden könnten:
+
+```
+pip list --outdated
+```
+
+Gibt es hier keine Ausgabe, dann sind alle Pakete auf dem neuesten Stand. Falls hier doch Pakete aufgelistet werden, kann man diese mit `pip install --upgrade <package>` aktualisieren (statt `<package>` muss man den tatsächlichen Paketnamen angeben).
+
+In der obigen Liste aller installierten Pakete scheint `ipython` nicht auf – daher ist es auch nicht installiert. Mit folgendem Befehl kann man das Paket installieren:
+
+```
+pip install ipython
+```
+
+So kann man auch beliebige weitere Pakete installieren, z.B. `numpy`:
+
+```
+pip install numpy
+```
+
+Wenn man ein Paket nicht mehr benötigt, kann man es auch wieder deinstallieren:
+
+```
+pip uninstall numpy
+```
+
+:::{.callout-note}
+Wenn man ein Paket installiert, werden meist weitere zusätzliche Pakete automatisch mitinstalliert, welche vom gewünschten Paket benötigt werden. Beispielsweise benötigt das Paket `ipython` einige weitere Pakete, darunter `backcall`, `decorator`, `jedi`, usw. Diese sogenannten Abhängigkeiten werden also automatisch mitinstalliert wenn man `pip install ipython` ausführt.
+
+Wenn man ein Paket wieder deinstalliert, also z.B. `pip uninstall ipython`, dann werden dessen Abhängigkeiten allerdings *nicht* automatisch entfernt (da diese vielleicht auch von anderen Paketen benötigt werden könnten). Diese Überbleibsel muss man also manuell entfernen (oder einfach installiert lassen).
+:::
+
+
+## Übung 3
+
+Das Script könnte so aussehen:
+
+```python
+# Clemens Brunner
+
+print("Hello World!")
+ 
+```
+
+
+## Übung 4
+
+```python
+help(print)
+?print
+print?
+```
+
+
+## Übung 5
+
+Der interaktive Standard-Interpreter wird mit `python` gestartet – dieser wird direkt mit der Installation von Python mitgeliefert. Er ist allerdings relativ rudimentär und bietet z.B. keine farblichen Hervorhebungen oder spezielle Kurzbefehle wie `pwd`. Daher kann man mit `pip install ipython` das Zusatzpaket `ipython` installieren, welches einen wesentlich komfortableren interaktiven Interpreter bietet (es ist sozusagen eine Erweiterung des Standard-Interpreters). Man startet ihn mit dem Befehl `ipython`. Beide verwenden natürlich exakt denselben Python-Interpreter, es geht nur darum, das interaktive Arbeiten komfortabler zu gestalten.
+
+
+## Übung 6
+
+Ein ganzes Script kann einfach mit dem Play-Icon rechts oben ausgeführt werden (im Script-Modus). Möchte man eine einzelne oder mehrere markierte Zeilen im interaktiven Interpreter ausführen, macht man das am besten mit <kbd>Shift</kbd><kbd>Enter</kbd>. Hier wird allerdings immer der Standard-Interpreter `python` gestartet. Diesen kann man aber mit `exit()` beenden und dann `ipython` starten. Ab dann führt die Tastenkombination Befehle in IPython aus.

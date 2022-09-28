@@ -2,3 +2,7 @@
   quarto-pub:
     - id: 03aec917-ff65-47e0-84b8-9a05eaef9428
       url: 'https://quartopub.com/sites/cbrnr/python-22w-02'
+- source: 02-solutions.qmd
+  quarto-pub:
+    - id: 9964ceb7-002e-4315-8250-f6e677d691e3
+      url: 'https://quartopub.com/sites/cbrnr/python-22w-02-solutions'
