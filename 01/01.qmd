@@ -97,9 +97,13 @@ Es gibt einige Möglichkeiten, den Python-Interpreter zu verwenden – mehr dazu
 
 ![](python_windows.png)
 
-Unter macOS bzw. Linux öffnen Sie ein Terminal und tippen dort `python` gefolgt von der Eingabetaste. Es kann sein, dass Sie den Befehl `python3` verwenden müssen, um die korrekte Version von Python zu starten – achten Sie auf die vom Interpreter angezeigte Versionsnummer um sicherzustellen, dass die korrekte Python-Version gestartet wurde.
+Unter macOS bzw. Linux öffnen Sie ein Terminal und tippen dort `python` gefolgt von der Eingabetaste. Achten Sie auf die vom Interpreter angezeigte Versionsnummer um sicherzustellen, dass die korrekte Python-Version gestartet wurde.
 
 ![](python_macos.png)
+
+:::{.callout-important}
+Auf macOS muss man `python3` statt `python` zum Starten des interaktiven Interpreters verwenden! Dies kann auch unter Linux erforderlich sein, hier hängt es aber davon ab, welche Linux-Distribution man verwendet.
+:::
 
 Wir können nun Python-Befehle eintippen und mit der Eingabetaste bestätigen. Der sogenannte Prompt `>>>` signalisiert dabei, dass Python bereit für Eingaben ist (dieser Prompt ist *nicht* Teil eines Python-Befehls). Der Python-Interpreter läuft im Hintergrund und führt Ihre Befehle aus. So können Sie Python z.B. als Taschenrechner verwenden. Die vier Grundrechenarten Addition, Subtraktion, Multiplikation und Division können wie folgt verwendet werden:
 

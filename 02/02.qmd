@@ -47,6 +47,10 @@ pip --version
 
 Wenn man hier eine Versionsnummer angezeigt bekommt (z.B. `21.2.4`), funktioniert `pip` korrekt.
 
+:::{.callout-important}
+Auf macOS muss man `pip3` statt `pip` schreiben, wenn man wie in diesen Unterlagen beschrieben den offiziellen Python-Installer zu Installation von Python verwendet hat.
+:::
+
 Es folgt eine Übersicht über die wichtigsten `pip`-Befehle, mit denen man vertraut sein sollte:
 
 - `pip list` zeigt eine Liste aller installierten Pakete.
@@ -261,7 +265,7 @@ Ein in Visual Studio Code geöffnetes Python-Script kann durch Klicken auf die "
 Möchte man nur einzelne Code-Zeilen im interaktiven Interpreter ausführen, verwendet man am besten die Tastenkombination <kbd>Shift</kbd><kbd>Enter</kbd>. Diese führt entweder die aktuelle Zeile (also die Zeile in der sich der Cursor befindet) oder alle markierten Zeilen im interaktiven Python-Interpreter aus.
 
 :::{.callout-tip}
-Im Moment kann man IPython nur mit einem kleinen Trick verwenden. Dazu führt man zunächst eine beliebige Code-Zeile im Script mit <kbd>Shift</kbd><kbd>Enter</kbd> aus. Dieser Befehl wird also im normalen interaktiven Python-Interpreter ausgeführt. Diesen beendet man aber gleich mit `exit()` und startet dann stattdessen `ipython`. Danach werden alle Befehle mit <kbd>Shift</kbd><kbd>Enter</kbd> in IPython ausgeführt.
+Im Moment kann man IPython nur mit einem kleinen Trick verwenden. Dazu führt man zunächst eine beliebige Code-Zeile im Script mit <kbd>Shift</kbd><kbd>Enter</kbd> aus. Dieser Befehl wird also im normalen interaktiven Python-Interpreter ausgeführt. Diesen beendet man aber gleich mit `exit()` und startet dann stattdessen `ipython`. Danach werden alle Befehle mit <kbd>Shift</kbd><kbd>Enter</kbd> in IPython ausgeführt. Falls es Probleme mit falschen Einrückungen gibt, kann man versuchen, IPython mit `ipython --no-autoindent` zu starten.
 :::
 
 
