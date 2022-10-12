@@ -1,0 +1,191 @@
+---
+title: "3 – Lösungen"
+subtitle: "Einführung in Python und PsychoPy"
+author: "Clemens Brunner"
+date: 2022-10-20
+format: html
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
+---
+
+## Übung 1
+
+```{python}
+width = 17
+height = 12
+delimiter = "."
+```
+
+### `width / 2`
+
+Wert: `8.5`, Typ: `float`.
+
+```{python}
+width / 2
+```
+```{python}
+type(width / 2)
+```
+
+
+### `height / 3`
+
+Wert: `4.0`, Typ: `float` – hier hätte man vielleicht `4` und `int` erwartet.
+
+```{python}
+height / 3
+```
+```{python}
+type(height / 3)
+```
+
+
+### `height * 3`
+
+Wert: `36`, Typ: `int`.
+
+```{python}
+height * 3
+```
+```{python}
+type(height * 3)
+```
+
+
+### `height * 3.0`
+
+Wert: `36.0`, Typ: `float` – hier hätte man vielleicht `36` und `int` erwartet.
+
+```{python}
+height * 3.0
+```
+```{python}
+type(height * 3.0)
+```
+
+
+### `delimiter * 5`
+
+Wert: `"....."`, Typ: `str` – das war eventuell unerwartet.
+
+```{python}
+delimiter * 5
+```
+```{python}
+type(delimiter * 5)
+```
+
+
+### `2 * (width + height) + 1.5`
+
+Wert: `59.5`, Typ: `float`.
+
+```{python}
+2 * (width + height) + 1.5
+```
+```{python}
+type(2 * (width + height) + 1.5)
+```
+
+
+### `12 + 3`
+
+Wert: `15`, Typ: `int`.
+
+```{python}
+12 + 3
+```
+```{python}
+type(12 + 3)
+```
+
+
+### `"12 + 3"`
+
+Wert: `"12 + 3"`, Typ: `str`.
+
+```{python}
+"12 + 3"
+```
+```{python}
+type("12 + 3")
+```
+
+
+## Übung 2
+
+Eine Anweisung ist Code, welcher vom Python-Interpreter ausgeführt werden kann. Es gibt Anweisungen, die einen Wert haben und Anweisungen die keinen Wert haben. Erstere (also Anweisungen mit Wert) nennt man auch Ausdrücke. Beispiele:
+
+```{python}
+12 + 5  # Ausdruck (Anweisung mit Wert)
+```
+
+```{python}
+type(5)  # Ausdruck (Anweisung mit Wert)
+```
+
+```{python}
+x = 12 + 5  # Anweisung (Zuweisung)
+print(x)  # Anweisung
+```
+
+Im interaktiven Modus gibt Python die Werte von Ausdrücken automatisch aus (in IPython an einem roten `Out [x]:` zu erkennen). Im Script-Modus ist dies jedoch nicht der Fall.
+
+
+## Übung 3
+
+Schlüsselwörter sind vordefinierte Namen, die Python zum Verstehen eines Python-Scripts benötigt. Eine Liste aller Schlüsselwörter bekommt man mit:
+
+```python
+import keyword
+print(keyword.kwlist)
+```
+
+Eingebaute Funktionen sind mit Python mitgelieferte Funktionen, welche ohne jeglichen Import sofort verfügbar sind. Eine Liste bekommt man mit:
+
+```python
+dir(__builtins__)
+```
+
+Bei der Namensgebung ist zu beachten, dass Schlüsselwörter nicht als Namen verwendet werden können (dies führt zu einer Fehlermeldung). Eingebaute Funktionen sollten prinzipiell ebenfalls nicht für eigene Namen verwendet werden (jedoch wäre dies technisch möglich).
+
+Gute Namen sollten selbsterklärend sein und auf ihren Verwendungszweck hinweisen. Sie sollten so kurz wie möglich, aber dennoch so lang wie notwendig sein. Prinziell sollte man englische Begriffe als Namen verwenden. Ebenso hat es sich eingebürgert, dass Variablennamen nur aus Kleinbuchstaben bestehen sollten, gegebenfalls kann man einen Unterstrich `_` zur Trennung von Wörtern verwenden.
+
+Beispiel für einen Namen, welcher die Anzahl an Versuchspersonen beinhaltet:
+
+```python
+n_subjects = 14
+```
+
+
+## Übung 4
+
+```{python}
+import math
+
+r = 5
+area = 4 * r**2 * math.pi
+volume = 4/3 * math.pi * r**3
+print(area, volume)
+```
+
+
+## Übung 5
+
+```{python}
+type(True)
+```
+```{python}
+x = "False"
+type(x)
+```
+```{python}
+type(math)
+```
