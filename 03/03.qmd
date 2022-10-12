@@ -1,0 +1,397 @@
+---
+title: "3 – Namen, Ausdrücke, Anweisungen"
+subtitle: "Einführung in Python und PsychoPy"
+author: "Clemens Brunner"
+date: 2022-10-20
+format: html
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
+---
+
+## Objekte, Werte und Typen
+
+Alles in Python ist ein Objekt. Ein Objekt hat einen bestimmten Wert, z.B.
+
+```{python}
+1
+```
+
+```{python}
+2.15
+```
+
+```{python}
+"Hallo"
+```
+
+```{python}
+"3"
+```
+
+:::{.callout-tip}
+Python gibt im interaktiven Modus Werte automatisch aus.
+:::
+
+Jedes Objekt hat neben einem Wert auch einen bestimmten Typ. Mit `type()` kann man den Typ eines beliebigen Objekts herausfinden:
+
+```{python}
+type(1)
+```
+
+```{python}
+type(2.15)
+```
+
+```{python}
+type("Hallo")
+```
+
+```{python}
+type("3")
+```
+
+Python ist eine dynamisch typisierte Sprache. Das bedeutet in der Praxis, dass erst zur Laufzeit eines Programms überprüft wird, ob eine bestimmte Operation auf ein Objekt eines bestimmten Typs angewendet werden kann. Praktisch heißt das, dass in Python Typen nicht explizit angegeben werden müssen.
+
+Python kennt noch mehr Typen als in den oben angeführten Beispielen. Wir werden im Laufe dieses Kurses noch weitere nützliche Datentypen wie z.B. Listen, Tuples und Dictionaries kennenlernen.
+
+
+## Namen
+
+Namen in Python sind nichts anderes als Namen für bestimmte Objekte (in anderen Programmiersprachen werden Namen meistens als Variablen bezeichnet). Beispielsweise kann man die Zuweisung `a = 1` so interpretieren, dass das Objekt `1` den Namen `a` erhält. Ein Objekt kann übrigens auch mehrere Namen haben, was im folgenden Beispiel illustriert ist.
+
+```{python}
+a = 1
+```
+
+<img src="a1.png" />
+
+```{python}
+a = 2.4
+```
+
+<img src="a2.png" />
+
+```{python}
+b = a
+```
+
+<img src="a3.png" />
+
+Zum Schluss hat das Objekt 2.4 also zwei Namen – `a` und `b` verweisen auf dasselbe Objekt.
+
+Der Typ eines Namens entspricht dem Typ des Objekts, auf das er verweist:
+
+```{python}
+type(a)
+```
+
+```{python}
+type(b)
+```
+
+
+## Gültige und gute Namen
+
+Namen können Buchstaben und Ziffern enthalten, sie dürfen aber nicht mit einer Ziffer beginnen. Prinzipiell sollte man Kleinbuchstaben verwenden (Python unterscheidet zwischen Groß- und Kleinschreibung). Namen dürfen beliebig lang sein, sollten aber so kurz wie möglich (aber so lang wie notwendig) gewählt werden. Außerdem kann das Zeichen `_` (der Unterstrich) verwendet werden, um einen Namen lesbarer zu gestalten, z.B. zur Trennung von Wortteilen.
+
+Namen sollten sinnvoll gewählt werden, d.h. sie sollten die Verwendung bzw. den Inhalt dokumentieren (also kurze Namen wie z.B. `i`, `n` und `x` sind nur in Ausnahmefällen sinnvoll). Es ist weiters auch vernünftig, englische Namen zu verwenden.
+
+Beispiele für gültige Namen sind:
+
+```{python}
+number_of_students_in_class = 23  # zu lang
+NumberOfStudents = 24  # Wörter sollten mit _ getrennt werden
+n_students = 25  # guter Name (kurz, aussagekräftig)
+n = 25  # weniger gut (zu unspezifisch), aber in manchen Fällen OK
+```
+
+Es gibt in Python *vordefinierte* Namen (sogenannte Schlüsselwörter oder englisch Keywords) – diese dürfen *nicht* als eigene Namen verwendet werden, da sie vom Python-Interpreter benötigt werden, um die Struktur eines Programmes zu erkennen. Mit folgenden Befehlen bekommt man eine Liste aller Schlüsselwörter:
+
+```{python}
+import keyword
+keyword.kwlist
+```
+
+Neben Schlüsselwörtern gibt es aber auch sogenannte *eingebaute Funktionen* (englisch Builtins), die standardmäßig in Python verfügbar sind. Es ist nicht sinnvoll, diese Builtins zu "überschreiben" (obwohl dies nicht explizit verboten ist). Eine Liste aller eingebauten Funktionen bekommt man mit folgendem Funktionsaufruf:
+
+```{python}
+#| scrolled: false
+dir(__builtins__)
+```
+
+Diese eingebauten Funktionen kann man jederzeit (ohne `import`) in Python verwenden. Als Beispiel sehen wir uns die Funktion `max` an, welche das Maximum einer Anzahl von Zahlen bestimmt:
+
+```{python}
+max(1, 88, 7)
+```
+
+Wir können uns den Typ von `max` ansehen, um zu verifizieren, dass es sich dabei um eine eingebaute Funktion handelt:
+
+```{python}
+type(max)
+```
+
+Man sollte den Namen `max` nicht für eigene Objekte verwenden, da die ursprüngliche eingebaute Funktion sonst nicht mehr verfügbar ist. Allerdings ist dies nicht explizit verboten:
+
+```{python}
+max = 4  # sollte man nicht machen!
+```
+
+Sehen wir uns nun den Typ von `max` an:
+
+```{python}
+type(max)
+```
+
+```{python}
+max
+```
+
+Erwartungsgemäß ist `max` jetzt ein Name, der auf das `int`-Objekt 4 verweist. Die ursprüngliche eingebaute Funktion `max` kann man jetzt nicht mehr verwenden:
+
+```python
+max(1, 88, 7)
+```
+```
+TypeError: 'int' object is not callable
+```
+
+Man kann aber den von uns definierten Namen `max` mit dem Schlüsselwort `del` wieder löschen und somit die eingebaute Funktion wieder zugänglich machen:
+
+```{python}
+del max
+type(max)
+```
+
+
+## Operatoren
+
+Operatoren sind spezielle Symbole, mit denen man Berechnungen wie Additionen, Subtraktionen usw. durchführen kann, also z.B. `+`, `-`, `*`, `/`, `**`, `//`, `%`, usw. Wir haben einige Operatoren bereits bei der Verwendung von Python als Taschenrechner kennengelernt.
+
+
+## Ausdrücke
+
+Ein Ausdruck (engl. Expression) ist eine Kombination von Werten, Variablen und Operatoren. Jeder Ausdruck hat einen Wert. Beispiele:
+
+```{python}
+17
+```
+
+```{python}
+23 + 4**2 - 2
+```
+
+```{python}
+n  # wurde bereits weiter oben definiert
+```
+
+```{python}
+n + 5
+```
+
+Python versucht immer, einen Ausdruck auf einen einzigen Wert zu reduzieren. Beachten Sie außerdem, dass Python im interaktiven Modus Werte automatisch ausgibt – in IPython zu sehen an den `Out[.]`-Zeilen.
+
+
+## Anweisungen
+
+Eine Anweisung (engl. Statement) ist eine Einheit Code, die der Python-Interpreter ausführen kann. Ein Ausdruck ist eine (spezielle) Anweisung, die einen Wert hat. Beispiele von Anweisungen, die keine Ausdrücke sind:
+
+```{python}
+x = 34  # Zuweisung
+```
+
+```{python}
+print("Python")
+```
+
+Bei den obigen zwei Beispielen sieht man, dass es keine Zeile mit Ausgaben gibt – der Grund dafür ist, dass diese beiden Anweisungen keine Werte haben, d.h. es gibt hier im interaktiven Modus des Python-Interpreters nichts zum Ausgeben.
+
+:::{.callout-note}
+Kein Wert entspricht in Python eigentlich dem speziellen Wert `None`.
+:::
+
+
+## Datentypen
+
+Python bringt eine Menge nützlicher Datentypen mit. Im Folgenden werden die wichtigsten Typen aufgelistet und kurz beschrieben. Eine ausführliche Behandlung ausgewählter (wichtiger) Datentypen folgt dann in den nächsten Einheiten.
+
+
+### Logische Typen
+
+Der Typ `bool` wird für Vergleiche verwendet; es gibt nur zwei mögliche Werte, nämlich `True` und `False`.
+
+```{python}
+b = True
+type(b)
+```
+
+```{python}
+c = False
+type(c)
+```
+
+
+### Numerische Typen
+
+- `int` (Ganzzahlen)
+- `float` (Kommazahlen)
+- `complex` (Komplexe Zahlen)
+
+```{python}
+a = 17
+type(a)
+```
+
+```{python}
+a = 23.221
+type(a)
+```
+
+Aufgrund der begrenzten Rechengenauigkeit, mit denen Computer Kommazahlen darstellen, kann es zu Rundungsfehlern kommen (Kommazahlen können im Allgemeinen nicht exakt repräsentiert werden). Beispiel:
+
+```{python}
+0.1 + 0.2
+```
+
+Man sollte daher Kommazahlen nie miteinander vergleichen:
+
+```{python}
+0.1 + 0.2 == 0.3
+```
+
+:::{.callout-note}
+Statt Kommazahlen mit `==` zu vergleichen ist es besser, wenn man überprüft, ob der Unterschied zwischen den beiden Zahlen sehr klein ist. Dazu gibt es im `math`-Modul eine eigene Funktion `math.isclose()`, die man wie folgt verwendet:
+
+```{python}
+import math
+
+math.isclose(0.1 + 0.2, 0.3)
+```
+:::
+
+Bei Ganzzahlen ist ein Vergleich aber kein Problem, da diese Zahlen exakt repräsentiert werden.
+
+In speziellen Anwendungsfällen benötigt man komplexe Zahlen, welche direkt von Python unterstützt werden. Die imaginäre Einheit wird durch `j` dargestellt.
+
+```{python}
+a = 3 + 5.5j
+type(a)
+```
+
+
+### Sequenzen
+
+Sequenzdatentypen können aus mehreren Elementen bestehen. Folgende wichtige Sequenzdatentypen werden von Python unterstützt:
+
+- `str` (String bzw. Zeichenkette)
+- `list` (Liste von Objekten)
+- `tuple` (ähnlich wie `list`, kann aber nachträglich nicht mehr verändert werden)
+- `set` (Ansammlung von *unterschiedlichen* Elementen, d.h. keine Duplikate)
+
+```{python}
+s = "Python"
+type(s)
+```
+
+```{python}
+s = 'String'
+type(s)
+```
+
+```{python}
+k = [1, 2, 18.33, "Python", 44]
+type(k)
+```
+
+```{python}
+t = 1, 2, 18.33, "Python", 44
+type(t)
+```
+
+```{python}
+s = {1, 2, "test", "test", "test", 1, 2, 3}
+s
+```
+
+```{python}
+type(s)
+```
+
+
+### Zuordnungen
+
+Der Datentyp `dict` beihnhaltet Wertepaare, also Schlüssel (Keys) und zugehörige Werte (Values). Dieser Mechanismus funktioniert ähnlich wie ein Wörterbuch, daher auch die englische Bezeichnung "dictionary".
+
+```{python}
+d = {"a": 12, "b": 3.14, 5: "Python", "c": "yes"}
+type(d)
+```
+
+
+## Übungen
+
+### Übung 1
+
+Gegeben seien folgende Anweisungen:
+
+```python
+width = 17
+height = 12
+delimiter = "."
+```
+
+Geben Sie zu jedem der folgenden Ausdrücke dessen Wert und Typ an. Versuchen Sie zunächst, die Antworten durch Überlegen herauszufinden und verwenden Sie erst dann den Python-Interpreter zum Überprüfen Ihrer Antworten.
+
+- `width / 2`
+- `height / 3`
+- `height * 3`
+- `height * 3.0`
+- `delimiter * 5`
+- `2 * (width + height) + 1.5`
+- `12 + 3`
+- `"12 + 3"`
+
+
+### Übung 2
+
+Was ist der Unterschied zwischen einem Ausdruck und einer Anweisung? Führen Sie jeweils ein Beispiel an.
+
+
+### Übung 3
+
+Was sind Schlüsselwörter in Python und wie erhalten Sie eine Liste aller Schlüsselwörter? Was sind eingebaute Funktionen und wie erhalten Sie eine Liste aller eingebauten Funktionen? Was müssen Sie beim Erstellen von Namen im Zusammenhang mit diesen beiden Konzepten beachten?
+
+Nennen Sie außerdem einige Richtlinien, wie man gute Namen erstellt. Führen Sie ein Beispiel für einen guten Namen an!
+
+
+### Übung 4
+
+Wie groß ist die Oberfläche bzw. das Volumen einer Kugel mit einem Radius von $r=5$? Führen Sie die Berechnung mit Python durch und weisen Sie den Ergebnissen die Namen `area` bzw. `volume` zu. Verwenden Sie für den Radius den Namen `r` und setzen Sie den Wert von `r` auf 5.
+
+*Hinweis:* Sie können die Zahl $\pi$ als `math.pi` verwenden, wenn Sie folgende Zeile ganz am Anfang Ihres Scripts hinzufügen:
+
+```python
+import math
+```
+
+Die Formel für die Oberfläche $A$ lautet:
+
+$$A = 4 \pi r^2$$
+
+Das Volumen $V$ kann man mit folgender Formel berechnen:
+
+$$V = \frac{4}{3} \pi r^3$$
+
+
+### Übung 5
+
+Mit welchem Befehl können Sie den Typ des Wertes `True` bestimmen? Um welchen Typ handelt es sich dabei? Welchen Typ hat der Name `x`, wenn Sie vorher `x = "True"` ausführen? Achtung: die Werte `True` und `"True"` in diesem Beispiel haben unterschiedliche Typen!
+
+Wenn Sie in Übung 4 den Befehl `import math` ausgeführt haben, welchen Typ hat der Name `math`?
