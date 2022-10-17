@@ -196,7 +196,9 @@ n  # wurde bereits weiter oben definiert
 n + 5
 ```
 
-Python versucht immer, einen Ausdruck auf einen einzigen Wert zu reduzieren. Beachten Sie außerdem, dass Python im interaktiven Modus Werte automatisch ausgibt – in IPython zu sehen an den `Out[.]`-Zeilen.
+:::{.callout-important}
+Python versucht immer, einen Ausdruck auf *einen einzigen Wert* zu reduzieren. Beachten Sie außerdem, dass Python im interaktiven Modus Werte automatisch ausgibt.
+:::
 
 
 ## Anweisungen
