@@ -99,7 +99,7 @@ Der wesentliche Unterschied zwischen interaktivem und Script-Modus ist, dass nur
 
 Hier sieht man, dass nach der Eingabe von `1 + 4` der Wert dieser Berechnung automatisch ausgegeben wird. In einem Script würde eine Zeile mit dem Inhalt `1 + 4` *keine* Ausgabe bewirken. Dies können Sie einfach überprüfen, indem Sie eine Datei namens `script.py` mit dieser Zeile als Inhalt erstellen. Führen Sie dann dieses Python-Script mittels `python script.py` aus und beachten Sie, dass das Ergebnis `5` nicht ausgegeben wird.
 
-Wenn Sie im Script-Modus dennoch Werte explizit ausgeben wollen, können Sie die `print()`-Funktion benutzen:
+Wenn Sie im Script-Modus dennoch Werte explizit ausgeben wollen, können Sie die `print`-Funktion benutzen:
 
 ```{python}
 print(1 + 4)
@@ -201,7 +201,7 @@ Mehr zu Funktionen werden wir in einer der nächsten Einheiten erfahren. Wichtig
 Das Klammernpaar `()` wird benötigt, um eine Funktion *aufzurufen*. Man nennt es daher auch *Aufrufoperator*.
 :::
 
-In der ersten Einheit haben wir die Quadratwurzel einer Zahl berechnet. Dazu haben wir die Funktion `math.sqrt()` aufgerufen, und zwar mit der gewünschten Zahl als Argument, welches wir innerhalb der Klammern angegeben haben. Durch Aufrufen der Funktion wird also deren Code ausgeführt:
+In der ersten Einheit haben wir die Quadratwurzel einer Zahl berechnet. Dazu haben wir die Funktion `math.sqrt` aufgerufen, und zwar mit der gewünschten Zahl als Argument, welches wir innerhalb der Klammern angegeben haben. Durch Aufrufen der Funktion wird also deren Code ausgeführt:
 
 ```{python}
 import math
@@ -273,7 +273,7 @@ Im Moment kann man IPython nur mit einem kleinen Trick verwenden. Dazu führt ma
 
 ### Integrierte Hilfe
 
-Hilfe zu Python-Befehlen kann man direkt im Python-Interpreter bekommen. Möchte man z.B. Hilfe zur Funktion `print()` bekommen, tippt man einfach folgenden Befehl ein:
+Hilfe zu Python-Befehlen kann man direkt im Python-Interpreter bekommen. Möchte man z.B. Hilfe zur Funktion `print` bekommen, tippt man einfach folgenden Befehl ein:
 
 ```{python}
 help(print)
@@ -330,11 +330,11 @@ Aktualisieren Sie zunächst alle installierten Pakete. Suchen Sie dann nach dem 
 
 ### Übung 3
 
-Erstellen Sie mit Visual Studio Code ein Python-Script namens `test.py`. Das Script soll lediglich *Hello World!* am Bildschirm ausgeben (verwenden Sie dazu die `print()`-Funktion). Versuchen Sie, folgende Struktur zu erzeugen:
+Erstellen Sie mit Visual Studio Code ein Python-Script namens `test.py`. Das Script soll lediglich *Hello World!* am Bildschirm ausgeben (verwenden Sie dazu die `print`-Funktion). Versuchen Sie, folgende Struktur zu erzeugen:
 
 - Die erste Zeile soll eine Kommentarzeile mit Ihrem Namen sein
 - Die zweite Zeile soll leer sein
-- Die dritte Zeile soll die `print()`-Funktion beinhalten
+- Die dritte Zeile soll die `print`-Funktion beinhalten
 - Die letzte Zeile soll wieder leer sein
 
 Achten Sie darauf, dass Ihr Script PEP8-konform ist. Führen Sie Ihr Script auch aus – so können Sie sicherstellen, dass der Code korrekt ist und keine Fehler produziert.
@@ -342,7 +342,7 @@ Achten Sie darauf, dass Ihr Script PEP8-konform ist. Führen Sie Ihr Script auch
 
 ### Übung 4
 
-Sehen Sie sich die Hilfe zur `print()`-Funktion direkt im Python-Interpreter an. Welchen Befehl verwenden Sie zum Aufrufen der Hilfe? Geben Sie hier drei Möglichkeiten an, die in IPython die Hilfe zu `print()` anzeigen.
+Sehen Sie sich die Hilfe zur `print`-Funktion direkt im Python-Interpreter an. Welchen Befehl verwenden Sie zum Aufrufen der Hilfe? Geben Sie hier drei Möglichkeiten an, die in IPython die Hilfe zu `print` anzeigen.
 
 
 ### Übung 5

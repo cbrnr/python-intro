@@ -39,7 +39,7 @@ Alles in Python ist ein Objekt. Ein Objekt hat einen bestimmten Wert, z.B.
 Python gibt im interaktiven Modus Werte automatisch aus.
 :::
 
-Jedes Objekt hat neben einem Wert auch einen bestimmten Typ. Mit `type()` kann man den Typ eines beliebigen Objekts herausfinden:
+Jedes Objekt hat neben einem Wert auch einen bestimmten Typ. Mit `type` kann man den Typ eines beliebigen Objekts herausfinden:
 
 ```{python}
 type(1)
@@ -267,7 +267,7 @@ Man sollte daher Kommazahlen nie miteinander vergleichen:
 ```
 
 :::{.callout-note}
-Statt Kommazahlen mit `==` zu vergleichen ist es besser, wenn man überprüft, ob der Unterschied zwischen den beiden Zahlen sehr klein ist. Dazu gibt es im `math`-Modul eine eigene Funktion `math.isclose()`, die man wie folgt verwendet:
+Statt Kommazahlen mit `==` zu vergleichen ist es besser, wenn man überprüft, ob der Unterschied zwischen den beiden Zahlen sehr klein ist. Dazu gibt es im `math`-Modul eine eigene Funktion `math.isclose`, die man wie folgt verwendet:
 
 ```{python}
 import math

@@ -156,7 +156,7 @@ Wenn Sie mathematische Funktionen wie beispielsweise Sinus oder Cosinus verwende
 import math
 ```
 
-Danach stehen Ihnen viele mathematische Funktionen wie z.B. `sqrt()` (Wurzel), `log()` (Logarithmus), `sin()` (Sinus), `pi` (die Kreiszahl $\pi$) oder `e` (die [Eulersche Zahl](https://de.wikipedia.org/wiki/Eulersche_Zahl)) zur Verfügung, die man mit einem vorangestellten `math.` verwendet:
+Danach stehen viele mathematische Funktionen wie z.B. `sqrt` (Wurzel), `log` (Logarithmus), `sin` (Sinus), `cos` (Cosinus) und Konstanten wie `pi` (die Kreiszahl $\pi$) oder `e` (die [Eulersche Zahl](https://de.wikipedia.org/wiki/Eulersche_Zahl)) zur Verfügung, die man mit einem vorangestellten `math.` verwendet:
 
 ```{python}
 math.sqrt(2)

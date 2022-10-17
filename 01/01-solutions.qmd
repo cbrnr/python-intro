@@ -90,7 +90,7 @@ import math
 
 ## Übung 6
 
-Den Befehl `math.Sqrt(4)` gibt es nicht – da in Python Groß- und Kleinschreibung berücksichtigt wird, ist `math.Sqrt()` nicht identisch mit `math.sqrt()`. Letzteres ist die richtige Schreibweise der Wurzelfunktion, welche im `math`-Modul enthalten ist.
+Den Befehl `math.Sqrt(4)` gibt es nicht – da in Python Groß- und Kleinschreibung berücksichtigt wird, ist `math.Sqrt` nicht identisch mit `math.sqrt`. Letzteres ist die richtige Schreibweise der Wurzelfunktion, welche im `math`-Modul enthalten ist.
 
 Korrekt wäre also:
 
