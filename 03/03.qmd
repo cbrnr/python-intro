@@ -214,7 +214,7 @@ print("Python")
 Bei den obigen zwei Beispielen sieht man, dass es keine Zeile mit Ausgaben gibt – der Grund dafür ist, dass diese beiden Anweisungen keine Werte haben, d.h. es gibt hier im interaktiven Modus des Python-Interpreters nichts zum Ausgeben.
 
 :::{.callout-note}
-Kein Wert entspricht in Python eigentlich dem speziellen Wert `None`.
+Kein Wert entspricht in Python dem speziellen Wert `None`.
 :::
 
 
