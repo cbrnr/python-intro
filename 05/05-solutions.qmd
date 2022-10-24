@@ -1,0 +1,79 @@
+---
+title: "5 – Lösungen"
+subtitle: "Einführung in Python und PsychoPy"
+author: "Clemens Brunner"
+date: 2022-11-03
+format: html
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
+---
+
+## Übung 1
+
+```python
+x = int(input("x: "))
+y = int(input("y: "))
+
+if x + y > 50:
+    print("x + y > 50")
+elif x + y < 50:
+    print("x + y < 50")
+else:
+    print("x + y == 50")
+```
+
+
+## Übung 2
+
+```python
+def is_odd(x):
+    if x % 2 == 1:
+        return True
+    else:
+        return False
+```
+
+Oder kürzer:
+
+```python
+def is_odd(x):
+    return x % 2 == 1
+```
+
+
+## Übung 3
+
+```{python}
+lst = ["I", "love", "Python"]
+for element in lst:
+    print(element)
+```
+
+
+## Übung 4
+
+```{python}
+for element in lst:
+    for ch in element:
+        print(ch, end="-")
+```
+
+
+## Übung 5
+
+```{python}
+x = 5  # x = -11, x = 0
+if x > 0:
+    print("x is positive")
+elif x < 0:
+    print("x is negative")
+else:
+    print("x is equal to 0")
+```
