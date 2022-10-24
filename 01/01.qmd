@@ -220,28 +220,40 @@ Auch bei der Visualisierung des [schwarzen Lochs Sagittarius A*](https://eventho
 
 ![© [EHT](https://eventhorizontelescope.org/blog/astronomers-reveal-first-image-black-hole-heart-our-galaxy), CC BY 4.0](sgr_astar.png)
 
+
 ## Übungen
 
 ### Übung 1
+
 Installieren Sie Python auf Ihrem Rechner. Starten Sie dann den Python-Interpreter. Welche Version von Python meldet der Interpreter? Ist dies die aktuellste Version?
 
+
 ### Übung 2
+
 Tippen Sie im Python-Interpreter `import antigravity` ein. Was passiert? Was geschieht, wenn Sie `import this` eingeben? Welchen Effekt hat `import math`?
 
+
 ### Übung 3
+
 Berechnen Sie mit Python das Ergebnis der Division $4 : 0.4$. Berechnen Sie außerdem das ganzzahlige Ergebnis und den Rest. Was fällt Ihnen auf?
 
+
 ### Übung 4
+
 Gegeben seien folgende Messwerte: 11, 27, 15, 10, 33, 18, 25, 22, 39, 11. Berechnen Sie den arithmetischen Mittelwert $\bar{x}$. Verwenden Sie dafür keine fertigen Funktionen, sondern nur Grundrechenarten und führen Sie diese Berechnung mit einem Befehl (ohne Zwischenergebnisse) durch.
 
+
 ### Übung 5
+
 Berechnen Sie das Ergebnis des folgenden Ausdrucks mit einem Befehl (in einer Zeile):
 
 $$\frac{(5^5 - \pi) \cdot \frac{19}{3}}{\sqrt{13} + 7^\frac{2}{3}}$$
 
 *Hinweis:* Achten Sie auf die Klammersetzung! Das richtige Ergebnis beträgt ungefähr 2722.
 
+
 ### Übung 6
+
 Warum funktioniert der folgende Befehl nicht (unter der Annahme dass vorher `import math` ausgeführt wurde)?
 
 ```python
