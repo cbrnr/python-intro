@@ -1,0 +1,64 @@
+---
+title: "8 – Lösungen"
+subtitle: "Einführung in Python und PsychoPy"
+author: "Clemens Brunner"
+date: 2022-11-24
+format: html
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
+---
+
+## Übung 1
+
+```python
+lst = range(0, 101, 2)
+
+with open("ue1.txt", "w") as f:
+    f.write("\n".join([str(x) for x in lst]))
+```
+
+
+## Übung 2
+
+```python
+with open("ue2.txt", "w") as f:
+    f.write(",".join([str(x) for x in lst]))
+```
+
+
+## Übung 3
+
+```{python}
+with open("sowpods.txt") as f:
+    for _ in range(6):  # skip first 6 lines
+        f.readline()
+    counter = 0
+    for line in f:
+        if len(line.strip()) > 0:  # line 17563 is empty
+            counter += 1
+
+print(f"There are {counter} words in the Scrabble list.")
+```
+
+
+## Übung 4
+
+```{python}
+with open("sowpods.txt") as f:
+    for _ in range(6):  # skip first 6 lines
+        f.readline()
+    counter = 0
+    for line in f:
+        if len(line.strip()) > 14:
+            counter += 1
+            # print(line.strip())  # uncomment to see words
+
+print(f"There are {counter} words with 15+ letters in the Scrabble list.")
+```

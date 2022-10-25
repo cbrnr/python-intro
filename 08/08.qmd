@@ -1,0 +1,407 @@
+---
+title: "8 – Ein- und Ausgabe"
+subtitle: "Einführung in Python und PsychoPy"
+author: "Clemens Brunner"
+date: 2022-11-24
+format: html
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
+---
+
+## Allgemeines
+
+Unter Eingabe (Input) versteht man die Eingabe von Informationen von der Tastatur bzw. aus einer Datei, um diese in einem Programm verarbeiten zu können. Unter Ausgabe versteht man die Ausgabe von Informationen am Bildschirm bzw. in eine Datei (also z.B. Ergebnisse einer Berechnung). Im Folgenden werden wir sehen, wie wir Strings für die Ausgabe formatieren können und wie wir Textdateien lesen bzw. schreiben können.
+
+
+## Ausgabe von Strings
+
+### Strings verketten
+
+Wir haben bereits die `print`-Funktion kennengelernt, welche Strings (und andere Objekte) als Text am Bildschirm ausgeben kann. Im einfachsten Fall kann so ein String ausgegeben werden:
+
+```{python}
+print("Hallo")
+```
+
+Auch Zahlen kann man als Argument für `print` verwenden:
+
+```{python}
+print(55)
+```
+
+Mit der Funktion `str` kann man beliebige Objekte (also auch z.B. Ganzzahlen) in einen String umwandeln:
+
+```{python}
+str(55)
+```
+
+Die `print`-Funktion kann beliebig viele Argumente entgegennehmen. Sie gibt dann alle Argumente, getrennt von Leerzeichen, am Bildschirm aus.
+
+```{python}
+a = 5
+b = 10
+print(a, "+", b, "=", a + b)  # fünf Argumente
+```
+
+Wie wir bereits wissen, kann man mehrere Strings mit `+` verketten. Daher könnte man obige Ausgabe auch durch Ausgabe eines einzigen Strings durch Verketten von einzelnen Strings erzeugen:
+
+```{python}
+print(str(a) + " + " + str(b) + " = " + str(a + b))  # ein Argument
+```
+
+
+### Die `format`-Methode
+
+Strings besitzen eine Methode namens `format`, mit der man deren Ausgabe formatieren kann. So einen formatierten String kann man dann einfach mit `print` am Bildschirm ausgeben.
+
+```{python}
+print('We are the {} who say "{}!"'.format('knights', 'Ni'))
+```
+
+Die geschwungenen Klammern und deren Inhalt werden durch die Argumente von `format` ersetzt und entsprechend formatiert. Im einfachsten Fall wie oben sind diese geschwungenen Klammern leer, d.h. die Argumente `'knights'` und `'Ni'` werden einfach der Reihe nach eingesetzt.
+
+Man kann in die Klammern aber auch Zahlen schreiben, um eine bestimmte Position in den `format`-Argumenten anzusprechen.
+
+```{python}
+print('{0} and {1}'.format('spam', 'eggs'))  # Argument 0 ist 'spam', Argument 1 ist 'eggs'
+```
+
+```{python}
+print('{1} and {0} and {1}'.format('spam', 'eggs'))
+```
+
+Keyword-Argumente können direkt mit deren Namen eingesetzt werden.
+
+```{python}
+print('This {food} is {adjective}.'.format(food='spam', adjective='horrible'))
+```
+
+Das Beispiel von oben lautet mit `format`:
+
+```{python}
+print("{} + {} = {}".format(a, b, a + b))
+```
+
+Zahlen können speziell formatiert werden. Sehen wir uns zunächst an, wie die Kreiszahl $\pi$ standardmäßig ausgegeben wird:
+
+```{python}
+import math
+
+print('π ≈ {}'.format(math.pi))
+```
+
+Mit einem optionalen Doppelpunkt und einem sogenannten *Format Specifier* innerhalb der geschwungenen Klammern kann ein Feld gezielt formatiert werden. Das folgende Beispiel formatiert die Kommazahl Pi so, dass sie mit drei Nachkommastellen ausgegeben wird:
+
+```{python}
+print('π ≈ {:.3f}'.format(math.pi))
+```
+
+Die minimale Feldbreite kann mit einer Zahl direkt nach dem Doppelpunkt spezifiziert werden:
+
+```{python}
+print('π ≈ {:15.3f}'.format(math.pi))
+```
+
+Alle Möglichkeiten, die Format Specifier innerhalb der geschwungenen Klammern bieten, finden sich in der [offiziellen Dokumentation](https://docs.python.org/3/library/string.html#format-string-syntax) (inklusive eine Menge Beispiele).
+
+
+### f-Strings
+
+Seit Python 3.6 gibt es eine weitere Variante, formatierte Strings mit sogenannten [f-Strings](https://docs.python.org/3/whatsnew/3.6.html#whatsnew36-pep498) zu erzeugen. Dies ist vielleicht die einfachste und kürzeste Möglichkeit, welche die gleiche Flexibilität wie die `format`-Methode bietet. Die obigen Beispiele würden mit f-Strings wesentlich einfacher aussehen (beachten Sie das `f` direkt vor dem eigentlich String), weil man Python-Ausdrücke direkt innerhalb der geschwungenen Klammern angeben kann:
+
+```{python}
+print(f"{a} + {b} = {a + b}")
+```
+
+```{python}
+print(f"π ≈ {math.pi}")
+```
+
+```{python}
+print(f"π ≈ {math.pi:.3f}")
+```
+
+
+## Dateien lesen und schreiben
+
+Die Funktion `open` gibt ein Datei-Objekt zurück, welches zum Lesen oder Schreiben von Dateien verwendet werden kann:
+
+```python
+f = open("test.txt", "w")
+```
+
+Das erste Argument ist der Dateiname, und das zweite Argument beschreibt den Modus (`"r"` lesen, `"w"` schreiben, `"a"` hinzufügen). Standardmäßig wird der Modus `"r"` angenommen, wenn das Argument nicht übergeben wird.
+
+Mit dem Datei-Objekt `f` kann man dann von der Datei lesen bzw. in die Datei schreiben.
+
+:::{.callout-important}
+Nach Beendigung aller Lese- und Schreiboperationen muss man das Datei-Objekt wieder schließen:
+
+```python
+f.close()
+```
+:::
+
+Eine gute Angewohnheit ist es aber, alle Datei-Operationen in einem `with`-Konstrukt durchzuführen; so wird die Datei bei Verlassen des `with`-Blocks automatisch geschlossen:
+
+```python
+with open("text.txt") as f:
+    data = f.read()
+```
+
+Zu Beachten ist noch, dass der Dateiname als String übergeben wird. Dieser enthält entweder den vollständigen Pfad der zu öffnenden Datei (z.&thinsp;B. `"C:/Program Files/Test Program/test.txt"`), oder nur den Dateinamen. Im letzteren Fall wird dann angenommen, dass sich die Datei im aktuellen Arbeitsverzeichnis befindet.
+
+:::{.callout-note}
+Pfade sollten immer mit einem normalen `/` getrennt werden und nicht wie unter Windows üblich mit einem verkehrten `\`.
+:::
+
+Die Methode `read` eines Datei-Objektes liest die *gesamte Datei* ein und gibt den Inhalt als String zurück:
+
+```{python}
+f = open("test.txt")
+text = f.read()
+print(text)
+```
+
+Der Inhalt einer Datei kann immer nur ein Mal gelesen werden. Wenn bereits der gesamte Inhalt gelesen wurde, befindet sich der sogenannte Dateizeiger am Ende der Datei. Wenn dann nochmals gelesen wird, wird nur mehr ein leerer String zurückgegeben:
+
+```{python}
+f.read()  # Ende der Datei bereits erreicht
+```
+
+Möchte man die Datei erneut lesen, muss man sie schließen und kann sie dann wieder erneut öffnen:
+
+```{python}
+f.close()  # schließt Datei (notwendig wenn man kein with verwendet)
+```
+
+Die Methode `readline` liest *eine Zeile* aus der Datei:
+
+```{python}
+with open("test.txt") as f:
+    print("1. Zeile: ", f.readline(), end="")
+    print("2. Zeile: ", f.readline(), end="")
+    print("3. Zeile: ", f.readline(), end="")
+```
+
+In einer Schleife kann man die Datei Zeile für Zeile auslesen, in dem man über das Datei-Objekt iteriert:
+
+```{python}
+with open("test.txt") as f:
+    for line in f:
+        print(line, end="")
+```
+
+So kann man einzelne Zeilen einfach manipulieren, z.B. um Zeilennummern auszugeben (die nicht in der Datei selbst sind):
+
+```{python}
+with open("test.txt") as f:
+    for no, line in enumerate(f):
+        print(no, line, end="")
+```
+
+In der `for`-Schleife wird hier nicht direkt über `f`, sondern über `enumerate(f)` iteriert. Diese Funktion zählt die Schleifendurchläufe mit und gibt ein Tupel bestehend aus dem aktuellen Wert des Schleifenzählers sowie der aktuellen Zeile zurück.
+
+Text in Dateien schreiben funktioniert sehr ähnlich – man öffnet die Datei im `"w"`-Modus und übergibt der `write`-Methode den gewünschten Inhalt als String:
+
+```python
+with open("test2.txt", "w") as f:
+    f.write("Das ist ein Test.\nSo kann man einfach\nText\nin Dateien schreiben.")
+```
+
+Im Beispiel oben steht das Zeichen `\n` für einen Zeilenumbruch (neue Zeile).
+
+
+## Beispiel: CSV-Datei lesen
+
+Mit den bis jetzt vorgestellten Mitteln können wir bereits CSV[^1]-Dateien einlesen und rudimentäre Statistiken rechnen. CSV-Dateien werden häufig verwendet, um tabellarische Daten abzuspeichern. Diese Dateien sind reine Textdateien, in denen die Variablen (Spalten) durch Kommas getrennt sind und die einzelnen Datensätze zeilenweise vorliegen.
+
+Im Folgenden werden vier Möglichkeiten zum Lesen einer CSV-Datei vorgestellt. Die erste Methode verwendet Python ohne spezielle Module, die zweite Methode ist eine Verallgemeinerung der ersten. Die dritte Methode verwendet das `csv`-Modul aus der Standardbibliothek. Die empfohlene (einfachste) Variante mit dem Package [pandas](https://pandas.pydata.org/) werden wir allerdings in dieser Lehrveranstaltung nicht genauer kennenlernen.
+
+[^1]: Comma-Separated Values
+
+
+### Möglichkeit 1
+
+Wir starten mit einer leeren Liste `data`. Dieser Liste fügen wir den Inhalt jeder Zeile schrittweise hinzu. Eine Zeile wird dabei als Liste mit zwei Strings abgebildet.
+
+```{python}
+data = []  # leere Liste
+with open("correlation.csv") as f:
+    for row in f:
+        data.append(row.strip().split(","))
+```
+
+```{python}
+data
+```
+
+Nun können die Daten in eine Struktur umgewandelt werden, die sich besser für nachfolgende Berechnungen eignet (also inbesondere werden die Zahlen, die jetzt noch als Strings vorliegen, mit der Funktion `float` in Kommazahlen umgewandelt).
+
+```{python}
+cols = [[], []]  # two empty lists for the two columns
+for row in data[1:]:  # skip first row (header)
+    cols[0].append(float(row[0]))  # first column
+    cols[1].append(float(row[1]))  # second column
+```
+
+Nun stehen die beiden Spalten in der Liste `cols` zur weiteren Verfügung. Diese Liste hat zwei Elemente:
+
+```{python}
+len(cols)
+```
+
+Die beiden Einträge in `cols` sind ebenfalls Listen:
+
+```{python}
+type(cols[0]), type(cols[1])
+```
+
+Die Länge beider Listen entspricht der Anzahl an Zeilen in der CSV-Datei (ohne Kopfzeile):
+
+```{python}
+len(cols[0]), len(cols[1])
+```
+
+Die Elemente in diesen beiden Listen sind Zahlen:
+
+```{python}
+cols[0]
+```
+
+```{python}
+cols[1]
+```
+
+Mit diesen beiden Listen kann man jetzt also Berechnungen durchführen. Beispielsweise kann man die Spaltenmittelwerte so ausrechnen:
+
+```{python}
+sum(cols[0]) / len(cols[0])
+```
+
+```{python}
+sum(cols[1]) / len(cols[1])
+```
+
+Diese Lösung ist allerdings alles andere als ideal. Erstens sollte man immer bereits existierende Lösungen verwenden und nicht alles von Grund auf neu entwickeln (es gibt in Python wie bereits erwähnt ein eigenes `csv`-Modul, und das Package `pandas` ist für solche Aufgaben geradezu prädestiniert). Zweitens ist diese Lösung auch sehr auf die konkrete Datei angepasst, z.B. funktioniert der Ansatz nur für eine Datei mit exakt zwei Spalten.
+
+
+### Möglichkeit 2
+
+Eine verallgemeinerte Lösung sieht wie folgt aus:
+
+```{python}
+with open("correlation.csv") as f:
+    header = f.readline().strip().split(",")  # erste Zeile
+
+    data = {}  # dict mit einem Eintrag pro Spalte
+    for name in header:
+        data[name] = []  # Key ist der Spaltenname, Value eine leere Liste
+
+    for row in f:  # restliche Zeilen
+        values = row.strip().split(",")
+        for h, v in zip(header, values):
+            data[h].append(float(v))  # füge zur jeweiligen Liste hinzu
+```
+
+Hier werden die Variablennamen aus der ersten Zeile (der Kopfzeile) gelesen. Die Daten werden dann in ein Dictionary geschrieben, wobei die Werte der Spalten zu den richtigen Dictionary-Einträgen (Listen) hinzugefügt werden. Die Funktion `zip` kombiniert die Werte von `header` und `values` in ein Tupel, die dann innerhalb der Schleife als `h` bzw. `v` zur Verfügung stehen.
+
+```{python}
+data
+```
+
+Diese Lösung funktioniert also bereits mit einer beliebigen Spaltenanzahl, setzt aber voraus, dass es eine Kopfzeile gibt. Die Spaltenmittelwerte können dann wie folgt berechnet werden:
+
+```{python}
+sum(data["essay"]) / len(data["essay"])
+```
+
+```{python}
+sum(data["hours"]) / len(data["hours"])
+```
+
+
+### Möglichkeit 3
+
+Mit dem Modul `csv` kann man das Lesen robuster gestalten (d.h. einfach an unterschiedliche Spaltentrennzeichen anpassen). Ansonsten ist diese Variante aber identisch mit der vorigen Lösung.
+
+```{python}
+import csv
+
+with open("correlation.csv") as f:
+    reader = csv.reader(f)
+    header = next(reader)  # erste Zeile
+
+    data = {}
+    for name in header:
+        data[name] = []
+
+    for row in reader:  # restlichen Zeilen
+        for h, v in zip(header, row):
+            data[h].append(float(v))
+```
+
+
+### Möglichkeit 4
+
+Das Package `pandas` eignet sich ideal zum Verarbeiten von tabellarischen Daten. Es beinhaltet auch Funktionen zum Lesen von Dateien. Damit würde der Code wie folgt aussehen:
+
+```{python}
+import pandas as pd
+
+data = pd.read_csv("correlation.csv")
+```
+
+```{python}
+data
+```
+
+Die Spaltenmittelwerte kann man dann wie folgt berechnen:
+
+```{python}
+#| scrolled: true
+data.mean()
+```
+
+
+## Übungen
+
+### Übung 1
+
+Erstellen Sie eine Liste `lst`, welche die *geraden* Zahlen zwischen 0 und 100 (inklusive) beinhaltet, und speichern Sie diese Zahlen in eine Datei `ue1.txt`. In der Datei soll jede Zahl in einer eigenen Zeile stehen.
+
+*Hinweis:* Zahlen sollten Sie vor dem Schreiben in die Datei mit der Funktion `str` in Strings umwandeln. Das Zeichen für einen Zeilenumbruch lautet `\n`. Sie können z.B. eine `for`-Schleife über die Zahlenliste machen und die einzelnen Elemente nacheinander in die Datei schreiben. Alternativ können Sie auch die Liste in einen richtig formatierten String umwandeln (die String-Methode `join` ist hier hilfreich) und diesen dann in die Datei schreiben.
+
+
+### Übung 2
+
+Verwenden Sie wieder die Liste `lst` aus Übung 1, aber schreiben Sie die Zahlen nun so in eine Datei `ue2.txt`, dass diese durch Kommas getrennt in einer Zeile stehen.
+
+
+### Übung 3
+
+Das Spiel Scrabble eignet sich hervorragend, um über die Existenz von Wörtern zu diskutieren. Zumindest für die englische Ausgabe gibt es eine [offizielle Wortliste](http://www.freescrabbledictionary.com/sowpods/), die man konsultieren kann, wenn man nicht sicher ist, ob es sich bei einer Kreation um ein gültiges Wort handelt oder nicht. Alle Wörter in dieser Datenbank können als [Textdatei](https://www.wordgamedictionary.com/sowpods/download/sowpods.txt) heruntergeladen werden.
+
+Für diese Übung laden Sie sich diese Datei herunter und speichern Sie sie in Ihrem Arbeitsverzeichnis ab (im Browser "Seite speichern unter" oder ähnlich). Lesen Sie die Datei dann in Python ein und finden Sie heraus, wie viele Wörter (Zeilen) sich in der Datei befinden.
+
+:::{.callout-note}
+Iterieren Sie mit einer `for`-Schleife über das Datei-Objekt und zählen Sie die Schleifendurchläufe mit. Am Ende der Schleife (d.h. am Ende der Datei) entspricht dann ihr Zähler der Zeilenanzahl der Datei (d.h. der Anzahl der Wörter). Beachten Sie, dass die ersten paar Zeilen in der Datei keine Wörter beinhalten!
+
+Wenn man es ganz exakt machen möchte, sollte man auch noch überprüfen, ob die aktuelle Zeile auch tatsächlich ein Wort enthält (also keine Leerzeile ist).
+:::
+
+
+### Übung 4
+
+Verwenden Sie die Wörter-Datei aus Übung 3 und finden Sie heraus, wie viele Wörter mit mehr als 14 Buchstaben in der Liste enthalten sind (also Wörter mit 15 Buchstaben oder mehr).
+
+:::{.callout-note}
+Wenn Sie die Datei Zeile für Zeile einlesen, entfernen Sie unsichtbare Zeichen (wie z.B. Zeilenumbruch) mit der Methode `strip`, bevor Sie die Länge des aktuellen Wortes bestimmen (ansonsten ist die Länge immer um 1 größer als die Länge des Wortes, weil der Inhalt einer Zeile z.B. `abandon\n` lautet, und `\n` wird als ein Zeichen gezählt). Erhöhen Sie Ihren Zähler nur, wenn die Länge des aktuellen Wortes (ohne Zeilenumbruch) größer als 14 ist.
+:::
