@@ -1,0 +1,575 @@
+---
+title: "9 – Numerische Daten"
+subtitle: "Einführung in Python und PsychoPy"
+author: "Clemens Brunner"
+date: 2022-12-01
+format: html
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
+---
+
+## Allgemeines
+
+Python wurde ursprünglich als einfach zu erlernende Lehr-Programmiersprache entwickelt. Aufgrund der Einfachheit und der Möglichkeit, tausende Zusatzpakete nutzen zu können, hat sich Python auch im wissenschaftlichen Bereich (Datenanalyse, Machine Learning) als Quasi-Standard etabliert. Folgende grundlegende Pakete sind für die Datenanalyse essentiell:
+
+* [NumPy](http://www.numpy.org/) (Arbeiten mit numerischen Daten)
+* [SciPy](https://scipy.org/) (Algorithmen für diverse wissenschaftliche Anwendungen)
+* [Matplotlib](http://matplotlib.org/) (Erstellen von Grafiken)
+* [Pandas](http://pandas.pydata.org/) (Arbeiten mit Tabellen)
+* [IPython](http://ipython.org/) (erweiterter interaktiver Python-Interpreter)
+
+Darüber hinaus gibt es aber noch eine große Anzahl an weiteren exzellenten Paketen für speziellere Anwendungen wie z.B. [scikit-learn](http://scikit-learn.org/stable/) (Machine Learning), [statsmodels](http://www.statsmodels.org/stable/index.html) (Statistik), [scikit-image](http://scikit-image.org/) (Bildverarbeitung) oder [SymPy](http://www.sympy.org/en/index.html) (symbolisches Rechnen). Diese Pakete setzen meist zumindest NumPy als Grundlage voraus, welches wir in dieser Einheit näher kennenlernen werden.
+
+:::{.callout-tip}
+Der Python-Interpreter kann, wie bereits des öfteren erwähnt, im Script-Modus oder im interaktiven Modus verwendet werden. Letzterer eignet sich zum interaktiven Verarbeiten von Daten (also z.B. auch zum Ausprobieren von Ideen mittels [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)). Das Paket IPython fügt dem interaktiven Modus von Python einige zusätzliche Funktionen hinzu, die das Arbeiten komfortabler gestalten (z.B. farbliche Hervorhebung der Syntax, einfacher Zugriff auf bereits ausgeführte Befehle und Ergebnisse, hervorragende Vervollständigung von Befehlen mittels Tab-Completion, viele Zusatzfunktionen durch sogenannte Magic Functions, ...). Deswegen sollte man eigentlich immer IPython und nicht den "nackten" Python-Interpreter für interaktive Aufgaben verwenden.
+:::
+
+
+## NumPy
+
+[NumPy](http://wiki.scipy.org/Tentative_NumPy_Tutorial) ist die Basis der allermeisten wissenschaftlichen Pakete in Python. Es ist so wichtig und essentiell, dass Python ohne NumPy vermutlich nie für Datenanalysen verwendet worden wäre.
+
+NumPy stellt einen hocheffizienten Datentyp für numerische Daten zur Verfügung, nämlich ein homogenes multidimensionales (*n*-dimensionales) Array (auch kurz ND-Array bzw. `ndarray` oder kurz Array genannt). Listen sind aufgrund ihrer Flexibilität dafür viel zu ineffizient, da sie unterschiedliche Elemente enthalten können. Homogen bedeutet nämlich, dass alle Elemente eines Arrays denselben Datentyp haben (z.B. lauter `float`-Zahlen) – dadurch können Berechnungen wesentlich effizienter und schneller ausgeführt werden. Multidimensional bedeutet, dass ein Array beliebig viele Dimensionen (auch Achsen genannt) besitzen kann. Jedes Element wird daher mit einem Tupel indiziert, welches seine genaue Position innerhalb des Arrays beschreibt.
+
+:::{.callout-tip}
+Das offizielle Tutorial [NumPy: the absolute basics for beginners](https://numpy.org/devdocs/user/absolute_beginners.html) ergänzt bzw. vertieft die Inhalte dieser Unterlagen – die Lektüre ist sehr zu empfehlen!
+:::
+
+Beginnen wir aber mit einem Beispiel (Details zu den einzelnen Befehlen folgen dann später). Der erste Schritt ist (wie bei jedem Paket bzw. Modul) das Importieren. Konventionell importiert man NumPy mit dem Kürzel `np`:
+
+```{python}
+import numpy as np
+```
+
+Dies bedeutet, dass man das Paket mit `np` ansprechen kann statt mit `numpy` – man spart sich also ein paar Zeichen zu tippen. Wir erstellen nun eine Zahlensequenz aus 15 Zahlen:
+
+```{python}
+a = np.arange(15)  # 15 Zahlen von 0 bis 14
+```
+
+```{python}
+a
+```
+
+Der Typ des Objekts `a` ist nun keine Liste, sondern tatsächlich ein NumPy-Array, welches als `numpy.ndarray` bezeichnet wird:
+
+```{python}
+type(a)
+```
+
+NumPy-Arrays besitzen eine Form (Shape):
+
+```{python}
+a.shape  # 15 Elemente in einer Dimension (Achse)
+```
+
+Diese Form kann man auch verändern:
+
+```{python}
+a = a.reshape(3, 5)  # umwandeln in 3 Zeilen und 5 Spalten
+```
+
+```{python}
+a  # 2 Dimensionen (Achsen) mit Längen 3 bzw. 5
+```
+
+```{python}
+a.ndim  # Anzahl an Dimensionen (Achsen)
+```
+
+```{python}
+a.shape  # Länge der einzelnen Achsen
+```
+
+Unabhängig von der Form kann man auch die Gesamtanzahl der Elemente im Array bestimmen:
+
+```{python}
+a.size  # Anzahl aller Elemente im Array
+```
+
+NumPy-Arrays sind homogene Datentypen, d.h. alle Elemente im Array müssen denselben Typ haben. Diesen Typ kann man wie folgt bestimmen:
+
+```{python}
+a.dtype  # Datentyp aller Elemente im Array (64 bit Ganzzahlen)
+```
+
+
+## Erstellen von Arrays
+
+### Aus Listen
+
+Arrays können mit der Funktion `np.array` aus Listen (oder Tupeln) erstellt werden. Im folgenden Beispiel übergeben wir der Funktion eine Liste als Argument, und daraus wird dann ein NumPy-Array erzeugt (zurückgegeben):
+
+```{python}
+b = np.array([1.1, 3.14, 7.68, -12.69, -4.55])  # aus einer normalen Liste
+b
+```
+
+Eine Liste von Listen wird in ein 2D-Array (Tabelle, besteht aus Zeilen und Spalten) konvertiert:
+
+```{python}
+c = np.array([[1, 2, 3], [4, 5, 6]])  # aus einer Liste von Listen
+c
+```
+
+```{python}
+c.shape  # 2 Zeilen, 3 Spalten
+```
+
+
+### Konstant befüllte Arrays
+
+Im Gegensatz zu Listen, welche dynamisch wachsen können, sollte die Größe von Arrays bereits bei der Erstellung bekannt sein, da das Hinzufügen von Zeilen oder Spalten relativ langsam ist. Hierfür gibt es einige praktische Konstruktionen, welche die Arrays mit Platzhalterelementen wie z.B. lauter Nullen erzeugen.
+
+```{python}
+np.zeros((3, 4))  # Nullen
+```
+
+:::{.callout-note}
+Die Funktion `np.zeros` wird mit *einem* Argument aufgerufen, nämlich mit dem Tupel `(3, 4)` im vorigen Beispiel. Deswegen benötigt man hier ein weiteres Klammernpaar, um ein Tupel zu übergeben und dieses von Funktionsargumenten zu unterscheiden.
+:::
+
+```{python}
+np.ones((2, 4))  # Einsen
+```
+
+Arrays, die mit Zahlen ungleich 0 oder 1 gefüllt werden sollen, kann man mit der Funktion `np.full` erzeugen:
+
+```{python}
+np.full((3, 4), 66)  # 3 Zeilen, 4 Spalten, alle Elemente gleich 66
+```
+
+
+### Sequenzen
+
+Analog zur Builtin-Funktion `range` können mit `np.arange` Arrays mit Folgen von Zahlen erstellt werden. Hier sind nicht nur ganze Zahlen möglich, sondern auch Kommazahlen. Auch hier zählt der letzte Wert (Stop-Wert) nicht mehr zum Bereich dazu.
+
+```{python}
+np.arange(5, 17)
+```
+
+```{python}
+np.arange(0.3, 5.4, 0.6)  # von 0.3 bis 5.4 mit Schrittweite 0.6
+```
+
+Wenn man die Anzahl der Elemente (anstatt der Schrittweite) vorgeben will, verwendet man am besten die Funktion `linspace` (hier zählen sowohl Start- als auch Endwert zum Bereich):
+
+```{python}
+np.linspace(1, 10, 10)  # 10 Elemente von 1 bis 10
+```
+
+```{python}
+np.linspace(1, 10, 10, dtype=int)  # wie oben, nur Integer-Elemente
+```
+
+```{python}
+np.linspace(1, 10, 24)  # 24 Elemente von 1 bis 10
+```
+
+Sollen die Elemente nicht den gleichen (linearen) Abstand haben sondern logarithmisch unterteilt sein, gibt es analog dazu die Funktion `logspace`:
+
+```{python}
+np.logspace(0, 4, 8)  # 8 Werte von 10**0 bis 10**4
+```
+
+
+### Zufallszahlen
+
+Oft möchte man auch Zufallszahlen erzeugen. Dazu gibt es in NumPy einen sogenannten Zufallszahlengenerator, welcher Zahlen aus unterschiedlichsten Verteilungen generieren kann. Zunächst importiert man den Standard-Zufallzahlengenerator `default_rng` aus dem `numpy.random`-Modul:
+
+```{python}
+from numpy.random import default_rng
+```
+
+:::{.callout-tip}
+Die Abkürzung `rng` steht für Random Number Generator, also Zufallszahlengenerator.
+:::
+
+Danach erzeugt man damit ein Generator-Objekt. Dieses kann man auch in einen definierten Zustand versetzen, indem man als [Seed](https://de.wikipedia.org/wiki/Seed_key) eine Zahl angibt:
+
+```{python}
+rng = default_rng(seed=42)
+```
+
+In diesem Beispiel initialisieren wir den Generator mit `42` (wir könnten aber auch jede beliebige andere Zahl nehmen). Die Initialisierung bewirkt, dass der Generator danach dieselbe Folge an Zufallszahlen ausspuckt. Lässt man die Initialisierung mit einer Zahl weg, dann wird der Generator in einen nicht-reproduzierbaren Zustand initialisiert (der Seed wird z.B. aus der aktuellen Uhrzeit u.ä. gebildet). Das bedeutet, dass bei jeder erneuten Ausführung eines Scripts andere Zufallszahlen gezogen werden, was nicht im Sinne der Reproduzierbarkeit von Ergebnissen ist.
+
+Durch Methoden des Generators kann man jetzt Zufallszahlen mit der gewünschten Verteilung erzeugen:
+
+```{python}
+rng.standard_normal(10)
+```
+
+```{python}
+rng.uniform(size=(2, 2))
+```
+
+```{python}
+rng.integers(low=-3, high=99, size=(2, 5))
+```
+
+:::{.callout-hint}
+Wenn Sie die obigen Beispiele auf Ihrem Rechner nachvollziehen, sollten Sie *dieselben* Zufallszahlen bekommen – vorausgesetzt Sie initialisieren den Generator so wie hier mit dem Wert `42`.
+:::
+
+
+## Rechnen mit Arrays
+
+### Arithmetische Operationen
+
+Arithmetische Operationen werden grundsätzlich *elementweise* angewendet.
+
+```{python}
+a = np.arange(100, 700, 100).reshape((2, 3))
+b = np.arange(1, 7).reshape((2, 3))
+```
+
+```{python}
+a
+```
+
+```{python}
+b
+```
+
+```{python}
+a * 2
+```
+
+```{python}
+a + b
+```
+
+```{python}
+a * b
+```
+
+```{python}
+b**2
+```
+
+```{python}
+a < 300
+```
+
+Sind die zwei Arrays nicht gleich groß, wird das kleinere Array falls möglich vergrößert (d.h. Werte werden automatisch dupliziert) – dies nennt man *Broadcasting*. Das folgende Beispiel zeigt eine Multiplikation von einem Array der Shape `(2, 3)` mit der Zahl 5, was einer Shape von `(1,)` entspricht:
+
+```{python}
+b.shape
+```
+
+```{python}
+b * 5
+```
+
+Hier wird also die Zahl 5 automatisch vervielfältigt, sodass die Operation elementweise durchgeführt werden kann. Im Prinzip ist diese Operation äquivalent zu folgender Schreibweise:
+
+```{python}
+b * np.array([[5, 5, 5], [5, 5, 5]])
+```
+
+Ein weiteres Beispiel für Broadcasting ist, wenn wir ein Array `c` wie folgt erstellen:
+
+```{python}
+c = np.array([1, 2, 3])
+```
+
+Wir können nun das Array `c` direkt zum Array `b` addieren, weil die Dimensionen kompatibel sind: `b` hat 2 Zeilen und 3 Spalten und `c` hat 3 Elemente. Durch Broadcasting wird die Operation nun spaltenweise angewendet:
+
+```{python}
+b
+```
+
+```{python}
+c
+```
+
+```{python}
+b + c
+```
+
+
+### Methoden
+
+Viele Funktionen wie z.B. `sum`, `mean`, `min` oder `max` sind als Methoden von `ndarray`-Objekten verfügbar. Standardmäßig verarbeiten sie dabei alle Elemente so, als ob diese in einer Dimension wären. Alternativ zu den Methoden gibt es auch Funktionen mit dem gleichen Namen.
+
+```{python}
+a.mean()  # Methode
+```
+
+```{python}
+np.mean(a)  # Funktion
+```
+
+```{python}
+b.sum()
+```
+
+```{python}
+b.max()
+```
+
+```{python}
+a.min()
+```
+
+Man kann diese Funktionen/Methoden aber auch auf einzelne Dimensionen (auch "Achsen" genannt) anwenden, z.&thinsp;B. auf Zeilen oder Spalten. Dabei entspricht `0` den Zeilen und `1` den Spalten.
+
+```{python}
+a.mean(axis=0)  # Mittelwert entlang der Zeilen, d.h. Spaltenmittelwerte
+```
+
+```{python}
+a.mean(axis=1)  # Mittelwert entlang der Spalten, d.h. Zeilenmittelwerte
+```
+
+
+## Indizieren und Slicen
+
+Analog zu anderen Sequenzdatentypen (z.B. String, Liste oder Tupel) können einzelne Elemente aus Arrays durch Indizieren bzw. Slicen herausgegriffen werden. Eindimensionale Arrays werden im Prinzip genau wie Listen indiziert.
+
+```{python}
+a = np.arange(10)**3
+a
+```
+
+```{python}
+a[0]  # erstes Element (Indizierung beginnt bei 0)
+```
+
+```{python}
+a[-2]  # vorletztes Element
+```
+
+```{python}
+a[2:5]  # drei Elemente, beginnend mit Position 2
+```
+
+```{python}
+a[::2]  # jedes zweite Element
+```
+
+Mehrdimensionale Arrays haben *einen Index pro Achse*:
+
+```{python}
+#| echo: false
+np.random.seed(1)
+```
+
+```{python}
+b = np.random.randint(0, 100, (5, 4))
+```
+
+```{python}
+b
+```
+
+```{python}
+b.shape
+```
+
+```{python}
+b[2, 3]  # 3. Zeile, 4. Spalte
+```
+
+```{python}
+b[:, -1]  # alle Zeilen, letzte Spalte
+```
+
+```{python}
+b[0, :]  # erste Zeile
+```
+
+```{python}
+#| scrolled: true
+b[1:3, 2:]
+```
+
+Mit Listen kann man mehrere (auch gleiche) spezifische Positionen aus einem Array indizieren. Der Einfachkeit halber sei dies an einem 1D-Array veranschaulicht:
+
+```{python}
+a = np.arange(12)**2
+a
+```
+
+```{python}
+idx = [2, 7, 10, 10]  # wir wollen das 2., 7., 10. und 10. Element
+idx
+```
+
+```{python}
+a[idx]
+```
+
+Den Namen `idx` für die Liste benötigt man nicht, man kann diese direkt innerhalb der eckigen Klammern angeben (das erste eckige Klammernpaar ist die Indizierung, und das zweite eckige Klammernpaar kennzeichnet die Liste):
+
+```{python}
+a[[2, 7, 10, 10]]
+```
+
+Mit Bool'schen Indexarrays kann man Arrays ebenfalls indizieren (maskieren):
+
+```{python}
+a % 2 == 0  # wird elementweise verglichen
+```
+
+```{python}
+a[a % 2 == 0]
+```
+
+Es werden hier also nur jene Elemente herausgegriffen, für die das Indexarray `True` ist.
+
+
+## Form (Shape)
+
+Die Form eines Arrays lässt sich auf folgende Arten einsehen bzw. ändern:
+
+```{python}
+c = np.random.randint(-500, 500, (3, 4))
+c
+```
+
+```{python}
+c.shape  # gibt die aktuelle Form aus
+```
+
+```{python}
+c.shape = 2, 6  # ändert die Form in place
+c
+```
+
+```{python}
+c.resize((4, 3))  # ändert die Form in place
+c
+```
+
+```{python}
+c.reshape((1, -1))  # reshape ändert das Objekt nicht
+c
+```
+
+:::{.callout-tip}
+Man muss bei `reshape` nicht alle Dimensionen angeben – eine kann man auf `-1` setzen, was bedeutet, dass NumPy die korrekte Anzahl automatisch bestimmt. Dies ist möglich, da die Anzahl aller Elemente konstant bleiben muss.
+:::
+
+```{python}
+c = c.reshape((1, -1))  # daher sollte man einen Namen zuweisen
+c
+```
+
+Der Unterschied zwischen `resize` und `reshape` ist also, das `resize` das Array direkt modifiziert und `reshape` lediglich ein neues geändertes Array zurückgibt.
+
+
+## Kombinieren von Arrays
+
+Mit den Funktionen `hstack` und `vstack` können Arrays horizontal bzw. vertikal miteinander kombiniert werden.
+
+```{python}
+a = np.random.randint(-100, 100, (2, 3))
+b = np.random.randint(-100, 100, (2, 3))
+```
+
+```{python}
+a
+```
+
+```{python}
+b
+```
+
+```{python}
+np.hstack((a, b))
+```
+
+```{python}
+np.vstack((a, b))
+```
+
+Die Funktionen `column_stack` und `row_stack` liefern bei 2D-Arrays dieselben Ergebnisse wie `hstack` und `vstack`. Es gibt jedoch Unterschiede bei 1D-Arrays.
+
+```{python}
+np.column_stack((a, b))
+```
+
+```{python}
+np.row_stack((a, b))
+```
+
+```{python}
+c = np.random.randint(-100, 100, 5)
+c
+```
+
+```{python}
+d = np.random.randint(-100, 100, 5)
+d
+```
+
+```{python}
+c.shape
+```
+
+```{python}
+d.shape
+```
+
+```{python}
+np.row_stack((c, d))
+```
+
+```{python}
+np.column_stack((c, d))
+```
+
+```{python}
+np.hstack((c, d))
+```
+
+```{python}
+np.vstack((c, d))
+```
+
+
+## Übungen
+
+### Übung 1
+
+Erstellen Sie ein eindimensionales Array mit den Zahlen von 0 (inklusive) bis 10 (exklusive) in Schritten von 0.1. Weisen Sie diesem Array den Namen `t` zu. Wie viele Elemente hat das Array? Wie lautet die Form (Shape) des Arrays?
+
+
+### Übung 2
+
+Erstellen Sie aus dem Array `t` aus Übung 1 ein zweidimensionales Array `s`, welches die gleichen Elemente beinhaltet, jedoch aus 20 Zeilen (und der entsprechenden Anzahl an Spalten) besteht.
+
+
+### Übung 3
+
+Erstellen Sie ein zweidimensionales Array `u` der Form (100, 8), welches aus zufälligen Ganzzahlen im Bereich [−1000, 1000) besteht (d.h. −1000 ist dabei, 1000 nicht). Setzen Sie vorher den Seed des Generators auf `18`. Berechnen Sie dann folgende Größen von `u`:
+
+* Summe aller Elemente
+* Mittelwert aller Elemente
+* Zeilenmittelwerte
+* Spaltenmittelwerte
+* Maxima und Minima jeder Spalte
+* Maxima und Minima jeder Zeile
+* Maximum der Zeilenmittelwerte
+
+
+### Übung 4
+
+Erstellen Sie ein dreidimensionales Array `x` der Form (3, 10, 5), welches die Zahlen von 1 bis 150 enthält. Wie lauten die *drei* Mittelwerte wenn Sie über die letzten beiden Dimensionen mitteln?
+
+:::{.callout-note}
+Das Array `x` kann man sich als 3 Tabellen à 10 Zeilen und 5 Spalten vorstellen. Der Mittelwert aller Elemente von `x[0, :, :]` ist der erste gesuchte Mittelwert, jener von `x[1, :, :]` der zweite, und der Mittelwert von `x[2, :, :]` ist der dritte gesuchte Wert. Sie können so die drei Mittelwerte berechnen, oder kürzer wenn Sie das `axis`-Argument von `np.mean` auf ein Tupel setzen, welches die Achsen beschreibt, über die Sie mitteln möchten (also die Achsen 1 und 2, da Python bei 0 zu zählen beginnt).
+:::
+
+
+### Übung 5
+
+Erstellen Sie ein (8, 8)-Array namens `chess` mit einem Schachbrettmuster (verwenden Sie dafür die Werte 0 und 1). Es gibt viele mögliche Lösungen, gerne können Sie auch mehrere Varianten anführen. Sehen Sie sich z.B. die Hilfe zur Funktion `np.tile` an, oder erzeugen Sie zuerst ein Array aus lauter Nullen und fügen Sie dann an den entsprechenden Stellen Einsen ein (z.B. durch entsprechendes Indizieren oder mit `for`-Schleifen).

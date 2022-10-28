@@ -1,0 +1,123 @@
+---
+title: "9 – Lösungen"
+subtitle: "Einführung in Python und PsychoPy"
+author: "Clemens Brunner"
+date: 2022-12-01
+format: html
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
+---
+
+## Übung 1
+
+```{python}
+import numpy as np
+
+t = np.arange(0, 10, 0.1)
+t.size  # 100 Elemente
+```
+
+```{python}
+t.shape  # (100,)
+```
+
+
+## Übung 2
+
+```{python}
+s = t.reshape((20, -1))  # 20 Zeilen, 5 Spalten
+```
+
+
+## Übung 3
+
+```{python}
+from numpy.random import default_rng
+
+rng = default_rng(seed=18)
+u = rng.integers(low=-1000, high=1000, size=(100, 8))
+u.sum()  # Summe aller Elemente
+```
+
+```{python}
+u.mean()  # Mittelwert aller Elemente
+```
+
+```{python}
+u.mean(1)  # Zeilenmittelwerte
+```
+
+```{python}
+u.mean(0)  # Spaltenmittelwerte
+```
+
+```{python}
+u.max(0)  # Spaltenmaxima
+```
+
+```{python}
+u.min(0)  # Spaltenminima
+```
+
+```{python}
+u.max(1)  # Zeilenmaxima
+```
+
+```{python}
+u.min(1)  # Zeilennminima
+```
+
+```{python}
+u.mean(1).max()  # Maximum der Zeilenmittelwerte
+```
+
+
+## Übung 4
+
+```{python}
+x = np.arange(1, 151).reshape(3, 10, 5)
+x.mean(axis=(1, 2))
+```
+
+
+## Übung 5
+
+Es gibt viele Möglichkeiten, diese Aufgabe zu lösen. Hier sind drei Varianten:
+
+
+### Möglichkeit 1
+
+```{python}
+chess = np.zeros((8, 8), dtype=int)
+for row in range(0, 8):
+    if row % 2 == 1:
+        chess[row, ::2] = 1
+    else:
+        chess[row, 1::2] = 1
+chess
+```
+
+
+### Möglichkeit 2
+
+```{python}
+chess = np.tile(np.array([[0, 1], [1, 0]]), (4, 4))
+chess
+```
+
+
+### Möglichkeit 3
+
+```{python}
+chess = np.zeros((8, 8), dtype=int)
+chess[::2, 1::2] = 1
+chess[1::2, ::2] = 1
+chess
+```
