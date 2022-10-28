@@ -214,7 +214,7 @@ rng.uniform(size=(2, 2))
 rng.integers(low=-3, high=99, size=(2, 5))
 ```
 
-:::{.callout-hint}
+:::{.callout-note}
 Wenn Sie die obigen Beispiele auf Ihrem Rechner nachvollziehen, sollten Sie *dieselben* Zufallszahlen bekommen – vorausgesetzt Sie initialisieren den Generator so wie hier mit dem Wert `42`.
 :::
 
