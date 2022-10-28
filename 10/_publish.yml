@@ -1,0 +1,8 @@
+- source: 10.qmd
+  quarto-pub:
+    - id: 7957a123-3d40-4437-ac27-cfd500acc89c
+      url: 'https://quartopub.com/sites/cbrnr/python-22w-10'
+- source: 10-solutions.qmd
+  quarto-pub:
+    - id: 6974fd45-a584-48f0-bd75-45c60c72c227
+      url: 'https://quartopub.com/sites/cbrnr/python-22w-10-solutions'

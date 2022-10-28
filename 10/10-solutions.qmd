@@ -1,0 +1,60 @@
+---
+title: "10 – Lösungen"
+subtitle: "Einführung in Python und PsychoPy"
+author: "Clemens Brunner"
+date: 2022-12-15
+format: html
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
+---
+
+## Übung 1
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+air = np.genfromtxt("airquality.csv", delimiter=",", skip_header=1)
+air.shape  # 153 Zeilen, 6 Spalten
+```
+
+
+## Übung 2
+
+```{python}
+wind = air[:, 2]
+plt.hist(wind, edgecolor="white")
+plt.title("Wind")
+```
+
+
+## Übung 3
+
+```{python}
+sns.displot(wind, kde=True)
+```
+
+
+## Übung 4
+
+```{python}
+temp = air[:, 3]
+plt.plot(temp, wind, ".", markersize=12, alpha=0.5)
+plt.xlabel("Temperatur")
+plt.ylabel("Wind")
+```
+
+
+## Übung 5
+
+```{python}
+sns.regplot(x=temp, y=wind)
+```

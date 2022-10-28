@@ -11,6 +11,6 @@ Die folgenden Unterlagen bieten eine kurze Einführung in die Grundlagen von Pyt
 7. [Listen und Dictionaries](https://cbrnr.quarto.pub/python-22w-07) ([Lösungen](https://cbrnr.quarto.pub/python-22w-07-solutions))
 8. [Ein- und Ausgabe](https://cbrnr.quarto.pub/python-22w-08) ([Lösungen](https://cbrnr.quarto.pub/python-22w-08-solutions))
 9. [Numerische Daten](https://cbrnr.quarto.pub/python-22w-09) ([Lösungen](https://cbrnr.quarto.pub/python-22w-09-solutions))
-10. [Grafiken]() ([Lösungen]())
+10. [Grafiken](https://cbrnr.quarto.pub/python-22w-10) ([Lösungen](https://cbrnr.quarto.pub/python-22w-10-solutions))
 11. [PsychoPy (1)]() ([Lösungen]())
 12. [PsychoPy (2)]() ([Lösungen]())

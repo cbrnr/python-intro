@@ -1,0 +1,273 @@
+---
+title: "10 – Grafiken"
+subtitle: "Einführung in Python und PsychoPy"
+author: "Clemens Brunner"
+date: 2022-12-15
+format: html
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
+---
+
+## Allgemeines
+
+In Python gibt es eine große Anzahl an Paketen, welche sich auf das Erstellen von Grafiken spezialisiert haben. Eine grafische Übersicht über dieses Ökosystem gibt es [hier](https://rougier.github.io/python-visualization-landscape/landscape-colors.html), die bekanntesten Pakete sind momentan:
+
+- [Matplotlib](http://matplotlib.org/)
+- [Bokeh](http://bokeh.pydata.org/en/latest/)
+- [Plotly](https://plot.ly/)
+- [Seaborn](http://seaborn.pydata.org/)
+- [Altair](https://github.com/altair-viz/altair)
+
+Matplotlib ist das älteste und bekannteste Paket, es ist aber manchmal etwas umständlich zu bedienen – dafür ist es aber möglich, Grafiken bis ins kleinste Detail anzupassen. Außerdem basieren viele Grafikpakete auf Matplotlib, daher ist es jedenfalls hilfreich, wenn man zumindest ein grundlegendes Verständnis von Matplotlib besitzt.
+
+Bokeh und Plotly können vor allem interaktive Grafiken für Webanwendungen erstellen. Seaborn und Altair haben sich auf statistische Grafiken spezialisiert. Seaborn baut auf Matplotlib auf und bietet sehr viele zusätzliche Grafiktypen. Altair hat sich das Ziel gesetzt, komplexe Grafiken möglichst einfach erstellen zu können. Auch interaktive Grafiken können damit erzeugt werden.
+
+Neben diesen häufig verwendeten Paketen gibt es noch [plotnine](https://github.com/has2k1/plotnine), welches sehr ähnlich wie [ggplot2](https://ggplot2.tidyverse.org/) für R zu verwenden ist, da es ebenfalls die [Grammar of Graphics](https://vita.had.co.nz/papers/layered-grammar.html) implementiert.
+
+Auf [dieser](https://aeturrell.github.io/coding-for-economists/vis-common-plots.html) und [dieser](http://pythonplot.com/) Website kann man die Erstellung einiger typischer Grafiken mit den unterschiedlichen Paketen vergleichen.
+
+Kurz zusammengefasst kann man also die Pakete Matplotlib, seaborn und plotnine zur Erzeugung von klassischen *statischen* Grafiken sowie Altair, Bokeh und Plotly zur Erstellung von *interaktiven* Grafiken empfehlen.
+
+
+## Matplotlib
+
+Mit Matplotlib kann man verschiedenste Grafiken vor allem für wissenschaftliche Zwecke erstellen. Meist stehen die darzustellenden Daten als NumPy-Arrays zur Verfügung.
+
+:::{.callout-note}
+Die offizielle Matplotlib-Website beinhaltet einige [Tutorials](https://matplotlib.org/stable/tutorials/index.html). Insbesondere die ersten beiden eignen sich sehr gut für den Einstieg und sind eine gute Ergänzung zu den Unterlagen dieser Einheit:
+
+- [Basis-Tutorial Matplotlib](https://matplotlib.org/stable/tutorials/introductory/usage.html#sphx-glr-tutorials-introductory-usage-py)
+- [Pyplot-Tutorial](https://matplotlib.org/stable/tutorials/introductory/pyplot.html#sphx-glr-tutorials-introductory-pyplot-py)
+:::
+
+Wir beginnen wie immer mit den entsprechenden Import-Befehlen:
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+Beachten Sie, dass wir `matplotlib.pyplot` unter dem Namen `plt` importieren (und nicht direkt `matplotlib`). Dies hat historische Gründe, die allermeisten Funktionen zur Erstellung von Grafiken befinden sich in `matplotlib.pyplot`, deswegen importieren wir auch nur dieses Unterpaket.
+
+:::{.callout-tip}
+In IPython sollte man zusätzlich folgenden Befehl ausführen, damit Grafikfenster sich unmittelbar öffnen und den Interpreter nicht blockieren:
+
+```
+%matplotlib
+```
+
+Im normalen interaktiven Python-Interpreter kann man direkt nach dem Importieren folgenden Befehl eingeben:
+
+```python
+plt.ion()
+```
+:::
+
+
+### x/y-Plots
+
+Eine der wichtigsten Funktionen in Matplotlib ist `plot`. Eine einfache Liniengrafik erhält man damit wie folgt:
+
+```{python}
+y = np.arange(10, 100, 10)
+print(y)
+plt.plot(y)
+```
+
+Man kann diese Daten auch als Punktgrafik plotten und muss hier nur entsprechende Argumente übergeben. Im Beispiel unten wird als Format-Argument ein `"x"` übergeben, was die Darstellung der Daten dementsprechend verändert. In diesem Format-String kann man sowohl die Symbole als auch die Farben ändern. In der [Dokumentation](http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot) gibt es eine Übersicht aller möglichen Werte.
+
+```{python}
+plt.plot(y, "x")
+```
+
+In den vorigen Plots wurde die x-Achse automatisch erstellt – man kann diese aber auch explizit angeben und so einen Scatterplot erstellen.
+
+```{python}
+x = np.random.random(100)
+y = x + np.random.random(100)
+plt.plot(x, y, "o", alpha=0.5, markeredgecolor="None", markersize=12)
+```
+
+In diesem Beispiel werden die Punkte mit `alpha=0.5` halb transparent dargestellt. Außerdem werden mit `markeredgecolor=None` keine Kreisränder dargestellt, und `markersize=12` setzt die Größe der Punkte auf den entsprechenden Wert.
+
+
+### Subplots
+
+Man kann auch mehrere Grafiken in einer Figure erstellen. Eine Figure ist der Gesamtbereich, in dem Grafiken erzeugt werden können. Diese kann aus einer oder mehreren Achsen bestehen, sie ist also ein Container für Achsen. Gezeichnet wird immer in einer Achse, und Plot-Befehle beziehen sich standardmäßig auf die aktuelle Achse. Indem man in einer Figure mehrere Achsen erstellt, kann man so mehrere Plots gleichzeitig darstellen.
+
+:::{.callout-tip}
+Mehr Details zum Aufbau einer Matplotlib Figure findet man [hier](https://matplotlib.org/stable/gallery/showcase/anatomy.html).
+:::
+
+```{python}
+plt.figure(1)
+plt.subplot(2, 1, 1)  # 2 Zeilen, 1 Spalte, aktiviere 1. Plot
+t = np.arange(0, 5, 0.01)
+plt.plot(t, 0.8*np.sin(2*np.pi*t))
+plt.axis([0, 5, -1, 1])
+plt.title("Sinus")
+
+plt.subplot(2, 1, 2)  # 2 Zeilen, 1 Spalte, aktiviere 2. Plot
+t = np.arange(0, 10, 0.01)
+plt.plot(t, 0.5*np.cos(4*np.pi*t), "r")
+plt.axis([0, 10, -1, 1])
+plt.title("Cosinus")
+
+plt.suptitle("Beispiel für 2 Plots", x=0.54, fontsize=14, fontweight="bold")
+plt.tight_layout(pad=2)
+```
+
+Im obigen Beispiel wird mit `plt.figure(1)` eine Figure mit der Nummer 1 erzeugt. Danach werden mit `plt.subplot(2, 1, 1)` neue Achsen erzeugt. Die Argumente `2, 1, 1` bedeuten, dass die Figure zwei Achsen in 2 Zeilen und 1 Spalte haben soll (das sind die ersten zwei Argumente). Die erste Achse wird dann aktiviert (d.h. alle folgenden Plot-Befehle beziehen sich auf diese Achse); das ist das dritte Argument.
+
+Das Befehl `plt.axis` ändert die Skalierung der aktuellen Achsen; hier gibt man die Werte für `xmin`, `xmax`, `ymin` und `ymax` in einer Liste an.
+
+Der Befehl `plt.title` fügt der aktuellen Achse einen Titel hinzu. Mit `plt.xlabel` bzw. `plt.ylabel` könnte man noch Beschriftungen für die x- bzw. y-Achsen hinzufügen.
+
+Will man eine Figure mit mehreren Achsen mit einem Titel versehen, verwendet man die Funktion `plt.suptitle`.
+
+Schließlich kann man mit dem Befehl `tight_layout` noch die Abstände zwischen den Subplots optimieren (sprich minimieren).
+
+
+### Histogramme
+
+Mit der Funktion `plt.hist` kann man Histogramme erstellen.
+
+```{python}
+mu, sigma = 100, 15
+x = mu + sigma * np.random.randn(10000)
+plt.hist(x)
+```
+
+```{python}
+plt.hist(x, bins=50, density=True)
+plt.title("Histogramm")
+```
+
+
+### Empfohlene Variante zur Erstellung von Grafiken
+
+Die oben beschriebenen Möglichkeiten, mit `plt.figure` und `plt.plot` Grafiken zu erzeugen orientieren sich an MATLAB (einer ehemals verbreiteten Programmiersprache im wissenschaftlichen Bereich). Dies hat aber einige Nachteile, insbesondere wenn man mehrere Plots in einer Grafik darstellen möchte. Daher ist das alternative *objektorientierte* Interface zu bevorzugen, welches in den folgenden Absätzen beschrieben wird.
+
+Zuerst erstellt man mit der Funktion `plt.subplots` eine Figure und die gewünschte Anzahl an Achsen (eine Achse entspricht einem Plot). Möchte man also z.B. nur einen Plot erzeugen, erzeugt man zuerst die Figure `fig` und die einzige Achse `ax`. In diese Achse `ax` kann man dann die gewünschte Grafik zeichnen:
+
+```{python}
+fig, ax = plt.subplots()
+ax.plot([1, 4, -7, 6], "x")
+```
+
+Beachten Sie, dass wir hier direkt mit der Achsen-Methode `ax.plot` zeichnen und nicht wie vorher mit `plt.plot`!
+
+Bei mehreren Plots in einer Figure bekommt man von `plt.subplots` eine Liste an Achsen zurück. In diesen kann man nun die gewünschten Plots erzeugen:
+
+```{python}
+fig, axes = plt.subplots(1, 3, figsize=(10, 3))  # 1 Zeile, 3 Spalten
+axes[0].plot([1, 2, 3], "o")  # linke Achse
+axes[1].hist(np.random.randn(100))  # mittlere Achse
+axes[2].plot(np.sin(np.arange(0, 2 * np.pi, 1/360)))  # rechte Achse
+```
+
+
+## Seaborn
+
+Wie bereits erwähnt baut Seaborn auf Matplotlib auf und fügt einige sehr nützliche Grafiktypen hinzu. Man importiert das Paket wie folgt:
+
+```{python}
+import seaborn as sns
+```
+
+Es folgen nun einige Beispiele aus der [Seaborn-Dokumentation](https://seaborn.pydata.org/), welche die Leistungsfähigkeit des Pakets demonstrieren sollen. Auf dieser Website findet man auch eine Menge Beispielgrafiken, welche man als Vorlage für eigene Grafiken verwenden und anpassen kann.
+
+
+### Verteilungen
+
+```{python}
+np.random.seed(1)
+x = np.random.normal(size=100)
+sns.displot(x, kde=True)
+```
+
+
+### Paarweise Beziehungen
+
+```{python}
+#| eval: false
+iris = sns.load_dataset("iris")
+sns.pairplot(iris, hue="species")
+```
+
+```{python}
+#| echo: false
+iris = sns.load_dataset("iris")
+sns.pairplot(iris, hue="species", height=1.75)
+```
+
+
+### Lineare Regression
+
+```{python}
+tips = sns.load_dataset("tips")
+```
+
+Die Daten in `tips` liegen als [pandas DataFrame](https://pandas.pydata.org/docs/user_guide/dsintro.html#basics-dataframe) vor. Dies kann man sich wie ein zweidimensionales NumPy-Array vorstellen (also eine Tabelle bestehend aus Zeilen und Spalten). Die Spalten können Namen haben, diese können als Strings den meisten Seaborn-Funktionen übergeben werden. So sehen die ersten paar Zeilen dieses Data Frames aus:
+
+```{python}
+tips.head()
+```
+
+Erstellen wir nun einen Scatterplot mit überlagerter Regressionsgerade. Dazu verwenden wir die Funktion `sns.regplot`. Nachdem die Daten in einem Pandas DataFrame vorhanden sind, können wir direkt die Spaltennamen als Argumente für die darzustellenden Daten auf der x- bzw. y-Achse übergeben:
+
+```{python}
+sns.regplot(x="total_bill", y="tip", data=tips)
+```
+
+Man kann für die beiden Argumente `x` und `y` aber auch NumPy-Arrays übergeben (dann benötigt man auch das Argument `data` nicht).
+
+
+### Balkengrafiken
+
+Sehr ähnlich kann man mit `sns.barplot` eine Balkengrafik erzeugen. Zusätzlich zu den Argumenten `x` und `y` setzen wir noch die Farbe mit dem Argument `hue` – diese Farbe soll aus der Spalte `sex` abgeleitet werden.
+
+```{python}
+sns.barplot(x="day", y="total_bill", hue="sex", data=tips)
+```
+
+
+## Übungen
+
+### Übung 1
+
+Lesen Sie die Daten in der Datei `airquality.csv` mit folgendem Code in ein NumPy-Array namens `air` ein (beachten Sie, dass sich die Datei im Arbeitsverzeichnis befinden muss):
+
+```Python
+import numpy as np
+air = np.genfromtxt("airquality.csv", delimiter=",", skip_header=1)
+```
+
+Mit welchem Befehl können Sie die Anzahl der Zeilen und Spalten von `air` herausfinden?
+
+
+### Übung 2
+
+Die Spalten in `air` beinhalten folgende Variablen: `Ozone`, `Solar.R`, `Wind`, `Temp`, `Month` und `Day`. Erstellen Sie mit Matplotlib ein Histogramm der Wind-Werte.
+
+
+### Übung 3
+
+Erstellen Sie ein Histogramm mit überlagerter geschätzter Verteilungsfunktion der Wind-Werte. Verwenden Sie dazu die entsprechende Funktion aus dem Paket Seaborn.
+
+
+### Übung 4
+
+Erstellen Sie mit Matplotlib einen Scatterplot mit der Temperatur auf der x-Achse und dem Wind auf der y-Achse.
+
+
+### Übung 5
+
+Erstellen Sie mit Seaborn denselben Scatterplot wie in Übung 4 (Temperatur vs. Wind), aber überlagern Sie zusätzlich eine Regressionsgerade inklusive Konfidenzintervall.
