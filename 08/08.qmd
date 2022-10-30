@@ -156,7 +156,7 @@ with open("text.txt") as f:
     data = f.read()
 ```
 
-Zu Beachten ist noch, dass der Dateiname als String übergeben wird. Dieser enthält entweder den vollständigen Pfad der zu öffnenden Datei (z.&thinsp;B. `"C:/Program Files/Test Program/test.txt"`), oder nur den Dateinamen. Im letzteren Fall wird dann angenommen, dass sich die Datei im aktuellen Arbeitsverzeichnis befindet.
+Zu Beachten ist noch, dass der Dateiname als String übergeben wird. Dieser enthält entweder den vollständigen Pfad der zu öffnenden Datei (z.B. `"C:/Program Files/Test Program/test.txt"`), oder nur den Dateinamen. Im letzteren Fall wird dann angenommen, dass sich die Datei im aktuellen Arbeitsverzeichnis befindet.
 
 :::{.callout-note}
 Pfade sollten immer mit einem normalen `/` getrennt werden und nicht wie unter Windows üblich mit einem verkehrten `\`.

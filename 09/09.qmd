@@ -319,7 +319,7 @@ b.max()
 a.min()
 ```
 
-Man kann diese Funktionen/Methoden aber auch auf einzelne Dimensionen (auch "Achsen" genannt) anwenden, z.&thinsp;B. auf Zeilen oder Spalten. Dabei entspricht `0` den Zeilen und `1` den Spalten.
+Man kann diese Funktionen/Methoden aber auch auf einzelne Dimensionen (auch "Achsen" genannt) anwenden, z.B. auf Zeilen oder Spalten. Dabei entspricht `0` den Zeilen und `1` den Spalten.
 
 ```{python}
 a.mean(axis=0)  # Mittelwert entlang der Zeilen, d.h. Spaltenmittelwerte
