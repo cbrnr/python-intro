@@ -430,7 +430,7 @@ x
 ```
 
 ```{python}
-x = x.upper()  # Namensschildchen x hängt dann am neuen String (in Großbuchstaben)
+x = x.upper()  # Namensschildchen x hängt am neuen String (in Großbuchstaben)
 ```
 
 ```{python}
@@ -455,7 +455,7 @@ Im Folgenden werden einige praktische String-Methoden aufgelistet.
 Die Methode `strip` entfernt Leerzeichen am Anfang und am Ende eines Strings.
 
 ```{python}
-"      Satz mit vielen unnötigen Leerzeichen am Anfang und Ende        ".strip()
+"      Satz mit vielen unnötigen Leerzeichen         ".strip()
 ```
 
 Mit der Methode `split` kann man einen String in eine Liste von Strings aufteilen (splitten). Als Argument gibt man das Zeichen an, an dem man splitten will (standardmäßig wird dafür Whitespace, also Leerzeichen und Tabulatoren, verwendet).
@@ -547,8 +547,7 @@ Im folgenden Beispiel wollen wir herausfinden, an welcher Stelle sich das Zeiche
 
 ```{python}
 s = "Computer"
-c = "p"  # an welcher Stelle befindet sich das Zeichen "p" im String "Computer"?
-
+c = "p"  # gesuchtes Zeichen
 s.find(c)
 ```
 
