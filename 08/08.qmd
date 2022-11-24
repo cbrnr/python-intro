@@ -70,7 +70,7 @@ Die geschwungenen Klammern und deren Inhalt werden durch die Argumente von `form
 Man kann in die Klammern aber auch Zahlen schreiben, um eine bestimmte Position in den `format`-Argumenten anzusprechen.
 
 ```{python}
-print('{0} and {1}'.format('spam', 'eggs'))  # Argument 0 ist 'spam', Argument 1 ist 'eggs'
+print('{0} and {1}'.format('spam', 'eggs'))
 ```
 
 ```{python}
