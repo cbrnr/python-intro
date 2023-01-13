@@ -243,7 +243,7 @@ sns.barplot(x="day", y="total_bill", hue="sex", data=tips)
 
 ### Übung 1
 
-Lesen Sie die Daten in der Datei `airquality.csv` mit folgendem Code in ein NumPy-Array namens `air` ein (beachten Sie, dass sich die Datei im Arbeitsverzeichnis befinden muss):
+Lesen Sie die Daten in der Datei [`airquality.csv`](airquality.csv) mit folgendem Code in ein NumPy-Array namens `air` ein (beachten Sie, dass sich die Datei im Arbeitsverzeichnis befinden muss):
 
 ```Python
 import numpy as np

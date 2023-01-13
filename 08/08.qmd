@@ -131,7 +131,7 @@ print(f"π ≈ {math.pi:.3f}")
 
 ## Dateien lesen und schreiben
 
-Die Funktion `open` gibt ein Datei-Objekt zurück, welches zum Lesen oder Schreiben von Dateien verwendet werden kann:
+Die Funktion `open` gibt ein Datei-Objekt zurück, welches zum Lesen oder Schreiben von Dateien verwendet werden kann (die im Beispiel verwendete Datei `test.txt` ist [hier](test.txt) verfügbar):
 
 ```python
 f = open("test.txt", "w")
@@ -152,11 +152,11 @@ f.close()
 Eine gute Angewohnheit ist es aber, alle Datei-Operationen in einem `with`-Konstrukt durchzuführen; so wird die Datei bei Verlassen des `with`-Blocks automatisch geschlossen:
 
 ```python
-with open("text.txt") as f:
+with open("test.txt") as f:
     data = f.read()
 ```
 
-Zu Beachten ist noch, dass der Dateiname als String übergeben wird. Dieser enthält entweder den vollständigen Pfad der zu öffnenden Datei (z.B. `"C:/Program Files/Test Program/test.txt"`), oder nur den Dateinamen. Im letzteren Fall wird dann angenommen, dass sich die Datei im aktuellen Arbeitsverzeichnis befindet.
+Zu Beachten ist noch, dass der Dateiname als String übergeben wird. Dieser enthält entweder den vollständigen Pfad der zu öffnenden Datei (z.B. `"C:/Program Files/Test Program/test.txt"`), oder nur den Dateinamen. Im letzteren Fall wird dann angenommen, dass sich die Datei im Arbeitsverzeichnis befindet.
 
 :::{.callout-note}
 Pfade sollten immer mit einem normalen `/` getrennt werden und nicht wie unter Windows üblich mit einem verkehrten `\`.
@@ -223,7 +223,7 @@ Im Beispiel oben steht das Zeichen `\n` für einen Zeilenumbruch (neue Zeile).
 
 Mit den bis jetzt vorgestellten Mitteln können wir bereits CSV[^1]-Dateien einlesen und rudimentäre Statistiken rechnen. CSV-Dateien werden häufig verwendet, um tabellarische Daten abzuspeichern. Diese Dateien sind reine Textdateien, in denen die Variablen (Spalten) durch Kommas getrennt sind und die einzelnen Datensätze zeilenweise vorliegen.
 
-Im Folgenden werden vier Möglichkeiten zum Lesen einer CSV-Datei vorgestellt. Die erste Methode verwendet Python ohne spezielle Module, die zweite Methode ist eine Verallgemeinerung der ersten. Die dritte Methode verwendet das `csv`-Modul aus der Standardbibliothek. Die empfohlene (einfachste) Variante mit dem Package [pandas](https://pandas.pydata.org/) werden wir allerdings in dieser Lehrveranstaltung nicht genauer kennenlernen.
+Im Folgenden werden vier Möglichkeiten zum Lesen einer CSV-Datei vorgestellt (die Beispieldatei `correlation.csv` ist [hier](correlation.csv) verfügbar). Die erste Methode verwendet Python ohne spezielle Module, die zweite Methode ist eine Verallgemeinerung der ersten. Die dritte Methode verwendet das `csv`-Modul aus der Standardbibliothek. Die empfohlene (einfachste) Variante mit dem Package [pandas](https://pandas.pydata.org/) werden wir allerdings in dieser Lehrveranstaltung nicht genauer kennenlernen.
 
 [^1]: Comma-Separated Values
 

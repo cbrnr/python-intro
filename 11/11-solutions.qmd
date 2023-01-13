@@ -17,9 +17,9 @@ published-title: "Veröffentlicht"
 
 ## Übung 1
 
-Das Stroop-Experiment ist hier als [ZIP-Datei](stroop.zip) verfügbar.
+Das Stroop-Experiment ist [hier](stroop.zip) verfügbar.
 
 
 ## Übung 2
 
-Das Zahlenvergleichs-Experiment ist hier als [ZIP-Datei](number_comparison.zip) verfügbar.
+Das Zahlenvergleichs-Experiment ist [hier](number_comparison.zip) verfügbar.
