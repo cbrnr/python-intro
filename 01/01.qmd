@@ -2,7 +2,7 @@
 title: "1 – Grundlagen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2022-10-06
+date: 2023-03-06
 format: html
 engine: jupyter
 highlight-style: github
@@ -80,13 +80,14 @@ print(", ".join([str(i) for i in range(10)]))
 
 Auf der [offiziellen Python-Website](https://www.python.org/) findet man alles rund um Python. Dort kann man auch Installationspakete für diverse Betriebssysteme herunterladen. Außerdem gibt es dort auch die sehr umfangreiche offizielle Dokumentation mit vielen Beispielen und Tutorials. Mittlerweile ist die Installation auf Windows und macOS so einfach, dass man die offiziellen Installer bedenkenlos empfehlen kann (unter Linux ist es aber nach wie vor besser, die distributionseigenen Paketmanager dafür zu verwenden, falls Python nicht ohnehin schon vorinstalliert ist).
 
-Am besten wählt man im Installationsfenster die Standard-Installation aus, aber setzt unbedingt das Häkchen bei *"Add Python 3.10 to PATH"*. Das folgende Bild zeigt diese Einstellungen für die Installation unter Windows:
+:::{.callout-note}
+In diesen Unterlagen wird beispielhaft die Installation der Version 3.10.7 gezeigt. Sie sollten aber die aktuellste Version installieren und verwenden!
+:::
+
+Unter Windows wählt man im Installationsfenster die Standard-Installation aus, aber setzt unbedingt das Häkchen bei *"Add Python 3.10 to PATH"*. Die Option *"Install launcher for all users (recommended)"* kann deaktiviert werden, damit können Sie Python ohne Administratorrechte installieren. Das folgende Bild zeigt diese Einstellungen:
 
 ![](install_python_windows.png)
 
-Unter macOS sollte man nach der Installation die folgenden zwei Scripts durch Doppelklick ausführen, erst dann ist die Installation komplett:
-
-![](install_python_mac.png)
 
 
 ## Erste Schritte
@@ -148,7 +149,9 @@ Python kennt die Vorrangs- und Klammerregeln:
 (13 + 6) * 8 - 12 / (2.5 + 1.6)
 ```
 
-Bei der Eingabe von Zahlen ist darauf zu achten, dass Python die *englische* Zahlenschreibweise mit einem *Punkt* als Dezimaltrennzeichen verwendet.
+:::{.callout-important}
+Bei der Eingabe bzw. Darstellung von Zahlen ist darauf zu achten, dass Python die *englische* Zahlenschreibweise mit einem *Punkt* als Dezimaltrennzeichen verwendet.
+:::
 
 Wenn Sie mathematische Funktionen wie beispielsweise Sinus oder Cosinus verwenden möchten, müssen Sie zuerst das `math`-Modul importieren, in dem Sie (einmalig) folgende Zeile eintippen:
 
@@ -212,7 +215,7 @@ In Python kann man auch eigenständige Programme mit grafischen Oberflächen ers
 
 ### Astronomie
 
-Obwohl wahrscheinlich wenig relevant für die Psychologie dürfen zwei sehr prominente Beispiele hier nicht fehlen: das [erste Bild eines schwarzen Lochs](https://eventhorizontelescope.org/press-release-april-10-2019-astronomers-capture-first-image-black-hole) (im Zentrum der Galaxie [Messier 87](https://de.wikipedia.org/wiki/Messier_87)) wurde [mit Hilfe von Python](https://numpy.org/case-studies/blackhole-image/) erzeugt:
+Zwei sehr prominente Beispiele dürfen an dieser Stelle nicht fehlen: das [erste Bild eines schwarzen Lochs](https://eventhorizontelescope.org/press-release-april-10-2019-astronomers-capture-first-image-black-hole) (im Zentrum der Galaxie [Messier 87](https://de.wikipedia.org/wiki/Messier_87)) wurde [mit Hilfe von Python](https://numpy.org/case-studies/blackhole-image/) erzeugt:
 
 ![© [EHT](https://eventhorizontelescope.org/press-release-april-10-2019-astronomers-capture-first-image-black-hole), CC BY 4.0](m87.png)
 

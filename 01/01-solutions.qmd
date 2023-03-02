@@ -2,7 +2,7 @@
 title: "1 – Lösungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2022-10-06
+date: 2023-03-06
 format: html
 engine: jupyter
 highlight-style: github
@@ -17,7 +17,7 @@ published-title: "Veröffentlicht"
 
 ## Übung 1
 
-Die installierte Python-Version ist 3.10.6. Dies ist nicht ganz die aktuellste Version 3.10.7.
+Die installierte Python-Version ist 3.10.6. Dies ist nicht mehr die aktuellste Version.
 
 ![](python_version.png)
 
@@ -67,9 +67,9 @@ Der Befehl `import math` bewirkt, dass man danach die im Modul `math` enthaltene
 4 % 0.4
 ```
 
-Es fällt auf, dass das Ergebnis der Ganzzahldivision `4 // 0.4` mathematisch nicht korrekt ist – es sollte 10 lauten, Python gibt aber 9 aus. Auch der Rest der Division sollte korrekt 0 sein, hier gibt Python 0.3999999999999998 aus (also fast 0.4).
+Es fällt auf, dass das Ergebnis der Ganzzahldivision `4 // 0.4` mathematisch nicht korrekt ist – es sollte 10 lauten, Python gibt aber 9 aus. Auch der Rest der Division sollte 0 sein, hier gibt Python 0.3999999999999998 aus (also fast 0.4).
 
-Der Grund für dieses Verhalten liegt in der Tatsache begründet, dass Computer die meisten Kommazahlen nicht exakt repräsentieren können, sondern nur ungefähr. Daher können Rundungsfehler entstehen, deswegen sollte man bei Berechnungen mit Kommazahlen immer achtsam sein (normalerweise sind diese Rundungsfehler aber extrem klein und nicht so offensichtlich "falsch" wie in diesem Beispiel).
+Der Grund für dieses Verhalten liegt in der Tatsache begründet, dass Computer die meisten Kommazahlen nicht exakt repräsentieren können, sondern nur ungefähr. Daher können Rundungsfehler entstehen, weswegen man bei Berechnungen mit Kommazahlen immer achtsam sein sollte (normalerweise sind diese Rundungsfehler aber extrem klein und nicht so offensichtlich "falsch" wie in diesem Beispiel).
 
 
 ## Übung 4
