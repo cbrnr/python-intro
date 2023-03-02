@@ -2,7 +2,7 @@
 title: "2 – Lösungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2022-10-13
+date: 2023-03-13
 format: html
 engine: jupyter
 highlight-style: github
@@ -41,7 +41,7 @@ Das Aktualisieren aller installierten Pakete muss für jedes Paket separat erfol
 pip list --outdated
 ```
 
-Gibt es hier keine Ausgabe, dann sind alle Pakete auf dem neuesten Stand. Falls hier doch Pakete aufgelistet werden, kann man diese mit `pip install --upgrade <package>` aktualisieren (statt `<package>` muss man den tatsächlichen Paketnamen angeben).
+Gibt es hier keine Ausgabe, dann sind alle Pakete bereits auf dem neuesten Stand. Falls hier doch Pakete aufgelistet werden, kann man diese mit `pip install --upgrade <package>` aktualisieren (statt `<package>` muss man den tatsächlichen Paketnamen angeben).
 
 In der obigen Liste aller installierten Pakete scheint `ipython` nicht auf – daher ist es auch nicht installiert. Mit folgendem Befehl kann man das Paket installieren:
 
@@ -62,7 +62,7 @@ pip uninstall numpy
 ```
 
 :::{.callout-note}
-Wenn man ein Paket installiert, werden meist weitere zusätzliche Pakete automatisch mitinstalliert, welche vom gewünschten Paket benötigt werden. Beispielsweise benötigt das Paket `ipython` einige weitere Pakete, darunter `backcall`, `decorator`, `jedi`, usw. Diese sogenannten Abhängigkeiten werden also automatisch mitinstalliert wenn man `pip install ipython` ausführt.
+Wenn man ein Paket installiert, werden meist weitere zusätzliche Pakete automatisch mitinstalliert, welche vom gewünschten Paket benötigt werden. Beispielsweise benötigt das Paket `ipython` einige weitere Pakete, darunter `backcall`, `decorator`, `jedi`, und so weiter. Diese sogenannten Abhängigkeiten werden also automatisch mitinstalliert, wenn man `pip install ipython` ausführt.
 
 Wenn man ein Paket wieder deinstalliert, also z.B. `pip uninstall ipython`, dann werden dessen Abhängigkeiten allerdings *nicht* automatisch entfernt (da diese vielleicht auch von anderen Paketen benötigt werden könnten). Diese Überbleibsel muss man also manuell entfernen (oder einfach installiert lassen).
 :::
@@ -97,3 +97,5 @@ Der interaktive Standard-Interpreter wird mit `python` gestartet – dieser wird
 ## Übung 6
 
 Ein ganzes Script kann einfach mit dem Play-Icon rechts oben ausgeführt werden (im Script-Modus). Möchte man eine einzelne oder mehrere markierte Zeilen im interaktiven Interpreter ausführen, macht man das am besten mit <kbd>Shift</kbd><kbd>Enter</kbd>. Hier wird allerdings immer der Standard-Interpreter `python` gestartet. Diesen kann man aber mit `exit()` beenden und dann `ipython` starten. Ab dann führt die Tastenkombination Befehle in IPython aus.
+
+Zusätzlich gibt es in Visual Studio Code noch das Interaktive Fenster, welches aktiviert wird, sobald man im Script Zellen definiert hat. Dies sind einfach Kommentarzeilen `# %%`.

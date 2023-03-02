@@ -2,7 +2,7 @@
 title: "2 – Die Python-Umgebung"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2022-10-13
+date: 2023-03-13
 format: html
 engine: jupyter
 highlight-style: github
@@ -39,7 +39,7 @@ Ein Terminal ist je nach Betriebssystem leicht unterschiedlich zu öffnen:
 - Unter macOS und Linux startet man das Programm "Terminal".
 :::
 
-Im Terminal-Fenster kann man nun Textbefehle eintippen. Beachten Sie, dass hier kein Python-Interpreter läuft, sondern eine sogenannte Shell – Sie können also keine Python-Befehle eintippen! Um zu testen, ob `pip` funktioniert und welche Version installiert ist, gibt man folgendes ein:
+Im Terminal-Fenster kann man nun Textbefehle eintippen. Beachten Sie, dass hier *kein* Python-Interpreter läuft, sondern eine sogenannte Shell – Sie können also keine Python-Befehle eintippen! Um zu testen, ob `pip` funktioniert und welche Version installiert ist, gibt man folgendes ein:
 
 ```bash
 pip --version
@@ -48,7 +48,7 @@ pip --version
 Wenn man hier eine Versionsnummer angezeigt bekommt (z.B. `21.2.4`), funktioniert `pip` korrekt.
 
 :::{.callout-important}
-Auf macOS muss man `pip3` statt `pip` schreiben, wenn man wie in diesen Unterlagen beschrieben den offiziellen Python-Installer zu Installation von Python verwendet hat.
+Auf macOS muss man `pip3` statt `pip` schreiben, wenn man wie in diesen Unterlagen beschrieben den offiziellen Python-Installer zur Installation von Python verwendet hat.
 :::
 
 Es folgt eine Übersicht über die wichtigsten `pip`-Befehle, mit denen man vertraut sein sollte:
@@ -97,7 +97,7 @@ Der wesentliche Unterschied zwischen interaktivem und Script-Modus ist, dass nur
 1 + 4
 ```
 
-Hier sieht man, dass nach der Eingabe von `1 + 4` der Wert dieser Berechnung automatisch ausgegeben wird. In einem Script würde eine Zeile mit dem Inhalt `1 + 4` *keine* Ausgabe bewirken. Dies können Sie einfach überprüfen, indem Sie eine Datei namens `script.py` mit dieser Zeile als Inhalt erstellen. Führen Sie dann dieses Python-Script mittels `python script.py` aus und beachten Sie, dass das Ergebnis `5` nicht ausgegeben wird.
+Hier sieht man, dass nach der Eingabe von `1 + 4` der Wert dieser Berechnung (also das Ergebnis) automatisch ausgegeben wird. In einem Script würde eine Zeile mit dem Inhalt `1 + 4` *keine* Ausgabe bewirken. Dies können Sie einfach überprüfen, indem Sie eine Datei namens `script.py` mit dieser Zeile als Inhalt erstellen. Führen Sie dann dieses Python-Script mittels `python script.py` aus und beachten Sie, dass das Ergebnis `5` nicht ausgegeben wird.
 
 Wenn Sie im Script-Modus dennoch Werte explizit ausgeben wollen, können Sie die `print`-Funktion benutzen:
 
@@ -134,7 +134,7 @@ cd ..  # gehe einen Ordner nach oben
 ```
 
 ```python
-cd project/test  # Arbeitsverzeichnis
+cd project/test  # Arbeitsverzeichnis wechseln
 ```
 
 ```
@@ -158,7 +158,7 @@ Unter Syntax versteht man die Regeln einer Sprache, die festlegen wie man aus gr
 
 ### Einrückungen
 
-Wie bereits erwähnt speichert man ein Python-Programm bzw. ein Python-Script in einer Textdatei mit der Endung `.py`. Ein spezielles Merkmal der Syntax von Python ist, dass Einrückungen Bedeutung haben – sie gruppieren zusammengehörigen Code in Blöcke. Die meisten anderen Programmiersprachen verwenden dafür spezielle Zeichen oder Schlüsselwörter wie z.B. `begin`, `end`, `{` oder `}`. Durch Einrückungen benötigt Python diese Zeichen nicht und der Code wird dadurch automatisch strukturierter und kürzer. Dies ist im folgenden Beispiel veranschaulicht (bitte achten Sie nur auf die Struktur, der Inhalt/die Bedeutung des Beispiels ist hier *nicht* relevant):
+Wie bereits erwähnt, speichert man ein Python-Programm bzw. ein Python-Script in einer Textdatei mit der Endung `.py`. Ein spezielles Merkmal der Syntax von Python ist, dass Einrückungen Bedeutung haben – sie gruppieren zusammengehörigen Code in Blöcke. Die meisten anderen Programmiersprachen verwenden dafür spezielle Zeichen oder Schlüsselwörter wie z.B. `begin`, `end`, `{` oder `}`. Durch Einrückungen benötigt Python diese Zeichen nicht und der Code wird dadurch automatisch strukturierter und kürzer. Dies ist im folgenden Beispiel veranschaulicht (bitte achten Sie nur auf die Struktur, der Inhalt/die Bedeutung des Beispiels ist hier *nicht* relevant):
 
 ```{python}
 #| eval: false
@@ -229,7 +229,7 @@ Python-Scripts bearbeitet man mit Text-Editoren. Prinzipiell sind Python-Scripts
 
 Folgende (kostenlose) Editoren eignen sich für Python:
 
-- [Visual Studio Code](https://code.visualstudio.com/) (Windows, macOS, Linux)
+- [Visual Studio Code](https://code.visualstudio.com/)
 - [PyCharm](https://www.jetbrains.com/pycharm/)
 - [Spyder](https://www.spyder-ide.org/)
 - [Notepad++](https://notepad-plus-plus.org/) (Windows)
@@ -255,18 +255,36 @@ Es fehlt nur noch die Installation der offiziellen [Python-Erweiterung](https://
 
 Die Python-Erweiterung bietet umfangreiche und vielfältige Konfigurationsmöglichkeiten. Wir werden aber fast alle Einstellungen auf ihren Standardwerten belassen – nur die automatische PEP8-Überprüfung muss noch manuell aktiviert werden.
 
-Dazu öffnet man am besten die Befehlspalette (<kbd>Strg</kbd><kbd>Shift</kbd><kbd>P</kbd> auf Windows bzw. <kbd>⌘</kbd><kbd>Shift</kbd><kbd>P</kbd> auf macOS) und tippt "linter" in das Eingabefeld. Es werden alle Befehle angezeigt, welche dieses Suchwort enthalten – nun wählen Sie den Eintrag "Python: Select Linter" aus und klicken dann auf "flake8". Die Frage ob das Paket installiert werden soll beantworten Sie anschließend mit "Install" (alternativ kann man das Paket auch manuell mit `pip install flake8` installieren). Danach werden alle Python-Scripts automatisch auf die Einhaltung der PEP8-Regeln überprüft. Alle gefundenen Beanstandungen werden durch wellenförmige Unterstreichungen gekennzeichnet (eventuell müssen Sie zuerst die aktuelle Datei speichern). Nutzen Sie diese Möglichkeit um Ihren Code PEP8-konform zu gestalten!
+Dazu öffnet man am besten die Befehlspalette (<kbd>Strg</kbd><kbd>Shift</kbd><kbd>P</kbd> unter Windows/Linux bzw. <kbd>⌘</kbd><kbd>Shift</kbd><kbd>P</kbd> unter macOS) und tippt "linter" in das Eingabefeld. Es werden alle Befehle angezeigt, welche dieses Suchwort enthalten – nun wählen Sie den Eintrag "Python: Select Linter" aus und klicken dann auf "flake8". Die Frage ob das Paket installiert werden soll beantworten Sie anschließend mit "Install" (alternativ kann man das Paket auch manuell mit `pip install flake8` installieren). Danach werden alle Python-Scripts automatisch auf die Einhaltung der PEP8-Regeln überprüft. Alle gefundenen Beanstandungen werden durch wellenförmige Unterstreichungen gekennzeichnet (eventuell müssen Sie zuerst die aktuelle Datei speichern). Nutzen Sie diese Möglichkeit um Ihren Code PEP8-konform zu gestalten!
 
 
 #### Ausführen von Python-Code
 
 Ein in Visual Studio Code geöffnetes Python-Script kann durch Klicken auf die "Play"-Schaltfläche rechts oben im Script-Modus ausgeführt werden. Dazu öffnet sich dann ein integriertes Terminal, und der *gesamte* Code wird ausgeführt.
 
-Möchte man nur einzelne Code-Zeilen im interaktiven Interpreter ausführen, verwendet man am besten die Tastenkombination <kbd>Shift</kbd><kbd>Enter</kbd>. Diese führt entweder die aktuelle Zeile (also die Zeile in der sich der Cursor befindet) oder alle markierten Zeilen im interaktiven Python-Interpreter aus.
+Möchte man nur einzelne Code-Zeilen im interaktiven Interpreter ausführen, verwendet man am besten die Tastenkombination <kbd>Shift</kbd><kbd>Enter</kbd>. Diese führt entweder die aktuelle Zeile (also die Zeile in der sich der Cursor befindet) oder alle markierten Zeilen im interaktiven Python-Interpreter aus, welcher sich in einem integrierten Terminal öffnet. Weitere Details sind in der [offiziellen Dokumentation](https://code.visualstudio.com/docs/python/python-tutorial) zu finden.
 
 :::{.callout-tip}
 Im Moment kann man IPython nur mit einem kleinen Trick verwenden. Dazu führt man zunächst eine beliebige Code-Zeile im Script mit <kbd>Shift</kbd><kbd>Enter</kbd> aus. Dieser Befehl wird also im normalen interaktiven Python-Interpreter ausgeführt. Diesen beendet man aber gleich mit `exit()` und startet dann stattdessen `ipython`. Danach werden alle Befehle mit <kbd>Shift</kbd><kbd>Enter</kbd> in IPython ausgeführt. Falls es Probleme mit falschen Einrückungen gibt, kann man versuchen, IPython mit `ipython --no-autoindent` zu starten.
 :::
+
+Visual Studio Code bietet eine weitere Möglichkeit, Python-Code interaktiv auszuführen. Dazu muss man im Script sogenannte Zellen definieren, welche durch folgende Kommentarzeile eingeleitet werden:
+
+```python
+# %%
+```
+
+Danach erscheinen über dieser Zeile die Befehle "Run Cell", "Run Below" und "Debug Cell". Mit "Run Cell" kann man alle Python-Befehle innerhalb einer Zelle im interaktiven Fenster ausführen. Auch die Tastenkombinationen <kbd>Shift</kbd><kbd>Enter</kbd> bzw. <kbd>Ctrl</kbd><kbd>Enter</kbd> können verwendet werden.
+
+:::{.callout-note}
+Beim erstmaligen Ausführen einer Zelle müssen eine Reihe an Python-Paketen installiert werden – dies geschieht automatisch, wenn man dies im erscheinenden Dialogfenster durch Klicken auf "Install" zulässt.
+:::
+
+Im interaktiven Fenster gibt es auch einen Bereich, in dem man direkt Befehle eintippen (und mit <kbd>Shift</kbd><kbd>Enter</kbd> ausführen) kann – dies ist also im Prinzip ein Prompt, den wir bereits aus dem interaktiven Interpreter bzw. IPython kennen!
+
+![](vscode_interactive.png)
+
+Mehr zu dieser interaktiven Variante ist in der [offiziellen Dokumentation](https://code.visualstudio.com/docs/python/jupyter-support-py) nachzulesen.
 
 
 ## Hilfe
@@ -352,4 +370,4 @@ Um den interaktiven Python-Interpreter zu verwenden können Sie entweder `python
 
 ### Übung 6
 
-Beschreiben Sie, wie Sie ein Python-Script in Visual Studio Code ausführen können! Erklären Sie außerdem, wie Sie eine einzelne Zeile bzw. mehrere markierte Zeilen im interaktiven Interpreter direkt aus Visual Studio Code ausführen können (am besten sollte der Code in IPython ausgeführt werden)!
+Beschreiben Sie, wie Sie ein Python-Script in Visual Studio Code ausführen können! Erklären Sie außerdem, wie Sie eine einzelne Zeile bzw. mehrere markierte Zeilen im interaktiven Interpreter direkt in Visual Studio Code ausführen können (gehen Sie auf die drei Varianten interaktiver Interpreter, IPython und interaktives Fenster ein)!
