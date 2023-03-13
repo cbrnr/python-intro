@@ -2,7 +2,7 @@
 title: "3 – Namen, Ausdrücke, Anweisungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2022-10-20
+date: 2023-03-20
 format: html
 engine: jupyter
 highlight-style: github
@@ -57,7 +57,7 @@ type("Hallo")
 type("3")
 ```
 
-Python ist eine dynamisch typisierte Sprache. Das bedeutet in der Praxis, dass erst zur Laufzeit eines Programms überprüft wird, ob eine bestimmte Operation auf ein Objekt eines bestimmten Typs angewendet werden kann. Praktisch heißt das, dass in Python Typen nicht explizit angegeben werden müssen.
+Python ist eine dynamisch typisierte Sprache. Das bedeutet in der Praxis, dass erst zur Laufzeit eines Programms überprüft wird, ob eine bestimmte Operation auf ein Objekt eines bestimmten Typs angewendet werden kann. Praktisch heißt das, dass in Python Typen bei einer Zuweisung nicht explizit angegeben werden müssen.
 
 Python kennt noch mehr Typen als in den oben angeführten Beispielen. Wir werden im Laufe dieses Kurses noch weitere nützliche Datentypen wie z.B. Listen, Tuples und Dictionaries kennenlernen.
 
@@ -101,7 +101,9 @@ type(b)
 
 Namen können Buchstaben und Ziffern enthalten, sie dürfen aber nicht mit einer Ziffer beginnen. Prinzipiell sollte man Kleinbuchstaben verwenden (Python unterscheidet zwischen Groß- und Kleinschreibung). Namen dürfen beliebig lang sein, sollten aber so kurz wie möglich (aber so lang wie notwendig) gewählt werden. Außerdem kann das Zeichen `_` (der Unterstrich) verwendet werden, um einen Namen lesbarer zu gestalten, z.B. zur Trennung von Wortteilen.
 
+:::{.callout-tip}
 Namen sollten sinnvoll gewählt werden, d.h. sie sollten die Verwendung bzw. den Inhalt dokumentieren (also kurze Namen wie z.B. `i`, `n` und `x` sind nur in Ausnahmefällen sinnvoll). Es ist weiters auch vernünftig, englische Namen zu verwenden.
+:::
 
 Beispiele für gültige Namen sind:
 
@@ -214,6 +216,10 @@ print("Python")
 ```
 
 Bei den obigen zwei Beispielen sieht man, dass es keine Zeile mit Ausgaben gibt – der Grund dafür ist, dass diese beiden Anweisungen keine Werte haben, d.h. es gibt hier im interaktiven Modus des Python-Interpreters nichts zum Ausgeben.
+
+:::{.callout-note}
+Dass der Aufruf der `print`-Funktion trotzdem eine Ausgabe am Bildschirm bewirkt, liegt an der Funktion, deren Zweck ja genau diese Ausgabe ist.
+:::
 
 :::{.callout-note}
 Kein Wert entspricht in Python dem speziellen Wert `None`.
