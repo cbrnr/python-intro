@@ -2,7 +2,7 @@
 title: "4 – Funktionen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2022-10-27
+date: 2023-03-27
 format: html
 engine: jupyter
 highlight-style: github
@@ -17,7 +17,7 @@ published-title: "Veröffentlicht"
 
 ## Allgemeines
 
-Funktionen kann man sich wie "Mini-Programme" bzw. "Mini-Scripts" vorstellen. Sie gruppieren mehrere Anweisungen zu einem zusammengehörigen Block. Eine Funktion in Python ist durchaus mit einer mathematischen Funktion vergleichbar, wie zum Beispiel der Quadratfunktion $f(x) = x^2$. Diese mathematische Funktion $f$ berechnet aus einem gegebenen Wert $x$ einen neuen Wert $x^2$. Ein weiteres Beispiel ist die Quadratwurzelfunktion $f(x) = x^{\frac{1}{2}}$, welche die Quadratwurzel einer Zahl $x$ berechnet.
+Funktionen kann man sich wie "Mini-Programme" bzw. "Mini-Scripts" vorstellen. Sie gruppieren mehrere Anweisungen zu einem zusammengehörigen Block. Eine Funktion in Python ist durchaus mit einer mathematischen Funktion vergleichbar, wie zum Beispiel der Quadratfunktion $f(x) = x^2$. Diese mathematische Funktion $f$ berechnet aus einem gegebenen Wert $x$ einen neuen Wert $x^2$.
 
 Auch in Python hat eine Funktion eine klar definierte Aufgabe. Hier dienen Funktionen unter anderem dazu, Programmcode zu strukturieren (was die Lesbarkeit erhöht) und wiederverwendbar zu machen. Funktionen machen Programme in der Regel auch kürzer, weil wiederholt auszuführender Code in Funktionen ausgelagert werden kann. Sollten einmal Änderungen notwendig sein, muss man diese nur an einer Stelle innerhalb der Funktion vornehmen. Funktionen lassen sich außerdem auch in anderen Programmen wiederverwenden.
 
@@ -61,7 +61,7 @@ Dabei handelt es sich um einen Namen, welcher auf ein Funktionsobjekt verweist:
 type(print)
 ```
 
-Das Prinzip der Namen in Python haben wir bereits in der letzten Einheit kennengelernt. Es ist unerheblich, auf welches Objekt ein Name verweist, dies kann eine Ganzzahl, eine Funktion, oder jedes beliebige andere Objekt sein.
+Das Konzept von Namen in Python haben wir bereits in der letzten Einheit kennengelernt. Es ist unerheblich, auf welches Objekt ein Name verweist, dies kann eine Ganzzahl, eine Funktion, oder jedes beliebige andere Objekt sein.
 
 
 ## Funktionsdefinition
@@ -129,7 +129,13 @@ Aufgerufen kann unsere Funktion nun wie folgt werden (die runden Klammern sind e
 test_function()
 ```
 
-Im Fall einer Funktion mit Parametern würden die Definition und der Aufruf so aussehen:
+Wir können eine bereits definierte Funktion beliebig oft aufrufen.
+
+```{python}
+test_function()
+```
+
+Im Fall einer Funktion mit Parametern würden die Definition und der Aufruf z.B. so aussehen:
 
 ```{python}
 def test_function_2(n, v):  # Definition, zwei Parameter
@@ -198,7 +204,7 @@ Oder man kann den Wert einer Funktion (entspricht dem Rückgabewert) auch expliz
 print(add_one(122))
 ```
 
-Man kann überall dort, wo man einen Wert angeben kann, auch einen Ausdruck (eine beliebige Kombination aus Werten und Operatoren) einsetzen – eben auch eine Funktion, die einen Wert zurückgibt. Dies wird in der Informatik als *Komposition* bezeichnet. Die Werte werden der Reihe nach (von *innen* nach *außen*) verarbeitet und eingesetzt, bis zum Schluss ein einziger Wert übrig bleibt:
+Man kann überall dort, wo man einen Wert angeben kann, auch einen Ausdruck (eine beliebige Kombination aus Werten und Operatoren) einsetzen – eben auch eine Funktion, die einen Wert zurückgibt. Dies wird als *Komposition* bezeichnet. Die Werte werden der Reihe nach (von *innen* nach *außen*) verarbeitet und eingesetzt, bis zum Schluss ein einziger Wert übrig bleibt:
 
 ```{python}
 add_one(add_one(add_one(1)))
@@ -255,7 +261,7 @@ Wenn der Argumentname nicht angegeben wird, wird die Position des Arguments bei 
 add(5, increment=2)
 ```
 
-Zur Veranschaulichung dient folgende etwas komplexere Funktionsdefinition:
+Zur Veranschaulichung dient folgende Funktionsdefinition:
 
 ```{python}
 def test(name, number, exponent=5, skip=7, text="Hello"):
@@ -277,7 +283,7 @@ test("Python", 3)
 test("Test", 3, 4)
 ```
 
-Keyword-Argumente sind sehr praktisch, wenn man für die meisten Parameter deren Default-Argumente verwenden möchte, aber z.B. für einen einzigen Parameter einen anderen Wert setzen will. Dann muss man nämlich nicht alle Argumente der Reihe nach übergeben, sondern nur jene, für die man andere Werte als die Standardwerte haben möchte:
+Keyword-Argumente sind sehr praktisch, wenn man für viele Parameter deren Default-Argumente verwenden möchte, aber z.B. für einen einzigen Parameter einen anderen Wert setzen will. Dann muss man nämlich nicht alle Argumente der Reihe nach übergeben, sondern nur jene, für die man andere Werte als die Standardwerte haben möchte:
 
 ```{python}
 test("Test", 2, skip=2)
@@ -366,7 +372,7 @@ test()
 print(s)
 ```
 
-Prinzipiell sollte man die Deklaration `global` in lokalen Scopes aber vermeiden und globale/lokale sauber voneinander Scopes trennen. Will man auf ein Objekt aus einem äußeren Scope zugreifen, definiert man einen Parameter damit man das gewünschte Objekt als Argument der Funktion übergeben kann:
+Prinzipiell sollte man die Deklaration `global` in lokalen Scopes aber vermeiden und globale/lokale Scopes sauber voneinander trennen. Will man auf ein Objekt aus einem äußeren Scope zugreifen, definiert man am besten einen Parameter, damit man das gewünschte Objekt als Argument an die Funktion übergeben kann:
 
 ```{python}
 s = 15  # globales s
@@ -411,7 +417,7 @@ Suchen Sie sich aus der Liste der eingebauten Funktionen (siehe vorige Einheit) 
 
 ### Übung 2
 
-Schreiben Sie eine Funktion `mult`, welche zwei Zahlen multipliziert und deren Produkt zurückgibt. Die beiden Zahlen sollen als Argumente übergeben werden können. Rufen Sie Ihre Funktion mit ein paar Wertepaaren auf und stellen Sie sicher, dass Ihre Funktion wie gewünscht funktioniert. Die Funktion soll das Ergebnis als Wert zurückgeben, d.h. verwenden Sie innerhalb der Funktion kein `print` sondern `return`!
+Schreiben Sie eine Funktion `mult`, welche zwei Zahlen multipliziert und deren Produkt zurückgibt. Die beiden Zahlen sollen als Argumente übergeben werden können. Rufen Sie Ihre Funktion mit ein paar Wertepaaren auf und stellen Sie sicher, dass Ihre Funktion wie gewünscht funktioniert. Die Funktion soll das Ergebnis als Wert zurückgeben, d.h. verwenden Sie innerhalb der Funktion nicht `print`, sondern `return`!
 
 
 ### Übung 3
