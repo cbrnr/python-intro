@@ -2,7 +2,7 @@
 title: "5 – Bedingungen und Schleifen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2022-11-03
+date: 2023-04-17
 format: html
 engine: jupyter
 highlight-style: github
@@ -19,7 +19,7 @@ published-title: "Veröffentlicht"
 
 Komplexe Programme laufen nicht linear ab (also Zeile für Zeile vom Anfang eines Scripts bis zum Ende), sondern beinhalten Verzweigungen und Schleifen. Diese sogenannten Kontrollstrukturen steuern den Programmfluss. Wesentlich dabei sind Vergleiche, die bestimmen, ob bestimmte Codezeilen ausgeführt werden oder nicht bzw. wie oft diese wiederholt werden.
 
-Schon bei Funktionen haben wir beobachtet, dass Programmcode nicht linear ausgeführt wird, denn erst beim Aufrufen einer Funktion springt Python zu den entsprechenden Zeilen im Funktionskörper und führt diese aus.
+Schon bei Funktionen haben wir beobachtet, dass Programmcode nicht linear ausgeführt wird, denn erst beim *Aufrufen* einer Funktion springt Python zu den entsprechenden Zeilen im Funktionskörper und führt diese aus.
 
 :::{.callout-tip}
 Mit Hilfe des sogenannten [Debuggers](https://code.visualstudio.com/docs/editor/debugging) kann man in Visual Studio Code ein Script "in Zeitlupe" ausführen. Im Debug-Modus wartet der Python Interpreter nämlich nach jedem Befehl, bis der nächste manuell gestartet wird. Das gibt uns die Möglichkeit, den Ablauf des Programmes sowie dessen Zustand in jedem Schritt zu beobachten. Dabei geht man wie folgt vor:
@@ -32,7 +32,7 @@ Mit Hilfe des sogenannten [Debuggers](https://code.visualstudio.com/docs/editor/
 ![](vscode-debug-1.png)
 ![](vscode-debug-2.png)
 
-Zum Ausprobieren versuchen Sie das folgende kurze Script zu debuggen:
+Zum Ausprobieren können Sie das folgende kurze Script debuggen:
 
 ```{python}
 #| eval: false
@@ -69,10 +69,10 @@ Man kann mehrere logische Ausdrücke mit den folgenden Operatoren verknüpfen:
 
 Ein Ausdruck kann mit dem Operator `not` logisch invertiert werden (d.h. aus `True` wird `False` und aus `False` wird `True`). Weiters gibt es noch folgende Operatoren:
 
-* `is`: Identität (prüft ob zwei *Objekte* identisch sind, nicht nur deren *Werte*)
-* `in`: Prüft ob ein Wert in einer Sequenz enthalten ist
+* `is`: Identität (prüft, ob es sich um ein und dasselbe *Objekt* handelt, nicht nur um gleiche *Werte*)
+* `in`: Prüft, ob ein Wert in einer Sequenz enthalten ist
 
-Während `==` zwei *Werte* miteinander vergleicht, überprüft `is` zwei *Objekte* auf Gleichheit. Ein Objekt hat einen Wert, zwei verschiedene Objekte können denselben Wert haben. Die Funktion `id` liefert eine eindeutige Nummer (ID) für ein Objekt zurück – zwei verschiedene Objekte haben immer eine unterschiedliche ID (ansonsten handelt es sich um ein und dasselbe Objekt).
+Während `==` zwei *Werte* miteinander vergleicht, überprüft `is` zwei *Objekte* auf Gleichheit (also eigentlich, ob es sich um ein und dasselbe Objekt handelt). Ein Objekt hat einen Wert, zwei verschiedene Objekte können denselben Wert haben. Die Funktion `id` liefert eine eindeutige Nummer (ID) für ein Objekt zurück – zwei verschiedene Objekte haben immer eine unterschiedliche ID (ansonsten handelt es sich um ein und dasselbe Objekt).
 
 
 ### Beispiele
@@ -129,9 +129,9 @@ Man erkennt, dass beide Objekte `x` und `y` dieselbe ID haben. Dies bedeutet, da
 
 ![](names_2.png)
 
-Die tatsächlichen IDs von Objekten sind ein Implementierungsdetail von Python, d.h. es ist nicht wichtig welche Zahl hier zurückgegeben wird. Dennoch kann man diese IDs verwenden, um zwei Objekte auf Gleichheit zu überprüfen, denn nur dann haben beide Objekte dieselbe ID.
+Die tatsächlichen IDs von Objekten sind ein Implementierungsdetail von Python, d.h. es ist nicht relevant, welche Zahl hier zurückgegeben wird. Dennoch kann man diese IDs verwenden, um zwei Objekte auf Gleichheit zu überprüfen, denn nur dann haben beide Objekte dieselbe ID.
 
-Ein weiteres Implementierungsdetail von Python ist, dass es kleine Ganzzahlen genau ein Mal gibt – d.h. wenn man zwei oder mehrere Objekte mit kleinen Zahlen anlegt (wie im vorigen Beispiel), dann wird immer nur ein Objekt erzeugt. Dies dient der Beschleunigung bzw. effizienteren Speichernutzung. Bei großen Zahlen ist das allerdings nicht mehr so:
+Ein weiteres Implementierungsdetail von Python ist, dass es kleine Ganzzahlen genau ein Mal gibt – d.h. wenn man zwei oder mehrere Male kleine Zahlen verwenden möchte (wie im vorigen Beispiel mit `x = 2` und `y = 2`), dann wird immer nur *ein* Objekt verwendet. Dies dient der Beschleunigung bzw. effizienteren Speichernutzung. Bei großen Zahlen ist das allerdings nicht mehr so:
 
 ```{python}
 a = 500
@@ -207,14 +207,14 @@ math.isclose(0.1 + 0.1 + 0.1, 0.3)
 ```
 
 :::{.callout-tip}
-In Python kann man Zahlen auch in der sogenannten [wissenschaftlichen Notation](https://de.wikipedia.org/wiki/Wissenschaftliche_Notation) anschreiben. Hier verwendet man eine Darstellung mit Zehnerpotenzen, die man in Python mit `e` eingeben kann – `e` kann man als "mal zehn hoch" lesen.
+In Python kann man Dezimalzahlen auch in der sogenannten [wissenschaftlichen Notation](https://de.wikipedia.org/wiki/Wissenschaftliche_Notation) anschreiben. Hier verwendet man eine Darstellung mit Zehnerpotenzen, die man in Python mit `e` eingeben kann – `e` kann man als "mal zehn hoch" lesen.
 
 ```{python}
 1e0  # 1 mal 10 hoch 0
 ```
 
 ```{python}
-4e0  # 4 mal 10 hoch 0
+-4e0  # -4 mal 10 hoch 0
 ```
 
 ```{python}
@@ -254,12 +254,12 @@ else:  # optional
     ...
 ```
 
-Der Aufbau einer Bedingung ist also im Prinzip derselbe wie bei einer Funktion. Zuerst gibt es den Kopf, welcher mit dem Keyword `if` eingeleitet wird. Danach folgt ein logischer Ausdruck (meist ein Vergleich), und zum Schluss wird die Kopfzeile mit einem `:` abgeschlossen. Der darauf folgende eingerückte Code wird nur ausgeführt, wenn der logische Ausdruck `True` ergibt – wenn das nicht der Fall ist, wird der gesamte eingerückte Codeblock übersprungen.
+Die Struktur einer Bedingung ist also im Prinzip dieselbe wie die einer Funktion. Zuerst gibt es den Kopf, welcher mit dem Keyword `if` eingeleitet wird. Danach folgt ein logischer Ausdruck (meist ein Vergleich), und zum Schluss wird die Kopfzeile mit einem `:` abgeschlossen. Der darauf folgende eingerückte Code wird nur ausgeführt, wenn der logische Ausdruck `True` ergibt – wenn das nicht der Fall ist, wird der gesamte eingerückte Codeblock übersprungen.
 
 Nur wenn der erste Ausdruck `True` ist, wird also der eingerückte Code ausgeführt. Danach wird der gesamte restliche `if`/`elif`/`else`-Block verlassen, es wird also kein weiterer Code mehr ausgeführt. Wenn der erste Ausdruck `False` ist, wird der zugehörige Codeblock nicht ausgeführt und es wird zum nächsten `elif`-Ausdruck gesprungen (falls vorhanden). Hier wird dann ein weiterer logischer Ausdruck ausgewertet, und falls dieser `True` ist, wird der dazugehörige eingerückte Codeblock ausgeführt. Falls kein logischer Ausdruck in den `elif`-Zweigen `True` ist, wird schließlich der Codeblock im `else`-Zweig ausgeführt (falls vorhanden).
 
 :::{.callout-important}
-In einer Bedingung wird maximal ein Codeblock ausgeführt, nämlich der erste, bei dem der logische Ausdruck `True` ist. Deshalb ist auch die Reihenfolge der einzelnen Zweige von Bedeutung.
+In einer Bedingung wird maximal *ein* Codeblock ausgeführt, nämlich der erste, bei dem der logische Ausdruck `True` ist. Deshalb ist auch die Reihenfolge der einzelnen Zweige von Bedeutung.
 :::
 
 
@@ -326,7 +326,7 @@ else:
     print("x is 0")
 ```
 
-Dementsprechend kann auch die Reihenfolge der einzelnen Zweige von Bedeutung sein:
+Dementsprechend ist die Reihenfolge der einzelnen Zweige von Bedeutung:
 
 ```{python}
 a = 4
@@ -394,7 +394,7 @@ for i in range(3):
     print("Hallo")
 ```
 
-Die sogenannte Schleifenvariable `i` nimmt hier in den drei Durchläufen drei verschiedene Werte 0, 1 und 2 an – dies sind nämlich genau die Werte, die die Funktion `range` zurückgibt. Der Name der Schleifenvariable kann beliebig gewählt werden, oft wird für kurze Schleifen einfach `i` verwendet. Dieser Name bleibt nach dem Ausführen der Schleife übrigens bestehen, er unterscheidet sich nicht von anderen durch Zuweisung entstandene Namen.
+Die sogenannte Schleifenvariable `i` nimmt hier in den drei Durchläufen drei verschiedene Werte 0, 1 und 2 an – dies sind nämlich genau die Werte, die die Funktion `range` zurückgibt. Der Name der Schleifenvariable kann beliebig gewählt werden, oft wird für kurze Schleifen einfach `i` verwendet (man könnte auch `_` verwenden, um anzudeuten, dass man an diesem Namen eigentlich nicht weiter interessiert ist). Dieser Name bleibt nach dem Ausführen der Schleife übrigens bestehen, er unterscheidet sich nicht von anderen durch Zuweisung entstandenen Namen.
 
 :::{.callout-note}
 Überlegen Sie, welchen Wert `i` am Ende des folgenden Beispiels hat:
@@ -404,9 +404,11 @@ i = 800
 for i in range(3):
     print("Hello")
 ```
+
+Die richtige Antwort lautet `2`, da dies der letzte Wert ist, welcher in der Schleife zugewiesen wird. Der Funktionsaufruf `range(3)` erzeugt nämlich die drei Werte `0`, `1` und `2`.
 :::
 
-Die Funktion `range` wird mit `range(start, stop, step)` aufgerufen (der Hilfetext verrät dazu mehr Details) und erzeugt eine Sequenz, welche aus ganzen Zahlen besteht die von `start` (optional) bis `stop` in der Schrittweite `step` (optional) läuft. Wenn man sich die einzelnen Elemente in einem `range`-Objekt ansehen will, muss man dieses zuerst in eine Liste umwandeln:
+Die Funktion `range` wird mit `range(start, stop, step)` aufgerufen (der Hilfetext verrät dazu mehr Details) und erzeugt eine Sequenz, welche aus ganzen Zahlen besteht, die von `start` (optional) bis `stop` in der Schrittweite `step` (optional) läuft. Wenn man sich die einzelnen Elemente in einem `range`-Objekt ansehen will, muss man dieses zuerst in eine Liste umwandeln:
 
 ```{python}
 x = range(10)
@@ -506,7 +508,9 @@ Schreiben Sie folgendes Programm:
 - Wenn die Summe der beiden Zahlen kleiner als 50 ist, geben Sie `x + y < 50` am Bildschirm aus.
 - Ansonsten geben Sie `x + y == 50` aus.
 
-*Hinweise:* Die Builtin-Funktion `input` ermöglicht es, Eingaben von der Tastatur einzulesen. Der Benutzer kann beliebige Zeichen eingeben und mit der Eingabetaste bestätigen. Das Ergebnis der Eingabe wird dann von der Funktion zurückgegeben (d.h. man kann diesem Wert auch einen Namen zuweisen, z.B. `x = input()`). Der Typ des Rückgabewerts ist immer `str`.
+:::{.callout-tip}
+Die Builtin-Funktion `input` ermöglicht es, Eingaben von der Tastatur einzulesen. Man kann beliebige Zeichen eingeben und mit der Eingabetaste bestätigen. Das Ergebnis der Eingabe wird dann von der Funktion *zurückgegeben* (d.h. man kann diesem Wert auch einen Namen zuweisen, z.B. `x = input()`). Der Typ des Rückgabewerts ist immer `str`.
+:::
 
 
 ### Übung 2
@@ -523,12 +527,18 @@ Gegeben ist eine Liste `lst = ["I", "love", "Python"]`. Schreiben Sie eine `for`
 
 Gegeben ist wieder eine Liste `lst = ["I", "love", "Python"]`. Schreiben Sie eine `for`-Schleife, welche über die einzelnen Elemente in der Liste iteriert. Eine zweite (geschachtelte) `for`-Schleife soll dann über jeden Buchstaben der einzelnen Strings iterieren und jeden Buchstaben einzeln gefolgt vom Zeichen `-` ausgeben.
 
-*Hinweis:* Verwenden Sie die Funktion `print` mit dem Argument `end="-"`. Die Ausgabe soll wie folgt aussehen: `I-l-o-v-e-P-y-t-h-o-n-`
+:::{.callout-tip}
+Verwenden Sie die Funktion `print` mit dem Argument `end="-"`. Die Ausgabe soll wie folgt aussehen:
+
+```
+I-l-o-v-e-P-y-t-h-o-n-
+```
+:::
 
 
 ### Übung 5
 
-Schreiben Sie das folgende verschachtelte `if`–`else`-Konstrukt als `if`–`elif`–`else`-Block.
+Schreiben Sie das folgende verschachtelte `if`–`else`-Konstrukt als `if`–`elif`–`else`-Block:
 
 ```python
 if x > 0:
