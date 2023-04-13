@@ -2,7 +2,7 @@
 title: "6 – Strings"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2022-11-10
+date: 2023-04-24
 format: html
 engine: jupyter
 highlight-style: github
@@ -26,7 +26,7 @@ Datentypen in Python können grob in folgende Kategorien unterteilt werden:
 
 Mit der Funktion `type` kann man den Typ eines beliebigen Objektes bestimmen. Der logische und die numerischen Datentypen sind im Prinzip relativ einfach aufgebaut, und wir haben bereits gesehen, wie wir diese Typen verwenden können. In den folgenden beiden Einheiten werden etwas komplexere Datentypen vorgestellt, welche in Python sehr häufig verwendet werden: die Sequenzdatentypen `str`, `list` und `tuple` sowie der Mapping-Datentyp `dict`.
 
-Bevor wir diese Typen im Detail besprechen sehen wir uns aber eine grundlegende Eigenschaft von allen Datentypen in Python an.
+Bevor wir diese Typen im Detail besprechen, sehen wir uns aber eine grundlegende Eigenschaft von allen Datentypen in Python an.
 
 
 ## Mutable und immutable
@@ -51,7 +51,7 @@ Für uns relevante immutable Datentypen sind:
 
 ### Immutable Typen
 
-Befassen wir uns zunächst mit den nicht veränderbaren immutable Typen. Als Beispiel betrachten wir das Objekt `2` vom Typ `int`. Dieses Objekt ist nicht veränderbar (`2` kann also nicht verändert werden). Im folgenden Beispiel wird das Objekt 2, welches den Namen `a` hat, tatsächlich auch nicht verändert. Wenn man nämlich `a = 3` setzt, wird das Objekt `2` nicht geändert, sondern der Name `a` verweist lediglich auf das Objekt `3` (ein anderes Objekt, denken Sie an die Analogie mit dem Namensschildchen).
+Befassen wir uns zunächst mit den nicht veränderbaren immutable Typen. Als Beispiel betrachten wir das Objekt `2` vom Typ `int`. Dieses Objekt ist nicht veränderbar (`2` kann also nicht verändert werden). Im folgenden Beispiel wird das Objekt `2`, welches den Namen `a` hat, tatsächlich auch nicht verändert. Wenn man nämlich `a = 3` setzt, ändert man lediglich den Namen `a` – dieser verweist dann auf das Objekt `3` (ein anderes Objekt, denken Sie an die Analogie mit dem Namensschildchen).
 
 Dies kann man auch mit Hilfe der `id`-Funktion verifizieren; man erkennt, dass die IDs (also die Objekte) tatsächlich unterschiedlich sind.
 
@@ -134,6 +134,10 @@ k[0] = "X"  # Änderung möglich!
 k
 ```
 
+:::{.callout-note}
+Eine Liste wird, im Gegensatz zu einem Tuple, erstellt, indem man die Elemente mit eckigen Klammern `[` bzw. `]` umschließt.
+:::
+
 Auch Dictionaries sind mutable:
 
 ```{python}
@@ -156,7 +160,7 @@ d["a"] = "CHANGED"  # Änderung möglich
 d
 ```
 
-Mehr zu den Datentypen `list`, `tuple` und `dict` aber in den nächsten Einheiten.
+Mehr Details zu den Datentypen `list`, `tuple` und `dict` folgen in der nächsten Einheit. Widmen wir uns jetzt dem Datentyp String.
 
 
 ## Strings
@@ -205,7 +209,7 @@ s5  # tatsächlicher Wert des Strings, \n steht für Zeilenumbruch
 Strings mit drei Anführungszeichen haben wir schon als Docstrings zur kurzen Beschreibung von Funktionen kennengelernt.
 
 :::{.callout-tip}
-Möchte man einen String erzeugen, der sowohl `"` als auch `'` enthält, kann man weder das eine noch das andere Zeichen direkt verwenden. Man muss daher das Anführungszeichen, welches in der Definition des Strings verwendet wurde und auch im String vorkommen soll mit einem vorangestellten `\` schreiben (man spricht hier von einem "Escape-Zeichen"):
+Möchte man einen String erzeugen, der sowohl `"` als auch `'` enthält, kann man weder das eine noch das andere Zeichen direkt verwenden. Man muss daher das Anführungszeichen, welches in der Definition des Strings verwendet wurde und auch im String vorkommen soll, mit einem vorangestellten `\` schreiben (man spricht hier von einer [Escape-Sequenz](https://de.wikipedia.org/wiki/Escape-Sequenz)):
 
 ```{python}
 x = "Dieser String \"enthält\" doppelte und 'einfache' Anführungszeichen."
@@ -218,13 +222,13 @@ Die beiden Strings `x` und `y` sind identisch:
 x == y
 ```
 
-Die `print`-Funktion stellt solche Escape-Zeichen aber "richtig" dar:
+Die `print`-Funktion stellt Escape-Sequenzen aber "richtig" dar:
 
 ```{python}
 print(x)
 ```
 
-Auch nicht druckbare Zeichen kann man mit Escape-Zeichen darstellen (Zeilenumbruch `\n`, Tabulator `\t`, ...).
+Auch nicht druckbare Zeichen kann man mit Escape-Sequenzen darstellen, wie z.B. einen Zeilenumbruch `\n` oder einen Tabulator `\t`. Ein Backslash `\` muss ebenfalls als Escape-Sequenz `\\` geschrieben werden.
 :::
 
 
@@ -303,7 +307,7 @@ s1[1:-3]  # Index 1 bis zum drittletzten Element (exklusive)
 Die Tatsache, dass der Startindex immer inklusive ist und der Endindex immer exklusive ist, hat den Vorteil, dass man sich durch die Differenz der beiden Indizes sofort die Anzahl der Elemente im Slice ausrechnen kann. Beispielsweise erkennt man so, dass `x[73:81]` genau $81 - 73 = 8$ Elemente enthält.
 :::
 
-Ein weiterer Vorteil dieser Konvention ist, dass man angrenzende Slices intuitiv erstellen kann, z.B.:
+Angrenzende Slices kann man intuitiv erstellen, z.B.:
 
 ```{python}
 s1[:2]  # die ersten 2 Zeichen
@@ -413,7 +417,7 @@ Für Strings gibt es in Python sehr viele praktische spezielle Funktionen. Diese
 x.upper()
 ```
 
-Zuerst gibt man das String-Objekt an (im Beispiel `x`), gefolgt von einem Punkt, gefolgt vom Namen der Funktion, die man aufrufen möchte. Eine solche Funktion nennt man auch *Methode*, da sie direkt auf ein zuvor spezifiziertes Objekt angewendet wird. Im Beispiel oben wird ein neuer String erzeugt, welcher aus den Zeichen des Strings `x` in Großbuchstaben besteht. Diese Schreibweise hat den Vorteil, dass sofort klar wird, dass die Methode zum Objekt gehört; im Prinzip entspricht der Aufruf aber einem klassischen Funktionsaufruf `str.upper(x)`.
+Zuerst gibt man das String-Objekt an (im Beispiel `x`), gefolgt von einem Punkt, gefolgt vom Namen der Funktion (im Beispiel `upper`), die man aufrufen möchte. Eine solche Funktion nennt man auch *Methode*, da sie direkt auf ein zuvor spezifiziertes Objekt angewendet wird. Im Beispiel oben wird ein neuer String erzeugt, welcher aus den Zeichen des Strings `x` in Großbuchstaben besteht. Diese Schreibweise hat den Vorteil, dass sofort klar wird, dass die Methode zum Objekt gehört; im Prinzip entspricht der Aufruf aber einem klassischen Funktionsaufruf `str.upper(x)`.
 
 ```{python}
 "abcdefg".upper()  # Großbuchstaben
@@ -448,6 +452,12 @@ x.<TAB>
 ```
 
 Nach Eingabe des Punktes drückt man also die Tabulator-Taste und bekommt eine Liste aller möglichen Methoden. Möchte man dann z.B. den Hilfetext der Methode `x.capitalize` aufrufen, gibt man `x.capitalize?` ein.
+
+Im normalen interaktiven Interpreter kann man die Funktion `dir` verwenden, um alle möglichen Methoden eines Objektes aufzulisten, also z.B.
+
+```python
+dir(x)
+```
 :::
 
 Im Folgenden werden einige praktische String-Methoden aufgelistet.
@@ -474,7 +484,7 @@ Das "Gegenteil" von `split` ist `join`, welches Strings in einer Liste zu einem 
 ";".join(["das", "ist", "ein", "Test"])
 ```
 
-Wir werden Listen im Detail erst in der nächsten Einheit kennenlernen. Vorweg aber so viel: die Möglichkeit, Strings in einer Liste mit `join` zu einem einzigen String zu verbinden ist wesentlich effizienter, als die einzelnen Strings mit `+` zu verbinden.
+Wir werden Listen im Detail in der nächsten Einheit kennenlernen. Vorweg aber so viel: die Möglichkeit, Strings in einer Liste mit `join` zu einem einzigen String zu verbinden ist wesentlich effizienter, als die einzelnen Strings mit `+` zu verbinden.
 
 Die Methode `count` zählt, wie oft das als Argument angegebene Zeichen im String vorkommt.
 
