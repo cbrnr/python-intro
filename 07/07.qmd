@@ -2,7 +2,7 @@
 title: "7 – Listen und Dictionaries"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2022-11-17
+date: 2023-05-08
 format: html
 engine: jupyter
 highlight-style: github
@@ -17,7 +17,7 @@ published-title: "Veröffentlicht"
 
 ## Listen erstellen
 
-Eine Liste (`list`) ist wie ein String (`str`) ein Sequenzdatentyp. Im Gegensatz zu einem String kann eine Liste aber Elemente mit *unterschiedlichen* Datentypen enthalten, z.B. Strings, Zahlen, weitere Listen, und so weiter. Eine Liste erstellt man mit eckigen Klammern, innerhalb derer die einzelnen Elemente durch Kommas getrennt angegeben werden:
+Eine Liste (`list`) ist wie ein String (`str`) ein Sequenzdatentyp. Im Gegensatz zu einem String kann eine Liste aber Elemente mit *unterschiedlichen* und *beliebigen* Datentypen enthalten, z.B. Strings, Zahlen, weitere Listen, und so weiter. Eine Liste erstellt man mit eckigen Klammern, innerhalb derer die einzelnen Elemente durch Kommas getrennt angegeben werden:
 
 ```{python}
 x = [23, "Hallo", "test", 1.44, True]
@@ -53,7 +53,17 @@ x[::-1]  # ganze Liste in umgekehrter Reihenfolge
 
 ### Länge
 
-Wie bei Strings gibt die Funktion `len` die Länge der Liste (also die Anzahl der Elemente in der Liste) zurück.
+Wie bei Strings gibt die Funktion `len` die Länge der Liste (also die Anzahl der Elemente in der Liste) zurück. Sehen wir uns noch einmal die beiden oben definierten Listen `x` und `y` an:
+
+```{python}
+x
+```
+
+```{python}
+y
+```
+
+Diese enthalten 5 bzw. 4 Elemente:
 
 ```{python}
 len(x)
@@ -61,6 +71,22 @@ len(x)
 
 ```{python}
 len(y)
+```
+
+In der Liste `y` sind das dritte und vierte Element selbst wieder Listen:
+
+```{python}
+y[2]
+```
+
+```{python}
+y[3]
+```
+
+Letztere enthält eine weitere Liste als Element:
+
+```{python}
+y[3][2]
 ```
 
 Selbstverständlich ist eine leere Liste auch eine Liste, nur eben mit der Länge 0:
@@ -122,7 +148,7 @@ x.append(13)
 x
 ```
 
-Im Gegensatz zu Strings wird hier die Liste direkt (in place) verändert; eine erneute Zuweisung zu einem Namen ist nicht notwendig bzw. führt nicht zum gewünschten Ergebnis wie in folgendem Beispiel ersichtlich:
+Im Gegensatz zu Strings wird hier die Liste direkt (in place) verändert; eine erneute Zuweisung zu einem Namen ist nicht notwendig bzw. führt nicht zum gewünschten Ergebnis, was in folgendem Beispiel ersichtlich ist:
 
 ```{python}
 a = x.append(25)
@@ -137,7 +163,7 @@ x  # geänderte Liste
 ```
 
 :::{.callout-important}
-Listen-Methoden verändern die Liste direkt (in-place) und geben nichts (`None`) zurück. Im Gegensatz dazu können String-Methoden den String nicht verändern und geben daher einen neuen String zurück.
+Listen-Methoden verändern die Liste direkt (in-place) und geben nichts (`None`) zurück. Im Gegensatz dazu können String-Methoden den String nicht verändern und geben daher immer einen neuen String zurück.
 :::
 
 Möchte man gleich mehrere Elemente hinzufügen, kann man die Methode `extend` benutzen:
@@ -152,7 +178,7 @@ Versuchen Sie anhand dieses Beispiels den Unterschied zwischen `append` und `ext
 
 ### Elemente aus Listen entfernen
 
-Um Elemente an bestimmten Indizes aus der Liste zu entfernen verwendet man den `del`-Befehl.
+Um Elemente an bestimmten Indizes aus der Liste zu entfernen, verwendet man den `del`-Befehl.
 
 ```{python}
 x = ["A", "b", 3, 4, "fünf"]
@@ -432,7 +458,7 @@ for k in d:
 
 Eleganter funktioniert das mit der Methode `items`. Diese erzeugt eine Liste von Tupeln, welche die Key/Value-Paare enthalten:
 
-```{python}
+```python
 d.items()
 ```
 
