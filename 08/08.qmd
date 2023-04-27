@@ -2,7 +2,7 @@
 title: "8 – Ein- und Ausgabe"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2022-11-24
+date: 2023-05-15
 format: html
 engine: jupyter
 highlight-style: github
@@ -57,76 +57,54 @@ print(str(a) + " + " + str(b) + " = " + str(a + b))  # ein Argument
 ```
 
 
-### Die `format`-Methode
-
-Strings besitzen eine Methode namens `format`, mit der man deren Ausgabe formatieren kann. So einen formatierten String kann man dann einfach mit `print` am Bildschirm ausgeben.
-
-```{python}
-print('We are the {} who say "{}!"'.format('knights', 'Ni'))
-```
-
-Die geschwungenen Klammern und deren Inhalt werden durch die Argumente von `format` ersetzt und entsprechend formatiert. Im einfachsten Fall wie oben sind diese geschwungenen Klammern leer, d.h. die Argumente `'knights'` und `'Ni'` werden einfach der Reihe nach eingesetzt.
-
-Man kann in die Klammern aber auch Zahlen schreiben, um eine bestimmte Position in den `format`-Argumenten anzusprechen.
-
-```{python}
-print('{0} and {1}'.format('spam', 'eggs'))
-```
-
-```{python}
-print('{1} and {0} and {1}'.format('spam', 'eggs'))
-```
-
-Keyword-Argumente können direkt mit deren Namen eingesetzt werden.
-
-```{python}
-print('This {food} is {adjective}.'.format(food='spam', adjective='horrible'))
-```
-
-Das Beispiel von oben lautet mit `format`:
-
-```{python}
-print("{} + {} = {}".format(a, b, a + b))
-```
-
-Zahlen können speziell formatiert werden. Sehen wir uns zunächst an, wie die Kreiszahl $\pi$ standardmäßig ausgegeben wird:
-
-```{python}
-import math
-
-print('π ≈ {}'.format(math.pi))
-```
-
-Mit einem optionalen Doppelpunkt und einem sogenannten *Format Specifier* innerhalb der geschwungenen Klammern kann ein Feld gezielt formatiert werden. Das folgende Beispiel formatiert die Kommazahl Pi so, dass sie mit drei Nachkommastellen ausgegeben wird:
-
-```{python}
-print('π ≈ {:.3f}'.format(math.pi))
-```
-
-Die minimale Feldbreite kann mit einer Zahl direkt nach dem Doppelpunkt spezifiziert werden:
-
-```{python}
-print('π ≈ {:15.3f}'.format(math.pi))
-```
-
-Alle Möglichkeiten, die Format Specifier innerhalb der geschwungenen Klammern bieten, finden sich in der [offiziellen Dokumentation](https://docs.python.org/3/library/string.html#format-string-syntax) (inklusive eine Menge Beispiele).
-
-
 ### f-Strings
 
-Seit Python 3.6 gibt es eine weitere Variante, formatierte Strings mit sogenannten [f-Strings](https://docs.python.org/3/whatsnew/3.6.html#whatsnew36-pep498) zu erzeugen. Dies ist vielleicht die einfachste und kürzeste Möglichkeit, welche die gleiche Flexibilität wie die `format`-Methode bietet. Die obigen Beispiele würden mit f-Strings wesentlich einfacher aussehen (beachten Sie das `f` direkt vor dem eigentlich String), weil man Python-Ausdrücke direkt innerhalb der geschwungenen Klammern angeben kann:
+Sogenannte f-Strings sind ganz normale Strings, man kann aber bei ihrer Erzeugung beliebige Ausdrücke verwenden, die dann ausgewertet in den String eingesetzt werden. Man definiert einen f-String genau wie einen normalen String mittels Anführungszeichen, stellt aber ein `f` voran, also z.B.:
+
+```{python}
+f"Hallo"
+```
+
+Sinnvoll sind f-Strings nur dann, wenn man auch tatsächlich Ausdrücke integriert, welche innerhalb von geschwungenen Klammern `{}` angegeben werden. Alle Ausdrücke werden ausgewertet und in den String eingesetzt (interpoliert):
+
+```{python}
+name = "World"
+f"Hello {name}!"
+```
+
+Den fertigen String kann man dann einfach mit `print` am Bildschirm ausgeben. Das Beispiel aus dem vorigen Abschnitt kann man daher wie folgt anschreiben:
 
 ```{python}
 print(f"{a} + {b} = {a + b}")
 ```
 
+Ausdrücke, wie z.B. Zahlen, können optional auch speziell formatiert werden. Sehen wir uns zunächst an, wie die Kreiszahl $\pi$ standardmäßig ausgegeben wird:
+
 ```{python}
+import math
+
 print(f"π ≈ {math.pi}")
 ```
+
+Mit einem optionalen Doppelpunkt und einem sogenannten *Format Specifier* innerhalb der geschwungenen Klammern kann ein Ausdruck gezielt formatiert werden. Das folgende Beispiel formatiert die Kommazahl Pi so, dass sie mit drei Nachkommastellen ausgegeben wird:
 
 ```{python}
 print(f"π ≈ {math.pi:.3f}")
 ```
+
+Oder mit 16 Nachkommastellen:
+
+```{python}
+print(f"π ≈ {math.pi:.16f}")
+```
+
+Die minimale Feldbreite kann mit einer Zahl direkt nach dem Doppelpunkt spezifiziert werden, im folgenden Beispiel soll diese 15 Zeichen betragen:
+
+```{python}
+print(f"π ≈ {math.pi:15.3f}")
+```
+
+Alle Möglichkeiten, die Format Specifier innerhalb der geschwungenen Klammern bieten, finden sich in der [offiziellen Dokumentation](https://docs.python.org/3/library/string.html#format-string-syntax) (inklusive einer Menge Beispiele).
 
 
 ## Dateien lesen und schreiben
@@ -147,14 +125,14 @@ Nach Beendigung aller Lese- und Schreiboperationen muss man das Datei-Objekt wie
 ```python
 f.close()
 ```
-:::
 
-Eine gute Angewohnheit ist es aber, alle Datei-Operationen in einem `with`-Konstrukt durchzuführen; so wird die Datei bei Verlassen des `with`-Blocks automatisch geschlossen:
+Es ist sinnvoll, alle Datei-Operationen in einem `with`-Block durchzuführen; so wird die Datei bei Verlassen des Blocks automatisch geschlossen:
 
 ```python
 with open("test.txt") as f:
     data = f.read()
 ```
+:::
 
 Zu Beachten ist noch, dass der Dateiname als String übergeben wird. Dieser enthält entweder den vollständigen Pfad der zu öffnenden Datei (z.B. `"C:/Program Files/Test Program/test.txt"`), oder nur den Dateinamen. Im letzteren Fall wird dann angenommen, dass sich die Datei im Arbeitsverzeichnis befindet.
 
@@ -207,7 +185,9 @@ with open("test.txt") as f:
         print(no, line, end="")
 ```
 
+:::{.callout-tip}
 In der `for`-Schleife wird hier nicht direkt über `f`, sondern über `enumerate(f)` iteriert. Diese Funktion zählt die Schleifendurchläufe mit und gibt ein Tupel bestehend aus dem aktuellen Wert des Schleifenzählers sowie der aktuellen Zeile zurück.
+:::
 
 Text in Dateien schreiben funktioniert sehr ähnlich – man öffnet die Datei im `"w"`-Modus und übergibt der `write`-Methode den gewünschten Inhalt als String:
 
@@ -216,21 +196,21 @@ with open("test2.txt", "w") as f:
     f.write("Das ist ein Test.\nSo kann man einfach\nText\nin Dateien schreiben.")
 ```
 
-Im Beispiel oben steht das Zeichen `\n` für einen Zeilenumbruch (neue Zeile).
+In diesem Beispiel steht die Escape-Sequenz `\n` für einen Zeilenumbruch (neue Zeile).
 
 
 ## Beispiel: CSV-Datei lesen
 
 Mit den bis jetzt vorgestellten Mitteln können wir bereits CSV[^1]-Dateien einlesen und rudimentäre Statistiken rechnen. CSV-Dateien werden häufig verwendet, um tabellarische Daten abzuspeichern. Diese Dateien sind reine Textdateien, in denen die Variablen (Spalten) durch Kommas getrennt sind und die einzelnen Datensätze zeilenweise vorliegen.
 
-Im Folgenden werden vier Möglichkeiten zum Lesen einer CSV-Datei vorgestellt (die Beispieldatei `correlation.csv` ist [hier](correlation.csv) verfügbar). Die erste Methode verwendet Python ohne spezielle Module, die zweite Methode ist eine Verallgemeinerung der ersten. Die dritte Methode verwendet das `csv`-Modul aus der Standardbibliothek. Die empfohlene (einfachste) Variante mit dem Package [pandas](https://pandas.pydata.org/) werden wir allerdings in dieser Lehrveranstaltung nicht genauer kennenlernen.
+Im Folgenden werden drei Möglichkeiten zum Lesen einer CSV-Datei vorgestellt (die Beispieldatei `correlation.csv` ist [hier](correlation.csv) verfügbar). Die erste Methode verwendet Python ohne spezielle Module, die zweite Methode ist eine Verallgemeinerung der ersten. Die dritte und einfachste Variante verwendet das Package [pandas](https://pandas.pydata.org/), welches wir in dieser Lehrveranstaltung nicht genauer kennenlernen werden (sie wird der Vollständigkeit halber aber trotzdem erwähnt).
 
 [^1]: Comma-Separated Values
 
 
 ### Möglichkeit 1
 
-Wir starten mit einer leeren Liste `data`. Dieser Liste fügen wir den Inhalt jeder Zeile schrittweise hinzu. Eine Zeile wird dabei als Liste mit zwei Strings abgebildet.
+Wir starten mit einer leeren Liste `data`. Dieser Liste fügen wir den Inhalt jeder Zeile schrittweise (mittels `append`) hinzu. Eine Zeile wird dabei als Liste mit zwei Strings abgebildet.
 
 ```{python}
 data = []  # leere Liste
@@ -243,7 +223,7 @@ with open("correlation.csv") as f:
 data
 ```
 
-Nun können die Daten in eine Struktur umgewandelt werden, die sich besser für nachfolgende Berechnungen eignet (also inbesondere werden die Zahlen, die jetzt noch als Strings vorliegen, mit der Funktion `float` in Kommazahlen umgewandelt).
+Nun können die Daten in eine Struktur umgewandelt werden, die sich besser für nachfolgende Berechnungen eignet (also inbesondere werden die Zahlen, die als Strings vorliegen, mit der Funktion `float` in Kommazahlen umgewandelt).
 
 ```{python}
 cols = [[], []]  # two empty lists for the two columns
@@ -295,7 +275,7 @@ Diese Lösung ist allerdings alles andere als ideal. Erstens sollte man immer be
 
 ### Möglichkeit 2
 
-Eine verallgemeinerte Lösung sieht wie folgt aus:
+Eine verallgemeinerte Lösung für eine beliebige Anzahl an Spalten sieht wie folgt aus:
 
 ```{python}
 with open("correlation.csv") as f:
@@ -330,27 +310,6 @@ sum(data["hours"]) / len(data["hours"])
 
 ### Möglichkeit 3
 
-Mit dem Modul `csv` kann man das Lesen robuster gestalten (d.h. einfach an unterschiedliche Spaltentrennzeichen anpassen). Ansonsten ist diese Variante aber identisch mit der vorigen Lösung.
-
-```{python}
-import csv
-
-with open("correlation.csv") as f:
-    reader = csv.reader(f)
-    header = next(reader)  # erste Zeile
-
-    data = {}
-    for name in header:
-        data[name] = []
-
-    for row in reader:  # restlichen Zeilen
-        for h, v in zip(header, row):
-            data[h].append(float(v))
-```
-
-
-### Möglichkeit 4
-
 Das Package `pandas` eignet sich ideal zum Verarbeiten von tabellarischen Daten. Es beinhaltet auch Funktionen zum Lesen von Dateien. Damit würde der Code wie folgt aussehen:
 
 ```{python}
@@ -377,7 +336,9 @@ data.mean()
 
 Erstellen Sie eine Liste `lst`, welche die *geraden* Zahlen zwischen 0 und 100 (inklusive) beinhaltet, und speichern Sie diese Zahlen in eine Datei `ue1.txt`. In der Datei soll jede Zahl in einer eigenen Zeile stehen.
 
-*Hinweis:* Zahlen sollten Sie vor dem Schreiben in die Datei mit der Funktion `str` in Strings umwandeln. Das Zeichen für einen Zeilenumbruch lautet `\n`. Sie können z.B. eine `for`-Schleife über die Zahlenliste machen und die einzelnen Elemente nacheinander in die Datei schreiben. Alternativ können Sie auch die Liste in einen richtig formatierten String umwandeln (die String-Methode `join` ist hier hilfreich) und diesen dann in die Datei schreiben.
+:::{.callout-note}
+Zahlen sollten vor dem Schreiben in die Datei mit der Funktion `str` in Strings umgewandelt werden. Das Zeichen für einen Zeilenumbruch lautet `\n`. Sie können z.B. eine `for`-Schleife über die Zahlenliste machen und die einzelnen Elemente nacheinander in die Datei schreiben. Alternativ können Sie auch die Liste in einen richtig formatierten String umwandeln (die String-Methode `join` ist hier hilfreich) und diesen dann in die Datei schreiben.
+:::
 
 
 ### Übung 2
@@ -389,7 +350,7 @@ Verwenden Sie wieder die Liste `lst` aus Übung 1, aber schreiben Sie die Zahlen
 
 Das Spiel Scrabble eignet sich hervorragend, um über die Existenz von Wörtern zu diskutieren. Zumindest für die englische Ausgabe gibt es eine [offizielle Wortliste](http://www.freescrabbledictionary.com/sowpods/), die man konsultieren kann, wenn man nicht sicher ist, ob es sich bei einer Kreation um ein gültiges Wort handelt oder nicht. Alle Wörter in dieser Datenbank können als [Textdatei](https://www.wordgamedictionary.com/sowpods/download/sowpods.txt) heruntergeladen werden.
 
-Für diese Übung laden Sie sich diese Datei herunter und speichern Sie sie in Ihrem Arbeitsverzeichnis ab (im Browser "Seite speichern unter" oder ähnlich). Lesen Sie die Datei dann in Python ein und finden Sie heraus, wie viele Wörter (Zeilen) sich in der Datei befinden.
+Für diese Übung laden Sie sich diese Datei herunter und speichern Sie sie in Ihrem Arbeitsverzeichnis ab. Lesen Sie die Datei dann in Python ein und finden Sie heraus, wie viele Wörter (Zeilen) sich in der Datei befinden.
 
 :::{.callout-note}
 Iterieren Sie mit einer `for`-Schleife über das Datei-Objekt und zählen Sie die Schleifendurchläufe mit. Am Ende der Schleife (d.h. am Ende der Datei) entspricht dann ihr Zähler der Zeilenanzahl der Datei (d.h. der Anzahl der Wörter). Beachten Sie, dass die ersten paar Zeilen in der Datei keine Wörter beinhalten!
