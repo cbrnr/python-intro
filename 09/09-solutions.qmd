@@ -2,7 +2,7 @@
 title: "9 – Lösungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2022-12-01
+date: 2023-05-22
 format: html
 engine: jupyter
 highlight-style: github
@@ -120,4 +120,11 @@ chess = np.zeros((8, 8), dtype=int)
 chess[::2, 1::2] = 1
 chess[1::2, ::2] = 1
 chess
+```
+
+Als zusätzliche Übung könnten Sie versuchen, eine Lösung in eine Funktion zu verpacken, welche ein Schachbrettmuster mit bestimmter Größe `size` erzeugt, also z.B.
+
+```python
+def generate_chess(size=8):
+    ...
 ```

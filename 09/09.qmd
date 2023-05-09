@@ -2,7 +2,7 @@
 title: "9 – Numerische Daten"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2022-12-01
+date: 2023-05-22
 format: html
 engine: jupyter
 highlight-style: github
@@ -36,7 +36,7 @@ Der Python-Interpreter kann, wie bereits des öfteren erwähnt, im Script-Modus 
 
 [NumPy](http://wiki.scipy.org/Tentative_NumPy_Tutorial) ist die Basis der allermeisten wissenschaftlichen Pakete in Python. Es ist so wichtig und essentiell, dass Python ohne NumPy vermutlich nie für Datenanalysen verwendet worden wäre.
 
-NumPy stellt einen hocheffizienten Datentyp für numerische Daten zur Verfügung, nämlich ein homogenes multidimensionales (*n*-dimensionales) Array (auch kurz ND-Array bzw. `ndarray` oder kurz Array genannt). Listen sind aufgrund ihrer Flexibilität dafür viel zu ineffizient, da sie unterschiedliche Elemente enthalten können. Homogen bedeutet nämlich, dass alle Elemente eines Arrays denselben Datentyp haben (z.B. lauter `float`-Zahlen) – dadurch können Berechnungen wesentlich effizienter und schneller ausgeführt werden. Multidimensional bedeutet, dass ein Array beliebig viele Dimensionen (auch Achsen genannt) besitzen kann. Jedes Element wird daher mit einem Tupel indiziert, welches seine genaue Position innerhalb des Arrays beschreibt.
+NumPy stellt einen hocheffizienten Datentyp für numerische Daten zur Verfügung, nämlich ein homogenes multidimensionales (*n*-dimensionales) Array (auch kurz ND-Array bzw. `ndarray` oder kurz Array genannt). Listen sind aufgrund ihrer Flexibilität dafür viel zu ineffizient, da sie unterschiedliche Elemente enthalten können. Homogen bedeutet nämlich, dass alle Elemente eines Arrays denselben Datentyp haben müssen (z.B. lauter `float`-Zahlen) – dadurch können Berechnungen wesentlich effizienter und schneller ausgeführt werden. Multidimensional bedeutet, dass ein Array beliebig viele Dimensionen (auch Achsen genannt) besitzen kann. Jedes Element wird daher mit einem Tupel indiziert, welches seine genaue Position innerhalb des Arrays beschreibt.
 
 :::{.callout-tip}
 Das offizielle Tutorial [NumPy: the absolute basics for beginners](https://numpy.org/devdocs/user/absolute_beginners.html) ergänzt bzw. vertieft die Inhalte dieser Unterlagen – die Lektüre ist sehr zu empfehlen!
@@ -73,7 +73,7 @@ a.shape  # 15 Elemente in einer Dimension (Achse)
 Diese Form kann man auch verändern:
 
 ```{python}
-a = a.reshape(3, 5)  # umwandeln in 3 Zeilen und 5 Spalten
+a = a.reshape((3, 5))  # umwandeln in 3 Zeilen und 5 Spalten
 ```
 
 ```{python}
@@ -105,7 +105,7 @@ a.dtype  # Datentyp aller Elemente im Array (64 bit Ganzzahlen)
 
 ### Aus Listen
 
-Arrays können mit der Funktion `np.array` aus Listen (oder Tupeln) erstellt werden. Im folgenden Beispiel übergeben wir der Funktion eine Liste als Argument, und daraus wird dann ein NumPy-Array erzeugt (zurückgegeben):
+Arrays können mit der Funktion `np.array` aus Listen (oder Tupeln) erstellt werden. Im folgenden Beispiel übergeben wir der Funktion eine Liste als Argument, und daraus wird dann ein NumPy-Array erzeugt:
 
 ```{python}
 b = np.array([1.1, 3.14, 7.68, -12.69, -4.55])  # aus einer normalen Liste
@@ -123,6 +123,10 @@ c
 c.shape  # 2 Zeilen, 3 Spalten
 ```
 
+:::{.callout-note}
+Ein eindimensionales Array kann man sich wie eine Liste vorstellen, wohingegen ein zweidimensionales Array einer Tabelle entspricht. Für höherdimensionale Arrays haben wir keine speziellen Bezeichnungen.
+:::
+
 
 ### Konstant befüllte Arrays
 
@@ -132,7 +136,7 @@ Im Gegensatz zu Listen, welche dynamisch wachsen können, sollte die Größe von
 np.zeros((3, 4))  # Nullen
 ```
 
-:::{.callout-note}
+:::{.callout-important}
 Die Funktion `np.zeros` wird mit *einem* Argument aufgerufen, nämlich mit dem Tupel `(3, 4)` im vorigen Beispiel. Deswegen benötigt man hier ein weiteres Klammernpaar, um ein Tupel zu übergeben und dieses von Funktionsargumenten zu unterscheiden.
 :::
 
@@ -198,7 +202,7 @@ Danach erzeugt man damit ein Generator-Objekt. Dieses kann man auch in einen def
 rng = default_rng(seed=42)
 ```
 
-In diesem Beispiel initialisieren wir den Generator mit `42` (wir könnten aber auch jede beliebige andere Zahl nehmen). Die Initialisierung bewirkt, dass der Generator danach dieselbe Folge an Zufallszahlen ausspuckt. Lässt man die Initialisierung mit einer Zahl weg, dann wird der Generator in einen nicht-reproduzierbaren Zustand initialisiert (der Seed wird z.B. aus der aktuellen Uhrzeit u.ä. gebildet). Das bedeutet, dass bei jeder erneuten Ausführung eines Scripts andere Zufallszahlen gezogen werden, was nicht im Sinne der Reproduzierbarkeit von Ergebnissen ist.
+In diesem Beispiel initialisieren wir den Generator mit `42` (wir könnten aber auch jede beliebige andere Zahl nehmen). Die Initialisierung bewirkt, dass der Generator danach dieselbe Folge an Zufallszahlen ausspuckt. Lässt man die Initialisierung mit einer Zahl weg, dann wird der Generator in einen nicht-reproduzierbaren Zustand initialisiert (der Seed wird z.B. aus der aktuellen Uhrzeit u.ä. gebildet). Das bedeutet, dass bei jeder erneuten Ausführung eines Scripts andere Zufallszahlen gezogen werden, was häufig nicht im Sinne der Reproduzierbarkeit von Ergebnissen ist.
 
 Durch Methoden des Generators kann man jetzt Zufallszahlen mit der gewünschten Verteilung erzeugen:
 
@@ -297,7 +301,7 @@ b + c
 
 ### Methoden
 
-Viele Funktionen wie z.B. `sum`, `mean`, `min` oder `max` sind als Methoden von `ndarray`-Objekten verfügbar. Standardmäßig verarbeiten sie dabei alle Elemente so, als ob diese in einer Dimension wären. Alternativ zu den Methoden gibt es auch Funktionen mit dem gleichen Namen.
+Viele Funktionen wie z.B. `sum`, `mean`, `min` oder `max` sind als Methoden von `ndarray`-Objekten verfügbar. Standardmäßig verarbeiten sie dabei alle Elemente so, als ob diese in einer Dimension wären. Alternativ zu den Methoden gibt es auch Funktionen mit den gleichen Namen.
 
 ```{python}
 a.mean()  # Methode
@@ -328,6 +332,10 @@ a.mean(axis=0)  # Mittelwert entlang der Zeilen, d.h. Spaltenmittelwerte
 ```{python}
 a.mean(axis=1)  # Mittelwert entlang der Spalten, d.h. Zeilenmittelwerte
 ```
+
+:::{.callout-tip}
+Das `axis`-Argument gibt an, welche Dimensionen *verschwinden*. Bei `a.mean(axis=0)` verschwinden also die Zeilen (es wird der Mittelwert über die Zeilen gerechnet), und übrig bleiben nur mehr die Spaltenmittelwerte.
+:::
 
 
 ## Indizieren und Slicen
@@ -431,7 +439,7 @@ Es werden hier also nur jene Elemente herausgegriffen, für die das Indexarray `
 Die Form eines Arrays lässt sich auf folgende Arten einsehen bzw. ändern:
 
 ```{python}
-c = np.random.randint(-500, 500, (3, 4))
+c = np.random.randint(-100, 100, (3, 4))
 c
 ```
 
@@ -450,8 +458,11 @@ c
 ```
 
 ```{python}
-c.reshape((1, -1))  # reshape ändert das Objekt nicht
-c
+c.reshape((1, -1))  # reshape gibt ein neues Array zurück
+```
+
+```{python}
+c  # das ursprüngliche Array wird nicht verändert
 ```
 
 :::{.callout-tip}
@@ -563,7 +574,7 @@ Erstellen Sie ein zweidimensionales Array `u` der Form (100, 8), welches aus zuf
 
 ### Übung 4
 
-Erstellen Sie ein dreidimensionales Array `x` der Form (3, 10, 5), welches die Zahlen von 1 bis 150 enthält. Wie lauten die *drei* Mittelwerte wenn Sie über die letzten beiden Dimensionen mitteln?
+Erstellen Sie ein dreidimensionales Array `x` der Form (3, 10, 5), welches die Zahlen von 1 bis 150 enthält. Wie lauten die *drei* Mittelwerte, wenn Sie über die letzten beiden Dimensionen mitteln?
 
 :::{.callout-note}
 Das Array `x` kann man sich als 3 Tabellen à 10 Zeilen und 5 Spalten vorstellen. Der Mittelwert aller Elemente von `x[0, :, :]` ist der erste gesuchte Mittelwert, jener von `x[1, :, :]` der zweite, und der Mittelwert von `x[2, :, :]` ist der dritte gesuchte Wert. Sie können so die drei Mittelwerte berechnen, oder kürzer wenn Sie das `axis`-Argument von `np.mean` auf ein Tupel setzen, welches die Achsen beschreibt, über die Sie mitteln möchten (also die Achsen 1 und 2, da Python bei 0 zu zählen beginnt).
