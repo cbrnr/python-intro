@@ -2,7 +2,7 @@
 title: "10 – Lösungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2022-12-15
+date: 2023-06-05
 format: html
 engine: jupyter
 highlight-style: github
@@ -30,31 +30,68 @@ air.shape  # 153 Zeilen, 6 Spalten
 ## Übung 2
 
 ```{python}
+ozone = air[:, 0]
+solar = air[:, 1]
 wind = air[:, 2]
-plt.hist(wind, edgecolor="white")
-plt.title("Wind")
+temp = air[:, 3]
+month = air[:, 4]
+day = air[:, 5]
 ```
 
 
 ## Übung 3
 
+```python
+fig, ax = plt.subplots()
+ax.hist(wind, edgecolor="white")
+ax.set_title("Wind (mph)")
+```
+
 ```{python}
-sns.displot(wind, kde=True)
+#| echo: false
+fig, ax = plt.subplots()
+ax.hist(wind, edgecolor="white")
+_ = ax.set_title("Wind (mph)")
 ```
 
 
 ## Übung 4
 
+```python
+fig, ax = plt.subplots()
+ax.scatter(temp, wind, alpha=0.5)
+ax.set_xlabel("Temperature (°F)")
+ax.set_ylabel("Wind (mph)")
+```
+
 ```{python}
-temp = air[:, 3]
-plt.plot(temp, wind, ".", markersize=12, alpha=0.5)
-plt.xlabel("Temperatur")
-plt.ylabel("Wind")
+#| echo: false
+fig, ax = plt.subplots()
+ax.scatter(temp, wind, alpha=0.5)
+ax.set_xlabel("Temperature (°F)")
+_ = ax.set_ylabel("Wind (mph)")
 ```
 
 
 ## Übung 5
 
 ```{python}
-sns.regplot(x=temp, y=wind)
+fig, axes = plt.subplots(2, 2)  # 2 Zeilen, 2 Spalten
+
+axes[0, 0].scatter(ozone, solar, alpha=0.5)
+axes[0, 0].set(xlabel="Ozone (ppb)", ylabel="Solar (lang)")
+
+axes[0, 1].plot(temp)
+axes[0, 1].set_xlabel("Index")
+axes[0, 1].set_ylabel("Temperature (°F)")
+
+axes[1, 0].violinplot([temp[:31], temp[31:61], temp[61:92], temp[92:123], temp[123:]])
+axes[1, 0].set_xlabel("Month")
+axes[1, 0].set_ylabel("Temperature (°F)")
+
+axes[1, 1].scatter(wind, ozone, alpha=0.5)
+axes[1, 1].set_xlabel("Wind (mph)")
+axes[1, 1].set_ylabel("Ozone (ppb)")
+
+fig.set_tight_layout(True)
 ```
