@@ -2,7 +2,7 @@
 title: "11 – PsychoPy (1)"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-01-12
+date: 2023-06-12
 format: html
 engine: jupyter
 highlight-style: github
@@ -29,7 +29,7 @@ In dieser Lehrveranstaltung werden wir beide Möglichkeiten kennenlernen. Zunäc
 
 ## Installation
 
-Da PsychoPy ein Python-Paket ist kann es prinzipiell mit `pip install psychopy` installiert werden. Allerdings ist es durch die vielen und teilweise sehr spezifischen Abhängigkeiten von PsychoPy in der Praxis relativ aufwändig, eine funktionsfähige PsychoPy-Umgebung zu erhalten. Selbst wenn das funktioniert, werden hunderte Pakete installiert, welche für PsychoPy notwendig sind – das möchte man vielleicht nicht immer.
+Da PsychoPy ein Python-Paket ist kann es prinzipiell mit `pip install psychopy` installiert werden. Allerdings ist es durch die vielen und teilweise sehr spezifischen Abhängigkeiten von PsychoPy in der Praxis relativ aufwändig, eine funktionsfähige PsychoPy-Umgebung zu erhalten.
 
 Die [offizielle Dokumentation](https://www.psychopy.org/download.html) beschreibt einige mögliche Varianten für unterschiedliche Betriebssysteme. In vielen Fällen ist es am einfachsten, die vorgefertigten [Standalone-Pakete](https://github.com/psychopy/psychopy/releases) zu verwenden. Diese Pakete beinhalten eine komplette Python-Umgebung inklusive aller notwendigen Zusatzpakete, welche parallel zu einer eventuell bereits vorhandenen Python-Umgebung installiert werden können. Es gibt diese Standalone-Pakete sowohl für Windows als auch macOS. Für Linux werden keine Installer angeboten, hier muss man PsychoPy manuell installieren.
 
@@ -72,7 +72,7 @@ Das Dialogfenster sollte also wie folgt aussehen und kann durch Klicken auf OK b
 ![](exp_settings.png)
 
 :::{.callout-tip}
-Wenn man ein Experiment erstellt, sollte man den Vollbildmodus ausschalten (da es sonst teilweise nicht möglich ist, ein laufendes Experiment vorzeitig abzubrechen). Dies kann man in den Experiment Settings im Tab "Screen" tun, indem man die Option "Full-screen window" deaktiviert. Erst wenn das Experiment dann fertig ist, kann man den Vollbildmodus wieder aktivieren.
+Wenn man ein Experiment erstellt, sollte man den Vollbildmodus ausschalten (da es sonst teilweise nicht möglich ist, ein laufendes Experiment vorzeitig abzubrechen). Dies kann man in den Experiment Settings im Tab "Screen" tun, indem man die Option "Full-screen window" deaktiviert. Wenn das Experiment dann fertig ist, kann man den Vollbildmodus wieder aktivieren.
 :::
 
 
@@ -80,7 +80,7 @@ Wenn man ein Experiment erstellt, sollte man den Vollbildmodus ausschalten (da e
 
 Bevor das eigentliche Experiment beginnt sollte man eine kurze Erklärung am Bildschirm anzeigen. Dies setzen wir in einer eigenen Routine um – wir können die bereits vorhandene Routine "trial" dafür verwenden.
 
-Durch einen Rechtsklick auf das blaue Routinen-Symbol und Auswahl von "rename" können wir einen neuen Namen vergeben – für dieses Beispiel verwenden wir `instructions`. Danach fügen wir einen Text-Stimulus aus der Komponenten-Ansicht hinzu, mit dem wir einen kurzen Text anzeigen können. Ein Klick auf die Text-Stimulus-Schaltfläche öffnet einen Dialog, in dem wir die Eigenschaften ändern können. Wichtige Punkte sind hier
+Durch einen Rechtsklick auf das blaue Routinen-Symbol und Auswahl von "rename" können wir einen neuen Namen vergeben – für dieses Beispiel verwenden wir `instructions`. Danach fügen wir einen Text-Stimulus aus der Komponenten-Ansicht hinzu, mit dem wir einen kurzen Text anzeigen können. Ein Klick auf die Text-Stimulus-Schaltfläche öffnet einen Dialog, in dem wir diverse Eigenschaften ändern können. Wichtige Punkte sind hier
 
 - der Name,
 - die Start- und Stopp-Zeit,
@@ -93,7 +93,7 @@ Die Instruktionen sollen so lange angezeigt werden, bis die Leertaste gedrückt 
 
 In der Zeitleiste wird, nachdem man OK geklickt hat, der Text-Stimulus grafisch dargestellt. Man erkennt, dass dieser bei Sekunde 0 startet und unendlich lange dauert. Durch Klicken auf den Stimulus in der Zeitleiste können die Eigenschaften nachträglich verändert bzw. angepasst werden.
 
-Um die Routine per Tastendruck zu beenden und das eigentliche Experiment zu starten fügen wir eine Keyboard-Komponente hinzu. In deren Eigenschaften vergeben wir wieder einen sinnvollen Namen (`instructions_resp`), lassen das Feld "Stop" leer, lassen das Häkchen bei "Force end of Routine" gesetzt (dies bewirkt dass die gesamte Routine nach dem Drücken einer Taste beendet wird) und schreiben in die Liste der "Allowed keys" lediglich `'space'` (dies bedeutet, dass nur die Leertaste die Routine beendet). Bei "Store" im Reiter "Data" kann man "nothing" auswählen, da wir die Information wann die Leertaste gedrückt wurde nicht benötigen.
+Um die Routine per Tastendruck zu beenden und das eigentliche Experiment zu starten, fügen wir eine Keyboard-Komponente hinzu. In deren Eigenschaften vergeben wir wieder einen sinnvollen Namen (`instructions_resp`), lassen das Feld "Stop" leer, lassen das Häkchen bei "Force end of Routine" gesetzt (dies bewirkt dass die gesamte Routine nach dem Drücken einer Taste beendet wird) und schreiben in die Liste der "Allowed keys" lediglich `'space'` (dies bedeutet, dass nur die Leertaste die Routine beendet). Bei "Store" im Reiter "Data" kann man "nothing" auswählen, da wir die Information, wann die Leertaste gedrückt wurde, nicht benötigen.
 
 Das PsychoPy-Fenster sollte nun wie folgt aussehen:
 
@@ -110,14 +110,14 @@ Unter macOS muss man PsychoPy erlauben, den Computer zu steuern (sonst funktioni
 ![](macos-accessibility.png)
 :::
 
-Wie erwartet erscheint zuerst ein Dialogfenster, in dem wir den Namen (bzw. den Code) der Versuchsperson eingeben müssen. Dies wird in den von PsychoPy erstellten Dateien verwendet, welche alle Informationen über das Experiment automatisch abspeichern – standardmäßig befinden sich diese Dateien im Ordner `data`.
+Wie erwartet erscheint zuerst ein Dialogfenster, in dem wir den Namen (bzw. den Code) der Versuchsperson eingeben müssen. Dieser Name wird in den von PsychoPy erstellten Dateien verwendet, welche alle Informationen über das Experiment automatisch abspeichern – standardmäßig befinden sich diese Dateien im Unterordner `data`.
 
 
 ### Routine "Task"
 
-Nun soll das eigentliche Experiment beginnen. Dazu erstellen wir eine neue Routine durch Klicken auf "Insert Routine" – "(new)". Für die neue Routine vergeben wir den Namen `trial`. Danach klicken wir an das rechte Ende der Routine "instructions", um "trial" direkt danach einzufügen. Durch Klicken auf die soeben erstellte Routine können wir dieser wieder Komponenten hinzufügen.
+Nun soll das eigentliche Stroop-Experiment beginnen. Dazu erstellen wir eine neue Routine durch Klicken auf "Insert Routine" – "(new)". Für die neue Routine vergeben wir den Namen `trial`. Danach klicken wir an das rechte Ende der Routine "instructions", um "trial" direkt danach einzufügen. Durch Klicken auf die soeben erstellte Routine können wir dieser wieder Komponenten hinzufügen.
 
-Spätestens jetzt sollte man sich Gedanken über den exakten Ablauf des Experimentes machen. In unserem einfachen Stroop-Beispiel möchten wir nur die drei Farben rot, grün und blau verwenden. Die Wörter die am Bildschirm erscheinen sollen die englischen Begriffe "red", "green" und "blue" sein. Die Versuchspersonen sollen mit den Tasten "r", "g" und "b" die Farbe des Wortes angeben (und nicht den Text des Wortes). Wir möchten alle neun möglichen Kombinationen dieser Farben und Begriffe verwenden, also z.B. das rote Wort "red", das grüne Wort "blue", usw.
+Spätestens jetzt sollte man sich Gedanken über den exakten Ablauf des Experimentes machen. In unserem einfachen Stroop-Beispiel möchten wir nur die drei Farben rot, grün und blau verwenden. Die Wörter, die am Bildschirm erscheinen, sollen die englischen Begriffe "red", "green" und "blue" sein. Die Versuchspersonen sollen mit den Tasten "r", "g" und "b" die Farbe des Wortes angeben (und nicht den Text des Wortes). Wir möchten alle neun möglichen Kombinationen dieser Farben und Begriffe verwenden, also z.B. das rote Wort "red", das grüne Wort "blue", usw.
 
 Dazu können wir alle möglichen Bedingungen in einer Excel-Tabelle zusammenfassen. Folgende Tabelle sollte in der Datei [`conditions.xlsx`](conditions.xlsx) abgespeichert werden (Textformatierungen wie z.B. fett sollten nicht verwendet werden):
 
@@ -156,13 +156,13 @@ Wir möchten außerdem das jeweilige Wort etwas größer am Bildschirm darstelle
 
 Nun ist ein guter Zeitpunkt, das Experiment wieder auszuführen um zu sehen ob und wie alles funktioniert. Nach den Instruktionen sollten dann $9 \cdot 5 = 45$ Wörter in verschiedenen Farben für jeweils 1 Sekunde am Bildschirm erscheinen.
 
-Es fehlt noch die Möglichkeit, Tasteneingaben als Antworten geben zu können. Dazu können wir eine Keyboard-Komponente hinzufügen mit folgenden Eigenschaften:
+Es fehlt noch die Möglichkeit, Tasteneingaben als Antworten geben zu können. Dazu können wir eine Keyboard-Komponente mit folgenden Eigenschaften hinzufügen:
 
 ![](trial_key_1.png)
 
 ![](trial_key_2.png)
 
-Damit haben die Versuchspersonen 2 Sekunden Zeit eine der drei Tasten <kbd>r</kbd>, <kbd>g</kbd> oder <kbd>b</kbd> zu drücken. Falls dies nicht geschieht, wird die Routine beendet und der nächste Schleifendurchlauf startet. Außerdem wird mitgespeichert, ob die Antwort korrekt war oder nicht – dies wird mit Hilfe der Spalte `correct` (aus des Excel-Datei) erreicht, die die erwarteten korrekten Tasteneingaben enthält. Damit kann die erwartete Antwort mit der tatsächlichen Antwort verglichen werden. Das Ergebnis dieses Vergleichs wird dann automatisch in die Ergebnisdateien gespeichert. Wir sollten auch den ersten Tastendruck speichern, da dieser für die Antwort relevant ist.
+Damit haben die Versuchspersonen 2 Sekunden Zeit eine der drei Tasten <kbd>r</kbd>, <kbd>g</kbd> oder <kbd>b</kbd> zu drücken. Falls dies nicht geschieht, wird die Routine beendet und der nächste Schleifendurchlauf startet. Außerdem wird mitgespeichert, ob die Antwort korrekt war oder nicht – dies wird mit Hilfe der Spalte `correct` (aus des Excel-Datei) erreicht, die die erwarteten korrekten Tasteneingaben enthält. Damit kann die erwartete Antwort mit der tatsächlichen Antwort verglichen werden. Das Ergebnis dieses Vergleichs wird dann automatisch in die Ergebnisdateien gespeichert. Wir sollten auch den ersten Tastendruck ("first key") speichern, da dieser für die Antwort relevant ist.
 
 Wir können das Experiment speichern und ausführen – unser einfaches Stroop-Experiment sollte bereits funktionieren. Das Experiment sollte in PsychoPy in etwa so aussehen:
 
@@ -171,7 +171,7 @@ Wir können das Experiment speichern und ausführen – unser einfaches Stroop-E
 
 ### Auswerten der Ergebnisse
 
-Nachdem ein Experiment erfolgreich ausgeführt wurde, befinden sich im Ergebnisordner (standardmäßig ist das der Ordner `data`) drei Dateien mit folgendem Inhalt:
+Nachdem ein Experiment erfolgreich ausgeführt wurde, befinden sich im Ergebnisordner (standardmäßig ist das der Unterordner `data`) drei Dateien mit folgendem Inhalt:
 
 - Kompakte Informationen für jedes Trial (.csv-Datei)
 - Detailliertere Informationen über den zeitlichen Ablauf des gesamten Experimentes (.log-Datei)
@@ -252,7 +252,7 @@ In den folgenden Abschnitten wollen wir versuchen, das Stroop-Experiment um folg
 
 ### Verabschiedungstext
 
-Um einen Text am Ende des Experimentes anzuzeigen können wir ähnlich wie bei den Instruktionen eine Routine mit einem Text-Stimulus erstellen, welcher solange angezeigt wird bis die Leertaste gedrückt wird.
+Um einen Text am Ende des Experimentes anzuzeigen, können wir ähnlich wie bei den Instruktionen eine Routine mit einem Text-Stimulus erstellen, welcher solange angezeigt wird bis die Leertaste gedrückt wird.
 
 
 ### Feedback nach jedem Trial
@@ -276,7 +276,7 @@ msg_color = "white"
 Den Wert von "Code Type" können wir auf "Py" setzen, da wir unser Experiment nur mit Python erstellen wollen. PsychoPy unterstützt zusätzlich noch Javascript, was eine Ausführung des Experiments im Browser ermöglicht. Wir benötigen diese Funktionalität aber nicht.
 :::
 
-Im Abschnitt "Beginn Routine" befindet sich der Code, der immer am Beginn der Routine ausgeführt werden soll:
+Im Abschnitt "Begin Routine" befindet sich der Code, der immer am Beginn der Routine ausgeführt wird:
 
 ```python
 if trial_key.keys:
