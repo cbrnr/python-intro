@@ -2,7 +2,7 @@
 title: "12 – PsychoPy (2)"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-01-19
+date: 2023-06-19
 format: html
 engine: jupyter
 highlight-style: github
