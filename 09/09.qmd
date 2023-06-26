@@ -367,11 +367,11 @@ Mehrdimensionale Arrays haben *einen Index pro Achse*:
 
 ```{python}
 #| echo: false
-np.random.seed(1)
+rng = default_rng(seed=1)
 ```
 
 ```{python}
-b = np.random.randint(0, 100, (5, 4))
+b = rng.integers(low=0, high=100, size=(5, 4))
 ```
 
 ```{python}
@@ -439,7 +439,7 @@ Es werden hier also nur jene Elemente herausgegriffen, für die das Indexarray `
 Die Form eines Arrays lässt sich auf folgende Arten einsehen bzw. ändern:
 
 ```{python}
-c = np.random.randint(-100, 100, (3, 4))
+c = rng.integers(low=-100, high=100, size=(3, 4))
 c
 ```
 
@@ -482,8 +482,8 @@ Der Unterschied zwischen `resize` und `reshape` ist also, das `resize` das Array
 Mit den Funktionen `hstack` und `vstack` können Arrays horizontal bzw. vertikal miteinander kombiniert werden.
 
 ```{python}
-a = np.random.randint(-100, 100, (2, 3))
-b = np.random.randint(-100, 100, (2, 3))
+a = rng.integers(low=-100, high=100, size=(2, 3))
+b = rng.integers(low=-100, high=100, size=(2, 3))
 ```
 
 ```{python}
@@ -513,12 +513,12 @@ np.row_stack((a, b))
 ```
 
 ```{python}
-c = np.random.randint(-100, 100, 5)
+c = rng.integers(low=-100, high=100, size=5)
 c
 ```
 
 ```{python}
-d = np.random.randint(-100, 100, 5)
+d = rng.integers(low=-100, high=100, size=5)
 d
 ```
 
