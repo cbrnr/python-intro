@@ -273,6 +273,22 @@ t[1]
 t[1] = "c"  # Fehler!
 ```
 
+:::{.callout-tip}
+Ein Tupel mit einem Element erstellt man mit einem nachgestellten Komma:
+
+```{python}
+t = "A",
+t
+```
+
+Die Klammern sind, wie bereits erwähnt, optional:
+
+```{python}
+t = ("A",)
+t
+```
+:::
+
 
 ## List Comprehensions
 

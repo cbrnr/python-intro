@@ -1,7 +1,7 @@
 - source: 07.qmd
   quarto-pub:
     - id: f46c6070-3a20-4712-8a01-6af6f986085d
-      url: 'https://quartopub.com/sites/cbrnr/python-23s-07'
+      url: 'https://cbrnr.quarto.pub/python-23s-07'
 - source: 07-solutions.qmd
   quarto-pub:
     - id: b7b7c0f5-2323-41bf-8d42-26474252c39c
