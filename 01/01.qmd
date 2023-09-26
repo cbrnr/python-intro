@@ -2,8 +2,10 @@
 title: "1 – Grundlagen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-03-06
-format: html
+date: 2023-10-05
+format:
+  html:
+    page-layout: full
 engine: jupyter
 highlight-style: github
 title-block-banner: true
@@ -13,7 +15,6 @@ theme:
 lang: de
 author-title: "Autor"
 published-title: "Veröffentlicht"
-fig-cap-location: margin
 ---
 
 ## Überblick
@@ -27,7 +28,9 @@ Diese Lehrveranstaltung setzt keinerlei Programmierkenntnisse voraus. Die Grundl
 
 ## Was ist Python?
 
-Folgende (positive) Eigenschaften werden oft mit Python in Verbindung gebracht:
+Python ist eine generische Programmiersprache, d.h. Python ist nicht spezialisiert auf ein eingeschränktes Gebiet, so wie z.B. [R](https://www.r-project.org/) auf Datenanalyse/Statistik ausgerichtet ist. Mit spezialisierten Programmiersprachen kann man manche Dinge schneller, besser, eleganter oder kürzer lösen als mit generischen Programmiersprachen. Im Gegensatz dazu ist man mit generischen Programmiersprachen aber nicht auf ein bestimmtes Gebiet eingeschränkt. Mit Python kann man neben Datenanalysen, numerischen Berechnungen und Statistik auch z.B. Webanwendungen oder Programme mit grafischen Oberflächen erstellen. Bevor man ein konkretes Problem lösen möchte, sollte man sich also unter anderem auch überlegen, welches Tool bzw. welche Programmiersprache dafür geeignet ist.
+
+Folgende Eigenschaften werden oft mit Python in Verbindung gebracht:
 
 - Einfach zu erlernende Programmiersprache
 - Open Source (freie Software)
@@ -37,8 +40,6 @@ Folgende (positive) Eigenschaften werden oft mit Python in Verbindung gebracht:
 - Umfangreiche Standardbibliothek
 - Große und hilfsbereite Community
 - Riesige Anzahl an Zusatzpaketen verfügbar
-
-Python ist eine generische Programmiersprache, d.h. Python ist nicht spezialisiert auf ein eingeschränktes Gebiet, so wie z.B. [R](https://www.r-project.org/) auf Datenanalyse/Statistik ausgerichtet ist. Mit spezialisierten Programmiersprachen kann man manche Dinge schneller, besser, eleganter oder kürzer lösen als generische Programmiersprachen. Im Gegensatz dazu ist man mit generischen Programmiersprachen aber nicht auf ein bestimmtes Gebiet eingeschränkt. Mit Python kann man neben Datenanalysen, numerischen Berechnungen und Statistik auch z.B. Webanwendungen oder Programme mit grafischen Oberflächen erstellen. Bevor man ein konkretes Problem lösen möchte, sollte man sich also unter anderem auch überlegen, welches Tool bzw. welche Programmiersprache dafür geeignet ist.
 
 
 ## Popularität
@@ -81,10 +82,10 @@ print(", ".join([str(i) for i in range(10)]))
 Auf der [offiziellen Python-Website](https://www.python.org/) findet man alles rund um Python. Dort kann man auch Installationspakete für diverse Betriebssysteme herunterladen. Außerdem gibt es dort auch die sehr umfangreiche offizielle Dokumentation mit vielen Beispielen und Tutorials. Mittlerweile ist die Installation auf Windows und macOS so einfach, dass man die offiziellen Installer bedenkenlos empfehlen kann (unter Linux ist es aber nach wie vor besser, die distributionseigenen Paketmanager dafür zu verwenden, falls Python nicht ohnehin schon vorinstalliert ist).
 
 :::{.callout-note}
-In diesen Unterlagen wird beispielhaft die Installation der Version 3.10.7 gezeigt. Sie sollten aber die aktuellste Version installieren und verwenden!
+In diesen Unterlagen wird die Installation der Version 3.10.7 gezeigt. Sie sollten aber die aktuellste Version installieren und verwenden!
 :::
 
-Unter Windows wählt man im Installationsfenster die Standard-Installation aus, aber setzt unbedingt das Häkchen bei *"Add Python 3.10 to PATH"*. Die Option *"Install launcher for all users (recommended)"* kann deaktiviert werden, damit können Sie Python ohne Administratorrechte installieren. Das folgende Bild zeigt diese Einstellungen:
+Unter Windows wählt man im Installationsfenster die Standard-Installation aus, aber setzt unbedingt das Häkchen bei *"Add Python 3.10 to PATH"*. Die Option *"Install launcher for all users (recommended)"* kann deaktiviert werden, damit können Sie Python auch ohne Administratorrechte installieren. Das folgende Bild zeigt diese Einstellungen:
 
 ![](install_python_windows.png)
 
@@ -94,19 +95,15 @@ Unter Windows wählt man im Installationsfenster die Standard-Installation aus, 
 
 Nachdem Sie Python installiert haben können Sie den sogenannten Python-Interpreter starten. Dabei handelt es sich um ein Programm, welches Python-Befehle verstehen und verarbeiten kann. Man kann mit dem Python-Interpreter auch interaktiv arbeiten. Interaktiv bedeutet, dass man einen Befehl eintippt und mit der Eingabetaste bestätigt. Danach wird der eingegebene Befehl direkt verarbeitet und das Ergebnis ausgegeben.
 
-Es gibt einige Möglichkeiten, den Python-Interpreter zu verwenden – mehr dazu in der nächsten Einheit. Fürs erste ist es am einfachsten, wenn Sie unter Windows das Programm "Python 3.10 (64-bit)" starten (es befindet sich im Startmenü im Ordner "Python 3.10").
+Es gibt einige Möglichkeiten, den Python-Interpreter zu verwenden – mehr dazu in der nächsten Einheit. Zunächst ist es am einfachsten, wenn Sie unter Windows das Programm "Python 3.10 (64-bit)" starten (es befindet sich im Startmenü im Ordner "Python 3.10"). Daraufhin öffnet sich ein Fenster, das in etwa so aussieht:
 
 ![](python_windows.png)
 
-Unter macOS bzw. Linux öffnen Sie ein Terminal und tippen dort `python` gefolgt von der Eingabetaste. Achten Sie auf die vom Interpreter angezeigte Versionsnummer um sicherzustellen, dass die korrekte Python-Version gestartet wurde.
+Unter macOS bzw. Linux öffnen Sie ein Terminal (z.B. mittels [Launchpad](https://support.apple.com/de-at/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac)) und tippen dort `python3`, gefolgt von der Eingabetaste. Achten Sie auf die vom Interpreter angezeigte Versionsnummer, um sicherzustellen, dass die korrekte Python-Version gestartet wurde.
 
 ![](python_macos.png)
 
-:::{.callout-important}
-Auf macOS muss man `python3` statt `python` zum Starten des interaktiven Interpreters verwenden! Dies kann auch unter Linux erforderlich sein, hier hängt es aber davon ab, welche Linux-Distribution man verwendet.
-:::
-
-Wir können nun Python-Befehle eintippen und mit der Eingabetaste bestätigen. Der sogenannte Prompt `>>>` signalisiert dabei, dass Python bereit für Eingaben ist (dieser Prompt ist *nicht* Teil eines Python-Befehls). Der Python-Interpreter läuft im Hintergrund und führt Ihre Befehle aus. So können Sie Python z.B. als Taschenrechner verwenden. Die vier Grundrechenarten Addition, Subtraktion, Multiplikation und Division können wie folgt verwendet werden:
+Im interaktiven Interpreter können wir nun Python-Befehle eintippen und mit der Eingabetaste bestätigen. Der sogenannte Prompt `>>>` signalisiert dabei, dass Python bereit für Eingaben ist (dieser Prompt ist *nicht* Teil eines Python-Befehls). So kann man Python z.B. als Taschenrechner verwenden. Die vier Grundrechenarten Addition, Subtraktion, Multiplikation und Division können wie folgt verwendet werden:
 
 ```{python}
 1 + 1
@@ -123,6 +120,10 @@ Wir können nun Python-Befehle eintippen und mit der Eingabetaste bestätigen. D
 ```{python}
 120 / 7
 ```
+
+:::{.callout-important}
+Bitte beachten Sie, dass Python die *englische* Zahlenschreibweise mit einem *Punkt* als Dezimaltrennzeichen verwendet und nicht das im deutschen Sprachraum übliche *Komma*. Kommazahlen müssen daher immer mit einem Punkt eingegeben werden, ganz egal welche Sprache im Betriebssystem eingestellt ist. In diesen Unterlagen wird ebenfalls ein Punkt als Dezimaltrennzeichen verwendet.
+:::
 
 Die ganzzahlige Division hat einen eigenen Operator, der aus zwei Zeichen besteht:
 
@@ -148,10 +149,6 @@ Python kennt die Vorrangs- und Klammerregeln:
 ```{python}
 (13 + 6) * 8 - 12 / (2.5 + 1.6)
 ```
-
-:::{.callout-important}
-Bei der Eingabe bzw. Darstellung von Zahlen ist darauf zu achten, dass Python die *englische* Zahlenschreibweise mit einem *Punkt* als Dezimaltrennzeichen verwendet.
-:::
 
 Wenn Sie mathematische Funktionen wie beispielsweise Sinus oder Cosinus verwenden möchten, müssen Sie zuerst das `math`-Modul importieren, in dem Sie (einmalig) folgende Zeile eintippen:
 
@@ -189,12 +186,10 @@ Python wird heutzutage in vielen verschiedenen Bereichen verwendet. Um Ihnen zu 
 
 ![](psychopy.png)
 
-Eine Alternative zu PsychoPy ist as ebenfalls in Python geschriebene Tool [OpenSesame](http://osdoc.cogsci.nl/).
-
 
 ### Neurowissenschaften
 
-Python ist sehr populär in den Neurowissenschaften. Auf der [NIPY-Website](https://nipy.org/) (Neuroimaging for Python) haben sich einzelne Projekte zusammengeschlossen, welche spezifische Aufgaben im Bereich der Neurowissenschaften abdecken. Besonders viele Pakete gibt es für die Auswertung von fMRI-Daten. Hier gibt es z.B. [NiBabel](https://nipy.org/nibabel/) zum Einlesen verschiedenster Neuroimaging-Datenformate, [Nipype](https://www.mit.edu/~satra/nipype-nightly/) zur einheitlichen Verwendung unterschiedlicher fMRI-Analyseprogramme, sowie [Nipy](https://nipy.org/nipy/), [Nitime](https://nipy.org/nitime/) und [Nilearn](https://nilearn.github.io/) zur Analyse von fMRI-Daten.
+Python ist sehr populär in den Neurowissenschaften. Auf der [NIPY-Website](https://nipy.org/) (Neuroimaging for Python) haben sich einzelne Projekte zusammengeschlossen, welche spezifische Aufgaben im Bereich der Neurowissenschaften abdecken. Besonders viele Pakete gibt es für die Auswertung von [fMRT](https://de.wikipedia.org/wiki/Funktionelle_Magnetresonanztomographie)-Daten. Hier gibt es z.B. [NiBabel](https://nipy.org/nibabel/) zum Einlesen verschiedenster Neuroimaging-Datenformate, [Nipype](https://www.mit.edu/~satra/nipype-nightly/) zur einheitlichen Verwendung unterschiedlicher fMRT-Analyseprogramme, sowie [NIPY](https://nipy.org/nipy/), [NiTime](https://nipy.org/nitime/) und [Nilearn](https://nilearn.github.io/) zur Analyse von fMRT-Daten.
 
 ![](nilearn.png)
 
@@ -233,7 +228,7 @@ Installieren Sie Python auf Ihrem Rechner. Starten Sie dann den Python-Interpret
 
 ### Übung 2
 
-Tippen Sie im Python-Interpreter `import antigravity` ein. Was passiert? Was geschieht, wenn Sie `import this` eingeben? Welchen Effekt hat `import math`?
+Tippen Sie im Python-Interpreter `import antigravity` ein. Was passiert? Was geschieht, wenn Sie `import this` eingeben? Was bewirkt `import math`?
 
 
 ### Übung 3
@@ -252,7 +247,9 @@ Berechnen Sie das Ergebnis des folgenden Ausdrucks mit einem Befehl (in einer Ze
 
 $$\frac{(5^5 - \pi) \cdot \frac{19}{3}}{\sqrt{13} + 7^\frac{2}{3}}$$
 
-*Hinweis:* Achten Sie auf die Klammersetzung! Das richtige Ergebnis beträgt ungefähr 2722.
+:::{.callout-note}
+Achten Sie auf die Klammersetzung! Das richtige Ergebnis beträgt ungefähr 2722.
+:::
 
 
 ### Übung 6

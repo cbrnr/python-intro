@@ -2,8 +2,10 @@
 title: "1 – Lösungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-03-06
-format: html
+date: 2023-10-05
+format:
+  html:
+    page-layout: full
 engine: jupyter
 highlight-style: github
 title-block-banner: true
@@ -17,7 +19,7 @@ published-title: "Veröffentlicht"
 
 ## Übung 1
 
-Die installierte Python-Version ist 3.10.6. Dies ist nicht mehr die aktuellste Version.
+Die installierte Python-Version ist 3.10.6. Dies ist nicht mehr die aktuellste Version, welche stets auf der [offiziellen Website](https://www.python.org/) verfügbar ist.
 
 ![](python_version.png)
 
@@ -67,9 +69,11 @@ Der Befehl `import math` bewirkt, dass man danach die im Modul `math` enthaltene
 4 % 0.4
 ```
 
-Es fällt auf, dass das Ergebnis der Ganzzahldivision `4 // 0.4` mathematisch nicht korrekt ist – es sollte 10 lauten, Python gibt aber 9 aus. Auch der Rest der Division sollte 0 sein, hier gibt Python 0.3999999999999998 aus (also fast 0.4).
+Es fällt auf, dass das Ergebnis der Ganzzahldivision `4 // 0.4` mathematisch nicht korrekt ist – es sollte 10 lauten, Python gibt aber 9.0 aus. Auch der Rest der Division sollte 0 sein, hier gibt Python 0.3999999999999998 aus (also fast 0.4).
 
-Der Grund für dieses Verhalten liegt in der Tatsache begründet, dass Computer die meisten Kommazahlen nicht exakt repräsentieren können, sondern nur ungefähr. Daher können Rundungsfehler entstehen, weswegen man bei Berechnungen mit Kommazahlen immer achtsam sein sollte (normalerweise sind diese Rundungsfehler aber extrem klein und nicht so offensichtlich "falsch" wie in diesem Beispiel).
+:::{.callout-tip}
+Der Grund für dieses Verhalten liegt in der Tatsache begründet, dass Computer Kommazahlen im Allgemeinen nicht exakt repräsentieren können, sondern nur mit begrenzter Genauigkeit. Daher können Rundungsfehler entstehen, weswegen man bei Berechnungen mit Kommazahlen immer achtsam sein sollte (normalerweise sind diese Rundungsfehler aber extrem klein und nicht so offensichtlich "falsch" wie in diesem Beispiel). Dies ist übrigens keine Eigenheit von Python, sondern liegt darin begründet, wie Computer [Kommazahlen](https://de.wikipedia.org/wiki/Gleitkommazahl#Einschränkungen_und_deren_mathematische_Grundlagen) intern darstellen.
+:::
 
 
 ## Übung 4
@@ -90,9 +94,9 @@ import math
 
 ## Übung 6
 
-Den Befehl `math.Sqrt(4)` gibt es nicht – da in Python Groß- und Kleinschreibung berücksichtigt wird, ist `math.Sqrt` nicht identisch mit `math.sqrt`. Letzteres ist die richtige Schreibweise der Wurzelfunktion, welche im `math`-Modul enthalten ist.
+Den Befehl `math.Sqrt(4)` gibt es nicht – da Python Groß- und Kleinschreibung unterscheidet, ist `math.Sqrt` nicht identisch mit `math.sqrt`. Letzteres ist die korrekte Schreibweise der Wurzelfunktion, welche im `math`-Modul enthalten ist.
 
-Korrekt wäre also:
+Richtig wäre also:
 
 ```{python}
 math.sqrt(4)
