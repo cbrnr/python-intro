@@ -2,8 +2,10 @@
 title: "2 – Lösungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-03-13
-format: html
+date: 2023-10-12
+format:
+  html:
+    page-layout: full
 engine: jupyter
 highlight-style: github
 title-block-banner: true
@@ -28,8 +30,8 @@ Bei einer frischen Python-Installation sind nur wenige Pakete installiert, die A
 ```
 Package    Version
 ---------- -------
-pip        22.2.2
-setuptools 65.4.0
+pip        23.2.1
+setuptools 68.2.2
 ```
 
 
@@ -64,7 +66,7 @@ pip uninstall numpy
 :::{.callout-note}
 Wenn man ein Paket installiert, werden meist weitere zusätzliche Pakete automatisch mitinstalliert, welche vom gewünschten Paket benötigt werden. Beispielsweise benötigt das Paket `ipython` einige weitere Pakete, darunter `backcall`, `decorator`, `jedi`, und so weiter. Diese sogenannten Abhängigkeiten werden also automatisch mitinstalliert, wenn man `pip install ipython` ausführt.
 
-Wenn man ein Paket wieder deinstalliert, also z.B. `pip uninstall ipython`, dann werden dessen Abhängigkeiten allerdings *nicht* automatisch entfernt (da diese vielleicht auch von anderen Paketen benötigt werden könnten). Diese Überbleibsel muss man also manuell entfernen (oder einfach installiert lassen).
+Wenn man ein Paket wieder deinstalliert, also z.B. `pip uninstall ipython`, dann werden dessen Abhängigkeiten allerdings *nicht* automatisch entfernt (da diese vielleicht noch von anderen Paketen benötigt werden könnten). Diese Überbleibsel muss man also manuell entfernen (oder einfach installiert lassen).
 :::
 
 
@@ -91,11 +93,9 @@ print?
 
 ## Übung 5
 
-Der interaktive Standard-Interpreter wird mit `python` gestartet – dieser wird direkt mit der Installation von Python mitgeliefert. Er ist allerdings relativ rudimentär und bietet z.B. keine farblichen Hervorhebungen oder spezielle Kurzbefehle wie `pwd`. Daher kann man mit `pip install ipython` das Zusatzpaket `ipython` installieren, welches einen wesentlich komfortableren interaktiven Interpreter bietet (es ist sozusagen eine Erweiterung des Standard-Interpreters). Man startet ihn mit dem Befehl `ipython`. Beide verwenden natürlich exakt denselben Python-Interpreter, es geht nur darum, das interaktive Arbeiten komfortabler zu gestalten.
+Der interaktive Standard-Interpreter wird mit `python` im Terminal gestartet – dieser wird direkt mit der Installation von Python mitgeliefert. Er ist allerdings relativ rudimentär und bietet z.B. keine farblichen Hervorhebungen oder spezielle Kurzbefehle wie `pwd`. Daher kann man mit `pip install ipython` das Zusatzpaket `ipython` installieren, welches einen wesentlich komfortableren interaktiven Interpreter bietet (es ist sozusagen eine Erweiterung des Standard-Interpreters). Man startet ihn mit dem Befehl `ipython`. Beide verwenden natürlich exakt denselben Python-Interpreter, es geht nur darum, das interaktive Arbeiten komfortabler zu gestalten.
 
 
 ## Übung 6
 
-Ein ganzes Script kann einfach mit dem Play-Icon rechts oben ausgeführt werden (im Script-Modus). Möchte man eine einzelne oder mehrere markierte Zeilen im interaktiven Interpreter ausführen, macht man das am besten mit <kbd>Shift</kbd><kbd>Enter</kbd>. Hier wird allerdings immer der Standard-Interpreter `python` gestartet. Diesen kann man aber mit `exit()` beenden und dann `ipython` starten. Ab dann führt die Tastenkombination Befehle in IPython aus.
-
-Zusätzlich gibt es in Visual Studio Code noch das Interaktive Fenster, welches aktiviert wird, sobald man im Script Zellen definiert hat. Dies sind einfach Kommentarzeilen `# %%`.
+Ein ganzes Script kann einfach mit dem Play-Icon rechts oben ausgeführt werden (im Script-Modus). Möchte man eine einzelne oder mehrere markierte Zeilen im interaktiven Interpreter ausführen, macht man das am besten mit <kbd>Shift</kbd><kbd>Enter</kbd>. Hier wird allerdings immer der Standard-Interpreter `python` gestartet. Diesen kann man aber mit `exit()` beenden und dann `ipython --no-autoindent` starten. Ab dann führt die Tastenkombination <kbd>Shift</kbd><kbd>Enter</kbd> Befehle in IPython aus.
