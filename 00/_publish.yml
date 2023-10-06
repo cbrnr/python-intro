@@ -1,4 +1,4 @@
 - source: 00.qmd
-  quarto-pub:
-    - id: 6fc8d3b7-06fa-4e45-98db-b98c0e2ce5da
-      url: 'https://cbrnr.quarto.pub/python-23w-00'
+  netlify:
+    - id: 70722a8b-ab5d-4e53-80fb-96550156e419
+      url: 'https://python-23w-00.netlify.app'
