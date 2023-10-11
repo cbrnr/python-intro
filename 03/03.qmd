@@ -2,8 +2,10 @@
 title: "3 – Namen, Ausdrücke, Anweisungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-03-20
-format: html
+date: 2023-10-19
+format:
+  html:
+    page-layout: full
 engine: jupyter
 highlight-style: github
 title-block-banner: true
@@ -156,7 +158,7 @@ type(max)
 max
 ```
 
-Erwartungsgemäß ist `max` jetzt ein Name, der auf das `int`-Objekt 4 verweist. Die ursprüngliche eingebaute Funktion `max` kann man jetzt nicht mehr verwenden:
+Erwartungsgemäß ist `max` jetzt ein Name, der auf das `int`-Objekt 4 verweist. Die ursprüngliche eingebaute Funktion kann man jetzt nicht mehr verwenden:
 
 ```python
 max(1, 88, 7)
@@ -218,11 +220,19 @@ print("Python")
 Bei den obigen zwei Beispielen sieht man, dass es keine Zeile mit Ausgaben gibt – der Grund dafür ist, dass diese beiden Anweisungen keine Werte haben, d.h. es gibt hier im interaktiven Modus des Python-Interpreters nichts zum Ausgeben.
 
 :::{.callout-note}
-Dass der Aufruf der `print`-Funktion trotzdem eine Ausgabe am Bildschirm bewirkt, liegt an der Funktion, deren Zweck ja genau diese Ausgabe ist.
-:::
+Dass der Aufruf der `print`-Funktion trotzdem eine Ausgabe am Bildschirm bewirkt, liegt an der Funktion, deren Zweck ja genau diese Ausgabe ist. Dies kann man sehen, wenn man dem Funktionsaufruf einen Namen zuweist:
 
-:::{.callout-note}
-Kein Wert entspricht in Python dem speziellen Wert `None`.
+```{python}
+s = print("Python")
+```
+
+Der Typ des Wertes von `print("Python")`, der ja jetzt den Namen `s` hat, ist also:
+
+```{python}
+type(s)
+```
+
+Damit ist also klar, dass `print("Python")` keinen Wert hat (eigentlich `None`).
 :::
 
 
@@ -233,7 +243,7 @@ Python bringt eine Menge nützlicher Datentypen mit. Im Folgenden werden die wic
 
 ### Logische Typen
 
-Der Typ `bool` wird für Vergleiche verwendet; es gibt nur zwei mögliche Werte, nämlich `True` und `False`.
+Der Typ `bool` wird für Vergleiche verwendet (dazu in einem späteren Kapitel mehr); es gibt nur zwei mögliche Werte, nämlich `True` und `False`.
 
 ```{python}
 b = True
@@ -249,7 +259,7 @@ type(c)
 ### Numerische Typen
 
 - `int` (Ganzzahlen)
-- `float` (Kommazahlen)
+- `float` (Dezimalzahlen)
 - `complex` (Komplexe Zahlen)
 
 ```{python}
@@ -262,20 +272,20 @@ a = 23.221
 type(a)
 ```
 
-Aufgrund der begrenzten Rechengenauigkeit, mit denen Computer Kommazahlen darstellen, kann es zu Rundungsfehlern kommen (Kommazahlen können im Allgemeinen nicht exakt repräsentiert werden). Beispiel:
+Aufgrund der begrenzten Rechengenauigkeit, mit denen Computer Dezimalzahlen darstellen, kann es zu Rundungsfehlern kommen (Dezimalzahlen können im Allgemeinen nicht exakt repräsentiert werden). Beispiel:
 
 ```{python}
 0.1 + 0.2
 ```
 
-Man sollte daher Kommazahlen nie miteinander vergleichen:
+Man sollte daher Dezimalzahlen nie miteinander vergleichen:
 
 ```{python}
 0.1 + 0.2 == 0.3
 ```
 
 :::{.callout-note}
-Statt Kommazahlen mit `==` zu vergleichen ist es besser, wenn man überprüft, ob der Unterschied zwischen den beiden Zahlen sehr klein ist. Dazu gibt es im `math`-Modul eine eigene Funktion `math.isclose`, die man wie folgt verwendet:
+Statt Dezimalzahlen mit `==` zu vergleichen ist es besser, wenn man überprüft, ob der Unterschied zwischen den beiden Zahlen sehr klein ist. Dazu gibt es im `math`-Modul eine eigene Funktion `math.isclose`, die man wie folgt verwendet:
 
 ```{python}
 import math
@@ -296,10 +306,10 @@ type(a)
 
 ### Sequenzen
 
-Sequenzdatentypen können aus mehreren Elementen bestehen. Folgende wichtige Sequenzdatentypen werden von Python unterstützt:
+Sequenzdatentypen können mehrere Elemente beinhalten. Folgende wichtige Sequenzdatentypen werden von Python unterstützt:
 
 - `str` (String bzw. Zeichenkette)
-- `list` (Liste von Objekten)
+- `list` (Liste)
 - `tuple` (ähnlich wie `list`, kann aber nachträglich nicht mehr verändert werden)
 - `set` (Ansammlung von *unterschiedlichen* Elementen, d.h. keine Duplikate)
 
@@ -383,19 +393,21 @@ Nennen Sie außerdem einige Richtlinien, wie man gute Namen erstellt. Führen Si
 
 Wie groß ist die Oberfläche bzw. das Volumen einer Kugel mit einem Radius von $r=5$? Führen Sie die Berechnung mit Python durch und weisen Sie den Ergebnissen die Namen `area` bzw. `volume` zu. Verwenden Sie für den Radius den Namen `r` und setzen Sie den Wert von `r` auf 5.
 
-*Hinweis:* Sie können die Zahl $\pi$ als `math.pi` verwenden, wenn Sie folgende Zeile ganz am Anfang Ihres Scripts hinzufügen:
+:::{.callout-note}
+Sie können die Zahl $\pi$ als `math.pi` verwenden, wenn Sie folgende Zeile ganz am Anfang Ihres Scripts hinzufügen:
 
 ```python
 import math
 ```
 
-Die Formel für die Oberfläche $A$ lautet:
+Die Formel für die Oberfläche $A$ einer Kugel lautet:
 
 $$A = 4 \pi r^2$$
 
-Das Volumen $V$ kann man mit folgender Formel berechnen:
+Das Volumen $V$ einer Kugel kann man mit folgender Formel berechnen:
 
 $$V = \frac{4}{3} \pi r^3$$
+:::
 
 
 ### Übung 5

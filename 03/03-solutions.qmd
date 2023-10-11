@@ -2,8 +2,10 @@
 title: "3 – Lösungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-03-20
-format: html
+date: 2023-10-19
+format:
+  html:
+    page-layout: full
 engine: jupyter
 highlight-style: github
 title-block-banner: true
@@ -23,105 +25,82 @@ height = 12
 delimiter = "."
 ```
 
-### `width / 2`
+- Der Ausdruck `width / 2` hat vermutlich den Wert `8.5` (Typ `float`). Diese Vermutung kann bestätigt werden.
 
-Wert: `8.5`, Typ: `float`.
+  ```{python}
+  width / 2
+  ```
+  ```{python}
+  type(width / 2)
+  ```
 
-```{python}
-width / 2
-```
-```{python}
-type(width / 2)
-```
+- Der Ausdruck `height / 3` hat vermutlich den Wert `4` (Typ `int`). Diese Vermutung ist nicht korrekt – der tatsächliche Wert ist `4.0` (Typ `float`). Eine Division ergibt also immer Dezimalzahlen, auch wenn die Operanden beide Ganzzahlen sind.
 
+  ```{python}
+  height / 3
+  ```
+  ```{python}
+  type(height / 3)
+  ```
 
-### `height / 3`
+- Der Ausdruck `height * 3` hat vermutlich den Wert `36` (Typ `int`). Diese Vermutung kann bestätigt werden.
 
-Wert: `4.0`, Typ: `float` – hier hätte man vielleicht `4` und `int` erwartet.
+  ```{python}
+  height * 3
+  ```
+  ```{python}
+  type(height * 3)
+  ```
 
-```{python}
-height / 3
-```
-```{python}
-type(height / 3)
-```
+- Der Ausdruck `height * 3.0` hat vermutlich den Wert `36.0` (Typ `float`). Diese Vermutung ist korrekt, sobald ein Operand ein `float` ist, ist auch das Ergebnis einer Multiplikation ein `float`.
 
+  ```{python}
+  height * 3.0
+  ```
+  ```{python}
+  type(height * 3.0)
+  ```
 
-### `height * 3`
+- Der Ausdruck `delimiter * 5` ergibt vermutlich einen Fehler (einen Punkt kann man nicht mal 5 rechnen). Diese Vermutung ist allerdings falsch, denn das Ergebnis lautet `"....."` (Typ `str`) – das Zeichen `delimiter` (ein Punkt) wird also verfünffacht.
 
-Wert: `36`, Typ: `int`.
+  ```{python}
+  delimiter * 5
+  ```
+  ```{python}
+  type(delimiter * 5)
+  ```
 
-```{python}
-height * 3
-```
-```{python}
-type(height * 3)
-```
+- Der Ausdruck `2 * (width + height) + 1.5` hat vermutlich den Wert `59.5` (Typ `float`). Diese Vermutung ist korrekt.
 
+  ```{python}
+  2 * (width + height) + 1.5
+  ```
+  ```{python}
+  type(2 * (width + height) + 1.5)
+  ```
 
-### `height * 3.0`
+- Der Ausdruck `12 + 3` hat vermutlich den Wert `15` (Typ `int`).
 
-Wert: `36.0`, Typ: `float` – hier hätte man vielleicht `36` und `int` erwartet.
+  ```{python}
+  12 + 3
+  ```
+  ```{python}
+  type(12 + 3)
+  ```
 
-```{python}
-height * 3.0
-```
-```{python}
-type(height * 3.0)
-```
+- Der Ausdruck `"12 + 3"` ist ein String und hat daher den Wert `"12 + 3"` (Typ `str`). Daher kann damit auch nichts ausgerechnet werden, da es sich nur um eine Sequenz an Zeichen handelt.
 
-
-### `delimiter * 5`
-
-Wert: `"....."`, Typ: `str` – das war eventuell unerwartet.
-
-```{python}
-delimiter * 5
-```
-```{python}
-type(delimiter * 5)
-```
-
-
-### `2 * (width + height) + 1.5`
-
-Wert: `59.5`, Typ: `float`.
-
-```{python}
-2 * (width + height) + 1.5
-```
-```{python}
-type(2 * (width + height) + 1.5)
-```
-
-
-### `12 + 3`
-
-Wert: `15`, Typ: `int`.
-
-```{python}
-12 + 3
-```
-```{python}
-type(12 + 3)
-```
-
-
-### `"12 + 3"`
-
-Wert: `"12 + 3"`, Typ: `str`.
-
-```{python}
-"12 + 3"
-```
-```{python}
-type("12 + 3")
-```
+  ```{python}
+  "12 + 3"
+  ```
+  ```{python}
+  type("12 + 3")
+  ```
 
 
 ## Übung 2
 
-Eine Anweisung ist Code, welcher vom Python-Interpreter ausgeführt werden kann. Es gibt Anweisungen, die einen Wert haben und Anweisungen die keinen Wert haben. Erstere (also Anweisungen mit Wert) nennt man auch Ausdrücke. Beispiele:
+Eine Anweisung ist Code, welcher vom Python-Interpreter ausgeführt werden kann. Es gibt Anweisungen, die einen Wert haben und Anweisungen, die keinen Wert haben. Erstere (also Anweisungen mit Wert) nennt man auch Ausdrücke. Beispiele:
 
 ```{python}
 12 + 5  # Ausdruck (Anweisung mit Wert)
