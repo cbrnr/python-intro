@@ -2,8 +2,10 @@
 title: "4 – Lösungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-03-27
-format: html
+date: 2023-11-09
+format:
+  html:
+    page-layout: full
 engine: jupyter
 highlight-style: github
 title-block-banner: true
@@ -159,7 +161,7 @@ Funktionen
 - strukturieren Programme,
 - machen Code wiederverwendbar,
 - verallgemeinern Code (durch Parameter) und
-- verkürzen Programme (repetitiver Code wird nur einmal geschrieben).
+- verkürzen Programme (repetitiver Code wird nur einmal geschrieben und kann dann beliebig oft aufgerufen werden).
 
 Eine Funktion muss *definiert* sein, bevor man sie benutzen (aufrufen) kann. Durch die Definition weiß Python, welcher Code dann beim Aufruf ausgeführt werden muss.
 

@@ -2,8 +2,10 @@
 title: "4 – Funktionen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-03-27
-format: html
+date: 2023-11-09
+format:
+  html:
+    page-layout: full
 engine: jupyter
 highlight-style: github
 title-block-banner: true
@@ -29,7 +31,7 @@ Einige Funktionen wie `print` und `type` haben wir bereits in den vorigen Einhei
 
 Eine Funktion *aufrufen* bedeutet, dass der in ihr enthaltene Code (also das "Mini-Programm") ausgeführt wird – die Funktion "verrichtet" also ihre Arbeit.
 
-In Python ruft man eine Funktion mit ihrem Namen gefolgt von einem *runden Klammernpaar* auf. Innerhalb der Klammern werden die *Argumente* für die Funktion übergeben (falls notwendig). Mit Argumenten übergibt man der Funktion Werte, welche diese für die Ausführung benötigt. Beispielsweise benötigt die Funktion `type` ein Argument, denn sonst kann sie ihre Aufgabe nicht erfüllen – nämlich den Typ des übergebenen Arguments zu bestimmen. Gleichermaßen braucht auch die Funktion `math.sqrt` aus dem `math`-Modul ein Argument, damit diese die Wurzel des Arguments (eine Zahl) berechnen kann.
+In Python ruft man eine Funktion mit ihrem Namen gefolgt von einem *runden Klammernpaar* auf. Innerhalb der Klammern werden die *Argumente* für die Funktion übergeben (falls notwendig). Mit Argumenten übergibt man der Funktion Werte, welche diese für die Ausführung benötigt. Beispielsweise benötigt die Funktion `type` ein Argument, denn sonst kann sie ihre Aufgabe nicht erfüllen – nämlich den Typ des übergebenen Arguments zu bestimmen. Gleichermaßen braucht auch die Funktion `math.sqrt` aus dem `math`-Modul ein Argument, damit diese die Wurzel berechnen kann.
 
 Hier sind zwei Beispiele für Aufrufe zweier bereits bekannter Funktionen mit jeweils einem Argument:
 
@@ -75,13 +77,13 @@ def function_name(parameter1, parameter2, ...):
     <optionally return something>
 ```
 
-Eine Funktionsdefinition beginnt immer mit dem Schlüsselwort `def`. Danach folgt der (frei wählbare) Funktionsname. Die PEP8-Konvention schreibt vor, dass Funktionsnamen aus Kleinbuchstaben getrennt mit Unterstrichen bestehen sollten, z.B.:
+Eine Funktionsdefinition beginnt immer mit dem Schlüsselwort `def`. Danach folgt der (frei wählbare) Funktionsname (auch hier muss man sich an die Regeln für gültige Namen halten). Die PEP8-Konvention empfiehlt außerdem, dass Funktionsnamen keine Großbuchstaben enthalten sollten. Falls der Name aus mehreren Wörtern bestehen soll, sollten Unterstrichen zur Trennung verwendet werden, z.B.:
 
 ```python
 def test_function
 ```
 
-Nach dem Funktionsnamen folgt ein Paar runder Klammern. Innerhalb dieser können von der Funktion benötigte Parameter aufgelistet werden (mehrere Parameter werden durch Kommas voneinander getrennt). Die Parameter werden dann mit spezifischen Werten, welche beim Aufruf übergeben werden (den sogenannten Argumenten), ersetzt. Es gibt aber auch Funktionen, die *keine* Parameter haben – die beiden runden Klammern müssen aber immer vorhanden sein:
+Nach dem Funktionsnamen folgt ein Paar runder Klammern. Innerhalb dieser können von der Funktion benötigte *Parameter* aufgelistet werden (mehrere Parameter werden durch Kommas voneinander getrennt). Die Parameter werden beim Ausführen der Funktion mit spezifischen Werten, welche beim Aufruf übergeben werden (den sogenannten *Argumenten*), ersetzt. Es gibt aber auch Funktionen, die *keine* Parameter haben – die beiden runden Klammern müssen aber trotzdem immer vorhanden sein:
 
 ```python
 def test_function()  # ohne Parameter
@@ -93,19 +95,19 @@ Falls eine Funktion zwei Parameter haben soll, würde man dies wie folgt anschre
 def test_function(n, v)  # zwei Parameter namens n und v
 ```
 
-Unabhängig von den Parametern schließt ein Doppelpunkt den sogenannten Funktionskopf ab:
+Unabhängig von den Parametern schließt ein Doppelpunkt den sogenannten *Funktionskopf* ab:
 
 ```python
 def test_function(n, v):
 ```
 
-Nun folgt der Code, welcher von der Funktion ausgeführt wird wenn diese aufgerufen wird – dieser Code muss *eingerückt* sein. Man spricht hier vom sogenannten Funktionskörper. Im Funktionskörper kann man insbesondere alle Parameter wie normale Namen verwenden – diese sind nur innerhalb der Funktion vorhanden und erhalten die Werte der Argumente, welche beim Funktionsaufruf übergeben wurden.
+Nun folgt der Code, welcher von der Funktion ausgeführt wird wenn diese aufgerufen wird – dieser Code muss um eine Ebene *eingerückt* sein (also normalerweise vier Leerzeichen). Man spricht hier vom sogenannten *Funktionskörper*. Im Funktionskörper kann man insbesondere alle Parameter wie normale Namen verwenden – diese sind nur innerhalb der Funktion vorhanden und erhalten dann die konkreten Werte der Argumente, welche beim Funktionsaufruf übergeben wurden.
 
 :::{.callout-important}
 Eine Funktion kann *Parameter* haben, welche bei der *Definition* aufgelistet werden müssen. Wenn man die Funktion aufruft, muss man für alle Parameter konkrete Werte übergeben – diese konkreten Werte nennt man *Argumente*.
 :::
 
-Das folgende Beispiel definiert eine Funktion namens `test_function`, welche zwei Zeilen Code im Funktionskörper aufweist:
+Das folgende Beispiel definiert eine Funktion namens `test_function`, welche aus zwei Zeilen Code im Funktionskörper besteht:
 
 ```{python}
 def test_function():
@@ -135,7 +137,7 @@ Wir können eine bereits definierte Funktion beliebig oft aufrufen.
 test_function()
 ```
 
-Im Fall einer Funktion mit Parametern würden die Definition und der Aufruf z.B. so aussehen:
+Im Fall einer Funktion mit Parametern würden die Definition und der Aufruf z.B. so aussehen (wir haben den verwendeten `if`-Befehl noch nicht besprochen, es ist aber nicht wichtig, dass Sie verstehen, was diese Funktion genau macht):
 
 ```{python}
 def test_function_2(n, v):  # Definition, zwei Parameter
@@ -158,6 +160,10 @@ test_function_2("Hi!", False)  # weiterer Aufruf mit anderen Argumenten
 test_function_2()  # zwei Argumente erwartet, aber keine übergeben!
 ```
 
+:::{.callout-important}
+Alle in der Funktionsdefinition definierten Parameter müssen beim Aufrufen der Funktion mit konkreten Argumenten befüllt werden.
+:::
+
 :::{.callout-tip}
 Es ist üblich, gleich in der ersten Zeile des Funktionskörpers eine kurze Beschreibung der Funktion in einem sogenannten *Docstring* anzugeben (dieser kann sich auch über mehr als eine Zeile erstrecken). Ein Docstring wird von jeweils drei Anführungszeichen `"""` umschlossen. Das Vorhandensein eines Docstrings ändert nichts an der Funktionsweise, dient aber der Dokumentation und gehört zum guten Coding-Stil dazu, wie folgendes Beispiel demonstriert:
 
@@ -172,9 +178,9 @@ def test_function():
 
 ## Rückgabewerte
 
-Funktionen können Werte (Ergebnisse) *zurückgeben*. In beiden soeben definierten Funktionen `test_function` und `test_function_2` wird allerdings *kein* Wert explizit zurückgegeben (d.h. die Funktionen führen nur Code aus und geben `None` zurück). Diese beiden Funktionen haben also keinen Wert wenn man sie aufruft, sie sind also keine Ausdrücke.
+Funktionen können Werte (Ergebnisse) *zurückgeben*. In beiden soeben definierten Funktionen `test_function` und `test_function_2` wird allerdings *kein* Wert explizit zurückgegeben (d.h. die Funktionen führen nur Code aus und geben implizit `None` zurück, der spezielle Wert für "nichts" in Python). Diese beiden Funktionen besitzen also keinen Wert, wenn man sie aufruft – sie sind also keine Ausdrücke.
 
-Wenn eine Funktion explizit einen Wert (ein Ergebnis) zurückgeben soll, verwendet man dazu das Schlüsselwort `return` gefolgt vom gewünschten Rückgabewert:
+Wenn eine Funktion explizit einen Wert (ein Ergebnis) zurückgeben soll, verwendet man dazu das Schlüsselwort `return`, gefolgt vom gewünschten Rückgabewert:
 
 ```{python}
 def add_one(number):
@@ -182,13 +188,13 @@ def add_one(number):
     return number + 1
 ```
 
-Wenn die Funktion aufgerufen wird, dann wird ihr Code ausgeführt bis die Zeile mit `return` erreicht wird. Diese bewirkt, dass die Funktion sofort verlassen und der angegebene Wert zurückgegeben wird. Sollten also nach dem `return`-Befehl noch weitere Zeilen Code im Funktionskörper folgen, werden diese nicht mehr ausgeführt.
+Beim Aufrufen der Funktion wird ihr Code im Funktionskörper ausgeführt, bis die Zeile mit `return` erreicht wird. Diese bewirkt, dass die Funktion sofort verlassen und der angegebene Wert `number + 1` zurückgegeben wird. Sollten also nach dem `return`-Befehl noch weitere Zeilen Code im Funktionskörper folgen, werden diese nicht mehr ausgeführt.
 
 ```{python}
 add_one(5)
 ```
 
-Ein Funktionsaufruf wird also auf seinen Rückgabewert reduziert. Nun kann man diesem auch einen Namen geben:
+Ein Funktionsaufruf wird also immer auf seinen Rückgabewert reduziert. Ein Aufruf einer Funktion, die einen Wert zurückgibt, ist also ein Ausdruck. Nun könnte man diesem auch einen Namen geben:
 
 ```{python}
 x = add_one(9)
@@ -198,38 +204,40 @@ x = add_one(9)
 x
 ```
 
-Oder man kann den Wert einer Funktion (entspricht dem Rückgabewert) auch explizit am Bildschirm ausgeben (d.h. als Argument der `print`-Funktion übergeben):
+Man kann den Wert einer Funktion (also den Rückgabewert) auch explizit mit Hilfe der `print`-Funktion am Bildschirm ausgeben:
 
 ```{python}
 print(add_one(122))
 ```
 
+:::{.callout-tip}
 Man kann überall dort, wo man einen Wert angeben kann, auch einen Ausdruck (eine beliebige Kombination aus Werten und Operatoren) einsetzen – eben auch eine Funktion, die einen Wert zurückgibt. Dies wird als *Komposition* bezeichnet. Die Werte werden der Reihe nach (von *innen* nach *außen*) verarbeitet und eingesetzt, bis zum Schluss ein einziger Wert übrig bleibt:
 
 ```{python}
 add_one(add_one(add_one(1)))
 ```
+:::
 
 
 ## Argumente
 
 ### Default-Argumente
 
-Eine Funktion kann keine Parameter haben oder eine bestimmte (bzw. auch unbestimmte) Anzahl an Parametern erwarten. Wenn eine bestimmte Anzahl an Parametern im Funktionskopf definiert wird, können einzelnen Parametern Standardwerte (sogenannte Default-Argumente) zugewiesen werden. Dies bedeutet, dass die Funktion auch mit weniger Argumenten als erwartet aufgerufen werden kann, wenn für die fehlenden Argumente Standardwerte existieren.
+Eine Funktion kann keine Parameter haben oder eine bestimmte Anzahl an Parametern erwarten. Wenn eine bestimmte Anzahl an Parametern im Funktionskopf definiert wird, können einzelnen Parametern Standardwerte (sogenannte Default-Argumente) zugewiesen werden. Dies bedeutet, dass die Funktion auch mit weniger Argumenten als erwartet aufgerufen werden kann, wenn für die fehlenden Argumente Standardwerte existieren.
 
 ```{python}
 def add(number, increment=1):  # das Default-Argument für increment ist 1
     return number + increment
 ```
 
-Die Funktion kann jetzt mit zwei Argumenten oder nur mit dem ersten Argument aufgerufen werden:
+Diese Funktion kann jetzt mit zwei Argumenten oder nur mit dem ersten Argument aufgerufen werden:
 
 ```{python}
 add(7, 1)
 ```
 
 ```{python}
-add(7)  # hier wird das Default-Argument verwendet
+add(7)  # hier wird das Default-Argument 1 für increment verwendet
 ```
 
 ```{python}
@@ -297,10 +305,25 @@ test("Test", 2, 5, 2)
 
 Man muss also in diesem Beispiel ein zusätzliches Argument `5` (für den Parameter `exponent`) übergeben, wenn man positionale Argumente verwendet.
 
+:::{.callout-note}
+In Python gibt es auch Funktionen, die eine *beliebige/variable* Anzahl an Parametern besitzen. Dies bedeutet, dass bei der Funktionsdefinition noch nicht klar ist, wie viele Argumente beim Aufruf übergeben werden. Die `print`-Funktion ist ein Beispiel für eine solche Funktion: diese kann man mit keinem, einem, zwei, oder beliebig vielen Argumenten aufrufen:
+
+```{python}
+print()
+print("Hello")
+print("Hello", "Python")
+print("Hello", "Python", 1, 2, 3, 4)
+```
+
+Wir werden solche Funktionen nicht im Detail besprechen (vor allem nicht, wie man diese selbst definieren kann), aber Sie werden solche Funktionen mitunter des öfteren verwenden.
+:::
+
 
 ## Gültigkeitsbereiche (Scopes)
 
-Alles, was innerhalb einer Funktion definiert wird, ist nur innerhalb dieser Funktion sichtbar und zugreifbar. Man spricht von einem lokalen Scope, welcher sich auf die Funktion und weitere untergeordnete Bereiche erstreckt. Gültigkeitsbereiche entsprechen in Python im Prinzip den Einrückungen.
+Alles, was innerhalb einer Funktion (im Funktionskörper) definiert wird, ist nur innerhalb dieser Funktion sichtbar und zugreifbar. Man spricht von einem *lokalen* Gültigkeitsbereich, welcher sich auf die Funktion und eventuelle weitere in ihr vorhandene untergeordnete Bereiche erstreckt. Gültigkeitsbereiche entsprechen in Python im Prinzip den Einrückungen.
+
+Im folgenden Beispiel wird innerhalb der Funktion `test` der Name `s = 15` definiert. Dieser kann innerhalb der Funktion verwendet werden.
 
 ```{python}
 def test():
@@ -310,15 +333,17 @@ def test():
 test()
 ```
 
+Außerhalb dieser Funktion existiert dieses `s` aber nicht:
+
 ```{python}
 #| error: true
 print(s)  # außerhalb der Funktion existiert s nicht
 ```
 
-Umgekehrt kann man aber sehr wohl auf Namen, die *außerhalb* eines Gültigkeitsbereichs definiert wurden, zugreifen:
+Umgekehrt kann man aber sehr wohl auf Namen, die *außerhalb* (bzw. oberhalb) eines Gültigkeitsbereichs definiert wurden, zugreifen:
 
 ```{python}
-s = 15  # globales s
+s = 15  # "globales" s
 
 def test():
     print(s)  # s aus dem globalen Scope ist zugänglich
@@ -403,6 +428,21 @@ s = test(s)  # globales s bekommt Rückgabewert der Funktion (lokales s)
 print(s)
 ```
 
+:::{.callout-tip}
+Das hier beschriebene Verhalten gilt auch für Parameter. Diese verhalten sich wie lokal innerhalb der Funktion definierte Namen und erhalten automatisch die Werte, die mit den entsprechenden Argumenten beim Aufruf übergeben wurden. In den letzten beiden Beispielen hatten die Funktionen jeweils einen Parameter namens `s`. Zufälligerweise wurden die Funktionen auch mit einem Argument namens `s` aufgerufen – dabei handelt es sich aber um zwei unterschiedliche Namen bzw. Objekte. Man könnte die Funktion genauso gut auch direkt mit einem Wert oder mit einem beliebigen Namen aufrufen:
+
+```{python}
+x = 15
+test(x)  # Parameter s erhält den Wert x = 15
+```
+
+Dies sieht man auch insbesonders, wenn man Keyword-Argumente verwendet:
+
+```{python}
+test(s=x)
+```
+:::
+
 
 ## Übungen
 
@@ -417,18 +457,18 @@ Suchen Sie sich aus der Liste der eingebauten Funktionen (siehe vorige Einheit) 
 
 ### Übung 2
 
-Schreiben Sie eine Funktion `mult`, welche zwei Zahlen multipliziert und deren Produkt zurückgibt. Die beiden Zahlen sollen als Argumente übergeben werden können. Rufen Sie Ihre Funktion mit ein paar Wertepaaren auf und stellen Sie sicher, dass Ihre Funktion wie gewünscht funktioniert. Die Funktion soll das Ergebnis als Wert zurückgeben, d.h. verwenden Sie innerhalb der Funktion nicht `print`, sondern `return`!
+Schreiben Sie eine Funktion `mult`, welche zwei Zahlen multipliziert und deren Produkt *zurückgibt*. Die beiden Zahlen sollen als Argumente übergeben werden können. Rufen Sie Ihre Funktion mit ein paar Wertepaaren auf und stellen Sie sicher, dass Ihre Funktion wie gewünscht funktioniert. Die Funktion soll das Ergebnis als Wert zurückgeben, d.h. verwenden Sie innerhalb der Funktion nicht `print`, sondern `return`!
 
 
 ### Übung 3
 
-Schreiben Sie eine Funktion `to_fahrenheit`, welche einen Parameter `celsius` hat und diese Celsius-Temperatur in Fahrenheit umwandelt und zurückgibt. Zum Testen rufen Sie Ihre Funktion mit den Celsius-Temperaturen 0, 20, 38 und 100 auf.
+Schreiben Sie eine Funktion `to_fahrenheit`, welche einen Parameter `celsius` hat und diese Celsius-Temperatur in Fahrenheit umwandelt und *zurückgibt*. Zum Testen rufen Sie Ihre Funktion mit den Celsius-Temperaturen 0, 20, 38 und 100 auf.
 
 Schreiben Sie außerdem eine Funktion `to_celsius` (mit entsprechendem Parameter `fahrenheit`) und wandeln Sie die vier Fahrenheit-Temperaturen, die Sie vorher beim Aufruf der Funktion `to_fahrenheit` erhalten haben, wieder in Celsius-Temperaturen um!
 
 ### Übung 4
 
-Nennen Sie mindestens drei Gründe, warum man Funktionen verwendet. Erklären Sie auch kurz den Unterschied zwischen Funktionsdefinition und Funktionsaufruf! Erklären Sie den Unterschied zwischen Parameter und Argument!
+Nennen Sie Gründe, warum man Funktionen verwendet. Erklären Sie auch kurz den Unterschied zwischen Funktionsdefinition und Funktionsaufruf! Was ist der Unterschied zwischen Parametern und Argumenten?
 
 
 ### Übung 5
@@ -445,4 +485,6 @@ Schreiben Sie eine Funktion namens `nonsense`, welche drei Parameter namens `a`,
 
 Wie sehen diese Funktionsaufrufe aus? Wie lauten die Rückgabewerte? Geben Sie für *jeden* Aufruf die Werte *aller drei Argumente* an!
 
-*Anmerkung:* Nur der erste Funktionsaufruf (ohne Argumente) verursacht einen Fehler, alle weiteren Aufrufe sind möglich!
+:::{.callout-note}
+Nur der erste Funktionsaufruf (ohne Argumente) verursacht einen Fehler, alle weiteren Aufrufe sind möglich!
+:::

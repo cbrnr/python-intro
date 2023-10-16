@@ -1,8 +1,8 @@
 - source: 04.qmd
-  quarto-pub:
-    - id: e7d3466f-7a6a-47ab-b3ba-0b7af74c41b4
-      url: 'https://quartopub.com/sites/cbrnr/python-23s-04'
+  netlify:
+    - id: fd65f656-f316-4e8c-a7b8-503ddf63febd
+      url: 'https://python-23w-04.netlify.app/'
 - source: 04-solutions.qmd
-  quarto-pub:
-    - id: 3fed56db-ee9c-449e-b8d1-ff076e5be360
-      url: 'https://quartopub.com/sites/cbrnr/python-23s-04-solutions'
+  netlify:
+    - id: 5f88a25e-0652-498c-b4e2-08fbbb80ecbd
+      url: 'https://python-23w-04-solutions.netlify.app/'
