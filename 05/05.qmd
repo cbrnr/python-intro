@@ -2,8 +2,10 @@
 title: "5 – Bedingungen und Schleifen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-04-17
-format: html
+date: 2023-11-16
+format:
+  html:
+    page-layout: full
 engine: jupyter
 highlight-style: github
 title-block-banner: true
@@ -72,7 +74,7 @@ Ein Ausdruck kann mit dem Operator `not` logisch invertiert werden (d.h. aus `Tr
 * `is`: Identität (prüft, ob es sich um ein und dasselbe *Objekt* handelt, nicht nur um gleiche *Werte*)
 * `in`: Prüft, ob ein Wert in einer Sequenz enthalten ist
 
-Während `==` zwei *Werte* miteinander vergleicht, überprüft `is` zwei *Objekte* auf Gleichheit (also eigentlich, ob es sich um ein und dasselbe Objekt handelt). Ein Objekt hat einen Wert, zwei verschiedene Objekte können denselben Wert haben. Die Funktion `id` liefert eine eindeutige Nummer (ID) für ein Objekt zurück – zwei verschiedene Objekte haben immer eine unterschiedliche ID (ansonsten handelt es sich um ein und dasselbe Objekt).
+Während `==` zwei *Werte* miteinander vergleicht, überprüft `is` zwei *Objekte* auf Gleichheit (also ob es sich um ein und dasselbe Objekt handelt). Ein Objekt hat einen Wert, zwei verschiedene Objekte können denselben Wert haben. Die Funktion `id` liefert eine eindeutige Nummer (ID) für ein Objekt zurück – zwei verschiedene Objekte haben immer eine unterschiedliche ID (ansonsten handelt es sich um ein und dasselbe Objekt).
 
 
 ### Beispiele
@@ -131,6 +133,7 @@ Man erkennt, dass beide Objekte `x` und `y` dieselbe ID haben. Dies bedeutet, da
 
 Die tatsächlichen IDs von Objekten sind ein Implementierungsdetail von Python, d.h. es ist nicht relevant, welche Zahl hier zurückgegeben wird. Dennoch kann man diese IDs verwenden, um zwei Objekte auf Gleichheit zu überprüfen, denn nur dann haben beide Objekte dieselbe ID.
 
+:::{.callout-note}
 Ein weiteres Implementierungsdetail von Python ist, dass es kleine Ganzzahlen genau ein Mal gibt – d.h. wenn man zwei oder mehrere Male kleine Zahlen verwenden möchte (wie im vorigen Beispiel mit `x = 2` und `y = 2`), dann wird immer nur *ein* Objekt verwendet. Dies dient der Beschleunigung bzw. effizienteren Speichernutzung. Bei großen Zahlen ist das allerdings nicht mehr so:
 
 ```{python}
@@ -169,6 +172,7 @@ a is b  # Objekte gleich?
 ```
 
 ![](names_500.png)
+:::
 
 Das folgende Beispiel veranschaulicht, dass es einen Unterschied zwischen Ganzzahlen (`int`) und Kommazahlen (`float`) gibt, obwohl deren Werte (zumindest mathematisch) gleich sein können.
 
@@ -193,7 +197,7 @@ Ein weiteres Beispiel, welches mathematisch korrekt ist, aber dennoch `False` er
 0.1 + 0.1 + 0.1 == 0.3
 ```
 
-Möchte man so einen Vergleich durchführen, ist es sinnvoller zu fragen, ob der Unterschied zwischen den beiden Werten einen bestimmten (kleinen) Betrag (z.B. $10^{-15}$) nicht überschreitet – dann kann man davon ausgehen dass die Werte numerisch praktisch identisch sind.
+Möchte man so einen Vergleich durchführen, ist es sinnvoller zu fragen, ob der Unterschied zwischen den beiden Werten einen bestimmten (kleinen) Betrag (z.B. $10^{-15}$) nicht überschreitet – dann kann man davon ausgehen, dass die Werte numerisch *praktisch* identisch sind.
 
 ```{python}
 (0.1 + 0.1 + 0.1) - 0.3 < 1e-15
@@ -259,7 +263,7 @@ Die Struktur einer Bedingung ist also im Prinzip dieselbe wie die einer Funktion
 Nur wenn der erste Ausdruck `True` ist, wird also der eingerückte Code ausgeführt. Danach wird der gesamte restliche `if`/`elif`/`else`-Block verlassen, es wird also kein weiterer Code mehr ausgeführt. Wenn der erste Ausdruck `False` ist, wird der zugehörige Codeblock nicht ausgeführt und es wird zum nächsten `elif`-Ausdruck gesprungen (falls vorhanden). Hier wird dann ein weiterer logischer Ausdruck ausgewertet, und falls dieser `True` ist, wird der dazugehörige eingerückte Codeblock ausgeführt. Falls kein logischer Ausdruck in den `elif`-Zweigen `True` ist, wird schließlich der Codeblock im `else`-Zweig ausgeführt (falls vorhanden).
 
 :::{.callout-important}
-In einer Bedingung wird maximal *ein* Codeblock ausgeführt, nämlich der erste, bei dem der logische Ausdruck `True` ist. Deshalb ist auch die Reihenfolge der einzelnen Zweige von Bedeutung.
+In einer Bedingung wird maximal *ein* Codeblock ausgeführt, nämlich der erste, dessen logischer Ausdruck `True` ergibt. Deshalb ist auch die Reihenfolge der einzelnen Zweige von Bedeutung.
 :::
 
 
@@ -405,7 +409,7 @@ for i in range(3):
     print("Hello")
 ```
 
-Die richtige Antwort lautet `2`, da dies der letzte Wert ist, welcher in der Schleife zugewiesen wird. Der Funktionsaufruf `range(3)` erzeugt nämlich die drei Werte `0`, `1` und `2`.
+Die richtige Antwort lautet `2`, da dies der letzte Wert ist, welcher in der Schleife zugewiesen wird. Der Funktionsaufruf `range(3)` erzeugt nämlich die drei Werte `0`, `1` und `2`. Die Zuweisung `i = 800` zu Beginn hat hier eigenlich überhaupt keinen Effekt (oder anders formuliert, diese Zuweisung ist sinnlos und könnte daher ohne Auswirkungen entfernt werden).
 :::
 
 Die Funktion `range` wird mit `range(start, stop, step)` aufgerufen (der Hilfetext verrät dazu mehr Details) und erzeugt eine Sequenz, welche aus ganzen Zahlen besteht, die von `start` (optional) bis `stop` in der Schrittweite `step` (optional) läuft. Wenn man sich die einzelnen Elemente in einem `range`-Objekt ansehen will, muss man dieses zuerst in eine Liste umwandeln:
@@ -437,7 +441,7 @@ for element in a:
     print(element)
 ```
 
-Der Befehl `break` bricht die aktuelle Schleife ab (d.h. er bricht daraus aus). Python springt ans Ende der Schleife und macht von hier mit der Ausführung der noch folgenden Befehlszeilen weiter.
+Der Befehl `break` bricht die Schleife ab. Python springt ans Ende der Schleife und macht von hier mit der Ausführung der noch folgenden Befehlszeilen weiter.
 
 ```{python}
 i = 0
@@ -467,7 +471,7 @@ Details zu Strings und Listen folgen in den nächsten Einheiten.
 
 ## while-Schleifen
 
-Im Gegensatz zu `for`-Schleifen sind `while`-Schleifen gut geeignet, wenn nicht im Vorhinein klar ist, wie oft die Schleife durchlaufen werden soll. Im folgenden Beispiel wird eine Endlosschleife verwendet (`while True` ist immer `True`). Zum Verlassen dieser Endlosschleife wird dann aber auf `break` zurückgegriffen. Die Funktion `input` wird verwendet, um Tastatureingaben vom Benutzer abzufragen – die eingegebenen Zeichen werden von der Funktion als String zurückgegeben.
+Im Gegensatz zu `for`-Schleifen sind `while`-Schleifen gut geeignet, wenn nicht im Vorhinein klar ist, wie oft die Schleife durchlaufen werden soll. Im folgenden Beispiel wird eine sogenannte *Endlosschleife* verwendet (`while True` ist immer `True`). Zum Verlassen dieser Endlosschleife wird dann aber auf `break` zurückgegriffen. Die Funktion `input` wird verwendet, um Tastatureingaben vom Benutzer abzufragen – die eingegebenen Zeichen werden von dieser Funktion als String zurückgegeben.
 
 ```python
 while True:
@@ -527,7 +531,7 @@ Gegeben ist eine Liste `lst = ["I", "love", "Python"]`. Schreiben Sie eine `for`
 
 Gegeben ist wieder eine Liste `lst = ["I", "love", "Python"]`. Schreiben Sie eine `for`-Schleife, welche über die einzelnen Elemente in der Liste iteriert. Eine zweite (geschachtelte) `for`-Schleife soll dann über jeden Buchstaben der einzelnen Strings iterieren und jeden Buchstaben einzeln gefolgt vom Zeichen `-` ausgeben.
 
-:::{.callout-tip}
+:::{.callout-note}
 Verwenden Sie die Funktion `print` mit dem Argument `end="-"`. Die Ausgabe soll wie folgt aussehen:
 
 ```
