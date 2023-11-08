@@ -6,7 +6,7 @@ Die folgenden Unterlagen bieten eine kurze Einführung in die Grundlagen von Pyt
  2. [Die Python-Umgebung](https://python-23w-02.netlify.app) ([Lösungen](https://python-23w-02-solutions.netlify.app))
  3. [Variablen, Ausdrücke, Anweisungen](https://python-23w-03.netlify.app/) ([Lösungen](https://python-23w-03-solutions.netlify.app/))
  4. [Funktionen](https://python-23w-04.netlify.app/) ([Lösungen](https://python-23w-04-solutions.netlify.app/))
- 5. [Bedingungen und Schleifen](https://cbrnr.quarto.pub/python-23w-05) ([Lösungen](https://cbrnr.quarto.pub/python-23w-05-solutions))
+ 5. [Bedingungen und Schleifen](https://python-23w-05.netlify.app) ([Lösungen](https://python-23w-05-solutions.netlify.app))
  6. [Strings](https://cbrnr.quarto.pub/python-23w-06) ([Lösungen](https://cbrnr.quarto.pub/python-23w-06-solutions/))
  7. [Listen und Dictionaries](https://cbrnr.quarto.pub/python-23w-07) ([Lösungen](https://cbrnr.quarto.pub/python-23w-07-solutions))
  8. [Ein- und Ausgabe](https://cbrnr.quarto.pub/python-23w-08) ([Lösungen](https://cbrnr.quarto.pub/python-23w-08-solutions))
