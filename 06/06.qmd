@@ -2,8 +2,10 @@
 title: "6 – Strings"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-04-24
-format: html
+date: 2023-11-23
+format:
+  html:
+    page-layout: full
 engine: jupyter
 highlight-style: github
 title-block-banner: true
@@ -24,34 +26,34 @@ Datentypen in Python können grob in folgende Kategorien unterteilt werden:
 - Sequenzen (können aus mehreren Elementen bestehen) (`str`, `list`, `tuple`)
 - Mappings (Wertepaare) (`dict`)
 
-Mit der Funktion `type` kann man den Typ eines beliebigen Objektes bestimmen. Der logische und die numerischen Datentypen sind im Prinzip relativ einfach aufgebaut, und wir haben bereits gesehen, wie wir diese Typen verwenden können. In den folgenden beiden Einheiten werden etwas komplexere Datentypen vorgestellt, welche in Python sehr häufig verwendet werden: die Sequenzdatentypen `str`, `list` und `tuple` sowie der Mapping-Datentyp `dict`.
+Mit der Funktion `type` kann man den Typ eines beliebigen Objektes bestimmen. Der logische und die numerischen Datentypen sind im Prinzip relativ einfach aufgebaut, und wir haben bereits gesehen, wie wir diese Typen verwenden können. In den folgenden beiden Einheiten werden etwas komplexere Typen vorgestellt, welche in Python sehr häufig verwendet werden: die Sequenzdatentypen `str`, `list` und `tuple` sowie der Mapping-Datentyp `dict`.
 
-Bevor wir diese Typen im Detail besprechen, sehen wir uns aber eine grundlegende Eigenschaft von allen Datentypen in Python an.
+Bevor wir diese Typen im Detail besprechen, sehen wir uns aber eine grundlegende Eigenschaft von Datentypen in Python an.
 
 
 ## Mutable und immutable
 
-In Python unterscheidet man zwei Arten an Datentypen:
+In Python unterscheidet man zwei Arten an Typen:
 
 - Mutable (veränderbar)
 - Immutable (nicht veränderbar)
 
-Objekte eines *mutable* Datentyps können auch *nach* deren Erstellung *verändert* werden. Im Gegensatz dazu können Objekte eines *immutable* Datentyps nach deren Erstellung *nicht* mehr verändert werden.
+Objekte eines *mutable* Typs können auch *nach* deren Erstellung *verändert* werden. Im Gegensatz dazu können Objekte eines *immutable* Typs nach deren Erstellung *nicht* mehr verändert werden.
 
-Für uns relevante mutable Datentypen sind:
+Für uns relevante mutable Typen sind:
 
 - Liste `list`
 - Dictionary `dict`
 
-Für uns relevante immutable Datentypen sind:
+Für uns relevante immutable Typen sind:
 
 - Ganzzahl `int`, Kommazahl `float`
-- String `str`, Tupel `tuple`
+- String `str`, Tuple `tuple`
 
 
 ### Immutable Typen
 
-Befassen wir uns zunächst mit den nicht veränderbaren immutable Typen. Als Beispiel betrachten wir das Objekt `2` vom Typ `int`. Dieses Objekt ist nicht veränderbar (`2` kann also nicht verändert werden). Im folgenden Beispiel wird das Objekt `2`, welches den Namen `a` hat, tatsächlich auch nicht verändert. Wenn man nämlich `a = 3` setzt, ändert man lediglich den Namen `a` – dieser verweist dann auf das Objekt `3` (ein anderes Objekt, denken Sie an die Analogie mit dem Namensschildchen).
+Befassen wir uns zunächst mit den nicht veränderbaren (immutable) Typen. Als Beispiel betrachten wir das Objekt `2` vom Typ `int`. Dieses Objekt ist nicht veränderbar (`2` kann also nicht verändert werden). Im folgenden Beispiel wird das Objekt `2`, welches den Namen `a` hat, tatsächlich auch nicht verändert. Wenn man nämlich `a = 3` setzt, ändert man lediglich den Namen `a` – dieser verweist dann auf das Objekt `3` (ein anderes Objekt, denken Sie an die Analogie mit dem Namensschildchen).
 
 Dies kann man auch mit Hilfe der `id`-Funktion verifizieren; man erkennt, dass die IDs (also die Objekte) tatsächlich unterschiedlich sind.
 
@@ -160,7 +162,7 @@ d["a"] = "CHANGED"  # Änderung möglich
 d
 ```
 
-Mehr Details zu den Datentypen `list`, `tuple` und `dict` folgen in der nächsten Einheit. Widmen wir uns jetzt dem Datentyp String.
+Mehr Details zu den Datentypen `list`, `tuple` und `dict` folgen in der nächsten Einheit. Wir widmen uns aber jetzt dem Datentyp String.
 
 
 ## Strings
@@ -189,7 +191,7 @@ s4 = "And that's a string too!"
 s4
 ```
 
-Lange Strings, die sich auch über mehrere Zeilen erstrecken können, kann man mit drei Anführungszeichen umschließen (die Zeilenumbrüche sind dabei Teil des Strings).
+Lange Strings, die sich auch über mehrere Zeilen erstrecken können, kann man mit drei Anführungszeichen umschließen (Zeilenumbrüche sind dabei möglich und Teil des Strings).
 
 ```{python}
 s5 = """Dies ist ein sehr langer Text.
@@ -453,7 +455,7 @@ x.<TAB>
 
 Nach Eingabe des Punktes drückt man also die Tabulator-Taste und bekommt eine Liste aller möglichen Methoden. Möchte man dann z.B. den Hilfetext der Methode `x.capitalize` aufrufen, gibt man `x.capitalize?` ein.
 
-Im normalen interaktiven Interpreter kann man die Funktion `dir` verwenden, um alle möglichen Methoden eines Objektes aufzulisten, also z.B.
+Im normalen interaktiven Interpreter funktioniert die Tabulator-Taste ebenfalls. Außerdem kann man die Funktion `dir` verwenden, um alle möglichen Methoden eines Objektes aufzulisten, also z.B.
 
 ```python
 dir(x)
@@ -531,7 +533,7 @@ for c in s:
     print(c)
 ```
 
-Möglich wäre auch folgende `for`-Schleife wie sie in vielen anderen Programmiersprachen üblich ist:
+Möglich wäre auch folgende `for`-Schleife, wie sie in vielen anderen Programmiersprachen üblich ist:
 
 ```{python}
 s = "Computer"
@@ -602,7 +604,9 @@ s = "Edukational Neuroscience"
 
 Das Zeichen `k` an der Position 3 soll durch ein `c` ersetzt werden. Wie können Sie aus `s` einen neuen String erzeugen, in welcher diese Ersetzung vorgenommen wurde?
 
-*Hinweis:* Verwenden Sie Slices, um auf die Teile von `s` vor dem `k` bzw. nach dem `k` zuzugreifen.
+:::{.callout-note}
+Verwenden Sie Slices, um auf die Teile von `s` vor dem `k` bzw. nach dem `k` zuzugreifen.
+:::
 
 
 ### Übung 4
@@ -611,7 +615,9 @@ Palindrome sind Wörter oder Sätze, welche von vorn und hinten gelesen dasselbe
 
 Schreiben Sie eine Funktion `is_palindrome`, welche einen String entgegennimmt und `True` zurückgibt, falls es sich bei dem String um ein Palindrom handelt. Wenn nicht, soll `False` zurückgegeben werden.
 
-*Hinweis:* Wandeln Sie den String zuerst in Kleinbuchstaben um, denn sonst wird Anna nicht als Palindrom erkannt, da ein A nicht gleich einem a ist. Ihre Funktion muss außerdem nicht mit Sätzen funktionieren, sondern nur mit einzelnen Wörtern! Falls sie auch mit Sätzen funktionieren soll, müssen Sie alle Leerzeichen ignorieren.
+:::{.callout-note}
+Wandeln Sie den String zuerst in Kleinbuchstaben um, denn sonst wird Anna nicht als Palindrom erkannt, da ein A nicht gleich einem a ist. Ihre Funktion muss außerdem nicht mit Sätzen funktionieren, sondern nur mit einzelnen Wörtern! Falls sie auch mit Sätzen funktionieren soll, müssen Sie alle Leerzeichen ignorieren.
+:::
 
 
 ### Übung 5
@@ -630,7 +636,9 @@ Schreiben Sie eine Funktion `find(s, sub)`, welche diese Funktionalität replizi
 find(s, "t")
 ```
 
-*Hinweis:* Verwenden Sie am besten eine `while`-Schleife, um über die einzelnen Buchstaben von `s` zu iterieren. In der Funktion ist eine Variable hilfreich, welche die aktuelle Position in `s` mitzählt (beginnend bei 0). Auch die Funktion `len`, welche die Länge eines Strings zurückgibt, könnte hilfreich sein. Beachten Sie auch, dass `return` die Funktion sofort verlässt und kein weiterer Code in der Funktion ausgeführt wird, und dass `return` an einer beliebigen Stelle in der Funktion und auch mehr als ein Mal vorhanden sein kann.
+:::{.callout-note}
+Verwenden Sie am besten eine `while`-Schleife, um über die einzelnen Buchstaben von `s` zu iterieren. In der Funktion ist eine Variable hilfreich, welche die aktuelle Position in `s` mitzählt (beginnend bei 0). Auch die Funktion `len`, welche die Länge eines Strings zurückgibt, könnte hilfreich sein. Beachten Sie auch, dass `return` die Funktion sofort verlässt und kein weiterer Code in der Funktion ausgeführt wird, und dass `return` an einer beliebigen Stelle in der Funktion und auch mehr als ein Mal vorhanden sein kann.
+:::
 
 
 ### Übung 6
@@ -639,4 +647,6 @@ Schreiben Sie eine Funktion `count(word, letter)`, welche die Anzahl der Zeichen
 
 Beispielsweise sollte der Aufruf `count("Werkstatttreppe", "t")` den Wert `4` zurückgeben, analog zur fertigen String-Methode `"Werkstatttreppe".count("t")`.
 
-*Hinweis:* Verwenden Sie eine ähnliche Struktur wie in Übung 5, eventuell ist hier eine `for`-Schleife geeigneter. Zählen Sie in einer Variablen mit, wie oft das gesuchte Zeichen aufgetreten ist und geben Sie diesen Wert dann zum Schluss zurück.
+:::{.callout-note}
+Verwenden Sie eine ähnliche Struktur wie in Übung 5, eventuell ist hier eine `for`-Schleife geeigneter. Zählen Sie in einer Variablen mit, wie oft das gesuchte Zeichen aufgetreten ist und geben Sie diesen Wert dann zum Schluss zurück.
+:::
