@@ -1,8 +1,8 @@
 - source: 04.qmd
   netlify:
     - id: fd65f656-f316-4e8c-a7b8-503ddf63febd
-      url: 'https://python-23w-04.netlify.app/'
+      url: 'https://python-23w-04.netlify.app'
 - source: 04-solutions.qmd
   netlify:
     - id: 5f88a25e-0652-498c-b4e2-08fbbb80ecbd
-      url: 'https://python-23w-04-solutions.netlify.app/'
+      url: 'https://python-23w-04-solutions.netlify.app'
