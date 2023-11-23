@@ -47,6 +47,7 @@ s[:3] + "c" + s[4:]
 def is_palindrome(s):
     s = s.lower()
     s = s.replace("?", "").replace("!", "").replace(".", "").replace(",", "")
+    s = s.replace(" ", "")
     return s == s[::-1]
 ```
 
