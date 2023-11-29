@@ -1,8 +1,8 @@
 - source: 08.qmd
   netlify:
     - id: e5a38f4c-986a-4eb1-b798-27fa13c50a16
-      url: 'https://heartfelt-axolotl-52932f.netlify.app'
+      url: 'https://python-23w-08.netlify.app'
 - source: 08-solutions.qmd
   netlify:
     - id: f7044c4b-a4a8-4738-8c2f-d360d2fb483e
-      url: 'https://musical-semolina-5a732a.netlify.app'
+      url: 'https://python-23w-08-solutions.netlify.app'
