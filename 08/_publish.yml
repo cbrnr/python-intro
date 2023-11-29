@@ -1,8 +1,8 @@
 - source: 08.qmd
-  quarto-pub:
-    - id: 7d0f0a81-ab32-41c6-aa6e-cce0c21c8d32
-      url: 'https://cbrnr.quarto.pub/python-23s-08'
+  netlify:
+    - id: e5a38f4c-986a-4eb1-b798-27fa13c50a16
+      url: 'https://heartfelt-axolotl-52932f.netlify.app'
 - source: 08-solutions.qmd
-  quarto-pub:
-    - id: 26224d64-4419-45b2-9c42-e32ec402f906
-      url: 'https://cbrnr.quarto.pub/python-23s-08-solutions'
+  netlify:
+    - id: f7044c4b-a4a8-4738-8c2f-d360d2fb483e
+      url: 'https://musical-semolina-5a732a.netlify.app'

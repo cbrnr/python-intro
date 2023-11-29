@@ -2,8 +2,10 @@
 title: "8 – Lösungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-05-15
-format: html
+date: 2023-12-07
+format:
+  html:
+    page-layout: full
 engine: jupyter
 highlight-style: github
 title-block-banner: true
