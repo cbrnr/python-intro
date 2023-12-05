@@ -2,8 +2,10 @@
 title: "9 – Numerische Daten"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-05-22
-format: html
+date: 2023-12-14
+format:
+  html:
+    page-layout: full
 engine: jupyter
 highlight-style: github
 title-block-banner: true
@@ -17,7 +19,7 @@ published-title: "Veröffentlicht"
 
 ## Allgemeines
 
-Python wurde ursprünglich als einfach zu erlernende Lehr-Programmiersprache entwickelt. Aufgrund der Einfachheit und der Möglichkeit, tausende Zusatzpakete nutzen zu können, hat sich Python auch im wissenschaftlichen Bereich (Datenanalyse, Machine Learning) als Quasi-Standard etabliert. Folgende grundlegende Pakete sind für die Datenanalyse essentiell:
+Python wurde ursprünglich als einfach zu erlernende Programmiersprache entwickelt. Dadurch hat sich Python auch im wissenschaftlichen Bereich (Datenanalyse, Machine Learning) etabliert, nicht zuletzt auch durch die große Anzahl an Zusatzpaketen für viele Einsatzgebiete. Folgende grundlegende Pakete sind für die Datenanalyse essentiell:
 
 * [NumPy](http://www.numpy.org/) (Arbeiten mit numerischen Daten)
 * [SciPy](https://scipy.org/) (Algorithmen für diverse wissenschaftliche Anwendungen)
@@ -25,18 +27,18 @@ Python wurde ursprünglich als einfach zu erlernende Lehr-Programmiersprache ent
 * [Pandas](http://pandas.pydata.org/) (Arbeiten mit Tabellen)
 * [IPython](http://ipython.org/) (erweiterter interaktiver Python-Interpreter)
 
-Darüber hinaus gibt es aber noch eine große Anzahl an weiteren exzellenten Paketen für speziellere Anwendungen wie z.B. [scikit-learn](http://scikit-learn.org/stable/) (Machine Learning), [statsmodels](http://www.statsmodels.org/stable/index.html) (Statistik), [scikit-image](http://scikit-image.org/) (Bildverarbeitung) oder [SymPy](http://www.sympy.org/en/index.html) (symbolisches Rechnen). Diese Pakete setzen meist zumindest NumPy als Grundlage voraus, welches wir in dieser Einheit näher kennenlernen werden.
+Darüber hinaus gibt es aber sehr viele weitere exzellente Pakete für speziellere Anwendungen wie z.B. [Scikit-learn](http://scikit-learn.org/stable/) (Machine Learning), [statsmodels](http://www.statsmodels.org/stable/index.html) (Statistik), [scikit-image](http://scikit-image.org/) (Bildverarbeitung) oder [SymPy](http://www.sympy.org/en/index.html) (symbolisches Rechnen). Diese Pakete setzen NumPy als Grundlage voraus, welches wir in dieser Einheit näher kennenlernen werden.
 
 :::{.callout-tip}
-Der Python-Interpreter kann, wie bereits des öfteren erwähnt, im Script-Modus oder im interaktiven Modus verwendet werden. Letzterer eignet sich zum interaktiven Verarbeiten von Daten (also z.B. auch zum Ausprobieren von Ideen mittels [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)). Das Paket IPython fügt dem interaktiven Modus von Python einige zusätzliche Funktionen hinzu, die das Arbeiten komfortabler gestalten (z.B. farbliche Hervorhebung der Syntax, einfacher Zugriff auf bereits ausgeführte Befehle und Ergebnisse, hervorragende Vervollständigung von Befehlen mittels Tab-Completion, viele Zusatzfunktionen durch sogenannte Magic Functions, ...). Deswegen sollte man eigentlich immer IPython und nicht den "nackten" Python-Interpreter für interaktive Aufgaben verwenden.
+Der Python-Interpreter kann, wie bereits des öfteren erwähnt, im Script-Modus oder im interaktiven Modus verwendet werden. Letzterer eignet sich zum interaktiven Verarbeiten von Daten (also z.B. auch zum Ausprobieren von Ideen). Das Paket IPython fügt dem interaktiven Modus von Python einige zusätzliche Funktionen hinzu, die das Arbeiten komfortabler gestalten (z.B. farbliche Hervorhebung der Syntax, einfacher Zugriff auf bereits ausgeführte Befehle und Ergebnisse, hervorragende Vervollständigung von Befehlen mittels Tab-Completion, viele Zusatzfunktionen durch sogenannte Magic Functions, ...).
 :::
 
 
 ## NumPy
 
-[NumPy](http://wiki.scipy.org/Tentative_NumPy_Tutorial) ist die Basis der allermeisten wissenschaftlichen Pakete in Python. Es ist so wichtig und essentiell, dass Python ohne NumPy vermutlich nie für Datenanalysen verwendet worden wäre.
+[NumPy](http://wiki.scipy.org/Tentative_NumPy_Tutorial) ist die Basis der meisten wissenschaftlichen Pakete in Python. Es ist so wichtig und essentiell, dass Python ohne NumPy vermutlich nie für Datenanalysen verwendet worden wäre.
 
-NumPy stellt einen hocheffizienten Datentyp für numerische Daten zur Verfügung, nämlich ein homogenes multidimensionales (*n*-dimensionales) Array (auch kurz ND-Array bzw. `ndarray` oder kurz Array genannt). Listen sind aufgrund ihrer Flexibilität dafür viel zu ineffizient, da sie unterschiedliche Elemente enthalten können. Homogen bedeutet nämlich, dass alle Elemente eines Arrays denselben Datentyp haben müssen (z.B. lauter `float`-Zahlen) – dadurch können Berechnungen wesentlich effizienter und schneller ausgeführt werden. Multidimensional bedeutet, dass ein Array beliebig viele Dimensionen (auch Achsen genannt) besitzen kann. Jedes Element wird daher mit einem Tupel indiziert, welches seine genaue Position innerhalb des Arrays beschreibt.
+NumPy stellt einen hocheffizienten Datentyp für numerische Daten zur Verfügung, nämlich ein homogenes multidimensionales (*n*-dimensionales) Array (auch kurz ND-Array bzw. `ndarray` oder kurz Array genannt). Listen sind aufgrund ihrer Flexibilität dafür viel zu ineffizient, da sie unterschiedliche Elemente enthalten können. *Homogen* bedeutet nämlich, dass alle Elemente eines Arrays *denselben* Datentyp haben müssen (z.B. lauter `float`-Zahlen) – dadurch können Berechnungen wesentlich effizienter und schneller ausgeführt werden. *Multidimensional* bedeutet, dass ein Array beliebig viele Dimensionen (auch Achsen genannt) besitzen kann. Jedes Element wird daher mit einem Tupel indiziert, welches seine genaue Position innerhalb des Arrays beschreibt.
 
 :::{.callout-tip}
 Das offizielle Tutorial [NumPy: the absolute basics for beginners](https://numpy.org/devdocs/user/absolute_beginners.html) ergänzt bzw. vertieft die Inhalte dieser Unterlagen – die Lektüre ist sehr zu empfehlen!
@@ -112,7 +114,7 @@ b = np.array([1.1, 3.14, 7.68, -12.69, -4.55])  # aus einer normalen Liste
 b
 ```
 
-Eine Liste von Listen wird in ein 2D-Array (Tabelle, besteht aus Zeilen und Spalten) konvertiert:
+Eine Liste von Listen wird in ein 2D-Array (also eine Tabelle, die aus Zeilen und Spalten besteht) konvertiert:
 
 ```{python}
 c = np.array([[1, 2, 3], [4, 5, 6]])  # aus einer Liste von Listen
@@ -124,20 +126,28 @@ c.shape  # 2 Zeilen, 3 Spalten
 ```
 
 :::{.callout-note}
-Ein eindimensionales Array kann man sich wie eine Liste vorstellen, wohingegen ein zweidimensionales Array einer Tabelle entspricht. Für höherdimensionale Arrays haben wir keine speziellen Bezeichnungen.
+Ein eindimensionales Array kann man sich wie eine Liste vorstellen, wohingegen ein zweidimensionales Array einer Tabelle entspricht. Für höherdimensionale Arrays gibt es keine speziellen Bezeichnungen.
 :::
 
 
 ### Konstant befüllte Arrays
 
-Im Gegensatz zu Listen, welche dynamisch wachsen können, sollte die Größe von Arrays bereits bei der Erstellung bekannt sein, da das Hinzufügen von Zeilen oder Spalten relativ langsam ist. Hierfür gibt es einige praktische Konstruktionen, welche die Arrays mit Platzhalterelementen wie z.B. lauter Nullen erzeugen.
+Im Gegensatz zu Listen, welche dynamisch wachsen können (z.B. mit der `append`-Methode), sollte die Größe von Arrays bereits bei der Erstellung bekannt sein, da das Hinzufügen von Zeilen oder Spalten relativ langsam ist. Hierfür gibt es einige praktische Konstruktionen, welche die Arrays mit Platzhalterelementen wie z.B. lauter Nullen erzeugen.
 
 ```{python}
 np.zeros((3, 4))  # Nullen
 ```
 
 :::{.callout-important}
-Die Funktion `np.zeros` wird mit *einem* Argument aufgerufen, nämlich mit dem Tupel `(3, 4)` im vorigen Beispiel. Deswegen benötigt man hier ein weiteres Klammernpaar, um ein Tupel zu übergeben und dieses von Funktionsargumenten zu unterscheiden.
+Die Funktion `np.zeros` wird mit *einem* Argument für die gewünschte Form (Shape) aufgerufen, nämlich mit dem Tupel `(3, 4)` im vorigen Beispiel. Deswegen benötigt man hier ein weiteres Klammernpaar, um ein Tupel als erstes Argument zu übergeben. Der Aufruf `np.zeros(3, 4)` funktioniert *nicht*, da man hier zwei Argumente übergibt. Lesen Sie in der Hilfe nach, was die ersten beiden Parameter der Funktion bedeuten!
+:::
+
+:::{.callout-tip}
+Übersichtlicher ist es, wenn Sie Keyword-Argument nutzen, also beispielsweise:
+
+```python
+np.zeros(shape=(3, 4))
+```
 :::
 
 ```{python}
@@ -153,7 +163,7 @@ np.full((3, 4), 66)  # 3 Zeilen, 4 Spalten, alle Elemente gleich 66
 
 ### Sequenzen
 
-Analog zur Builtin-Funktion `range` können mit `np.arange` Arrays mit Folgen von Zahlen erstellt werden. Hier sind nicht nur ganze Zahlen möglich, sondern auch Kommazahlen. Auch hier zählt der letzte Wert (Stop-Wert) nicht mehr zum Bereich dazu.
+Analog zur Builtin-Funktion `range` können mit `np.arange` Arrays mit Zahlenfolgen erstellt werden. Hier sind nicht nur ganze Zahlen möglich, sondern auch Dezimalzahlen. Auch hier zählt der letzte Wert (Stopp-Wert) nicht mehr zum Bereich dazu.
 
 ```{python}
 np.arange(5, 17)
@@ -177,7 +187,7 @@ np.linspace(1, 10, 10, dtype=int)  # wie oben, nur Integer-Elemente
 np.linspace(1, 10, 24)  # 24 Elemente von 1 bis 10
 ```
 
-Sollen die Elemente nicht den gleichen (linearen) Abstand haben sondern logarithmisch unterteilt sein, gibt es analog dazu die Funktion `logspace`:
+Sollen die Elemente nicht den gleichen (linearen) Abstand haben, sondern logarithmisch unterteilt sein, gibt es analog dazu die Funktion `logspace`:
 
 ```{python}
 np.logspace(0, 4, 8)  # 8 Werte von 10**0 bis 10**4
@@ -196,26 +206,26 @@ from numpy.random import default_rng
 Die Abkürzung `rng` steht für Random Number Generator, also Zufallszahlengenerator.
 :::
 
-Danach erzeugt man damit ein Generator-Objekt. Dieses kann man auch in einen definierten Zustand versetzen, indem man als [Seed](https://de.wikipedia.org/wiki/Seed_key) eine Zahl angibt:
+Danach erzeugt man damit ein Generator-Objekt. Dieses kann man auch in einen definierten Anfangszustand versetzen, indem man als [Seed](https://de.wikipedia.org/wiki/Seed_key) eine beliebige Zahl angibt:
 
 ```{python}
 rng = default_rng(seed=42)
 ```
 
-In diesem Beispiel initialisieren wir den Generator mit `42` (wir könnten aber auch jede beliebige andere Zahl nehmen). Die Initialisierung bewirkt, dass der Generator danach dieselbe Folge an Zufallszahlen ausspuckt. Lässt man die Initialisierung mit einer Zahl weg, dann wird der Generator in einen nicht-reproduzierbaren Zustand initialisiert (der Seed wird z.B. aus der aktuellen Uhrzeit u.ä. gebildet). Das bedeutet, dass bei jeder erneuten Ausführung eines Scripts andere Zufallszahlen gezogen werden, was häufig nicht im Sinne der Reproduzierbarkeit von Ergebnissen ist.
+In diesem Beispiel initialisieren wir den Generator mit `42` (wir könnten aber auch jede beliebige andere Zahl nehmen). Die Initialisierung bewirkt, dass der Generator danach dieselbe Folge an Zufallszahlen ausspuckt. Lässt man die Initialisierung mit einer Zahl weg, dann wird der Generator in einen nicht-reproduzierbaren Zustand initialisiert (der Seed wird z.B. aus der aktuellen Uhrzeit, der Mauscursorposition u.ä. gebildet). Das bedeutet, dass bei jeder erneuten Ausführung eines Scripts andere Zufallszahlen gezogen werden, was häufig nicht im Sinne der Reproduzierbarkeit von Ergebnissen ist.
 
 Durch Methoden des Generators kann man jetzt Zufallszahlen mit der gewünschten Verteilung erzeugen:
 
 ```{python}
-rng.standard_normal(10)
+rng.standard_normal(10)  # normalverteilt
 ```
 
 ```{python}
-rng.uniform(size=(2, 2))
+rng.uniform(size=(2, 2))  # gleichverteilt
 ```
 
 ```{python}
-rng.integers(low=-3, high=99, size=(2, 5))
+rng.integers(low=-3, high=99, size=(2, 5))  # Ganzzahlen
 ```
 
 :::{.callout-note}
@@ -227,7 +237,7 @@ Wenn Sie die obigen Beispiele auf Ihrem Rechner nachvollziehen, sollten Sie *die
 
 ### Arithmetische Operationen
 
-Arithmetische Operationen werden grundsätzlich *elementweise* angewendet.
+Arithmetische Operationen werden grundsätzlich *elementweise* angewendet. Betrachten wir die beiden Arrays `a` und `b`:
 
 ```{python}
 a = np.arange(100, 700, 100).reshape((2, 3))
@@ -241,6 +251,8 @@ a
 ```{python}
 b
 ```
+
+Die folgenden Operationen werden elementweise berechnet:
 
 ```{python}
 a * 2
@@ -323,7 +335,7 @@ b.max()
 a.min()
 ```
 
-Man kann diese Funktionen/Methoden aber auch auf einzelne Dimensionen (auch "Achsen" genannt) anwenden, z.B. auf Zeilen oder Spalten. Dabei entspricht `0` den Zeilen und `1` den Spalten.
+Man kann diese Funktionen/Methoden aber auch auf einzelne Dimensionen (auch "Achsen" genannt) anwenden, z.B. auf Zeilen oder Spalten. Dabei entspricht die Dimension `0` den Zeilen und die Dimension `1` den Spalten.
 
 ```{python}
 a.mean(axis=0)  # Mittelwert entlang der Zeilen, d.h. Spaltenmittelwerte
@@ -465,16 +477,16 @@ c.reshape((1, -1))  # reshape gibt ein neues Array zurück
 c  # das ursprüngliche Array wird nicht verändert
 ```
 
-:::{.callout-tip}
-Man muss bei `reshape` nicht alle Dimensionen angeben – eine kann man auf `-1` setzen, was bedeutet, dass NumPy die korrekte Anzahl automatisch bestimmt. Dies ist möglich, da die Anzahl aller Elemente konstant bleiben muss.
-:::
-
 ```{python}
 c = c.reshape((1, -1))  # daher sollte man einen Namen zuweisen
 c
 ```
 
-Der Unterschied zwischen `resize` und `reshape` ist also, das `resize` das Array direkt modifiziert und `reshape` lediglich ein neues geändertes Array zurückgibt.
+:::{.callout-tip}
+Man muss bei `reshape` nicht alle Dimensionen angeben – eine kann man auf `-1` setzen, was bedeutet, dass NumPy die korrekte Anzahl automatisch bestimmt. Dies ist möglich, da die Anzahl aller Elemente konstant bleiben muss.
+:::
+
+Der Unterschied zwischen `resize` und `reshape` ist also, das `resize` das Array direkt modifiziert und `reshape` ein *neues* (geändertes) Array zurückgibt.
 
 
 ## Kombinieren von Arrays
