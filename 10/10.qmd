@@ -2,8 +2,10 @@
 title: "10 – Grafiken"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-06-05
-format: html
+date: 2024-01-11
+format:
+  html:
+    page-layout: full
 engine: jupyter
 highlight-style: github
 title-block-banner: true
@@ -25,7 +27,7 @@ In Python gibt es eine große Anzahl an Paketen, welche sich auf das Erstellen v
 - [Seaborn](http://seaborn.pydata.org/)
 - [Vega-Altair](https://altair-viz.github.io/)
 
-Matplotlib ist das älteste und bekannteste Paket, es ist aber manchmal etwas umständlich zu bedienen – dafür ist es aber möglich, Grafiken bis ins kleinste Detail anzupassen. Außerdem basieren viele Grafikpakete auf Matplotlib, daher ist es jedenfalls hilfreich, wenn man zumindest ein grundlegendes Verständnis von Matplotlib besitzt.
+Matplotlib ist das älteste und bekannteste Paket, es ist aber manchmal etwas umständlich zu bedienen – dafür ist es möglich, Grafiken bis ins kleinste Detail anzupassen. Außerdem basieren viele Grafikpakete auf Matplotlib, daher ist es jedenfalls hilfreich, wenn man zumindest ein grundlegendes Verständnis von Matplotlib besitzt.
 
 Bokeh und Plotly können vor allem interaktive Grafiken für Webanwendungen erstellen. Seaborn und Vega-Altair haben sich auf statistische Grafiken spezialisiert. Seaborn baut auf Matplotlib auf und bietet sehr viele zusätzliche Grafiktypen. Vega-Altair hat sich das Ziel gesetzt, komplexe Grafiken möglichst einfach erstellen zu können. Auch interaktive Grafiken können damit erzeugt werden.
 
