@@ -13,4 +13,4 @@ Die folgenden Unterlagen bieten eine kurze Einführung in die Grundlagen von Pyt
  9. [Numerische Daten](https://python-23w-09.netlify.app/) ([Lösungen](https://python-23w-09-solutions.netlify.app/))
 10. [Grafiken](https://python-23w-10.netlify.app/) ([Lösungen](https://python-23w-10-solutions.netlify.app/))
 11. [PsychoPy (1)](https://python-23w-11.netlify.app) ([Lösungen](https://python-23w-11-solutions.netlify.app))
-12. [PsychoPy (2)](https://cbrnr.quarto.pub/python-23w-12) ([Lösungen](https://cbrnr.quarto.pub/python-23w-12-solutions))
+12. [PsychoPy (2)](https://python-23w-12.netlify.app) ([Lösungen](https://python-23w-12-solutions.netlify.app))

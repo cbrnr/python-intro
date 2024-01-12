@@ -2,8 +2,10 @@
 title: "12 – PsychoPy (2)"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-06-19
-format: html
+date: 2024-01-25
+format:
+  html:
+    page-layout: full
 engine: jupyter
 highlight-style: github
 title-block-banner: true
@@ -17,12 +19,12 @@ published-title: "Veröffentlicht"
 
 ## PsychoPy Coder
 
-In dieser Einheit werden wir uns mit dem Python-Code beschäftigen, welcher jedem PsychoPy-Experiment zugrunde liegt. Selbst wenn ein Experiment mit der grafischen Oberfläche Builder erstellt wurde, wird dieses vor dem Ausführen zuerst in ein Python-Script konvertiert. Erst dieses Script wird dann tatsächlich von Python ausgeführt. Selbstverständlich kann man aber auch direkt ein Python-Script erstellen um PsychoPy zu verwenden – dies führt in den allermeisten Fällen zu wesentlich kompakterem Code.
+In dieser Einheit werden wir uns mit dem Python-Code beschäftigen, welcher jedem PsychoPy-Experiment zugrunde liegt. Selbst wenn ein Experiment mit der grafischen Oberfläche Builder erstellt wurde, wird dieses vor dem Ausführen zuerst in ein Python-Script konvertiert. Erst dieses Script wird dann tatsächlich von Python ausgeführt. Selbstverständlich kann man aber auch direkt ein Python-Script erstellen, um PsychoPy zu verwenden – dies führt in den meisten Fällen zu wesentlich kompakterem Code.
 
-PsychoPy Coder ist ein einfacher Code-Editor, mit dem man Python-Scripts (also insbesondere auch PsychoPy-Experimente) erstellen kann. Wenn man aber lieber einen anderen Editorvverwenden möchte (wie z.B. Visual Studio Code oder PyCharm), kann man das ohne Einschränkungen auch tun. Falls man aber die Standalone-Pakete von PsychoPy unter Windows oder macOS verwendet, sollte man PsychoPy Coder verwenden, da dies keine zusätzlichen Konfigurationsschritte erfordert.
+PsychoPy Coder ist ein einfacher Code-Editor, mit dem man Python-Scripts (also insbesondere auch PsychoPy-Experimente) erstellen kann. Wenn man aber lieber einen anderen Editor verwenden möchte (wie z.B. Visual Studio Code), kann man das ohne Einschränkungen auch tun. Falls man aber die Standalone-Pakete von PsychoPy unter Windows oder macOS verwendet, sollte man PsychoPy Coder verwenden, da dies keine zusätzlichen Konfigurationsschritte erfordert.
 
 :::{.callout-note}
-Unter macOS kann man die Python-Umgebung von PsychoPy, welche mit dem Standalone-Installer installiert wurde, gar nicht mit anderen Editoren verwenden. Hier ist man also auf PsychoPy Coder angewiesen. Unter Windows kann man in Visual Studio Code den Python-Interpreter der PsychoPy-Installation auswählen und verwenden.
+Unter macOS kann man die Python-Umgebung von PsychoPy, welche mit dem Standalone-Installer installiert wurde, gar nicht mit anderen Editoren verwenden. Hier ist man also auf PsychoPy Coder angewiesen. Unter Windows kann man in Visual Studio Code den Python-Interpreter der PsychoPy-Installation auswählen und verwenden (dies ist aber auch keine offiziell unterstützte Lösung).
 :::
 
 
@@ -39,7 +41,7 @@ Das erstellte Script ist für ein so einfaches Experiment mit 487 Zeilen relativ
 
 ## Minimales Experiment
 
-Das kürzeste PsychoPy-Experiment ist fünf Zeilen lang (bzw. sechs Zeilen mit einer Leerzeile). Es besteht aus einem leeren Fenster, welches für 2 Sekunden sichtbar ist.
+Das kürzeste PsychoPy-Experiment ist fünf Zeilen lang. Es besteht aus einem leeren Fenster, welches für 2 Sekunden sichtbar ist.
 
 ```python
 from psychopy import core, visual
@@ -65,7 +67,7 @@ Das Script kann durch Klicken auf das Icon "Run experiment" ausgeführt werden.
 
 ## Darstellen von Stimuli am Bildschirm
 
-In einem richtigen Experiment verwendet man natürlich diverse Stimuli. Im Folgenden werden wir einige visuelle Stimuli näher betrachten. PsychoPy kann mit den im Modul `visual` enthaltenen Funktionen eine große Anzahl an unterschiedlichsten visuellen Stimuli darstellen, wie beispielsweise Text, Formen (Kreise, Rechtecke, Linien), Bilddateien, Muster, usw.
+In einem richtigen Experiment verwendet man natürlich diverse Stimuli. Im Folgenden werden wir einige visuelle Stimuli näher betrachten. PsychoPy kann mit den im Modul `visual` enthaltenen Funktionen eine große Anzahl an unterschiedlichsten visuellen Stimuli erzeugen, wie beispielsweise Text, Formen (Kreise, Rechtecke, Linien), Bilddateien, Muster, usw.
 
 Die Darstellung von visuellen Stimuli am Bildschirm funktioniert wie folgt:
 
@@ -74,7 +76,7 @@ Die Darstellung von visuellen Stimuli am Bildschirm funktioniert wie folgt:
 3. Schließlich wird der Stimulus `stim` mit der Methode `stim.draw()` gezeichnet. Das Zeichnen erfolgt aber zunächst *unsichtbar* im sogenannten Backbuffer – man kann sich diesen Buffer wie die Rückseite des Bildschirms vorstellen. Alles was gezeichnet wird, landet zuerst einmal im Backbuffer und ist somit noch nicht am Bildschirm sichtbar.
 4. Wenn alle gewünschten Stimuli im Backbuffer gezeichnet sind, kann der gesamte Inhalt des Backbuffers mit `win.flip()` *sichtbar* gemacht werden. Dies bedeutet, dass der Inhalt des unsichtbaren Backbuffers in den sichtbaren Frontbuffer übertragen wird – der Backbuffer wird dadurch wieder geleert. Diese Operation ist mit der Bildwiederholfrequenz synchronisiert, d.h. bei einem Bildschirm mit 60&thinsp;Hz wird das Bild 60 Mal pro Sekunde neu gezeichnet. Ein Aufruf von `win.flip()` wird dann bei der nächsten Bildschirm-Aktualisierung durchgeführt.
 
-Der Vorteil dieser Aufteilung in Backbuffer und Frontbuffer ist, dass alle Stimuli im Backbuffer exakt gleichzeitig sichtbar werden, und zwar genau dann wenn man `win.flip()` aufruft. Würden die Stimuli direkt nach dem Zeichnen sichtbar werden, könnte es vorkommen, dass die verschiedenen Komponenten in einem Bild zu unterschiedlichen Zeiten gezeichnet werden.
+Der Vorteil dieser Aufteilung in Backbuffer und Frontbuffer ist, dass alle Stimuli im Backbuffer exakt gleichzeitig sichtbar werden, und zwar genau dann, wenn man `win.flip()` aufruft. Würden die Stimuli direkt nach dem Zeichnen sichtbar werden, könnte es vorkommen, dass die verschiedenen Komponenten in einem Bild zu unterschiedlichen Zeiten gezeichnet werden.
 
 Unser minimales Experiment können wir nun also mit einem visuellen Text-Stimulus wie folgt erweitern:
 
@@ -83,8 +85,8 @@ from psychopy import core, visual
 
 win = visual.Window(size=[800, 400])
 text = visual.TextStim(win, "Text\n\n2 Sekunden sichtbar.")
-text.draw()
-win.flip()
+text.draw()  # in den Backbuffer zeichnen (noch unsichtbar)
+win.flip()  # sichtbar machen
 core.wait(2)
 win.close()
 core.quit()
@@ -93,7 +95,7 @@ core.quit()
 
 ## Warten auf einen Tastendruck
 
-Wir können nun schon fast einen Instruktionsbildschirm anzeigen – es fehlt nur mehr die Möglichkeit, die Instruktionen so lange anzuzeigen bis die Versuchsperson eine bestimmte Taste (z.B. die Leertaste) drückt. Das PsychoPy-Modul `event` beinhaltet diverse Funktionen um Benutzereingaben (wie z.B. von der Tastatur) abzufragen. Mit der Funktion `event.waitKeys()` kann man so lange warten, bis eine Taste gedrückt wird. Insbesondere kann man mit dem `keyList`-Argument die erlaubten Tasten als Liste angeben. Unser Beispiel kann damit wie folgt erweitert werden:
+Wir können nun schon fast einen Instruktionsbildschirm anzeigen – es fehlt nur mehr die Möglichkeit, die Instruktionen so lange anzuzeigen, bis die Versuchsperson eine bestimmte Taste (z.B. die Leertaste) drückt. Das PsychoPy-Modul `event` beinhaltet diverse Funktionen, um Benutzereingaben (wie z.B. von der Tastatur) abzufragen. Mit der Funktion `event.waitKeys()` kann man so lange warten, bis eine Taste gedrückt wird. Insbesondere kann man mit dem `keyList`-Argument die erlaubten Tasten als Liste angeben. Unser Beispiel kann damit wie folgt erweitert werden:
 
 ```python
 from psychopy import core, visual, event
@@ -114,12 +116,12 @@ win.close()
 core.quit()
 ```
 
-Durch die Angabe von `keyList=["space"]` wird also so lange gewartet bis die Leertaste gedrückt wird. Erst dann wird das Script in der nächsten Zeile fortgesetzt.
+Durch die Angabe von `keyList=["space"]` wird also so lange gewartet, bis die Leertaste gedrückt wird. Erst dann wird das Script in der nächsten Zeile fortgesetzt.
 
 
 ## Verwenden einer Schleife
 
-Wir versuchen jetzt, das im vorigen Beispiel beschriebene Experiment umzusetzen. Nach dem Instruktionsbildschirm soll ein Text (nämlich `PsychoPy`) am Bildschirm angezeigt werden. Wenn man die linke Pfeiltaste drückt, soll der Text nach links rotieren. Drückt man die linke Taste wiederholt, wird die Rotation schneller. Drückt man die rechte Pfeiltaste, verlangsamt die Rotation nach links und man kann den Text dann nach rechts rotieren lassen. Wenn die Leertaste gedrückt wird soll das Experiment beendet werden.
+Wir versuchen jetzt, das im vorigen Beispiel beschriebene Experiment umzusetzen. Nach dem Instruktionsbildschirm soll ein Text (nämlich `PsychoPy`) am Bildschirm angezeigt werden. Wenn man die linke Pfeiltaste drückt, soll der Text nach links rotieren. Drückt man die linke Taste wiederholt, wird die Rotation schneller. Drückt man die rechte Pfeiltaste, verlangsamt die Rotation nach links und man kann den Text dann nach rechts rotieren lassen. Wenn die Leertaste gedrückt wird, soll das Experiment beendet werden.
 
 ```python
 from psychopy import core, visual, event
@@ -165,9 +167,9 @@ Ein neuer Bestandteil in diesem Experiment ist die Tatsache, dass wir unseren ex
 
 Danach folgt eine Endlosschleife `while True`. Man erkennt aber schon, dass diese Schleife mit `break` auch verlassen werden kann, und zwar wenn die Leertaste gedrückt wird.
 
-Die erste Anweisung innerhalb der Schleife gibt eine Liste der gedrückten Tasten zurück. Allerdings werden durch das `keyList`-Argument nur die angegebenen Tasten berücksichtigt (alle anderen Tasten werden ignoriert). Wenn keine Taste gedrückt wurde, ist `keys` eine leere Liste. Mit `if keys:` überprüft man daher, ob die Liste `keys` Einträge enthält oder nicht (wenn die Liste Einträge enthält wurde eine Taste gedrückt, dann ist der Ausdruck `True`; wenn die Liste leer ist wurde keine Taste gedrückt und der Ausdruck ist `False`).
+Die erste Anweisung innerhalb der Schleife gibt eine Liste der gedrückten Tasten zurück. Allerdings werden durch das `keyList`-Argument nur die angegebenen Tasten berücksichtigt (alle anderen Tasten werden ignoriert). Wenn keine Taste gedrückt wurde, ist `keys` eine leere Liste. Mit `if keys:` überprüft man daher, ob die Liste `keys` Einträge enthält oder nicht (wenn die Liste Einträge enthält, wurde eine Taste gedrückt und der ist Ausdruck `True`; wenn die Liste leer ist, wurde keine Taste gedrückt und der Ausdruck ist `False`).
 
-Wenn die gedrückte Taste die linke Pfeiltaste ist, wird die Rotationsgeschwindigkeit `speed` (anfänglich auf `0` gesetzt) um den Wert `1` verringert. Wenn die gedrückte Taste die rechte Pfeiltaste ist, wird `speed` um den Wert `1` erhöht. Die Rotation `rotation` des Textes wird nun durch Addition des aktuellen Wertes von `rotation` und der Rotationsgeschwindigkeit `speed` bestimmt. Danach wird der Text mit `text.setOri(rotation)` auf den Winkel `rotation` gedreht. Jetzt kann der Text-Stimulus gezeichnet werden und anschließend wird der Inhalt des Buffers mit `win.flip()` angezeigt. Sobald die Leertaste gedrückt wird, wird die Schleife verlassen und die letzten beiden Zeilen des Scripts ausgeführt.
+Wenn die gedrückte Taste die linke Pfeiltaste ist, wird die Rotationsgeschwindigkeit `speed` (anfänglich auf `0` gesetzt) um den Wert `1` verringert. Wenn die gedrückte Taste die rechte Pfeiltaste ist, wird `speed` um den Wert `1` erhöht. Die Rotation `rotation` des Textes wird nun durch Addition des aktuellen Wertes von `rotation` und der Rotationsgeschwindigkeit `speed` bestimmt. Danach wird der Text mit `text.setOri(rotation)` auf den Winkel `rotation` gedreht. Jetzt kann der Text-Stimulus gezeichnet werden, und anschließend wird der Inhalt des Buffers mit `win.flip()` angezeigt. Sobald die Leertaste gedrückt wird, wird die Schleife verlassen, und die letzten beiden Zeilen des Scripts werden ausgeführt.
 
 :::{.callout-tip}
 Die Schreibweise `x += 1` erhöht den Wert von `x` um `1`. Man könnte auch `x = x + 1` schreiben.
@@ -217,7 +219,7 @@ core.quit()
 
 ## Timer
 
-In den meisten Experimenten ist es wichtig, Stimuli zu definierten Zeitpunkten anzuzeigen. Wir haben bereits eine Möglichkeit kennengelernt, wie man in PsychoPy eine bestimmte Zeit warten kann: `core.wait(2)` wartet z.B. exakt zwei Sekunden bevor die nächste Codezeile ausgeführt wird. Dies hat allerdings den großen Nachteil, dass während der Wartezeit nichts passieren kann, da das gesamte Experiment für diese Zeitdauer blockiert ist.
+In den meisten Experimenten ist es wichtig, Stimuli zu definierten Zeitpunkten anzuzeigen. Wir haben bereits eine Möglichkeit kennengelernt, wie man in PsychoPy eine bestimmte Zeit warten kann: `core.wait(2)` wartet z.B. exakt zwei Sekunden, bevor die nächste Codezeile ausgeführt wird. Dies hat allerdings den großen Nachteil, dass während der Wartezeit nichts passieren kann, da das gesamte Experiment für diese Zeitdauer blockiert ist.
 
 Im Gegensatz dazu blockieren sogenannte Timer den Programmablauf nicht. Generell gibt es in PsychoPy zwei verschiedene Arten an Timern:
 
@@ -230,7 +232,7 @@ Bei der Erstellung eines Countdown-Timers kann man bei der Erstellung die Startz
 
 Man kann in einem Script beliebig viele Timer erstellen. Man kann Timer außerdem jederzeit auf beliebige Werte zurücksetzen. Die beiden vorher erstellten Timer `clock` und `timer` kann man mit `clock.reset()` bzw. `timer.reset()` auf ihre ursprünglichen Zeiten zurücksetzen. Dies bewirkt, dass `clock` auf 0 und `timer` auf 10 gesetzt werden.
 
-Das folgende Beispiel zeigt, wie man Timer einsetzen kann. Man erkennt, dass die `while`-Schleifen so lange ausgeführt werden, bis die Werte der Timer Null unterschreiten. Das bedeutet, dass die Schleife genau so lange dauert wie bei der Erstellung des Timers (bzw. eigentlich dann beim Zurücksetzen) angegeben wird.
+Das folgende Beispiel zeigt, wie man Timer einsetzen kann. Man erkennt, dass die `while`-Schleifen so lange ausgeführt werden, bis die Werte der Timer Null unterschreiten. Das bedeutet, dass die Schleife genau so lange dauert, wie bei der Erstellung des Timers (bzw. eigentlich dann beim Zurücksetzen) angegeben wird.
 
 ```python
 from psychopy import core, visual
@@ -314,11 +316,7 @@ Neu an diesem Script ist die Möglichkeit, mit `data.TrialHandler` automatisch T
 
 ## Weitere Literatur
 
-PsychoPy Coder beinhaltet im Menüpunkt *Demos* viele Beispiel-Scripts, welche als Vorlage für eigene Experimente bzw. Lernmaterialien verwendet werden können.
-
-Die Website der im Moment nicht mehr angebotenen Lehrveranstaltung ["Methoden der apparitiven Versuchssteuerung"](http://www.learnpsychopy.org/) ist nach wie vor verfügbar – neben einer allgemeinen Einführung in Python werden hier viele PsychoPy-Experimente beschrieben.
-
-Die PsychoPy-Website bietet auch ein [kurzes Tutorial über PsychoPy Coder](https://www.psychopy.org/coder/tutorial1.html), in welchem mittels Code ein einfaches Experiment erstellt wird.
+PsychoPy Coder beinhaltet im Menüpunkt *Demos* viele Beispiel-Scripts, welche als Vorlage für eigene Experimente bzw. Lernmaterialien verwendet werden können. Die PsychoPy-Website bietet auch ein [kurzes Tutorial über PsychoPy Coder](https://www.psychopy.org/coder/tutorial1.html), in welchem mittels Code ein einfaches Experiment erstellt wird.
 
 
 ## Übungen
@@ -327,4 +325,4 @@ Die PsychoPy-Website bietet auch ein [kurzes Tutorial über PsychoPy Coder](http
 
 Erzeugen Sie mit PsychoPy folgendes Experiment direkt als Script (d.h. verwenden Sie *nicht* die grafische Oberfläche PsychoPy Builder dafür, sondern PsychoPy Coder):
 
-Im Experiment sollen drei verschiedene visuelle Stimuli (z.B. Kreis, Polygon, Text, Bild) gleichzeitig animiert werden. Innerhalb einer Schleife, welche so lange laufen soll bis die Escape-Taste gedrückt wird, soll von jedem der drei Stimuli zumindest eine Eigenschaft (wie z.B. Position, Größe, Farbe, Orientierung) kontinuierlich verändert werden. Alle drei Stimuli sollen gleichzeitig innerhalb der Schleife verändert werden.
+Im Experiment sollen drei verschiedene visuelle Stimuli (z.B. Kreis, Polygon, Text, Bild) gleichzeitig animiert werden. Innerhalb einer Schleife, welche so lange laufen soll, bis die Escape-Taste gedrückt wird, soll von jedem der drei Stimuli zumindest eine Eigenschaft (wie z.B. Position, Größe, Farbe, Orientierung) kontinuierlich verändert werden. Alle drei Stimuli sollen gleichzeitig innerhalb der Schleife verändert werden.
