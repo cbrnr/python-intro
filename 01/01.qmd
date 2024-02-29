@@ -2,7 +2,7 @@
 title: "1 – Grundlagen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-10-05
+date: 2024-03-04
 format:
   html:
     page-layout: full
@@ -19,7 +19,7 @@ published-title: "Veröffentlicht"
 
 ## Überblick
 
-In dieser Lehrveranstaltung werden Sie die Programmiersprache [Python](https://www.python.org/) kennenlernen. Zunächst werden wichtige Sprachelemente wie z.B. Schleifen, Funktionen und Bedingungen sowie grundlegende Datentypen vorgestellt. Nach einer ausführlichen Behandlung dieser Grundlagen werden Sie lernen, wie man Python für die Analyse von Daten einsetzen kann (z.B. Einlesen von Textdateien, Repräsentieren von numerischen Daten, Erstellen von Grafiken). Abschließend werden Sie mit dem in der Psychologie populären Python-Paket [PsychoPy](https://www.psychopy.org/) einfache Experimente erstellen.
+In dieser Lehrveranstaltung werden die Grundlagen der Programmiersprache [Python](https://www.python.org/) vermittelt. Zunächst werden wichtige Sprachelemente wie z.B. Schleifen, Funktionen und Bedingungen sowie grundlegende Datentypen vorgestellt. Nach einer ausführlichen Behandlung dieser Grundlagen werden Sie lernen, wie man Python für die Analyse von Daten einsetzen kann (z.B. Einlesen von Textdateien, Repräsentieren von numerischen Daten, Erstellen von Grafiken). Abschließend werden Sie mit dem in der Psychologie populären Python-Paket [PsychoPy](https://www.psychopy.org/) einfache Experimente erstellen.
 
 Diese Lehrveranstaltung setzt keinerlei Programmierkenntnisse voraus. Die Grundlagen des Programmierens werden praxisnah erläutert – dieses Wissen können Sie danach auch auf die meisten anderen Programmiersprachen übertragen. Aufgrund des begrenzten Umfangs werden allerdings nur grundlegende Konzepte in Python abgedeckt, die aber Voraussetzung für alle komplexeren Anwendungen sind. Sie werden durch ein umfassendes Basiswissen darauf vorbereitet, sich fortgeschrittenere Methoden selbst anzueignen.
 
@@ -82,12 +82,12 @@ print(", ".join([str(i) for i in range(10)]))
 Auf der [offiziellen Python-Website](https://www.python.org/) findet man alles rund um Python. Dort kann man auch Installationspakete für diverse Betriebssysteme herunterladen. Außerdem gibt es dort auch die sehr umfangreiche offizielle Dokumentation mit vielen Beispielen und Tutorials. Mittlerweile ist die Installation auf Windows und macOS so einfach, dass man die offiziellen Installer bedenkenlos empfehlen kann (unter Linux ist es aber nach wie vor besser, die distributionseigenen Paketmanager dafür zu verwenden, falls Python nicht ohnehin schon vorinstalliert ist).
 
 :::{.callout-note}
-In diesen Unterlagen wird die Installation der Version 3.10.7 gezeigt. Sie sollten aber die aktuellste Version installieren und verwenden!
+In diesen Unterlagen wird die Installation der Version 3.12.2 gezeigt. Sie sollten aber die aktuellste Version installieren und verwenden!
 :::
 
-Unter Windows wählt man im Installationsfenster die Standard-Installation aus, aber setzt unbedingt das Häkchen bei *"Add Python 3.10 to PATH"*. Die Option *"Install launcher for all users (recommended)"* kann deaktiviert werden, damit können Sie Python auch ohne Administratorrechte installieren. Das folgende Bild zeigt diese Einstellungen:
+Unter Windows wählt man im Installationsfenster die Standard-Installation aus, aber setzt unbedingt das Häkchen bei *"Add python.exe to PATH"*. Die Option *"Install launcher for all users (recommended)"* kann deaktiviert bleiben, damit können Sie Python auch ohne Administratorrechte installieren. Das folgende Bild zeigt diese Einstellungen:
 
-![](install_python_windows.png)
+![](install-python-windows.png)
 
 
 
@@ -95,13 +95,9 @@ Unter Windows wählt man im Installationsfenster die Standard-Installation aus, 
 
 Nachdem Sie Python installiert haben können Sie den sogenannten Python-Interpreter starten. Dabei handelt es sich um ein Programm, welches Python-Befehle verstehen und verarbeiten kann. Man kann mit dem Python-Interpreter auch interaktiv arbeiten. Interaktiv bedeutet, dass man einen Befehl eintippt und mit der Eingabetaste bestätigt. Danach wird der eingegebene Befehl direkt verarbeitet und das Ergebnis ausgegeben.
 
-Es gibt einige Möglichkeiten, den Python-Interpreter zu verwenden – mehr dazu in der nächsten Einheit. Zunächst ist es am einfachsten, wenn Sie unter Windows das Programm "Python 3.10 (64-bit)" starten (es befindet sich im Startmenü im Ordner "Python 3.10"). Daraufhin öffnet sich ein Fenster, das in etwa so aussieht:
-
-![](python_windows.png)
+Es gibt einige Möglichkeiten, den Python-Interpreter zu verwenden – mehr dazu in der nächsten Einheit. Zunächst ist es am einfachsten, wenn Sie unter Windows das Programm "Python 3.12 (64-bit)" starten (es befindet sich im Startmenü im Ordner "Python 3.12").
 
 Unter macOS bzw. Linux öffnen Sie ein Terminal (z.B. mittels [Launchpad](https://support.apple.com/de-at/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac)) und tippen dort `python3`, gefolgt von der Eingabetaste. Achten Sie auf die vom Interpreter angezeigte Versionsnummer, um sicherzustellen, dass die korrekte Python-Version gestartet wurde.
-
-![](python_macos.png)
 
 Im interaktiven Interpreter können wir nun Python-Befehle eintippen und mit der Eingabetaste bestätigen. Der sogenannte Prompt `>>>` signalisiert dabei, dass Python bereit für Eingaben ist (dieser Prompt ist *nicht* Teil eines Python-Befehls). So kann man Python z.B. als Taschenrechner verwenden. Die vier Grundrechenarten Addition, Subtraktion, Multiplikation und Division können wie folgt verwendet werden:
 
@@ -122,7 +118,7 @@ Im interaktiven Interpreter können wir nun Python-Befehle eintippen und mit der
 ```
 
 :::{.callout-important}
-Bitte beachten Sie, dass Python die *englische* Zahlenschreibweise mit einem *Punkt* als Dezimaltrennzeichen verwendet und nicht das im deutschen Sprachraum übliche *Komma*. Kommazahlen müssen daher immer mit einem Punkt eingegeben werden, ganz egal welche Sprache im Betriebssystem eingestellt ist. In diesen Unterlagen wird ebenfalls ein Punkt als Dezimaltrennzeichen verwendet.
+Beachten Sie, dass Python die *englische* Zahlenschreibweise mit einem *Punkt* als Dezimaltrennzeichen verwendet und nicht das im deutschen Sprachraum übliche *Komma*. Kommazahlen müssen daher immer mit einem Punkt eingegeben werden, ganz egal welche Sprache im Betriebssystem eingestellt ist. In diesen Unterlagen wird ebenfalls ein Punkt als Dezimaltrennzeichen verwendet.
 :::
 
 Die ganzzahlige Division hat einen eigenen Operator, der aus zwei Zeichen besteht:
@@ -233,12 +229,24 @@ Tippen Sie im Python-Interpreter `import antigravity` ein. Was passiert? Was ges
 
 ### Übung 3
 
-Berechnen Sie mit Python das Ergebnis der Division $4 : 0.4$. Berechnen Sie außerdem das ganzzahlige Ergebnis und den Rest. Was fällt Ihnen auf?
+Die Erde kann näherungsweise als Kugel mit einem Radius von 6371 km betrachtet werden. Berechnen Sie damit die Oberfläche der Erde! Die Formel für die Oberfläche $A$ einer Kugel mit Radius $r$ lautet:
+
+$$A = 4 \pi r^2$$
 
 
 ### Übung 4
 
-Gegeben seien folgende Messwerte: 11, 27, 15, 10, 33, 18, 25, 22, 39, 11. Berechnen Sie den arithmetischen Mittelwert $\bar{x}$. Verwenden Sie dafür keine fertigen Funktionen, sondern nur Grundrechenarten und führen Sie diese Berechnung mit einem Befehl (ohne Zwischenergebnisse) durch.
+Gegeben seien folgende Messwerte: 11, 27, 15, 10, 33, 18, 25, 22, 39, 11. Berechnen Sie den arithmetischen sowie den geometrischen Mittelwert (unter Verwendung von Grundrechenarten). Führen Sie die Berechnung mit jeweils einem einzigen Befehl (ohne Zwischenergebnisse) durch.
+
+Die Formeln für den arithmetischen bzw. geometrischen Mittelwert lauten:
+
+$$\bar x = \frac{1}{n} \sum_{i=1}^n x_i$$
+
+$$\bar x_g = \sqrt[n]{\prod_{i=1}^n x_i}$$
+
+:::{.callout-note}
+Das Symbol $\prod$ steht für das Produkt aller Zahlen $x_i$. Die *n*-te Wurzel kann man auch als Potenz anschreiben, also $\sqrt[n]{x}$ ist gleichbedeutend mit $x^\frac{1}{n}$.
+:::
 
 
 ### Übung 5
@@ -259,3 +267,7 @@ Warum funktioniert der folgende Befehl nicht (unter der Annahme dass vorher `imp
 ```python
 math.Sqrt(4)
 ```
+
+:::{.callout-note}
+Dieses Beispiel soll zeigen, dass der interaktive Python-Interpreter zum Ausprobieren von Befehlen verwendet werden soll. Es macht gar nichts, wenn die Eingabe falsch ist! Ganz im Gegenteil erhält man zu einer fehlerhaften Eingabe eine Fehlermeldung, aus der man vielleicht auf den Fehler schließen kann. Deswegen: Probieren Sie Dinge einfach aus, Sie können nichts zerstören!
+:::

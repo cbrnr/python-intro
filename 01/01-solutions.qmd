@@ -2,7 +2,7 @@
 title: "1 – Lösungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-10-05
+date: 2024-03-04
 format:
   html:
     page-layout: full
@@ -19,9 +19,7 @@ published-title: "Veröffentlicht"
 
 ## Übung 1
 
-Die installierte Python-Version ist 3.10.6. Dies ist nicht mehr die aktuellste Version, welche stets auf der [offiziellen Website](https://www.python.org/) verfügbar ist.
-
-![](python_version.png)
+Die installierte Python-Version ist direkt nach dem Starten des interaktiven Python-Interpreters zu sehen. Die aktuellste Version kann von der [offiziellen Website](https://www.python.org/) heruntergeladen werden.
 
 
 ## Übung 2
@@ -58,28 +56,20 @@ Der Befehl `import math` bewirkt, dass man danach die im Modul `math` enthaltene
 ## Übung 3
 
 ```{python}
-4 / 0.4
+import math
+
+4 * math.pi * 6371**2
 ```
-
-```{python}
-4 // 0.4
-```
-
-```{python}
-4 % 0.4
-```
-
-Es fällt auf, dass das Ergebnis der Ganzzahldivision `4 // 0.4` mathematisch nicht korrekt ist – es sollte 10 lauten, Python gibt aber 9.0 aus. Auch der Rest der Division sollte 0 sein, hier gibt Python 0.3999999999999998 aus (also fast 0.4).
-
-:::{.callout-tip}
-Der Grund für dieses Verhalten liegt in der Tatsache begründet, dass Computer Kommazahlen im Allgemeinen nicht exakt repräsentieren können, sondern nur mit begrenzter Genauigkeit. Daher können Rundungsfehler entstehen, weswegen man bei Berechnungen mit Kommazahlen immer achtsam sein sollte (normalerweise sind diese Rundungsfehler aber extrem klein und nicht so offensichtlich "falsch" wie in diesem Beispiel). Dies ist übrigens keine Eigenheit von Python, sondern liegt darin begründet, wie Computer [Kommazahlen](https://de.wikipedia.org/wiki/Gleitkommazahl#Einschränkungen_und_deren_mathematische_Grundlagen) intern darstellen.
-:::
 
 
 ## Übung 4
 
 ```{python}
 (11 + 27 + 15 + 10 + 33 + 18 + 25 + 22 + 39 + 11) / 10
+```
+
+```{python}
+(11 * 27 * 15 * 10 * 33 * 18 * 25 * 22 * 39 * 11)**(1/10)
 ```
 
 
