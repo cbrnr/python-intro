@@ -2,7 +2,7 @@
 title: "2 – Die Python-Umgebung"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-10-12
+date: 2024-03-11
 format:
   html:
     page-layout: full
@@ -24,7 +24,7 @@ Eine Python-Installation besteht aus der Programmiersprache Python, einem [Inter
 Darüber hinaus finden sich sehr viele zusätzliche Funktionen in der Standardbibliothek. Diese wird standardmäßig mit Python mitgeliefert und ist in Module gegliedert. Die Module der Standardbibliothek beinhalten spezialisierte Funktionen und decken unter anderem Anwendungsgebiete wie Datenkompression, erweiterte spezielle Datentypen, mathematische und statistische Funktionen, Internetprotokolle, grafische Benutzerschnittstellen, und vieles mehr ab.
 
 :::{.callout-tip}
-In der vorigen Einheit haben wir mit `import math` bereits gesehen, wie wir Funktionen aus dem `math`-Modul verwenden können. Diese Vorgehensweise gilt für alle Module. Zuerst importiert man das gewünschte Modul, und erst dann kann man die darin enthaltenen Funktionen auch nutzen, also z.B.:
+In der vorigen Einheit haben wir mit `import math` bereits gesehen, wie wir Funktionen aus dem `math`-Modul aus der Standardbibliothek verwenden können. Diese Vorgehensweise gilt für alle Module. Zuerst importiert man das gewünschte Modul, und erst dann kann man die darin enthaltenen Funktionen auch nutzen, also z.B.:
 
 ```python
 import math
@@ -37,7 +37,7 @@ Das Importieren ist nur ein einziges Mal, am besten ganz zu Beginn einer Python-
 
 Zusätzlich gibt es noch tausende Python-Pakete, die sehr einfach zu einer existierenden Python-Umgebung hinzugefügt werden können. Diese Python-Pakete sind komplett unabhängig von Python, werden also auch nicht von denselben Personen entwickelt und veröffentlicht. Der [Python Package Index (PyPI)](https://pypi.python.org/pypi) sammelt alle verfügbaren Pakete an einer zentralen Stelle. Das offizielle Tool um Pakete aus dem PyPI zu installieren nennt sich `pip` und wird automatisch mit Python mitgeliefert (mehr dazu weiter unten).
 
-Um Python-Programme zu schreiben, benötigt man auch einen Text-Editor. Daher sollte man zu guter Letzt einen geeigneten Text-Editor bzw. eine [integrierte Entwicklungsumgebung (IDE)](https://de.wikipedia.org/wiki/Integrierte_Entwicklungsumgebung) installieren.
+Um Python-Programme zu schreiben, benötigt man auch einen Text-Editor. Daher sollte man zu guter Letzt einen geeigneten Text-Editor bzw. eine [integrierte Entwicklungsumgebung (IDE)](https://de.wikipedia.org/wiki/Integrierte_Entwicklungsumgebung) installieren (mehr dazu in einem der folgenden Abschnitte).
 
 
 ## Zusatzpakete verwalten
@@ -90,8 +90,8 @@ Der Python-Interpreter führt Python-Code aus. Er kann auf zwei unterschiedliche
 
 Im interaktiven Modus hat man die Möglichkeit, einzelne Python-Befehle einzugeben. Diese werden sofort ausgeführt und eventuelle Ergebnisse am Bildschirm ausgegeben. Python läuft also ständig im Hintergrund und wartet darauf, dass Sie Python-Befehle eintippen. Ein sogenannter Prompt signalisiert im interaktiven Modus, dass Befehle eingegeben werden können. Der Prompt sieht üblicherweise wie folgt aus:
 
-- `>>>` (im interaktiven Standard-Python-Interpreter)
-- `In [1]:` (in [IPython](https://ipython.org/), einem erweiterten interaktiven Python-Interpreter den man mit `pip install ipython` installieren kann)
+- `>>>` im interaktiven Standard-Python-Interpreter
+- `In [1]:` in [IPython](https://ipython.org/), einem erweiterten interaktiven Python-Interpreter den man mit `pip install ipython` installieren kann
 
 Man spricht in diesem Zusammenhang auch oft von der [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) (Read-Eval-Print-Loop), weil der interaktive Modus eine explorative und iterative Arbeitsweise ermöglicht: ein Befehl wird von Python gelesen (*read*), ausgeführt (*eval*), und das Ergebnis wird am Bildschirm ausgegeben (*print*) – diese Vorgehensweise wird beliebig oft wiederholt (*loop*).
 
@@ -124,7 +124,7 @@ print(1 + 4)
 
 ## Arbeitsverzeichnis
 
-Der Python-Interpreter arbeitet immer in genau einem Verzeichnis, dem sogenannten Arbeitsverzeichnis (Working Directory). Das Arbeitsverzeichnis ist wichtig, da Python davon ausgeht, dass sich eigene Dateien (wie Daten, Scripts oder Module) in diesem Verzeichnis befinden.
+Der Python-Interpreter arbeitet immer in genau einem Verzeichnis, dem sogenannten Arbeitsverzeichnis (Working Directory). Das Arbeitsverzeichnis ist wichtig, da Python davon ausgeht, dass sich eigene Dateien (wie Daten, Scripts oder Module) in diesem (oder relativ zu diesem) Verzeichnis befinden.
 
 Wird Python von der Kommandozeile aus gestartet, ist es sinnvoll, *zuerst* in das gewünschte Verzeichnis zu wechseln und dann Python zu starten – denn das Arbeitsverzeichnis ist jenes Verzeichnis, aus dem Python gestartet wurde.
 
@@ -176,7 +176,7 @@ Unter Syntax versteht man die Regeln einer Sprache, die festlegen wie man aus gr
 
 ### Einrückungen
 
-Wie bereits erwähnt, speichert man ein Python-Programm bzw. ein Python-Script in einer Textdatei mit der Endung `.py`. Ein spezielles Merkmal der Syntax von Python ist, dass Einrückungen Bedeutung haben – sie gruppieren zusammengehörigen Code in Blöcke. Die meisten anderen Programmiersprachen verwenden dafür spezielle Zeichen oder Schlüsselwörter wie z.B. `begin`, `end`, `{` oder `}`. Durch Einrückungen benötigt Python diese Zeichen nicht und der Code wird dadurch automatisch strukturierter und kürzer. Dies ist im folgenden Beispiel veranschaulicht (bitte achten Sie nur auf die Struktur, der Inhalt/die Bedeutung des Beispiels ist hier *nicht* relevant):
+Wie bereits erwähnt, speichert man ein Python-Programm bzw. ein Python-Script in einer Textdatei mit der Endung `.py`. Ein spezielles Merkmal der Syntax von Python ist, dass Einrückungen Bedeutung haben – sie gruppieren zusammengehörigen Code in Blöcke. Die meisten anderen Programmiersprachen verwenden dafür spezielle Zeichen oder Schlüsselwörter wie z.B. `begin`, `end`, `{` oder `}`. Durch Einrückungen benötigt Python diese Zeichen nicht und der Code wird dadurch automatisch strukturierter und kürzer. Dies ist im folgenden Beispiel veranschaulicht (bitte achten Sie nur auf die Struktur, der Inhalt/die Bedeutung des Beispiels ist hier *nicht* relevant; die Zeilennummern sind nicht Teil der Syntax und werden nur zur besseren Orientierung angezeigt):
 
 ```{python}
 #| eval: false
@@ -234,17 +234,17 @@ Zusätzlich zur Syntax haben sich Konventionen durchgesetzt, wie man "schön" fo
 
 - Für Einrückungen werden vier Leerzeichen verwendet.
 - Nach dem Kommentarzeichen `#` soll ein Leerzeichen folgen.
-- Die maximale Zeilenlänge soll 79 Zeichen nicht überschreiten.
+- Die maximale Zeilenlänge sollte 79 Zeichen nicht überschreiten.
 - Arithmetische Operatoren sollen von Leerzeichen umgeben sein, z.B. `1 + 1` und nicht `1+1`.
 
 Diese und noch viel mehr Empfehlungen sind im [Python Enhancement Proposal 8 (PEP8)](https://www.python.org/dev/peps/pep-0008/) zusammengefasst. Obwohl das Einhalten der Konventionen nicht erforderlich ist (die Syntax ist davon ja nicht betroffen, denn z.B. `1+1` ist korrekter Python-Code), ist es sehr zu empfehlen, sich trotzdem daran zu halten, da dies die Lesbarkeit des Codes stark erhöht.
 
 
-## Text-Editoren und Entwicklungsumgebungen
+## Code-Editoren
 
-Python-Scripts bearbeitet man mit Text-Editoren. Prinzipiell sind Python-Scripts einfache Textdateien, d.h. sie können mit jedem beliebigen Text-Editor geöffnet werden. Dennoch sollte man einen Editor verwenden, welcher das Editieren möglichst komfortabel gestaltet. Gute Editoren bieten [Syntaxhervorhebung](https://de.wikipedia.org/wiki/Syntaxhervorhebung), verwenden automatisch vier Leerzeichen zur Einrückung, zeigen die Zeilennummern an, kontrollieren die Einhaltung von PEP8, usw.
+Python-Scripts bearbeitet man mit Code-Editoren. Prinzipiell sind Python-Scripts einfache Textdateien, d.h. sie können mit jedem beliebigen Text-Editor geöffnet werden. Dennoch sollte man einen Editor verwenden, welcher das Editieren möglichst komfortabel gestaltet. Gute Editoren bieten [Syntaxhervorhebung](https://de.wikipedia.org/wiki/Syntaxhervorhebung), verwenden automatisch vier Leerzeichen zur Einrückung, zeigen die Zeilennummern an, kontrollieren die Einhaltung von PEP8, usw.
 
-Folgende (kostenlose) Editoren eignen sich für Python:
+Folgende (kostenlose) Code-Editoren eignen sich für Python:
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [PyCharm](https://www.jetbrains.com/pycharm/)
