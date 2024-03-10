@@ -2,7 +2,7 @@
 title: "3 – Namen, Ausdrücke, Anweisungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-10-19
+date: 2024-03-18
 format:
   html:
     page-layout: full
@@ -19,7 +19,7 @@ published-title: "Veröffentlicht"
 
 ## Objekte, Werte und Typen
 
-Alles in Python ist ein Objekt. Ein Objekt hat einen bestimmten Wert, z.B.
+Alles in Python ist ein *Objekt*. Ein Objekt hat einen bestimmten Wert, z.B.
 
 ```{python}
 1
@@ -59,7 +59,7 @@ type("Hallo")
 type("3")
 ```
 
-Python ist eine dynamisch typisierte Sprache. Das bedeutet in der Praxis, dass erst zur Laufzeit eines Programms überprüft wird, ob eine bestimmte Operation auf ein Objekt eines bestimmten Typs angewendet werden kann. Praktisch heißt das, dass in Python Typen bei einer Zuweisung nicht explizit angegeben werden müssen.
+Python ist eine dynamisch typisierte Sprache. Das bedeutet in der Praxis, dass erst zur Laufzeit eines Programms überprüft wird, ob eine bestimmte Operation auf ein Objekt eines bestimmten Typs angewendet werden kann (z.B. "kann man dieses Objekt mit zwei multiplizieren?"). Praktisch heißt das, dass in Python Typen bei einer Zuweisung *nicht* explizit angegeben werden müssen.
 
 Python kennt noch mehr Typen als in den oben angeführten Beispielen. Wir werden im Laufe dieses Kurses noch weitere nützliche Datentypen wie z.B. Listen, Tuples und Dictionaries kennenlernen.
 
@@ -72,19 +72,19 @@ Namen in Python sind nichts anderes als Namen für bestimmte Objekte (in anderen
 a = 1
 ```
 
-<img src="a1.png" />
+![](a1.png)
 
 ```{python}
 a = 2.4
 ```
 
-<img src="a2.png" />
+![](a2.png)
 
 ```{python}
 b = a
 ```
 
-<img src="a3.png" />
+![](a3.png)
 
 Zum Schluss hat das Objekt 2.4 also zwei Namen – `a` und `b` verweisen auf dasselbe Objekt.
 
@@ -116,7 +116,7 @@ n_students = 25  # guter Name (kurz, aussagekräftig)
 n = 25  # weniger gut (zu unspezifisch), aber in manchen Fällen OK
 ```
 
-Es gibt in Python *vordefinierte* Namen (sogenannte Schlüsselwörter oder englisch Keywords) – diese dürfen *nicht* als eigene Namen verwendet werden, da sie vom Python-Interpreter benötigt werden, um die Struktur eines Programmes zu erkennen. Mit folgenden Befehlen bekommt man eine Liste aller Schlüsselwörter:
+Es gibt in Python vordefinierte Namen (sogenannte *Schlüsselwörter* oder englisch *Keywords*) – diese dürfen *nicht* als eigene Namen verwendet werden, da sie vom Python-Interpreter benötigt werden, um die Struktur eines Programmes zu erkennen. Mit folgenden Befehlen bekommt man eine Liste aller Schlüsselwörter:
 
 ```{python}
 import keyword
@@ -182,7 +182,7 @@ Operatoren sind spezielle Symbole, mit denen man Berechnungen wie Additionen, Su
 
 ## Ausdrücke
 
-Ein Ausdruck (engl. Expression) ist eine Kombination von Werten, Variablen und Operatoren. Jeder Ausdruck hat einen Wert. Beispiele:
+Ein Ausdruck (englisch *Expression*) ist eine Kombination von Werten, Variablen und Operatoren. Jeder Ausdruck hat einen Wert. Beispiele:
 
 ```{python}
 17
@@ -207,7 +207,7 @@ Python versucht immer, einen Ausdruck auf *einen einzigen Wert* zu reduzieren. B
 
 ## Anweisungen
 
-Eine Anweisung (engl. Statement) ist eine Einheit Code, die der Python-Interpreter ausführen kann. Ein Ausdruck ist eine (spezielle) Anweisung, die einen Wert hat. Beispiele von Anweisungen, die keine Ausdrücke sind:
+Eine Anweisung (englisch *Statement*) ist eine Einheit Code, die der Python-Interpreter ausführen kann. Ein Ausdruck ist eine (spezielle) Anweisung, die einen Wert hat. Beispiele von Anweisungen, die keine Ausdrücke sind:
 
 ```{python}
 x = 34  # Zuweisung
@@ -217,7 +217,7 @@ x = 34  # Zuweisung
 print("Python")
 ```
 
-Bei den obigen zwei Beispielen sieht man, dass es keine Zeile mit Ausgaben gibt – der Grund dafür ist, dass diese beiden Anweisungen keine Werte haben, d.h. es gibt hier im interaktiven Modus des Python-Interpreters nichts zum Ausgeben.
+Bei den obigen zwei Beispielen sieht man, dass es keine Zeile mit Ausgaben gibt – der Grund dafür ist, dass diese beiden Anweisungen keine Werte haben, d.h. es gibt hier im interaktiven Modus des Python-Interpreters nichts, was ausgegeben werden könnte.
 
 :::{.callout-note}
 Dass der Aufruf der `print`-Funktion trotzdem eine Ausgabe am Bildschirm bewirkt, liegt an der Funktion, deren Zweck ja genau diese Ausgabe ist. Dies kann man sehen, wenn man dem Funktionsaufruf einen Namen zuweist:
@@ -243,7 +243,7 @@ Python bringt eine Menge nützlicher Datentypen mit. Im Folgenden werden die wic
 
 ### Logische Typen
 
-Der Typ `bool` wird für Vergleiche verwendet (dazu in einem späteren Kapitel mehr); es gibt nur zwei mögliche Werte, nämlich `True` und `False`.
+Der Typ `bool` wird für Vergleiche verwendet; es gibt nur zwei mögliche Werte, nämlich `True` und `False`.
 
 ```{python}
 b = True
