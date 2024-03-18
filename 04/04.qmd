@@ -2,7 +2,7 @@
 title: "4 – Funktionen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-11-09
+date: 2024-04-08
 format:
   html:
     page-layout: full
@@ -31,7 +31,7 @@ Einige Funktionen wie `print` und `type` haben wir bereits in den vorigen Einhei
 
 Eine Funktion *aufrufen* bedeutet, dass der in ihr enthaltene Code (also das "Mini-Programm") ausgeführt wird – die Funktion "verrichtet" also ihre Arbeit.
 
-In Python ruft man eine Funktion mit ihrem Namen gefolgt von einem *runden Klammernpaar* auf. Innerhalb der Klammern werden die *Argumente* für die Funktion übergeben (falls notwendig). Mit Argumenten übergibt man der Funktion Werte, welche diese für die Ausführung benötigt. Beispielsweise benötigt die Funktion `type` ein Argument, denn sonst kann sie ihre Aufgabe nicht erfüllen – nämlich den Typ des übergebenen Arguments zu bestimmen. Gleichermaßen braucht auch die Funktion `math.sqrt` aus dem `math`-Modul ein Argument, damit diese die Wurzel berechnen kann.
+In Python ruft man eine Funktion mit ihrem Namen gefolgt von einem *runden Klammernpaar* auf. Innerhalb der Klammern werden die *Argumente* für die Funktion übergeben (falls notwendig). Mit Argumenten übergibt man der Funktion Werte, welche diese für die Ausführung benötigt. Beispielsweise benötigt die Funktion `type` ein Argument, denn sonst kann sie ihre Aufgabe nicht erfüllen – nämlich den Typ des übergebenen Arguments zu bestimmen. Gleichermaßen braucht auch die Funktion `math.sqrt` aus dem `math`-Modul ein Argument, damit diese die Wurzel der übergebenen Zahl berechnen kann.
 
 Hier sind zwei Beispiele für Aufrufe zweier bereits bekannter Funktionen mit jeweils einem Argument:
 
@@ -68,12 +68,12 @@ Das Konzept von Namen in Python haben wir bereits in der letzten Einheit kenneng
 
 ## Funktionsdefinition
 
-Wir sind glücklicherweise nicht auf bereits existierende Funktionen beschränkt, sondern können selbst unsere eigenen Funktionen schreiben. In Python wird eine Funktion wie folgt *definiert*:
+Wir sind glücklicherweise nicht auf bereits existierende Funktionen beschränkt, sondern können selbst unsere eigenen Funktionen schreiben. In Python wird eine Funktion wie folgt *definiert* (die Zeilen in `<...>` sind Platzhalter und müssen durch konkrete Befehle ersetzt werden):
 
 ```python
 def function_name(parameter1, parameter2, ...):
     <do something>
-    ...
+    <...>
     <optionally return something>
 ```
 
