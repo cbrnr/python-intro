@@ -2,7 +2,7 @@
 title: "5 – Bedingungen und Schleifen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-11-16
+date: 2024-04-15
 format:
   html:
     page-layout: full
@@ -26,7 +26,7 @@ Schon bei Funktionen haben wir beobachtet, dass Programmcode nicht linear ausgef
 :::{.callout-tip}
 Mit Hilfe des sogenannten [Debuggers](https://code.visualstudio.com/docs/editor/debugging) kann man in Visual Studio Code ein Script "in Zeitlupe" ausführen. Im Debug-Modus wartet der Python Interpreter nämlich nach jedem Befehl, bis der nächste manuell gestartet wird. Das gibt uns die Möglichkeit, den Ablauf des Programmes sowie dessen Zustand in jedem Schritt zu beobachten. Dabei geht man wie folgt vor:
 
-1. Zunächst klickt man links neben die erste Zeile, um einen Breakpoint zu setzen (dieser erscheint als roter Punkt). In dieser Zeile wird die Ausführung dann angehalten werden.
+1. Zunächst klickt man links neben die erste Zeile, um einen Breakpoint zu setzen (dieser erscheint als roter Punkt). In dieser Zeile wird die Ausführung dann erstmalig angehalten werden.
 2. Dann klickt man auf den Pfeil nach unten im Play-Button und wählt "Debug Python File" aus.
 3. Die Ausführung stoppt beim Breakpoint. Die aktuelle Zeile ist gelb hinterlegt und mit einem gelben Pfeil gekennzeichnet. Mit "Step Into" (<kbd>F11</kbd>) kann man zum nächsten Befehl springen.
 4. In der Variablen-Ansicht links sieht man alle lokalen Objekte (und deren aktuellen Werte), die im Programm angelegt werden.
@@ -34,7 +34,7 @@ Mit Hilfe des sogenannten [Debuggers](https://code.visualstudio.com/docs/editor/
 ![](vscode-debug-1.png)
 ![](vscode-debug-2.png)
 
-Zum Ausprobieren können Sie das folgende kurze Script debuggen:
+Zum Ausprobieren kann man das folgende kurze Script debuggen:
 
 ```{python}
 #| eval: false
@@ -49,7 +49,7 @@ print("Done.")
 
 In welcher Reihenfolge werden die Code-Zeilen ausgeführt?
 
-Die Website [PythonTutor](http://pythontutor.com/visualize.html#mode=edit) kann den Progammfluss ebenfalls Schritt für Schritt darstellen. Dazu kopiert man einfach den gesamten Code in das Eingabefeld und klickt auf "Visualize Execution". So kann man durch wiederholtes Klicken auf "Next" nachvollziehen, wie Python den Code ausführt.
+Alternativ kann die Website [PythonTutor](http://pythontutor.com/visualize.html#mode=edit) den Programmfluss ebenfalls Schritt für Schritt darstellen. Dazu kopiert man einfach den gesamten Code in das Eingabefeld und klickt auf "Visualize Execution". So kann man durch wiederholtes Klicken auf "Next" nachvollziehen, wie Python den Code ausführt.
 :::
 
 
@@ -74,7 +74,7 @@ Ein Ausdruck kann mit dem Operator `not` logisch invertiert werden (d.h. aus `Tr
 * `is`: Identität (prüft, ob es sich um ein und dasselbe *Objekt* handelt, nicht nur um gleiche *Werte*)
 * `in`: Prüft, ob ein Wert in einer Sequenz enthalten ist
 
-Während `==` zwei *Werte* miteinander vergleicht, überprüft `is` zwei *Objekte* auf Gleichheit (also ob es sich um ein und dasselbe Objekt handelt). Ein Objekt hat einen Wert, zwei verschiedene Objekte können denselben Wert haben. Die Funktion `id` liefert eine eindeutige Nummer (ID) für ein Objekt zurück – zwei verschiedene Objekte haben immer eine unterschiedliche ID (ansonsten handelt es sich um ein und dasselbe Objekt).
+Während `==` zwei *Werte* miteinander vergleicht, überprüft `is` zwei *Objekte* auf Gleichheit (also ob es sich um ein und dasselbe Objekt handelt). Ein Objekt hat einen Wert, zwei verschiedene Objekte können auch denselben Wert haben. Die Funktion `id` liefert eine eindeutige Nummer (ID) für ein Objekt zurück – zwei verschiedene Objekte haben immer eine unterschiedliche ID (ansonsten handelt es sich um ein und dasselbe Objekt).
 
 
 ### Beispiele
@@ -95,7 +95,7 @@ x > 2
 x < 10 and x > 5
 ```
 
-Die vorige Verknüpfung von zwei Vergleichen kann in Python kürzer dargestellt werden:
+Die vorige `and`-Verknüpfung von zwei Vergleichen kann in Python kürzer dargestellt werden:
 
 ```{python}
 5 < x < 10
@@ -189,9 +189,7 @@ c == d
 c is d
 ```
 
-Man sollte Kommazahlen aber ohnehin nie auf Gleichheit überprüfen, da diese aufgrund der begrenzten Genauigkeit nicht exakt repräsentiert werden können (siehe dazu auch die Beispiele aus der ersten Einheit `4 / 0.4`, `4 // 0.4` und `4 % 0.4`).
-
-Ein weiteres Beispiel, welches mathematisch korrekt ist, aber dennoch `False` ergibt, lautet:
+Man sollte Kommazahlen aber ohnehin nie auf Gleichheit überprüfen, da diese aufgrund der begrenzten Genauigkeit nicht exakt repräsentiert werden können. Das folgende Beispiel illustriert diese Eigenschaft von Zahlen des Typs `float`:
 
 ```{python}
 0.1 + 0.1 + 0.1 == 0.3
@@ -279,7 +277,7 @@ if a > 0:
     print("this is good to know")
 ```
 
-Ergibt der Vergleich `a > 0` also `False`, wird der eingerückte Code nicht ausgeführt:
+Ergibt der Vergleich `a > 0` also `False`, wird der eingerückte Code *nicht* ausgeführt:
 
 ```{python}
 a = -10
@@ -301,7 +299,7 @@ else:
     print("a is either 0 or a negative number")
 ```
 
-Nun kann man noch mit `elif` beliebig viele weitere Zweige einbauen:
+Schließlich kann man noch mit `elif` beliebig viele weitere Zweige einbauen:
 
 ```{python}
 a = 0
@@ -555,3 +553,8 @@ else:
 ```
 
 Überprüfen Sie Ihre Lösung mit den drei Werten `x = 5`, `x = -11` und `x = 0` (d.h. bei beiden Varianten soll dasselbe Ergebnis herauskommen).
+
+
+### Übung 6
+
+Schreiben Sie ein Programm, welches die Eingabe einer ganzen Zahl zwischen 1 und 10 erwartet. Falls die Eingabe nicht im erlaubten Bereich liegt, soll eine Meldung ausgegeben werden ("Invalid input. Please try again.") und die Eingabe wiederholt werden. Falls die Eingabe im erlaubten Bereich liegt, soll die Schleife beendet werden und die eingegebene Zahl ausgegeben werden (z.B. "You entered: 5").
