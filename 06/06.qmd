@@ -2,7 +2,7 @@
 title: "6 – Strings"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-11-23
+date: 2024-04-22
 format:
   html:
     page-layout: full
@@ -40,12 +40,12 @@ In Python unterscheidet man zwei Arten an Typen:
 
 Objekte eines *mutable* Typs können auch *nach* deren Erstellung *verändert* werden. Im Gegensatz dazu können Objekte eines *immutable* Typs nach deren Erstellung *nicht* mehr verändert werden.
 
-Für uns relevante mutable Typen sind:
+In dieser Lehrveranstaltung werden wir nur die folgenden zwei veränderbaren Typen genauer betrachten:
 
 - Liste `list`
 - Dictionary `dict`
 
-Für uns relevante immutable Typen sind:
+Für uns relevante nicht veränderbare Typen sind:
 
 - Ganzzahl `int`, Kommazahl `float`
 - String `str`, Tuple `tuple`
@@ -53,7 +53,7 @@ Für uns relevante immutable Typen sind:
 
 ### Immutable Typen
 
-Befassen wir uns zunächst mit den nicht veränderbaren (immutable) Typen. Als Beispiel betrachten wir das Objekt `2` vom Typ `int`. Dieses Objekt ist nicht veränderbar (`2` kann also nicht verändert werden). Im folgenden Beispiel wird das Objekt `2`, welches den Namen `a` hat, tatsächlich auch nicht verändert. Wenn man nämlich `a = 3` setzt, ändert man lediglich den Namen `a` – dieser verweist dann auf das Objekt `3` (ein anderes Objekt, denken Sie an die Analogie mit dem Namensschildchen).
+Befassen wir uns zunächst mit den nicht veränderbaren (immutable) Typen. Als Beispiel betrachten wir das Objekt `2` vom Typ `int`. Dieses Objekt ist nicht veränderbar. Im folgenden Beispiel wird das Objekt `2`, welches den Namen `a` hat, tatsächlich auch nicht verändert. Wenn man nämlich `a = 3` setzt, ändert man lediglich den Namen `a` – dieser verweist dann auf das Objekt `3` (ein anderes Objekt, denken Sie an die Analogie mit dem Namensschildchen).
 
 Dies kann man auch mit Hilfe der `id`-Funktion verifizieren; man erkennt, dass die IDs (also die Objekte) tatsächlich unterschiedlich sind.
 
@@ -162,7 +162,7 @@ d["a"] = "CHANGED"  # Änderung möglich
 d
 ```
 
-Mehr Details zu den Datentypen `list`, `tuple` und `dict` folgen in der nächsten Einheit. Wir widmen uns aber jetzt dem Datentyp String.
+Mehr Details zu den Datentypen `list`, `tuple` und `dict` folgen in der nächsten Einheit. Wir widmen uns jetzt dem nicht veränderbaren Datentyp String.
 
 
 ## Strings
@@ -211,7 +211,7 @@ s5  # tatsächlicher Wert des Strings, \n steht für Zeilenumbruch
 Strings mit drei Anführungszeichen haben wir schon als Docstrings zur kurzen Beschreibung von Funktionen kennengelernt.
 
 :::{.callout-tip}
-Möchte man einen String erzeugen, der sowohl `"` als auch `'` enthält, kann man weder das eine noch das andere Zeichen direkt verwenden. Man muss daher das Anführungszeichen, welches in der Definition des Strings verwendet wurde und auch im String vorkommen soll, mit einem vorangestellten `\` schreiben (man spricht hier von einer [Escape-Sequenz](https://de.wikipedia.org/wiki/Escape-Sequenz)):
+Möchte man einen String erzeugen, der sowohl `"` als auch `'` enthält, kann man weder das eine noch das andere Zeichen direkt verwenden. Man muss daher das Anführungszeichen, welches für die Definition des Strings verwendet wurde und auch im String vorkommen soll, mit einem vorangestellten `\` schreiben (man spricht hier von einer [Escape-Sequenz](https://de.wikipedia.org/wiki/Escape-Sequenz)):
 
 ```{python}
 x = "Dieser String \"enthält\" doppelte und 'einfache' Anführungszeichen."
@@ -224,7 +224,7 @@ Die beiden Strings `x` und `y` sind identisch:
 x == y
 ```
 
-Die `print`-Funktion stellt Escape-Sequenzen aber "richtig" dar:
+Die `print`-Funktion stellt Escape-Sequenzen aber "richtig" formatiert dar:
 
 ```{python}
 print(x)
@@ -243,25 +243,26 @@ Python beginnt mit 0 zu zählen, d.h. das erste Element hat den Index 0. Den Ind
 :::
 
 ```{python}
-s1
+s = "String"
+s
 ```
 
 ```{python}
-s1[0]
+s[0]  # erstes Zeichen
 ```
 
 ```{python}
-s1[1]
+s[1]  # zweites Zeichen
 ```
 
 Mit negativen Indizes kann man Elemente von hinten nach vorne ansprechen, d.h. −1 ist das letzte Element, −2 das vorletzte, usw.
 
 ```{python}
-s1[-1]
+s[-1]  # letztes Zeichen
 ```
 
 ```{python}
-s1[-2]
+s[-2]  # vorletztes Zeichen
 ```
 
 
@@ -273,36 +274,38 @@ Man kann auch mehrere Elemente auf einmal herausgreifen. Dazu schreibt man in di
 Der Endindex zählt _nicht_ mehr zum Bereich dazu!
 :::
 
+Wenn man auf diese Art (also unter Verwendung des Doppelpunkts) mehrere Elemente herausgreift, spricht man von einem *Slice*.
+
+:::{.callout-note}
 Gibt man den ersten Index nicht an, wird vom ersten Element (inklusive) gezählt. Gibt man den Endindex nicht an, wird bis zum letzten Element (inklusive) gezählt.
-
-Wenn man auf diese Art mehrere Elemente herausgreift, spricht man von einem *Slice*.
+:::
 
 ```{python}
-s1
+s
 ```
 
 ```{python}
-s1[0:4]  # 4 Elemente, Index 0, 1, 2, 3, gleichwertig mit s1[:4]
+s[0:4]  # 4 Elemente, Index 0, 1, 2, 3, gleichwertig mit s1[:4]
 ```
 
 ```{python}
-s1[4:6]  # 2 Elemente, Index 4, 5
+s[4:6]  # 2 Elemente, Index 4, 5
 ```
 
 ```{python}
-s1[:3]  # 3 Elemente, Index 0, 1, 2
+s[:3]  # 3 Elemente, Index 0, 1, 2
 ```
 
 ```{python}
-s1[2:]  # Index 2 bis zum letzten Element
+s[2:]  # Index 2 bis zum letzten Element
 ```
 
 ```{python}
-s1[2:-1]  # Index 2 bis zum letzten Element (exklusive)
+s[2:-1]  # Index 2 bis zum letzten Element (exklusive)
 ```
 
 ```{python}
-s1[1:-3]  # Index 1 bis zum drittletzten Element (exklusive)
+s[1:-3]  # Index 1 bis zum drittletzten Element (exklusive)
 ```
 
 :::{.callout-tip}
@@ -312,31 +315,31 @@ Die Tatsache, dass der Startindex immer inklusive ist und der Endindex immer exk
 Angrenzende Slices kann man intuitiv erstellen, z.B.:
 
 ```{python}
-s1[:2]  # die ersten 2 Zeichen
+s[:2]  # die ersten 2 Zeichen
 ```
 
 ```{python}
-s1[2:]  # die restlichen Zeichen
+s[2:]  # die restlichen Zeichen
 ```
 
 Man kann optional nach dem Endindex noch einen weiteren Doppelpunkt gefolgt von der Schrittweite angeben (standardmäßig ist diese Schrittweite 1). So kann man z.B. jedes zweite Element herausgreifen:
 
 ```{python}
-s1[::2]
+s[::2]
 ```
 
 Wenn man die Reihenfolge der Elemente umdrehen möchte, gibt man als Schrittweite −1 an.
 
 ```{python}
-s1[4:1:-1]
+s[4:1:-1]
 ```
 
 ```{python}
-s1[-1:-4:-1]
+s[-1:-4:-1]
 ```
 
 ```{python}
-s1[::-1]  # ganzen String umdrehen
+s[::-1]  # ganzen String umdrehen
 ```
 
 Man kann sich die Indizes als Grenzen _zwischen_ den Elementen vorstellen:
@@ -349,11 +352,11 @@ Man kann sich die Indizes als Grenzen _zwischen_ den Elementen vorstellen:
 Die Funktion `len` gibt die Länge (d.h. die Anzahl der Elemente) einer Sequenz zurück.
 
 ```{python}
-s1
+s
 ```
 
 ```{python}
-len(s1)
+len(s)
 ```
 
 ```{python}
@@ -378,7 +381,7 @@ len(s)
 type(s)
 ```
 
-Nachdem Strings immutable sind, kann man sie nachträglich nicht mehr verändern. Man muss stattdessen einen neuen String mit den gewünschten Änderungen erstellen:
+Nachdem Strings immutable sind, kann man sie nachträglich nicht mehr verändern. Man muss stattdessen immer einen neuen String mit den gewünschten Änderungen erstellen:
 
 ```{python}
 s = "Haus"
@@ -429,7 +432,7 @@ Zuerst gibt man das String-Objekt an (im Beispiel `x`), gefolgt von einem Punkt,
 "dsKJsdJKJKK".lower()  # Kleinbuchstaben
 ```
 
-Eine wichtige Tatsache ist, dass alle String-Methoden einen *neuen* String zurückgeben. Da Strings immutable sind, können diese von den Methoden ja nicht mehr verändert werden! Dies bedeutet, dass man dem Rückgabewert einen Namen zuweisen muss, wenn man diesen weiterverwenden möchte, also z.B.:
+Eine wichtige Tatsache ist, dass alle String-Methoden einen *neuen* String *zurückgeben*. Da Strings immutable sind, können diese von den Methoden ja nicht mehr verändert werden! Dies bedeutet, dass man dem Rückgabewert einen Namen zuweisen muss, wenn man diesen weiterverwenden möchte, also z.B.:
 
 ```{python}
 x
@@ -444,7 +447,7 @@ x
 ```
 
 :::{.callout-tip}
-In IPython kann man einfach herausfinden, welche Methoden man auf ein Objekt anwenden kann. Dazu tippt man den Namen eines Objektes ein, gefolgt von einem Punkt, und dann drückt man die Tabulator-Taste. IPython listet dann alle möglichen Methoden auf. Zu jeder Methode kann man sich dann natürlich die interaktive Hilfe anzeigen lassen.
+Im interaktiven Interpreter kann man einfach herausfinden, welche Methoden man auf ein Objekt anwenden kann. Dazu tippt man den Namen eines Objektes ein, gefolgt von einem Punkt, und dann drückt man die Tabulator-Taste. Es werden dann alle passenden Methoden aufgelistet. Zu jeder Methode kann man sich dann natürlich die interaktive Hilfe anzeigen lassen.
 
 Beispieleingabe:
 
@@ -453,9 +456,7 @@ x = "Test String"
 x.<TAB>
 ```
 
-Nach Eingabe des Punktes drückt man also die Tabulator-Taste und bekommt eine Liste aller möglichen Methoden. Möchte man dann z.B. den Hilfetext der Methode `x.capitalize` aufrufen, gibt man `x.capitalize?` ein.
-
-Im normalen interaktiven Interpreter funktioniert die Tabulator-Taste ebenfalls. Außerdem kann man die Funktion `dir` verwenden, um alle möglichen Methoden eines Objektes aufzulisten, also z.B.
+Alternativ kann man die Funktion `dir` verwenden, um alle möglichen Methoden eines Objektes aufzulisten, also z.B.
 
 ```python
 dir(x)
@@ -470,7 +471,7 @@ Die Methode `strip` entfernt Leerzeichen am Anfang und am Ende eines Strings.
 "      Satz mit vielen unnötigen Leerzeichen         ".strip()
 ```
 
-Mit der Methode `split` kann man einen String in eine Liste von Strings aufteilen (splitten). Als Argument gibt man das Zeichen an, an dem man splitten will (standardmäßig wird dafür Whitespace, also Leerzeichen und Tabulatoren, verwendet).
+Mit `split` kann man einen String in eine Liste von Strings aufteilen (splitten). Als Argument gibt man das Zeichen an, an dem man splitten will (standardmäßig wird dafür Whitespace, also Leerzeichen und Tabulatoren, verwendet).
 
 ```{python}
 "Viele Sätze. Getrennt mit Punkten. Warum?".split(".")
@@ -488,7 +489,7 @@ Das "Gegenteil" von `split` ist `join`, welches Strings in einer Liste zu einem 
 
 Wir werden Listen im Detail in der nächsten Einheit kennenlernen. Vorweg aber so viel: die Möglichkeit, Strings in einer Liste mit `join` zu einem einzigen String zu verbinden ist wesentlich effizienter, als die einzelnen Strings mit `+` zu verbinden.
 
-Die Methode `count` zählt, wie oft das als Argument angegebene Zeichen im String vorkommt.
+Die Methode `count` zählt, wie oft das als Argument angegebene Zeichen im String vorkommt:
 
 ```{python}
 s = "Das ist ein kurzer Satz. Nur zum Testen."
@@ -499,7 +500,7 @@ s.count("i")
 s.count("e")
 ```
 
-Die Methode `find` gibt den Index im String zurück, an dem das gesuchte Zeichen erstmalig auftritt.
+Die Methode `find` gibt den Index im String zurück, an dem das gesuchte Zeichen erstmalig auftritt:
 
 ```{python}
 s.find("s")
@@ -511,7 +512,7 @@ Optional kann man auch einen Startindex angeben:
 s.find("s", 3)
 ```
 
-Mit dem `in`-Operator kann man abfragen, ob ein bestimmtes Zeichen in einem String enthalten ist.
+Mit dem `in`-Operator kann man abfragen, ob ein bestimmtes Zeichen in einem String enthalten ist:
 
 ```{python}
 "y" in s
@@ -542,7 +543,7 @@ for i in range(len(s)):  # sollte man in Python nicht machen!
     print(s[i])
 ```
 
-Dies ist aber sehr viel schwieriger zu lesen als die direkte Variante, daher sollte man immer direkt über einen String iterieren!
+Dies ist aber schlechter lesbar als die direkte Variante, daher sollte man immer direkt über einen String iterieren!
 
 Alternativ könnte man auch eine `while`-Schleife verwenden:
 
@@ -650,3 +651,14 @@ Beispielsweise sollte der Aufruf `count("Werkstatttreppe", "t")` den Wert `4` zu
 :::{.callout-note}
 Verwenden Sie eine ähnliche Struktur wie in Übung 5, eventuell ist hier eine `for`-Schleife geeigneter. Zählen Sie in einer Variablen mit, wie oft das gesuchte Zeichen aufgetreten ist und geben Sie diesen Wert dann zum Schluss zurück.
 :::
+
+
+### Übung 7
+
+Erstellen Sie einen String namens `path` mit dem folgenden Inhalt:
+
+```
+C:\Program Files\Python\Python3.12\python.exe
+```
+
+Geben Sie `path` dann mit Hilfe der `print`-Funktion am Bildschirm aus.

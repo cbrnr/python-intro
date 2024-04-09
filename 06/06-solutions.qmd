@@ -2,7 +2,7 @@
 title: "6 – Lösungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-11-23
+date: 2024-04-22
 format:
   html:
     page-layout: full
@@ -86,4 +86,13 @@ def count(word, letter):
         if c == letter:  # falls es das gesuchte Zeichen ist
             i += 1  # erhöhen wir i um 1 (i = i + 1 oder kurz i += 1)
     return i
+```
+
+
+## Übung 7
+
+
+```{python}
+path = "C:\\Program Files\\Python\\Python3.12\\python.exe"
+print(path)
 ```
