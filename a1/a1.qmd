@@ -1,0 +1,31 @@
+---
+title: "Übungen"
+subtitle: "Einführung in Python und PsychoPy"
+author: "Clemens Brunner"
+date: 2024-04-29
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
+---
+
+## Übung 1
+
+Elektrische Widerstände können in Serie oder parallel geschaltet werden. In einer Serienschaltung addieren sich die Widerstände, während in einer Parallelschaltung der Kehrwert der Gesamtwiderstandes gleich der Summe der Kehrwerte der Einzelwiderstände ist. In Formeln kann dies wie folgt ausgedrückt werden:
+
+- Serienschaltung: $R_G = R_1 + R_2$
+- Parallelschaltung: $R_G = R_1 \parallel R_2 \rightarrow \frac{1}{R_G} = \frac{1}{R_1} + \frac{1}{R_2}$
+
+Schreiben Sie zwei Funktionen `serial` und `parallel`, welche die jeweiligen Gesamtwiderstände zurückgeben. Beide Funktionen sollen jeweils zwei Parameter `r1` und `r2` haben, welche die beiden zu kombinierenden Widerstände darstellen.
+
+Testen Sie beide Funktionen mit den Widerständen $R_1 = 10\,\Omega$ und $R_2 = 20\,\Omega$. Die Gesamtwiderstände sollten $30\,\Omega$ (Serienschaltung) und $6.67\,\Omega$ (Parallelschaltung) betragen.
+
+Berechnen Sie außerdem den Gesamtwiderstand von $(R_1 + R_2) \parallel R_3$ mit den Werten $R_1 = 10\,\Omega$, $R_2 = 20\,\Omega$ und $R_3 = 50\,\Omega$ mit einem Ausdruck!
