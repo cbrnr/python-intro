@@ -1,0 +1,133 @@
+---
+title: "Lösungen"
+subtitle: "Einführung in Python und PsychoPy"
+author: "Clemens Brunner"
+date: 2024-04-29
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
+---
+
+## Übung 1
+
+```{python}
+def serial(r1, r2):
+    return r1 + r2
+
+
+def parallel(r1, r2):
+    return 1 / (1 / r1 + 1 / r2)
+
+
+r1 = 10
+r2 = 20
+r3 = 50
+
+print(serial(r1, r2))
+print(parallel(r1, r2))
+print(parallel(serial(r1, r2), r3))
+```
+
+
+## Übung 2
+
+Diese Aufgabe könnte man kürzer mit Listen lösen. Da wir diese aber noch nicht behandelt haben, verwenden wir in der Funktion `month_name` eine lange `if`-`elif`-`else`-Kette.
+
+```python
+def month_name(month):
+    if month == 1:
+        return "Januar"
+    elif month == 2:
+        return "Februar"
+    elif month == 3:
+        return "März"
+    elif month == 4:
+        return "April"
+    elif month == 5:
+        return "Mai"
+    elif month == 6:
+        return "Juni"
+    elif month == 7:
+        return "Juli"
+    elif month == 8:
+        return "August"
+    elif month == 9:
+        return "September"
+    elif month == 10:
+        return "Oktober"
+    elif month == 11:
+        return "November"
+    elif month == 12:
+        return "Dezember"
+
+
+while True:
+    month = int(input("Bitte geben Sie eine Zahl zwischen 1 und 12 ein: "))
+    if 1 <= month <= 12:
+        break
+    print("Ungültige Eingabe, bitte versuchen Sie es erneut.")
+
+print(month_name(month))
+```
+
+
+## Übung 3
+
+Schreiben Sie eine Funktion `word_count`, welche die Anzahl der Wörter in einem Text zählt. Die Funktion soll zwei Parameter haben: `text` (der Text, in dem die Wörter gezählt werden sollen) und `sep` (das Trennzeichen, Standardwert ist ein Leerzeichen). Verwenden Sie dafür die String-Methode `split`, welche eine Liste von Strings zurückgibt; die Länge dieser Liste kann mit der Funktion `len` ermittelt werden.
+
+Testen Sie die Funktion mit folgendem Text:
+
+> Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python’s elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas.
+
+
+```{python}
+def word_count(text, sep=" "):
+    return len(text.split(sep))
+
+
+text = "Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python’s elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas."
+print(word_count(text))
+```
+
+
+## Übung 4
+
+Schreiben Sie eine Funktion `factorial`, welche die Fakultät einer positiven Zahl $n$ berechnet. Die Fakultät einer Zahl $n$ ist das Produkt aller positiven ganzen Zahlen kleiner oder gleich $n$. Die Fakultät von 0 ist mit 1 definiert.
+
+```{python}
+def factorial(n):
+    if n == 0:
+        return 1
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
+```
+
+
+## Übung 5
+
+Schreiben Sie eine Funktion `is_divisible`, welche überprüft, ob eine Zahl $n$ durch eine andere Zahl $m$ ohne Rest teilbar ist. Die Funktion soll zwei Parameter haben: `n` (die zu überprüfende Zahl) und `m` (die Zahl, durch die geteilt werden soll). Die Funktion soll `True` zurückgeben, wenn die Division ohne Rest möglich ist, andernfalls `False`.
+
+Testen Sie die Funktion mit den Zahlenpaaren (10, 2), (10, 3), (10, 5) und (10, 7).
+
+
+```{python}
+def is_divisible(n, m):
+    return n % m == 0
+
+
+print(is_divisible(10, 2))
+print(is_divisible(10, 3))
+print(is_divisible(10, 5))
+print(is_divisible(10, 7))
+```

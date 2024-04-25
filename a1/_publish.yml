@@ -2,3 +2,7 @@
   netlify:
     - id: 093d666c-0b7c-4917-a2a9-15160995fc6a
       url: 'https://python-24s-a1.netlify.app'
+- source: a1-solutions.qmd
+  netlify:
+    - id: ed46cde6-43f7-47f8-bc06-c40ba0ec49dd
+      url: 'https://python-24s-a1-solutions.netlify.app'
