@@ -14,3 +14,5 @@ Die folgenden Unterlagen bieten eine kurze Einführung in die Grundlagen von Pyt
 10. [Grafiken]() ([Lösungen]())
 11. [PsychoPy (1)]() ([Lösungen]())
 12. [PsychoPy (2)]() ([Lösungen]())
+
+- [Zusätzliche Übungsaufgaben](https://python-24s-a1.netlify.app) ([Lösungen](https://python-24s-a1-solutions.netlify.app))
