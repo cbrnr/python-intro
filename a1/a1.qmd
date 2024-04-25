@@ -29,3 +29,31 @@ Schreiben Sie zwei Funktionen `serial` und `parallel`, welche die jeweiligen Ges
 Testen Sie beide Funktionen mit den Widerständen $R_1 = 10\,\Omega$ und $R_2 = 20\,\Omega$. Die Gesamtwiderstände sollten $30\,\Omega$ (Serienschaltung) und $6.67\,\Omega$ (Parallelschaltung) betragen.
 
 Berechnen Sie außerdem den Gesamtwiderstand von $(R_1 + R_2) \parallel R_3$ mit den Werten $R_1 = 10\,\Omega$, $R_2 = 20\,\Omega$ und $R_3 = 50\,\Omega$ mit einem Ausdruck!
+
+
+## Übung 2
+
+Schreiben Sie ein Programm, welches die Benutzer auffordert, eine Zahl zwischen 1 und 12 einzugeben (entsprechend den Monaten). Das Programm soll dann den Namen des Monats ausgeben. Falls die eingegebene Zahl nicht im Bereich 1 bis 12 liegt, soll eine Fehlermeldung ausgegeben werden. Die Eingabe soll so lange wiederholt werden, bis eine gültige Zahl eingegeben wird.
+
+Zur Bestimmung des Monatsnamens definieren Sie eine Funktion `month_name`, welche die Nummer des Monats als Argument erhält und den Namen des Monats zurückgibt.
+
+
+## Übung 3
+
+Schreiben Sie eine Funktion `word_count`, welche die Anzahl der Wörter in einem Text zählt. Die Funktion soll zwei Parameter haben: `text` (der Text, in dem die Wörter gezählt werden sollen) und `sep` (das Trennzeichen, Standardwert ist ein Leerzeichen). Verwenden Sie dafür die String-Methode `split`, welche eine Liste von Strings zurückgibt; die Länge dieser Liste kann mit der Funktion `len` ermittelt werden.
+
+Testen Sie die Funktion mit folgendem Text:
+
+> Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python’s elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas.
+
+
+## Übung 4
+
+Schreiben Sie eine Funktion `factorial`, welche die Fakultät einer positiven Zahl $n$ berechnet. Die Fakultät einer Zahl $n$ ist das Produkt aller positiven ganzen Zahlen kleiner oder gleich $n$. Die Fakultät von 0 ist mit 1 definiert.
+
+
+## Übung 5
+
+Schreiben Sie eine Funktion `is_divisible`, welche überprüft, ob eine Zahl $n$ durch eine andere Zahl $m$ ohne Rest teilbar ist. Die Funktion soll zwei Parameter haben: `n` (die zu überprüfende Zahl) und `m` (die Zahl, durch die geteilt werden soll). Die Funktion soll `True` zurückgeben, wenn die Division ohne Rest möglich ist, andernfalls `False`.
+
+Testen Sie die Funktion mit den Zahlenpaaren (10, 2), (10, 3), (10, 5) und (10, 7).
