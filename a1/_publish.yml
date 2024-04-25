@@ -1,0 +1,4 @@
+- source: a1.qmd
+  netlify:
+    - id: 093d666c-0b7c-4917-a2a9-15160995fc6a
+      url: 'https://python-24s-a1.netlify.app'
