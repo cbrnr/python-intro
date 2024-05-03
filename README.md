@@ -9,7 +9,7 @@ Die folgenden Unterlagen bieten eine kurze Einführung in die Grundlagen von Pyt
  5. [Bedingungen und Schleifen](https://python-24s-05.netlify.app) ([Lösungen](https://python-24s-05-solutions.netlify.app))
  6. [Strings](https://python-24s-06.netlify.app) ([Lösungen](https://python-24s-06-solutions.netlify.app))
  7. [Listen und Dictionaries](https://python-24s-07.netlify.app) ([Lösungen](https://python-24s-07-solutions.netlify.app))
- 8. [Ein- und Ausgabe]() ([Lösungen]())
+ 8. [Ein- und Ausgabe](https://python-24s-08.netlify.app) ([Lösungen](https://python-24s-08-solutions.netlify.app))
  9. [Numerische Daten]() ([Lösungen]())
 10. [Grafiken]() ([Lösungen]())
 11. [PsychoPy (1)]() ([Lösungen]())

@@ -2,7 +2,7 @@
 title: "8 – Ein- und Ausgabe"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-12-07
+date: 2024-05-13
 format:
   html:
     page-layout: full
@@ -52,6 +52,15 @@ b = 10
 print(a, "+", b, "=", a + b)  # fünf Argumente
 ```
 
+:::{.callout-note}
+Die `print`-Funktion hat zwei optionale Parameter `sep` bzw. `end`, welche das Trennzeichen zwischen den Argumenten und das Zeichen am Ende der Ausgabe beeinflussen:
+
+- `sep=" "`: Trennzeichen zwischen den Argumenten (Standard: Leerzeichen)
+- `end="\n"`: Zeichen am Ende der Ausgabe (Standard: Zeilenumbruch)
+
+Was wäre die Ausgabe des obigen Beispiels, wenn man `sep=""` setzen würde? Was bewirkt `end="!!!"`?
+:::
+
 Wie wir bereits wissen, kann man mehrere Strings mit `+` verketten. Daher könnte man obige Ausgabe auch durch Ausgabe eines einzigen Strings durch Verketten von einzelnen Strings erzeugen:
 
 ```{python}
@@ -61,13 +70,13 @@ print(str(a) + " + " + str(b) + " = " + str(a + b))  # ein Argument
 
 ### f-Strings
 
-Sogenannte f-Strings sind ganz normale Strings, man kann aber bei ihrer Erzeugung beliebige Ausdrücke verwenden, die dann ausgewertet in den String eingesetzt werden. Man definiert einen f-String wie einen normalen String mittels Anführungszeichen, stellt aber ein `f` voran, also z.B.:
+Sogenannte f-Strings sind ganz normale Strings, man kann aber bei ihrer Erzeugung beliebige Ausdrücke verwenden, die dann ausgewertet in den String eingesetzt (interpoliert) werden. Man definiert einen f-String wie einen regulären String mittels Anführungszeichen, stellt aber ein `f` voran, also z.B.:
 
 ```{python}
 f"Hallo"
 ```
 
-Sinnvoll sind f-Strings nur dann, wenn man auch tatsächlich Ausdrücke integriert, welche innerhalb von geschwungenen Klammern `{}` angegeben werden. Alle Ausdrücke werden ausgewertet und in den String eingesetzt (interpoliert):
+Sinnvoll sind f-Strings nur dann, wenn man auch tatsächlich Ausdrücke integriert, welche innerhalb von geschwungenen Klammern `{}` angegeben werden. Alle Ausdrücke werden ausgewertet und in den String interpoliert:
 
 ```{python}
 name = "World"
@@ -80,7 +89,7 @@ Den fertigen String kann man dann einfach mit `print` am Bildschirm ausgeben. Da
 print(f"{a} + {b} = {a + b}")
 ```
 
-Ausdrücke, wie z.B. Zahlen, können optional auch speziell formatiert werden. Sehen wir uns zunächst an, wie die Kreiszahl $\pi$ standardmäßig ausgegeben wird:
+Ausdrücke wie z.B. Zahlen, können optional auch *formatiert* werden. Sehen wir uns zunächst an, wie die Kreiszahl $\pi$ standardmäßig ausgegeben wird:
 
 ```{python}
 import math
@@ -88,7 +97,7 @@ import math
 print(f"π ≈ {math.pi}")
 ```
 
-Mit einem optionalen Doppelpunkt und einem sogenannten *Format Specifier* innerhalb der geschwungenen Klammern kann ein Ausdruck gezielt formatiert werden. Das folgende Beispiel formatiert die Zahl Pi so, dass sie mit drei Nachkommastellen ausgegeben wird:
+Mit einem optionalen Doppelpunkt und einem sogenannten *Format Specifier* innerhalb der geschwungenen Klammern kann ein Ausdruck gezielt formatiert werden. Das folgende Beispiel formatiert die Zahl $\pi$ so, dass sie mit drei Nachkommastellen ausgegeben wird:
 
 ```{python}
 print(f"π ≈ {math.pi:.3f}")
@@ -117,18 +126,18 @@ Die Funktion `open` gibt ein Datei-Objekt zurück, welches zum Lesen oder Schrei
 f = open("test.txt", "w")
 ```
 
-Das erste Argument ist der Dateiname, und das zweite Argument beschreibt den Modus (`"r"` lesen, `"w"` schreiben, `"a"` hinzufügen). Standardmäßig wird der Modus `"r"` angenommen, wenn das Argument nicht übergeben wird.
+Das erste Argument ist der Dateiname, und das zweite Argument beschreibt den Modus (`"r"` lesen, `"w"` schreiben, `"a"` hinzufügen). Standardmäßig wird der Modus `"r"` angenommen, wenn das Argument nicht explizit übergeben wird.
 
-Mit dem Datei-Objekt `f` kann man dann aus der Datei lesen bzw. in die Datei schreiben.
+Mit dem Datei-Objekt `f` kann man dann aus der Datei lesen bzw. in die Datei schreiben (je nach Modus).
 
 :::{.callout-important}
-Nach Beendigung aller Lese- und Schreiboperationen muss man das Datei-Objekt wieder schließen:
+Nach Beendigung aller Lese- und Schreiboperationen muss man das Datei-Objekt wieder *schließen*:
 
 ```python
 f.close()
 ```
 
-Es ist sinnvoll, alle Datei-Operationen in einem `with`-Block durchzuführen; so wird die Datei bei Verlassen des Blocks *automatisch* geschlossen, d.h. man benötigt kein `f.close()`:
+Es ist sinnvoll, alle Datei-Operationen innerhalb eines `with`-Blocks durchzuführen. So wird die Datei bei Verlassen des Blocks *automatisch* geschlossen, d.h. man benötigt kein `f.close()`:
 
 ```python
 with open("test.txt") as f:
@@ -139,7 +148,7 @@ with open("test.txt") as f:
 Zu Beachten ist noch, dass der Dateiname als String übergeben wird. Dieser enthält entweder den vollständigen Pfad der zu öffnenden Datei (z.B. `"C:/Program Files/Test Program/test.txt"`), oder nur den Dateinamen. Im letzteren Fall wird dann angenommen, dass sich die Datei im Arbeitsverzeichnis befindet.
 
 :::{.callout-note}
-Pfade sollten immer mit einem normalen `/` getrennt werden und nicht wie unter Windows üblich mit einem verkehrten `\`.
+Pfade sollten immer mit einem normalen `/` getrennt werden und nicht wie unter Windows üblich mit einem verkehrten `\`, da man mit letzterem eine Escape-Sequenz einleitet. Möchte man dennoch `\` verwenden, muss man diesen mit der Escape-Sequenz `\\` schreiben.
 :::
 
 Die Methode `read` eines Datei-Objektes liest die *gesamte Datei* ein und gibt den Inhalt als String zurück:
@@ -149,6 +158,8 @@ f = open("test.txt")
 text = f.read()
 print(text)
 ```
+
+Zu beachten ist hier, dass der *gesamte* Inhalt der Datei in den Speicher geladen wird. Bei sehr großen Dateien kann das eventuell zu Problemen führen, weswegen man diese *zeilenweise* einlesen sollte (dazu gleich mehr).
 
 :::{.callout-tip}
 Der Inhalt einer Datei kann immer nur ein Mal gelesen werden. Wenn bereits der gesamte Inhalt gelesen wurde, befindet sich der sogenannte Dateizeiger am Ende der Datei. Wenn dann nochmals gelesen wird, wird nur mehr ein leerer String zurückgegeben:
@@ -207,7 +218,7 @@ In diesem Beispiel steht die Escape-Sequenz `\n` für einen Zeilenumbruch (neue 
 
 Mit den bis jetzt vorgestellten Mitteln können wir bereits CSV[^1]-Dateien einlesen und rudimentäre Statistiken rechnen. CSV-Dateien werden häufig verwendet, um tabellarische Daten abzuspeichern. Diese Dateien sind reine Textdateien, in denen die Variablen (Spalten) durch Kommas getrennt sind und die einzelnen Datensätze zeilenweise vorliegen.
 
-Im Folgenden werden drei Möglichkeiten zum Lesen einer CSV-Datei vorgestellt (die Beispieldatei `correlation.csv` ist [hier](correlation.csv) verfügbar). Die erste Methode verwendet Python ohne spezielle Module, die zweite Methode ist eine Verallgemeinerung der ersten. Die dritte und einfachste Variante verwendet das Package [pandas](https://pandas.pydata.org/), welches wir in dieser Lehrveranstaltung nicht genauer kennenlernen werden (sie wird der Vollständigkeit halber aber trotzdem erwähnt).
+Im Folgenden werden drei Möglichkeiten zum Lesen einer CSV-Datei vorgestellt (die Beispieldatei `correlation.csv` ist [hier](correlation.csv) verfügbar). Die erste Methode verwendet Python ohne spezielle Module, die zweite Methode ist eine Verallgemeinerung der ersten. Die dritte und einfachste Variante verwendet das Package [pandas](https://pandas.pydata.org/), welches wir in dieser Lehrveranstaltung aber nicht genauer kennenlernen werden (sie wird der Vollständigkeit halber trotzdem erwähnt).
 
 [^1]: Comma-Separated Values
 
@@ -230,10 +241,10 @@ data
 Nun können die Daten in eine Struktur umgewandelt werden, die sich besser für nachfolgende Berechnungen eignet (also inbesondere werden die Zahlen, die als Strings vorliegen, mit der Funktion `float` in Kommazahlen umgewandelt).
 
 ```{python}
-cols = [[], []]  # two empty lists for the two columns
-for row in data[1:]:  # skip first row (header)
-    cols[0].append(float(row[0]))  # first column
-    cols[1].append(float(row[1]))  # second column
+cols = [[], []]  # zwei leere Listen für die zwei Spalten
+for row in data[1:]:  # die erste Zeile 0 wird übersprungen (Kopfzeile)
+    cols[0].append(float(row[0]))  # erste Spalte
+    cols[1].append(float(row[1]))  # zweite Spalte
 ```
 
 Nun stehen die beiden Spalten in der Liste `cols` zur weiteren Verfügung. Diese Liste hat zwei Elemente:
@@ -295,7 +306,7 @@ with open("correlation.csv") as f:
             data[h].append(float(v))  # füge zur jeweiligen Liste hinzu
 ```
 
-Hier werden die Variablennamen aus der ersten Zeile (der Kopfzeile) gelesen. Die Daten werden dann in ein Dictionary geschrieben, wobei die Werte der Spalten zu den richtigen Dictionary-Einträgen (Listen) hinzugefügt werden. Die Funktion `zip` kombiniert die Werte von `header` und `values` in ein Tupel, die dann innerhalb der Schleife als `h` bzw. `v` zur Verfügung stehen (so kann man in einer Schleife also gleichzeitig über zwei Objekte iterieren).
+Hier werden zunächst die Variablennamen aus der ersten Zeile (der Kopfzeile) gelesen. Die Daten werden dann in ein Dictionary geschrieben, wobei die Werte der Spalten zu den richtigen Dictionary-Einträgen (Listen) hinzugefügt werden. Die Funktion `zip` kombiniert die Werte von `header` und `values` in ein Tupel, die dann innerhalb der Schleife als `h` bzw. `v` zur Verfügung stehen (so kann man in einer Schleife also gleichzeitig über zwei Objekte iterieren).
 
 ```{python}
 data

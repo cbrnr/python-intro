@@ -2,7 +2,7 @@
 title: "8 – Lösungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-12-07
+date: 2024-05-13
 format:
   html:
     page-layout: full
@@ -39,11 +39,11 @@ with open("ue2.txt", "w") as f:
 
 ```{python}
 with open("sowpods.txt") as f:
-    for _ in range(6):  # skip first 6 lines
+    for _ in range(6):  # die ersten 6 Zeilen überspringen
         f.readline()
     counter = 0
     for line in f:
-        if len(line.strip()) > 0:  # line 17563 is empty
+        if len(line.strip()) > 0:  # Zeile 17563 ist leer
             counter += 1
 
 print(f"There are {counter} words in the Scrabble list.")
@@ -54,13 +54,15 @@ print(f"There are {counter} words in the Scrabble list.")
 
 ```{python}
 with open("sowpods.txt") as f:
-    for _ in range(6):  # skip first 6 lines
+    for _ in range(6):  # die ersten 6 Zeilen überspringen
         f.readline()
     counter = 0
     for line in f:
         if len(line.strip()) > 14:
             counter += 1
-            # print(line.strip())  # uncomment to see words
+            # print(line.strip())  # die gefundenen Wörter ausgeben
 
 print(f"There are {counter} words with 15+ letters in the Scrabble list.")
 ```
+
+Wenn man die Wörter ausgeben möchte, die 15 oder mehr Buchstaben haben, muss man die kommentierte Zeile aktivieren (also das `#` entfernen).
