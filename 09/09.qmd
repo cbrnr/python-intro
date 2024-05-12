@@ -2,7 +2,7 @@
 title: "9 – Numerische Daten"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-12-14
+date: 2024-05-27
 format:
   html:
     page-layout: full
@@ -19,7 +19,7 @@ published-title: "Veröffentlicht"
 
 ## Allgemeines
 
-Python wurde ursprünglich als einfach zu erlernende Programmiersprache entwickelt. Dadurch hat sich Python auch im wissenschaftlichen Bereich (Datenanalyse, Machine Learning) etabliert, nicht zuletzt auch durch die große Anzahl an Zusatzpaketen für viele Einsatzgebiete. Folgende grundlegende Pakete sind für die Datenanalyse essentiell:
+Python wurde ursprünglich als einfach zu erlernende Programmiersprache entwickelt. Dadurch hat sich Python auch im wissenschaftlichen Bereich etabliert, nicht zuletzt auch durch die große Anzahl an Zusatzpaketen für viele Einsatzgebiete. Folgende grundlegende Pakete sind dafür essentiell:
 
 * [NumPy](http://www.numpy.org/) (Arbeiten mit numerischen Daten)
 * [SciPy](https://scipy.org/) (Algorithmen für diverse wissenschaftliche Anwendungen)
@@ -27,7 +27,7 @@ Python wurde ursprünglich als einfach zu erlernende Programmiersprache entwicke
 * [Pandas](http://pandas.pydata.org/) (Arbeiten mit Tabellen)
 * [IPython](http://ipython.org/) (erweiterter interaktiver Python-Interpreter)
 
-Darüber hinaus gibt es aber sehr viele weitere exzellente Pakete für speziellere Anwendungen wie z.B. [Scikit-learn](http://scikit-learn.org/stable/) (Machine Learning), [statsmodels](http://www.statsmodels.org/stable/index.html) (Statistik), [scikit-image](http://scikit-image.org/) (Bildverarbeitung) oder [SymPy](http://www.sympy.org/en/index.html) (symbolisches Rechnen). Diese Pakete setzen NumPy als Grundlage voraus, welches wir in dieser Einheit näher kennenlernen werden.
+Darüber hinaus gibt es sehr viele weitere exzellente Pakete für spezifischere Anwendungen wie z.B. [Scikit-learn](http://scikit-learn.org/stable/) (Machine Learning), [statsmodels](http://www.statsmodels.org/stable/index.html) (Statistik), [scikit-image](http://scikit-image.org/) (Bildverarbeitung) oder [SymPy](http://www.sympy.org/en/index.html) (symbolisches Rechnen). Diese Pakete setzen alle NumPy als Grundlage voraus, welches wir in dieser Einheit näher kennenlernen werden.
 
 :::{.callout-tip}
 Der Python-Interpreter kann, wie bereits des öfteren erwähnt, im Script-Modus oder im interaktiven Modus verwendet werden. Letzterer eignet sich zum interaktiven Verarbeiten von Daten (also z.B. auch zum Ausprobieren von Ideen). Das Paket IPython fügt dem interaktiven Modus von Python einige zusätzliche Funktionen hinzu, die das Arbeiten komfortabler gestalten (z.B. farbliche Hervorhebung der Syntax, einfacher Zugriff auf bereits ausgeführte Befehle und Ergebnisse, hervorragende Vervollständigung von Befehlen mittels Tab-Completion, viele Zusatzfunktionen durch sogenannte Magic Functions, ...).
@@ -143,7 +143,7 @@ Die Funktion `np.zeros` wird mit *einem* Argument für die gewünschte Form (Sha
 :::
 
 :::{.callout-tip}
-Übersichtlicher ist es, wenn Sie Keyword-Argument nutzen, also beispielsweise:
+Übersichtlicher ist es, wenn Sie Keyword-Argumente nutzen, also beispielsweise:
 
 ```python
 np.zeros(shape=(3, 4))
@@ -212,7 +212,7 @@ Danach erzeugt man damit ein Generator-Objekt. Dieses kann man auch in einen def
 rng = default_rng(seed=42)
 ```
 
-In diesem Beispiel initialisieren wir den Generator mit `42` (wir könnten aber auch jede beliebige andere Zahl nehmen). Die Initialisierung bewirkt, dass der Generator danach dieselbe Folge an Zufallszahlen ausspuckt. Lässt man die Initialisierung mit einer Zahl weg, dann wird der Generator in einen nicht-reproduzierbaren Zustand initialisiert (der Seed wird z.B. aus der aktuellen Uhrzeit, der Mauscursorposition u.ä. gebildet). Das bedeutet, dass bei jeder erneuten Ausführung eines Scripts andere Zufallszahlen gezogen werden, was häufig nicht im Sinne der Reproduzierbarkeit von Ergebnissen ist.
+In diesem Beispiel initialisieren wir den Generator mit `42` (wir könnten aber auch jede beliebige andere Zahl nehmen). Die Initialisierung bewirkt, dass der Generator danach dieselbe Folge an Zufallszahlen ausspuckt. Lässt man die Initialisierung mit einer Zahl weg, dann wird der Generator in einen nicht-reproduzierbaren Zustand initialisiert (der Seed wird z.B. aus der aktuellen Uhrzeit, der Mausposition u.ä. gebildet). Das bedeutet, dass bei jeder erneuten Ausführung eines Scripts andere Zufallszahlen gezogen werden, was nicht im Sinne der Reproduzierbarkeit von Ergebnissen ist.
 
 Durch Methoden des Generators kann man jetzt Zufallszahlen mit der gewünschten Verteilung erzeugen:
 
@@ -336,6 +336,10 @@ a.min()
 ```
 
 Man kann diese Funktionen/Methoden aber auch auf einzelne Dimensionen (auch "Achsen" genannt) anwenden, z.B. auf Zeilen oder Spalten. Dabei entspricht die Dimension `0` den Zeilen und die Dimension `1` den Spalten.
+
+:::{.callout-tip}
+Eigentlich entsprechen die *letzten beiden* Dimensionen den Zeilen und Spalten (bei einem zweidimensionalen Array sind das die Dimensionen 0 für die Zeilen und 1 für die Spalten). Ein dreidimensionales Array mit den Dimensionen `(3, 4, 5)` besteht also aus 3 Blöcke zu je 4 Zeilen und 5 Spalten.
+:::
 
 ```{python}
 a.mean(axis=0)  # Mittelwert entlang der Zeilen, d.h. Spaltenmittelwerte

@@ -2,7 +2,7 @@
 title: "9 – Lösungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2023-12-14
+date: 2024-05-27
 format:
   html:
     page-layout: full
