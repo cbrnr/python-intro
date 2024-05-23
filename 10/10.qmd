@@ -2,7 +2,7 @@
 title: "10 – Grafiken"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2024-01-11
+date: 2024-06-03
 format:
   html:
     page-layout: full
@@ -19,7 +19,7 @@ published-title: "Veröffentlicht"
 
 ## Allgemeines
 
-In Python gibt es eine große Anzahl an Paketen, welche sich auf das Erstellen von Grafiken spezialisiert haben. Eine grafische Übersicht über dieses Ökosystem gibt es [hier](https://rougier.github.io/python-visualization-landscape/landscape-colors.html), die bekanntesten Pakete sind momentan:
+In Python gibt es eine große Anzahl an Paketen, welche sich auf das Erstellen von Grafiken spezialisiert haben. Eine Übersicht über dieses Ökosystem gibt es [hier](https://rougier.github.io/python-visualization-landscape/landscape-colors.html), die bekanntesten Pakete sind momentan:
 
 - [Matplotlib](http://matplotlib.org/)
 - [Bokeh](https://docs.bokeh.org/en/latest/)
@@ -33,7 +33,9 @@ Bokeh und Plotly können vor allem interaktive Grafiken für Webanwendungen erst
 
 Neben diesen häufig verwendeten Paketen gibt es noch [plotnine](https://github.com/has2k1/plotnine), welches sehr ähnlich wie [ggplot2](https://ggplot2.tidyverse.org/) für R zu verwenden ist.
 
+:::{.callout-tip}
 Auf [dieser](https://aeturrell.github.io/coding-for-economists/vis-common-plots.html) und [dieser](http://pythonplot.com/) Website kann man die Erstellung einiger typischer Grafiken mit den unterschiedlichen Paketen vergleichen.
+:::
 
 Kurz zusammengefasst kann man also die Pakete Matplotlib, seaborn und plotnine zur Erzeugung von klassischen *statischen* Grafiken sowie Vega-Altair, Bokeh und Plotly zur Erstellung von *interaktiven* Grafiken empfehlen.
 
@@ -193,7 +195,7 @@ annotate(4.0, 0.7, "Spine", "ax.spines")
 _ = fig.patch.set(linewidth=2, edgecolor="0.5")
 ```
 
-Für den Anfang benötigen wir aber nur die zwei Begriffe `Figure` und `Axes` (in der Abbildung rot dargestellt): Eine `Figure` entspricht einer Abbildung, welche eine oder mehrere Grafiken (sogenannte `Axes`) enthalten kann.
+Für den Anfang benötigen wir nur die zwei Begriffe `Figure` und `Axes` (in der Abbildung rot dargestellt): Eine `Figure` entspricht einer Abbildung, welche eine oder mehrere Grafiken (sogenannte `Axes`) enthalten kann.
 
 Die Funktion `plt.subplots` erzeugt eine `Figure` und die gewünschte Anzahl an `Axes`. Möchte man also z.B. eine Abbildung mit einer einzigen Grafik erzeugen, erstellt man diese leeren Objekte mit folgendem Befehl:
 
@@ -216,9 +218,9 @@ fig, axes = plt.subplots(1, 3, figsize=(9, 4))  # 1 Zeile, 3 Spalten
 
 In diesem Beispiel erzeugen wir eine `Figure`, welche drei `Axes` beinhaltet, die in einer Zeile und drei Spalten angeordnet sind. In anderen Worten sind das also drei Grafiken, die nebeneinander dargestellt werden. Diese drei `Axes`-Objekte haben wir `axes` genannt, und dabei handelt es sich um ein eindimensionales NumPy-Array. Wir können daher auf die einzelnen Elemente mittels `axes[0]`, `axes[1]` und `axes[2]` zugreifen und damit die gewünschten Grafiken erzeugen.
 
-Auch eine echte zweidimensionale Anordnung, bestehend aus mehreren Zeilen und Spalten, ist so möglich. Zu beachten ist in diesem Fall aber, dass die zurückgegebenen Achsen in einem zweidimensionalen NumPy-Array vorhanden sind. Daher kann man die einzelnen `Axes`-Objekte auch mit einem zweidimensionalen Index (also Zeile und Spalte) ansprechen, z.B. `axes[0][2]` wäre das `Axes`-Objekt in Zeile 0 (also erste Zeile) und Spalte 2 (also dritte Spalte).
+Auch eine echte zweidimensionale Anordnung, bestehend aus mehreren Zeilen und Spalten, ist so möglich. Zu beachten ist in diesem Fall aber, dass die zurückgegebenen Achsen in einem zweidimensionalen NumPy-Array vorhanden sind. Daher kann man die einzelnen `Axes`-Objekte auch mit einem zweidimensionalen Index (also Zeile und Spalte) ansprechen, z.B. `axes[0, 2]` wäre das `Axes`-Objekt in Zeile 0 (also erste Zeile) und Spalte 2 (also dritte Spalte).
 
-Damit sich in einer `Figure` mit mehreren `Axes`-Objekten keine Überlappungen ergeben, sollten Sie zum Abschluss folgende Zeile hinzufügen:
+Damit sich in einer `Figure` mit mehreren `Axes`-Objekten keine Überlappungen ergeben, sollten Sie zum Abschluss folgende Zeile ausführen:
 
 ```python
 fig.set_tight_layout(True)
@@ -359,6 +361,10 @@ fig, ax = plt.subplots()
 _ = ax.boxplot([x, y, z])
 ```
 
+:::{.callout-note}
+Die Box erstreckt sich vom ersten bis zum dritten Quartile, ihre Höhe entspricht also dem Interquartilsabstand (IQR). Die orange Linie in der Box entspricht dem Median. Die sogenannten Whiskers außerhalb der Box erstrecken sich bis zum 1,5-fachen des IQR über bzw. unter dem ersten bzw. dritten Quartil. Punkte außerhalb dieser Grenzen werden als Ausreißer dargestellt.
+:::
+
 
 ### Violinplots
 
@@ -378,7 +384,7 @@ _ = ax.violinplot([x, y, z])
 
 ### Weitere statistische Grafiken
 
-Matplotlib bietet über die genannten statistischen Grafiktypen nicht mehr wesentlich mehr. Möchte man beispielsweise Scatterplots mit überlagerten Regressionsgeraden oder andere komplexere Grafiktypen erstellen, sollte man einen Blick auf andere Pakete wie seaborn oder plotnine werfen. Mit Matplotlib wäre das zwar prinzipiell auch möglich, aber es wären sehr viele manuelle Schritte notwendig (z.B. müsste man selbst ein lineares Regressionsmodell rechnen, um dieses dann in eine Grafik einzubinden).
+Möchte man beispielsweise Scatterplots mit überlagerten Regressionsgeraden oder andere komplexere Grafiktypen erstellen, sollte man einen Blick auf andere Pakete wie seaborn oder plotnine werfen. Mit Matplotlib wäre das zwar prinzipiell zwar auch möglich, aber es wären sehr viele manuelle Schritte notwendig (z.B. müsste man selbst ein lineares Regressionsmodell rechnen, um dieses dann in eine Grafik einzubinden).
 
 
 ### Titel und Achsenbeschriftungen
