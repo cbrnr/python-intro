@@ -12,7 +12,7 @@ Die folgenden Unterlagen bieten eine kurze Einführung in die Grundlagen von Pyt
  8. [Ein- und Ausgabe](https://python-24s-08.netlify.app) ([Lösungen](https://python-24s-08-solutions.netlify.app))
  9. [Numerische Daten](https://python-24s-09.netlify.app) ([Lösungen](https://python-24s-09-solutions.netlify.app))
 10. [Grafiken](https://python-24s-10.netlify.app) ([Lösungen](https://python-24s-10-solutions.netlify.app))
-11. [PsychoPy (1)]() ([Lösungen]())
+11. [PsychoPy (1)](https://python-24s-11.netlify.app) ([Lösungen](https://python-24s-11-solutions.netlify.app))
 12. [PsychoPy (2)]() ([Lösungen]())
 
 - [Zusätzliche Übungsaufgaben](https://python-24s-a1.netlify.app) ([Lösungen](https://python-24s-a1-solutions.netlify.app))
