@@ -2,7 +2,7 @@
 title: "12 – PsychoPy (2)"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2024-01-25
+date: 2024-06-17
 format:
   html:
     page-layout: full
@@ -32,11 +32,13 @@ Unter macOS kann man die Python-Umgebung von PsychoPy, welche mit dem Standalone
 
 Wenn man in PsychoPy Builder ein Experiment grafisch erstellt hat, kann man sich den zugehörigen Code mit *Tools* – *Compile* (bzw. durch Klicken auf das Icon "Compile to Python script") erzeugen lassen. PsychoPy Coder wird dann automatisch mit dem generierten Script geöffnet.
 
-Probieren wir das mit unserem Stroop-Experiment aus der letzten Einheit aus. Wir vereinfachen dieses Experiment aber, indem wir die Routine "Feedback" entfernen (Rechtsklick auf die Routine und "remove" auswählen). Auch das entsprechende Tab können wir schließen und aus dem Experiment entfernen.
+:::{.callout-tip}
+Probieren wir das mit unserem [Stroop-Experiment aus der letzten Einheit](../11/stroop.zip) aus. Wir vereinfachen dieses Experiment aber, indem wir die Routine "Feedback" entfernen (Rechtsklick auf die Routine und "remove" auswählen). Auch das entsprechende Tab können wir schließen und aus dem Experiment entfernen.
 
 Mit einem Klick auf das Icon "Compile to Python script" wird das Experiment dann in ein Python-Script konvertiert. Dieses wird auch gleich mit PsychoPy Coder geöffnet.
 
 Das erstellte Script ist für ein so einfaches Experiment mit 487 Zeilen relativ lang. Es enthält viel Code, der für das Experiment eigentlich gar nicht notwendig ist, wie z.B. viele `import`-Statements die im weiteren Script nicht verwendet werden. Wir werden uns dieses Script nicht genauer ansehen, sondern versuchen herauszufinden, wie einfachere Komponenten direkt mit Code geschrieben werden können.
+:::
 
 
 ## Minimales Experiment
@@ -117,6 +119,10 @@ core.quit()
 ```
 
 Durch die Angabe von `keyList=["space"]` wird also so lange gewartet, bis die Leertaste gedrückt wird. Erst dann wird das Script in der nächsten Zeile fortgesetzt.
+
+:::{.callout-note}
+Die Verwendung von `event.waitKeys` (und `event.getKeys`) ist eigentlich nicht mehr empfohlen, da diese Funktionen nicht mehr gewartet werden und z.B. unter Linux auch gar nicht mehr funktionieren. Stattdessen sollte man auf `hardware.keyboard.Keyboard` zurückgreifen, welches wir aber hier nicht weiter behandeln, da diese Methode leider etwas komplexer ist. Zumindest im Moment sollte aber alles noch unter Windows funktionieren.
+:::
 
 
 ## Verwenden einer Schleife
