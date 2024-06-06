@@ -13,6 +13,6 @@ Die folgenden Unterlagen bieten eine kurze Einführung in die Grundlagen von Pyt
  9. [Numerische Daten](https://python-24s-09.netlify.app) ([Lösungen](https://python-24s-09-solutions.netlify.app))
 10. [Grafiken](https://python-24s-10.netlify.app) ([Lösungen](https://python-24s-10-solutions.netlify.app))
 11. [PsychoPy (1)](https://python-24s-11.netlify.app) ([Lösungen](https://python-24s-11-solutions.netlify.app))
-12. [PsychoPy (2)]() ([Lösungen]())
+12. [PsychoPy (2)](https://python-24s-12.netlify.app/) ([Lösungen](https://python-24s-12-solutions.netlify.app/))
 
 - [Zusätzliche Übungsaufgaben](https://python-24s-a1.netlify.app) ([Lösungen](https://python-24s-a1-solutions.netlify.app))
