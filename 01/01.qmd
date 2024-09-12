@@ -2,7 +2,7 @@
 title: "1 – Grundlagen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2024-03-04
+date: 2024-10-03
 format:
   html:
     page-layout: full
@@ -23,17 +23,17 @@ In dieser Lehrveranstaltung werden die Grundlagen der Programmiersprache [Python
 
 Diese Lehrveranstaltung setzt keinerlei Programmierkenntnisse voraus. Die Grundlagen des Programmierens werden praxisnah erläutert – dieses Wissen können Sie danach auch auf die meisten anderen Programmiersprachen übertragen. Aufgrund des begrenzten Umfangs werden allerdings nur grundlegende Konzepte in Python abgedeckt, die aber Voraussetzung für alle komplexeren Anwendungen sind. Sie werden durch ein umfassendes Basiswissen darauf vorbereitet, sich fortgeschrittenere Methoden selbst anzueignen.
 
-![© [xkcd](https://xkcd.com/353/), CC BY-NC 2.5](python-xkcd.png)
-
 
 ## Was ist Python?
 
-Python ist eine generische Programmiersprache, d.h. Python ist nicht spezialisiert auf ein eingeschränktes Gebiet, so wie z.B. [R](https://www.r-project.org/) auf Datenanalyse/Statistik ausgerichtet ist. Mit spezialisierten Programmiersprachen kann man manche Dinge schneller, besser, eleganter oder kürzer lösen als mit generischen Programmiersprachen. Im Gegensatz dazu ist man mit generischen Programmiersprachen aber nicht auf ein bestimmtes Gebiet eingeschränkt. Mit Python kann man neben Datenanalysen, numerischen Berechnungen und Statistik auch z.B. Webanwendungen oder Programme mit grafischen Oberflächen erstellen. Bevor man ein konkretes Problem lösen möchte, sollte man sich also unter anderem auch überlegen, welches Tool bzw. welche Programmiersprache dafür geeignet ist.
+Python ist eine generische Programmiersprache, d.h. Python ist nicht spezialisiert auf ein eingeschränktes Gebiet, so wie z.B. [R](https://www.r-project.org/) auf Datenanalyse/Statistik ausgerichtet ist. Mit spezialisierten Programmiersprachen kann man manche Dinge schneller, besser, eleganter oder kürzer lösen als mit generischen Programmiersprachen. Im Gegensatz dazu ist man mit generischen Programmiersprachen aber nicht auf ein bestimmtes Gebiet eingeschränkt. Mit Python kann man neben Datenanalysen, numerischen Berechnungen und Statistik auch z.B. Webanwendungen oder Programme mit grafischen Oberflächen erstellen. Bevor man ein konkretes Problem lösen möchte, sollte man sich also unter anderem auch überlegen, welche Programmiersprache dafür geeignet ist.
+
+![© [xkcd](https://xkcd.com/353/), CC BY-NC 2.5](python-xkcd.png){fig-align="left"}
 
 Folgende Eigenschaften werden oft mit Python in Verbindung gebracht:
 
 - Einfach zu erlernende Programmiersprache
-- Open Source (freie Software)
+- Open Source (freie Software, mehr als nur kostenlos)
 - Plattformübergreifend (läuft auf Windows, macOS, Linux)
 - Vielfältige Einsatzgebiete (nicht spezialisiert auf nur einen Bereich wie z.B. Datenanalyse)
 - Sehr gut geeignet für reproduzierbare Datenanalysen im wissenschaftlichen Bereich
@@ -93,7 +93,7 @@ Unter Windows wählt man im Installationsfenster die Standard-Installation aus, 
 
 ## Erste Schritte
 
-Nachdem Sie Python installiert haben können Sie den sogenannten Python-Interpreter starten. Dabei handelt es sich um ein Programm, welches Python-Befehle verstehen und verarbeiten kann. Man kann mit dem Python-Interpreter auch interaktiv arbeiten. Interaktiv bedeutet, dass man einen Befehl eintippt und mit der Eingabetaste bestätigt. Danach wird der eingegebene Befehl direkt verarbeitet und das Ergebnis ausgegeben.
+Nachdem Sie Python installiert haben, können Sie den sogenannten Python-Interpreter starten. Dabei handelt es sich um ein Programm, welches Python-Befehle verstehen und verarbeiten kann. Man kann mit dem Python-Interpreter auch interaktiv arbeiten (interaktiv bedeutet, dass man einen Befehl eintippt und mit der Eingabetaste bestätigt). Danach wird der eingegebene Befehl direkt verarbeitet und das Ergebnis ausgegeben.
 
 Es gibt einige Möglichkeiten, den Python-Interpreter zu verwenden – mehr dazu in der nächsten Einheit. Zunächst ist es am einfachsten, wenn Sie unter Windows das Programm "Python 3.12 (64-bit)" starten (es befindet sich im Startmenü im Ordner "Python 3.12").
 
@@ -117,8 +117,12 @@ Im interaktiven Interpreter können wir nun Python-Befehle eintippen und mit der
 120 / 7
 ```
 
+:::{.callout-tip}
+Aus Gründen der besseren Lesbarkeit sollten Leerzeichen vor und nach dem Operator eingefügt werden, also besser `10 - 7` und nicht `10-7`. Für Python ist zwar beides korrekt, aber die erste Variante ist leichter lesbar.
+:::
+
 :::{.callout-important}
-Beachten Sie, dass Python die *englische* Zahlenschreibweise mit einem *Punkt* als Dezimaltrennzeichen verwendet und nicht das im deutschen Sprachraum übliche *Komma*. Kommazahlen müssen daher immer mit einem Punkt eingegeben werden, ganz egal welche Sprache im Betriebssystem eingestellt ist. In diesen Unterlagen wird ebenfalls ein Punkt als Dezimaltrennzeichen verwendet.
+Beachten Sie, dass Python die *englische* Zahlenschreibweise mit einem *Punkt* als Dezimaltrennzeichen verwendet und nicht das im deutschen Sprachraum übliche *Komma*. Dezimalzahlen müssen daher immer mit einem Punkt eingegeben werden, ganz egal welche Sprache im Betriebssystem eingestellt ist. In diesen Unterlagen wird ebenfalls ein Punkt als Dezimaltrennzeichen verwendet.
 :::
 
 Die ganzzahlige Division hat einen eigenen Operator, der aus zwei Zeichen besteht:
@@ -146,13 +150,13 @@ Python kennt die Vorrangs- und Klammerregeln:
 (13 + 6) * 8 - 12 / (2.5 + 1.6)
 ```
 
-Wenn Sie mathematische Funktionen wie beispielsweise Sinus oder Cosinus verwenden möchten, müssen Sie zuerst das `math`-Modul importieren, in dem Sie (einmalig) folgende Zeile eintippen:
+Wenn Sie mathematische Funktionen wie beispielsweise Sinus oder Cosinus verwenden möchten, müssen Sie zuerst das `math`-Modul importieren (aktivieren), in dem Sie (einmalig) die folgende Zeile eintippen:
 
 ```{python}
 import math
 ```
 
-Danach stehen viele mathematische Funktionen wie z.B. `sqrt` (Wurzel), `log` (Logarithmus), `sin` (Sinus), `cos` (Cosinus) und Konstanten wie `pi` (die Kreiszahl $\pi$) oder `e` (die [Eulersche Zahl](https://de.wikipedia.org/wiki/Eulersche_Zahl)) zur Verfügung, die man mit einem vorangestellten `math.` verwendet:
+Danach stehen viele mathematische Funktionen wie z.B. `sqrt` (Wurzel), `log` (Logarithmus), `sin` (Sinus), `cos` (Cosinus) und Konstanten wie `pi` (die Kreiszahl $\pi$) oder `e` (die [Eulersche Zahl](https://de.wikipedia.org/wiki/Eulersche_Zahl)) zur Verfügung, die man allesamt mit einem vorangestellten `math.` verwendet:
 
 ```{python}
 math.sqrt(2)
@@ -173,7 +177,7 @@ math.e
 
 ## Anwendungsbeispiele
 
-Python wird heutzutage in vielen verschiedenen Bereichen verwendet. Um Ihnen zu verdeutlichen, was man mit Python in der Psychologie und den Neurowissenschaften machen kann, sind hier einige prominente Beispiele angeführt, die vielleicht für Sie relevant sein könnten. Diese Auswahl ist jedoch bei weitem nicht vollständig und spiegelt vor allem meine persönliche Erfahrung wider.
+Python wird heutzutage in vielen verschiedenen Bereichen verwendet. Um Ihnen zu verdeutlichen, wie vielfältig man Python vor allem in der Forschung einsetzen kann, sind hier einige relevante Beispiele angeführt. Diese Auswahl ist jedoch bei weitem nicht vollständig und spiegelt vor allem meine persönliche Erfahrung wider.
 
 
 ### Präsentation von Stimuli
@@ -201,18 +205,18 @@ Zur statistischen Auswertung von Daten gibt es in Python ebenfalls eine große A
 
 ### Grafische Oberflächen
 
-In Python kann man auch eigenständige Programme mit grafischen Oberflächen erstellen. Ein Beispiel dafür ist [Spyder](https://www.spyder-ide.org/), eine grafische Entwicklungsumgebung für Python, welche selbst komplett in Python geschrieben ist. Auch die grafische Oberfläche von [PsychoPy](http://www.psychopy.org/) ist in Python geschrieben.
+In Python kann man auch eigenständige Programme mit grafischen Oberflächen erstellen. Ein Beispiel dafür ist [Spyder](https://www.spyder-ide.org/), eine Entwicklungsumgebung für Python, welche selbst komplett in Python geschrieben ist. Auch die grafischen Oberflächen von [PsychoPy](http://www.psychopy.org/) und [MNELAB](https://github.com/cbrnr/mnelab) sind in Python geschrieben.
 
 
 ### Astronomie
 
-Zwei sehr prominente Beispiele dürfen an dieser Stelle nicht fehlen: das [erste Bild eines schwarzen Lochs](https://eventhorizontelescope.org/press-release-april-10-2019-astronomers-capture-first-image-black-hole) (im Zentrum der Galaxie [Messier 87](https://de.wikipedia.org/wiki/Messier_87)) wurde [mit Hilfe von Python](https://numpy.org/case-studies/blackhole-image/) erzeugt:
+Zwei sehr prominente Beispiele dürfen an dieser Stelle nicht fehlen: das [erste Bild eines schwarzen Lochs](https://eventhorizontelescope.org/press-release-april-10-2019-astronomers-capture-first-image-black-hole) (im Zentrum der etwa 55 Millionen Lichtjahre entfernten Galaxie [Messier 87](https://de.wikipedia.org/wiki/Messier_87)) wurde [mit Hilfe von Python](https://numpy.org/case-studies/blackhole-image/) erzeugt:
 
-![© [EHT](https://eventhorizontelescope.org/press-release-april-10-2019-astronomers-capture-first-image-black-hole), CC BY 4.0](m87.png)
+![© [EHT](https://eventhorizontelescope.org/press-release-april-10-2019-astronomers-capture-first-image-black-hole), CC BY 4.0](m87.png){fig-align="left" width=500}
 
 Auch bei der Visualisierung des [schwarzen Lochs Sagittarius A*](https://eventhorizontelescope.org/blog/astronomers-reveal-first-image-black-hole-heart-our-galaxy) im Zentrum unser eigenen Galaxie wurde [Python](https://doi.org/10.3847/2041-8213/ac6736) verwendet:
 
-![© [EHT](https://eventhorizontelescope.org/blog/astronomers-reveal-first-image-black-hole-heart-our-galaxy), CC BY 4.0](sgr_astar.png)
+![© [EHT](https://eventhorizontelescope.org/blog/astronomers-reveal-first-image-black-hole-heart-our-galaxy), CC BY 4.0](sgr_astar.png){fig-align="left" width=500}
 
 
 ## Übungen
