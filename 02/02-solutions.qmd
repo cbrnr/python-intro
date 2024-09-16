@@ -2,7 +2,7 @@
 title: "2 – Lösungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2024-03-11
+date: 2024-10-10
 format:
   html:
     page-layout: full
@@ -86,16 +86,10 @@ print("Hello World!")
 
 ```python
 help(print)
-?print
-print?
+help(sum)
 ```
 
 
 ## Übung 5
-
-Der interaktive Standard-Interpreter wird mit `python` im Terminal gestartet – dieser wird direkt mit der Installation von Python mitgeliefert. Er ist allerdings relativ rudimentär und bietet z.B. keine farblichen Hervorhebungen oder spezielle Kurzbefehle wie `pwd`. Daher kann man mit `pip install ipython` das Zusatzpaket `ipython` installieren, welches einen wesentlich komfortableren interaktiven Interpreter bietet (es ist sozusagen eine Erweiterung des Standard-Interpreters). Man startet ihn mit dem Befehl `ipython`. Beide verwenden natürlich exakt denselben Python-Interpreter, es geht nur darum, das interaktive Arbeiten komfortabler zu gestalten.
-
-
-## Übung 6
 
 Ein ganzes Script kann einfach mit dem Play-Icon rechts oben ausgeführt werden (im Script-Modus). Möchte man eine einzelne oder mehrere markierte Zeilen im interaktiven Interpreter ausführen, macht man das am besten mit <kbd>Shift</kbd><kbd>Enter</kbd>. Hier wird allerdings immer der Standard-Interpreter `python` gestartet. Diesen kann man aber mit `exit()` beenden und dann `ipython --no-autoindent` starten. Ab dann führt die Tastenkombination <kbd>Shift</kbd><kbd>Enter</kbd> Befehle in IPython aus.

@@ -2,7 +2,7 @@
 title: "2 – Die Python-Umgebung"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2024-03-11
+date: 2024-10-10
 format:
   html:
     page-layout: full
@@ -19,7 +19,7 @@ published-title: "Veröffentlicht"
 
 ## Aufbau von Python
 
-Eine Python-Installation besteht aus der Programmiersprache Python, einem [Interpreter](https://de.wikipedia.org/wiki/Interpreter) (ein Programm, welches Python-Code ausführen kann), und einer umfangreichen [Standardbibliothek](https://docs.python.org/3/library/). Python selbst stellt nur *grundlegende* Programmierkonstrukte zur Verfügung, wie z.B. `for`-Schleifen, `if`-Abfragen und andere fest eingebaute Funktionen.
+Eine Python-Installation besteht aus der Programmiersprache Python, also einem [Interpreter](https://de.wikipedia.org/wiki/Interpreter) (ein Programm, welches Python-Code ausführen kann), und einer umfangreichen [Standardbibliothek](https://docs.python.org/3/library/). Python selbst stellt nur *grundlegende* Programmierkonstrukte zur Verfügung, wie z.B. Schleifen, Bedingungen und einige fest eingebaute Funktionen.
 
 Darüber hinaus finden sich sehr viele zusätzliche Funktionen in der Standardbibliothek. Diese wird standardmäßig mit Python mitgeliefert und ist in Module gegliedert. Die Module der Standardbibliothek beinhalten spezialisierte Funktionen und decken unter anderem Anwendungsgebiete wie Datenkompression, erweiterte spezielle Datentypen, mathematische und statistische Funktionen, Internetprotokolle, grafische Benutzerschnittstellen, und vieles mehr ab.
 
@@ -37,7 +37,7 @@ Das Importieren ist nur ein einziges Mal, am besten ganz zu Beginn einer Python-
 
 Zusätzlich gibt es noch tausende Python-Pakete, die sehr einfach zu einer existierenden Python-Umgebung hinzugefügt werden können. Diese Python-Pakete sind komplett unabhängig von Python, werden also auch nicht von denselben Personen entwickelt und veröffentlicht. Der [Python Package Index (PyPI)](https://pypi.python.org/pypi) sammelt alle verfügbaren Pakete an einer zentralen Stelle. Das offizielle Tool um Pakete aus dem PyPI zu installieren nennt sich `pip` und wird automatisch mit Python mitgeliefert (mehr dazu weiter unten).
 
-Um Python-Programme zu schreiben, benötigt man auch einen Text-Editor. Daher sollte man zu guter Letzt einen geeigneten Text-Editor bzw. eine [integrierte Entwicklungsumgebung (IDE)](https://de.wikipedia.org/wiki/Integrierte_Entwicklungsumgebung) installieren (mehr dazu in einem der folgenden Abschnitte).
+Um Python-Programme zu schreiben, benötigt man auch einen Text-Editor. Daher sollte man zu guter Letzt einen geeigneten Text-Editor bzw. eine [integrierte Entwicklungsumgebung (IDE)](https://de.wikipedia.org/wiki/Integrierte_Entwicklungsumgebung) installieren (auch dazu später mehr).
 
 
 ## Zusatzpakete verwalten
@@ -47,9 +47,9 @@ Wie bereits erwähnt, wird das Tool `pip` zur Verwaltung von Zusatzpaketen verwe
 Das Tool `pip` ist ein sogenanntes Kommandozeilenprogramm, d.h. es verfügt über keine grafische Oberfläche, sondern wird im Terminal (oft auch Eingabeaufforderung genannt) ausgeführt.
 
 :::{.callout-note}
-Ein Terminal ist je nach Betriebssystem leicht unterschiedlich zu öffnen:
+Ein Terminal ist je nach Betriebssystem unterschiedlich zu öffnen:
 
-- Unter Windows startet man das Programm "Eingabeaufforderung" oder "Windows Terminal".
+- Unter Windows startet man das Programm "Windows Terminal".
 - Unter macOS startet man das Programm "Terminal".
 - Unter Linux gibt es zahlreiche Programme, die meist "Terminal" oder ähnlich heißen.
 :::
@@ -60,7 +60,7 @@ Im Terminal-Fenster kann man nun Textbefehle eintippen. Beachten Sie, dass hier 
 pip --version
 ```
 
-Wenn man hier eine Versionsnummer angezeigt bekommt (z.B. `21.2.4`), funktioniert `pip` korrekt. Falls hier eine Fehlermeldung ausgegeben wird, wurde vermutlich die Python-Installation nicht korrekt durchgeführt. In diesem Fall installieren Sie am besten anhand der in der ersten Einheit beschriebenen Schritte Python erneut.
+Wenn man hier eine Versionsnummer angezeigt bekommt (z.B. `24.2`), funktioniert `pip` korrekt. Falls hier eine Fehlermeldung ausgegeben wird, wurde vermutlich die Python-Installation nicht korrekt durchgeführt. In diesem Fall installieren Sie am besten anhand der in der ersten Einheit beschriebenen Schritte Python erneut.
 
 :::{.callout-important}
 Unter macOS muss man `pip3` statt `pip` schreiben, genau so wie man auch `python3` statt `python` zum Starten des Interpreters verwenden muss.
@@ -69,13 +69,13 @@ Unter macOS muss man `pip3` statt `pip` schreiben, genau so wie man auch `python
 Es folgt eine Übersicht über die wichtigsten `pip`-Befehle, mit denen man vertraut sein sollte:
 
 - `pip list` zeigt eine Liste aller installierten Pakete.
-- `pip show package_name` zeigt an, ob ein spezifisches Paket namens `package_name` bereits installiert ist. Hier bekommt man detaillierte Informationen über das Paket nur wenn es installiert ist – falls dies nicht der Fall ist, wird eine Meldung ausgegeben, dass das angegebene Paket nicht gefunden wurde (und daher nicht installiert ist).
+- `pip show package_name` zeigt an, ob ein spezifisches Paket namens `package_name` bereits installiert ist. Hier bekommt man detaillierte Informationen über das Paket nur falls es installiert ist – falls dies nicht der Fall ist, wird eine Meldung ausgegeben, dass das angegebene Paket nicht gefunden wurde (und daher nicht installiert ist).
 - `pip install package_name` installiert ein neues Paket namens `package_name`.
 - `pip uninstall package_name` deinstalliert (entfernt) das Paket `package_name`.
 - `pip list --outdated` zeigt eine Liste aller installierten Pakete an, die man aktualisieren kann.
 - `pip install --upgrade package_name` aktualisiert ein bereits installiertes Paket namens `package_name` auf die neueste Version.
 
-Ersetzen Sie den in den Beispielen verwendeten Paketnamen `package_name` mit dem tatsächlichen Namen des Paketes.
+Der in den Beispielen verwendete Paketname `package_name` ist mit dem tatsächlichen Namen des Paketes zu ersetzen.
 
 
 ## Der Python-Interpreter
@@ -102,7 +102,7 @@ Wenn Sie IPython wie oben beschrieben installiert haben, können Sie diesen erwe
 
 ### Script-Modus
 
-Der interaktive Modus eignet sich aber nicht zur Erstellung bzw. Ausführung längerer Programme, welche aus vielen (hunderten) Python-Befehlen bestehen können. Solche Programme (auch Scripts genannt) werden in Textdateien mit der Endung `.py` gespeichert, welche Python-Befehle enthalten, und zwar jeweils einen Befehl pro Zeile. Diese Scripts können dem Python-Interpreter als Ganzes übergeben werden, welcher dann den darin enthaltenen Code Zeile für Zeile ausführt. Der Interpreter befindet sich dann im Script-Modus. Man kann Python im Script-Modus wie folgt aufrufen:
+Der interaktive Modus eignet sich aber nicht zur Erstellung bzw. Ausführung längerer reproduzierbarer Programme, welche aus vielen (hunderten) Python-Befehlen bestehen können. Solche Programme (auch Scripts genannt) werden in Textdateien mit der Endung `.py` gespeichert, welche Python-Befehle enthalten, und zwar jeweils einen Befehl pro Zeile. Diese Scripts können dem Python-Interpreter als Ganzes übergeben werden, welcher dann den darin enthaltenen Code Zeile für Zeile ausführt. Der Interpreter befindet sich dann im Script-Modus. Man kann Python im Script-Modus wie folgt aufrufen:
 
 - In der Eingabeaufforderung (Terminal) tippt man `python script.py` ein (wobei `script.py` das auszuführende Script ist)
 - In IPython tippt man `%run script.py` ein
@@ -115,7 +115,7 @@ Der wesentliche Unterschied zwischen interaktivem und Script-Modus ist, dass nur
 
 Hier sieht man, dass nach der Eingabe von `1 + 4` der Wert dieser Berechnung (also das Ergebnis) automatisch ausgegeben wird. In einem Script würde eine Zeile mit dem Inhalt `1 + 4` aber *keine* Ausgabe bewirken. Dies können Sie einfach überprüfen, indem Sie eine Datei namens `script.py` mit dieser Zeile als Inhalt erstellen. Führen Sie dann dieses Python-Script mittels `python script.py` aus und beachten Sie, dass das Ergebnis `5` nicht ausgegeben wird (der Befehl `1 + 4` wird aber sehr wohl von Python ausgeführt, es fehlt nur die Ausgabe des Ergebnisses).
 
-Wenn man im Script-Modus Werte explizit ausgeben will, kann man die `print`-Funktion wie folgt benutzen:
+Wenn man im Script-Modus Werte explizit ausgeben will, kann man dazu die `print`-Funktion wie folgt benutzen:
 
 ```{python}
 print(1 + 4)
@@ -176,7 +176,7 @@ Unter Syntax versteht man die Regeln einer Sprache, die festlegen wie man aus gr
 
 ### Einrückungen
 
-Wie bereits erwähnt, speichert man ein Python-Programm bzw. ein Python-Script in einer Textdatei mit der Endung `.py`. Ein spezielles Merkmal der Syntax von Python ist, dass Einrückungen Bedeutung haben – sie gruppieren zusammengehörigen Code in Blöcke. Die meisten anderen Programmiersprachen verwenden dafür spezielle Zeichen oder Schlüsselwörter wie z.B. `begin`, `end`, `{` oder `}`. Durch Einrückungen benötigt Python diese Zeichen nicht und der Code wird dadurch automatisch strukturierter und kürzer. Dies ist im folgenden Beispiel veranschaulicht (bitte achten Sie nur auf die Struktur, der Inhalt/die Bedeutung des Beispiels ist hier *nicht* relevant; die Zeilennummern sind nicht Teil der Syntax und werden nur zur besseren Orientierung angezeigt):
+Ein spezielles Merkmal der Syntax von Python ist, dass Einrückungen Bedeutung haben – sie gruppieren zusammengehörigen Code in Blöcke. Die meisten anderen Programmiersprachen verwenden dafür spezielle Zeichen oder Schlüsselwörter wie z.B. `begin`, `end`, `{` oder `}`. Durch Einrückungen benötigt Python diese Zeichen nicht und der Code wird dadurch automatisch strukturierter und kürzer. Dies ist im folgenden Beispiel veranschaulicht (bitte achten Sie nur auf die Struktur, der Inhalt/die Bedeutung des Beispiels ist hier *nicht* relevant; die Zeilennummern sind nicht Teil der Syntax und werden nur zur besseren Orientierung angezeigt):
 
 ```{python}
 #| eval: false
@@ -234,7 +234,7 @@ Zusätzlich zur Syntax haben sich Konventionen durchgesetzt, wie man "schön" fo
 
 - Für Einrückungen werden vier Leerzeichen verwendet.
 - Nach dem Kommentarzeichen `#` soll ein Leerzeichen folgen.
-- Die maximale Zeilenlänge sollte 79 Zeichen nicht überschreiten.
+- Die maximale Zeilenlänge sollte 79 Zeichen nicht überschreiten (neuerdings werden allerdings immer öfter 88 Zeichen empfohlen).
 - Arithmetische Operatoren sollen von Leerzeichen umgeben sein, z.B. `1 + 1` und nicht `1+1`.
 
 Diese und noch viel mehr Empfehlungen sind im [Python Enhancement Proposal 8 (PEP8)](https://www.python.org/dev/peps/pep-0008/) zusammengefasst. Obwohl das Einhalten der Konventionen nicht erforderlich ist (die Syntax ist davon ja nicht betroffen, denn z.B. `1+1` ist korrekter Python-Code), ist es sehr zu empfehlen, sich trotzdem daran zu halten, da dies die Lesbarkeit des Codes stark erhöht.
@@ -270,10 +270,11 @@ Es fehlt nur noch die Installation der offiziellen [Python-Erweiterung](https://
 
 ![](vscode_2.png)
 
+Die Python-Erweiterung bietet umfangreiche und vielfältige Konfigurationsmöglichkeiten. Sie beinhaltet aber nicht die Überprüfung des Code Styles nach PEP8. Dies kann man aber einfach über die Erweiterung [Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff) nachreichen – installieren Sie also bitte auch diese Erweiterung.
 
-#### Aktivieren der PEP8-Überprüfung
-
-Die Python-Erweiterung bietet umfangreiche und vielfältige Konfigurationsmöglichkeiten. Sie beinhaltet aber nicht die Überprüfung des Code Styles nach PEP8. Dies kann man aber einfach über die Erweiterung "Flake8" nachreichen – installieren Sie also bitte auch diese Erweiterung.
+:::{.callout-tip}
+Die Befehlspalette in Visual Studio Code kann mit <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>P</kbd> (Windows/Linux) bzw. <kbd>⌘</kbd><kbd>Shift</kbd><kbd>P</kbd> (macOS) geöffnet werden. Hier kann man nach beliebigen Befehlen suchen und diese dann ausführen. Beispielsweise kann man ein Python-Script mit dem Befehl *"Ruff: Format document"* PEP-konform formatieren – probieren Sie es einfach aus!
+:::
 
 
 #### Ausführen von Python-Code
@@ -360,14 +361,9 @@ Achten Sie darauf, dass Ihr Script PEP8-konform ist. Führen Sie Ihr Script auch
 
 ### Übung 4
 
-Sehen Sie sich die Hilfe zur `print`-Funktion direkt im Python-Interpreter an. Welchen Befehl verwenden Sie zum Aufrufen der Hilfe? Geben Sie hier drei Möglichkeiten an, die in IPython die Hilfe zu `print` anzeigen.
+Sehen Sie sich die Hilfe zu den Funktionen `print` und `sum` direkt im Python-Interpreter an.
 
 
 ### Übung 5
-
-Um den interaktiven Python-Interpreter zu verwenden können Sie entweder `python` oder `ipython` starten. Beschreiben Sie die Unterschiede dieser beiden Varianten!
-
-
-### Übung 6
 
 Beschreiben Sie, wie Sie ein Python-Script in Visual Studio Code ausführen können! Erklären Sie außerdem, wie Sie eine einzelne Zeile bzw. mehrere markierte Zeilen im interaktiven Interpreter direkt in Visual Studio Code ausführen können (gehen Sie dabei auf die zwei Varianten interaktiver Interpreter sowie IPython ein)!
