@@ -1,0 +1,272 @@
+---
+title: "1 – Basics"
+subtitle: "Introduction to Python and PsychoPy"
+author: "Clemens Brunner"
+date: 2024-10-03
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+---
+
+## Overview
+
+This course teaches the fundamentals of the [Python](https://www.python.org/) programming language. We'll start by introducing key elements of the language, such as loops, functions, conditions, and basic data types. After thoroughly covering these basics, you'll learn how to use Python for data analysis (e.g., reading text files, representing numerical data, and creating visualizations). Lastly, you'll create simple experiments using the popular [PsychoPy](https://www.psychopy.org/) package.
+
+This course doesn't require any prior programming knowledge. You will learn the programming fundamentals in a hands-on way, allowing you to apply this knowledge to most other programming languages. Although this course covers only basic Python concepts due to time constraints, these concepts serve as the foundation for more complex applications. You'll develop a solid knowledge of these basics to continue learning more advanced methods on your own.
+
+
+## What is Python?
+
+Python is a general-purpose programming language, which means it is not specialized like [R](https://www.r-project.org/) is for data analysis/statistics. Specialized programming languages may allow you to solve certain tasks faster, better, or more elegantly than general-purpose ones. However, general-purpose languages offer more versatility, allowing you to work across many different fields. With Python, you can perform data analysis, numerical calculations, and statistics, as well as create web applications or programs with graphical user interfaces. Before solving a specific problem, you should consider which programming language is best suited for it.
+
+![© [xkcd](https://xkcd.com/353/), CC BY-NC 2.5](python-xkcd.png){fig-align="left"}
+
+People often associate Python with these characteristics:
+
+- Easy to learn
+- Open-source (free software, more than just free of charge)
+- Cross-platform (runs on Windows, macOS, Linux)
+- Versatile (not limited to a single area like e.g. data analysis)
+- Suitable for reproducible data analysis
+- Extensive standard library
+- Large, helpful community
+- A huge variety of available third-party packages
+
+
+## Popularity
+
+Python has become one of the most popular programming languages in the world. Various metrics that gauge the popularity of programming languages, such as [PYPL](https://pypl.github.io/PYPL.html), [IEEE Spectrum Top Programming Languages](https://spectrum.ieee.org/top-programming-languages/), and [TIOBE](https://www.tiobe.com/tiobe-index/), consistently place Python among the top spots, often ranking it first.
+
+In practice, the popularity of a programming language matters. The larger and more active a language's community is, the easier it becomes to find existing solutions to problems or to quickly get answers to new questions.
+
+
+## What does Python code look like?
+
+Here are a few examples of Python code. Some parts may seem intuitive, while others may be confusing (for now). Don't worry – we'll cover all these examples throughout the course. For now, these examples just serve to illustrate what Python code looks like.
+
+The gray boxes show Python commands, with the results of those commands directly below:
+
+```{python}
+print("Hello World!")
+```
+
+```{python}
+"only lowercase letters".upper()
+```
+
+```{python}
+for i in range(10):
+    print(i, end=", ")
+```
+
+```{python}
+print(", ".join([str(i) for i in range(10)]))
+```
+
+```{python}
+[k**2 for k in range(0, 100, 10)]
+```
+
+
+## Installation
+
+You can find everything you need to install Python on the [official Python website](https://www.python.org/), where you can download installation packages for various operating systems. The site also hosts Python's extensive official documentation, filled with examples and tutorials. Installing Python on Windows and macOS has become so straightforward that I highly recommend using the official installers (though for Linux, it's still better to use the system's package manager if Python isn't already installed).
+
+:::{.callout-note}
+These instructions use version 3.12.2, but you should always install and use the latest version.
+:::
+
+On Windows, choose the standard installation, but make sure to check the box for *"Add python.exe to PATH"*. You can leave the option *"Install launcher for all users (recommended)"* unchecked, allowing you to install Python without administrator rights. The image below shows these settings:
+
+![](install-python-windows.png)
+
+
+## Getting started
+
+After installing Python, you can start the so-called Python interpreter. This program processes Python commands and allows you to work interactively (meaning you can type a command, press Enter, and see the result right away).
+
+There are several ways to use the Python interpreter, which we'll cover in the next session. For now, the easiest option is to launch "Python 3.12 (64-bit)" from the Start menu under the "Python 3.12" folder on Windows.
+
+On macOS or Linux, open a terminal and type `python3`, followed by the Enter key. Make sure the interpreter displays the correct Python version.
+
+In the interactive interpreter, you can start typing Python commands and press Enter to execute them. The prompt `>>>` indicates that Python is ready for input (this prompt is *not* part of the command). You can use the interactive Python interpreter as a calculator, allowing you to perform the four basic arithmetic operations (addition, subtraction, multiplication, and division) like this:
+
+```{python}
+1 + 1
+```
+
+```{python}
+10 - 7
+```
+
+```{python}
+7 * 8
+```
+
+```{python}
+120 / 7
+```
+
+:::{.callout-tip}
+To make your code easier to read, include spaces before and after operators. For example, `10 - 7` is more readable than `10-7`, though both are valid Python commands.
+:::
+
+:::{.callout-important}
+Remember that Python uses the English format for decimal numbers, with a *period* as the decimal separator, rather than the *comma* used in some other languages (including German). Always input decimal numbers with a period, regardless of your operating system's language settings.
+:::
+
+You can perform integer division with the `//` operator (which consists of two characters):
+
+```{python}
+120 // 7
+```
+
+The remainder of a division (modulus) is calculated like this:
+
+```{python}
+120 % 7
+```
+
+You can raise a number to a power:
+
+```{python}
+2**64
+```
+
+Python respects the standard order of operations and parentheses:
+
+```{python}
+(13 + 6) * 8 - 12 / (2.5 + 1.6)
+```
+
+To use mathematical functions like sine or cosine, you'll first need to import the `math` module. Do this by entering the following command once:
+
+```{python}
+import math
+```
+
+This makes a wide range of mathematical functions available, such as `sqrt` (square root), `log` (logarithm), `sin` (sine), `cos` (cosine), and constants like `pi` (the circle constant $\pi$) or `e` ([Euler's number](https://en.wikipedia.org/wiki/E_(mathematical_constant))), all of which are used with a preceding `math.`:
+
+```{python}
+math.sqrt(2)
+```
+
+```{python}
+math.pi
+```
+
+```{python}
+math.e
+```
+
+```{python}
+1 + math.sqrt(5) * 7 - 2 * math.pi * 1.222
+```
+
+
+## Application examples
+
+The following selection of examples demonstrates Python's versatility. It is by no means exhaustive and mainly reflects my personal experience.
+
+
+### Stimulus presentation
+
+[PsychoPy](http://www.psychopy.org/) is a program designed for presenting stimuli in psychophysiological studies. You can use it to create experiments that involve measuring reaction times (such as fMRI and EEG studies), allowing precise presentation of visual and auditory stimuli. While PsychoPy can be used via a graphical user interface, creating highly customized experimental designs works best by directly writing Python code. We will explore PsychoPy in the last two sessions.
+
+![](psychopy.png)
+
+
+### Neuroscience
+
+Python has become popular in neuroscience. The [NIPY website](https://nipy.org/) (Neuroimaging for Python) hosts multiple projects covering various tasks in neuroscience. There are numerous packages for analyzing [functional magnetic resonance imaging (fMRI)](https://en.wikipedia.org/wiki/Functional_magnetic_resonance_imaging) data in particular. For example, [NiBabel](https://nipy.org/nibabel/) supports reading various neuroimaging data formats, [Nipype](https://www.mit.edu/~satra/nipype-nightly/) unifies the use of different fMRI analysis programs, and [NIPY](https://nipy.org/nipy/), [NiTime](https://nipy.org/nitime/), and [Nilearn](https://nilearn.github.io/) support fMRI data analysis.
+
+![](nilearn.png)
+
+[MNE-Python](https://mne.tools/) is the most popular Python package for processing electrophysiological brain signals, such as filtering, artifact correction, source localization, and connectivity analysis. A graphical user interface called [MNELAB](https://github.com/cbrnr/mnelab) is also available.
+
+
+### Statistical data analysis
+
+Python offers many packages for statistical data analysis. Popular packages include [NumPy](https://www.numpy.org/), [SciPy](https://scipy.org/), [pandas](https://pandas.pydata.org/), [statsmodels](https://www.statsmodels.org/stable/index.html), [Matplotlib](https://matplotlib.org/), [seaborn](https://seaborn.pydata.org/) and [scikit-learn](https://scikit-learn.org/stable/). We will cover some of these packages in this course, though only superficially.
+
+![](scatter.png)
+
+
+### Graphical user interfaces
+
+You can also create standalone programs with graphical user interfaces in Python. A notable example is [Spyder](https://www.spyder-ide.org/), an integrated development environment for Python, which itself is entirely written in Python. The graphical user interfaces of [PsychoPy](http://www.psychopy.org/) and [MNELAB](https://github.com/cbrnr/mnelab) are also written in Python.
+
+
+### Astronomy
+
+The [first image of a black hole](https://eventhorizontelescope.org/press-release-april-10-2019-astronomers-capture-first-image-black-hole) at the center of the galaxy [Messier 87](https://de.wikipedia.org/wiki/Messier_87), approximately 55 million light-years away, was generated [with the help of Python](https://numpy.org/case-studies/blackhole-image/):
+
+![© [EHT](https://eventhorizontelescope.org/press-release-april-10-2019-astronomers-capture-first-image-black-hole), CC BY 4.0](m87.png){fig-align="left" width=500}
+
+Researchers also [used Python](https://doi.org/10.3847/2041-8213/ac6736) when visualizing the [black hole Sagittarius A*](https://eventhorizontelescope.org/blog/astronomers-reveal-first-image-black-hole-heart-our-galaxy) at the center of our own galaxy:
+
+![© [EHT](https://eventhorizontelescope.org/blog/astronomers-reveal-first-image-black-hole-heart-our-galaxy), CC BY 4.0](sgr_astar.png){fig-align="left" width=500}
+
+
+## Exercises
+
+### Exercise 1
+
+Install Python on your computer and start the Python interpreter. What version of Python does the interpreter report? Is this the latest version?
+
+
+### Exercise 2
+
+Type `import antigravity` into the Python interpreter. What happens? What happens when you enter `import this`? What does `import math` do?
+
+
+### Exercise 3
+
+We can approximate the Earth as a sphere with a radius of 6,371 km. Use Python to calculate the surface area of the Earth. The formula for the surface area $A$ of a sphere with radius $r$ is:
+
+$$A = 4 \pi r^2$$
+
+
+### Exercise 4
+
+Given the data points 11, 27, 15, 10, 33, 18, 25, 22, 39, and 11, calculate both the arithmetic mean and the geometric mean using basic arithmetic operations. Perform each calculation with a single command (without intermediate results).
+
+The formulas for the arithmetic mean $\bar x$ and geometric mean $\bar x_g$ are:
+
+$$\bar x = \frac{1}{n} \sum_{i=1}^n x_i$$
+
+$$\bar x_g = \sqrt[n]{\prod_{i=1}^n x_i}$$
+
+:::{.callout-tip}
+The symbol $\prod$ represents the product of all numbers $x_i$. You can also express the n-th root as a power, i.e., $\sqrt[n]{x}$ is equivalent to $x^\frac{1}{n}$.
+:::
+
+
+### Exercise 5
+
+Calculate the result of the following expression with a single command:
+
+$$\frac{(5^5 - \pi) \cdot \frac{19}{3}}{\sqrt{13} + 7^\frac{2}{3}}$$
+
+:::{.callout-tip}
+Pay attention to parentheses! The correct result is approximately 2722.
+:::
+
+
+### Exercise 6
+
+Why does the following command not work (assuming `import math` was executed earlier)?
+
+```python
+math.Sqrt(4)
+```
+
+:::{.callout-note}
+This example illustrates how you can use the interactive Python interpreter to test commands. It doesn't matter if your input is incorrect! In fact, an incorrect input yields an error message that might help you understand the mistake. So feel free to try things out – you really cannot break anything!
+:::
