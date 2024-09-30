@@ -14,12 +14,12 @@ theme:
   dark: darkly
 ---
 
-## Übung 1
+## Exercise 1
 
 The installed Python version can be seen directly after starting the interactive Python interpreter. The latest version can be downloaded from the [official website](https://www.python.org/).
 
 
-## Übung 2
+## Exercise 2
 
 `import antigravity` opens a web browser with the [xkcd comic about Python](https://xkcd.com/353/).
 
@@ -50,7 +50,7 @@ The installed Python version can be seen directly after starting the interactive
 The command `import math` allows us to use commands contained in the `math` module.
 
 
-## Übung 3
+## Exercise 3
 
 ```{python}
 import math
@@ -59,7 +59,7 @@ import math
 ```
 
 
-## Übung 4
+## Exercise 4
 
 ```{python}
 (11 + 27 + 15 + 10 + 33 + 18 + 25 + 22 + 39 + 11) / 10
@@ -70,7 +70,7 @@ import math
 ```
 
 
-## Übung 5
+## Exercise 5
 
 ```{python}
 import math
@@ -79,7 +79,7 @@ import math
 ```
 
 
-## Übung 6
+## Exercise 6
 
 The command `math.Sqrt(4)` does not exist – since Python is case-sensitive, `math.Sqrt` is not identical to `math.sqrt`. The latter is the correct spelling of the square root function, which is contained in the `math` module.
 
