@@ -1,5 +1,5 @@
 ---
-title: "Course Organization"
+title: "Course organization"
 subtitle: "Introduction to Python and PsychoPy"
 author: "Clemens Brunner"
 date: 2024-10-03
@@ -14,27 +14,27 @@ theme:
   dark: darkly
 ---
 
-## General Information
+## General information
 
 In this course, you will get to know the programming language [Python](https://www.python.org/). After an in-depth introduction to the basics, you will also learn how to use Python for data analysis (e.g., reading text files, representing numerical data, visualizing data). Finally, you will use PsychoPy (a popular Python package in psychology) to create simple experiments. Class sessions will alternate between theory and practice, meaning you will both learn new content and immediately apply it using practical examples in Python. The plan for this semester is as follows:
 
 | Session | Quiz | Date       | Content                            |
 |--------:|-----:|-----------:|------------------------------------|
 | 1       |   –  | 2024-10-03 | Basics                             |
-| 2       |   1  | 2024-10-10 | The Python Environment             |
-| 3       |   2  | 2024-10-17 | Variables, Expressions, Statements |
+| 2       |   1  | 2024-10-10 | The Python environment             |
+| 3       |   2  | 2024-10-17 | Variables, expressions, statements |
 | 4       |   3  | 2024-10-24 | Functions                          |
-| 5       |   4  | 2024-10-31 | Conditions and Loops               |
+| 5       |   4  | 2024-10-31 | Conditions and loops               |
 | 6       |   5  | 2024-11-07 | Strings                            |
 | 7       |   –  | 2024-11-14 | Review                             |
-| 8       |   6  | 2024-11-21 | Lists and Dictionaries             |
-| 9       |   7  | 2024-11-28 | Input and Output                   |
-| 10      |   8  | 2024-12-05 | Numerical Data                     |
+| 8       |   6  | 2024-11-21 | Lists and dictionaries             |
+| 9       |   7  | 2024-11-28 | Input and output                   |
+| 10      |   8  | 2024-12-05 | Numerical data                     |
 | 11      |   9  | 2024-12-12 | Visualization                      |
 | 12      |  10  | 2025-01-09 | PsychoPy (1)                       |
 | 13      |  11  | 2025-01-16 | PsychoPy (2)                       |
 | 14      |   –  | 2025-01-23 | Exam                               |
-| 15      |   –  | 2025-01-30 | Exam (Retake)                      |
+| 15      |   –  | 2025-01-30 | Exam (retake)                      |
 
 : {tbl-colwidths="[10,10,15,65]"}
 
@@ -45,7 +45,7 @@ During weekly sessions, you will have the opportunity to ask questions and provi
 All sessions will be held in person. If in-person meetings are not possible, sessions will take place online at the scheduled times. The URL will be announced on Moodle.
 
 
-## Structure of a Session
+## Structure of a session
 
 For each session, detailed materials covering the respective topic will be available on Moodle. These materials are designed so that you can study the content independently. All content sessions (except for the first one) will follow the [Flipped Classroom](https://en.wikipedia.org/wiki/Flipped_classroom) approach. This means you will study the content of each session independently before the actual session date. In particular, you should work through the exercises at the end of the materials. These exercises serve to check your understanding and are also essential preparation for the final exam. At the beginning of each session, a short quiz will assess the key content (see the table above).
 
@@ -58,7 +58,7 @@ During the sessions (after the quiz), the exercises you have prepared will be di
 You are welcome to bring and use your own laptop! Otherwise, PCs are available in the computer lab.
 
 
-## Grading Criteria
+## Grading criteria
 
 ### Attendance
 
