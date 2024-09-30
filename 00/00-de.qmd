@@ -28,7 +28,7 @@ In dieser Lehrveranstaltung werden Sie die Programmiersprache [Python](https://w
 | 3       |   2  | 17.10.2024 | Variablen, Ausdrücke, Anweisungen |
 | 4       |   3  | 24.10.2024 | Funktionen                        |
 | 5       |   4  | 31.10.2024 | Bedingungen und Schleifen         |
-| 6       |   5  |  7.22.2024 | Strings                           |
+| 6       |   5  |  7.11.2024 | Strings                           |
 | 7       |   –  | 14.11.2024 | Wiederholung                      |
 | 8       |   6  | 21.11.2024 | Listen und Dictionaries           |
 | 9       |   7  | 28.11.2024 | Ein- und Ausgabe                  |
