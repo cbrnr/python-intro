@@ -1,0 +1,92 @@
+---
+title: "2 – Solutions"
+subtitle: "Introduction to Python and PsychoPy"
+author: "Clemens Brunner"
+date: 2024-10-10
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+---
+
+## Exercise 1
+
+You can get a list of all installed packages by entering the following command in a terminal or command prompt:
+
+```
+pip list
+```
+
+In a fresh Python installation, only a few packages are installed. The output might look like this:
+
+```
+Package    Version
+---------- -------
+pip        23.2.1
+setuptools 68.2.2
+```
+
+
+## Exercise 2
+
+Updating all installed packages must be done separately for each package. First, display a list of all packages that can be updated:
+
+```
+pip list --outdated
+```
+
+If there is no output, all packages are already up to date. If packages are listed, you can update them with `pip install --upgrade <package>` (replace `<package>` with the actual package name).
+
+In the list of installed packages, `ipython` does not appear, so it is not installed. You can install it with the following command:
+
+```
+pip install ipython
+```
+
+You can install other packages in the same way, such as `numpy`:
+
+```
+pip install numpy
+```
+
+If you no longer need a package, you can uninstall it:
+
+```
+pip uninstall numpy
+```
+
+:::{.callout-note}
+When you install a package, additional packages that are required by the package are usually installed automatically. For example, the `ipython` package requires some additional packages, including `backcall`, `decorator`, `jedi`, and so on. These dependencies are automatically installed when you run `pip install ipython`.
+
+However, when you uninstall a package (e.g., `pip uninstall ipython`), its dependencies are not automatically removed, since they may still be needed by other packages. You have to manually remove them or leave them installed.
+:::
+
+
+## Exercise 3
+
+The script could look like this:
+
+```python
+# Clemens Brunner
+
+print("Hello World!")
+ 
+```
+
+
+## Exercise 4
+
+```python
+help(print)
+help(sum)
+```
+
+
+## Exercise 5
+
+You can run an entire script by clicking the play icon in the top right. If you want to run a single or multiple selected lines in the interactive interpreter, use <kbd>Shift</kbd><kbd>Enter</kbd>. This will always start the standard `python` interpreter. You can exit it with `exit()` and then start `ipython --no-autoindent`. From then on, the <kbd>Shift</kbd><kbd>Enter</kbd> shortcut will execute commands in IPython.

@@ -39,7 +39,7 @@ To write Python programs, you also need a text editor. Therefore, it is advisabl
 
 ## Managing additional packages
 
-As mentioned earlier, the tool `pip` is used for managing additional packages. It can install new packages, update already installed packages, or completely remove them. A Python installation should be regularly maintained, meaning outdated packages should be updated if possible. However, the standard library is not affected by this -- it only changes when a newer version of Python is installed.
+As mentioned earlier, the tool `pip` is used for managing additional packages. It can install new packages, update already installed packages, or completely remove them. A Python installation should be regularly maintained, meaning outdated packages should be updated if possible. However, the standard library is not affected by this – it only changes when a newer version of Python is installed.
 
 The `pip` tool is a command-line program, meaning it does not have a graphical interface and is executed in the terminal (often called the command prompt).
 
@@ -66,7 +66,7 @@ On macOS, you need to write `pip3` instead of `pip`, just as you would use `pyth
 Here is an overview of the most important `pip` commands you should be familiar with:
 
 - `pip list` displays a list of all installed packages.
-- `pip show package_name` indicates whether a package named `package_name` is already installed. You will receive detailed information about the package only if it is installed -- if not, a message will be displayed indicating that the specified package was not found (and therefore is not installed).
+- `pip show package_name` indicates whether a package named `package_name` is already installed. You will receive detailed information about the package only if it is installed – if not, a message will be displayed indicating that the specified package was not found (and therefore is not installed).
 - `pip install package_name` installs a new package named `package_name`.
 - `pip uninstall package_name` uninstalls (removes) the package `package_name`.
 - `pip list --outdated` shows a list of all installed packages that can be updated.
@@ -90,7 +90,7 @@ In interactive mode, you can enter individual Python commands. These are execute
 - `>>>` in the standard interactive Python interpreter
 - `In [1]:` in [IPython](https://ipython.org/), an enhanced interactive Python interpreter that you can install with `pip install ipython`
 
-Interactive mode is often referred to as the [REPL]([REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)) (Read-Eval-Print-Loop), because it allows for an exploratory and iterative working style: a command is read by Python (*read*), executed (*eval*), and the result is printed on the screen (*print*) -- this process can be repeated indefinitely (loop).
+Interactive mode is often referred to as the [REPL]([REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)) (Read-Eval-Print-Loop), because it allows for an exploratory and iterative working style: a command is read by Python (*read*), executed (*eval*), and the result is printed on the screen (*print*) – this process can be repeated indefinitely (loop).
 
 :::{.callout-tip}
 If you have installed IPython as described above, you can start this enhanced interactive interpreter with the command `ipython` (instead of `python`) in a terminal. Depending on your operating system, you might need to use `ipython3`.
@@ -121,17 +121,17 @@ print(1 + 4)
 
 ## Working directory
 
-Der Python-Interpreter arbeitet immer in genau einem Verzeichnis, dem sogenannten Arbeitsverzeichnis (Working Directory). Das Arbeitsverzeichnis ist wichtig, da Python davon ausgeht, dass sich eigene Dateien (wie Daten, Scripts oder Module) in diesem (oder relativ zu diesem) Verzeichnis befinden.
+The Python interpreter always operates in exactly one directory, the so-called working directory. The working directory is important because Python assumes that your own files (such as data, scripts, or modules) are located in this directory (or relative to it).
 
-Wird Python von der Kommandozeile aus gestartet, ist es sinnvoll, *zuerst* in das gewünschte Verzeichnis zu wechseln und dann Python zu starten – denn das Arbeitsverzeichnis ist jenes Verzeichnis, aus dem Python gestartet wurde.
+When starting Python from the command line, it is advisable to first change to the desired directory and then start Python. The reason for this is that the working directory is the directory from which Python was launched.
 
-Wenn man IPython verwendet, kann das aktuelle Arbeitsverzeichnis mit `pwd` ("print working directory") angezeigt werden. Verzeichnisse wechseln kann man dann mit `cd` ("change directory"). Beachten Sie, dass diese beiden Befehle *keine* Python-Befehle sind, sondern nur mit IPython funktionieren. Sie können diese daher nicht in Scripts verwenden.
+If you're using IPython, you can display the current working directory with `pwd` ("print working directory"). You can change directories with `cd` ("change directory"). Note that these two commands are not regular Python commands (they only work in IPython). Therefore, you cannot use them in scripts.
 
 :::{.callout-tip}
-Die folgenden Befehle funktionieren nur in IPython (im normalen Python-Interpreter würde man Fehlermeldungen bekommen). Das Arbeitsverzeichnis zu Beginn dieses Beispiels lautet `~/project` (`~` steht hier für das Home-Verzeichnis bzw. den persönlichen Ordner).
+The following commands only work in IPython (in the regular Python interpreter, you'd get error messages). The working directory at the start of this example is `~/project` (`~` stands for the home directory or personal folder).
 
 ```python
-pwd  # Arbeitsverzeichnis ausgeben
+pwd  # print working directory
 ```
 
 ```
@@ -139,7 +139,7 @@ pwd  # Arbeitsverzeichnis ausgeben
 ```
 
 ```python
-cd ..  # Arbeitsverzeichnis auf den übergeordneten Ordner setzen
+cd ..  # set working directory to parent directory
 ```
 
 ```
@@ -147,7 +147,7 @@ cd ..  # Arbeitsverzeichnis auf den übergeordneten Ordner setzen
 ```
 
 ```python
-cd project/test  # Arbeitsverzeichnis auf project/test setzen
+cd project/test  # set working directory to project/test
 ```
 
 ```
@@ -155,25 +155,25 @@ cd project/test  # Arbeitsverzeichnis auf project/test setzen
 ```
 
 ```python
-pwd  # Arbeitsverzeichnis ausgeben
+pwd  # print working directory
 ```
 
 ```
 '~/project/test'
 ```
 
-Die Befehle `cd` und `pwd` funktionieren auch im Terminal in den meisten Shells, d.h. so kann man vor dem Starten von `python` das Arbeitsverzeichnis auf den gewünschten Ordner setzen.
+The `cd` and `pwd` commands also work in most shells in the terminal, meaning you can set the working directory to the desired folder before starting `python`.
 :::
 
 
 ## Syntax
 
-Unter Syntax versteht man die Regeln einer Sprache, die festlegen wie man aus grundlegenden Zeichen gültige Sprachkonstrukte erzeugt. Es gibt sowohl für natürliche Sprachen (wie Deutsch oder Englisch) als auch für formale Sprachen (Programmiersprachen) eine entsprechende Syntax.
+Syntax refers to the rules of a language that define how to create valid language constructs from basic symbols. Syntax exists for both natural languages (such as German or English) and formal languages (such as programming languages).
 
 
-### Einrückungen
+### Indentation
 
-Ein spezielles Merkmal der Syntax von Python ist, dass Einrückungen Bedeutung haben – sie gruppieren zusammengehörigen Code in Blöcke. Die meisten anderen Programmiersprachen verwenden dafür spezielle Zeichen oder Schlüsselwörter wie z.B. `begin`, `end`, `{` oder `}`. Durch Einrückungen benötigt Python diese Zeichen nicht und der Code wird dadurch automatisch strukturierter und kürzer. Dies ist im folgenden Beispiel veranschaulicht (bitte achten Sie nur auf die Struktur, der Inhalt/die Bedeutung des Beispiels ist hier *nicht* relevant; die Zeilennummern sind nicht Teil der Syntax und werden nur zur besseren Orientierung angezeigt):
+A special feature of Python syntax is that indentation has meaning – it groups related code into blocks. Most other programming languages use special symbols or keywords for this, such as `begin`, `end`, `{`, or `}`. Python doesn't need these symbols due to indentation, making the code more structured and shorter. This is illustrated in the following example (please focus only on the structure; the content/meaning of the example is not relevant here; also, the line numbers are not part of the syntax and are only included for better orientation):
 
 ```{python}
 #| eval: false
@@ -192,31 +192,31 @@ counter = do_something(6)
 print(counter)
 ```
 
-Versuchen wir, die einzelnen Blöcke in diesem Beispiel zu identifizieren. Standardmäßig wird ein Block mit vier Leerzeichen eingerückt, d.h. der erste Block wird durch die Zeile 2 eingeleitet. Zu diesem Block gehören alle folgenden eingerückten Codezeilen, also Zeilen 3–9. Die Zeilen 11–12 sind nicht mehr eingerückt, daher gehören diese auch nicht zu diesem Block.
+Let's try to identify the individual blocks in this example. By default, a block is indented by *four spaces*, meaning the first block starts in line 2. This block includes all the indented code lines that follow, i.e., lines 3–9. Lines 11–12 are no longer indented, so they don't belong to this block.
 
 :::{.callout-note}
-Ein neuer Block wird immer durch eine Code-Zeile eingeleitet, welche mit einem `:` endet.
+A new block is always introduced by a line that ends with a `:`.
 :::
 
-Innerhalb dieses Blocks gibt es aber noch weitere Blöcke. Ein Block wird in Zeile 4 definiert, er beinhaltet die Zeilen 5–8. Darin gibt es einen weiteren Block, eingeleitet in Zeile 6 und bestehend aus Code in den Zeilen 7–8. Zeile 9 gehört wieder zum ersten Block (in Zeile 2 definiert).
+The main block contains more (nested) blocks. A block is defined in line 4 and includes lines 5–8. Inside it, there's another block, introduced in line 6 and consisting of code in lines 7–8. Line 9 belongs to the first block (defined in line 2).
 
 
-### Kommentare
+### Comments
 
-Im Beispiel oben sieht man auch Kommentare in den Zeilen 1 und 6. Diese werden durch ein `#`-Zeichen eingeleitet. Alles, was danach folgt, wird von Python bis zum Zeilenende ignoriert. So kann man (bevorzugt englische) Kommentare zur Erklärung des Codes hinzufügen.
+The example contains comments in lines 1 and 6. These are introduced by a `#` character. Everything that follows is ignored by Python until the end of the line. This way, you can add comments to explain the code (preferably in English).
 
 
-### Funktionen
+### Functions
 
-Weiters sieht man im obigen Beispiel noch die Verwendung von Funktionen – diese werden mit ihrem Namen und den Argumenten in *Klammern* aufgerufen, z.B. `do_something(6)` in Zeile 11 oder `print(counter)` in Zeile 12 . Hier ist `print` der Name der Funktion und `counter` ist das Argument (Zusatzinformation) für die Funktion. Es gibt auch Funktionen ohne Argumente, diese müssen aber trotzdem mit den Klammern aufgerufen werden, z.B. `print()`.
+Additionally, the example shows the use of functions – these are called by their name and arguments in parentheses, such as `do_something(6)` in line 11 or `print(counter)` in line 12. Here, `print` is the function name, and `counter` is the argument (additional information) for the function. There are also functions without arguments, but they still need to be called with parentheses, e.g., `print()`.
 
-Mehr zu Funktionen werden wir in einer der nächsten Einheiten erfahren. Wichtig ist zu diesem Zeitpunkt nur, dass Sie erkennen können, wie ein Funktionsaufruf aussieht. Ein solcher ist nämlich immer über das Klammernpaar (innerhalb derer eventuelle Argumente vorkommen können) erkennbar, welches direkt auf den Namen der Funktion folgt. Wenn man eine Funktion aufruft, wird diese ausgeführt – sie erledigt also sozusagen die in ihr definierten Aufgaben.
+We'll learn more about functions in one of the next sessions. For now, it's important that you recognize how a function call looks like. A function call can always be identified by a pair of *parentheses* (inside which arguments may appear) that immediately follow the function name. When you call a function, it executes the tasks defined within it.
 
 :::{.callout-note}
-Das Klammernpaar `()` wird benötigt, um eine Funktion *aufzurufen*. Man nennt es daher auch *Aufrufoperator*.
+The parentheses `()` are needed to *call* a function. Therefore, they are also referred to as the *call operator*.
 :::
 
-In der ersten Einheit haben wir die Quadratwurzel einer Zahl berechnet. Dazu haben wir die Funktion `math.sqrt` aufgerufen, und zwar mit der gewünschten Zahl als Argument, welches wir innerhalb der Klammern angegeben haben. Durch Aufrufen der Funktion wird also deren Code ausgeführt:
+In the first session, we calculated the square root of a number. To do this, we called the function `math.sqrt` with the desired number as an argument, which we specified within the parentheses. By calling the function, its code gets executed:
 
 ```{python}
 import math
@@ -225,23 +225,23 @@ math.sqrt(4)
 ```
 
 
-## Code Style
+## Code style
 
-Zusätzlich zur Syntax haben sich Konventionen durchgesetzt, wie man "schön" formatierten Python-Code schreiben sollte (Code Style). Beispiele von gängigen Konventionen sind:
+In addition to syntax, conventions have been established for writing "nicely" formatted Python code (code style). Examples of common conventions include:
 
-- Für Einrückungen werden vier Leerzeichen verwendet.
-- Nach dem Kommentarzeichen `#` soll ein Leerzeichen folgen.
-- Die maximale Zeilenlänge sollte 79 Zeichen nicht überschreiten (neuerdings werden allerdings immer öfter 88 Zeichen empfohlen).
-- Arithmetische Operatoren sollen von Leerzeichen umgeben sein, z.B. `1 + 1` und nicht `1+1`.
+- Indendation uses four spaces.
+- A space should follow the comment symbol `#`.
+- The maximum line length should not exceed 79 characters (though recently, 88 characters have been more often recommended).
+- Arithmetic operators should be surrounded by spaces, e.g., `1 + 1` and not `1+1`.
 
-Diese und noch viel mehr Empfehlungen sind im [Python Enhancement Proposal 8 (PEP8)](https://www.python.org/dev/peps/pep-0008/) zusammengefasst. Obwohl das Einhalten der Konventionen nicht erforderlich ist (die Syntax ist davon ja nicht betroffen, denn z.B. `1+1` ist korrekter Python-Code), ist es sehr zu empfehlen, sich trotzdem daran zu halten, da dies die Lesbarkeit des Codes stark erhöht.
+These and many more recommendations are summarized in the [Python Enhancement Proposal 8 (PEP8)](https://www.python.org/dev/peps/pep-0008/). While following the conventions is not required (syntax is not affected; for instance, `1+1` is perfectly valid Python code), it is highly recommended as it greatly improves code consistency and readability.
 
 
-## Code-Editoren
+## Code editors
 
-Python-Scripts bearbeitet man mit Code-Editoren. Prinzipiell sind Python-Scripts einfache Textdateien, d.h. sie können mit jedem beliebigen Text-Editor geöffnet werden. Dennoch sollte man einen Editor verwenden, welcher das Editieren möglichst komfortabel gestaltet. Gute Editoren bieten [Syntaxhervorhebung](https://de.wikipedia.org/wiki/Syntaxhervorhebung), verwenden automatisch vier Leerzeichen zur Einrückung, zeigen die Zeilennummern an, kontrollieren die Einhaltung von PEP8, usw.
+Python scripts are edited using code editors. In principle, Python scripts are simple text files, meaning they can be opened with any text editor. However, it is better to use an editor that makes editing as comfortable as possible. Good editors offer syntax highlighting, automatically use four spaces for indentation, show line numbers, check adherence to PEP8, etc.
 
-Folgende (kostenlose) Code-Editoren eignen sich für Python:
+The following (free) code editors are suitable for Python:
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [PyCharm](https://www.jetbrains.com/pycharm/)
@@ -249,70 +249,70 @@ Folgende (kostenlose) Code-Editoren eignen sich für Python:
 - [Notepad++](https://notepad-plus-plus.org/) (Windows)
 - [gedit](https://wiki.gnome.org/Apps/Gedit), [kate](http://kate-editor.org/) (Linux)
 
-Nicht geeignet sind Textverarbeitungsprogramme wie Microsoft Word oder LibreOffice Writer. Auch die mit Windows bzw. macOS mitgelieferten Editoren Notepad bzw. TextEdit sollte man nicht verwenden, da sie sehr rudimentär sind.
+Word processing programs like Microsoft Word or LibreOffice Writer are not suitable for writing Python code. You should also avoid using the built-in editors Notepad (Windows) or TextEdit (macOS), as they are very basic and lack a lot of features.
 
 
 ### Visual Studio Code
 
-Wir verwenden in dieser Lehrveranstaltung Visual Studio Code. Falls Sie bereits einen anderen Lieblings-Editor haben, können Sie diesen gerne verwenden – allerdings müssen Sie dann selbst dafür sorgen, dass die Python-Entwicklung damit reibungslos funktioniert.
+We will use Visual Studio Code in this course, which is the most popular code editor for Python. It is available for Windows, macOS, and Linux. If you already have a preferred editor, you're welcome to use it – however, you'll need to take care of setting up and configuring the editor yourself.
 
 
 #### Installation
 
-Auf der [offiziellen Website](https://code.visualstudio.com/) gibt es Installationspakete für die gängigen Betriebssysteme Windows, macOS und Linux. Nach der Installation kann Visual Studio Code gestartet werden und sollte dann in etwa so aussehen:
+You can find installation packages for Windows, macOS, and Linux on the [official website]((https://code.visualstudio.com/)). After installation, you can start Visual Studio Code, and its main window should look something like this:
 
 ![](vscode_1.png)
 
-Es fehlt nur noch die Installation der offiziellen [Python-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-python.python), welche man im entsprechenden Bereich durchführen kann (einfach auf "Install" klicken):
+The only thing missing is the official [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python), which can be installed in the Extensions pane (just search for it and click "Install"):
 
 ![](vscode_2.png)
 
-Die Python-Erweiterung bietet umfangreiche und vielfältige Konfigurationsmöglichkeiten. Sie beinhaltet aber nicht die Überprüfung des Code Styles nach PEP8. Dies kann man aber einfach über die Erweiterung [Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff) nachreichen – installieren Sie also bitte auch diese Erweiterung.
+The Python extension offers extensive configuration options. However, it doesn't include PEP8 code style checking. You can easily add this feature by installing the [Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff) extension – please make sure to install this extension as well!
 
 :::{.callout-tip}
-Die Befehlspalette in Visual Studio Code kann mit <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>P</kbd> (Windows/Linux) bzw. <kbd>⌘</kbd><kbd>Shift</kbd><kbd>P</kbd> (macOS) geöffnet werden. Hier kann man nach beliebigen Befehlen suchen und diese dann ausführen. Beispielsweise kann man ein Python-Script mit dem Befehl *"Ruff: Format document"* PEP-konform formatieren – probieren Sie es einfach aus!
+The command palette in Visual Studio Code can be opened with <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>P</kbd> (Windows/Linux) or <kbd>⌘</kbd><kbd>Shift</kbd><kbd>P</kbd> (macOS). Here, you can search for and execute commands. For example, you can format a Python script according to PEP8 using the "Ruff: Format document" command – give it a try!
 :::
 
 
-#### Ausführen von Python-Code
+#### Running Python code
 
-Ein in Visual Studio Code geöffnetes Python-Script kann durch Klicken auf die "Play"-Schaltfläche rechts oben im Script-Modus ausgeführt werden. Dazu öffnet sich dann ein integriertes Terminal, und der *gesamte* Code wird ausgeführt.
+You can run a Python script in Visual Studio Code by clicking the "Play" button at the top right. This will open an integrated terminal, and the *entire* code will be executed in script mode.
 
-Möchte man nur einzelne Code-Zeilen im interaktiven Interpreter ausführen, verwendet man am besten die Tastenkombination <kbd>Shift</kbd><kbd>Enter</kbd>. Diese führt entweder die aktuelle Zeile (also die Zeile in der sich der Cursor befindet) oder alle markierten Zeilen im interaktiven Python-Interpreter aus, welcher sich in einem integrierten Terminal öffnet. Weitere Details sind in der [offiziellen Dokumentation](https://code.visualstudio.com/docs/python/python-tutorial) zu finden.
+If you want to run only individual lines of code in the interactive interpreter, it is best to use the keyboard shortcut <kbd>Shift</kbd><kbd>Enter</kbd>. This will execute either the current line (where the cursor is) or all selected lines in the interactive Python interpreter, which opens in an integrated terminal. Further details can be found in the [official documentation](https://code.visualstudio.com/docs/python/python-tutorial).
 
 :::{.callout-tip}
-Im Moment kann man IPython nur mit einem kleinen Trick (aka Workaround oder Hack) verwenden. Dazu führt man zunächst eine beliebige Code-Zeile im Script mit <kbd>Shift</kbd><kbd>Enter</kbd> aus. Dieser Befehl wird also im normalen interaktiven Python-Interpreter ausgeführt. Diesen beendet man mit `exit()` und startet dann stattdessen `ipython  --no-autoindent`. Danach werden alle Befehle mit <kbd>Shift</kbd><kbd>Enter</kbd> in IPython ausgeführt. Das zusätzliche Argument `--no-autoindent` ist leider notwendig, da sonst Einrückungen nicht korrekt nach IPython übertragen werden.
+Currently, IPython can only be used with a workaround (also known as a hack). First, execute any line of code in the script with <kbd>Shift</kbd><kbd>Enter</kbd>. This command will be executed in the normal interactive Python interpreter. You can exit it with `exit()` and then start `ipython --no-autoindent`. From then on, all commands executed with <kbd>Shift</kbd><kbd>Enter</kbd> will run in IPython. Unfortunately, the additional argument `--no-autoindent` is necessary, because otherwise the IPython interpreter will not work correctly when running indented lines of code.
 :::
 
 
-## Hilfe
+## Help
 
-### Integrierte Hilfe
+### Integrated help
 
-Hilfe zu Python-Befehlen kann man direkt im Python-Interpreter bekommen. Möchte man z.B. Hilfe zur Funktion `print` bekommen, tippt man einfach folgenden Befehl ein:
+You can get help on Python commands directly in the Python interpreter. For example, if you want help on the `print` function, you can simply type the following command:
 
 ```{python}
 help(print)
 ```
 
-In IPython kann man dafür auch folgende alternative (und vor allem kürzere) Schreibweisen verwenden:
+In IPython, you can also use the following alternative (and shorter) ways:
 
 - `?print`
 - `print?`
 
-Zusätzlich zur integrierten Hilfe bieten Entwicklungsumgebungen bzw. Editoren wie Visual Studio Code darüber hinausgehende Möglichkeiten, Hilfe direkt in der grafischen Oberfläche anzuzeigen – beispielsweise indem man den Mauszeiger über einen Befehl positioniert und kurz wartet.
+In addition to the integrated help, development environments or editors like Visual Studio Code offer extended options to display help directly in the graphical interface, for example by hovering over a command.
 
 
-### Online-Hilfe
+### Online help
 
-Einen guten Überblick bietet die [offizielle Python-Dokumentation](https://docs.python.org/3/). Hier werden die allermeisten Themengebiete rund um Python sehr umfangreich beschrieben. Auch das [Tutorial](https://docs.python.org/3/tutorial/index.html) ist sehr zu empfehlen.
+The comprehensive [official Python documentation](https://docs.python.org/3/) covers all topics related to Python in great detail. It also includes a very nice [tutorial](https://docs.python.org/3/tutorial/index.html).
 
-Durch die große und sehr aktive Community findet man mit einer Google-Suche besonders viele Fragen und Antworten rund um Python. Sehr hochwertige Antworten findet man meist auf [StackOverflow](http://stackoverflow.com/questions/tagged/python).
+Thanks to the large and very active community, you can find a wealth of questions and answers on Python via a Google search. High-quality answers are often available on [StackOverflow](http://stackoverflow.com/questions/tagged/python).
 
 
-### Online-Kurse
+### Online courses
 
-Einführungskurse bzw. bereits leicht fortgeschrittenere Kurse über Python gibt es viele, hier eine kleine Auswahl frei verfügbarer Kurse, die Sie vielleicht nach dieser Lehrveranstaltung (oder sogar parallel dazu) absolvieren könnten:
+There are many introductory and more advanced courses on Python. Here is a small selection of free courses that you might want to take after this class (or even alongside it):
 
 - [Learn to Program: The Fundamentals](https://www.coursera.org/learn/learn-to-program)
 - [Learn to Program: Crafting Quality Code](https://www.coursera.org/learn/program-code)
@@ -323,44 +323,45 @@ Einführungskurse bzw. bereits leicht fortgeschrittenere Kurse über Python gibt
 - [Learn Python](http://www.learnpython.org/)
 
 
-### Bücher
+### Books
 
-Klassische Bücher oder Websites eignen sich ebenfalls sehr gut zum Selbststudium, hier eine kleine Auswahl an kostenlos verfügbaren Ressourcen:
+Classic books or websites are also excellent for self-study. Here is a small selection of free resources:
 
 - [Think Python](http://greenteapress.com/wp/think-python/)
 - [A Byte of Python](http://python.swaroopch.com/)
 - [Python for You and Me](http://pymbook.readthedocs.io/en/latest/)
 - [Real Python](https://realpython.com)
 
-## Übungen
 
-### Übung 1
+## Exercises
 
-Geben Sie eine Liste aller installierten Pakete in Ihrer Python-Installation aus – welchen Befehl verwenden Sie dazu und wie sieht die Liste aus? Wie viele Pakete sind bei Ihnen installiert?
+### Exercise 1
 
-
-### Übung 2
-
-Aktualisieren Sie zunächst alle installierten Pakete. Suchen Sie dann nach dem Paket `ipython` – ist dieses Paket bereits installiert? Falls nicht, installieren Sie es! Führen Sie diese beiden Schritte auch für das Paket `numpy` durch. Abschließend deinstallieren Sie das Paket `numpy` wieder.
+List all installed packages in your Python installation – which command do you use, and what does the list look like? How many packages are installed on your system?
 
 
-### Übung 3
+### Exercise 2
 
-Erstellen Sie mit Visual Studio Code ein Python-Script namens `test.py`. Das Script soll lediglich *Hello World!* am Bildschirm ausgeben (verwenden Sie dazu die `print`-Funktion). Versuchen Sie, folgende Struktur zu erzeugen:
-
-- Die erste Zeile soll eine Kommentarzeile mit Ihrem Namen sein
-- Die zweite Zeile soll leer sein
-- Die dritte Zeile soll die `print`-Funktion beinhalten
-- Die letzte Zeile soll wieder leer sein
-
-Achten Sie darauf, dass Ihr Script PEP8-konform ist. Führen Sie Ihr Script auch aus – so können Sie sicherstellen, dass der Code korrekt ist und keine Fehler produziert.
+First, update all installed packages. Then check if the `ipython` package is installed – if not, install it! Perform the same steps for the `numpy` package. Finally, uninstall the `numpy` package.
 
 
-### Übung 4
+### Exercise 3
 
-Sehen Sie sich die Hilfe zu den Funktionen `print` und `sum` direkt im Python-Interpreter an.
+Create a Python script named `test.py` in Visual Studio Code. The script should simply print *Hello World!* to the screen (use the `print` function). Try to follow this structure:
+
+- The first line should be a comment with your name
+- The second line should be empty
+- The third line should contain the `print` function
+- The last line should be empty
+
+Make sure your script follows PEP8 conventions (use the Ruff extension to automatically format the code). Also, run your script to ensure the code works correctly and produces no errors.
 
 
-### Übung 5
+### Exercise 4
 
-Beschreiben Sie, wie Sie ein Python-Script in Visual Studio Code ausführen können! Erklären Sie außerdem, wie Sie eine einzelne Zeile bzw. mehrere markierte Zeilen im interaktiven Interpreter direkt in Visual Studio Code ausführen können (gehen Sie dabei auf die zwei Varianten interaktiver Interpreter sowie IPython ein)!
+Inspect the documentation for the `print` and `sum` functions directly in the Python interpreter.
+
+
+### Exercise 5
+
+Desribe how you can run a Python script in Visual Studio Code! In addition, explain how you can run a single line or multiple selected lines in the interactive interpreter directly in Visual Studio Code!
