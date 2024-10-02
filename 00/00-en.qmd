@@ -1,5 +1,5 @@
 ---
-title: "Course organization"
+title: "Course Organization"
 subtitle: "Introduction to Python and PsychoPy"
 author: "Clemens Brunner"
 date: 2024-10-03
@@ -21,20 +21,20 @@ In this course, you will get to know the programming language [Python](https://w
 | Session | Quiz | Date       | Content                            |
 |--------:|-----:|-----------:|------------------------------------|
 | 1       |   –  | 2024-10-03 | Basics                             |
-| 2       |   1  | 2024-10-10 | The Python environment             |
-| 3       |   2  | 2024-10-17 | Variables, expressions, statements |
+| 2       |   1  | 2024-10-10 | The Python Environment             |
+| 3       |   2  | 2024-10-17 | Variables, Expressions, Statements |
 | 4       |   3  | 2024-10-24 | Functions                          |
-| 5       |   4  | 2024-10-31 | Conditions and loops               |
+| 5       |   4  | 2024-10-31 | Conditions and Loops               |
 | 6       |   5  | 2024-11-07 | Strings                            |
 | 7       |   –  | 2024-11-14 | Review                             |
-| 8       |   6  | 2024-11-21 | Lists and dictionaries             |
-| 9       |   7  | 2024-11-28 | Input and output                   |
-| 10      |   8  | 2024-12-05 | Numerical data                     |
+| 8       |   6  | 2024-11-21 | Lists and Dictionaries             |
+| 9       |   7  | 2024-11-28 | Input and Output                   |
+| 10      |   8  | 2024-12-05 | Numerical Data                     |
 | 11      |   9  | 2024-12-12 | Visualization                      |
 | 12      |  10  | 2025-01-09 | PsychoPy (1)                       |
 | 13      |  11  | 2025-01-16 | PsychoPy (2)                       |
 | 14      |   –  | 2025-01-23 | Exam                               |
-| 15      |   –  | 2025-01-30 | Exam (retake)                      |
+| 15      |   –  | 2025-01-30 | Exam (Retake)                      |
 
 : {tbl-colwidths="[10,10,15,65]"}
 
@@ -89,6 +89,6 @@ If all criteria are met, the final grade will be calculated from the average of 
 
 | Excellent (1) | Good (2)   | Satisfactory (3) | Sufficient (4) | Fail (5)    |
 |---------------|------------|------------------|----------------|-------------|
-| 9–10 points   | 8–9 points | 7–8 points       | 6–7 Punkte     | \< 6 Punkte |
+| 9–10 points   | 8–9 points | 7–8 points       | 6–7 points     | \< 6 points |
 
 The lowest point of each range will always result in the higher grade. For example, exactly 9 points correspond to "Excellent (1)", and 8.97 points would result in a "Good (2)".
