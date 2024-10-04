@@ -51,7 +51,7 @@ Opening a terminal varies by operating system:
 - On Linux, there are numerous programs that are usually called "Terminal" or something similar.
 :::
 
-In the terminal window, you can now type text commands. Note that the terminal is not running a Python interpreter; instead, it runs a so-called [shell](https://en.wikipedia.org/wiki/Shell_(computing)) (which is a programming language in a sense), so you cannot run Python commands! To test whether `pip` works and inspect its version, type the following command:
+In the terminal window, you can now type text commands. Note that the terminal is *not* running a Python interpreter; instead, it runs a so-called [shell](https://en.wikipedia.org/wiki/Shell_(computing)) (which is a programming language in a sense), so you cannot run Python commands! To test whether `pip` works and inspect its version, type the following command:
 
 ```bash
 pip --version
@@ -90,10 +90,10 @@ In interactive mode, you can enter individual Python commands. These are execute
 - `>>>` in the standard interactive Python interpreter
 - `In [1]:` in [IPython](https://ipython.org/), an enhanced interactive Python interpreter that you can install with `pip install ipython`
 
-Interactive mode is often referred to as the [REPL]([REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)) (Read-Eval-Print-Loop), because it allows for an exploratory and iterative working style: a command is read by Python (*read*), executed (*eval*), and the result is printed on the screen (*print*) – this process can be repeated indefinitely (loop).
+Interactive mode is often referred to as the [REPL]([REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)) (Read-Eval-Print-Loop), because it allows for an exploratory and iterative working style: a command is *read* by Python, *evaluated*, and the result is *printed* on the screen – this process can be repeated indefinitely in a *loop*.
 
 :::{.callout-tip}
-If you have installed IPython as described above, you can start this enhanced interactive interpreter with the command `ipython` (instead of `python`) in a terminal. Depending on your operating system, you might need to use `ipython3`.
+Once you have installed IPython, you can start this enhanced interactive interpreter with the command `ipython` (instead of `python`) in a terminal (on macOS, you might need to use `ipython3`).
 :::
 
 
@@ -213,7 +213,7 @@ Additionally, the example shows the use of functions – these are called by the
 We'll learn more about functions in one of the next sessions. For now, it's important that you recognize how a function call looks like. A function call can always be identified by a pair of *parentheses* (inside which arguments may appear) that immediately follow the function name. When you call a function, it executes the tasks defined within it.
 
 :::{.callout-note}
-The parentheses `()` are needed to *call* a function. Therefore, they are also referred to as the *call operator*.
+Parentheses `()` are required to *call* a function. Therefore, they are also referred to as the *call operator*.
 :::
 
 In the first session, we calculated the square root of a number. To do this, we called the function `math.sqrt` with the desired number as an argument, which we specified within the parentheses. By calling the function, its code gets executed:
