@@ -93,7 +93,7 @@ After installing Python, you can start the so-called Python interpreter. This pr
 
 There are several ways to use the Python interpreter, which we'll cover in the next session. For now, the easiest option is to launch "Python 3.12 (64-bit)" from the Start menu under the "Python 3.12" folder on Windows.
 
-On macOS or Linux, open a terminal and type `python3`, followed by the Enter key. Make sure the interpreter displays the correct Python version.
+On macOS or Linux, open a terminal and type `python3`, followed by the <kbd>Enter</kbd> key. Make sure the interpreter displays the correct Python version.
 
 In the interactive interpreter, you can start typing Python commands and press Enter to execute them. The prompt `>>>` indicates that Python is ready for input (this prompt is *not* part of the command). You can use the interactive Python interpreter as a calculator, allowing you to perform the four basic arithmetic operations (addition, subtraction, multiplication, and division) like this:
 
