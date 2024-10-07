@@ -1,0 +1,169 @@
+---
+title: "3 – Solutions"
+subtitle: "Introduction to Python and PsychoPy"
+author: "Clemens Brunner"
+date: 2024-10-17
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+---
+
+## Exercise 1
+
+```{python}
+width = 17
+height = 12
+delimiter = "."
+```
+
+- The expression `width / 2` probably has the value `8.5` (type `float`). This assumption can be confirmed.
+
+  ```{python}
+  width / 2
+  ```
+  ```{python}
+  type(width / 2)
+  ```
+
+- The expression `height / 3` probably has the value `4` (type `int`). This assumption is incorrect – the actual value is `4.0` (type `float`). A division always results in decimal numbers, even if the operands are both integers.
+
+  ```{python}
+  height / 3
+  ```
+  ```{python}
+  type(height / 3)
+  ```
+
+- The expression `height * 3` probably has the value `36` (type `int`). This assumption can be confirmed.
+
+  ```{python}
+  height * 3
+  ```
+  ```{python}
+  type(height * 3)
+  ```
+
+- The expression `height * 3.0` probably has the value `36.0` (type `float`). This assumption is correct. As soon as one operand is a `float`, the result of a multiplication is also a `float`.
+
+  ```{python}
+  height * 3.0
+  ```
+  ```{python}
+  type(height * 3.0)
+  ```
+
+- The expression `delimiter * 5` probably results in an error (you can't multiply a dot by 5). However, this assumption is incorrect, because the result is actually `"....."` (type `str`) – the string `delimiter` (a dot) is repeated five times.
+
+  ```{python}
+  delimiter * 5
+  ```
+  ```{python}
+  type(delimiter * 5)
+  ```
+
+- The expression `2 * (width + height) + 1.5` probably has the value `59.5` (type `float`). This assumption is correct.
+
+  ```{python}
+  2 * (width + height) + 1.5
+  ```
+  ```{python}
+  type(2 * (width + height) + 1.5)
+  ```
+
+- The expression `12 + 3` probably has the value `15` (type `int`).
+
+  ```{python}
+  12 + 3
+  ```
+  ```{python}
+  type(12 + 3)
+  ```
+
+- The expression `"12 + 3"` is a string and therefore has the value `"12 + 3"` (type `str`). Therefore, nothing can be calculated with it, as it is only a sequence of characters.
+
+  ```{python}
+  "12 + 3"
+  ```
+  ```{python}
+  type("12 + 3")
+  ```
+
+
+## Exercise 2
+
+Eine Anweisung ist Code, welcher vom Python-Interpreter ausgeführt werden kann. Es gibt Anweisungen, die einen Wert haben und Anweisungen, die keinen Wert haben. Erstere (also Anweisungen mit Wert) nennt man auch Ausdrücke. Beispiele:
+A statement is code that can be executed by the Python interpreter. There are statements that have a value and statements that do not have a value. The former (i.e., statements with a value) are also called expressions. Examples:
+
+```{python}
+12 + 5  # expression (statement with value)
+```
+
+```{python}
+type(5)  # expression (statement with value)
+```
+
+```{python}
+x = 12 + 5  # statement (assignment)
+print(x)  # statement
+```
+
+Python prints the values of expressions automatically in interactive mode. However, this is not the case in script mode.
+
+
+## Exercise 3
+
+Keywords are predefined names that Python needs to understand a Python script. You can get a list of all keywords with:
+
+```python
+import keyword
+print(keyword.kwlist)
+```
+
+Eingebaute Funktionen sind mit Python mitgelieferte Funktionen, welche ohne jeglichen Import sofort verfügbar sind. Eine Liste bekommt man mit:
+Built-ins are functions and other objects that are always available in Python. We do not have to import anything to use them. The following command generates a list of all built-ins:
+
+```python
+dir(__builtins__)
+```
+
+Regarding naming, it is important to note that keywords cannot be used as names (this will result in an error). Built-ins should generally not be used as names either (although this is technically possible).
+
+Good names should be self-explanatory and indicate their intended use. They should be as short as possible, but as long as necessary. In general, English terms should be used as names. It has also become common practice to use variable names consisting only of lowercase letters. If necessary, an underscore `_` can be used to separate words.
+
+Example of a name that reflects the number of subjects:
+
+```python
+n_subjects = 14
+```
+
+
+## Exercise 4
+
+```{python}
+import math
+
+r = 5
+area = 4 * r**2 * math.pi
+volume = 4/3 * math.pi * r**3
+print(area, volume)
+```
+
+
+## Exercise 5
+
+```{python}
+type(True)
+```
+```{python}
+x = "False"
+type(x)
+```
+```{python}
+type(math)
+```
