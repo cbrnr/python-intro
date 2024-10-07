@@ -59,9 +59,23 @@ type("Hallo")
 type("3")
 ```
 
-Python ist eine dynamisch typisierte Sprache. Das bedeutet in der Praxis, dass erst zur Laufzeit eines Programms überprüft wird, ob eine bestimmte Operation auf ein Objekt eines bestimmten Typs angewendet werden kann (z.B. "kann man dieses Objekt mit zwei multiplizieren?"). Praktisch heißt das, dass in Python Typen bei einer Zuweisung *nicht* explizit angegeben werden müssen.
+Man kann sich ein Objekt als eine Entität eines bestimmten Typs vorstellen, die einen bestimmten Wert hat und im Speicher des Computers lebt:
 
-Python kennt noch mehr Typen als in den oben angeführten Beispielen. Wir werden im Laufe dieses Kurses noch weitere nützliche Datentypen wie z.B. Listen, Tuples und Dictionaries kennenlernen.
+![Ein Python-Objekt.](python_object.png)
+
+Jedes Objekt hat auch einen eindeutigen Identifikator. Mit der Funktion `id` kann man diesen herausfinden:
+
+```{python}
+id(3)
+```
+
+```{python}
+id(4)
+```
+
+The actual identifier numbers are irrelevant (and probably different on your computer). The only thing that's interesting about these identifiers is whether or not they are identical. In the previous example, the object `3` has a different identifier than the object `4`, so we know that these are two different objects.
+
+Die tatsächlichen Identifikationsnummern sind irrelevant (und wahrscheinlich auf Ihrem Computer unterschiedlich). Es ist nur wichtig, ob zwei Identifikationsnummern identisch sind oder nicht. Im vorherigen Beispiel hat das Objekt `3` eine andere Identifikationsnummer als das Objekt `4`, daher wissen wir, dass dies zwei verschiedene Objekte sind.
 
 
 ## Namen
@@ -72,21 +86,19 @@ Namen in Python sind nichts anderes als Namen für bestimmte Objekte (in anderen
 a = 1
 ```
 
-![](a1.png)
+![Der Name `a` ist dem Objekt `1` zugeordnet. Ein weiteres Objekt `2.4` hat (noch) keinen Namen.](python_names_1.png)
 
 ```{python}
 a = 2.4
 ```
 
-![](a2.png)
+![Nun ist `a` dem Objekt `2.4` zugeordnet, und das Objekt `1` hat keinen Namen mehr.](python_names_2.png)
 
 ```{python}
 b = a
 ```
 
-![](a3.png)
-
-Zum Schluss hat das Objekt 2.4 also zwei Namen – `a` und `b` verweisen auf dasselbe Objekt.
+![Jetzt hat das Objekt `2.4` zwei Namen `a` und `b`.](python_names_3.png)
 
 Der Typ eines Namens entspricht dem Typ des Objekts, auf das er verweist:
 

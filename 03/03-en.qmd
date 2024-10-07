@@ -35,7 +35,7 @@ Everything in Python is an *object*. An object has a specific value, e.g.
 ```
 
 :::{.callout-tip}
-Python prints values automatically in interactive mode.
+As we already know, Python outputs the *value* of the last command automatically in the REPL (the interactive interpreter).
 :::
 
 Every object has a specific type. You can determine the type of an object with the `type` function:
@@ -56,36 +56,68 @@ type("Hello")
 type("3")
 ```
 
-Python is a dynamically typed language. This means that Python checks whether a certain operation can be applied to an object of a certain type (e.g. "can this object be multiplied by two?") at *runtime* (i.e., while the program is already running). In practice, this means that types do *not* have to be explicitly specified in Python.
+Conceptually, we can think of an object as an entity of a specific type with a specific value living in the computer's memory:
 
-Python has more types than the ones mentioned above. We will learn about more useful data types like lists, tuples, and dictionaries throughout this course.
+![A Python object.](python_object.png)
+
+Each object also has a unique identifier. We can use the `id` function to find out:
+
+```{python}
+id(3)
+```
+
+```{python}
+id(4)
+```
+
+The actual identifier numbers are irrelevant (and probably different on your computer). The only thing that's interesting about these identifiers is whether or not they are identical. In the previous example, the object `3` has a different identifier than the object `4`, so we know that these are two different objects.
 
 
 ## Names
 
-Names are just names for objects in Python (in other programming languages, names are usually called variables). For example, the assignment `a = 1` can be interpreted as the object `1` getting the name `a`. An object can have multiple names, as illustrated in the following example.
+Objects can have names (in other programming languages, names are often called variables). We can assign a name to an object with the assignment operator `=` as follows:
 
 ```{python}
 a = 1
 ```
 
-![](a1.png)
+This attaches the name `a` to the object `1` (of type `int`). We can visualize names as tags or labels attached to an object.
+
+![The name `a` is attached to the object `1`. Another object `2.4` does not have a name.](python_names_1.png)
+
+Python lets us reassign an existing name to a different object. Notice how the object on the left does not have a name anymore after we re-assign `a`:
 
 ```{python}
 a = 2.4
 ```
 
-![](a2.png)
+![Now `a` is attached to the object `2.4`, and the object `1` does not have a name anymore.](python_names_2.png)
+
+An object can also have more than one name attached to it:
 
 ```{python}
 b = a
 ```
 
-![](a3.png)
+![Now the object `2.4` has two names `a` and `b`.](python_names_3.png)
 
-After the last assignment, the object 2.4 has two names – `a` and `b` both refer to the same object.
+We can confirm that `a` and `b` point to the same object by inspecting their corresponding identifiers:
 
-The type of a name corresponds to the type of the object it refers to:
+```{python}
+id(a)
+```
+
+```{python}
+id(b)
+```
+
+Indeed, they are identical, so there is just one object with two names. If we want to check if two names are attached to one and the same object, we can also use the `is` keyword as a shortcut:
+
+```{python}
+a is b
+```
+
+The type of a name corresponds to the type of the object the name is attached to:
 
 ```{python}
 type(a)
@@ -95,143 +127,124 @@ type(a)
 type(b)
 ```
 
+Whenever Python works with a name, it always replaces it with the value of the corresponding object. Furthermore, Python always evaluates the right-hand side of an assignment first before assigning the name. Consider the following example:
 
-## Valid and good names
+```{python}
+x = 11
+9 + x  # x is evaluated to 11, then 9 + 11 is evaluated to 20
+```
 
-Names can contain letters and digits, but they cannot start with a digit. In general, you should use lowercase letters (Python is case-sensitive). Names can be arbitrarily long, but they should be as short as possible (but as long as necessary). Additionally, you can use the underscore `_` character to make a name more readable, such as separating words.
+After this line, `x` still has the value `11`:
 
-:::{.callout-tip}
-Names should be chosen wisely, i.e., they should document the use or content (so short names like `i`, `n`, and `x` are only useful in exceptional cases). It is also reasonable to use English names even if you are not a native English speaker.
-:::
+```{python}
+x
+```
 
-Here are some examples of valid names:
+We now reassign the name `x` to a different object `2`:
+
+```{python}
+x = 2
+2 * x  # x is evaluated to 2, then 2 * 2 is evaluated to 4
+```
+
+After this line, `x` has the value `2`. However, we can reassign `x` again and even use the old value of `x` in the right-hand side of the assignment:
+
+```{python}
+x = 2 * x  # first evaluate the right-hand side to 2 * 2 = 4, then assign x = 4
+x
+```
+
+
+## Choosing names
+
+### Basic rules
+
+Valid names can contain letters (lower and upper case), digits, and underscores (but a name cannot start with a digit). [PEP8](https://www.python.org/dev/peps/pep-0008/#naming-conventions) lists recommendations for choosing good names – we only need to remember one rule for now: almost all names should be lowercase, and if necessary can also contain underscores, such as `lower_case_with_underscores`.
+
+Names should convey meaning, so instead of a generic `x` or `i`, we should try to find a name that tells us something about its intended use. Also, it is good practice to use English (and not e.g. German) names, because you never know who will read your code in the future.
+
+Here are a few examples for naming an object which represents the number of students in a school class:
 
 ```{python}
 number_of_students_in_class = 23  # too long
-NumberOfStudents = 24  # words should be separated by underscores
-n_students = 25  # good name (short and descriptive)
-n = 25  # not that great (too unspecific, but okay in some cases)
+NumberOfStudents = 23  # wrong style, not separated with underscores
+n_students = 23  # pretty nice
+n = 23  # probably too short (but may be OK sometimes)
 ```
 
-Python has some predefined names (so-called *keywords*) that must *not* be used as your own names, as they are needed by the Python interpreter to understand the structure of a program. You can get a list of all keywords with the following commands:
+
+### Keywords
+
+Python defines several reserved keywords that are a core part of the language. They *cannot* be used to name objects, so it is important to know what they are. The following code snippet produces a list of all keywords:
 
 ```{python}
 import keyword
 keyword.kwlist
 ```
 
-Besides keywords, there are also so-called *built-ins*, which are objects (functions and other objects) that are always available without importing. It is not advisable to "overwrite" these built-ins (although this is not explicitly forbidden). You can get a list of all built-ins with the following command:
+For example, this means that you cannot use the name `lambda`. If you do, Python will generate an error:
 
 ```{python}
-#| scrolled: false
+#| error: true
+lambda = 7
+```
+
+
+### Built-in functions
+
+Python also has a number of [built-in functions](https://docs.python.org/3/library/functions.html) that are always available (without importing). Although it is possible to assign the names of these built-in functions to other objects, it is considered bad practice, because it might lead to subtle bugs. The following code generates a list of all built-ins:
+
+```python
 dir(__builtins__)
 ```
 
-Let's consider the `max` function, which determines the maximum of a list of numbers:
-
-```{python}
-max(1, 88, 7)
-```
-
-We can inspect the type of `max` to verify that it is indeed a built-in function:
-
-```{python}
-type(max)
-```
-
-Therefore, we should avoid using the name `max` for our own objects, as the original built-in function would no longer be available. However, this is not explicitly forbidden:
-
-```{python}
-max = 4  # not recommended
-```
-
-Let's now look at the type of `max`:
-
-```{python}
-type(max)
-```
-
-```{python}
-max
-```
-
-As expected, `max` is now a name that refers to the `int` object 4. The original built-in function is now shadowed, which means that we can no longer call it:
-
-```python
-max(1, 88, 7)
-```
-```
-TypeError: 'int' object is not callable
-```
-
-Luckily, we can delete the name `max` that we defined with the `del` keyword, which makes the built-in function available again:
-
-```{python}
-del max
-type(max)
-```
+:::{.callout-tip}
+If you really want to use a name that is already taken by a built-in function, it is better to change the name slightly by appending an underscore. For example, instead of using `lambda`, you could use `lambda_`.
+:::
 
 
 ## Operators
 
-Operatoren sind spezielle Symbole, mit denen man Berechnungen wie Additionen, Subtraktionen usw. durchführen kann, also z.B. `+`, `-`, `*`, `/`, `**`, `//`, `%`, usw. Wir haben einige Operatoren bereits bei der Verwendung von Python als Taschenrechner kennengelernt.
-Operators are special symbols that allow us to perform operations like addition, subtraction, and so on. We have already learned about some operators when using Python as a calculator, such as `+`, `-`, `*`, `/`, `**`, `//`, `%`, etc.
+In general, operators work with objects. We have already used several (arithmetic) operators such as `+`, `-`, `*`, `/`, `**`, `//`, and `%`. Some operators are *binary* and require *two* operands (for example, the multiplication `2 * 3`), whereas other operators are *unary* and require only *one* operand (for example, the negation `-5`).
 
 
 ## Expressions
 
-An expression is a combination of values, variables, and operators. Every expression has a value. Examples:
+An *expression* is any combination of values, names, and operators. Importantly, an expression *always evaluates to a single value* (or short, an expression *has* a value). Here are a few examples for expressions (remember that their values are automatically printed in the REPL):
 
 ```{python}
-17
+17  # just one value
+```
+   
+```{python}
+23 + 4**2 - 2  # four values and three operators
 ```
 
 ```{python}
-23 + 4**2 - 2
+n = 25  # an assignment is not an expression!
 ```
 
 ```{python}
-n  # defined previously
+n  # one name (evaluates to its value)
 ```
 
 ```{python}
-n + 5
+n + 5  # a name, an operator, and a value
 ```
 
-:::{.callout-important}
-Python always reduces an expression to *a single value*. Also, note that Python automatically prints values in interactive mode.
-:::
+Python reduces an expression to a *single value*. A more complex expression is evaluated step by step according to operator precedence rules (think [PEMDAS](https://en.wikipedia.org/wiki/Order_of_operations#Mnemonics)) from left to right. As we've already discussed, Python evaluates the right-hand side of an assignment first before assigning a name.
 
 
 ## Statements
 
-A statement is a unit of code that the Python interpreter can execute. An expression is a (special) statement that has a value. Examples of statements that are not expressions:
+A statement is a unit of code which Python can run. This is a rather broad definition, and statements therefore include expressions as a special case (in other words, an expression is a statement with a value). However, there are also statements that do *not* have a value, such as an assignment. Here are two examples for statements that are not expressions:
 
 ```{python}
-x = 34  # assignment
+x = 13
+print("Hello world!")
 ```
 
-```{python}
-print("Python")
-```
-
-The previous two examples do not have any output – this is because these two statements do not have any values, i.e., there is nothing to output in the interactive mode of the Python interpreter.
-
-:::{.callout-note}
-The fact that calling the `print` function still results in an output on the screen is due to the function, whose purpose is exactly this output. This can be seen when assigning a name to the function call:
-
-```{python}
-s = print("Python")
-```
-
-The type of the value of `print("Python")`, which now has the name `s`, is:
-
-```{python}
-type(s)
-```
-
-This demonstrates that `print("Python")` does not have a value (technically, `None` is the special value that represents the absence of a value in Python).
-:::
+Note that although the `print` statement generates output, this output is not its value (try assigning a name to the function call)!
 
 
 ## Data types
