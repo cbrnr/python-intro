@@ -29,19 +29,18 @@ Python is a general-purpose programming language, which means it is not speciali
 
 People often associate Python with these characteristics:
 
-- Easy to learn
-- Open-source (free software, more than just free of charge)
-- Cross-platform (runs on Windows, macOS, Linux)
-- Versatile (not limited to a single area like e.g. data analysis)
-- Suitable for reproducible data analysis
-- Extensive standard library
-- Large, helpful community
-- A huge variety of available third-party packages
+- Simple, elegant, and fun to learn and use
+- Open source (not only [free as in beer but also free as in speech](https://en.wikipedia.org/wiki/Gratis_versus_libre))
+- Cross-platform (Python runs on Windows, macOS, and Linux)
+- General-purpose programming language, meaning that Python is not specifically designed to be extremely good in one particular area such as statistics – it can be used for many different applications including data science, web servers, graphical user interfaces, programming the [Raspberry Pi](https://www.raspberrypi.org/), ...
+- Batteries included approach (the [standard library](https://docs.python.org/3/library/) shipping with Python contains many useful things ready for use)
+- Huge number of [third-party packages](https://pypi.org/) that implement even more useful things
+- Large and friendly community (Python users are called Pythonistas)
 
 
 ## Popularity
 
-Python has become one of the most popular programming languages in the world. Various metrics that gauge the popularity of programming languages, such as [PYPL](https://pypl.github.io/PYPL.html), [IEEE Spectrum Top Programming Languages](https://spectrum.ieee.org/top-programming-languages/), and [TIOBE](https://www.tiobe.com/tiobe-index/), consistently place Python among the top spots, often ranking it first.
+Python was first released by [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum) way back in 1991, and its popularity has skyrocketed in the past years. While there are many ways to measure the popularity of a programming language, Python has consistently ranked among the top languages for years (for example according to [PYPL](https://pypl.github.io/PYPL.html), the [TIOBE index](https://www.tiobe.com/tiobe-index/), and the [IEEE Spectrum Top Programming Languages](https://spectrum.ieee.org/the-top-programming-languages-2023)). Also, one of the results of the [Stack Overflow Developer Survey 2023](https://survey.stackoverflow.co/2023/) is that Python is among the [most popular technologies](https://survey.stackoverflow.co/2023/#technology-most-popular-technologies) as well as highly [admired and desired](https://survey.stackoverflow.co/2023/#technology-admired-and-desired).
 
 In practice, the popularity of a programming language matters. The larger and more active a language's community is, the easier it becomes to find existing solutions to problems or to quickly get answers to new questions.
 
@@ -76,7 +75,7 @@ print(", ".join([str(i) for i in range(10)]))
 
 ## Installation
 
-You can find everything you need to install Python on the [official Python website](https://www.python.org/), where you can download installation packages for various operating systems. The site also hosts Python's extensive official documentation, filled with examples and tutorials. Installing Python on Windows and macOS has become so straightforward that I highly recommend using the official installers (though for Linux, it's still better to use the system's package manager if Python isn't already installed).
+The [official Python website](https://www.python.org/) is a great resource for everything related to Python. The [download](https://www.python.org/downloads/) section contains installers for many platforms, including Windows and macOS. If you are on Linux, I recommend that you use your package manager (such as `apt`, `yum`, or `pacman`) to install Python (in most cases, Python will already be installed anyway).
 
 :::{.callout-note}
 These instructions use version 3.12.2, but you should always install and use the latest version.
@@ -86,16 +85,32 @@ On Windows, choose the standard installation, but make sure to check the box for
 
 ![](install-python-windows.png)
 
+On macOS, run both "Install Certificates" and "Update Shell Profile" commands available in the application folder after the installation is complete:
 
-## Getting started
+![](install-python-macos.png)
 
-After installing Python, you can start the so-called Python interpreter. This program processes Python commands and allows you to work interactively (meaning you can type a command, press Enter, and see the result right away).
 
-There are several ways to use the Python interpreter, which we'll cover in the next session. For now, the easiest option is to launch "Python 3.12 (64-bit)" from the Start menu under the "Python 3.12" folder on Windows.
+## First steps
 
-On macOS or Linux, open a terminal and type `python3`, followed by the <kbd>Enter</kbd> key. Make sure the interpreter displays the correct Python version.
+After installing Python, it is instructive to enter some simple Python commands and see what happens. The program which understands and interprets Python commands is called the *Python interpreter*. It can be invoked in various ways, but one of the easiest options is to run it from the command line (or terminal), a powerful text-based interface provided by your operating system.
 
-In the interactive interpreter, you can start typing Python commands and press Enter to execute them. The prompt `>>>` indicates that Python is ready for input (this prompt is *not* part of the command). You can use the interactive Python interpreter as a calculator, allowing you to perform the four basic arithmetic operations (addition, subtraction, multiplication, and division) like this:
+- On Windows, you should see a start menu entry inside the Python folder named "Python 3.12 (64-bit)" (or similar). Alternatively, you can launch Python from a regular command prompt by starting the "Terminal" app and typing `python` followed by <kbd>Enter</kbd>.
+- On macOS, start the "Terminal" app and type `python3` (followed by <kbd>Enter</kbd>).
+- On Linux, start your favorite terminal app and type `python` (followed by <kbd>Enter</kbd>).
+
+:::{.callout-important}
+The Python interpreter executable is called `python` on Windows and Linux, but `python3` on macOS. If you use macOS, remember to always use `python3` to start the Python interpreter.
+:::
+
+A simple (black or white) text window will open – this is the so-called *interactive* Python interpreter. You can enter commands, and Python will happily try to execute what you just typed (the interactive interpreter is also called the [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop), short for read-eval-print loop).
+
+The interactive Python interpreter includes a *prompt*, which is typically the character sequence `>>>`. This prompt indicates that Python is ready to receive user input. You can type a Python command and hit <kbd>Enter</kbd> to evaluate it. Python will immediately show the result of this command (if any) on the next line.
+
+:::{.callout-note}
+Throughout the course material, we show Python code in gray boxes and never include the prompt `>>>`. 
+:::
+
+Let's try to use Python as a calculator. Python supports the four basic arithmetic operations (addition, subtraction, multiplication, and division):
 
 ```{python}
 1 + 1

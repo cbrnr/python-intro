@@ -19,7 +19,9 @@ published-title: "Veröffentlicht"
 
 ## Aufbau von Python
 
-Eine Python-Installation besteht aus der Programmiersprache Python, also einem [Interpreter](https://de.wikipedia.org/wiki/Interpreter) (ein Programm, welches Python-Code ausführen kann), und einer umfangreichen [Standardbibliothek](https://docs.python.org/3/library/). Python selbst stellt nur *grundlegende* Programmierkonstrukte zur Verfügung, wie z.B. Schleifen, Bedingungen und einige fest eingebaute Funktionen.
+Eine Python-Installation besteht aus der Programmiersprache Python, also einem [Interpreter](https://de.wikipedia.org/wiki/Interpreter) (ein Programm, welches Python-Code ausführen kann), und einer umfangreichen [Standardbibliothek](https://docs.python.org/3/library/). Der offizielle Python-Interpreter ist in C geschrieben und wird deswegen auch [CPython](https://github.com/python/cpython) genannt. Python selbst stellt nur *grundlegende* Programmierkonstrukte zur Verfügung, wie z.B. Schleifen, Bedingungen und einige fest eingebaute Funktionen.
+
+![](python_components.png)
 
 Darüber hinaus finden sich sehr viele zusätzliche Funktionen in der Standardbibliothek. Diese wird standardmäßig mit Python mitgeliefert und ist in Module gegliedert. Die Module der Standardbibliothek beinhalten spezialisierte Funktionen und decken unter anderem Anwendungsgebiete wie Datenkompression, erweiterte spezielle Datentypen, mathematische und statistische Funktionen, Internetprotokolle, grafische Benutzerschnittstellen, und vieles mehr ab.
 
@@ -128,46 +130,6 @@ Der Python-Interpreter arbeitet immer in genau einem Verzeichnis, dem sogenannte
 
 Wird Python von der Kommandozeile aus gestartet, ist es sinnvoll, *zuerst* in das gewünschte Verzeichnis zu wechseln und dann Python zu starten – denn das Arbeitsverzeichnis ist jenes Verzeichnis, aus dem Python gestartet wurde.
 
-Wenn man IPython verwendet, kann das aktuelle Arbeitsverzeichnis mit `pwd` ("print working directory") angezeigt werden. Verzeichnisse wechseln kann man dann mit `cd` ("change directory"). Beachten Sie, dass diese beiden Befehle *keine* Python-Befehle sind, sondern nur mit IPython funktionieren. Sie können diese daher nicht in Scripts verwenden.
-
-:::{.callout-tip}
-Die folgenden Befehle funktionieren nur in IPython (im normalen Python-Interpreter würde man Fehlermeldungen bekommen). Das Arbeitsverzeichnis zu Beginn dieses Beispiels lautet `~/project` (`~` steht hier für das Home-Verzeichnis bzw. den persönlichen Ordner).
-
-```python
-pwd  # Arbeitsverzeichnis ausgeben
-```
-
-```
-'~/project'
-```
-
-```python
-cd ..  # Arbeitsverzeichnis auf den übergeordneten Ordner setzen
-```
-
-```
-~
-```
-
-```python
-cd project/test  # Arbeitsverzeichnis auf project/test setzen
-```
-
-```
-~/project/test
-```
-
-```python
-pwd  # Arbeitsverzeichnis ausgeben
-```
-
-```
-'~/project/test'
-```
-
-Die Befehle `cd` und `pwd` funktionieren auch im Terminal in den meisten Shells, d.h. so kann man vor dem Starten von `python` das Arbeitsverzeichnis auf den gewünschten Ordner setzen.
-:::
-
 
 ## Syntax
 
@@ -264,13 +226,9 @@ Wir verwenden in dieser Lehrveranstaltung Visual Studio Code. Falls Sie bereits 
 
 Auf der [offiziellen Website](https://code.visualstudio.com/) gibt es Installationspakete für die gängigen Betriebssysteme Windows, macOS und Linux. Nach der Installation kann Visual Studio Code gestartet werden und sollte dann in etwa so aussehen:
 
-![](vscode_1.png)
+![](vscode.png)
 
-Es fehlt nur noch die Installation der offiziellen [Python-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-python.python), welche man im entsprechenden Bereich durchführen kann (einfach auf "Install" klicken):
-
-![](vscode_2.png)
-
-Die Python-Erweiterung bietet umfangreiche und vielfältige Konfigurationsmöglichkeiten. Sie beinhaltet aber nicht die Überprüfung des Code Styles nach PEP8. Dies kann man aber einfach über die Erweiterung [Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff) nachreichen – installieren Sie also bitte auch diese Erweiterung.
+Es fehlt nur noch die Installation der offiziellen [Python-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-python.python), welche man im entsprechenden Bereich durchführen kann (einfach auf "Install" klicken). Die Python-Erweiterung bietet umfangreiche und vielfältige Konfigurationsmöglichkeiten. Sie beinhaltet aber nicht die Überprüfung des Code Styles nach PEP8. Dies kann man aber einfach über die Erweiterung [Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff) nachreichen – installieren Sie also bitte auch diese Erweiterung.
 
 :::{.callout-tip}
 Die Befehlspalette in Visual Studio Code kann mit <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>P</kbd> (Windows/Linux) bzw. <kbd>⌘</kbd><kbd>Shift</kbd><kbd>P</kbd> (macOS) geöffnet werden. Hier kann man nach beliebigen Befehlen suchen und diese dann ausführen. Beispielsweise kann man ein Python-Script mit dem Befehl *"Ruff: Format document"* PEP-konform formatieren – probieren Sie es einfach aus!
@@ -283,10 +241,6 @@ Ein in Visual Studio Code geöffnetes Python-Script kann durch Klicken auf die "
 
 Möchte man nur einzelne Code-Zeilen im interaktiven Interpreter ausführen, verwendet man am besten die Tastenkombination <kbd>Shift</kbd><kbd>Enter</kbd>. Diese führt entweder die aktuelle Zeile (also die Zeile in der sich der Cursor befindet) oder alle markierten Zeilen im interaktiven Python-Interpreter aus, welcher sich in einem integrierten Terminal öffnet. Weitere Details sind in der [offiziellen Dokumentation](https://code.visualstudio.com/docs/python/python-tutorial) zu finden.
 
-:::{.callout-tip}
-Im Moment kann man IPython nur mit einem kleinen Trick (aka Workaround oder Hack) verwenden. Dazu führt man zunächst eine beliebige Code-Zeile im Script mit <kbd>Shift</kbd><kbd>Enter</kbd> aus. Dieser Befehl wird also im normalen interaktiven Python-Interpreter ausgeführt. Diesen beendet man mit `exit()` und startet dann stattdessen `ipython  --no-autoindent`. Danach werden alle Befehle mit <kbd>Shift</kbd><kbd>Enter</kbd> in IPython ausgeführt. Das zusätzliche Argument `--no-autoindent` ist leider notwendig, da sonst Einrückungen nicht korrekt nach IPython übertragen werden.
-:::
-
 
 ## Hilfe
 
@@ -297,11 +251,6 @@ Hilfe zu Python-Befehlen kann man direkt im Python-Interpreter bekommen. Möchte
 ```{python}
 help(print)
 ```
-
-In IPython kann man dafür auch folgende alternative (und vor allem kürzere) Schreibweisen verwenden:
-
-- `?print`
-- `print?`
 
 Zusätzlich zur integrierten Hilfe bieten Entwicklungsumgebungen bzw. Editoren wie Visual Studio Code darüber hinausgehende Möglichkeiten, Hilfe direkt in der grafischen Oberfläche anzuzeigen – beispielsweise indem man den Mauszeiger über einen Befehl positioniert und kurz wartet.
 

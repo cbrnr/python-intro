@@ -89,6 +89,10 @@ Unter Windows wählt man im Installationsfenster die Standard-Installation aus, 
 
 ![](install-python-windows.png)
 
+Unter macOS sollte man nach der Installation noch die beiden Befehle "Install Certificates" und "Update Shell Profile" ausführen:
+
+![](install-python-macos.png)
+
 
 
 ## Erste Schritte
