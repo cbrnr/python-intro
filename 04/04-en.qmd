@@ -1,0 +1,494 @@
+---
+title: "4 – Functions"
+subtitle: "Introduction to Python and PsychoPy"
+author: "Clemens Brunner"
+date: 2024-10-24
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+---
+
+## Introduction
+
+Functions in Python are like "mini scripts" or "mini programs", as they group multiple statements into a single block. A function in Python can also be compared to a mathematical function, such as the square function $f(x) = x^2$. This mathematical function $f$ calculates a new output value $x^2$ from a given input value $x$. Similarly, a Python function can take one or more input values (called *arguments*) and return a new output value (or perform some other action).
+
+A function has a clearly defined task. In Python, functions are used to structure code (which increases readability) and make it reusable. Functions also make programs shorter, as repeated code can be moved into functions. If changes are necessary, they only need to be made in one place within the function. Functions can also be reused in other programs.
+
+:::{.callout-note}
+We have already learned about some functions like `print` and `type` in previous sessions.
+:::
+
+## Funktionsaufruf
+
+Eine Funktion *aufrufen* bedeutet, dass der in ihr enthaltene Code (also das "Mini-Programm") ausgeführt wird – die Funktion "verrichtet" also ihre Arbeit.
+*Calling* a function means executing the code contained within it (i.e., the "mini program") – the function "does" its work. In Python, you call a function by using its name followed by a *pair of parentheses*. Inside the parentheses, you pass the *arguments* to the function (if necessary). Arguments are the values provided to a function that it needs to carry out its task. For example, the `type` function requires one argument; otherwise, it it cannot perform its intended task. Similarly, the `math.sqrt` function from the `math` module requires one argument to calculate the square root of the given number.
+
+Here are two examples of calling two differenct functions with one argument each:
+
+```{python}
+print("Hello")
+```
+
+```{python}
+type("Hello")
+```
+
+However, there are also functions that can be called without arguments (the following function call outputs a blank line to the screen):
+
+```{python}
+print()
+```
+
+It is important to know how many arguments a function requires, as this is defined by the function itself (this information can be found in the function's documentation).
+
+::: {.callout-important}
+If you omit the parentheses, the function is *not* called – only the value (i.e., the function object) is displayed when using Python in interactive mode.
+
+```{python}
+print
+```
+
+This name refers to a function object:
+
+```{python}
+type(print)
+```
+
+We have already learned about the concept of names in Python in the last session. It does not matter what object a name refers to; it can be an integer, a function, or any other object.
+:::
+
+
+## Defining functions
+
+Fortunately, we are not limited to existing functions, but can write our own functions. In Python, a function is *defined* as follows (the lines in `<...>` are placeholders and must be replaced with concrete commands):
+
+```python
+def function_name(parameter1, parameter2, ...):
+    <do something>
+    <...>
+    <optionally return something>
+```
+
+A function definition always begins with the `def` keyword, followed by the function name. The usual rules for valid names apply, just like with any other object. According to PEP8, function names should be lowercase, and underscores should separate words, for example:
+
+```python
+def test_function
+```
+
+After the function name, a pair of parentheses follows. Inside these parentheses, we list the *parameters* required by the function, separating multiple parameters by commas. When the function is called, these parameters are replaced by specific values known as *arguments*. However, some functions *do not* have parameters, but the parentheses must always be included:
+
+```python
+def test_function()  # no parameters
+```
+
+Falls eine Funktion zwei Parameter haben soll, würde man dies wie folgt anschreiben:
+If a function needs to have two parameters, you would write it like this:
+
+```python
+def test_function(n, v)  # two parameters n and v
+```
+
+Regardless of the parameters, a *colon* concludes the so-called *function header*:
+
+```python
+def test_function(n, v):
+```
+
+Next, the code that the function executes when called follows. This code must be *indented* by one level (typically four spaces) and is known as the *function body*. Within the function body, you can use the parameters as regular names; they are only available inside the function and receive the specific values of the arguments passed during the function call.
+
+:::{.callout-important}
+A function can have *parameters*, which must be listed when the function is *defined*. When calling the function, you must pass specific values for all parameters – these specific values are called *arguments*.
+:::
+
+The following example defines a function called `test_function`, which consists of two lines of code in the function body:
+
+```{python}
+def test_function():
+    s = "Hello world!"
+    print(s)
+```
+
+Note that the function is only *defined* here, i.e., it has not been called yet. However, the Python interpreter now knows about this function (i.e., there is a name `test_function` that refers to a function object):
+
+```{python}
+test_function
+```
+
+```{python}
+type(test_function)
+```
+
+We can now call our function as follows (the parentheses are essential):
+
+```{python}
+test_function()
+```
+
+We can call a function as often as we like:
+
+```{python}
+test_function()
+```
+
+If a function has parameters, the definition and the call would look like this (we have not yet discussed the `if` statement used here, but it is not essential to understand what this function does):
+
+```{python}
+def test_function_2(n, v):  # definition with two parameters
+    if v:
+        print(n)
+```
+
+```{python}
+test_function_2("Hello world!", True)  # call with two arguments
+```
+
+```{python}
+test_function_2("Hi!", False)  # another call with two arguments
+```
+
+If you do not pass the expected number of arguments when calling this function, you will get an error:
+
+```{python}
+#| error: true
+test_function_2()  # expected two arguments, but none were given
+```
+
+:::{.callout-important}
+All parameters defined in the function header must be provided with specific arguments when the function is called.
+:::
+
+:::{.callout-tip}
+By convention, it is common to include a brief description of the function in a so-called *docstring* in the first line of the function body. Tthis string can span multiple lines and is enclosed in triple quotation marks `"""`. While the presence of a docstring does not affect the function's functionality, it serves as documentation and reflects good coding practice, as shown in the following example:
+
+```{python}
+def test_function():
+    """Print hello world."""
+    s = "Hello world!"
+    print(s)
+```
+:::
+
+
+## Return values
+
+Functions can *return* values (results). Neither `test_function` nor `test_function_2`, as defined above, explicitly returns a value; they only execute code and implicitly return `None`, which represents "nothing" in Python. Consequently, these functions do not produce a value when called and are not considered expressions.
+
+If a function is supposed to return a value (a result), we use the `return` keyword, followed by the desired return value:
+
+```{python}
+def add_one(number):
+    """Increment a given number by one."""
+    return number + 1
+```
+
+When the function is called, its code in the function body executes until the `return` statement is reached. At that point, the function exits immediately, returning the specified value of `number + 1`. Any lines of code following the return statement are unreachable and will not be executed.
+
+```{python}
+add_one(5)
+```
+
+A function call is always reduced to its return value. A call to a function that returns a value is an expression. You can also assign a name to this expression:
+
+```{python}
+x = add_one(9)
+```
+
+```{python}
+x
+```
+
+We can also explicitly output the value of a function (i.e., the return value) to the screen using the `print` function:
+
+```{python}
+print(add_one(122))
+```
+
+:::{.callout-tip}
+You can use a function call anywhere a value or expression is expected. This is known as *composition*. The values are processed and inserted sequentially, moving from *inside* to *outside*, until only a single value remains:
+
+```{python}
+add_one(add_one(add_one(1)))
+```
+:::
+
+
+## Arguments
+
+### Default arguments
+
+A function can have no parameters or expect a specific number of parameters. When a specific number of parameters is defined in the function header, individual parameters can be assigned default values (so-called default arguments). This means that the function can also be called with fewer arguments than expected if default values exist for the missing arguments. Here is an example of a function with a default argument:
+
+```{python}
+def add(number, increment=1):  # the default value for increment is 1
+    return number + increment
+```
+
+This function can now be called with two arguments:
+
+```{python}
+add(7, 1)
+```
+
+However, if the second argument is omitted, the default value of 1 for `increment` is used:
+
+```{python}
+add(7)  # equivalent to add(7, 1)
+```
+
+In addition, the default argument can be overridden by passing a different value:
+
+```{python}
+add(7, 3)
+```
+
+
+### Keyword arguments
+
+Functions can also be called by explicitly specifying the parameter names along with their corresponding arguments in the format `kwarg=value`. This is known as using *keyword arguments* (not to be confused with Python keywords). For example, the `add` function can also be called like this:
+
+```{python}
+add(number=5)
+```
+
+```{python}
+add(number=5, increment=2)
+```
+
+```{python}
+add(increment=2, number=5)
+```
+
+This serves two purposes: it improves readability, as it is immediately clear which parameters receive which specific arguments, and it allows arguments to be passed in any order.
+
+If the argument name is not specified, the position of the argument determines its assignment. In this case, these arguments are referred to as *positional arguments*. You can mix positional and keyword arguments when calling a function, but all positional arguments must come *before* the first keyword argument.
+
+```{python}
+add(5, increment=2)
+```
+
+We illustrate this with the following function definition:
+
+```{python}
+def test(name, number, exponent=5, skip=7, text="Hello"):
+    print(text, name, end=" ")
+    return number**exponent - skip
+```
+
+The following three function calls use only positional arguments:
+
+```{python}
+test("Python", 2)
+```
+
+```{python}
+test("Python", 3)
+```
+
+```{python}
+test("Test", 3, 4)
+```
+
+Keyword arguments are very useful when you want to use default arguments for many parameters but want to set a different value for a single parameter. In this case, you do not have to pass all arguments in order, but only those for which you want different values than the default values:
+
+```{python}
+test("Test", 2, skip=2)
+```
+
+Without keyword arguments, the same call would look like this using only positional arguments:
+
+```{python}
+test("Test", 2, 5, 2)
+```
+
+In this example, you must pass the value `5` for the `exponent` parameter, even though you want to use the default value. This means that you must pass an additional argument `5` (for the `exponent` parameter) when using positional arguments, which is rather cumbersome.
+
+:::{.callout-note}
+Python also supports functions that have an *arbitrary/variable* number of parameters. This means that when the function is defined, it is not yet clear how many arguments will be passed when the function is called. The `print` function is an example of such a function: it can be called with no, one, two, or any number of arguments:
+
+```{python}
+print()
+print("Hello")
+print("Hello", "Python")
+print("Hello", "Python", 1, 2, 3, 4)
+```
+
+However, we will not discuss such functions in detail (especially not how to define them ourselves), but we will encounter such functions from time to time.
+:::
+
+
+## Scopes
+
+Everything defined within a function (body) is only visible and accessible within that function. This is known as a *local* scope, which is limited to the function and any subordinate scopes within it. Scopes in Python correspond to indentations.
+
+The following example defines a name `s = 15` within the function `test`. This name can be used within the function:
+
+```{python}
+def test():
+    s = 15  # s is defined only within the function
+    print(s)
+
+test()
+```
+
+However, this `s` does not exist outside of the function:
+
+```{python}
+#| error: true
+print(s)  # s is not defined outside the function
+```
+
+Conversely, you actually can access names defined *outside* a given scope:
+
+```{python}
+s = 15  # "global" s
+
+def test():
+    print(s)  # s is accessible within the function
+
+test()
+print(s)  # s exists outside the function
+```
+
+If you create a new name that matches an existing one outside the function, only the new local name is accessible within the function, effectively hiding the outer name. In the following example, the two names `s` refer to different objects:
+
+```{python}
+s = 15  # global s
+
+def test():
+    s = 12  # local s (different from the global s)
+    print(s)  # local s
+
+test()
+print(s)  # global s
+```
+
+The following example is particularly strange and causes an error:
+
+```{python}
+#| error: true
+s = 15  # global s
+
+def test():
+    print(s)  # local s (not yet defined)
+    s = 12  # local s
+    print(s)
+
+test()
+print(s)
+```
+
+The line `print(s)` in the function causes an error because Python recognizes that `s` will be a local name from the subsequent line. As a result, `print(s)` fails because `s` does not exist at that point. In this case, Python does not mix global and local names.
+
+If you want to use the globally defined name, you can do so with the `global` keyword:
+
+```{python}
+s = 15  # global s
+
+def test():
+    global s  # explicitly use the global s
+    print(s)
+    s = 12  # modifies global s
+    print(s)
+
+test()
+print(s)
+```
+
+However, you should generally avoid using the `global` declaration in local scopes and cleanly separate global and local scopes. If you want to access an object from an outer scope, it is best to define a parameter so that you can pass the desired object as an argument to the function:
+
+```{python}
+s = 15  # global s
+
+def test(s):
+    print(s)  # local s (argument)
+    s = 12
+    print(s)
+
+print(s)
+test(s)
+print(s)
+```
+
+If you want to continue using a local variable in an outer scope, it is best to return the corresponding value with `return`:
+
+```{python}
+s = 15  # global s
+
+def test(s):
+    print(s)  # local s (argument)
+    s = 12
+    print(s)
+    return s
+
+print(s)
+s = test(s)  # redefine global s with the return value
+print(s)
+```
+
+:::{.callout-tip}
+The behavior described here also applies to parameters. These behave like locally defined names within the function and automatically receive the values passed with the corresponding arguments when called. In the last two examples, the functions each had a parameter named `s`. Coincidentally, the functions were also called with an argument named `s` – but these are two different names or objects. You could just as easily call the function directly with a value or with any other name:
+
+```{python}
+x = 15
+test(x)  # parameter s receives the value 15
+```
+
+This is especially evident when using keyword arguments:
+
+```{python}
+test(s=x)
+```
+:::
+
+
+## Exercises
+
+### Exercise 1
+
+Choose three functions from the list of built-in functions (see previous session) and answer the following questions:
+
+- Read the documentation for each function to find out what the function does.
+- Call each function with suitable arguments.
+- Indicate for each function whether it returns a value or not. If a value is returned, specify the value and its type!
+
+
+### Exercise 2
+
+Write a function `mult` that multiplies two numbers and *returns* their product. The two numbers should be able to be passed as arguments. Call your function with a few pairs of values and make sure your function works as intended. The function should return the result as a value, i.e., do not use `print` within the function, but use `return`!
+
+
+### Exercise 3
+
+Write a function `to_fahrenheit` that takes a parameter `celsius` and converts this Celsius temperature to Fahrenheit, *returning* the result. To test your function, call it with the Celsius temperatures 0, 20, 38, and 100.
+
+Write a function `to_celsius` (with a corresponding parameter `fahrenheit`) and convert the four Fahrenheit temperatures you received when calling the `to_fahrenheit` function back to Celsius temperatures!
+
+
+### Exercise 4
+
+Explain why functions are used. Also briefly explain the difference between a function definition and a function call! What is the difference between parameters and arguments?
+
+
+### Exercise 5
+
+Define a function called `nonsense` that has three parameters named `a`, `b`, and `c`. The two arguments `b` and `c` should be optional and have default values of 10 and 13, respectively. The function should calculate and return `a**2 - b * 2 + c**2` (we assume that you always pass numerical values for `a`, `b`, and `c`). Then call the function with the following arguments:
+
+1. Without arguments
+2. With three positional arguments
+3. With two positional arguments
+4. With one keyword argument
+5. With two keyword arguments
+6. With two positional arguments and one keyword argument
+7. With one positional and one keyword argument
+
+What do these function calls look like? What are the return values? Provide the values of *all three arguments* for *each* function call!
+
+:::{.callout-note}
+Only the first function call (without arguments) will cause an error; all subsequent calls are possible!
+:::

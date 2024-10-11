@@ -2,7 +2,7 @@
 title: "4 – Funktionen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2024-04-08
+date: 2024-10-24
 format:
   html:
     page-layout: full
@@ -51,6 +51,7 @@ print()
 
 Wie viele Argumente eine Funktion tatsächlich benötigt, hängt ganz alleine von der jeweiligen Funktion ab (dies ist in ihrer Dokumentation nachzulesen).
 
+:::{.callout-important}
 Lässt man die Klammern weg, wird die Funktion *nicht* aufgerufen – es wird dann lediglich der Wert (also das Funktionsobjekt) angezeigt, wenn man Python im interaktiven Modus verwendet.
 
 ```{python}
@@ -64,6 +65,7 @@ type(print)
 ```
 
 Das Konzept von Namen in Python haben wir bereits in der letzten Einheit kennengelernt. Es ist unerheblich, auf welches Objekt ein Name verweist, dies kann eine Ganzzahl, eine Funktion, oder jedes beliebige andere Objekt sein.
+:::
 
 
 ## Funktionsdefinition
