@@ -1,0 +1,564 @@
+---
+title: "5 – Conditions and Loops"
+subtitle: "Introduction to Python and Psychopy"
+author: "Clemens Brunner"
+date: 2024-10-31
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+---
+
+## Control structures
+
+Complex programs do not run linearly (i.e. line by line from the beginning of a script to the end), but include branches and loops. These so-called control structures control the program flow. Comparisons play a crucial role in determining whether certain lines of code are executed or not, and how often they are repeated.
+
+Schon bei Funktionen haben wir beobachtet, dass Programmcode nicht linear ausgeführt wird, denn erst beim *Aufrufen* einer Funktion springt Python zu den entsprechenden Zeilen im Funktionskörper und führt diese aus.
+We have already noted that program code does not always run in a linear fashion. For example, Python only jumps to and executes the relevant lines in a function when that function is *called*.
+
+:::{.callout-tip}
+Mit Hilfe des sogenannten [Debuggers](https://code.visualstudio.com/docs/editor/debugging) kann man in Visual Studio Code ein Script "in Zeitlupe" ausführen. Im Debug-Modus wartet der Python Interpreter nämlich nach jedem Befehl, bis der nächste manuell gestartet wird. Das gibt uns die Möglichkeit, den Ablauf des Programmes sowie dessen Zustand in jedem Schritt zu beobachten. Dabei geht man wie folgt vor:
+
+Using the so-called [debugger](https://code.visualstudio.com/docs/editor/debugging) in Visual Studio Code, you can run a script in "slow motion". In debug mode, the Python interpreter waits after each command until the next one is manually started. This allows us to observe the program flow and its state at each step. Here's how it works:
+
+1. First, click to the left of the first line to set a breakpoint (which appears as a red dot). Program execution will stop at this line.
+2. Then click on the down arrow in the play button and select "Debug Python File".
+3. Execution stops at the breakpoint. The current line is highlighted in yellow and marked with a yellow arrow. You can use "Step Into" (<kbd>F11</kbd>) to jump to the next command.
+4. In the variable view on the left, you can see all local objects (and their current values) created in the program.
+
+![](vscode-debug-1.png)
+![](vscode-debug-2.png)
+
+To try it out, you can debug the following short script:
+
+```{python}
+#| eval: false
+#| code-line-numbers: true
+def f(x):
+    y = x * 2
+    return y
+
+print(f(3))
+print("Done.")
+```
+
+In what order does Python execute the lines of code?
+
+Alternatively, the [PythonTutor](http://pythontutor.com/visualize.html#mode=edit) website can also visualize the program flow step by step. Simply copy the entire code into the input field and click "Visualize Execution". By clicking "Next" repeatedly, you can see how Python runs the code.
+:::
+
+
+## Comparisons
+
+Comparisons are logical expressions that are either true (`True`) or false (`False`). In Python, these values are represented by the `bool` data type. The following comparison operations are supported:
+
+* Equality `==`
+* Inequality `!=`
+* Less than `<`
+* Less than or equal to `<=`
+* Greater than `>`
+* Greater than or equal to `>=`
+
+We can combine multiple logical expressions using the following operators:
+
+* `and`
+* `or`
+
+An expression can be logically inverted using the `not` operator (i.e. `True` becomes `False` and `False` becomes `True`). In addition, the following operators are available:
+
+* `is` checks if two objects are identical (i.e. the same *object*, not just the same *value*)
+* `in` checks if a value is contained in a sequence
+
+While `==` compares two *values*, `is` checks if two *objects* are identical (i.e. the same object). An object has a value, two different objects can also have the same value. The `id` function returns a unique number (ID) for an object – two different objects always have a different ID (otherwise they are the same object).
+
+
+### Examples
+
+```{python}
+x = 2  # assignment
+```
+
+```{python}
+x == 2  # comparison
+```
+
+```{python}
+x > 2
+```
+
+```{python}
+x < 10 and x > 5
+```
+
+The previous `and` conjunction of two comparisons can be shortened to:
+
+```{python}
+5 < x < 10
+```
+
+```{python}
+x < 10 or x > 5  # does this make sense?
+```
+
+```{python}
+y = 2
+```
+
+```{python}
+x == y  # compare values
+```
+
+```{python}
+x is y  # compare objects
+```
+
+We can determine the IDs of the objects `x` and `y` with the `id` function:
+
+```{python}
+id(x)
+```
+
+```{python}
+id(y)
+```
+
+We can see that both objects `x` and `y` have the same ID. This means that the underlying object `2` is one and the same object and only has two names `x` and `y`.
+
+![](names_2.png)
+
+The IDs of objects are an implementation detail in Python, meaning the specific numbers are not important. However, these IDs can be used to compare two objects for equality, as only identical objects share the same ID.
+
+:::{.callout-note}
+Another implementation detail in Python is that small integers are stored only once. For example, if you assign the same small number multiple times (like `x = 2` and `y = 2`), only one object is created. This approach helps optimize memory usage. However, the same is not true for large integers:
+
+```{python}
+a = 500
+a
+```
+
+```{python}
+id(a)
+```
+
+```{python}
+b = a  # b and a are names for the same object
+b
+```
+
+```{python}
+id(b)
+```
+
+```{python}
+b = 500  # now b is a name for a different object
+b
+```
+
+```{python}
+id(b)
+```
+
+```{python}
+a == b  # values equal?
+```
+
+```{python}
+a is b  # objects identical?
+```
+
+![](names_500.png)
+:::
+
+The following example illustrates that there is a difference between integers (`int`) and floating point numbers (`float`), even though their values can be equal (at least mathematically).
+
+```{python}
+c = 12
+d = 12.0
+```
+
+```{python}
+c == d
+```
+
+```{python}
+c is d
+```
+
+In general, comparing floating point numbers for equality is problematic, as these numbers cannot be represented exactly due to limited precision. The following example illustrates this property of `float` numbers:
+
+```{python}
+0.1 + 0.1 + 0.1 == 0.3
+```
+
+If you want to compare two floating point numbers, it is better to determine whether the difference between the two values is very small (e.g. $10^{-15}$) – if so, you can assume that the values are *practically* identical.
+
+```{python}
+(0.1 + 0.1 + 0.1) - 0.3 < 1e-15
+```
+
+The `math` module provides the `isclose` function for this purpose:
+
+```{python}
+import math
+math.isclose(0.1 + 0.1 + 0.1, 0.3)
+```
+
+:::{.callout-tip}
+Python allows decimal numbers to be written in  [scientific notation](https://en.wikipedia.org/wiki/Scientific_notation) using powers of ten. In this format, `e` represents "times ten raised to the power of".
+
+```{python}
+1e0  # 1 times 10 to the power of 0
+```
+
+```{python}
+-4e0  # -4 times 10 to the power of 0
+```
+
+```{python}
+1e1  # 1 times 10 to the power of 1
+```
+
+```{python}
+3.5e2  # 3.5 times 10 to the power of 2
+```
+
+```{python}
+1e-2  # 1 times 10 to the power of -2
+```
+
+```{python}
+1e-15  # 1 times 10 to the power of -15
+```
+:::
+
+
+## Conditions
+
+Python uses the keywords `if`, `elif`, and `else` to implement conditions, which check whether an expression is true (`True`) or false (`False`). Only if this expression is `True`, Python executes the following indented code block; otherwise, it skips it. The basic structure of a condition looks like this:
+
+```python
+if <statement is True>:
+    <do something>
+    ...
+elif <statement is True>:  # optional
+    <do something>
+    ...
+elif <statement is True>:  # optional
+    <do something>
+    ...
+else:  # optional
+    <do something>
+    ...
+```
+
+The basic structure of a condition is similar to that of a function. It begins with the keyword `if`, followed by a logical expression (usually a comparison), and concludes with a `:`. The indented code that follows is executed only if the logical expression evaluates to `True`; otherwise, the entire indented block is skipped.
+
+Only if the first expression is `True`, Python will execute the corresponding code block. After that, Python exits the entire `if/elif/else` block, meaning no further code will be executed. If the first expression is `False`, the corresponding code block will not run, and Python will jump to the next `elif` expression (if available). Here, another logical expression is evaluated, and if it is `True`, its corresponding indented code block is executed. If none of the logical expressions in the `elif` branches are `True`, the code block belonging to the `else` branch will be executed (if present).
+
+:::{.callout-important}
+Python runs at most *one* code block in a condition, namely the first one whose logical expression evaluates to `True`. Therefore, the order of the individual branches is important.
+:::
+
+
+### Examples
+
+Let's start with a simple example that contains only one `if` branch:
+
+```{python}
+a = 2
+
+if a > 0:
+    print("a is a positive number")
+    print("this is good to know")
+```
+
+If the comparison `a > 0` evaluates to `False`, the indented code is *not* executed:
+
+```{python}
+a = -10
+
+if a > 0:
+    print("a is a positive number")
+    print("this is good to know")
+```
+
+Optionally, you can use an `else` branch that is executed whenever *all* preceding branches are `False`:
+
+```{python}
+a = 0
+
+if a > 0:
+    print("a is a positive number")
+    print("this is good to know")
+else:
+    print("a is either 0 or a negative number")
+```
+
+Finally, you can add as many additional branches as you like using `elif`:
+
+```{python}
+a = 0
+
+if a > 0:
+    print("a is a positive number")
+    print("this is good to know")
+elif a < 0:
+    print("a is a negative number")
+else:
+    print("a is 0")
+```
+
+As soon as an expression in an `if` block evaluates to `True`, the code executes, and the entire block exits, so no further comparisons are made.
+
+```{python}
+x = 2
+
+if x == 2:
+    print("x is", x)
+elif x > 0:
+    print("x is greater than 0")
+elif x < 0:
+    print("x is negative")
+else:
+    print("x is 0")
+```
+
+Therefore, the order of the individual branches is important:
+
+```{python}
+a = 4
+
+if a > 5:
+    print("One")
+elif a < 10:
+    print("Two")
+elif a == 4:
+    print("Three")
+else:
+    print("Four")
+```
+
+```{python}
+a = 4
+
+if a > 5:
+    print("One")
+elif a == 4:
+    print("Three")
+elif a < 10:
+    print("Two")
+else:
+    print("Four")
+```
+
+Of course, comparisons can involve objects of any data type, not just numbers:
+
+```{python}
+s = "Python"
+
+if s == "Python":
+    print("Way to go!")
+elif s == "R":
+    print("Statistics")
+else:
+    print("Unknown")
+```
+
+```{python}
+s = "R"
+
+if s == "Python":
+    print("Way to go!")
+elif s == "R":
+    print("Statistics")
+else:
+    print("Unknown")
+```
+
+
+## For loops
+
+To repeat commands, you can use loops. The most commonly used loop is the `for` loop. As a simple example, let's replace the following repetitive code with a loop:
+
+```{python}
+print("Hello")
+print("Hello")
+print("Hello")
+```
+
+```{python}
+for i in range(3):
+    print("Hello")
+```
+
+The loop variable `i` takes on three different values during the three iterations: 0, 1, and 2, which are the values returned by the `range` function. You can choose any name for the loop variable; `i` is commonly used for short loops, and `_` can be used to indicate that the name is not significant. After the loop finishes, this name remains available and is treated like any other variable created by assignment.
+
+:::{.callout-note}
+What is the value of `i` after the following code block:
+
+```python
+i = 800
+for i in range(3):
+    print("Hello")
+```
+
+The correct answer is `2`, as this is the last value assigned in the loop. The function call `range(3)` generates the three values `0`, `1`, and `2`. The assignment `i = 800` at the beginning has no effect here (or, in other words, this assignment is pointless and could be removed without consequences).
+:::
+
+The `range` function is called with `range(start, stop, step)` and generates a sequence of integers starting from `start` (optional) up to `stop` in steps of `step` (optional). To see the individual elements in a `range` object, you first need to convert it to a list:
+
+```{python}
+x = range(10)
+x
+```
+
+```{python}
+list(x)
+```
+
+Python starts counting from 0, so `range` starts at 0 by default. The last number is not part of the sequence, because this makes it easy to determine the number of generated elements (in the previous example, `range(10)` consists of 10 elements ranging from 0 to 9).
+
+A `for` loop iterates over all elements of a sequence (i.e., all data types that consist of multiple elements and are iterable, such as strings or lists). In the following example, the loop iterates over a string, meaning that during each iteration, the individual elements (letters) of a string are assigned to the loop variable `s`:
+
+```{python}
+for s in "String":
+    print(s)
+```
+
+This also works with lists, as they are also sequence data types which can contain multiple elements:
+
+```{python}
+a = ["Hello", "world!", "I", "love", "Python!"]
+
+for element in a:
+    print(element)
+```
+
+The `break` keyword exits the loop immediately. Python jumps to the end of the loop and continues executing any remaining lines of code from there.
+
+```{python}
+i = 0
+
+for c in "Python":
+    if c == "t":
+        break  # immediately exit the loop
+    i += 1  # shorthand for i = i + 1
+
+print(i)
+```
+
+The previous example illustrates how to search for a specific character (`"t"`) in a string and determine its position (available in `i`).
+
+The `continue` keyword immediately jumps to the next iteration of the loop (skipping the remaining code in the loop).
+
+```{python}
+for num in range(2, 10):
+    if num % 2 == 0:  # even number
+        print("Found an even number", num)
+        continue  # skip the remaining lines in the loop
+    print("Found a number", num)
+```
+
+We will cover more details about strings and lists in the next sessions.
+
+
+## While loops
+
+In contrast to `for` loops, `while` loops are well suited when it is not clear in advance how often the loop should be repeated. The following example uses an *infinite loop* (`while True` is always `True`). To exit this infinite loop, we use the `break` keyword. The `input` function queries the user for keyboard input; it returns the entered characters as a string.
+
+```python
+while True:
+    line = input("> (enter 'q' to quit) ")
+    if line == "q":
+        break
+```
+
+The following number guessing game demonstrates another use case for `while` loops:
+
+```python
+number = 23  # the number to guess
+
+while True:
+    guess = int(input("Enter an integer: "))
+    if guess == number:
+        print("Congratulations, you guessed it.")
+        break
+    elif guess < number:
+        print("No, it is a little higher than that.")
+    else:
+        print("No, it is a little lower than that.")
+```
+
+:::{.callout-tip}
+The `int` function converts the user input (a string) to an integer (e.g., `int("7")` converts the string `"7"` to the number `7`).
+:::
+
+
+## Exercises
+
+### Exercise 1
+
+Write the following program:
+
+- First, read two numbers with the `input` function (assign the names `x` and `y` to these two numbers). Note that `input` returns strings, which can be converted to integers using the `int` function.
+- If the sum of the two numbers is greater than 50, print `x + y > 50`.
+- If the sum of the two numbers is less than 50, print `x + y < 50`.
+- Otherwise, print `x + y == 50`.
+
+:::{.callout-tip}
+The built-in `input` function reads input from the keyboard. You can enter any characters and press <kbd>Enter</kbd> to confirm. The function then *returns* the entered characters as a `str`, which can be assigned to a name (e.g., `x = input()`).
+:::
+
+
+### Exercise 2
+
+Write a function `is_odd` that checks whether the given argument is even or odd (by checking the remainder when divided by 2). The function should return `True` if the argument is odd and `False` otherwise.
+
+:::{.callout-tip}
+Make sure that the function *returns* the result instead of printing it.
+:::
+
+
+### Exercise 3
+
+Given a list `lst = ["I", "love", "Python"]`, write a `for` loop that prints each element in the list line by line on the screen.
+
+
+### Exercise 4
+
+Given a list `lst = ["I", "love", "Python"]`, write a `for` loop that iterates over the individual elements in the list. A second (nested) `for` loop should then iterate over each letter of the individual strings and print each letter followed by the `-` character.
+
+:::{.callout-note}
+Use the `print` function with the argument `end="-`. The output should look like this:
+
+```
+I-l-o-v-e-P-y-t-h-o-n-
+```
+:::
+
+
+### Exercise 5
+
+Convert the following nested `if`–`else` blocks into a single `if`–`elif`–`else` block:
+
+```python
+if x > 0:
+    print("x is positive")
+else:
+    if x < 0:
+        print("x is negative")
+    else:
+        print("x is equal to 0")
+```
+
+Check your solution with the three values `x = 5`, `x = -11`, and `x = 0` (i.e., both variants should yield the same result).
+
+
+### Exercise 6
+
+Write a program that expects the user to enter an integer between 1 and 10. If the input is not in the allowed range, it should display the message `"Invalid input. Please try again."`, and the input should be repeated. If the input is in the allowed range, the entered number should be displayed (e.g., `"You entered: 5"`).

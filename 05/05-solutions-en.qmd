@@ -1,0 +1,92 @@
+---
+title: "5 – Solutions"
+subtitle: "Introduction to Python and Psychopy"
+author: "Clemens Brunner"
+date: 2024-10-31
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+---
+
+## Exercise 1
+
+```python
+x = int(input("x: "))
+y = int(input("y: "))
+
+if x + y > 50:
+    print("x + y > 50")
+elif x + y < 50:
+    print("x + y < 50")
+else:
+    print("x + y == 50")
+```
+
+
+## Exercise 2
+
+```python
+def is_odd(x):
+    if x % 2 == 1:
+        return True
+    else:
+        return False
+```
+
+Or shorter:
+
+```python
+def is_odd(x):
+    return x % 2 == 1
+```
+
+
+## Exercise 3
+
+```{python}
+lst = ["I", "love", "Python"]
+for element in lst:
+    print(element)
+```
+
+
+## Exercise 4
+
+```{python}
+for element in lst:
+    for ch in element:
+        print(ch, end="-")
+```
+
+
+## Exercise 5
+
+```{python}
+x = 5  # x = -11, x = 0
+if x > 0:
+    print("x is positive")
+elif x < 0:
+    print("x is negative")
+else:
+    print("x is equal to 0")
+```
+
+
+## Exercise 6
+
+```python
+while True:
+    x = int(input("Enter an integer between 1 and 10: "))
+    if 0 < x <= 10:
+        break
+    else:
+        print("Invalid input. Please try again.")
+
+print("You entered:", x)
+```
