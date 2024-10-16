@@ -1,0 +1,95 @@
+---
+title: "6 – Solutions"
+subtitle: "Introduction to Python and PsychoPy"
+author: "Clemens Brunner"
+date: 2024-11-07
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+---
+
+## Exercise 1
+
+```{python}
+def reverse(s):
+    return s[::-1]
+```
+
+
+## Exercise 2
+
+```{python}
+s = "educational neuroscience"
+s.title()
+```
+
+
+## Exercise 3
+
+```{python}
+s = "Edukational Neuroscience"
+s[:3] + "c" + s[4:]
+```
+
+
+## Exercise 4
+
+```{python}
+def is_palindrome(s):
+    s = s.lower()
+    s = s.replace("?", "").replace("!", "").replace(".", "").replace(",", "")
+    s = s.replace(" ", "")
+    return s == s[::-1]
+```
+
+
+## Exercise 5
+
+Da wir die Position des gesuchten Zeichens benötigen, ist eine `while`-Schleife eine geeignete Lösung (wir wissen nicht im Vorhinein, wie viele Iterationen stattfinden werden). Hier zählen wir mit dem Namen `i` die aktuelle Position im String `s` mit.
+
+```{python}
+def find(s, sub):
+    i = 0
+    while i < len(s):
+        if s[i] == sub:
+            return i
+        i += 1  # erhöhe i um 1 (äquivalent zu i = i + 1)
+    return -1  # wird nur zurückgegeben, falls vorher kein return erfolgte
+```
+
+Eine Alternative mit `for`-Schleife ist aber auch möglich (die Funktion `enumerate` gibt sowohl die Position als auch das aktuelle Zeichen innerhalb des Strings `s` zurück):
+
+```{python}
+def find(s, sub):
+    for i, char in enumerate(s):
+        if char == sub:
+            return i
+    return -1  # wird nur zurückgegeben falls das Zeichen nicht gefunden wurde
+```
+
+
+## Exercise 6
+
+```{python}
+def count(word, letter):
+    i = 0  # wir haben das Zeichen noch nicht gefunden
+    for c in word:
+        if c == letter:  # falls es das gesuchte Zeichen ist
+            i += 1  # erhöhen wir i um 1 (i = i + 1 oder kurz i += 1)
+    return i
+```
+
+
+## Exercise 7
+
+
+```{python}
+path = "C:\\Program Files\\Python\\Python3.12\\python.exe"
+print(path)
+```

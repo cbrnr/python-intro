@@ -1,0 +1,662 @@
+---
+title: "6 – Strings"
+subtitle: "Introduction to Python and PsychoPy"
+author: "Clemens Brunner"
+date: 2024-11-07
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+---
+
+## Recap
+
+We can roughly categorize data types in Python as follows:
+
+- Logical data type (`bool`)
+- Numeric data types (`int`, `float`)
+- Sequences (can consist of multiple elements) (`str`, `list`, `tuple`)
+- Mappings (key-value pairs) (`dict`)
+
+The `type` function determines the type of a given object. Logical and numeric data types are relatively simple, and we have already seen how to use them. In this and the following session, we will introduce more complex types that are frequently used in Python: the sequence data types `str`, `list`, and `tuple`, as well as the mapping data type `dict`.
+
+Before we discuss these types in detail, let's look at an important fundamental property of data types in Python.
+
+
+## Mutable and immutable
+
+Python distinguishes between two kinds of data types:
+
+- Mutable
+- Immutable
+
+Objects of a *mutable* type can be modified after they have been created. In contrast, objects of an *immutable* type cannot be modified after they have been created.
+
+We will only discuss the following two *mutable* types in this course:
+
+- List (`list`)
+- Dictionary (`dict`)
+
+In addition, we will also discuss the following *immutable* types:
+
+- Integer number (`int`), decimal number (`float`)
+- String (`str`), tuple (`tuple`)
+
+
+### Immutable types
+
+Let's start with immutable types. As an example, consider the object `2` of type `int`. This object is immutable. In the following example, the object `2` (named `a`) is not actually changed. When you set `a = 3`, you are only changing the name `a` – it then refers to the object `3` (a different object, think of the name tag analogy).
+
+We can verify that the objects are different with the `id` function (the IDs are indeed different).
+
+```{python}
+a = 2
+```
+
+```{python}
+id(a)
+```
+
+```{python}
+a = 3
+```
+
+```{python}
+id(a)
+```
+
+Strings are also immutable. If you try to modify a string after it has been created (e.g., change a character), you will get an error:
+
+```{python}
+s = "Python"
+```
+
+```{python}
+s[1]  # second character (Python indexing is zero-based)
+```
+
+```{python}
+#| error: true
+s[1] = "x"  # does not work as strings are immutable
+```
+
+Similar to strings, tuples are also immutable. A tuple is a collection (sequence) of different objects, similar to a list:
+
+```{python}
+t = 1, 2, 18.33, "Python", 44
+```
+
+```{python}
+t[0]  # first element of the tuple
+```
+
+```{python}
+t[3]  # fourth element of the tuple
+```
+
+```{python}
+#| error: true
+t[0] = "X"  # does not work as tuples are immutable
+```
+
+
+### Mutable types
+
+In constrast to the examples above, objects of a mutable type can be modified after they have been created. A list is a collection of different objects, similar to a tuple. However, a list can be modified after it has been created:
+
+```{python}
+k = [1, 2, 18.33, "Python", 44]  # list
+```
+
+```{python}
+k
+```
+
+```{python}
+k[0]  # first element
+```
+
+```{python}
+k[3]  # fourth element
+```
+
+```{python}
+k[0] = "X"  # this works!
+```
+
+```{python}
+k
+```
+
+:::{.callout-note}
+We create a list by enclosing the comma-separated elements in square brackets `[` and `]`.
+:::
+
+Dictionary objects are also mutable:
+
+```{python}
+d = {"a": 12, "b": 3.14, 5: "Python", "c": "yes"}
+```
+
+```{python}
+d
+```
+
+```{python}
+d["a"]
+```
+
+```{python}
+d["a"] = "CHANGED"  # this works!
+```
+
+```{python}
+d
+```
+
+More details on the `list`, `tuple`, and `dict` data types will follow in the next session. We will now focus on the immutable string data type.
+
+
+## Strings
+
+### Creating strings
+
+The `str` data type is a sequence data type representing character strings. Therefore, a string consists of a sequence of characters (letters, numbers, symbols, and other special characters). Strings are enclosed in single or double quotes (but the content of a string itself consists only of the characters *between* these quotes).
+
+```{python}
+s1 = "String"
+s1
+```
+
+```{python}
+s2 = 'This is also a string.'
+s2
+```
+
+```{python}
+s3 = 'This is a string with "double quotes".'
+s3
+```
+
+```{python}
+s4 = "And that's a string too!"
+s4
+```
+
+Multi-line strings, which can span multiple lines, must be enclosed in three quotes (line breaks are then possible and part of the string).
+
+```{python}
+s5 = """This is a long test.
+It can span
+multiple lines.
+"""
+```
+
+```{python}
+print(s5)  # prints the formatted string
+```
+
+```{python}
+s5  # actual string value, \n represents a line break
+```
+
+We have already encountered triple-quoted strings as docstrings for short function descriptions.
+
+:::{.callout-tip}
+If you want to create a string that contains both double quotes and single quotes, you cannot use the same type of quotation mark for both the string definition and the characters within the string. Instead, you need to use a backslash (`\`) before the quotation mark that matches the one used to define the string. This is known as an [escape sequence](https://en.wikipedia.org/wiki/Escape_sequence)):
+
+```{python}
+x = "This string contains both 'single' and \"double\" quotes."
+y = 'This string contains both \'single\' and "double" quotes.'
+```
+
+The values of the two strings `x` and `y` are identical, which shows that it does not matter whether you use single or double quotes for the string definition:
+
+```{python}
+x == y
+```
+
+The `print` function displays escape sequences in a "correct" format (i.e., it shows the actual characters represented by the escape sequences):
+
+```{python}
+print(x)
+```
+
+Non-printable characters can also be represented with escape sequences, such as a line break `\n` or a tabulator `\t`. A backslash `\` itself must also be written as an escape sequence `\\`.
+:::
+
+
+### String indexing
+
+Sequence data types support indexing, which allows us to access individual elements. The index (i.e., the position of the desired character) is specified in square brackets after the object.
+
+:::{.callout-important}
+Python uses zero-based indexing, i.e., the first element has index 0. You can interpret the index as the difference/distance to the first element.
+:::
+
+```{python}
+s = "String"
+s
+```
+
+```{python}
+s[0]  # first character
+```
+
+```{python}
+s[1]  # second character
+```
+
+Negative indices access elements from the end to the beginning, i.e., −1 is the last element, −2 is the second-to-last element, and so on.
+
+```{python}
+s[-1]  # last character
+```
+
+```{python}
+s[-2]  # second-to-last character
+```
+
+
+### String slicing
+
+In addition to indexing, Python also supports slicing, which allows us to extract a range of elements (not just one) from a sequence. We specify the start index and the stop index in square brackets, separated by a colon.
+
+:::{.callout-important}
+The start index is inclusive, and the stop index is exclusive. The stop index does *not* belong to the range!
+:::
+
+Accessing multiple elements like this (using the colon) produces a *slice* of the original sequence.
+
+:::{.callout-note}
+Omitting the start index counts from the first element (inclusive). Omitting the stop index counts up to the last element (inclusive).
+:::
+
+```{python}
+s
+```
+
+```{python}
+s[0:4]  # 4 elements, index 0, 1, 2, 3, identical to s[:4]
+```
+
+```{python}
+s[4:6]  # 2 elements, index 4, 5
+```
+
+```{python}
+s[:3]  # 3 elements, index 0, 1, 2
+```
+
+```{python}
+s[2:]  # from index 2 to the end (inclusive)
+```
+
+```{python}
+s[2:-1]  # from index 2 to the last element (exclusive)
+```
+
+```{python}
+s[1:-3]  # from index 1 to the third-to-last element (exclusive)
+```
+
+:::{.callout-tip}
+The fact that the start index is always inclusive and the stop index is always exclusive has the advantage that the difference between the two indices reflects the number of elements in the slice. For example, the slice `s[73:81]` contains exactly $81 - 73 = 8$ elements.
+:::
+
+Adjacent slices can be created intuitively, e.g.:
+
+```{python}
+s[:2]  # first two characters
+```
+
+```{python}
+s[2:]  # remaining characters (starting from the third character)
+```
+
+
+Man kann optional nach dem Endindex noch einen weiteren Doppelpunkt gefolgt von der Schrittweite angeben (standardmäßig ist diese Schrittweite 1). So kann man z.B. jedes zweite Element herausgreifen:
+
+```{python}
+s[::2]
+```
+
+Wenn man die Reihenfolge der Elemente umdrehen möchte, gibt man als Schrittweite −1 an.
+
+```{python}
+s[4:1:-1]
+```
+
+```{python}
+s[-1:-4:-1]
+```
+
+```{python}
+s[::-1]  # ganzen String umdrehen
+```
+
+Man kann sich die Indizes als Grenzen _zwischen_ den Elementen vorstellen:
+
+![](slicing.png)
+
+
+### Arbeiten mit Strings
+
+Die Funktion `len` gibt die Länge (d.h. die Anzahl der Elemente) einer Sequenz zurück.
+
+```{python}
+s
+```
+
+```{python}
+len(s)
+```
+
+```{python}
+len("Das ist ein relativ langer String")
+```
+
+Ein String der Länge 0 ist ebenfalls ein regulärer String – er besitzt nur kein Element.
+
+```{python}
+s = ""
+```
+
+```{python}
+s
+```
+
+```{python}
+len(s)
+```
+
+```{python}
+type(s)
+```
+
+Nachdem Strings immutable sind, kann man sie nachträglich nicht mehr verändern. Man muss stattdessen immer einen neuen String mit den gewünschten Änderungen erstellen:
+
+```{python}
+s = "Haus"
+```
+
+```{python}
+s[0]
+```
+
+```{python}
+#| error: true
+s[0] = "M"  # funktioniert nicht!
+```
+
+```{python}
+"M" + s[1:]  # neuen String erzeugen
+```
+
+Das obige Beispiel zeigt, dass man Strings mit dem `+`-Operator zusammenfügen kann:
+
+```{python}
+x = "a" + "b" + "c"
+x
+```
+
+Dementsprechend kann man einen String mit dem `*`-Operator vervielfältigen:
+
+```{python}
+"Hallo" * 4
+```
+
+
+### String-Methoden
+
+Für Strings gibt es in Python sehr viele praktische spezielle Funktionen. Diese werden direkt auf ein String-Objekt wie folgt angewandt:
+
+```{python}
+x.upper()
+```
+
+Zuerst gibt man das String-Objekt an (im Beispiel `x`), gefolgt von einem Punkt, gefolgt vom Namen der Funktion (im Beispiel `upper`), die man aufrufen möchte. Eine solche Funktion nennt man auch *Methode*, da sie direkt auf ein zuvor spezifiziertes Objekt angewendet wird. Im Beispiel oben wird ein neuer String erzeugt, welcher aus den Zeichen des Strings `x` in Großbuchstaben besteht. Diese Schreibweise hat den Vorteil, dass sofort klar wird, dass die Methode zum Objekt gehört; im Prinzip entspricht der Aufruf aber einem klassischen Funktionsaufruf `str.upper(x)`.
+
+```{python}
+"abcdefg".upper()  # Großbuchstaben
+```
+
+```{python}
+"dsKJsdJKJKK".lower()  # Kleinbuchstaben
+```
+
+Eine wichtige Tatsache ist, dass alle String-Methoden einen *neuen* String *zurückgeben*. Da Strings immutable sind, können diese von den Methoden ja nicht mehr verändert werden! Dies bedeutet, dass man dem Rückgabewert einen Namen zuweisen muss, wenn man diesen weiterverwenden möchte, also z.B.:
+
+```{python}
+x
+```
+
+```{python}
+x = x.upper()  # Namensschildchen x hängt am neuen String (in Großbuchstaben)
+```
+
+```{python}
+x
+```
+
+:::{.callout-tip}
+Im interaktiven Interpreter kann man einfach herausfinden, welche Methoden man auf ein Objekt anwenden kann. Dazu tippt man den Namen eines Objektes ein, gefolgt von einem Punkt, und dann drückt man die Tabulator-Taste. Es werden dann alle passenden Methoden aufgelistet. Zu jeder Methode kann man sich dann natürlich die interaktive Hilfe anzeigen lassen.
+
+Beispieleingabe:
+
+```
+x = "Test String"
+x.<TAB>
+```
+
+Alternativ kann man die Funktion `dir` verwenden, um alle möglichen Methoden eines Objektes aufzulisten, also z.B.
+
+```python
+dir(x)
+```
+:::
+
+Im Folgenden werden einige praktische String-Methoden aufgelistet.
+
+Die Methode `strip` entfernt Leerzeichen am Anfang und am Ende eines Strings.
+
+```{python}
+"      Satz mit vielen unnötigen Leerzeichen         ".strip()
+```
+
+Mit `split` kann man einen String in eine Liste von Strings aufteilen (splitten). Als Argument gibt man das Zeichen an, an dem man splitten will (standardmäßig wird dafür Whitespace, also Leerzeichen und Tabulatoren, verwendet).
+
+```{python}
+"Viele Sätze. Getrennt mit Punkten. Warum?".split(".")
+```
+
+```{python}
+"Viele Sätze. Getrennt mit Punkten. Warum?".split()
+```
+
+Das "Gegenteil" von `split` ist `join`, welches Strings in einer Liste zu einem einzelnen String verbindet. Als Verbindungszeichen wird der angegebene String verwendet.
+
+```{python}
+";".join(["das", "ist", "ein", "Test"])
+```
+
+Wir werden Listen im Detail in der nächsten Einheit kennenlernen. Vorweg aber so viel: die Möglichkeit, Strings in einer Liste mit `join` zu einem einzigen String zu verbinden ist wesentlich effizienter, als die einzelnen Strings mit `+` zu verbinden.
+
+Die Methode `count` zählt, wie oft das als Argument angegebene Zeichen im String vorkommt:
+
+```{python}
+s = "Das ist ein kurzer Satz. Nur zum Testen."
+s.count("i")
+```
+
+```{python}
+s.count("e")
+```
+
+Die Methode `find` gibt den Index im String zurück, an dem das gesuchte Zeichen erstmalig auftritt:
+
+```{python}
+s.find("s")
+```
+
+Optional kann man auch einen Startindex angeben:
+
+```{python}
+s.find("s", 3)
+```
+
+Mit dem `in`-Operator kann man abfragen, ob ein bestimmtes Zeichen in einem String enthalten ist:
+
+```{python}
+"y" in s
+```
+
+```{python}
+"i" in s
+```
+
+
+### Strings iterieren
+
+Ein String ist iterierbar, d.h. man kann mit einer `for`-Schleife über die einzelnen Elemente iterieren:
+
+```{python}
+s = "Computer"
+
+for c in s:
+    print(c)
+```
+
+Möglich wäre auch folgende `for`-Schleife, wie sie in vielen anderen Programmiersprachen üblich ist:
+
+```{python}
+s = "Computer"
+
+for i in range(len(s)):  # sollte man in Python nicht machen!
+    print(s[i])
+```
+
+Dies ist aber schlechter lesbar als die direkte Variante, daher sollte man immer direkt über einen String iterieren!
+
+Alternativ könnte man auch eine `while`-Schleife verwenden:
+
+```{python}
+s = "Computer"
+i = 0
+
+while i < len(s):
+    print(s[i])
+    i += 1
+```
+
+Im folgenden Beispiel wollen wir herausfinden, an welcher Stelle sich das Zeichen "p" im String "Computer" befindet. Dazu könnten (und sollten) wir die bereits verfügbare String-Methode `find` verwenden:
+
+```{python}
+s = "Computer"
+c = "p"  # gesuchtes Zeichen
+s.find(c)
+```
+
+Wir können aber genau dieselbe Funktionalität selbst mit einer Schleife über den String implementieren (aus didaktischen Gründen). Wir gehen so jedes einzelne Zeichen durch. Falls das aktuelle Zeichen `s[i]` an der Position `i` gleich dem gesuchten Zeichen `c` ist, brechen wir die Schleife ab und der Name `i` enthält die Position des gesuchten Zeichens.
+
+```{python}
+i = 0
+while i < len(s):
+    if s[i] == c:
+        break
+    i += 1
+
+i
+```
+
+
+## Übungen
+
+### Übung 1
+
+Schreiben Sie eine Funktion `reverse`, welche einen String in umgekehrter Reihenfolge zurückgibt.
+
+
+### Übung 2
+
+Gegeben sei folgender String:
+
+```python
+s = "educational neuroscience"
+```
+
+Gibt es eine Methode, die aus einem gegebenen String einen neuen String erzeugt, bei dem alle *Wörter* (nicht Buchstaben!) mit einem Großbuchstaben beginnen? Wenn ja, verwenden Sie diese Methode für `s` aus diesem Beispiel!
+
+
+### Übung 3
+
+Gegeben sei folgender String:
+
+```python
+s = "Edukational Neuroscience"
+```
+
+Das Zeichen `k` an der Position 3 soll durch ein `c` ersetzt werden. Wie können Sie aus `s` einen neuen String erzeugen, in welcher diese Ersetzung vorgenommen wurde?
+
+:::{.callout-note}
+Verwenden Sie Slices, um auf die Teile von `s` vor dem `k` bzw. nach dem `k` zuzugreifen.
+:::
+
+
+### Übung 4
+
+Palindrome sind Wörter oder Sätze, welche von vorn und hinten gelesen dasselbe ergeben, z.B. Anna, Lagerregal und Reittier. Palindrome können sogar aus mehreren Wörtern bzw. ganzen Sätzen bestehen, wie z.B. "Dr. Awkward" oder "Was it a cat I saw?" (allerdings nur wenn man Groß-/Kleinschreibung sowie Leerzeichen und Satzzeichen ignoriert).
+
+Schreiben Sie eine Funktion `is_palindrome`, welche einen String entgegennimmt und `True` zurückgibt, falls es sich bei dem String um ein Palindrom handelt. Wenn nicht, soll `False` zurückgegeben werden.
+
+:::{.callout-note}
+Wandeln Sie den String zuerst in Kleinbuchstaben um, denn sonst wird Anna nicht als Palindrom erkannt, da ein A nicht gleich einem a ist. Ihre Funktion muss außerdem nicht mit Sätzen funktionieren, sondern nur mit einzelnen Wörtern! Falls sie auch mit Sätzen funktionieren soll, müssen Sie alle Leerzeichen ignorieren.
+:::
+
+
+### Übung 5
+
+Die String-Methode `find` verwendet man, um in einem String einen anderen String bzw. ein Zeichen zu suchen. Im folgenden Beispiel wird der String `"t"` in `s` gesucht:
+
+```python
+s = "Educational Neuroscience"
+s.find("t")
+```
+Die Position der ersten Fundstelle wird zurückgegeben, in diesem Beispiel also 5. Wird der gesuchte String gar nicht gefunden, wird −1 zurückgegeben.
+
+Schreiben Sie eine Funktion `find(s, sub)`, welche diese Funktionalität repliziert (ohne aber die Methode `find` oder andere String-Methoden zu benutzen). Sie können davon ausgehen, dass `sub` immer nur ein einzelnes Zeichen ist! Ihre Funktion sollte also dasselbe Ergebnis liefern wie im obigen Beispiel `s.find("t")`; der Aufruf Ihrer Funktion sieht für dieses Beispiel so aus:
+
+```python
+find(s, "t")
+```
+
+:::{.callout-note}
+Verwenden Sie am besten eine `while`-Schleife, um über die einzelnen Buchstaben von `s` zu iterieren. In der Funktion ist eine Variable hilfreich, welche die aktuelle Position in `s` mitzählt (beginnend bei 0). Auch die Funktion `len`, welche die Länge eines Strings zurückgibt, könnte hilfreich sein. Beachten Sie auch, dass `return` die Funktion sofort verlässt und kein weiterer Code in der Funktion ausgeführt wird, und dass `return` an einer beliebigen Stelle in der Funktion und auch mehr als ein Mal vorhanden sein kann.
+:::
+
+
+### Übung 6
+
+Schreiben Sie eine Funktion `count(word, letter)`, welche die Anzahl der Zeichen `letter` im String `word` zurückgibt. Verwenden Sie für Ihre Lösung keine fertigen String-Methoden!
+
+Beispielsweise sollte der Aufruf `count("Werkstatttreppe", "t")` den Wert `4` zurückgeben, analog zur fertigen String-Methode `"Werkstatttreppe".count("t")`.
+
+:::{.callout-note}
+Verwenden Sie eine ähnliche Struktur wie in Übung 5, eventuell ist hier eine `for`-Schleife geeigneter. Zählen Sie in einer Variablen mit, wie oft das gesuchte Zeichen aufgetreten ist und geben Sie diesen Wert dann zum Schluss zurück.
+:::
+
+
+### Übung 7
+
+Erstellen Sie einen String namens `path` mit dem folgenden Inhalt:
+
+```
+C:\Program Files\Python\Python3.12\python.exe
+```
+
+Geben Sie `path` dann mit Hilfe der `print`-Funktion am Bildschirm aus.
