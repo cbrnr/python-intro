@@ -400,7 +400,6 @@ What are keywords in Python and how do you get a list of all keywords? What are 
 
 ### Exercise 4
 
-Wie groß ist die Oberfläche bzw. das Volumen einer Kugel mit einem Radius von $r=5$? Führen Sie die Berechnung mit Python durch und weisen Sie den Ergebnissen die Namen `area` bzw. `volume` zu. Verwenden Sie für den Radius den Namen `r` und setzen Sie den Wert von `r` auf 5.
 What is the surface area and volume of a sphere with a radius of $r=5$? Perform these calculations with Python and assign the results to the names `area` and `volume`, respectively. Use the name `r` for the radius and set the value of `r` to 5.
 
 :::{.callout-note}

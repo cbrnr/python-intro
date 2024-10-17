@@ -161,7 +161,7 @@ print(area, volume)
 type(True)
 ```
 ```{python}
-x = "False"
+x = "True"
 type(x)
 ```
 ```{python}
