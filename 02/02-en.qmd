@@ -275,4 +275,4 @@ Inspect the documentation for the `print` and `sum` functions directly in the Py
 
 ### Exercise 5
 
-Desribe how you can run a Python script in Visual Studio Code! In addition, explain how you can run a single line or multiple selected lines in the interactive interpreter directly in Visual Studio Code!
+Describe how you can run a Python script in Visual Studio Code! In addition, explain how you can run a single line or multiple selected lines in the interactive interpreter directly in Visual Studio Code!
