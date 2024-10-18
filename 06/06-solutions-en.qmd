@@ -51,7 +51,7 @@ def is_palindrome(s):
 
 ## Exercise 5
 
-Da wir die Position des gesuchten Zeichens benötigen, ist eine `while`-Schleife eine geeignete Lösung (wir wissen nicht im Vorhinein, wie viele Iterationen stattfinden werden). Hier zählen wir mit dem Namen `i` die aktuelle Position im String `s` mit.
+We could use a `while` loop here, because we don't know in advance how many iterations will be needed until we find the character. We track the current position in the string `s` with the name `i`:
 
 ```{python}
 def find(s, sub):
@@ -59,18 +59,18 @@ def find(s, sub):
     while i < len(s):
         if s[i] == sub:
             return i
-        i += 1  # erhöhe i um 1 (äquivalent zu i = i + 1)
-    return -1  # wird nur zurückgegeben, falls vorher kein return erfolgte
+        i += 1  # increment i (could also be written as i = i + 1)
+    return -1  # only returned if the character was not found
 ```
 
-Eine Alternative mit `for`-Schleife ist aber auch möglich (die Funktion `enumerate` gibt sowohl die Position als auch das aktuelle Zeichen innerhalb des Strings `s` zurück):
+Here's an alternative solution using a `for` loop (the `enumerate` function returns both the position and the current character within the string `s):
 
 ```{python}
 def find(s, sub):
     for i, char in enumerate(s):
         if char == sub:
             return i
-    return -1  # wird nur zurückgegeben falls das Zeichen nicht gefunden wurde
+    return -1  # only returned if the character was not found
 ```
 
 
@@ -78,18 +78,17 @@ def find(s, sub):
 
 ```{python}
 def count(word, letter):
-    i = 0  # wir haben das Zeichen noch nicht gefunden
+    i = 0  # we have not found any occurrences yet
     for c in word:
-        if c == letter:  # falls es das gesuchte Zeichen ist
-            i += 1  # erhöhen wir i um 1 (i = i + 1 oder kurz i += 1)
+        if c == letter:  # if we find the letter
+            i += 1  # we increment the counter i by 1
     return i
 ```
 
 
 ## Exercise 7
 
-
 ```{python}
-path = "C:\\Program Files\\Python\\Python3.12\\python.exe"
+path = "C:\\Program Files\\Python\\Python3.13\\python.exe"
 print(path)
 ```

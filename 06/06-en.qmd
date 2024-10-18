@@ -319,14 +319,19 @@ s[:2]  # first two characters
 s[2:]  # remaining characters (starting from the third character)
 ```
 
+Optionally, we can specify the step size after the stop index (the default step size is 1). For example, we can extract every second element starting at index 1 and stopping at index 5 (exclusive):
 
-Man kann optional nach dem Endindex noch einen weiteren Doppelpunkt gefolgt von der Schrittweite angeben (standardmäßig ist diese Schrittweite 1). So kann man z.B. jedes zweite Element herausgreifen:
+```{python}
+s[1:5:2]  # [start:stop:step]
+```
+
+This way, we can extract every second character of a string as follows:
 
 ```{python}
 s[::2]
 ```
 
-Wenn man die Reihenfolge der Elemente umdrehen möchte, gibt man als Schrittweite −1 an.
+To reverse the order of characters, we specify a negative step size:
 
 ```{python}
 s[4:1:-1]
@@ -337,17 +342,17 @@ s[-1:-4:-1]
 ```
 
 ```{python}
-s[::-1]  # ganzen String umdrehen
+s[::-1]  # reverse entire string
 ```
 
-Man kann sich die Indizes als Grenzen _zwischen_ den Elementen vorstellen:
+You can think of the indices as boundaries *between* the string elements:
 
 ![](slicing.png)
 
 
-### Arbeiten mit Strings
+### Working with strings
 
-Die Funktion `len` gibt die Länge (d.h. die Anzahl der Elemente) einer Sequenz zurück.
+The `len` function returns the length (i.e., the number of elements) of a sequence (for strings, the number of elements corresponds to the number of characters).
 
 ```{python}
 s
@@ -358,10 +363,10 @@ len(s)
 ```
 
 ```{python}
-len("Das ist ein relativ langer String")
+len("This is a relatively long string.")
 ```
 
-Ein String der Länge 0 ist ebenfalls ein regulärer String – er besitzt nur kein Element.
+A string of length 0 is still a valid string – it just contains no characters:
 
 ```{python}
 s = ""
@@ -379,10 +384,10 @@ len(s)
 type(s)
 ```
 
-Nachdem Strings immutable sind, kann man sie nachträglich nicht mehr verändern. Man muss stattdessen immer einen neuen String mit den gewünschten Änderungen erstellen:
+Strings are immutable, i.e., they cannot be changed after they have been created. Instead, you always have to create a new string:
 
 ```{python}
-s = "Haus"
+s = "house"
 ```
 
 ```{python}
@@ -391,53 +396,55 @@ s[0]
 
 ```{python}
 #| error: true
-s[0] = "M"  # funktioniert nicht!
+s[0] = "m"  # does not work
 ```
 
 ```{python}
-"M" + s[1:]  # neuen String erzeugen
+"m" + s[1:]  # create new string
 ```
 
-Das obige Beispiel zeigt, dass man Strings mit dem `+`-Operator zusammenfügen kann:
+The previous example also shows that you can concatenate strings with the `+` operator:
 
 ```{python}
 x = "a" + "b" + "c"
 x
 ```
 
-Dementsprechend kann man einen String mit dem `*`-Operator vervielfältigen:
+Therefore, you can duplicate a string with the `*` operator:
 
 ```{python}
-"Hallo" * 4
+"Hello" * 4
 ```
 
 
-### String-Methoden
+### String methods
 
-Für Strings gibt es in Python sehr viele praktische spezielle Funktionen. Diese werden direkt auf ein String-Objekt wie folgt angewandt:
+Python provides many useful specific functions for strings. These are applied directly to a string object as follows:
 
 ```{python}
 x.upper()
 ```
 
-Zuerst gibt man das String-Objekt an (im Beispiel `x`), gefolgt von einem Punkt, gefolgt vom Namen der Funktion (im Beispiel `upper`), die man aufrufen möchte. Eine solche Funktion nennt man auch *Methode*, da sie direkt auf ein zuvor spezifiziertes Objekt angewendet wird. Im Beispiel oben wird ein neuer String erzeugt, welcher aus den Zeichen des Strings `x` in Großbuchstaben besteht. Diese Schreibweise hat den Vorteil, dass sofort klar wird, dass die Methode zum Objekt gehört; im Prinzip entspricht der Aufruf aber einem klassischen Funktionsaufruf `str.upper(x)`.
+The general syntax is as follows: first, we specify the string object (in the example `x`), followed by a dot, followed by the name of the function (in the example `upper`) that you want to call. Such a function is also called a *method*, as it is applied directly to a previously specified object. In the example, the `upper` method creates a new string, consisting of the characters of the string `x` in uppercase.
+
+This notation has the advantage that it is immediately clear that the method *belongs* to the object; in principle, however, the call corresponds to a classic function call `str.upper(x)`.
 
 ```{python}
-"abcdefg".upper()  # Großbuchstaben
+"abcdefg".upper()  # uppercase
 ```
 
 ```{python}
-"dsKJsdJKJKK".lower()  # Kleinbuchstaben
+"dsKJsdJKJKK".lower()  # lowercase
 ```
 
-Eine wichtige Tatsache ist, dass alle String-Methoden einen *neuen* String *zurückgeben*. Da Strings immutable sind, können diese von den Methoden ja nicht mehr verändert werden! Dies bedeutet, dass man dem Rückgabewert einen Namen zuweisen muss, wenn man diesen weiterverwenden möchte, also z.B.:
+Importantly, all string methods *return* a *new* string. Since strings are immutable, they cannot be changed by the methods! This means that you should assign a name to the return value if you want to use the result, for example:
 
 ```{python}
 x
 ```
 
 ```{python}
-x = x.upper()  # Namensschildchen x hängt am neuen String (in Großbuchstaben)
+x = x.upper()  # assign name x to result of upper method
 ```
 
 ```{python}
@@ -445,52 +452,52 @@ x
 ```
 
 :::{.callout-tip}
-Im interaktiven Interpreter kann man einfach herausfinden, welche Methoden man auf ein Objekt anwenden kann. Dazu tippt man den Namen eines Objektes ein, gefolgt von einem Punkt, und dann drückt man die Tabulator-Taste. Es werden dann alle passenden Methoden aufgelistet. Zu jeder Methode kann man sich dann natürlich die interaktive Hilfe anzeigen lassen.
+In the interactive interpreter, you can easily find out which methods you can apply to an object. To do this, type the name of an object, followed by a dot, and then press the <kbd>tab</kbd> key, which will list all available methods.
 
-Beispieleingabe:
+For example, if you have a string `x`, you can type:
 
 ```
 x = "Test String"
 x.<TAB>
 ```
 
-Alternativ kann man die Funktion `dir` verwenden, um alle möglichen Methoden eines Objektes aufzulisten, also z.B.
+Alternatively, you can use the `dir` function to list all possible methods of an object, for example:
 
 ```python
 dir(x)
 ```
 :::
 
-Im Folgenden werden einige praktische String-Methoden aufgelistet.
+We are now going to discuss some useful string methods.
 
-Die Methode `strip` entfernt Leerzeichen am Anfang und am Ende eines Strings.
-
-```{python}
-"      Satz mit vielen unnötigen Leerzeichen         ".strip()
-```
-
-Mit `split` kann man einen String in eine Liste von Strings aufteilen (splitten). Als Argument gibt man das Zeichen an, an dem man splitten will (standardmäßig wird dafür Whitespace, also Leerzeichen und Tabulatoren, verwendet).
+The `strip` method removes leading and trailing whitespace from a string:
 
 ```{python}
-"Viele Sätze. Getrennt mit Punkten. Warum?".split(".")
+"      Sentence with whitespace.         ".strip()
+```
+
+The `split` method splits a string into a list of strings. The optional argument specifies the character at which to split (by default, whitespace, i.e., spaces and tabs, is used).
+
+```{python}
+"Some sentences. Separated by periods. Why?".split(".")
 ```
 
 ```{python}
-"Viele Sätze. Getrennt mit Punkten. Warum?".split()
+"Some sentences. Separated by periods. Why?".split()
 ```
 
-Das "Gegenteil" von `split` ist `join`, welches Strings in einer Liste zu einem einzelnen String verbindet. Als Verbindungszeichen wird der angegebene String verwendet.
+The opposite of `split` is `join`, which concatenates strings in a list into a single string. The specified string is used as the joining character.
 
 ```{python}
 ";".join(["das", "ist", "ein", "Test"])
 ```
 
-Wir werden Listen im Detail in der nächsten Einheit kennenlernen. Vorweg aber so viel: die Möglichkeit, Strings in einer Liste mit `join` zu einem einzigen String zu verbinden ist wesentlich effizienter, als die einzelnen Strings mit `+` zu verbinden.
+We will discuss lists in the next session, but for now, remember that the ability to concatenate strings in a list with `join` into a single string is more efficient than concatenating individual strings with `+`.
 
-Die Methode `count` zählt, wie oft das als Argument angegebene Zeichen im String vorkommt:
+The `count` method counts how often a specified character occurs in the string:
 
 ```{python}
-s = "Das ist ein kurzer Satz. Nur zum Testen."
+s = "This is a short string, just for testing."
 s.count("i")
 ```
 
@@ -498,19 +505,19 @@ s.count("i")
 s.count("e")
 ```
 
-Die Methode `find` gibt den Index im String zurück, an dem das gesuchte Zeichen erstmalig auftritt:
+The `find` method returns the index in the string where the specified character first occurs:
 
 ```{python}
 s.find("s")
 ```
 
-Optional kann man auch einen Startindex angeben:
+Optionally, you can also specify a starting index:
 
 ```{python}
-s.find("s", 3)
+s.find("s", 4)
 ```
 
-Mit dem `in`-Operator kann man abfragen, ob ein bestimmtes Zeichen in einem String enthalten ist:
+The `in` operator can be used to check if a specific character is contained in a string:
 
 ```{python}
 "y" in s
@@ -521,9 +528,9 @@ Mit dem `in`-Operator kann man abfragen, ob ein bestimmtes Zeichen in einem Stri
 ```
 
 
-### Strings iterieren
+### Iterating over strings
 
-Ein String ist iterierbar, d.h. man kann mit einer `for`-Schleife über die einzelnen Elemente iterieren:
+A string is iterable, i.e., you can iterate over the individual elements with a `for` loop:
 
 ```{python}
 s = "Computer"
@@ -532,18 +539,18 @@ for c in s:
     print(c)
 ```
 
-Möglich wäre auch folgende `for`-Schleife, wie sie in vielen anderen Programmiersprachen üblich ist:
+Alternatively, you could also use the following `for` loop, which is common in many other programming languages:
 
 ```{python}
 s = "Computer"
 
-for i in range(len(s)):  # sollte man in Python nicht machen!
+for i in range(len(s)):  # not recommended!
     print(s[i])
 ```
 
-Dies ist aber schlechter lesbar als die direkte Variante, daher sollte man immer direkt über einen String iterieren!
+However, using `range` is less readable than directly iterating over the string, so you should always prefer the direct variant!
 
-Alternativ könnte man auch eine `while`-Schleife verwenden:
+We could also use a `while` loop to iterate over the string, but this is less common and less readable (remember that we usually use `while` loops when we do not know the number of iterations in advance):
 
 ```{python}
 s = "Computer"
@@ -554,15 +561,15 @@ while i < len(s):
     i += 1
 ```
 
-Im folgenden Beispiel wollen wir herausfinden, an welcher Stelle sich das Zeichen "p" im String "Computer" befindet. Dazu könnten (und sollten) wir die bereits verfügbare String-Methode `find` verwenden:
+Let's look at a slightly more complex example. We want to find out at which position the character "p" is located in the string "Computer". Of course, we could (and should) use the `find` method:
 
 ```{python}
 s = "Computer"
-c = "p"  # gesuchtes Zeichen
+c = "p"  # character to find
 s.find(c)
 ```
 
-Wir können aber genau dieselbe Funktionalität selbst mit einer Schleife über den String implementieren (aus didaktischen Gründen). Wir gehen so jedes einzelne Zeichen durch. Falls das aktuelle Zeichen `s[i]` an der Position `i` gleich dem gesuchten Zeichen `c` ist, brechen wir die Schleife ab und der Name `i` enthält die Position des gesuchten Zeichens.
+However, we can implement a function that performs the same task for educational purposes. In general, we use a loop to iterate over each character. If the current character `s[i]` at position `i` is equal to the character `c` we are looking for, we break out of the loop, and the variable `i` contains the index of the character:
 
 ```{python}
 i = 0
@@ -575,88 +582,90 @@ i
 ```
 
 
-## Übungen
+## Exercises
 
-### Übung 1
+### Exercise 1
 
-Schreiben Sie eine Funktion `reverse`, welche einen String in umgekehrter Reihenfolge zurückgibt.
+Write a function `reverse` that returns a string in reverse order.
 
 
-### Übung 2
+### Exercise 2
 
-Gegeben sei folgender String:
+Given the following string:
 
 ```python
 s = "educational neuroscience"
 ```
 
-Gibt es eine Methode, die aus einem gegebenen String einen neuen String erzeugt, bei dem alle *Wörter* (nicht Buchstaben!) mit einem Großbuchstaben beginnen? Wenn ja, verwenden Sie diese Methode für `s` aus diesem Beispiel!
+Is there a method that takes a given string and creates a new string in which all *words* (not letters!) start with a capital letter? If so, apply this method to `s`!
 
 
-### Übung 3
+### Exercise 3
 
-Gegeben sei folgender String:
+Given the following string:
 
 ```python
 s = "Edukational Neuroscience"
 ```
 
-Das Zeichen `k` an der Position 3 soll durch ein `c` ersetzt werden. Wie können Sie aus `s` einen neuen String erzeugen, in welcher diese Ersetzung vorgenommen wurde?
+The character `k` at index 3 should be replaced by a `c`. How can you create a new string from (parts of) `s` in which this replacement has been made?
 
 :::{.callout-note}
-Verwenden Sie Slices, um auf die Teile von `s` vor dem `k` bzw. nach dem `k` zuzugreifen.
+Use slices to access the parts of `s` before and after `k`.
 :::
 
 
-### Übung 4
+### Exercise 4
 
-Palindrome sind Wörter oder Sätze, welche von vorn und hinten gelesen dasselbe ergeben, z.B. Anna, Lagerregal und Reittier. Palindrome können sogar aus mehreren Wörtern bzw. ganzen Sätzen bestehen, wie z.B. "Dr. Awkward" oder "Was it a cat I saw?" (allerdings nur wenn man Groß-/Kleinschreibung sowie Leerzeichen und Satzzeichen ignoriert).
+Palindromes are words or sentences that read the same forwards and backwards, e.g., Anna, radar, and racecar. Palindromes can even consist of multiple words or entire sentences, such as "Dr. Awkward" or "Was it a cat I saw?" (but only if you ignore case, spaces, and punctuation).
 
-Schreiben Sie eine Funktion `is_palindrome`, welche einen String entgegennimmt und `True` zurückgibt, falls es sich bei dem String um ein Palindrom handelt. Wenn nicht, soll `False` zurückgegeben werden.
+Write a function `is_palindrome` that takes a string and returns `True` if the string is a palindrome or `False` otherwise.
 
 :::{.callout-note}
-Wandeln Sie den String zuerst in Kleinbuchstaben um, denn sonst wird Anna nicht als Palindrom erkannt, da ein A nicht gleich einem a ist. Ihre Funktion muss außerdem nicht mit Sätzen funktionieren, sondern nur mit einzelnen Wörtern! Falls sie auch mit Sätzen funktionieren soll, müssen Sie alle Leerzeichen ignorieren.
+First convert the string to lowercase, as otherwise e.g. Anna will not be recognized as a palindrome (since an A is not equal to an a). Your function does not have to work with sentences, but only with individual words! If you want it to work with sentences though, you have to ignore all spaces and punctuation, which you can achieve with the `replace` method.
 :::
 
 
-### Übung 5
+### Exercise 5
 
-Die String-Methode `find` verwendet man, um in einem String einen anderen String bzw. ein Zeichen zu suchen. Im folgenden Beispiel wird der String `"t"` in `s` gesucht:
+The string method `find` is used to search for a string or character in a given string. The following example demonstrates how to find the first occurrence of the character `t` in the string `s`:
 
 ```python
 s = "Educational Neuroscience"
 s.find("t")
 ```
-Die Position der ersten Fundstelle wird zurückgegeben, in diesem Beispiel also 5. Wird der gesuchte String gar nicht gefunden, wird −1 zurückgegeben.
 
-Schreiben Sie eine Funktion `find(s, sub)`, welche diese Funktionalität repliziert (ohne aber die Methode `find` oder andere String-Methoden zu benutzen). Sie können davon ausgehen, dass `sub` immer nur ein einzelnes Zeichen ist! Ihre Funktion sollte also dasselbe Ergebnis liefern wie im obigen Beispiel `s.find("t")`; der Aufruf Ihrer Funktion sieht für dieses Beispiel so aus:
+The method return the index of the first occurrence of the search character. In this example, it returns 5. If the search string is not found at all, it returns −1.
+
+Define a function `find(s, sub)` that replicates this functionality (without using the `find` method or other string methods). Your function should return the same result as in the example `s.find("t")`; the call to your function for this example looks like this:
 
 ```python
 find(s, "t")
 ```
 
 :::{.callout-note}
-Verwenden Sie am besten eine `while`-Schleife, um über die einzelnen Buchstaben von `s` zu iterieren. In der Funktion ist eine Variable hilfreich, welche die aktuelle Position in `s` mitzählt (beginnend bei 0). Auch die Funktion `len`, welche die Länge eines Strings zurückgibt, könnte hilfreich sein. Beachten Sie auch, dass `return` die Funktion sofort verlässt und kein weiterer Code in der Funktion ausgeführt wird, und dass `return` an einer beliebigen Stelle in der Funktion und auch mehr als ein Mal vorhanden sein kann.
+Use a loop to iterate over the individual characters of `s`. A variable that tracks the current position in `s` (starting at 0) is helpful in the function. The `len` function, which returns the length of a string, could also be helpful. Also note that `return` immediately exits the function and no further code in the function is executed, and that `return` can be present at any point in the function and can be present more than once.
 :::
 
 
-### Übung 6
+### Exercise 6
 
-Schreiben Sie eine Funktion `count(word, letter)`, welche die Anzahl der Zeichen `letter` im String `word` zurückgibt. Verwenden Sie für Ihre Lösung keine fertigen String-Methoden!
+Write a function `count(word, letter)` that returns the number of occurrences of the character `letter` in the string `word`. Do not use any built-in string methods for your solution!
 
-Beispielsweise sollte der Aufruf `count("Werkstatttreppe", "t")` den Wert `4` zurückgeben, analog zur fertigen String-Methode `"Werkstatttreppe".count("t")`.
+For example, the call `count("Possession", "s")` should return `4`, analogous to the built-in string method `"Possession".count("s")`.
+
 
 :::{.callout-note}
-Verwenden Sie eine ähnliche Struktur wie in Übung 5, eventuell ist hier eine `for`-Schleife geeigneter. Zählen Sie in einer Variablen mit, wie oft das gesuchte Zeichen aufgetreten ist und geben Sie diesen Wert dann zum Schluss zurück.
+Use a similar structure as in Exercise 5 (i.e., iterate over all characters of the string). A `for` loop is possibly more suitable here. Count how often the search character has occurred in a variable and return this value at the end.
 :::
 
 
-### Übung 7
+### Exercise 7
 
-Erstellen Sie einen String namens `path` mit dem folgenden Inhalt:
+Create a string `path` with the following content:
 
 ```
-C:\Program Files\Python\Python3.12\python.exe
+C:\Program Files\Python\Python3.13\python.exe
 ```
 
-Geben Sie `path` dann mit Hilfe der `print`-Funktion am Bildschirm aus.
+Use the `print` function to display `path` on the screen.
