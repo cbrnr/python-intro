@@ -1,8 +1,8 @@
 ---
-title: "Übungen"
+title: "Wiederholung"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2024-04-29
+date: 2024-11-14
 format:
   html:
     page-layout: full
@@ -44,7 +44,11 @@ Schreiben Sie eine Funktion `word_count`, welche die Anzahl der Wörter in einem
 
 Testen Sie die Funktion mit folgendem Text:
 
-> Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python’s elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas.
+> Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python's elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas.
+
+::: {.callout-note}
+Für diese Funktion reicht uns eine einfache Definition von Wörtern, die durch Leerzeichen getrennt sind. In der Praxis ist die Definition von Wörtern komplexer, da auch Satzzeichen und andere Zeichen berücksichtigt werden müssten.
+:::
 
 
 ## Übung 4

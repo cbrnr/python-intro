@@ -1,0 +1,60 @@
+---
+title: "Review"
+subtitle: "Introduction to Python and PsychoPy"
+author: "Clemens Brunner"
+date: 2024-11-14
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+---
+
+## Exercise 1
+
+Electrical resistors can be connected in series or parallel. In a series connection, the resistances add up, while in a parallel connection the reciprocal of the total resistance is equal to the sum of the reciprocals of the individual resistances. This can be expressed in formulas as follows:
+
+- Series connection: $R_G = R_1 + R_2$
+- Parallel connection: $R_G = R_1 \parallel R_2 \rightarrow \frac{1}{R_G} = \frac{1}{R_1} + \frac{1}{R_2}$
+
+Write two functions `serial` and `parallel` that compute and return the total resistance. Both functions should have two parameters `r1` and `r2` that represent the two resistances to be combined, respectively.
+
+Test both functions with resistances $R_1 = 10\,\Omega$ and $R_2 = 20\,\Omega$. The total resistances should be $30\,\Omega$ (series connection) and $6.67\,\Omega$ (parallel connection).
+
+In addition, calculate the total resistance of $(R_1 + R_2) \parallel R_3$ with values $R_1 = 10\,\Omega$, $R_2 = 20\,\Omega$, and $R_3 = 50\,\Omega$ using a single expression!
+
+
+## Exercise 2
+
+Write a program that prompts the user to enter a number between 1 and 12 (corresponding to the months of the year). The program should then output the name of the month. If the entered number is not in the range 1 to 12, an error message should be displayed. The input should be repeated until the user enters a valid number.
+
+To determine the name of the month, define a function `month_name` that takes the month number as an argument and returns the name of the month (as a string).
+
+
+## Exercise 3
+
+Define a function `word_count` that counts the number of words in a text. The function should have two parameters: `text` (the text in which the words should be counted) and `sep` (the separator, default is a space). To solve this problem, use the `split` string method, which returns a list of strings; the length of this list can be determined with the `len` function.
+
+Test the function with the following text:
+
+> Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python's elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas.
+
+::: {.callout-note}
+This function only requires a simple definition of words separated by spaces. In practice, the definition of words is more complex, as punctuation marks and other characters would also need to be considered.
+:::
+
+
+## Exercise 4
+
+Write a function `factorial` that calculates the factorial of a positive number $n$. The factorial of a number $n$ is the product of all positive integers less than or equal to $n$. The factorial of 0 is defined as 1.
+
+
+## Exercise 5
+
+Write a function `is_divisible` that checks whether a number $n$ is divisible by another number $m$ without a remainder. The function should have two parameters: `n` (the number to be checked) and `m` (the number to divide by). The function should return `True` if the division is possible without a remainder, otherwise `False`.
+
+Test the function with the number pairs (10, 2), (10, 3), (10, 5), and (10, 7).

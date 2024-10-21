@@ -1,0 +1,173 @@
+---
+title: "Solutions"
+subtitle: "Introduction to Python and PsychoPy"
+author: "Clemens Brunner"
+date: 2024-11-14
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+---
+
+## Exercise 1
+
+```{python}
+def serial(r1, r2):
+    return r1 + r2
+
+
+def parallel(r1, r2):
+    return 1 / (1 / r1 + 1 / r2)
+
+
+r1 = 10
+r2 = 20
+r3 = 50
+
+print(serial(r1, r2))
+print(parallel(r1, r2))
+print(parallel(serial(r1, r2), r3))
+```
+
+
+## Exercise 2
+
+We could solve this task more concisely using lists or dictionaries. However, since we have not covered these data types yet, we use a long `if`-`elif`-`else` chain in the function `month_name`.
+
+```python
+def month_name(month):
+    if month == 1:
+        return "January"
+    elif month == 2:
+        return "February"
+    elif month == 3:
+        return "March"
+    elif month == 4:
+        return "April"
+    elif month == 5:
+        return "May"
+    elif month == 6:
+        return "June"
+    elif month == 7:
+        return "July"
+    elif month == 8:
+        return "August"
+    elif month == 9:
+        return "September"
+    elif month == 10:
+        return "October"
+    elif month == 11:
+        return "November"
+    elif month == 12:
+        return "December"
+
+
+while True:
+    month = int(input("Please enter a number between 1 and 12: "))
+    if 1 <= month <= 12:
+        break
+    print("Invalid input, please try again.")
+
+print(month_name(month))
+```
+
+For the sake of completeness, here is the function definition with a list (the rest of the code remains the same):
+
+```python
+def month_name(month):
+    months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+    ]
+    return months[month - 1]
+```
+
+Here is the solution using a dictionary:
+
+```python
+def month_name(month):
+    months = {
+        1: "January",
+        2: "February",
+        3: "March",
+        4: "April",
+        5: "May",
+        6: "June",
+        7: "July",
+        8: "August",
+        9: "September",
+        10: "October",
+        11: "November",
+        12: "December",
+    }
+    return months[month]
+```
+
+The shortest solution, however, is to use the `calendar` module from the standard library:
+
+```python
+import calendar
+
+def month_name(month):
+    return calendar.month_name[month]
+```
+
+
+## Exercise 3
+
+```{python}
+def word_count(text, sep=" "):
+    return len(text.split(sep))
+
+
+text = (
+    "Python is an easy to learn, powerful programming language. It has efficient "
+    "high-level data structures and a simple but effective approach to object-oriented "
+    "programming. Python's elegant syntax and dynamic typing, together with its "
+    "interpreted nature, make it an ideal language for scripting and rapid application "
+    "development in many areas."
+)
+print(word_count(text))
+```
+
+
+## Exercise 4
+
+```{python}
+def factorial(n):
+    if n == 0:
+        return 1
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
+```
+
+
+## Exercise 5
+
+```{python}
+def is_divisible(n, m):
+    return n % m == 0
+
+
+print(is_divisible(10, 2))
+print(is_divisible(10, 3))
+print(is_divisible(10, 5))
+print(is_divisible(10, 7))
+```
