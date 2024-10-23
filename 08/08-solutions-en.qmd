@@ -1,0 +1,65 @@
+---
+title: "8 – Solutions"
+subtitle: "Introduction to Python and PsychoPy"
+author: "Clemens Brunner"
+date: 2024-11-28
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+---
+
+## Exercise 1
+
+```python
+lst = range(0, 101, 2)
+
+with open("ex1.txt", "w") as f:
+    f.write("\n".join([str(x) for x in lst]))
+```
+
+
+## Exercise 2
+
+```python
+with open("ex2.txt", "w") as f:
+    f.write(",".join([str(x) for x in lst]))
+```
+
+
+## Exercise 3
+
+```{python}
+with open("sowpods.txt") as f:
+    for _ in range(6):  # skip the first 6 lines
+        f.readline()
+    counter = 0
+    for line in f:
+        if len(line.strip()) > 0:  # there are empty lines in the file
+            counter += 1
+
+print(f"There are {counter} words in the Scrabble list.")
+```
+
+
+## Exercise 4
+
+```{python}
+with open("sowpods.txt") as f:
+    for _ in range(6):  # skip the first 6 lines
+        f.readline()
+    counter = 0
+    for line in f:
+        if len(line.strip()) > 14:
+            counter += 1
+            # print(line.strip())  # print words with 15+ letters
+
+print(f"There are {counter} words with 15+ letters in the Scrabble list.")
+```
+
+If you want to print the words that have 15 or more letters, you can uncomment the corresponding line (i.e., remove the `#`).

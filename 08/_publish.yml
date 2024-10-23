@@ -6,3 +6,11 @@
   netlify:
     - id: b75919a6-fc1e-4eb6-93d7-e2edce0e245f
       url: 'https://python-24w-08-solutions-de.netlify.app'
+- source: 08-en.qmd
+  netlify:
+    - id: 7267ed48-0672-45af-a015-4b1cb2cf132d
+      url: 'https://python-24w-08-en.netlify.app'
+- source: 08-solutions-en.qmd
+  netlify:
+    - id: 29db1ab1-e93b-4f17-8222-cd43831caa70
+      url: 'https://python-24w-08-solutions-en.netlify.app'
