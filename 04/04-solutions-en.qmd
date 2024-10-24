@@ -36,7 +36,6 @@ help(str)
 str(59)  # returns '59' (str)
 ```
 
-Die Funktion `int` erstellt ein Integer-Objekt:
 The `int` function creates an integer object:
 
 ```python

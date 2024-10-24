@@ -24,12 +24,12 @@ A function has a clearly defined task. In Python, functions are used to structur
 We have already learned about some functions like `print` and `type` in previous sessions.
 :::
 
-## Funktionsaufruf
 
-Eine Funktion *aufrufen* bedeutet, dass der in ihr enthaltene Code (also das "Mini-Programm") ausgeführt wird – die Funktion "verrichtet" also ihre Arbeit.
-*Calling* a function means executing the code contained within it (i.e., the "mini program") – the function "does" its work. In Python, you call a function by using its name followed by a *pair of parentheses*. Inside the parentheses, you pass the *arguments* to the function (if necessary). Arguments are the values provided to a function that it needs to carry out its task. For example, the `type` function requires one argument; otherwise, it it cannot perform its intended task. Similarly, the `math.sqrt` function from the `math` module requires one argument to calculate the square root of the given number.
+## Calling functions
 
-Here are two examples of calling two differenct functions with one argument each:
+*Calling* a function means executing the code contained within it (i.e., the "mini script") – the function "does" its work. In Python, you call a function by using its name followed by a *pair of parentheses*. Inside the parentheses, you pass the *arguments* to the function (if necessary). Arguments are the values provided to a function that it needs to carry out its task. For example, the `type` function requires one argument; otherwise, it it cannot perform its intended task. Similarly, the `math.sqrt` function from the `math` module requires one argument to calculate the square root of the given number.
+
+Here are two examples of calling two different functions with one argument each:
 
 ```{python}
 print("Hello")
@@ -87,7 +87,6 @@ After the function name, a pair of parentheses follows. Inside these parentheses
 def test_function()  # no parameters
 ```
 
-Falls eine Funktion zwei Parameter haben soll, würde man dies wie folgt anschreiben:
 If a function needs to have two parameters, you would write it like this:
 
 ```python
