@@ -163,7 +163,7 @@ All parameters defined in the function header must be provided with specific arg
 :::
 
 :::{.callout-tip}
-By convention, it is common to include a brief description of the function in a so-called *docstring* in the first line of the function body. Tthis string can span multiple lines and is enclosed in triple quotation marks `"""`. While the presence of a docstring does not affect the function's functionality, it serves as documentation and reflects good coding practice, as shown in the following example:
+By convention, it is common to include a brief description of the function in a so-called *docstring* in the first line of the function body. This string can span multiple lines and is enclosed in triple quotation marks `"""`. While the presence of a docstring does not affect the function's functionality, it serves as documentation and reflects good coding practice, as shown in the following example:
 
 ```{python}
 def test_function():

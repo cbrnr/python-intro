@@ -18,12 +18,9 @@ theme:
 
 Complex programs do not run linearly (i.e. line by line from the beginning of a script to the end), but include branches and loops. These so-called control structures control the program flow. Comparisons play a crucial role in determining whether certain lines of code are executed or not, and how often they are repeated.
 
-Schon bei Funktionen haben wir beobachtet, dass Programmcode nicht linear ausgeführt wird, denn erst beim *Aufrufen* einer Funktion springt Python zu den entsprechenden Zeilen im Funktionskörper und führt diese aus.
 We have already noted that program code does not always run in a linear fashion. For example, Python only jumps to and executes the relevant lines in a function when that function is *called*.
 
 :::{.callout-tip}
-Mit Hilfe des sogenannten [Debuggers](https://code.visualstudio.com/docs/editor/debugging) kann man in Visual Studio Code ein Script "in Zeitlupe" ausführen. Im Debug-Modus wartet der Python Interpreter nämlich nach jedem Befehl, bis der nächste manuell gestartet wird. Das gibt uns die Möglichkeit, den Ablauf des Programmes sowie dessen Zustand in jedem Schritt zu beobachten. Dabei geht man wie folgt vor:
-
 Using the so-called [debugger](https://code.visualstudio.com/docs/editor/debugging) in Visual Studio Code, you can run a script in "slow motion". In debug mode, the Python interpreter waits after each command until the next one is manually started. This allows us to observe the program flow and its state at each step. Here's how it works:
 
 1. First, click to the left of the first line to set a breakpoint (which appears as a red dot). Program execution will stop at this line.

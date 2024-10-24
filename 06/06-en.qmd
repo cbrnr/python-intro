@@ -107,7 +107,7 @@ t[0] = "X"  # does not work as tuples are immutable
 
 ### Mutable types
 
-In constrast to the examples above, objects of a mutable type can be modified after they have been created. A list is a collection of different objects, similar to a tuple. However, a list can be modified after it has been created:
+In contrast to the examples above, objects of a mutable type can be modified after they have been created. A list is a collection of different objects, similar to a tuple. However, a list can be modified after it has been created:
 
 ```{python}
 k = [1, 2, 18.33, "Python", 44]  # list

@@ -176,9 +176,9 @@ The `readline` method reads *a single line* from the file from the current posit
 
 ```{python}
 with open("test.txt") as f:
-    print("1. Zeile: ", f.readline(), end="")
-    print("2. Zeile: ", f.readline(), end="")
-    print("3. Zeile: ", f.readline(), end="")
+    print("Row 1: ", f.readline(), end="")
+    print("Row 2: ", f.readline(), end="")
+    print("Row 3: ", f.readline(), end="")
 ```
 
 You can also iterate over the file object in a loop to read the file line by line:

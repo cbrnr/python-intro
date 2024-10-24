@@ -97,7 +97,6 @@ delimiter = "."
 
 ## Exercise 2
 
-Eine Anweisung ist Code, welcher vom Python-Interpreter ausgeführt werden kann. Es gibt Anweisungen, die einen Wert haben und Anweisungen, die keinen Wert haben. Erstere (also Anweisungen mit Wert) nennt man auch Ausdrücke. Beispiele:
 A statement is code that can be executed by the Python interpreter. There are statements that have a value and statements that do not have a value. The former (i.e., statements with a value) are also called expressions. Examples:
 
 ```{python}
@@ -125,7 +124,6 @@ import keyword
 print(keyword.kwlist)
 ```
 
-Eingebaute Funktionen sind mit Python mitgelieferte Funktionen, welche ohne jeglichen Import sofort verfügbar sind. Eine Liste bekommt man mit:
 Built-ins are functions and other objects that are always available in Python. We do not have to import anything to use them. The following command generates a list of all built-ins:
 
 ```python
