@@ -2,7 +2,7 @@
 title: "9 – Numerische Daten"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2024-05-27
+date: 2024-12-05
 format:
   html:
     page-layout: full
@@ -25,18 +25,13 @@ Python wurde ursprünglich als einfach zu erlernende Programmiersprache entwicke
 * [SciPy](https://scipy.org/) (Algorithmen für diverse wissenschaftliche Anwendungen)
 * [Matplotlib](http://matplotlib.org/) (Erstellen von Grafiken)
 * [Pandas](http://pandas.pydata.org/) (Arbeiten mit Tabellen)
-* [IPython](http://ipython.org/) (erweiterter interaktiver Python-Interpreter)
 
 Darüber hinaus gibt es sehr viele weitere exzellente Pakete für spezifischere Anwendungen wie z.B. [Scikit-learn](http://scikit-learn.org/stable/) (Machine Learning), [statsmodels](http://www.statsmodels.org/stable/index.html) (Statistik), [scikit-image](http://scikit-image.org/) (Bildverarbeitung) oder [SymPy](http://www.sympy.org/en/index.html) (symbolisches Rechnen). Diese Pakete setzen alle NumPy als Grundlage voraus, welches wir in dieser Einheit näher kennenlernen werden.
-
-:::{.callout-tip}
-Der Python-Interpreter kann, wie bereits des öfteren erwähnt, im Script-Modus oder im interaktiven Modus verwendet werden. Letzterer eignet sich zum interaktiven Verarbeiten von Daten (also z.B. auch zum Ausprobieren von Ideen). Das Paket IPython fügt dem interaktiven Modus von Python einige zusätzliche Funktionen hinzu, die das Arbeiten komfortabler gestalten (z.B. farbliche Hervorhebung der Syntax, einfacher Zugriff auf bereits ausgeführte Befehle und Ergebnisse, hervorragende Vervollständigung von Befehlen mittels Tab-Completion, viele Zusatzfunktionen durch sogenannte Magic Functions, ...).
-:::
 
 
 ## NumPy
 
-[NumPy](http://wiki.scipy.org/Tentative_NumPy_Tutorial) ist die Basis der meisten wissenschaftlichen Pakete in Python. Es ist so wichtig und essentiell, dass Python ohne NumPy vermutlich nie für Datenanalysen verwendet worden wäre.
+NumPy ist die Basis der meisten wissenschaftlichen Pakete in Python. Es ist so wichtig und essentiell, dass Python ohne NumPy vermutlich nie für Datenanalysen verwendet worden wäre.
 
 NumPy stellt einen hocheffizienten Datentyp für numerische Daten zur Verfügung, nämlich ein homogenes multidimensionales (*n*-dimensionales) Array (auch kurz ND-Array bzw. `ndarray` oder kurz Array genannt). Listen sind aufgrund ihrer Flexibilität dafür viel zu ineffizient, da sie unterschiedliche Elemente enthalten können. *Homogen* bedeutet nämlich, dass alle Elemente eines Arrays *denselben* Datentyp haben müssen (z.B. lauter `float`-Zahlen) – dadurch können Berechnungen wesentlich effizienter und schneller ausgeführt werden. *Multidimensional* bedeutet, dass ein Array beliebig viele Dimensionen (auch Achsen genannt) besitzen kann. Jedes Element wird daher mit einem Tupel indiziert, welches seine genaue Position innerhalb des Arrays beschreibt.
 
