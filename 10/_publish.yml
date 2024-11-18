@@ -1,8 +1,4 @@
-- source: 10.qmd
+- source: 10-de.qmd
   netlify:
-    - id: c410e9f7-0e3a-41d1-a0ee-0c8409e48906
-      url: 'https://python-24s-10.netlify.app'
-- source: 10-solutions.qmd
-  netlify:
-    - id: 61786408-71db-49cf-a32c-75b2cbd776a8
-      url: 'https://python-24s-10-solutions.netlify.app'
+    - id: c751e076-9b2c-4cf0-b6f0-aef06bf78eeb
+      url: https://python-24w-10-de.netlify.app/
