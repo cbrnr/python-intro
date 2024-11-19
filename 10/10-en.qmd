@@ -1,0 +1,432 @@
+---
+title: "10 – Visualization"
+subtitle: "Introduction to Python and PsychoPy"
+author: "Clemens Brunner"
+date: 2024-12-12
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+---
+
+## Introduction
+
+Python offers a large number of packages for creating graphics (an overview of this ecosystem can be found [here](https://rougier.github.io/python-visualization-landscape/)). The most popular packages are currently:
+
+- [Matplotlib](https://matplotlib.org/)
+- [Seaborn](https://seaborn.pydata.org/)
+- [Plotly](https://plotly.com/python/)
+- [Bokeh](https://docs.bokeh.org/en/latest/)
+- [Vega-Altair](https://altair-viz.github.io/)
+
+Matplotlib is the oldest and most well-known package, but it can be a bit cumbersome to use. However, it allows for customizing graphics down to the smallest detail. Many other graphic packages are based on Matplotlib, so it is helpful to have at least a basic understanding of Matplotlib.
+
+Bokeh and Plotly are particularly suitable for creating interactive graphics for web applications. Seaborn and Vega-Altair are specialized in statistical graphics. Whereas seaborn builds on Matplotlib and offers many additional graphic types, Vega-Altair aims to make creating complex graphics as intuitive as possible. In addition, Vega-Altair also supports interactive graphics.
+
+In addition to these commonly used packages, there is also [plotnine](https://github.com/has2k1/plotnine), which is very similar to [ggplot2](https://ggplot2.tidyverse.org/) for R. If you are already familiar with ggplot2, you might want to check out plotnine.
+
+:::{.callout-tip}
+A comparison of how different packages create common types of graphics can be found on these two websites [here](https://aeturrell.github.io/coding-for-economists/vis-common-plots.html) and [here](http://pythonplot.com/)).
+:::
+
+In summary, Matplotlib, seaborn, and plotnine are suitable for creating classic *static* graphics, while Vega-Altair, Bokeh, and Plotly are suitable for creating *interactive* graphics.
+
+
+## Matplotlib
+
+Matplotlib is particularly well-suited for creating a wide variety of graphics, especially for scientific purposes. The data to be displayed is usually available as NumPy arrays.
+
+:::{.callout-note}
+The official Matplotlib website includes some [tutorials](https://matplotlib.org/stable/tutorials/index.html). In particular, the [Quick Start Guide](https://matplotlib.org/stable/tutorials/introductory/quick_start.html) is a good complement to the material in this chapter.
+:::
+
+As always, we start with the necessary imports:
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+Note that we import `matplotlib.pyplot as plt` and not `matplotlib` directly. This is for historical reasons, as the vast majority of functions for creating graphics are located in `matplotlib.pyplot`.
+
+:::{.callout-important}
+Plots created with Matplotlib are *not* displayed by default. To display a plot in a separate window, you must explicitly execute the following command:
+
+```python
+plt.show()
+```
+
+However, this window blocks the Python interpreter, i.e., you cannot enter any further commands as long as the graphics window is open. To avoid this behavior, you can enter the following command in the interactive Python interpreter directly after importing:
+
+```python
+plt.ion()
+```
+
+This command ensures that plots are displayed immediately after they are created ("ion" stands for "interactive on").
+:::
+
+
+### Creating plots
+
+Before we start creating plots with Matplotlib, it is helpful to familiarize ourselves with some basic concepts and the structure of a plot, as illustrated in the following figure (modified from [here](https://matplotlib.org/stable/gallery/showcase/anatomy.html)):
+
+```{python}
+#| echo: false
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.patches import Circle
+from matplotlib.patheffects import withStroke
+from matplotlib.ticker import AutoMinorLocator, MultipleLocator
+
+np.random.seed(19680801)
+
+X = np.linspace(0.5, 3.5, 100)
+Y1 = 3 + np.cos(X)
+Y2 = 1 + np.cos(1 + X/0.75) / 2
+Y3 = np.random.uniform(Y1, Y2, len(X))
+
+fig = plt.figure(figsize=(8.5, 7.5))
+ax = fig.add_axes([0.2, 0.17, 0.68, 0.7], aspect=1)
+
+ax.xaxis.set_major_locator(MultipleLocator(1.000))
+ax.xaxis.set_minor_locator(AutoMinorLocator(4))
+ax.yaxis.set_major_locator(MultipleLocator(1.000))
+ax.yaxis.set_minor_locator(AutoMinorLocator(4))
+ax.xaxis.set_minor_formatter("{x:.2f}")
+
+ax.set_xlim(0, 4)
+ax.set_ylim(0, 4)
+
+ax.tick_params(which="major", width=1.0, length=10, labelsize=14)
+ax.tick_params(which="minor", width=1.0, length=5, labelsize=10, labelcolor="0.25")
+
+ax.grid(linestyle="--", linewidth=0.5, color=".25", zorder=-10)
+
+ax.plot(X, Y1, c="C0", lw=2.5, label="Blue signal", zorder=10)
+ax.plot(X, Y2, c="C1", lw=2.5, label="Orange signal")
+ax.plot(
+    X[::3],
+    Y3[::3],
+    linewidth=0,
+    markersize=9,
+    marker="s",
+    markerfacecolor="none",
+    markeredgecolor="C4",
+    markeredgewidth=2.5
+)
+
+ax.set_title("Anatomy of a figure", fontsize=20, verticalalignment="bottom")
+ax.set_xlabel("x Axis label", fontsize=14)
+ax.set_ylabel("y Axis label", fontsize=14)
+ax.legend(loc="upper right", fontsize=14)
+
+
+def annotate(x, y, text, code, color=[0, 20/256, 82/256]):
+    c = Circle(
+        (x, y),
+        radius=0.15,
+        clip_on=False,
+        zorder=10,
+        linewidth=2.5,
+        edgecolor=color + [0.6],
+        facecolor="none",
+        path_effects=[withStroke(linewidth=7, foreground="white")]
+    )
+    ax.add_artist(c)
+
+    for path_effects in [[withStroke(linewidth=7, foreground="white")], []]:
+        col = "white" if path_effects else color
+        ax.text(
+            x,
+            y - 0.2,
+            text,
+            zorder=100,
+            ha="center",
+            va="top",
+            weight="bold",
+            color=col,
+            style="italic",
+            fontfamily="Courier New",
+            path_effects=path_effects
+        )
+
+        col = "white" if path_effects else "black"
+        ax.text(
+            x,
+            y - 0.33,
+            code,
+            zorder=100,
+            ha="center",
+            va="top",
+            weight="normal",
+            color=col,
+            fontfamily="monospace",
+            fontsize="medium",
+            path_effects=path_effects
+        )
+
+
+annotate(3.5, -0.13, "Minor tick label", "ax.xaxis.set_minor_formatter")
+annotate(-0.03, 1.0, "Major tick", "ax.yaxis.set_major_locator")
+annotate(0.00, 3.75, "Minor tick", "ax.yaxis.set_minor_locator")
+annotate(-0.15, 3.00, "Major tick label", "ax.yaxis.set_major_formatter")
+annotate(1.68, -0.39, "xlabel", "ax.set_xlabel")
+annotate(-0.38, 1.67, "ylabel", "ax.set_ylabel")
+annotate(1.52, 4.15, "Title", "ax.set_title")
+annotate(1.75, 2.80, "Line", "ax.plot")
+annotate(2.25, 1.54, "Markers", "ax.scatter")
+annotate(3.00, 3.00, "Grid", "ax.grid")
+annotate(3.60, 3.58, "Legend", "ax.legend")
+annotate(2.5, 0.55, "Axes", "fig.subplots", color=[1, 0, 0])
+annotate(4, 4.5, "Figure", "plt.figure", color=[1, 0, 0])
+annotate(0.65, 0.01, "x Axis", "ax.xaxis")
+annotate(0, 0.36, "y Axis", "ax.yaxis")
+annotate(4.0, 0.7, "Spine", "ax.spines")
+
+_ = fig.patch.set(linewidth=2, edgecolor="0.5")
+```
+
+This figure shows the most important components of a Matplotlib plot, but we only need two concepts to get started: `Figure` and `Axes` (highlighted in red in the figure). A `Figure` corresponds to the entire figure area, which can contain one or more plots (so-called `Axes`).
+
+The `plt.subplots` function creates an empty `Figure` and by default an empty `Axes` object:
+
+```{python}
+fig, ax = plt.subplots()
+```
+
+The function returns both the `Figure` and the `Axes` (we call these `fig` and `ax`). After that, you can call methods of the `Axes` object (which we named `ax`) to create the desired plot (more on this in the next section).
+
+If you want to combine multiple plots in a single figure, you can again use `plt.subplots` to create a `Figure` with the desired number of `Axes`. To do this, we use the first and second arguments, which correspond to the number of rows and columns of the plots, respectively:
+
+```python
+fig, axes = plt.subplots(1, 3)  # 1 row, 3 columns
+```
+
+```{python}
+#| echo: false
+fig, axes = plt.subplots(1, 3, figsize=(9, 4))
+```
+
+This example creates a `Figure` containing three `Axes` arranged in one row and three columns. In other words, these are three plots displayed side by side. We named this collection of three `Axes` objects `axes`, which is a one-dimensional NumPy array. Therefore, we can access the individual elements using `axes[0]`, `axes[1]`, and `axes[2]` to create the desired plots.
+
+We can also generate a two-dimensional arrangement consisting of multiple rows and columns. In this case, the returned axes are available in a *two-dimensional* NumPy array. Therefore, we need to extract the individual `Axes` objects with a two-dimensional index (i.e., row and column). For example, `axes[0, 2]` would be the `Axes` object in row 0 (i.e., the first row) and column 2 (i.e., the third column).
+
+To avoid any overlap in a `Figure` with multiple `Axes` objects, it is recommended to execute the following line after finishing all plots:
+
+```python
+fig.set_tight_layout(True)
+```
+
+This will adjust the spacing between the `Axes` objects so that no text or other elements are cut off or overlap. Let's look at an example. First, we create a figure with two rows and three columns using the default layout:
+
+```{python}
+fig, axes = plt.subplots(2, 3)
+```
+
+And this is the figure using the optimized layout:
+
+```{python}
+fig, axes = plt.subplots(2, 3)
+fig.set_tight_layout(True)
+```
+
+
+### Line plots
+
+Matplotlib supports many different [plot types](https://matplotlib.org/stable/plot_types/index.html). First, let's look at line plots, which are useful for displaying time series data. We use the following example data `x` and `y`:
+
+```{python}
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+```
+
+To create a line plot, we call the `plot` method and pass the data for the x- and y-axes:
+
+```{python}
+fig, ax = plt.subplots()
+ax.plot(x, y)
+```
+
+
+### Scatter plots
+
+To create a scatter plot, we use the `scatter` method, which provides sensible default values for this type of plot:
+
+```{python}
+fig, ax = plt.subplots()
+ax.scatter(x, y)
+```
+
+
+### Bar charts and stem plots
+
+For a bar chart, we need the heights of the individual bars as well as the positions of the bars on the x-axis:
+
+```{python}
+x = np.arange(8)
+y = [17, 5, 23, 33, 12, 21, 27, 18]
+```
+
+We can then display these values with the `bar` method:
+
+```{python}
+fig, ax = plt.subplots()
+ax.bar(x, y)
+```
+
+Alternatively, we could also visualize these values as a stem plot:
+
+```{python}
+fig, ax = plt.subplots()
+ax.stem(x, y)
+```
+
+
+### Histograms
+
+Matplotlib also supports more complex statistical plots like histograms. To create a histogram, we first generate new example data `x` (10000 normally distributed random numbers with a mean of 100 and a standard deviation of 15):
+
+```{python}
+from numpy.random import default_rng
+
+rng = default_rng(1)
+x = rng.normal(loc=100, scale=15, size=10000)
+```
+
+We can now display the distribution of `x` as a histogram:
+
+```{python}
+fig, ax = plt.subplots()
+ax.hist(x, bins=50, edgecolor="white")
+```
+
+In this example, we manually set the number of bins to 50. We also use a white edge color to better separate the individual bars.
+
+:::{.callout-tip}
+All plotting methods (e.g., `plot`, `scatter`, `bar`, `stem`) have optional arguments that allow you to customize the appearance of the plot. These are described in the respective documentations.
+:::
+
+
+### Boxplots
+
+Boxplots are also used to visualize the distribution of one or more variables. Let's create the following three example arrays:
+
+```{python}
+x = rng.normal(loc=0, scale=5, size=10000)
+y = rng.exponential(5, size=10000)
+z = rng.poisson(2.8, size=10000)
+```
+
+We can visualize the distributions of the three variables with three boxplots:
+
+```{python}
+fig, ax = plt.subplots()
+ax.boxplot([x, y, z])
+```
+
+:::{.callout-note}
+A boxplot consists of a box that extends from the first to the third quartile, so its height corresponds to the interquartile range (IQR). The orange line inside the box corresponds to the median. The so-called whiskers outside the box extend to 1.5 times the IQR above or below the first or third quartile, respectively. Points outside these limits are displayed as outliers.
+:::
+
+
+### Violin plots
+
+Violin plots can be used as an alternative to boxplots. For example, the data from the previous section could also be visualized like this:
+
+```{python}
+fig, ax = plt.subplots()
+ax.violinplot([x, y, z])
+```
+
+
+### Additional plot types
+
+Matplotlib supports many other plot types, such as pie charts, contour plots, and 3D plots. However, if you want to create scatter plots with overlaid regression lines or other more complex statistical plot types, you should take a look at more specialized packages like seaborn or plotnine. While it is theoretically possible to create these types of plots with Matplotlib, it would require many manual steps (e.g., you would have to fit a linear regression model to the data before including it in a plot).
+
+
+### Title and axis labels
+
+By default, Matplotlib does not add titles or axis labels to the plots. However, you can customize an existing plot with specific methods. Let's take the very first plot we created in this chapter as an example:
+
+```{python}
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+fig, ax = plt.subplots()
+ax.plot(x, y)
+```
+
+We can add a title and axis labels to this plot as follows:
+
+```{python}
+fig, ax = plt.subplots()
+ax.plot(x, y)
+ax.set_title("Sine")
+ax.set_xlabel("Time (s)")
+ax.set_ylabel("Amplitude (V)")
+```
+
+Alternatively, instead of using the three separate methods, you could also use the following shorter version:
+
+```{python}
+fig, ax = plt.subplots()
+ax.plot(x, y)
+ax.set(title="Sine", xlabel="Time (s)", ylabel="Amplitude (V)")
+```
+
+
+## Exercises
+
+### Exercise 1
+
+Import the data from the file [`airquality.csv`](airquality.csv) into a NumPy array called `air` using the following code (note that the file must be in the working directory):
+
+```python
+import numpy as np
+air = np.genfromtxt("airquality.csv", delimiter=",", skip_header=1)
+```
+
+This dataset contains the time course of four different air quality values over a period of five months.
+
+Which command returns the number of rows and columns of `air`?
+
+
+### Exercise 2
+
+The columns in `air` contain measurements for the following variables:
+
+1. Ozone concentration (in ppb, or "parts per billion")
+2. Solar radiation (in Langleys)
+3. Wind speed (in miles per hour)
+4. Temperature (in degrees Fahrenheit)
+5. Month (numeric value between 1 and 12)
+6. Day (numeric value between 1 and 31)
+
+Create a separate variable for each column (use the names `ozone`, `solar`, `wind`, `temp`, `month`, and `day`). Use these names in all subsequent exercises.
+
+
+### Exercise 3
+
+Create a histogram of the wind values using Matplotlib.
+
+
+### Exercise 4
+
+Create a scatter plot with temperature on the x-axis and wind on the y-axis. Add appropriate axis labels.
+
+
+### Exercise 5
+
+Display the following four plots in a single figure (use a layout with two rows and two columns):
+
+1. A scatter plot of `ozone` against `solar`.
+2. A line plot showing the temperature values.
+3. A violin plot of the temperature values for the five months. The values for these months correspond to the following slices: `temp[:31]`, `temp[31:61]`, `temp[61:92]`, `temp[92:123]`, `temp[123:]`.
+4. A scatter plot of `wind` against `ozone`.
+
+Add appropriate axis labels and do not forget to call `fig.set_tight_layout(True)` as a final step!

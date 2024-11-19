@@ -1,0 +1,80 @@
+---
+title: "10 – Solutions"
+subtitle: "Introduction to Python and PsychoPy"
+author: "Clemens Brunner"
+date: 2024-12-12
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+---
+
+## Exercise 1
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+air = np.genfromtxt("airquality.csv", delimiter=",", skip_header=1)
+air.shape  # 153 rows, 6 columns
+```
+
+
+## Exercise 2
+
+```{python}
+ozone = air[:, 0]
+solar = air[:, 1]
+wind = air[:, 2]
+temp = air[:, 3]
+month = air[:, 4]
+day = air[:, 5]
+```
+
+
+## Exercise 3
+
+```{python}
+fig, ax = plt.subplots()
+ax.hist(wind, edgecolor="white")
+ax.set_title("Wind (mph)")
+```
+
+
+## Exercise 4
+
+```{python}
+fig, ax = plt.subplots()
+ax.scatter(temp, wind, alpha=0.5)
+ax.set_xlabel("Temperature (°F)")
+ax.set_ylabel("Wind (mph)")
+```
+
+
+## Exercise 5
+
+```{python}
+fig, axes = plt.subplots(2, 2)
+
+axes[0, 0].scatter(ozone, solar, alpha=0.5)
+axes[0, 0].set(xlabel="Ozone (ppb)", ylabel="Solar (lang)")
+
+axes[0, 1].plot(temp)
+axes[0, 1].set_xlabel("Index")
+axes[0, 1].set_ylabel("Temperature (°F)")
+
+axes[1, 0].violinplot([temp[:31], temp[31:61], temp[61:92], temp[92:123], temp[123:]])
+axes[1, 0].set_xlabel("Month")
+axes[1, 0].set_ylabel("Temperature (°F)")
+
+axes[1, 1].scatter(wind, ozone, alpha=0.5)
+axes[1, 1].set_xlabel("Wind (mph)")
+axes[1, 1].set_ylabel("Ozone (ppb)")
+
+fig.set_tight_layout(True)
+```
