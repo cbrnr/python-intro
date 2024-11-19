@@ -1,16 +1,16 @@
 - source: 10-de.qmd
   netlify:
     - id: c751e076-9b2c-4cf0-b6f0-aef06bf78eeb
-      url: https://python-24w-10-de.netlify.app
+      url: 'https://python-24w-10-de.netlify.app'
 - source: 10-solutions-de.qmd
   netlify:
     - id: ad50b03a-3e0e-44b9-95c4-5f4f0396761b
-      url: https://python-24w-10-solutions-de.netlify.app
+      url: 'https://python-24w-10-solutions-de.netlify.app'
 - source: 10-en.qmd
   netlify:
     - id: 28f5abf0-71d0-424a-a8ae-4175b4d1a261
-      url: https://python-24w-10-en.netlify.app
+      url: 'https://python-24w-10-en.netlify.app'
 - source: 10-solutions-en.qmd
   netlify:
     - id: c667f18a-8819-4f12-84e1-d82270ba406e
-      url: https://python-24w-10-solutions-en.netlify.app
+      url: 'https://python-24w-10-solutions-en.netlify.app'
