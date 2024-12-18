@@ -1,0 +1,24 @@
+---
+title: "11 – Solutions"
+subtitle: "Introduction to Python and PsychoPy"
+author: "Clemens Brunner"
+date: 2025-01-09
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+---
+
+## Exercise 1
+
+The Stroop experiment is available [here](stroop.zip).
+
+
+## Exercise 2
+
+The number comparison experiment is available [here](number_comparison.zip).
