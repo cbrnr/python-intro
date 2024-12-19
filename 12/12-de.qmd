@@ -2,7 +2,7 @@
 title: "12 – PsychoPy (2)"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2024-06-17
+date: 2025-01-16
 format:
   html:
     page-layout: full

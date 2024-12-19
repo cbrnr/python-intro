@@ -1,0 +1,64 @@
+---
+title: "12 – Solutions"
+subtitle: "Introduction to Python and PsychoPy"
+author: "Clemens Brunner"
+date: 2025-01-16
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+---
+
+## Exercise 1
+
+```python
+from psychopy import core, visual, event
+
+win = visual.Window(size=[800, 800])
+
+radius = 0.1
+radius_change = 0.01
+circle = visual.Circle(win, radius=radius, fillColor="white", pos=[-0.5, 0.5])
+
+rot = 0
+rot_change = 0.5
+poly = visual.Polygon(win, edges=12, radius=0.3, fillColor="green")
+
+xpos = -1.2
+xpos_change = 0.01
+text = visual.TextStim(win, "PsychoPy", pos=[xpos, 0], color="blue")
+
+while True:
+    keys = event.getKeys(keyList=["escape"])
+    if keys:
+        break
+
+    # circle
+    radius += radius_change
+    if radius >= 0.3 or radius <= 0.01:
+        radius_change = -radius_change
+    circle.setRadius(radius)
+    circle.draw()
+
+    # polygon
+    rot += rot_change
+    poly.setOri(rot)
+    poly.draw()
+
+    # text
+    xpos += xpos_change
+    if xpos > 1.2:
+        xpos = -1.2
+    text.setPos([xpos, 0])
+    text.draw()
+
+    win.flip()
+
+win.close()
+core.quit()
+```
