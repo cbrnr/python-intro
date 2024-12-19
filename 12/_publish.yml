@@ -5,7 +5,7 @@
 - source: 12-solutions-de.qmd
   netlify:
     - id: 0ac108d1-c8cc-4a30-9876-699b43e3d3e3
-      url: https://r-24w-12-solutions-de.netlify.app
+      url: https://python-24w-12-solutions-de.netlify.app
 - source: 12-solutions-en.qmd
   netlify:
     - id: 0a497163-62a0-4f36-beb0-8ca657f2c4fe
