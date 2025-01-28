@@ -75,42 +75,44 @@ print(", ".join([str(i) for i in range(10)]))
 
 ## Installation
 
-The [official Python website](https://www.python.org/) is a great resource for everything related to Python. The [download](https://www.python.org/downloads/) section contains installers for many platforms, including Windows and macOS. If you are on Linux, I recommend that you use your package manager (such as `apt`, `yum`, or `pacman`) to install Python (in most cases, Python will already be installed anyway).
+The [official Python website](https://www.python.org/) is a great resource for everything related to Python. The [download](https://www.python.org/downloads/) section contains installers for many platforms, including Windows and macOS. If you are on Linux, I recommend that you use your package manager to install Python (in most cases, Python will already be installed anyway).
 
 :::{.callout-note}
-These instructions use version 3.12.2, but you should always install and use the latest version.
+These instructions use version 3.13.1, but you should install and use the latest version.
 :::
 
-On Windows, choose the standard installation, but make sure to check the box for *"Add python.exe to PATH"*. You can leave the option *"Install launcher for all users (recommended)"* unchecked, allowing you to install Python without administrator rights. The image below shows these settings:
 
-![](install-python-windows.png)
+### Windows
 
-On macOS, run both "Install Certificates" and "Update Shell Profile" commands available in the application folder after the installation is complete:
+On Windows, choose the standard installation (*"Install Now"*), but make sure to check the box for *"Add python.exe to PATH"*. The image below shows these settings:
 
-![](install-python-macos.png)
+![](install-python-windows.png){width=50%}
+
+For more details on using Python on Windows, see the [official Python documentation](https://docs.python.org/3/using/windows.html).
+
+
+### macOS
+
+On macOS, run the installer using the default settings. Once the installation is complete, double-click the *"Install Certificates"* command in the Applications folder to finish the setup process.
+
+![](install-python-macos.png){width=50%}
+
+For more details on using Python on macOS, see the [official Python documentation](https://docs.python.org/3/using/mac.html).
 
 
 ## First steps
 
-After installing Python, it is instructive to enter some simple Python commands and see what happens. The program which understands and interprets Python commands is called the *Python interpreter*. It can be invoked in various ways, but one of the easiest options is to run it from the command line (or terminal), a powerful text-based interface provided by your operating system.
+After installing Python, it is instructive to enter some simple Python commands and see what happens. The program which understands and interprets Python commands is called the *Python interpreter*. It can be invoked in various ways, but one of the easiest options is to open IDLE, which is a simple Python development environment that comes with Python.
 
-- On Windows, you should see a start menu entry inside the Python folder named "Python 3.12 (64-bit)" (or similar). Alternatively, you can launch Python from a regular command prompt by starting the "Terminal" app and typing `python` followed by <kbd>Enter</kbd>.
-- On macOS, start the "Terminal" app and type `python3` (followed by <kbd>Enter</kbd>).
-- On Linux, start your favorite terminal app and type `python` (followed by <kbd>Enter</kbd>).
+IDLE will display a window running the so-called *interactive* Python interpreter (which is also referred to as shell or [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)). The interactive Python interpreter includes a *prompt*, which is typically the character sequence `>>>`. This prompt indicates that Python is ready to receive user input. You can type any Python command and hit <kbd>Enter</kbd> to evaluate it. Python will immediately show the result of this command (if any) on the next line.
 
-:::{.callout-important}
-The Python interpreter executable is called `python` on Windows and Linux, but `python3` on macOS. If you use macOS, remember to always use `python3` to start the Python interpreter.
-:::
-
-A simple (black or white) text window will open – this is the so-called *interactive* Python interpreter. You can enter commands, and Python will happily try to execute what you just typed (the interactive interpreter is also called the [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop), short for read-eval-print loop).
-
-The interactive Python interpreter includes a *prompt*, which is typically the character sequence `>>>`. This prompt indicates that Python is ready to receive user input. You can type a Python command and hit <kbd>Enter</kbd> to evaluate it. Python will immediately show the result of this command (if any) on the next line.
+![](idle.png){width=75%}
 
 :::{.callout-note}
 Throughout the course material, we show Python code in gray boxes and never include the prompt `>>>`. 
 :::
 
-Let's try to use Python as a calculator. Python supports the four basic arithmetic operations (addition, subtraction, multiplication, and division):
+Let's try to use Python as a calculator. Python supports the four basic arithmetic operations (addition, subtraction, multiplication, and division). To follow along, type the following commands into the IDLE shell and confirm with <kbd>Enter</kbd>:
 
 ```{python}
 1 + 1
@@ -194,7 +196,7 @@ The following selection of examples demonstrates Python's versatility. It is by 
 
 [PsychoPy](http://www.psychopy.org/) is a program designed for presenting stimuli in psychophysiological studies. You can use it to create experiments that involve measuring reaction times (such as fMRI and EEG studies), allowing precise presentation of visual and auditory stimuli. While PsychoPy can be used via a graphical user interface, creating highly customized experimental designs works best by directly writing Python code. We will explore PsychoPy in the last two sessions.
 
-![](psychopy.png)
+![](psychopy.png){width=75%}
 
 
 ### Neuroscience
