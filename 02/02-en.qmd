@@ -16,11 +16,7 @@ theme:
 
 ## The Python ecosystem
 
-Python consists of the Python programming language, a Python interpreter (a program that interprets and runs Python code), and an extensive standard library. The reference (official) Python interpreter is written in the C programming language and is therefore called [CPython](https://github.com/python/cpython).
-
-![](python_components.png)
-
-The Python programming language includes only relatively few keywords and built-in functions. However, the [standard library](https://docs.python.org/3/library/) extends the core functionality with additional data types, input/output, regular expressions, mathematical functions, data compression, networking, multimedia services, graphical user interfaces, and much more. The standard library is part of any Python installation, so it is always available at your fingertips.
+Python consists of the Python programming language, a Python interpreter (a program that interprets and runs Python code), and an extensive standard library. The Python programming language includes only relatively few keywords and built-in functions. However, the [standard library](https://docs.python.org/3/library/) extends the core functionality with additional data types, input/output, regular expressions, mathematical functions, data compression, networking, multimedia services, graphical user interfaces, and much more. The standard library is part of any Python installation, so it is always available at your fingertips.
 
 :::{.callout-tip}
 In the previous chapter, we used `import math` to access mathematical functions and constants. Importing is necessary before we can use things contained in any module.
@@ -28,35 +24,16 @@ In the previous chapter, we used `import math` to access mathematical functions 
 
 Python can be further extended with third-party packages that are not part of the official Python distribution. Installing these packages is straightforward, because they are available from a central repository called the [Python Packaging Index (PyPI)](https://pypi.org). We will discuss how to install, update, and uninstall third-party packages later in this chapter.
 
-As for any programming language, a code editor or integrated development environment (IDE) is an essential tool for writing Python code. Good code editors include support for syntax highlighting, indentation, line numbers, [linting](https://en.wikipedia.org/wiki/Lint_(software)), code inspection, and more. Here is a selection of popular editors (all of them are free, open source, and available on Windows, macOS, and Linux):
+As for any programming language, a code editor or integrated development environment (IDE) is an essential tool for writing Python code. Good code editors include support for syntax highlighting, indentation, line numbers, [linting](https://en.wikipedia.org/wiki/Lint_(software)), code inspection, and more. We will use [IDLE](https://docs.python.org/3/library/idle.html) in this course, which is included in the official Python installers. IDLE is a very simple IDE, which is ideal for anyone who is just getting started with Python. However, you might want to switch to a more advanced code editor, such as [Visual Studio Code](https://code.visualstudio.com/) or [PyCharm](https://www.jetbrains.com/pycharm/), as you become more proficient with Python.
 
-- [Visual Studio Code](https://code.visualstudio.com)
-- [PyCharm](https://www.jetbrains.com/pycharm/)
-- [Spyder](https://www.spyder-ide.org)
+The following figure illustrates these three main building blocks of the Python ecosystem:
 
-I recommend [Visual Studio Code](https://code.visualstudio.com) if you have never used Python before. However, feel free to try other programs such as [PyCharm](https://www.jetbrains.com/pycharm/), which also provides a great Python development experience.
+![](python-components.png){width=50%}
 
 
-## Visual Studio Code
+## IDLE
 
-This is what Visual Studio Code looks like when you first open it:
-
-![](vscode.png)
-
-There are two things you should do before you start writing Python code:
-
-1. Click on the *Extensions* section in the left sidebar, search for "Python", and install the [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
-2. I recommend that you follow the [PEP8](https://www.python.org/dev/peps/pep-0008/) coding style for Python code that you write. To automatically format your code in Visual Studio Code, install the [Ruff extension](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff), which provides support for linting and code formatting according to PEP8 standards.
-
-That's it, you are now ready to start working with Python. If you have never used Visual Studio Code before, you can check out the [Python in Visual Studio Code overview](https://code.visualstudio.com/docs/languages/python) before moving on to the next section.
-
-:::{.callout-tip}
-The command palette in Visual Studio Code can be opened with <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>P</kbd> (Windows/Linux) or <kbd>⌘</kbd><kbd>Shift</kbd><kbd>P</kbd> (macOS). Here, you can search for and execute commands. For example, you can format a Python script according to PEP8 using the "Ruff: Format document" command – give it a try!
-:::
-
-You can run a Python script (more on that later) in Visual Studio Code by clicking the "Play" button at the top right. This will open an integrated terminal, and the *entire* code will be executed in script mode.
-
-If you want to run only individual lines of code in the interactive interpreter (also more on that later), it is best to use the keyboard shortcut <kbd>Shift</kbd><kbd>Enter</kbd>. This will execute either the current line (where the cursor is) or all selected lines in the interactive Python interpreter, which opens in an integrated terminal. Further details can be found in the [official documentation](https://code.visualstudio.com/docs/python/python-tutorial).
+TODO!
 
 
 ## Getting help
@@ -73,10 +50,6 @@ All of these tasks can be performed with the `pip` command line tool, which is b
 - On Windows, open the "Terminal" app from the start menu.
 - On macOS, open the "Terminal" app.
 - On Linux, open your favorite terminal app.
-
-:::{.callout-note}
-On macOS, the command line tool is called `pip3` instead of `pip` (just like we use `python3` instead of `python` to invoke the Python interpreter).
-:::
 
 :::{.callout-important}
 A [terminal](https://en.wikipedia.org/wiki/Terminal_emulator) is a program that runs a [shell](https://en.wikipedia.org/wiki/Shell_(computing)), which interprets text commands to interact with the operating system.
@@ -125,7 +98,7 @@ pip install --upgrade <package_name>
 ```
 
 :::{.callout-note}
-As you get more proficient with Python, you might want to create a [virtual environment](https://docs.python.org/3/library/venv.html) for each project. This allows you to install packages for each project in separate isolated environments, which avoids conflicts between different projects. However, this is a slightly advanced topic and not necessary for this introductory course.
+As you get more experienced with Python, you might want to create a [virtual environment](https://docs.python.org/3/library/venv.html) for each project. This allows you to install packages for each project in separate isolated environments, which avoids conflicts between different projects. However, this is a slightly advanced topic and not necessary for this introductory course.
 :::
 
 
