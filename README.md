@@ -1,18 +1,18 @@
-## Einführung in Python
+## Introduction to Python and PsychoPy
 
-Die folgenden Unterlagen bieten eine kurze Einführung in die Grundlagen von Python. Sie sind außerdem Basis für die Lehrveranstaltung [Einführung in Python und PsychoPy (PSY.922)](https://online.uni-graz.at/kfu_online/pl/ui/$ctx/wbLv.wbShowLVDetail?pStpSpNr=892207).
+This repository contains resources for the course [Introduction to Python and PsychoPy (PSY.922)](https://online.uni-graz.at/kfu_online/pl/ui/$ctx/wbLv.wbShowLVDetail?pStpSpNr=887035&pSpracheNr=2).
 
- 1. [Grundlagen](https://python-24w-01.netlify.app) ([Lösungen](https://python-24w-01-solutions.netlify.app))
- 2. [Die Python-Umgebung](https://python-24w-02.netlify.app) ([Lösungen](https://python-24w-02-solutions.netlify.app))
- 3. [Variablen, Ausdrücke, Anweisungen](https://python-24w-03.netlify.app) ([Lösungen](https://python-24w-03-solutions.netlify.app))
- 4. [Funktionen](https://python-24w-04.netlify.app) ([Lösungen](https://python-24w-04-solutions.netlify.app))
- 5. [Bedingungen und Schleifen](https://python-24w-05.netlify.app) ([Lösungen](https://python-24w-05-solutions.netlify.app))
- 6. [Strings](https://python-24w-06.netlify.app) ([Lösungen](https://python-24w-06-solutions.netlify.app))
- 7. [Listen und Dictionaries](https://python-24w-07.netlify.app) ([Lösungen](https://python-24w-07-solutions.netlify.app))
- 8. [Ein- und Ausgabe](https://python-24w-08.netlify.app) ([Lösungen](https://python-24w-08-solutions.netlify.app))
- 9. [Numerische Daten](https://python-24w-09.netlify.app) ([Lösungen](https://python-24w-09-solutions.netlify.app))
-10. [Grafiken](https://python-24w-10.netlify.app) ([Lösungen](https://python-24w-10-solutions.netlify.app))
-11. [PsychoPy (1)](https://python-24w-11.netlify.app) ([Lösungen](https://python-24w-11-solutions.netlify.app))
-12. [PsychoPy (2)](https://python-24w-12.netlify.app/) ([Lösungen](https://python-24w-12-solutions.netlify.app/))
+ 1. [Basics](https://python-25s-01.netlify.app) ([Solutions](https://python-25s-01-solutions.netlify.app))
+ 2. [The Python Environment](https://python-25s-02.netlify.app) ([Solutions](https://python-25s-02-solutions.netlify.app))
+ 3. [Variables, Expressions, Statements](https://python-25s-03.netlify.app) ([Solutions](https://python-25s-03-solutions.netlify.app))
+ 4. [Functions](https://python-25s-04.netlify.app) ([Solutions](https://python-25s-04-solutions.netlify.app))
+ 5. [Conditions and Loops](https://python-25s-05.netlify.app) ([Solutions](https://python-25s-05-solutions.netlify.app))
+ 6. [Strings](https://python-25s-06.netlify.app) ([Solutions](https://python-25s-06-solutions.netlify.app))
+ 7. [Lists and Dictionaries](https://python-25s-07.netlify.app) ([Solutions](https://python-25s-07-solutions.netlify.app))
+ 8. [Input and Output](https://python-25s-08.netlify.app) ([Solutions](https://python-25s-08-solutions.netlify.app))
+ 9. [Numerical Data](https://python-25s-09.netlify.app) ([Solutions](https://python-25s-09-solutions.netlify.app))
+10. [Graphics](https://python-25s-10.netlify.app) ([Solutions](https://python-25s-10-solutions.netlify.app))
+11. [PsychoPy (1)](https://python-25s-11.netlify.app) ([Solutions](https://python-25s-11-solutions.netlify.app))
+12. [PsychoPy (2)](https://python-25s-12.netlify.app/) ([Solutions](https://python-25s-12-solutions.netlify.app/))
 
-- [Zusätzliche Übungsaufgaben](https://python-24w-a1.netlify.app) ([Lösungen](https://python-24w-a1-solutions.netlify.app))
+- [Additional Exercises](https://python-25s-a1.netlify.app) ([Solutions](https://python-25s-a1-solutions.netlify.app))
