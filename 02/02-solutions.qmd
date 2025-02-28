@@ -57,7 +57,7 @@ pip install numpy
 If you no longer need a package, you can uninstall it:
 
 ```
-pip uninstall numpy
+pip uninstall ipython
 ```
 
 :::{.callout-note}
@@ -85,8 +85,3 @@ print("Hello World!")
 help(print)
 help(sum)
 ```
-
-
-## Exercise 5
-
-You can run an entire script by clicking the play icon in the top right. If you want to run a single or multiple selected lines in the interactive interpreter, use <kbd>Shift</kbd><kbd>Enter</kbd>. This will always start the standard `python` interpreter. You can exit it with `exit()` and then start `ipython --no-autoindent`. From then on, the <kbd>Shift</kbd><kbd>Enter</kbd> shortcut will execute commands in IPython.
