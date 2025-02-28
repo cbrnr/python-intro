@@ -2,7 +2,7 @@
 title: "1 – Solutions"
 subtitle: "Introduction to Python and PsychoPy"
 author: "Clemens Brunner"
-date: 2024-10-03
+date: 2025-03-03
 format:
   html:
     page-layout: full
@@ -23,7 +23,7 @@ The installed Python version can be seen directly after starting the interactive
 
 `import antigravity` opens a web browser with the [xkcd comic about Python](https://xkcd.com/353/).
 
-`import this` prints the Zen of Python to the screen:
+`import this` displays the Zen of Python:
 
 > | *The Zen of Python, by Tim Peters*
 > |

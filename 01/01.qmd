@@ -2,7 +2,7 @@
 title: "1 – Basics"
 subtitle: "Introduction to Python and PsychoPy"
 author: "Clemens Brunner"
-date: 2024-10-03
+date: 2025-03-03
 format:
   html:
     page-layout: full
@@ -16,7 +16,7 @@ theme:
 
 ## Overview
 
-This course teaches the fundamentals of the [Python](https://www.python.org/) programming language. We'll start by introducing key elements of the language, such as loops, functions, conditions, and basic data types. After thoroughly covering these basics, you'll learn how to use Python for data analysis (e.g., reading text files, representing numerical data, and creating visualizations). Lastly, you'll create simple experiments using the popular [PsychoPy](https://www.psychopy.org/) package.
+This course teaches the fundamentals of the [Python](https://www.python.org/) programming language. We'll start by introducing key elements of the language, such as loops, functions, conditions, and basic data types. After thoroughly covering these basics, you'll learn how to use Python for data analysis (e.g., reading text files, representing numerical data, and creating visualizations). Lastly,  we will create simple experiments using the popular [PsychoPy](https://www.psychopy.org/) package.
 
 This course doesn't require any prior programming knowledge. You will learn the programming fundamentals in a hands-on way, allowing you to apply this knowledge to most other programming languages. Although this course covers only basic Python concepts due to time constraints, these concepts serve as the foundation for more complex applications. You'll develop a solid knowledge of these basics to continue learning more advanced methods on your own.
 
@@ -32,7 +32,7 @@ People often associate Python with these characteristics:
 - Simple, elegant, and fun to learn and use
 - Open source (not only [free as in beer but also free as in speech](https://en.wikipedia.org/wiki/Gratis_versus_libre))
 - Cross-platform (Python runs on Windows, macOS, and Linux)
-- General-purpose programming language, meaning that Python is not specifically designed to be extremely good in one particular area such as statistics – it can be used for many different applications including data science, web servers, graphical user interfaces, programming the [Raspberry Pi](https://www.raspberrypi.org/), ...
+- General-purpose programming language for many different applications including data science, web servers, graphical user interfaces, programming the [Raspberry Pi](https://www.raspberrypi.org/), ...
 - Batteries included approach (the [standard library](https://docs.python.org/3/library/) shipping with Python contains many useful things ready for use)
 - Huge number of [third-party packages](https://pypi.org/) that implement even more useful things
 - Large and friendly community (Python users are called Pythonistas)
@@ -40,7 +40,7 @@ People often associate Python with these characteristics:
 
 ## Popularity
 
-Python was first released by [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum) way back in 1991, and its popularity has skyrocketed in the past years. While there are many ways to measure the popularity of a programming language, Python has consistently ranked among the top languages for years (for example according to [PYPL](https://pypl.github.io/PYPL.html), the [TIOBE index](https://www.tiobe.com/tiobe-index/), and the [IEEE Spectrum Top Programming Languages](https://spectrum.ieee.org/the-top-programming-languages-2023)). Also, one of the results of the [Stack Overflow Developer Survey 2023](https://survey.stackoverflow.co/2023/) is that Python is among the [most popular technologies](https://survey.stackoverflow.co/2023/#technology-most-popular-technologies) as well as highly [admired and desired](https://survey.stackoverflow.co/2023/#technology-admired-and-desired).
+Python was first released by [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum) way back in 1991, and its popularity has skyrocketed in the past years. While there are many ways to measure the popularity of a programming language, Python has consistently ranked among the top languages for years (for example according to [PYPL](https://pypl.github.io/PYPL.html), the [TIOBE index](https://www.tiobe.com/tiobe-index/), and the [IEEE Spectrum Top Programming Languages](https://spectrum.ieee.org/top-programming-languages-2024)). Also, one of the results of the [Stack Overflow Developer Survey 2024](https://survey.stackoverflow.co/2024/) is that Python is among the [most popular technologies](https://survey.stackoverflow.co/2024/technology/#most-popular-technologies) as well as highly [admired and desired](https://survey.stackoverflow.co/2024/technology/#admired-and-desired).
 
 In practice, the popularity of a programming language matters. The larger and more active a language's community is, the easier it becomes to find existing solutions to problems or to quickly get answers to new questions.
 
@@ -102,9 +102,9 @@ For more details on using Python on macOS, see the [official Python documentatio
 
 ## First steps
 
-After installing Python, it is instructive to enter some simple Python commands and see what happens. The program which understands and interprets Python commands is called the *Python interpreter*. It can be invoked in various ways, but one of the easiest options is to open IDLE, which is a simple Python development environment that comes with Python.
+After installing Python, it is instructive to enter some simple Python commands and see what happens. The program which understands and interprets Python commands is called the *Python interpreter*. It can be invoked in various ways, but one of the easiest options is to use IDLE, which is a simple Python learning environment that comes with Python.
 
-IDLE will display a window running the so-called *interactive* Python interpreter (which is also referred to as shell or [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)). The interactive Python interpreter includes a *prompt*, which is typically the character sequence `>>>`. This prompt indicates that Python is ready to receive user input. You can type any Python command and hit <kbd>Enter</kbd> to evaluate it. Python will immediately show the result of this command (if any) on the next line.
+IDLE will display a window running the so-called *interactive* Python interpreter (which is also referred to as *shell* or [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)). The interactive Python interpreter includes a *prompt*, which is typically the character sequence `>>>`. This prompt indicates that Python is ready to receive user input. You can type any Python command and hit <kbd>Enter</kbd> to evaluate it. Python will immediately show the result of this command (if any) on the next line.
 
 ![](idle.png){width=75%}
 
@@ -186,6 +186,10 @@ math.e
 1 + math.sqrt(5) * 7 - 2 * math.pi * 1.222
 ```
 
+::: {.callout-tip}
+Importing modules is a common practice in Python. You can think of modules as collections of functions and variables that are not available by default. By importing a module, you make its contents available for use in your program. We will import and use many modules throughout this course.
+:::
+
 
 ## Application examples
 
@@ -245,7 +249,7 @@ Type `import antigravity` into the Python interpreter. What happens? What happen
 
 ### Exercise 3
 
-We can approximate the Earth as a sphere with a radius of 6,371 km. Use Python to calculate the surface area of the Earth. The formula for the surface area $A$ of a sphere with radius $r$ is:
+We can approximate the Earth as a sphere with a radius of 6371 km. Use Python to calculate the surface area of the Earth. The formula for the surface area $A$ of a sphere with radius $r$ is:
 
 $$A = 4 \pi r^2$$
 
