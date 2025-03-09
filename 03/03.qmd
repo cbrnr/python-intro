@@ -2,7 +2,7 @@
 title: "3 – Names, Expressions, Statements"
 subtitle: "Introduction to Python and PsychoPy"
 author: "Clemens Brunner"
-date: 2024-10-17
+date: 2025-03-17
 format:
   html:
     page-layout: full
@@ -244,7 +244,7 @@ x = 13
 print("Hello world!")
 ```
 
-Note that although the `print` statement generates output, this output is not its value (try assigning a name to the function call)!
+Note that although the `print` function call generates output, this output is not its value (try assigning a name to the function call)!
 
 
 ## Data types

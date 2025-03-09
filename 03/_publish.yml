@@ -1,16 +1,8 @@
-- source: 03-de.qmd
+- source: 03.qmd
   netlify:
-    - id: 4e25501d-d5ae-4ab0-ad66-b2e48567f9d2
-      url: 'https://python-24w-03-de.netlify.app'
-- source: 03-solutions-de.qmd
+    - id: cb9ef1f5-1b10-4763-9eab-4a5b6a63c1b2
+      url: https://python-25s-03.netlify.app/
+- source: 03-solutions.qmd
   netlify:
-    - id: 34fe29da-122b-4c08-95d2-7f8bbc09866f
-      url: 'https://python-24w-03-solutions-de.netlify.app'
-- source: 03-en.qmd
-  netlify:
-    - id: 8ac40d8a-f606-40e6-81dd-9b882f6d65ed
-      url: 'https://python-24w-03-en.netlify.app'
-- source: 03-solutions-en.qmd
-  netlify:
-    - id: b2247ea3-3595-4873-893b-1f3545a9941a
-      url: 'https://python-24w-03-solutions-en.netlify.app'
+    - id: 7b51e161-6fec-487e-bdad-091771560dbf
+      url: https://python-25s-03-solutions.netlify.app/
