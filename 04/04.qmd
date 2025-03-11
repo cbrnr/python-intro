@@ -2,7 +2,7 @@
 title: "4 – Functions"
 subtitle: "Introduction to Python and PsychoPy"
 author: "Clemens Brunner"
-date: 2024-10-24
+date: 2025-03-24
 format:
   html:
     page-layout: full
@@ -16,18 +16,18 @@ theme:
 
 ## Introduction
 
-Functions in Python are like "mini scripts" or "mini programs", as they group multiple statements into a single block. A function in Python can also be compared to a mathematical function, such as the square function $f(x) = x^2$. This mathematical function $f$ calculates a new output value $x^2$ from a given input value $x$. Similarly, a Python function can take one or more input values (called *arguments*) and return a new output value (or perform some other action).
+Functions in Python are like "mini scripts" or "mini programs", as they group multiple statements into a single block. A function in Python is similar to a mathematical function, such as the square function $f(x) = x^2$. This mathematical function $f$ calculates a new output value $x^2$ from a given input value $x$ (which can be an arbitrary number). Similarly, a Python function can take one or more input values (called *arguments*) and return a new output value (or perform some other action).
 
-A function has a clearly defined task. In Python, functions are used to structure code (which increases readability) and make it reusable. Functions also make programs shorter, as repeated code can be moved into functions. If changes are necessary, they only need to be made in one place within the function. Functions can also be reused in other programs.
+A function has a clearly defined task. In Python, functions are used to structure code (which increases readability). Functions also make programs shorter, as repeated code can be moved into functions. If changes are necessary, they only need to be made in one place within the function. Functions can also be reused in other programs.
 
 :::{.callout-note}
-We have already learned about some functions like `print` and `type` in previous sessions.
+We have already learned about some built-in functions like `print` and `type` in previous sessions.
 :::
 
 
 ## Calling functions
 
-*Calling* a function means executing the code contained within it (i.e., the "mini script") – the function "does" its work. In Python, you call a function by using its name followed by a *pair of parentheses*. Inside the parentheses, you pass the *arguments* to the function (if necessary). Arguments are the values provided to a function that it needs to carry out its task. For example, the `type` function requires one argument; otherwise, it it cannot perform its intended task. Similarly, the `math.sqrt` function from the `math` module requires one argument to calculate the square root of the given number.
+*Calling* a function means executing the code contained within it (i.e., the "mini script") – the function "does" its work. In Python, you call a function by stating its name followed by a *pair of parentheses*. Inside the parentheses, you pass *arguments* to the function (if necessary). Arguments are the values provided to a function that it needs to carry out its task. For example, the `type` function requires one argument; otherwise, it it cannot perform its intended task (to determine the type of the argument). Similarly, the `math.sqrt` function from the `math` module requires one argument to calculate the square root of the given number.
 
 Here are two examples of calling two different functions with one argument each:
 
@@ -66,7 +66,7 @@ We have already learned about the concept of names in Python in the last session
 
 ## Defining functions
 
-Fortunately, we are not limited to existing functions, but can write our own functions. In Python, a function is *defined* as follows (the lines in `<...>` are placeholders and must be replaced with concrete commands):
+Fortunately, we are not limited to existing functions, but we can write our own functions. In Python, a function is *defined* as follows (the lines in `<...>` are placeholders and must be replaced with concrete commands):
 
 ```python
 def function_name(parameter1, parameter2, ...):
@@ -87,22 +87,22 @@ After the function name, a pair of parentheses follows. Inside these parentheses
 def test_function()  # no parameters
 ```
 
-If a function needs to have two parameters, you would write it like this:
+If a function needs two parameters, you would write it like this:
 
 ```python
 def test_function(n, v)  # two parameters n and v
 ```
 
-Regardless of the parameters, a *colon* concludes the so-called *function header*:
+Regardless of the number of parameters, a *colon* concludes the so-called *function header*:
 
 ```python
 def test_function(n, v):
 ```
 
-Next, the code that the function executes when called follows. This code must be *indented* by one level (typically four spaces) and is known as the *function body*. Within the function body, you can use the parameters as regular names; they are only available inside the function and receive the specific values of the arguments passed during the function call.
+Next comes the code that runs when the function is called. This code, known as the *function body*, must be *indented* one level (typically four spaces). Within the function body, parameters act as regular names—they serve as placeholders and exist only inside the function. When the function is called, these parameters are replaced by the specific values of the provided arguments.
 
 :::{.callout-important}
-A function can have *parameters*, which must be listed when the function is *defined*. When calling the function, you must pass specific values for all parameters – these specific values are called *arguments*.
+A function can have *parameters*, which must be listed when the function is *defined*. When *calling* the function, you must pass specific values for all parameters – these specific values are called *arguments*.
 :::
 
 The following example defines a function called `test_function`, which consists of two lines of code in the function body:
@@ -176,7 +176,7 @@ def test_function():
 
 ## Return values
 
-Functions can *return* values (results). Neither `test_function` nor `test_function_2`, as defined above, explicitly returns a value; they only execute code and implicitly return `None`, which represents "nothing" in Python. Consequently, these functions do not produce a value when called and are not considered expressions.
+Functions can *return* values (results). Neither `test_function` nor `test_function_2`, as defined previously, explicitly returns a value; they only execute code and implicitly return `None`, which represents "nothing" in Python.
 
 If a function is supposed to return a value (a result), we use the `return` keyword, followed by the desired return value:
 
@@ -202,14 +202,14 @@ x = add_one(9)
 x
 ```
 
-We can also explicitly output the value of a function (i.e., the return value) to the screen using the `print` function:
+We can also explicitly display the value of a function (i.e., the return value) using the `print` function:
 
 ```{python}
 print(add_one(122))
 ```
 
 :::{.callout-tip}
-You can use a function call anywhere a value or expression is expected. This is known as *composition*. The values are processed and inserted sequentially, moving from *inside* to *outside*, until only a single value remains:
+You can use such a function call anywhere a value or expression is expected. This is known as *composition*. The values are processed and inserted sequentially, moving from *inside* to *outside*, until only a single value remains:
 
 ```{python}
 add_one(add_one(add_one(1)))
@@ -221,14 +221,14 @@ add_one(add_one(add_one(1)))
 
 ### Default arguments
 
-A function can have no parameters or expect a specific number of parameters. When a specific number of parameters is defined in the function header, individual parameters can be assigned default values (so-called default arguments). This means that the function can also be called with fewer arguments than expected if default values exist for the missing arguments. Here is an example of a function with a default argument:
+A function can have no parameters or expect a specific number of parameters. When a specific number of parameters is defined in the function header, individual parameters can be assigned default values (so-called default arguments). This means that the function can also be called with fewer arguments than expected if default values exist for the missing arguments. Here is an example of a function with one mandatory and one default argument:
 
 ```{python}
 def add(number, increment=1):  # the default value for increment is 1
     return number + increment
 ```
 
-This function can now be called with two arguments:
+As usual, this function can be called with two arguments:
 
 ```{python}
 add(7, 1)
@@ -263,7 +263,7 @@ add(number=5, increment=2)
 add(increment=2, number=5)
 ```
 
-This serves two purposes: it improves readability, as it is immediately clear which parameters receive which specific arguments, and it allows arguments to be passed in any order.
+This serves two purposes: (1) it improves readability, as it is immediately clear which parameters receive which specific arguments, and (2) it allows arguments to be passed in any order.
 
 If the argument name is not specified, the position of the argument determines its assignment. In this case, these arguments are referred to as *positional arguments*. You can mix positional and keyword arguments when calling a function, but all positional arguments must come *before* the first keyword argument.
 
@@ -293,7 +293,7 @@ test("Python", 3)
 test("Test", 3, 4)
 ```
 
-Keyword arguments are very useful when you want to use default arguments for many parameters but want to set a different value for a single parameter. In this case, you do not have to pass all arguments in order, but only those for which you want different values than the default values:
+Keyword arguments are very useful when you want to use default arguments for most parameters but want to set a different value for a single parameter. In this case, you do not have to pass all arguments in order, but only those for which you want different values than the default values:
 
 ```{python}
 test("Test", 2, skip=2)
@@ -305,7 +305,7 @@ Without keyword arguments, the same call would look like this using only positio
 test("Test", 2, 5, 2)
 ```
 
-In this example, you must pass the value `5` for the `exponent` parameter, even though you want to use the default value. This means that you must pass an additional argument `5` (for the `exponent` parameter) when using positional arguments, which is rather cumbersome.
+In this example, you must pass the value `5` for the `exponent` parameter, even though you want to use its default value. This means that you must pass an additional argument `5` (for the `exponent` parameter) when using positional arguments, which is rather cumbersome.
 
 :::{.callout-note}
 Python also supports functions that have an *arbitrary/variable* number of parameters. This means that when the function is defined, it is not yet clear how many arguments will be passed when the function is called. The `print` function is an example of such a function: it can be called with no, one, two, or any number of arguments:
@@ -335,7 +335,7 @@ def test():
 test()
 ```
 
-However, this `s` does not exist outside of the function:
+However, `s` does not exist outside of the function:
 
 ```{python}
 #| error: true
@@ -354,7 +354,7 @@ test()
 print(s)  # s exists outside the function
 ```
 
-If you create a new name that matches an existing one outside the function, only the new local name is accessible within the function, effectively hiding the outer name. In the following example, the two names `s` refer to different objects:
+If you create a new name that matches an existing one outside the function, only the new local name is accessible within the function, effectively hiding (shadowing) the outer name. In the following example, the two names `s` refer to different objects:
 
 ```{python}
 s = 15  # global s
@@ -382,7 +382,7 @@ test()
 print(s)
 ```
 
-The line `print(s)` in the function causes an error because Python recognizes that `s` will be a local name from the subsequent line. As a result, `print(s)` fails because `s` does not exist at that point. In this case, Python does not mix global and local names.
+The line `print(s)` in the function causes an error because Python recognizes that `s` will be a local name from the subsequent line. As a result, `print(s)` fails because that local `s` does not exist at that point. Here, Python does not mix global and local names.
 
 If you want to use the globally defined name, you can do so with the `global` keyword:
 
