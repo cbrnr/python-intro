@@ -2,7 +2,7 @@
 title: "5 – Conditions and Loops"
 subtitle: "Introduction to Python and Psychopy"
 author: "Clemens Brunner"
-date: 2024-10-31
+date: 2025-03-31
 format:
   html:
     page-layout: full
@@ -18,18 +18,22 @@ theme:
 
 Complex programs do not run linearly (i.e. line by line from the beginning of a script to the end), but include branches and loops. These so-called control structures control the program flow. Comparisons play a crucial role in determining whether certain lines of code are executed or not, and how often they are repeated.
 
-We have already noted that program code does not always run in a linear fashion. For example, Python only jumps to and executes the relevant lines in a function when that function is *called*.
+We have already noted previously that program code does not always run in a linear fashion. For example, Python only jumps to and executes the relevant lines in a function when that function is *called*.
 
 :::{.callout-tip}
-Using the so-called [debugger](https://code.visualstudio.com/docs/editor/debugging) in Visual Studio Code, you can run a script in "slow motion". In debug mode, the Python interpreter waits after each command until the next one is manually started. This allows us to observe the program flow and its state at each step. Here's how it works:
+Using the so-called [debugger](https://realpython.com/python-idle/#how-to-debug-in-idle) allows us to run a script in "slow motion". In debug mode, the Python interpreter waits after each command until the next one is manually started. This allows us to observe the program flow and inspect its state at each step. Here's how it works:
 
-1. First, click to the left of the first line to set a breakpoint (which appears as a red dot). Program execution will stop at this line.
-2. Then click on the down arrow in the play button and select "Debug Python File".
-3. Execution stops at the breakpoint. The current line is highlighted in yellow and marked with a yellow arrow. You can use "Step Into" (<kbd>F11</kbd>) to jump to the next command.
-4. In the variable view on the left, you can see all local objects (and their current values) created in the program.
+1. In the IDLE Shell, select Debug – Debugger. This will open a new tool window and enable the debugger. Make sure to check the "Source" checkbox to see the current line of code.
 
-![](vscode-debug-1.png)
-![](vscode-debug-2.png)
+    ![](idle-debug-1.png){width=50%}
+
+2. Set a breakpoint in the Python script by right-clicking on the line where you want to stop the execution. For this example, let's set a breakpoint at the first line, which will turn yellow.
+
+    ![](idle-debug-2.png)
+
+3. Run the script with Run – Run Module (or press F5). The script will run and stop at the breakpoint.
+4. To continue running the script, select "Step" to execute the current line and stop at the next line. If the current line contains a function call and you do *not* want to jump into the function (for example because you are not interested in seeing the code of a builtin function), use "Over" instead.
+5. If the current line is in a function, and you want to step out of the function immediately, use "Out".
 
 To try it out, you can debug the following short script:
 
@@ -40,11 +44,11 @@ def f(x):
     y = x * 2
     return y
 
-print(f(3))
+a = f(3)
 print("Done.")
 ```
 
-In what order does Python execute the lines of code?
+In what order does Python execute the lines of code? Take note of the locals view, which shows the current values of all defined objects (you can ignore all objects starting and ending with `__` (double underscore, or short dunder), as these are internally used objects).
 
 Alternatively, the [PythonTutor](http://pythontutor.com/visualize.html#mode=edit) website can also visualize the program flow step by step. Simply copy the entire code into the input field and click "Visualize Execution". By clicking "Next" repeatedly, you can see how Python runs the code.
 :::
@@ -52,7 +56,7 @@ Alternatively, the [PythonTutor](http://pythontutor.com/visualize.html#mode=edit
 
 ## Comparisons
 
-Comparisons are logical expressions that are either true (`True`) or false (`False`). In Python, these values are represented by the `bool` data type. The following comparison operations are supported:
+Comparisons are logical expressions that are either true (`True`) or false (`False`). In Python, these two values are represented by the `bool` data type. The following comparison operations are supported:
 
 * Equality `==`
 * Inequality `!=`
@@ -131,7 +135,7 @@ We can see that both objects `x` and `y` have the same ID. This means that the u
 The IDs of objects are an implementation detail in Python, meaning the specific numbers are not important. However, these IDs can be used to compare two objects for equality, as only identical objects share the same ID.
 
 :::{.callout-note}
-Another implementation detail in Python is that small integers are stored only once. For example, if you assign the same small number multiple times (like `x = 2` and `y = 2`), only one object is created. This approach helps optimize memory usage. However, the same is not true for large integers:
+Another implementation detail in Python is that small integers are stored only once. For example, if you assign the same small number multiple times (like `x = 2` and `y = 2`), only one object is created. This approach helps optimize memory usage. However, the same is not true for large integers (or floats):
 
 ```{python}
 a = 500
@@ -378,7 +382,7 @@ else:
 ```
 
 
-## For loops
+## `for` loops
 
 To repeat commands, you can use loops. The most commonly used loop is the `for` loop. As a simple example, let's replace the following repetitive code with a loop:
 
@@ -464,7 +468,7 @@ for num in range(2, 10):
 We will cover more details about strings and lists in the next sessions.
 
 
-## While loops
+## `while` loops
 
 In contrast to `for` loops, `while` loops are well suited when it is not clear in advance how often the loop should be repeated. The following example uses an *infinite loop* (`while True` is always `True`). To exit this infinite loop, we use the `break` keyword. The `input` function queries the user for keyboard input; it returns the entered characters as a string.
 
