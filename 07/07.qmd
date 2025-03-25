@@ -2,7 +2,7 @@
 title: "7 – Lists and Dictionaries"
 subtitle: "Introduction to Python and PsychoPy"
 author: "Clemens Brunner"
-date: 2024-11-21
+date: 2025-04-28
 format:
   html:
     page-layout: full
@@ -102,7 +102,7 @@ type(z)
 
 ### Mutating lists
 
-Since lists are *mutable*, you can change individual elements after creating the list.
+Since lists are *mutable*, we can modify individual elements after creating the list.
 
 ```{python}
 x
@@ -147,7 +147,7 @@ x.append(13)
 x
 ```
 
-In contrast to strings, the list is *mutated in-place* here. (Re)assigning to a name does not work, as shown in the following example:
+In contrast to strings, the list is mutated *in-place* here, meaning that the list is modified directly. (Re)assigning to a name does not work, as shown in the following example:
 
 ```{python}
 a = x.append(25)
@@ -162,10 +162,10 @@ x  # mutated list
 ```
 
 :::{.callout-important}
-List methods *mutate* the list *in-place* and do *not* return anything (`None`). In contrast, string methods cannot change the string and therefore always return a new string.
+List methods *mutate* the list *in-place* and do *not* return anything (`None`). In contrast, string methods cannot change the string and therefore always *return* a new string.
 :::
 
-If you want to add multiple elements at once, you can use the `extend` method:
+If we want to add multiple elements at once, we can use the `extend` method:
 
 ```{python}
 x.extend([99, "HH", "zz"])
@@ -196,7 +196,7 @@ x
 Note that `del` is a Python keyword and not a function. Therefore, `del x[1]` is not a function call, and parentheses as a call operator are not necessary!
 :::
 
-Alternatively, you can use the `pop` method to remove an element at a specific index. This method also returns the removed element (which `del` does not).
+Alternatively, we can use the `pop` method to remove an element at a specific index. This method also returns the removed element (which `del` does not).
 
 ```{python}
 x = ["A", "b", 3, 4, "five"]
@@ -207,7 +207,7 @@ x.pop(1)
 x
 ```
 
-The `remove` method removes the first element from the list that matches the specified value. Here, you do not specify the index to remove but the value to delete.
+The `remove` method removes the first element from the list that matches the specified value. Here, we do not specify the index to remove but the value to delete.
 
 ```{python}
 x = ["A", "b", 31, 41, "five"]
@@ -218,7 +218,7 @@ x
 
 ### Sorting lists
 
-If a list contains sortable elements (e.g., only numbers), you can sort it with the `sort` method.
+If a list contains sortable elements (e.g., only numbers), we can sort it with the `sort` method.
 
 ```{python}
 h = [6, 9, 23, 1, -78, 44]
@@ -233,7 +233,7 @@ What happens if you try to sort a list with unsortable elements (e.g., the list 
 
 ### Reversing lists
 
-You can reverse a list (just like a string) with the following slice (this creates a new list since the original list does not change):
+We can reverse a list (just like a string) with the following slice (this creates a new list since the original list does not change):
 
 ```{python}
 h[::-1]
@@ -263,7 +263,7 @@ The `in` operator checks if a specific element is contained in a list.
 -78 in h
 ```
 
-Just like any sequence data type, a list is iterable, meaning you can iterate over the individual elements with a loop:
+Just like any sequence data type, a list is iterable, meaning we can iterate over the individual elements with a loop:
 
 ```{python}
 for k in [2, "five", 3.14, "seven"]:
@@ -275,7 +275,7 @@ The loop variable `k` takes on the individual values of the list in each iterati
 
 ## Tuple
 
-Tuple behave like lists but are *immutable*. This means that you cannot change the elements contained in the tuple. Tuples are created like lists, but without square brackets (you also do not need parentheses, although these are sometimes syntactically necessary in combination with other commands, e.g., when passing a tuple as an argument).
+Tuples behave like lists but are *immutable*. This means that we cannot modify the elements contained in the tuple. Tuples are created like lists, but without square brackets (we also do not need parentheses, although these are sometimes syntactically necessary in combination with other commands, e.g., when passing a tuple as an argument).
 
 ```{python}
 t = "A", "b", 3, 4, "five"
@@ -306,7 +306,7 @@ t = ("A",)
 t
 ```
 
-So omitting the comma does not create a tuple but a string:
+Therefore, omitting the comma does *not* create a tuple but a string:
 
 ```{python}
 t = ("A")
@@ -317,7 +317,7 @@ t
 
 ## List comprehensions
 
-List comprehensions are an alternative way to create lists. List comprehensions are essentially loops but are syntactically much more compact (shorter). They are often used to create lists based on existing lists. Let's take a list of square numbers from 0 to 9 as an example. With a regular loop, you would create this list as follows:
+List comprehensions are an alternative way to create lists. List comprehensions are essentially loops, but are syntactically much more compact (shorter). They are often used to create lists based on existing lists. Let's take a list of square numbers from 0 to 9 as an example. With a regular loop, we would create this list as follows:
 
 ```{python}
 squares = []  # start with an empty list
@@ -366,7 +366,7 @@ z
 ```
 
 ::: {.callout-tip}
-To be clear, list comprehensions are *not* a new feature in Python but just a more concise way to create a list. They are often for relatively simple lists, because they are more readable and shorter than the corresponding loop.
+To be clear, list comprehensions are *not* a new feature in Python but just a more concise way to create a list. They are often used for relatively simple lists, because they are more readable and shorter than the corresponding loop. However, if the list comprehension becomes too complex, it is better to use a regular loop for better readability.
 :::
 
 The following additional examples illustrate that list comprehensions can apply an operation to all elements of a list or filter out specific elements:
@@ -397,25 +397,13 @@ x * 2
 
 Instead, the list is "duplicated." Whenever you want to apply an operation element-wise, you must use a list comprehension (or the corresponding loop).
 
-This is impractical for numerical applications. In one of the following sessions, we will learn how to use Python for numerical calculations (utilizing a new data type called NumPy array, provided by the NumPy third-party package).
+This is impractical for numerical applications. In one of the following sessions, we will learn how to use Python for numerical calculations (utilizing a new data type called NumPy array, provided by the [NumPy](https://numpy.org/) third-party package).
 :::
-
-Another example:
-
-```{python}
-x = ['  perSon', '  WoMaN ', 'MAN  ', 'CAMERA', 'tv']
-```
-
-```{python}
-[item.strip().upper() + "!" for item in x]
-```
-
-In summary, list comprehensions are useful as long as they are still relatively simple and clear. If you have several nested loops and conditions, it is better to use explicit loops for better readability.
 
 
 ## Dictionaries
 
-The dictionary data type is a so-called mapping data type. It works similar to a language dictionary. For example, if you want to know the translation of a specific word, you look it up under the word (called a key) and find the translation there (called a value). In Python, you define a `dict` with curly braces and separate the entries with commas. Each entry consists of a key and a value, separated by a colon.
+The dictionary data type is a so-called mapping data type. It works similar to a language dictionary. For example, if we want to know the translation of a specific word, we look it up under the word (called a key) and find the translation there (called a value). In Python, we define a `dict` with curly braces and separate the entries with commas. Each entry consists of a key and a value, separated by a colon.
 
 The following example shows a `dict` with three entries:
 
@@ -423,7 +411,7 @@ The following example shows a `dict` with three entries:
 d = {"Haus": "house", "Schlange": "snake", "Katze": "cat"}
 ```
 
-Alternatively, you can also use the `dict` function, using keyword arguments to initialize the dictionary:
+Alternatively, we can also use the `dict` function, using keyword arguments to initialize the dictionary:
 
 ```{python}
 d = dict(Haus="house", Schlange="snake", Katze="cat")
@@ -433,7 +421,7 @@ d = dict(Haus="house", Schlange="snake", Katze="cat")
 Note that the keyword arguments correspond to the dict keys and must be written without quotation marks. These are then converted to strings and used as keys in the dictionary.
 :::
 
-We can access individual elements with indexing, but instead of a numerical index (as with lists), we now specify the respective key as an index:
+We can access individual elements with indexing, but instead of a numerical index (as with lists), we specify the respective key as an index:
 
 ```{python}
 d["Haus"]
@@ -444,10 +432,10 @@ d["Schlange"]
 ```
 
 :::{.callout-important}
-An essential difference to lists is that dictionaries are *unordered*. Therefore, you cannot access elements by numerical indices (as with lists), but only by keys!
+An essential difference to lists is that dictionaries are *unordered*. Therefore, we cannot access elements by numerical indices (as with lists), but only by keys! Note that keys can of course be numbers, but they still do not represent any order in a dictionary.
 :::
 
-Just like in lists, you can store elements with different data types in dictionaries. However, *keys* must be *immutable* (hence, you cannot use lists as keys). You can add new elements to an existing dictionary by specifying a key and a value:
+Just like in lists, we can store elements with different data types in dictionaries. However, *keys* must be *immutable* (hence, we cannot use lists as keys). We can add new elements to an existing dictionary by specifying a key and a value:
 
 ```{python}
 d
@@ -546,7 +534,7 @@ a
 b
 ```
 
-Since Python always evaluates the right-hand side of an assignment first, you can also swap two values with this pattern:
+Since Python always evaluates the right-hand side of an assignment first, we can also swap two values with this pattern:
 
 ```{python}
 a, b = b, a
@@ -561,7 +549,7 @@ b
 ```
 :::
 
-If you want to avoid the error when accessing a non-existent key, you can use the `get` method instead. This method has two parameters: a key and a default value that is returned if the specified key does not exist in the dictionary:
+If we want to avoid the error when accessing a non-existent key, we can use the `get` method instead. This method has two parameters: a key and a default value that is returned if the specified key does not exist in the dictionary:
 
 ```{python}
 d
@@ -700,4 +688,4 @@ What happens if you try to access the non-existent key `"zehn"` in the dictionar
 
 ### Exercise 8
 
-In the previous session, we defined a function called `find` that behaves like the string method `str.find`. However, this function (and the method) only finds the *first* occurrence of the searched character, e.g., `"Werkstatttreppe".find("t")` returns `5` (the position of the first `t`). It would be useful if the indices of *all* searched characters were returned in a list, e.g., `[5, 7, 8, 9]`. If the character does not occur at all, an empty list should be returned. Write a function `find` that behaves accordingly!
+In the previous session, we defined a function called `find` that behaves like the string method `str.find`. However, this function (and the method) only finds the *first* occurrence of the searched character, e.g., `"Werkstatttreppe".find("t")` returns `5` (the position of the first `t`). It would be useful if the indices of *all* found characters were returned in a list, e.g., `[5, 7, 8, 9]`. If the character does not occur at all, an empty list should be returned. Define a function `find` that behaves accordingly!
