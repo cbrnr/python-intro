@@ -2,7 +2,7 @@
 title: "6 – Strings"
 subtitle: "Introduction to Python and PsychoPy"
 author: "Clemens Brunner"
-date: 2024-11-07
+date: 2025-04-07
 format:
   html:
     page-layout: full
@@ -14,28 +14,28 @@ theme:
   dark: darkly
 ---
 
-## Recap
+## Introduction
 
 We can roughly categorize data types in Python as follows:
 
 - Logical data type (`bool`)
 - Numeric data types (`int`, `float`)
 - Sequences (can consist of multiple elements) (`str`, `list`, `tuple`)
-- Mappings (key-value pairs) (`dict`)
+- Mappings (key/value pairs) (`dict`)
 
 The `type` function determines the type of a given object. Logical and numeric data types are relatively simple, and we have already seen how to use them. In this and the following session, we will introduce more complex types that are frequently used in Python: the sequence data types `str`, `list`, and `tuple`, as well as the mapping data type `dict`.
 
 Before we discuss these types in detail, let's look at an important fundamental property of data types in Python.
 
 
-## Mutable and immutable
+## Mutability
 
 Python distinguishes between two kinds of data types:
 
-- Mutable
-- Immutable
+- Mutable types
+- Immutable types
 
-Objects of a *mutable* type can be modified after they have been created. In contrast, objects of an *immutable* type cannot be modified after they have been created.
+Objects of a *mutable* type can be *modified* after they have been created. In contrast, objects of an *immutable* type can *not* be modified after they have been created.
 
 We will only discuss the following two *mutable* types in this course:
 
@@ -50,7 +50,7 @@ In addition, we will also discuss the following *immutable* types:
 
 ### Immutable types
 
-Let's start with immutable types. As an example, consider the object `2` of type `int`. This object is immutable. In the following example, the object `2` (named `a`) is not actually changed. When you set `a = 3`, you are only changing the name `a` – it then refers to the object `3` (a different object, think of the name tag analogy).
+Let's start with immutable types. As an example, consider the object `2` of type `int`. This object is immutable. In the following example, the object `2` (named `a`) can never be modified. When you set `a = 3`, you are only changing the name `a` – it then refers to the object `3` (a different object, think of the name tag analogy).
 
 We can verify that the objects are different with the `id` function (the IDs are indeed different).
 
@@ -85,7 +85,7 @@ s[1]  # second character (Python indexing is zero-based)
 s[1] = "x"  # does not work as strings are immutable
 ```
 
-Similar to strings, tuples are also immutable. A tuple is a collection (sequence) of different objects, similar to a list:
+Like strings, tuples are also immutable. A tuple is a collection (sequence) of different objects, similar to a list:
 
 ```{python}
 t = 1, 2, 18.33, "Python", 44
@@ -107,7 +107,7 @@ t[0] = "X"  # does not work as tuples are immutable
 
 ### Mutable types
 
-In contrast to the examples above, objects of a mutable type can be modified after they have been created. A list is a collection of different objects, similar to a tuple. However, a list can be modified after it has been created:
+In contrast, objects of a mutable type can be modified after they have been created. A list is a collection of different objects, similar to a tuple. However, a list can be modified after it has been created:
 
 ```{python}
 k = [1, 2, 18.33, "Python", 44]  # list
@@ -166,7 +166,7 @@ More details on the `list`, `tuple`, and `dict` data types will follow in the ne
 
 ### Creating strings
 
-The `str` data type is a sequence data type representing character strings. Therefore, a string consists of a sequence of characters (letters, numbers, symbols, and other special characters). Strings are enclosed in single or double quotes (but the content of a string itself consists only of the characters *between* these quotes).
+The `str` data type is a sequence data type representing character strings (text). Therefore, a string consists of a sequence of zero or more characters (letters, numbers, symbols, and other special characters). Strings are enclosed in single or double quotes (but the content of a string itself consists only of the characters *between* these quotes).
 
 ```{python}
 s1 = "String"
@@ -208,7 +208,7 @@ s5  # actual string value, \n represents a line break
 We have already encountered triple-quoted strings as docstrings for short function descriptions.
 
 :::{.callout-tip}
-If you want to create a string that contains both double quotes and single quotes, you cannot use the same type of quotation mark for both the string definition and the characters within the string. Instead, you need to use a backslash (`\`) before the quotation mark that matches the one used to define the string. This is known as an [escape sequence](https://en.wikipedia.org/wiki/Escape_sequence)):
+If you want to create a string that contains both double quotes and single quotes, you cannot use the same type of quotation marks for both the string definition and the characters within the string. Instead, you need to use a backslash (`\`) before the quotation mark that matches the one used to define the string. This is known as an [escape sequence](https://en.wikipedia.org/wiki/Escape_sequence):
 
 ```{python}
 x = "This string contains both 'single' and \"double\" quotes."
@@ -221,7 +221,7 @@ The values of the two strings `x` and `y` are identical, which shows that it doe
 x == y
 ```
 
-The `print` function displays escape sequences in a "correct" format (i.e., it shows the actual characters represented by the escape sequences):
+The `print` function displays escape sequences in a "printable" format (i.e., it shows the actual characters represented by the escape sequences):
 
 ```{python}
 print(x)
@@ -233,10 +233,10 @@ Non-printable characters can also be represented with escape sequences, such as 
 
 ### String indexing
 
-Sequence data types support indexing, which allows us to access individual elements. The index (i.e., the position of the desired character) is specified in square brackets after the object.
+Sequence data types support indexing, which allows us to access (extract) individual elements. The index (i.e., the position of the desired character) is specified in square brackets after the object.
 
 :::{.callout-important}
-Python uses zero-based indexing, i.e., the first element has index 0. You can interpret the index as the difference/distance to the first element.
+Python uses zero-based indexing, i.e., the first element has index 0, the second has index 1, and so on. Therefore, the index is the difference/distance to the first element.
 :::
 
 ```{python}
@@ -252,7 +252,7 @@ s[0]  # first character
 s[1]  # second character
 ```
 
-Negative indices access elements from the end to the beginning, i.e., −1 is the last element, −2 is the second-to-last element, and so on.
+Negative indices access elements from the end to the beginning, i.e., −1 refers to the last element, −2 to the second-to-last element, and so on.
 
 ```{python}
 s[-1]  # last character
@@ -268,13 +268,13 @@ s[-2]  # second-to-last character
 In addition to indexing, Python also supports slicing, which allows us to extract a range of elements (not just one) from a sequence. We specify the start index and the stop index in square brackets, separated by a colon.
 
 :::{.callout-important}
-The start index is inclusive, and the stop index is exclusive. The stop index does *not* belong to the range!
+The start index is *inclusive*, and the stop index is *exclusive*. Therefore, the stop index is *not* part of the range!
 :::
 
 Accessing multiple elements like this (using the colon) produces a *slice* of the original sequence.
 
 :::{.callout-note}
-Omitting the start index counts from the first element (inclusive). Omitting the stop index counts up to the last element (inclusive).
+Omitting the start index starts with the first element (inclusive). Omitting the stop index includes everything up to the last element (inclusive).
 :::
 
 ```{python}
@@ -319,7 +319,7 @@ s[:2]  # first two characters
 s[2:]  # remaining characters (starting from the third character)
 ```
 
-Optionally, we can specify the step size after the stop index (the default step size is 1). For example, we can extract every second element starting at index 1 and stopping at index 5 (exclusive):
+Optionally, we can specify the *step size* after the stop index (the default step size is 1). For example, we can extract every second element starting at index 1 and stopping at index 5 (exclusive):
 
 ```{python}
 s[1:5:2]  # [start:stop:step]
@@ -410,7 +410,7 @@ x = "a" + "b" + "c"
 x
 ```
 
-Therefore, you can duplicate a string with the `*` operator:
+Therefore, you can also duplicate a string with the `*` operator:
 
 ```{python}
 "Hello" * 4
@@ -425,7 +425,7 @@ Python provides many useful specific functions for strings. These are applied di
 x.upper()
 ```
 
-The general syntax is as follows: first, we specify the string object (in the example `x`), followed by a dot, followed by the name of the function (in the example `upper`) that you want to call. Such a function is also called a *method*, as it is applied directly to a previously specified object. In the example, the `upper` method creates a new string, consisting of the characters of the string `x` in uppercase.
+The general syntax is as follows: first, we specify the string object (in the example `x`), followed by a dot, followed by the name of the function (in the example `upper`) that you want to call. Such a function is also called a *method*, as it is applied directly to a previously specified object. In the example, the `upper` method creates and returns a new string, consisting of the characters of the string `x` in uppercase.
 
 This notation has the advantage that it is immediately clear that the method *belongs* to the object; in principle, however, the call corresponds to a classic function call `str.upper(x)`.
 
@@ -437,14 +437,14 @@ This notation has the advantage that it is immediately clear that the method *be
 "dsKJsdJKJKK".lower()  # lowercase
 ```
 
-Importantly, all string methods *return* a *new* string. Since strings are immutable, they cannot be changed by the methods! This means that you should assign a name to the return value if you want to use the result, for example:
+Importantly, all string methods *return* a *new* string (remember that strings are immutable, so they *cannot* be changed by the methods). This means that you should assign a name to the return value if you want to use the result, for example:
 
 ```{python}
 x
 ```
 
 ```{python}
-x = x.upper()  # assign name x to result of upper method
+x = x.upper()  # assign name x to result of upper method call
 ```
 
 ```{python}
@@ -479,22 +479,22 @@ The `strip` method removes leading and trailing whitespace from a string:
 The `split` method splits a string into a list of strings. The optional argument specifies the character at which to split (by default, whitespace, i.e., spaces and tabs, is used).
 
 ```{python}
-"Some sentences. Separated by periods. Why?".split(".")
-```
-
-```{python}
 "Some sentences. Separated by periods. Why?".split()
 ```
 
-The opposite of `split` is `join`, which concatenates strings in a list into a single string. The specified string is used as the joining character.
+```{python}
+"Some sentences. Separated by periods. Why?".split(".")
+```
+
+The opposite of `split` is `join`, which concatenates a list of strings into a single string. The specified string is used as the joining character.
 
 ```{python}
 ";".join(["das", "ist", "ein", "Test"])
 ```
 
-We will discuss lists in the next session, but for now, remember that the ability to concatenate strings in a list with `join` into a single string is more efficient than concatenating individual strings with `+`.
+We will discuss lists in more detail in the next session.
 
-The `count` method counts how often a specified character occurs in the string:
+The `count` method counts how often a specified character occurs in a string:
 
 ```{python}
 s = "This is a short string, just for testing."
@@ -530,7 +530,7 @@ The `in` operator can be used to check if a specific character is contained in a
 
 ### Iterating over strings
 
-A string is iterable, i.e., you can iterate over the individual elements with a `for` loop:
+A string is iterable, i.e., we can iterate over the individual elements with a `for` loop:
 
 ```{python}
 s = "Computer"
@@ -539,7 +539,7 @@ for c in s:
     print(c)
 ```
 
-Alternatively, you could also use the following `for` loop, which is common in many other programming languages:
+Alternatively, we could also use the following `for` loop, which is common in many other programming languages:
 
 ```{python}
 s = "Computer"
@@ -548,7 +548,7 @@ for i in range(len(s)):  # not recommended!
     print(s[i])
 ```
 
-However, using `range` is less readable than directly iterating over the string, so you should always prefer the direct variant!
+However, using `range` is less readable than directly iterating over the string, so we should always prefer the direct variant!
 
 We could also use a `while` loop to iterate over the string, but this is less common and less readable (remember that we usually use `while` loops when we do not know the number of iterations in advance):
 
@@ -569,7 +569,7 @@ c = "p"  # character to find
 s.find(c)
 ```
 
-However, we can implement a function that performs the same task for educational purposes. In general, we use a loop to iterate over each character. If the current character `s[i]` at position `i` is equal to the character `c` we are looking for, we break out of the loop, and the variable `i` contains the index of the character:
+However, we can define a function that performs the same task for educational purposes. In general, we use a loop to iterate over each character. If the current character `s[i]` at position `i` is equal to the character `c` we are looking for, we break out of the loop, and the variable `i` contains the index of the character:
 
 ```{python}
 i = 0
