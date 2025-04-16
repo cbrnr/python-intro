@@ -2,7 +2,7 @@
 title: "8 – Input and Output"
 subtitle: "Introduction to Python and PsychoPy"
 author: "Clemens Brunner"
-date: 2024-11-28
+date: 2025-05-05
 format:
   html:
     page-layout: full
@@ -16,7 +16,7 @@ theme:
 
 ## Introduction
 
-Input refers to the input of information from the keyboard or from a file in order to process it in a program. Output refers to the output of information on the screen or to a file (e.g. results of a calculation). In this chapter, we will learn how to format strings for output and how to read from and write to text files.
+Programs often need to interact with the outside world, for example by receiving information from the user or saving results for later. This interaction happens through input and output. Input usually comes from the keyboard or a file, while output is typically shown on the screen or written to a file. In this chapter, you'll learn how to format strings for display, and how to read from and write to text files.
 
 
 ## Displaying strings
@@ -41,7 +41,7 @@ The `str` function can convert any object (such an integer, a float, etc.) to a 
 str(55)
 ```
 
-The `print` function can take *any number* of arguments. It will then display all arguments separated by spaces:
+Note that the `print` function can take *any number* of arguments. It will then display all arguments separated by spaces:
 
 ```{python}
 a = 5
@@ -52,8 +52,8 @@ print(a, "+", b, "=", a + b)  # five arguments
 :::{.callout-note}
 The `print` function has two optional parameters `sep` and `end`, which influence the separator between the arguments and the character at the end of the output:
 
-- `sep=" "`: Separator between the arguments (default: space)
-- `end="\n"`: Character at the end of the output (default: newline)
+- `sep=" "`: Separator between the arguments (defaults to a space)
+- `end="\n"`: Character at the end of the output (defaults to a newline)
 
 What is the output of the previous example if you set `sep=""`? What does `end="!!!"` do?
 :::
@@ -67,13 +67,13 @@ print(str(a) + " + " + str(b) + " = " + str(a + b))  # one argument
 
 ### F-strings
 
-Formatted strings, or short f-strings, are a more modern way to format strings. They are prefixed with an `f` and can contain expressions within curly braces `{}`. The following example shows a simple f-string without any expressions (so a normal string would suffice):
+Formatted strings – often called f-strings – offer a modern and convenient way to create strings in Python. They start with the letter `f` and allow us to include expressions inside curly braces `{}`. Here's a simple example of an f-string without any expressions, which behaves just like a regular string:
 
 ```{python}
-f"Hello"  # same as "Hello"
+f"Hello"  # same as "Hello", we don't need an f-string here
 ```
 
-F-strings are only useful if you actually include expressions within curly braces `{}`. All expressions are evaluated and interpolated into the string:
+F-strings are really useful if we actually include expressions within curly braces `{}`. All expressions are automatically evaluated and interpolated into the string:
 
 ```{python}
 name = "World"
@@ -94,7 +94,7 @@ import math
 print(f"π ≈ {math.pi}")
 ```
 
-With an optional colon and a so-called *format specifier* within the curly braces, an expression can be formatted specifically. The following example formats the number $\pi$ so that it is displayed with three decimal places:
+We can provide a *format specifier* right after the expression, starting with a `:`. The following example formats the number $\pi$ so that it is displayed with three decimal places (`.3f` means format the expression as a float with three decimal places):
 
 ```{python}
 print(f"π ≈ {math.pi:.3f}")
@@ -106,7 +106,7 @@ Or with 16 decimal places:
 print(f"π ≈ {math.pi:.16f}")
 ```
 
-You can specify the minimum width by adding a number directly after the colon. In the following example, the number (formatted to show three decimal places) should occupy at least 15 characters:
+We can specify the minimum width by adding a number directly after the colon. In the following example, the number (formatted to show three decimal places) should occupy at least 15 characters:
 
 ```{python}
 print(f"π ≈ {math.pi:15.3f}")
@@ -125,16 +125,16 @@ f = open("test.txt", "w")
 
 The first argument is the filename, and the second argument describes the mode (`"r"` read, `"w"` write, `"a"` append). The default mode is `"r"` if the argument is not explicitly passed.
 
-Using the file object `f`, you can then read from or write to the file (depending on the mode).
+Using the file object `f`, we can then read from or write to the file (depending on the mode).
 
 :::{.callout-important}
-After all read and write operations have been completed, you must *close* the file object:
+After all read and write operations have been completed, we must *close* the file object:
 
 ```python
 f.close()
 ```
 
-It is advisable to perform all file operations within a `with` block. This way, the file is *automatically* closed when the block is exited, i.e. you do not need to call `f.close()` manually:
+It is advisable to perform all file operations within a `with` block. This way, the file is *automatically* closed when the block is exited, i.e. we do not need to call `f.close()` explicitly:
 
 ```python
 with open("test.txt") as f:
@@ -145,7 +145,7 @@ with open("test.txt") as f:
 The filename is a string containing either the absolute path of the file (e.g., `"C:/Program Files/Test Program/test.txt"`) or a relative path (relative to the working directory, e.g., `data/test.txt`).
 
 :::{.callout-note}
-Paths should always be separated by a regular `/` and not by a backslash `\` (common on Windows), as the latter introduces an *escape sequence*. If you still want to use `\`, you must write it as `\\`.
+Paths should always be separated by a regular `/` and not by a backslash `\` (common on Windows), as the latter introduces an *escape sequence*. To use a `\`, we must write it as `\\`.
 :::
 
 The `read` method of a file object reads the *entire file* and returns the content as a string:
@@ -156,16 +156,16 @@ text = f.read()
 print(text)
 ```
 
-Note that this loads the *entire* content of the file into memory. For very large files, this can potentially cause problems, which is why you should read (larger) text files *line by line* (more on this later).
+Note that this loads the *entire* content of the file into memory. For very large files, this can potentially cause problems, which is why we should read (larger) text files *line by line* (more on this later).
 
 :::{.callout-tip}
-We can read the content of a file only once. If the entire content has already been read, the so-called file pointer is at the end of the file. If you try to read again, you just get an empty string:
+We can read the content of a file only once. If the entire content has already been read, the so-called file pointer is at the end of the file. If we try to read again, we just get an empty string:
 
 ```{python}
 f.read()  # reached end of file
 ```
 
-If you want to read the file again, you must close it and then open it again:
+If we want to read the file again, we must close it and then open it again:
 
 ```{python}
 f.close()  # closes the file
@@ -181,7 +181,7 @@ with open("test.txt") as f:
     print("Row 3: ", f.readline(), end="")
 ```
 
-You can also iterate over the file object in a loop to read the file line by line:
+We can also iterate over the file object in a loop to read the file line by line:
 
 ```{python}
 with open("test.txt") as f:
@@ -189,7 +189,7 @@ with open("test.txt") as f:
         print(line, end="")
 ```
 
-This way, you can easily manipulate individual lines, e.g., to output line numbers (which are not contained in the file itself):
+This way, we can easily manipulate individual lines, e.g., to include line numbers in the output (which are not contained in the file itself):
 
 ```{python}
 with open("test.txt") as f:
@@ -201,7 +201,7 @@ with open("test.txt") as f:
 In the previous example, the `for` loop does not directly iterate over `f`, but over `enumerate(f)`. This function counts (enumerates) the loop iterations and returns a tuple consisting of the current loop counter and the current line.
 :::
 
-Writing text to files works very similarly: you open the file in `"w"` mode and pass the desired content as a string to the `write` method:
+To write text to a file, we open the file in `"w"` mode and pass the desired content as a string to the `write` method:
 
 ```python
 with open("test2.txt", "w") as f:
@@ -213,16 +213,16 @@ In this example, the escape sequence `\n` corresponds to a line break (new line)
 
 ## Example: Reading a CSV file
 
-With the tools presented so far, we can already read CSV[^1] files and calculate rudimentary statistics. CSV files are often used to store tabular data. These files are plain text files in which the variables (columns) are separated by commas, and the individual records are stored line by line.
+With the tools presented so far, we can already read CSV[^1] files and calculate simple statistics. CSV files are often used to store tabular data. These files are plain text files in which the variables (columns) are separated by commas, and the individual records are stored line by line.
 
-The following sections present three ways to read a CSV file (the example file `correlation.csv` is available [here](correlation.csv)). The first method uses Python without any additional modules, and the second method is a generalization of the first. The third and simplest method uses the [pandas](https://pandas.pydata.org/) package, which we will not get to know in detail in this course (it is mentioned here for completeness).
+The following sections present three ways to read a CSV file (the example file `correlation.csv` is available [here](correlation.csv)). The first method uses Python without any additional modules, and the second method is a generalization of the first. The third and simplest method uses the [pandas](https://pandas.pydata.org/) package, which we will not get to know in detail in this course (it is mentioned here for completeness and to show how easy it is to read a CSV file in practice).
 
 [^1]: Comma-Separated Values
 
 
 ### Option 1
 
-We start with an empty list `data`. We then add the content of each line step by step (using `append`) to this list. A line is represented as a list with two strings. First, we remove any leading and trailing spaces from a line using `.strip()`, and then we split the line at the comma into a list with two elements using `.split(",")`:
+We start with an empty list called `data`. We then add the content of each line step by step (using `append`) to this list. First, we remove any leading and trailing spaces from a line using `.strip()`, and then we split the line at the comma into a list with two elements using `.split(",")`:
 
 ```{python}
 data = []  # emtpy list
@@ -272,7 +272,7 @@ cols[0]
 cols[1]
 ```
 
-With these two lists, you can now perform calculations. For example, you can calculate the column means as follows:
+With these two lists, we can now perform calculations. For example, we can calculate the column means as follows:
 
 ```{python}
 sum(cols[0]) / len(cols[0])
@@ -282,7 +282,7 @@ sum(cols[0]) / len(cols[0])
 sum(cols[1]) / len(cols[1])
 ```
 
-This solutions works, but it is far from ideal. First, there are existing packages that should be preferred over developing everything from scratch (Python has its own `csv` module, and the `pandas` package is ideal for such tasks). Second, this solution is very specific to the concrete file, e.g., the approach only works for a file with exactly two columns.
+This solutions works, but it is far from ideal. First, there are existing packages that we could use instead of developing everything from scratch (Python has its own `csv` module, and the `pandas` package is ideal for such tasks). Second, this solution is very specific to the specific file, e.g., the approach only works for a file with exactly two columns.
 
 
 ### Option 2
@@ -340,6 +340,8 @@ We can calculate the column means as follows:
 #| scrolled: true
 data.mean()
 ```
+
+Clearly, this solution is much shorter, easier to read, and more powerful than any of the previous custom methods.
 
 
 ## Exercises
