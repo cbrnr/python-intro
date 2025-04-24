@@ -2,7 +2,7 @@
 title: "9 – Numerical Data"
 subtitle: "Introduction to Python and PsychoPy"
 author: "Clemens Brunner"
-date: 2024-12-05
+date: 2025-05-12
 format:
   html:
     page-layout: full
@@ -16,31 +16,23 @@ theme:
 
 ## Introduction
 
-Python was originally developed as an easy-to-learn programming language. This has made Python popular in the scientific community, not least because of the large number of additional packages available for many applications. The following basic packages are essential for almost any science and engineering application:
+[NumPy](https://numpy.org/) is the foundation of most scientific Python packages. Its impact is so significant that Python might never have gained popularity in data analysis without it. At its core, NumPy provides a highly efficient data structure for numerical data, the so-called *homogeneous multidimensional array* (often called an *n*-dimensional array, ND array, or simply array).
 
-* [NumPy](http://www.numpy.org/) (numerical data)
-* [SciPy](https://scipy.org/) (algorithms for scientific computing)
-* [Matplotlib](http://matplotlib.org/) (plotting)
-* [Pandas](http://pandas.pydata.org/) (tabular data)
+Standard Python lists are too inefficient for numerical data due to their flexibility, as they can hold elements of different types. In contrast, a *homogeneous* array contains elements of the *same* data type (e.g., all `float` numbers), enabling much faster and much more efficient calculations.
 
-In addition, there are many other excellent packages for more specific applications such as [Scikit-learn](http://scikit-learn.org/stable/) (machine learning), [statsmodels](http://www.statsmodels.org/stable/index.html) (statistics), [scikit-image](http://scikit-image.org/) (image processing), or [SymPy](http://www.sympy.org/en/index.html) (symbolic computation). All of these packages are based on NumPy, which is the topic of this chapter.
-
-
-## NumPy
-
-NumPy is the backbone of most scientific Python package. It is so important that Python would probably never have become popular for data analysis without it. NumPy provides a highly efficient data type for numerical data called a homogeneous multidimensional (*n*-dimensional) array (also called ND array or `ndarray` or simply array). Lists are too inefficient for numerical data due to their flexibility, as they can contain different elements. *Homogeneous* means that all elements in an array have the *same* data type (e.g. all `float` numbers), which makes calculations much faster and much more efficient. *Multidimensional* means that an array supports any number of dimensions (also called axes).
+A NumPy array can have any number of dimensions (also known as axes), i.e., it can be *multidimensional*. For example, a one-dimensional array can be thought of as a list, while a two-dimensional array can be visualized as a table with rows and columns. Higher-dimensional arrays can be imagined as stacks of tables.
 
 :::{.callout-tip}
 The official tutorial [NumPy: the absolute basics for beginners](https://numpy.org/doc/stable/user/absolute_beginners.html) complements or deepens the contents of these notes – I highly recommend it!
 :::
 
-Let's start with an example (details on the individual commands will follow later). The first step is (as with any package or module) to import NumPy. Conventionally, we import NumPy with the abbreviation `np`:
+Let's start with an example (details on the individual commands will be provided later). By convention, we import NumPy as follows:
 
 ```{python}
 import numpy as np
 ```
 
-This means that we can refer to the package with `np` instead of `numpy`, thereby saving a few keystrokes. We now create an array containing a sequence of 15 numbers:
+This means that we can refer to the package as `np` instead of `numpy`, thereby saving a few keystrokes. Next, we create an array containing a sequence of 15 numbers:
 
 ```{python}
 a = np.arange(15)  # 15 numbers from 0 to 14
@@ -50,7 +42,7 @@ a = np.arange(15)  # 15 numbers from 0 to 14
 a
 ```
 
-The type of the object `a` is not a list, but a NumPy array, which is referred to as `numpy.ndarray`:
+The type of the object `a` is not a list, but a NumPy array, which is printed as `numpy.ndarray`:
 
 ```{python}
 type(a)
@@ -86,25 +78,27 @@ Regardless of the shape, we can also determine the total number of elements in t
 a.size  # total number of elements
 ```
 
-NumPy arrays are homogeneous data types, meaning that all elements in the array must have the same type. You can determine this type as follows:
+NumPy arrays are homogeneous data types, meaning that all elements in the array must have the same type. We can determine this type as follows:
 
 ```{python}
 a.dtype  # data type of the elements
 ```
+
+For our purposes, it's sufficient to know that `int64` means integer and `float64` means floating-point number – just like the built-in `int` and `float` types.
 
 
 ## Creating arrays
 
 ### From lists
 
-We can create NumPy arrays from lists (or tuples) using the `np.array` function. In the following example, we pass a list to the function, and it creates a corresponding NumPy array:
+We can create NumPy arrays from lists (or tuples) using the `np.array` function. In the following example, we pass a list to the function, and it creates and returns a corresponding NumPy array:
 
 ```{python}
 b = np.array([1.1, 3.14, 7.68, -12.69, -4.55])  # from a list
 b
 ```
 
-Passing a list of lists, we can create a 2D array (a table consisting of rows and columns):
+Passing a list of lists, we can create a 2D array (which you can think of as a table consisting of rows and columns):
 
 ```{python}
 c = np.array([[1, 2, 3], [4, 5, 6]])  # from a list of lists
@@ -122,14 +116,14 @@ We can think of a one-dimensional array as a list, whereas a two-dimensional arr
 
 ### Constant-filled arrays
 
-In contrast to lists, which can grow dynamically (e.g. with the `append` method), the size of arrays should be known when they are created, as adding rows or columns is relatively slow. There are some convenient constructs that create arrays filled with placeholder elements such as zeros:
+In contrast to lists, which can grow dynamically (e.g., by using the `append` method), the size of arrays should be known when they are created, as adding rows or columns is relatively slow. There are some convenient functions that create arrays filled with placeholder elements such as zeros:
 
 ```{python}
 np.zeros((3, 4))  # zeros
 ```
 
 :::{.callout-important}
-We call the `np.zeros` function with *one* argument for the desired shape, namely the tuple `(3, 4)` in the previous example. Therefore, we need another pair of parentheses to pass a tuple as the first argument. The call `np.zeros(3, 4)` does *not* work, as it contains *two* arguments. Read the documentation to understand what the first two parameters of the function mean!
+We call the `np.zeros` function with *one* argument for the desired shape, namely the tuple `(3, 4)` in the previous example. Therefore, we need another pair of parentheses to pass a tuple as the first argument. The call `np.zeros(3, 4)` does *not* work, as it contains *two* arguments. Read the documentation of the `np.zeros` function to understand what the parameters of the function mean!
 :::
 
 :::{.callout-tip}
@@ -153,7 +147,7 @@ np.full((3, 4), 66)  # 3 rows, 4 columns filled with 66
 
 ### Sequences
 
-Similar to the built-in `range` function, NumPy provides the `np.arange` function to create arrays with sequences of numbers. This function is not limited to integers but can also create arrays with decimal numbers. As with `range`, the last value (stop value) is not included in the range.
+Similar to the built-in `range` function, NumPy provides the `np.arange` function to create arrays with sequences of numbers. This function is not limited to integers, but can also create arrays with decimal numbers. As with `range`, the last value (stop value) is not included in the range.
 
 ```{python}
 np.arange(5, 17)  # from 5 to 17 (exclusive)
@@ -163,21 +157,21 @@ np.arange(5, 17)  # from 5 to 17 (exclusive)
 np.arange(0.3, 5.4, 0.6)  # from 0.3 to 5.4 (exclusive), step size 0.6
 ```
 
-If you want to specify the total number of elements (instead of the step size), it is best to use the `linspace` function (in this case, both the start and end values are included in the range):
+If you want to specify the total number of elements (instead of the step size), it is best to use the `linspace` function (in this case, both the start *and* end values are *included* in the range):
 
 ```{python}
-np.linspace(1, 10, 10)  # 10 elements from 1 to 10
+np.linspace(2, 10, 9)  # 9 elements from 2 to 10
 ```
 
 ```{python}
-np.linspace(1, 10, 10, dtype=int)  # integer values
+np.linspace(2, 10, 9, dtype=int)  # integer values
 ```
 
 ```{python}
 np.linspace(1, 10, 24)  # 24 elements from 1 to 10
 ```
 
-If you do not want the elements to have the same linear spacing, but rather want them to be spaced logarithmically, you can use the `logspace` function:
+If we do not want the elements to have the same linear spacing, but rather want them to be spaced *logarithmically* (i.e., the *ratio* between two consecutive numbers is constant), we can use the `logspace` function:
 
 ```{python}
 np.logspace(0, 4, 8)  # 8 values from 10**0 to 10**4
@@ -186,7 +180,7 @@ np.logspace(0, 4, 8)  # 8 values from 10**0 to 10**4
 
 ### Random numbers
 
-We frequently need to generate random numbers. NumPy provides a so-called random number generator that can generate numbers from a wide variety of distributions. First, we import the default random number generator `default_rng` from the `numpy.random` module:
+In practice, we frequently need to generate random numbers. NumPy provides a so-called random number generator that can generate random numbers from a wide variety of distributions. First, we import the default random number generator `default_rng` from the `numpy.random` module:
 
 ```{python}
 from numpy.random import default_rng
@@ -200,15 +194,15 @@ The abbreviation `rng` stands for random number generator.
 We do not really need the explicit import `from numpy.random import default_rng`, since we could also use `np.random.default_rng` instead. However, the explicit import makes the code more readable.
 :::
 
-We then create a generator object, which can also be initialized with a [random seed](https://en.wikipedia.org/wiki/Random_seed):
+We then create a generator object, which can (and should) be initialized with a [random seed](https://en.wikipedia.org/wiki/Random_seed):
 
 ```{python}
 rng = default_rng(seed=42)
 ```
 
-In this example, we initialize the generator with `42` (but we could also choose any other number). Initialization ensures that the generator will produce the same sequence of random numbers every time we run the script that contains random numbers. If you omit the initialization with a seed, the generator will be initialized in a non-reproducible state (the seed is formed from the current time, mouse position, etc.). This means that different random numbers will be drawn each time the script is executed, which is not in line with the reproducibility of results.
+In this example, we initialize the generator with `42`, but any number would work. This ensures the same sequence of random numbers each time the script runs. Without a fixed seed, the generator uses an unpredictable seed (like the current time or mouse position), so the results would differ with every run, thus breaking reproducibility.
 
-Using the generator's methods, we can now generate random numbers with the desired distribution:
+Using the generator's methods, we can now generate random numbers from the desired distribution:
 
 ```{python}
 rng.standard_normal(10)
@@ -223,7 +217,7 @@ rng.integers(low=-3, high=99, size=(2, 5))
 ```
 
 :::{.callout-note}
-If you run these examples on your computer, you should get *the same* random numbers – provided you initialize the generator with the value `42`.
+If you run these examples on your computer, you should get *the same* random numbers – provided you initialized the generator with the value `42`.
 :::
 
 
@@ -246,7 +240,7 @@ a
 b
 ```
 
-The following operations are calculated separately for each element:
+The following operations are performed separately for each element:
 
 ```{python}
 a * 2
@@ -329,10 +323,18 @@ b.max()
 a.min()
 ```
 
+::: {.callout-note}
+The result of these functions is a single number, but with type `numpy.float64`. If you really need a built-in Python type, you can use the `item` method:
+
+```{python}
+a.mean().item()
+```
+:::
+
 However, these functions/methods can also be applied to individual dimensions (also called *axes*), e.g., rows or columns. Here, dimension `0` corresponds to the rows and dimension `1` to the columns.
 
 :::{.callout-tip}
-Actually, the *last two* dimensions correspond to the rows and columns (in a two-dimensional array, dimension `0` is for the rows and dimension `1` is for the columns). A three-dimensional array with dimensions `(3, 4, 5)` consists of 3 blocks, each with 4 rows and 5 columns.
+Actually, the *last two* dimensions correspond to the rows and columns (in a two-dimensional array, dimension `0` refers to rows and dimension `1` refers to columns). Therefore, a three-dimensional array with dimensions `(3, 4, 5)` consists of 3 blocks each consisting of 4 rows and 5 columns.
 :::
 
 ```{python}
@@ -512,15 +514,7 @@ np.hstack((a, b))
 np.vstack((a, b))
 ```
 
-The functions `column_stack` and `row_stack` provide the same results as `hstack` and `vstack` for 2D arrays. However, there are differences for 1D arrays.
-
-```{python}
-np.column_stack((a, b))
-```
-
-```{python}
-np.row_stack((a, b))
-```
+The `column_stack` function is useful for stacking 1D arrays as columns into a 2D array.
 
 ```{python}
 c = rng.integers(low=-100, high=100, size=5)
@@ -538,10 +532,6 @@ c.shape
 
 ```{python}
 d.shape
-```
-
-```{python}
-np.row_stack((c, d))
 ```
 
 ```{python}
