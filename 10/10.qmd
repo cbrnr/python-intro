@@ -2,7 +2,7 @@
 title: "10 – Visualization"
 subtitle: "Introduction to Python and PsychoPy"
 author: "Clemens Brunner"
-date: 2024-12-12
+date: 2025-05-19
 format:
   html:
     page-layout: full
@@ -16,7 +16,7 @@ theme:
 
 ## Introduction
 
-Python offers a large number of packages for creating graphics (an overview of this ecosystem can be found [here](https://rougier.github.io/python-visualization-landscape/)). The most popular packages are currently:
+Python offers a large number of packages for visualizing data (an overview of this ecosystem can be found [here](https://rougier.github.io/python-visualization-landscape/)). The most popular packages are:
 
 - [Matplotlib](https://matplotlib.org/)
 - [Seaborn](https://seaborn.pydata.org/)
@@ -24,25 +24,21 @@ Python offers a large number of packages for creating graphics (an overview of t
 - [Bokeh](https://docs.bokeh.org/en/latest/)
 - [Vega-Altair](https://altair-viz.github.io/)
 
-Matplotlib is the oldest and most well-known package, but it can be a bit cumbersome to use. However, it allows for customizing graphics down to the smallest detail. Many other graphic packages are based on Matplotlib, so it is helpful to have at least a basic understanding of Matplotlib.
+Matplotlib is the oldest and most established package. It allows for customizing graphics down to the smallest detail. Many other graphic packages are based on Matplotlib, so it is helpful to have at least a basic understanding of Matplotlib.
 
-Bokeh and Plotly are particularly suitable for creating interactive graphics for web applications. Seaborn and Vega-Altair are specialized in statistical graphics. Whereas seaborn builds on Matplotlib and offers many additional graphic types, Vega-Altair aims to make creating complex graphics as intuitive as possible. In addition, Vega-Altair also supports interactive graphics.
+Bokeh and Plotly are particularly suitable for creating interactive graphics for web applications. Seaborn and Vega-Altair are specialized in statistical plots. Whereas seaborn builds on Matplotlib and offers many additional graphic types, Vega-Altair aims to make creating complex interactive graphics as intuitive as possible.
 
 In addition to these commonly used packages, there is also [plotnine](https://github.com/has2k1/plotnine), which is very similar to [ggplot2](https://ggplot2.tidyverse.org/) for R. If you are already familiar with ggplot2, you might want to check out plotnine.
-
-:::{.callout-tip}
-A comparison of how different packages create common types of graphics can be found on these two websites [here](https://aeturrell.github.io/coding-for-economists/vis-common-plots.html) and [here](http://pythonplot.com/)).
-:::
 
 In summary, Matplotlib, seaborn, and plotnine are suitable for creating classic *static* graphics, while Vega-Altair, Bokeh, and Plotly are suitable for creating *interactive* graphics.
 
 
 ## Matplotlib
 
-Matplotlib is particularly well-suited for creating a wide variety of graphics, especially for scientific purposes. The data to be displayed is usually available as NumPy arrays.
+Matplotlib is particularly well-suited for creating a wide variety of plots, especially for scientific purposes. The data to be visualized is typically stored in NumPy arrays.
 
 :::{.callout-note}
-The official Matplotlib website includes some [tutorials](https://matplotlib.org/stable/tutorials/index.html). In particular, the [Quick Start Guide](https://matplotlib.org/stable/tutorials/introductory/quick_start.html) is a good complement to the material in this chapter.
+The official Matplotlib website offers several [tutorials](https://matplotlib.org/stable/tutorials/index.html). In particular, the [Quick Start Guide](https://matplotlib.org/stable/tutorials/introductory/quick_start.html) is a good complement to the material covered in this chapter.
 :::
 
 As always, we start with the necessary imports:
@@ -52,10 +48,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 ```
 
-Note that we import `matplotlib.pyplot as plt` and not `matplotlib` directly. This is for historical reasons, as the vast majority of functions for creating graphics are located in `matplotlib.pyplot`.
+Note that we import `matplotlib.pyplot as plt` and not `matplotlib` directly, because the vast majority of functions for creating plots are located in the `matplotlib.pyplot` subpackage.
 
 :::{.callout-important}
-Plots created with Matplotlib are *not* displayed by default. To display a plot in a separate window, you must explicitly execute the following command:
+Plots created with Matplotlib are *not* displayed by default. To display a plot in a separate window, you must explicitly run the following command:
 
 ```python
 plt.show()
@@ -67,7 +63,7 @@ However, this window blocks the Python interpreter, i.e., you cannot enter any f
 plt.ion()
 ```
 
-This command ensures that plots are displayed immediately after they are created ("ion" stands for "interactive on").
+This command ensures that plots are displayed immediately after they are created ("ion" stands for "interactive on"). Note that scripts should not use this command, as it can lead to unexpected behavior.
 :::
 
 
@@ -191,17 +187,17 @@ annotate(4.0, 0.7, "Spine", "ax.spines")
 _ = fig.patch.set(linewidth=2, edgecolor="0.5")
 ```
 
-This figure shows the most important components of a Matplotlib plot, but we only need two concepts to get started: `Figure` and `Axes` (highlighted in red in the figure). A `Figure` corresponds to the entire figure area, which can contain one or more plots (so-called `Axes`).
+This figure shows the most important components of a Matplotlib plot, but we only need two concepts to get started: `Figure` and `Axes` (highlighted in red). A `Figure` corresponds to the entire figure area, which can contain one or more plots (so-called `Axes`).
 
-The `plt.subplots` function creates an empty `Figure` and by default an empty `Axes` object:
+The `plt.subplots` function creates an empty `Figure` containing one empty `Axes` object by default:
 
 ```{python}
 fig, ax = plt.subplots()
 ```
 
-The function returns both the `Figure` and the `Axes` (we call these `fig` and `ax`). After that, you can call methods of the `Axes` object (which we named `ax`) to create the desired plot (more on this in the next section).
+The function returns both the `Figure` and the `Axes` objects (we call them `fig` and `ax`). We can now call methods of the `Axes` object (which we named `ax`) to create the desired plot (more on this in the next section).
 
-If you want to combine multiple plots in a single figure, you can again use `plt.subplots` to create a `Figure` with the desired number of `Axes`. To do this, we use the first and second arguments, which correspond to the number of rows and columns of the plots, respectively:
+If we want to combine multiple plots in a single figure, we can again use `plt.subplots` to create a `Figure` with the desired number of `Axes`. To do this, we use the first and second arguments, which correspond to the number of rows and columns of the plots, respectively:
 
 ```python
 fig, axes = plt.subplots(1, 3)  # 1 row, 3 columns
@@ -212,17 +208,17 @@ fig, axes = plt.subplots(1, 3)  # 1 row, 3 columns
 fig, axes = plt.subplots(1, 3, figsize=(9, 4))
 ```
 
-This example creates a `Figure` containing three `Axes` arranged in one row and three columns. In other words, these are three plots displayed side by side. We named this collection of three `Axes` objects `axes`, which is a one-dimensional NumPy array. Therefore, we can access the individual elements using `axes[0]`, `axes[1]`, and `axes[2]` to create the desired plots.
+This example creates a `Figure` containing three `Axes` arranged in one row and three columns. We named this collection of three `Axes` objects `axes`, which is a one-dimensional NumPy array. Therefore, we can access the individual elements using `axes[0]`, `axes[1]`, and `axes[2]` to create the desired plots.
 
-We can also generate a two-dimensional arrangement consisting of multiple rows and columns. In this case, the returned axes are available in a *two-dimensional* NumPy array. Therefore, we need to extract the individual `Axes` objects with a two-dimensional index (i.e., row and column). For example, `axes[0, 2]` would be the `Axes` object in row 0 (i.e., the first row) and column 2 (i.e., the third column).
+We can also generate a two-dimensional arrangements consisting of multiple rows and columns. In this case, the returned axes are available in a *two-dimensional* NumPy array. Therefore, we need to extract the individual `Axes` objects with a two-dimensional index (i.e., row and column). For example, `axes[0, 2]` would be the `Axes` object in row 0 (i.e., the first row) and column 2 (i.e., the third column).
 
-To avoid any overlap in a `Figure` with multiple `Axes` objects, it is recommended to execute the following line after finishing all plots:
+To avoid any overlap in a `Figure` with multiple `Axes` objects, it is recommended to run the following line after all plots have been created:
 
 ```python
 fig.set_tight_layout(True)
 ```
 
-This will adjust the spacing between the `Axes` objects so that no text or other elements are cut off or overlap. Let's look at an example. First, we create a figure with two rows and three columns using the default layout:
+This will adjust the spacing between the `Axes` objects so that no text or other elements are cut off or overlap. Let's look at an example. First, we create a figure with two rows and three columns:
 
 ```{python}
 fig, axes = plt.subplots(2, 3)
@@ -289,7 +285,7 @@ ax.stem(x, y)
 
 ### Histograms
 
-Matplotlib also supports more complex statistical plots like histograms. To create a histogram, we first generate new example data `x` (10000 normally distributed random numbers with a mean of 100 and a standard deviation of 15):
+Matplotlib also supports more complex statistical plots like histograms. To create a histogram, we first generate new example data `x` (10,000 normally distributed random numbers with a mean of 100 and a standard deviation of 15):
 
 ```{python}
 from numpy.random import default_rng
@@ -300,15 +296,21 @@ x = rng.normal(loc=100, scale=15, size=10000)
 
 We can now display the distribution of `x` as a histogram:
 
-```{python}
+```python
 fig, ax = plt.subplots()
 ax.hist(x, bins=50, edgecolor="white")
+```
+
+```{python}
+#| echo: false
+fig, ax = plt.subplots()
+_ = ax.hist(x, bins=50, edgecolor="white")
 ```
 
 In this example, we manually set the number of bins to 50. We also use a white edge color to better separate the individual bars.
 
 :::{.callout-tip}
-All plotting methods (e.g., `plot`, `scatter`, `bar`, `stem`) have optional arguments that allow you to customize the appearance of the plot. These are described in the respective documentations.
+All plotting methods (e.g., `plot`, `scatter`, `bar`, `stem`) have optional arguments that allow us to customize the appearance of the plot. These are described in the respective documentations.
 :::
 
 
@@ -324,13 +326,26 @@ z = rng.poisson(2.8, size=10000)
 
 We can visualize the distributions of the three variables with three boxplots:
 
-```{python}
+```python
 fig, ax = plt.subplots()
 ax.boxplot([x, y, z])
 ```
 
+```{python}
+#| echo: false
+fig, ax = plt.subplots()
+_ = ax.boxplot([x, y, z])
+```
+
 :::{.callout-note}
-A boxplot consists of a box that extends from the first to the third quartile, so its height corresponds to the interquartile range (IQR). The orange line inside the box corresponds to the median. The so-called whiskers outside the box extend to 1.5 times the IQR above or below the first or third quartile, respectively. Points outside these limits are displayed as outliers.
+A boxplot displays the distribution of a dataset based on its quartiles. The box spans from the first quartile (Q1) to the third quartile (Q3), so its height (in a vertical boxplot) represents the interquartile range (IQR) – the middle 50% of the data. The horizontal line inside the box marks the median (Q2).
+
+The whiskers extend from the edges of the box to the most extreme data points that are within 1.5 times the IQR from the quartiles:
+
+- The lower whisker reaches down to the smallest value that is greater than or equal to Q1 − 1.5 × IQR.
+- The upper whisker extends up to the largest value that is less than or equal to Q3 + 1.5 × IQR.
+
+Any data points beyond these limits are shown individually and are considered outliers.
 :::
 
 
@@ -338,15 +353,21 @@ A boxplot consists of a box that extends from the first to the third quartile, s
 
 Violin plots can be used as an alternative to boxplots. For example, the data from the previous section could also be visualized like this:
 
-```{python}
+```python
 fig, ax = plt.subplots()
 ax.violinplot([x, y, z])
+```
+
+```{python}
+#| echo: false
+fig, ax = plt.subplots()
+_ = ax.violinplot([x, y, z])
 ```
 
 
 ### Additional plot types
 
-Matplotlib supports many other plot types, such as pie charts, contour plots, and 3D plots. However, if you want to create scatter plots with overlaid regression lines or other more complex statistical plot types, you should take a look at more specialized packages like seaborn or plotnine. While it is theoretically possible to create these types of plots with Matplotlib, it would require many manual steps (e.g., you would have to fit a linear regression model to the data before including it in a plot).
+Matplotlib supports many other plot types, such as pie charts, contour plots, and 3D plots. However, if you want to create scatter plots with overlaid regression lines or other more complex statistical plot types, you should take a look at more specialized packages like seaborn. While it is theoretically possible to create these types of plots with Matplotlib, it would require many manual steps (e.g., you would have to fit a linear regression model to the data before including it in a plot). Seaborn automates these steps and provides sensible defaults for many common plot types.
 
 
 ### Title and axis labels
@@ -363,7 +384,7 @@ ax.plot(x, y)
 
 We can add a title and axis labels to this plot as follows:
 
-```{python}
+```python
 fig, ax = plt.subplots()
 ax.plot(x, y)
 ax.set_title("Sine")
@@ -371,12 +392,28 @@ ax.set_xlabel("Time (s)")
 ax.set_ylabel("Amplitude (V)")
 ```
 
+```{python}
+#| echo: false
+fig, ax = plt.subplots()
+ax.plot(x, y)
+ax.set_title("Sine")
+ax.set_xlabel("Time (s)")
+_ = ax.set_ylabel("Amplitude (V)")
+```
+
 Alternatively, instead of using the three separate methods, you could also use the following shorter version:
 
-```{python}
+```python
 fig, ax = plt.subplots()
 ax.plot(x, y)
 ax.set(title="Sine", xlabel="Time (s)", ylabel="Amplitude (V)")
+```
+
+```{python}
+#| echo: false
+fig, ax = plt.subplots()
+ax.plot(x, y)
+_ = ax.set(title="Sine", xlabel="Time (s)", ylabel="Amplitude (V)")
 ```
 
 
@@ -384,7 +421,7 @@ ax.set(title="Sine", xlabel="Time (s)", ylabel="Amplitude (V)")
 
 ### Exercise 1
 
-Import the data from the file [`airquality.csv`](airquality.csv) into a NumPy array called `air` using the following code (note that the file must be in the working directory):
+Import the data from [`airquality.csv`](airquality.csv) into a NumPy array called `air` using the following code (note that the file must be in the working directory):
 
 ```python
 import numpy as np
