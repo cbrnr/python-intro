@@ -2,7 +2,7 @@
 title: "11 – PsychoPy (1)"
 subtitle: "Introduction to Python and PsychoPy"
 author: "Clemens Brunner"
-date: 2025-01-09
+date: 2025-05-26
 format:
   html:
     page-layout: full
@@ -16,12 +16,12 @@ theme:
 
 ## Introduction
 
-[PsychoPy](https://www.psychopy.org/) is a Python package for creating experiments in neuroscience or experimental psychology. It is freely available (open source) and supports two different ways to create experiments:
+[PsychoPy](https://www.psychopy.org/) is a Python package for creating experiments in neuroscience and experimental psychology. It is freely available (open source) and supports two different approaches to create experiments:
 
-1. Visually through a graphical interface (GUI) called *Builder*
-2. Programmatically with Python code (e.g. using the built-in editor called *Coder*)
+1. Visually, through a graphical interface (GUI) called *Builder*
+2. Programmatically, by writing Python code (e.g., using the built-in editor called *Coder*)
 
-The first option is easier for beginners, as no programming knowledge is required. Builder automatically converts an experiment to Python code, which can then be executed. Although many parameters of the experiment can be adjusted graphically, it can be challenging to implement more complex designs with Builder. This is where the second option comes in handy, because you can completely ignore the graphical interface and create the experiment directly with Python code. In addition, you can also refine an experiment created with Builder with customized Python code. However, both basic Python knowledge and knowledge of how PsychoPy works are required.
+The first approach is well-suited to beginners, as it requires no programming experience. Builder automatically converts experiments into Python code, which can then be executed. While many parameters can be adjusted through the graphical interface, implementing complex designs can be challenging. In such cases, the second approach offers more flexibility, allowing experiments to be written directly in Python without using the GUI. It is also possible to refine Builder-based experiments by adding custom code. However, this approach requires basic Python skills and a working knowledge of PsychoPy.
 
 We will explore both options in this course. First, we will use the graphical interface Builder to create simple experiments. In the next session, we will take a closer look at the underlying Python code and create experiments programmatically.
 
@@ -35,7 +35,7 @@ The [official documentation](https://www.psychopy.org/download.html) describes s
 
 ## Builder
 
-After starting PsychoPy, you will see three independent windows: the graphical interface Builder, the code editor Coder, and the Runner (which is used to start experiments).
+After starting PsychoPy, three independent windows appear: the graphical interface Builder, the code editor Coder, and the Runner (which is used to start experiments).
 
 The Builder window should look something like this:
 
@@ -50,7 +50,7 @@ The Builder window is divided into the following three main areas:
 - Components
 - Flow
 
-The main area ("Routines") contains details on the currently selected routine. Routines are the basic building blocks of an experiment. They are shown in the main area of the Builder window ("Routines") with a timeline. If multiple routines are present in the experiment, they are visualized in separate tabs. The timeline allows you to see when certain components are active in a routine.
+Routines are the basic building blocks of an experiment. They are shown in the main area of the Builder window ("Routines") with a timeline. If multiple routines are present in the experiment, they are visualized in separate tabs. The timeline enables us to see when specific components are active in a routine.
 
 The right area ("Components") lists all available components that can be added to a routine. PsychoPy includes many different components, such as text stimuli, keyboard inputs, image stimuli, sound stimuli, etc.
 
@@ -59,27 +59,27 @@ The lower area ("Flow") provides an overview of the entire experiment, which con
 
 ## Stroop experiment
 
-Let's now turn to a practical example. The following steps demonstrate how to create an experiment with PsychoPy Builder that measures the [Stroop effect](https://en.wikipedia.org/wiki/Stroop_effect).
+The following example demonstrates how to create an experiment in PsychoPy Builder to measure the [Stroop effect](https://en.wikipedia.org/wiki/Stroop_effect).
 
 
 ### Experiment settings
 
-First, we should define some basic properties in the "Experiment Settings". By clicking on the gear icon (see figure below), a dialog opens where we can tweak various experiment settings. For our example, we want to change the name to "stroop" and delete the second line of "Experiment info" by clicking on the minus symbol at the far right of this line. This means that PsychoPy only prompts for the name of the participant ("participant") before running the experiment.
+First, we define some basic properties in the "Experiment Settings". By clicking the gear icon, we open a dialog where various settings can be adjusted. For our example, we change the experiment name to "stroop" and delete the second line in the "Experiment info" section by clicking the minus symbol at the far right of that line. This ensures that PsychoPy only prompts for the participant's name ("participant") before running the experiment.
 
-The dialog should look like this and can be confirmed by clicking OK:
+The dialog should now look like this and can be confirmed by clicking OK:
 
 ![](exp_settings.png)
 
 :::{.callout-tip}
-While developing an experiment, you should disable the full-screen mode (as it can sometimes be impossible to abort a running experiment). This can be done in the "Experiment Settings" under the "Screen" tab by unchecking the "Full-screen window" option. Once the experiment is ready to be deployed, you should re-enable the full-screen mode.
+While developing an experiment, you should *disable full-screen mode*, as it can sometimes make it difficult to abort a running experiment. This can be done in the "Experiment Settings" under the "Screen" tab by unchecking the "Full-screen window" option. Once the experiment is ready to be deployed, you should re-enable full-screen mode.
 :::
 
 
 ### Routine "Instructions"
 
-Before the actual experiment starts, it is always a good idea to display short instructions on the screen. We will implement this in a separate routine, which we can create by using the existing routine "trial" (which does not contain any components yet anyway).
+Before the actual experiment begins, it's a good idea to display brief instructions on the screen. We'll implement this in a separate routine, which we can create by duplicating the existing "trial" routine (which doesn't contain any components yet).
 
-Right-clicking on the blue routine symbol and selecting "rename" allows us to assign a new name – for this example, we use `instructions`. Then we add a text stimulus from the Components panel to display a short text by clicking on the Text Stimulus button. This opens a dialog where we can change various properties. We will customize the following relevant points:
+Right-clicking on the blue routine symbol and selecting "rename" allows us to assign a new name – for this example, we use `instructions`. Then we add a text stimulus from the Components panel to display the instructions by clicking on the Text Stimulus button. This opens a dialog where we can adjust various properties. We will customize the following relevant settings:
 
 - the name,
 - the start and stop time,
@@ -92,7 +92,7 @@ We would like the instructions to be displayed until the participant presses the
 
 After clicking OK, the text stimulus is added to the timeline. We can see that it starts at second 0 and lasts indefinitely. By clicking on the stimulus in the timeline, we can change or adjust the properties at any time.
 
-To end the routine by pressing a key and start the actual experiment, we add a keyboard component that records key presses. In its properties, we assign a meaningful name (`instructions_resp`), leave the "Stop" field empty, check the "Force end of Routine" box (which means that the entire routine will end after pressing a key), and enter only `'space'` in the list of "Allowed keys" (which means that only the space bar ends the routine). In the "Data" tab, you can select "nothing" for "Store" because we do not need to store the information about when the space bar was pressed.
+To end the routine by pressing a key and start the actual experiment, we add a keyboard component that records key presses. In its properties, we assign a meaningful name (`instructions_resp`), leave the "Stop" field empty, check the "Force end of Routine" box (which means that the entire routine will end after pressing a key), and enter only `'space'` in the list of "Allowed keys" (which means that only the space bar ends the routine). In the "Data" tab, we can select "nothing" for "Store", because we do not need to store the information about when the space bar was pressed.
 
 Now the PsychoPy Builder window should look like this:
 
@@ -114,9 +114,9 @@ As expected, a dialog window pops up first, where we need to enter the name (or 
 
 ### Routine "Task"
 
-Now the actual Stroop experiment should start. To implement this, we create a new routine by clicking on "Insert Routine" – "(new)". We name the new routine `trial`. Then we click on the right end of the routine `instructions` to insert `trial` directly after it. By clicking on the newly created routine, we can add components to it.
+Now the actual Stroop experiment should start. To implement it, we create a new routine by clicking on "Insert Routine" – "(new)". We name the new routine `trial`. Then we click on the right end of the routine `instructions` to insert `trial` directly after it. By clicking on the newly created routine, we can add components to it.
 
-Now is a good time to think about the exact procedure of the experiment. In our simple Stroop example, we want to use only the three colors red, green, and blue. The words displayed on the screen should be the English words "red", "green", and "blue". Participants should indicate the color of the word (and not the meaning of the word) by pressing the keys "r", "g", and "b". We want to use all nine possible combinations of these colors and words, e.g., the red word "red", the green word "blue", etc.
+Now is a good time to think about the exact procedure of the experiment. In our simple Stroop example, we want to use only the three colors red, green, and blue. The words displayed on the screen should be the English words "red", "green", and "blue". Participants should indicate the color of the word (and not the meaning of the word) by pressing the keys "r", "g", or "b". We want to use all nine possible combinations of these colors and words, e.g., the red word "red", the green word "blue", etc.
 
 For this purpose, we can summarize all possible conditions in an Excel table. The following table should be saved in the file [`conditions.xlsx`](conditions.xlsx):
 
@@ -146,7 +146,7 @@ Now we need to fill the routine "trial" with the necessary components. We want t
 
 ![](trial_text_2.png)
 
-The trick here is to use variable names that we can mark with a dollar sign. The text to be displayed is therefore not constant but determined by the content of the variable `$word`. It is important that "set every repeat" is selected so that the content of the text is updated with each loop iteration. We can use all column names from the file `conditions.xlsx` as variables, so `$word` refers to the first column with this name.
+The trick here is to use variable names by prefixing them with a dollar sign. The text to be displayed is therefore not constant, but determined by the content of the variable `$word`. It is important that "set every repeat" is selected so that the content of the text is updated with each loop iteration. We can use all column names from the file `conditions.xlsx` as variables, so `$word` refers to the first column called `word`.
 
 The text color is determined by `$color` in the "Appearance" tab ("set every repeat" must also be selected) – `color` is also a column name in the file `conditions.xlsx`.
 
@@ -160,7 +160,7 @@ We still need the possibility to provide key presses as answers. To do this, we 
 
 ![](trial_key_2.png)
 
-Participants have 2 seconds to press one of the three keys <kbd>r</kbd>, <kbd>g</kbd>, or <kbd>b</kbd>. The routine ends either directly after they pressed a key or after 2 seconds. We also want to store whether the answer was correct or not – this is achieved with the column `correct` (from the Excel file), which contains the expected correct key presses. This way, the expected answer can be compared with the actual answer. The result of this comparison is then automatically saved in the result files. We should also store the *first* key press ("first key"), as this is relevant for the answer. 
+Participants have 2 seconds to press one of the three keys <kbd>r</kbd>, <kbd>g</kbd>, or <kbd>b</kbd> to indicate the color of the word. The routine ends either directly after they press a key or after 2 seconds. We also want to store whether the answer is correct or not – this is achieved with the column `correct` (from the Excel file), which contains the expected correct key presses. This way, the expected answer can be compared with the actual answer. The result of this comparison is then automatically saved in the result files. We should also store the *first* key press ("first key"), as this is relevant for the answer. 
 
 Let's save and run the experiment – our simple Stroop experiment should already work. The experiment should look something like this in PsychoPy:
 
@@ -261,7 +261,7 @@ To provide feedback after each trial, we add a new routine named `feedback` dire
 
 We can create Python objects in a code component – to do this, click on the corresponding icon in the "Custom" group. In the dialog, we can now insert custom Python code.
 
-It is important to create all Python objects at the beginning of the experiment and set them to default values. To do this, we add the following code in the "Begin Experiment" section:
+It is important to initialize all Python objects with default values at the beginning of the experiment. To do this, we add the following code in the "Begin Experiment" section:
 
 ```python
 msg = ""
@@ -271,7 +271,7 @@ msg_color = "white"
 ![](feedback_code_1.png)
 
 :::{.callout-note}
-We can set the value of "Code Type" to "Py" because we only want to create our experiment with Python. PsychoPy also supports Javascript, which allows the experiment to be run in a browser. However, we do not need this functionality.
+We can set the value of "Code Type" to "Py", because we only want to create our experiment with Python. PsychoPy also supports Javascript, which allows the experiment to be run in a browser. However, we do not need this functionality.
 :::
 
 Code in the "Begin Routine" section is executed at the beginning of each routine, so let's add the following code there:
@@ -303,28 +303,28 @@ If the list `trial_key.keys` is not empty, we know that a key was pressed, and t
 The final `else` branch is only executed if no key was pressed (i.e., `trial_key.keys` is empty). Then `msg` and `msg_color` are set accordingly.
 
 :::{.callout-important}
-It is important that the code component is executed at the very beginning of the routine, i.e., it must also be at the very top of the timeline (above the text stimulus). The position in the list of components can be changed by right-clicking on a component and selecting e.g. "move to top".
+It is important that the code component is executed at the very beginning of the routine, i.e., it must also be at the very top of the timeline (above the text stimulus). The position in the list of components can be changed by right-clicking on a component and selecting "move to top".
 :::
 
 The final feedback routine should look like this:
 
 ![](extended_stroop.png)
 
-Our extended Stroop experiment is now ready and can be run. As an additional exercise, you could try to play a short sound at the beginning of each trial.
+Our extended Stroop experiment is now ready and can be run. As an additional exercise, you can try to play a short sound at the beginning of each trial.
 
 
 ## Exercises
 
 ### Exercise 1
 
-Create the Stroop experiment (with feedback) described previously and run the experiment as a participant. Calculate the average response times for congruent and incongruent stimuli from your run!
+Create the Stroop experiment (with feedback) described in this chapter and run the experiment as a participant. Calculate the average response times for congruent and incongruent stimuli from your run!
 
 
 ### Exercise 2
 
 Create the following three files in this exercise: the PsychoPy experiment (a `.psyexp` file), the PsychoPy result file (`.csv`), and the Excel file with the conditions named `conditions.xlsx`.
 
-Use PsychoPy Builder to create an experiment called `number_comparison`, in which participants are asked to compare two numbers appearing on the screen. They should indicate whether the number on the right or the left is the larger of the two numbers.
+Use PsychoPy Builder to create an experiment called `number_comparison`, in which participants are asked to compare two numbers appearing on the screen. They should indicate whether the number on the right or the left is the (numerically) larger of the two numbers.
 
 Use all 20 combinations of the numbers from 1 to 5 as stimuli, e.g., 1–2, 1–3, 1–4, 1–5, 2–1, 2–3, etc. (the Excel file should therefore contain 21 rows including the header, and the same numbers should not be compared with each other).
 
