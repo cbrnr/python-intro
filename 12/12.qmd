@@ -1,0 +1,327 @@
+---
+title: "12 – PsychoPy (2)"
+subtitle: "Introduction to Python and PsychoPy"
+author: "Clemens Brunner"
+date: 2025-06-02
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+---
+
+## PsychoPy Coder
+
+In this session, we will focus on the Python code that underlies every PsychoPy experiment. Even if an experiment was created with the graphical interface Builder, it is first converted into a Python script before it is actually executed. Of course, we can also create a Python script *directly* to use PsychoPy – this usually leads to more compact code.
+
+PsychoPy Coder is a simple Python code editor that is bundled with the PsychoPy standalone installation. Coder is the recommended way for writing PsychoPy scripts (although in principle, any Python code editor could be used).
+
+
+## Stroop experiment code
+
+If we have created an experiment with PsychoPy Builder, we can generate the corresponding code with *Tools* – *Compile* (or by clicking on the "Compile to Python script" icon). PsychoPy Coder will then automatically open with the generated script.
+
+Let's try this with our [Stroop experiment from the previous chapter](../11/stroop.zip). We will simplify this experiment a little by removing the "Feedback" routine (right-click on the routine and select "remove").
+
+Once we click on the "Compile to Python script" icon, the experiment will be converted into a Python script. A new PsychoPy Coder window opens with the generated script, which is quite long (almost 500 lines) for such a simple experiment. It contains a lot of code that is not necessary for the experiment, such as many `import` statements that are not used anywhere in the script. We will not look at this generated code in detail, but rather focus on how simpler components can be written directly with code.
+
+
+## Minimal experiment
+
+The shortest possible PsychoPy experiment consists of five lines of code. It simply opens an empty window that is visible for 2 seconds.
+
+```python
+from psychopy import core, visual
+
+win = visual.Window(size=[800, 400])
+core.wait(2)
+win.close()
+core.quit()
+```
+
+Although this experiment does nothing useful, we can observe the basic structure of an experiment.
+
+First, we import all necessary modules from the `psychopy` package. The PsychoPy documentation contains a [detailed description of all available modules](https://psychopy.org/api/index.html), but here we only need the `core` (basic functions) and `visual` (visual stimuli) modules.
+
+Next, we use `visual.Window` to create a program window of the specified size. We call this window `win`.
+
+Now we could generate all stimuli needed during the experiment. We will see this in another example, but this experiment does not contain any stimuli. With `core.wait(2)`, we simply wait for two seconds. After that, the experiment is over, and the last two lines close the program window and end the experiment.
+
+:::{.callout-note}
+You can run the script by clicking on the "Run experiment" icon.
+:::
+
+
+## Displaying stimuli
+
+Of course, a real experiment consists of various stimuli. PsychoPy can generate a large number of different visual stimuli using functions contained in the `visual` module, such as text, shapes (circles, rectangles, lines), image files, patterns, etc.
+
+Displaying visual stimuli on the screen works as follows:
+
+1. First, we create the window `win`. All stimuli will be drawn in this window.
+2. Then we create a stimulus object `stim` associated with the window. When creating the stimulus, we can specify its appearance, such as color, position, orientation, etc. However, all properties of a stimulus can also be modified later during the experiment.
+3. Finally, we draw the stimulus `stim` with its `draw()` method. Initially, the stimulus is drawn *invisibly* in the so-called back buffer – we can think of this buffer as the back of the screen. Everything that is drawn ends up in the back buffer and is therefore not yet visible.
+4. When all desired stimuli are drawn in the back buffer, the entire content of the back buffer can be made *visible* with `win.flip()`. This means that the content of the invisible back buffer is transferred to the visible front buffer – the back buffer is thus empty again. This operation is *synchronized* with the *screen refresh rate*, i.e., on a typical 60 Hz screen, the image is redrawn 60 times per second. The call to `win.flip()` will be executed at the next screen refresh.
+
+:::{.callout-important}
+This procedure implies that the screen refresh rate paces the script execution, since the script waits for the next refresh after each `win.flip()`. Therefore, a monitor with a high refresh rate (e.g., 120Hz or 240Hz) can present stimuli more accurately than a monitor with a lower refresh rate (e.g., 60Hz).
+
+This also means that the refresh rate determines the shortest possible duration of a stimulus. On a screen with a refresh rate of 60Hz, the shortest possible duration is 16.67ms (1/60s), on a screen with 120Hz it is 8.33ms (1/120s), etc. Longer durations must be multiples of this shortest duration.
+:::
+
+Splitting the drawing process into back buffer and front buffer has the advantage that all stimuli in the back buffer become visible at exactly the same time when calling `win.flip()`. If the stimuli were made visible immediately after drawing, it could happen that the different components in an image are drawn at slightly different times (e.g., in two consecutive frames).
+
+We can now extend our minimal experiment with a visual text stimulus as follows:
+
+```python
+from psychopy import core, visual
+
+win = visual.Window(size=[800, 400])
+text = visual.TextStim(win, "Text\n\n2 Sekunden sichtbar.")
+text.draw()  # draw in back buffer (invisible)
+win.flip()  # make visible with next screen refresh
+core.wait(2)
+win.close()
+core.quit()
+```
+
+
+## Waiting for a key press
+
+We are almost ready to display instructions – we just need the ability to display them until the participant presses a specific key (e.g., the space bar). The PsychoPy `event` module contains various functions to query user input (such as from the keyboard). The `event.waitKeys()` function waits until a key is pressed (i.e., it *blocks* the script execution until a key is pressed). In particular, we can specify the allowed keys as a list with the `keyList` argument. Our example can be extended as follows:
+
+```python
+from psychopy import core, visual, event
+
+win = visual.Window(fullscr=True)
+s = """Text Rotation
+
+Press 'left' to rotate the text to the left.
+Press 'right' to rotate the text to the right.
+
+Press Space to start!
+"""
+text = visual.TextStim(win=win, text=s, color="white", height=0.05)
+text.draw()
+win.flip()
+event.waitKeys(keyList=["space"])
+win.close()
+core.quit()
+```
+
+By specifying `keyList=["space"]`, the script waits (blocks) until the space bar is pressed. After that, the script continues in the next line.
+
+:::{.callout-note}
+The use of `event.waitKeys` (and `event.getKeys`) is actually no longer recommended, as these functions are no longer maintained and, for example, do not work on Linux. Instead, it is recommended to use `hardware.keyboard.Keyboard`, which we will not discuss further here, as this method is unfortunately a bit more complex. However, at least for now, everything should still work on Windows and macOS.
+:::
+
+
+## Using a loop
+
+We will now implement the experiment outlined above. After the instruction screen, the word `PsychoPy` appears. Each press of the left-arrow key rotates the text left, and repeated presses make it spin faster. The right-arrow key slows the rotation and, with continued presses, reverses it so that the text turns right. Pressing the space bar ends the experiment.
+
+```python
+from psychopy import core, visual, event
+
+win = visual.Window(fullscr=False)
+s = """Text Rotation
+
+Press 'left' to rotate the text to the left.
+Press 'right' to rotate the text to the right.
+
+Press Space to start!
+"""
+text = visual.TextStim(win=win, text=s, color="white", height=0.05)
+text.draw()
+win.flip()
+event.waitKeys(keyList=["space"])
+
+text.setText("PsychoPy")
+text.setHeight(0.15)
+
+rotation = 0
+speed = 0
+
+while True:
+    keys = event.getKeys(keyList=["space", "left", "right"])
+    if keys:  # a key was pressed
+        if keys[0] == "space":  # exit
+            break
+        elif keys[0] == "left":
+            speed -= 1
+        else:
+            speed += 1
+    rotation += speed
+    text.setOri(rotation)
+    text.draw()
+    win.flip()
+
+win.close()
+core.quit()
+```
+
+This example demonstrates how to reuse an existing text stimulus instead of creating a new one. We first show the instructions, then change the content to `"PsychoPy"` with `text.setText("PsychoPy")` and set its height to 0.15 via `text.setHeight(0.15)`. Recycling the same stimulus is typically faster than instantiating another, making it the preferred approach in most cases.
+
+Next, we implement an infinite `while True` loop. However, this loop contains a `break` statement, so it exits if the space bar is pressed. The first instruction within the loop body returns a list of pressed keys. However, only the specified keys (specified by the `keyList` argument) are considered (all other keys are ignored). If no key was pressed, `keys` is an empty list. With `if keys:`, we check whether the list `keys` contains entries or not (if the list contains entries, a key was pressed, and the expression is `True`; if the list is empty, no key was pressed, and the expression is `False`).
+
+If the left arrow key is pressed, the rotation speed `speed` (initially set to `0`) is *decreased* by `1`. If the right arrow key is pressed, `speed` is *increased* by `1`. The rotation `rotation` of the text is now determined by adding the current value of `rotation` and the rotation speed `speed`. Then the text is rotated to the angle `rotation` with `text.setOri(rotation)`. Now the text stimulus can be drawn, and then the back buffer is displayed with `win.flip()`. As soon as the space bar is pressed, we exit the loop and the last two lines of the script are executed.
+
+:::{.callout-tip}
+The notation `x += 1` increments the value of `x` by `1`. We could also write `x = x + 1`.
+:::
+
+By calling `win.flip()`, the drawing process is synchronized with the screen refresh rate. On a typical office monitor with 60 Hz, the `while` loop therefore runs 60 times per second.
+
+
+## Animated stimuli
+
+In the previous example, we saw how to continuously adapt the orientation of a text stimulus with `text.setOri(rotation)` in a loop. The same principle can be applied to any visual stimulus to animate it.
+
+The following example shows how to move a circle and change its color at the same time (see the [PsychoPy documentation on colors](https://www.psychopy.org/general/colours.html#colorspaces)).
+
+```python
+from psychopy import core, visual, event
+
+win = visual.Window(size=[800, 800])
+
+pos = [0, 0]  # initial x, y position
+speed = [0.03, -0.02]  # initial x, y speed
+colors = ["red", "yellow", "green"]
+color = 0
+circle = visual.Circle(win, radius=0.1, fillColor=colors[0], lineColor=None)
+
+while True:
+    keys = event.getKeys(keyList=["escape"])
+    if keys:
+        break
+    pos[0] += speed[0]
+    pos[1] += speed[1]
+    if pos[0] < -1 or pos[0] > 1:  # is the x position on the screen border?
+        speed[0] = -speed[0]  # flip x speed direction
+        color = (color + 1) % 3  # set next color
+    if pos[1] < -1 or pos[1] > 1:  # is the y position on the screen border?
+        speed[1] = -speed[1]  # flip y speed direction
+        color = (color + 1) % 3  # set next color
+    circle.setPos(pos)
+    circle.setFillColor(colors[color])
+    circle.draw()
+    win.flip()
+
+win.close()
+core.quit()
+```
+
+
+## Timer
+
+In most experiments, it is important to display stimuli at predefined times. We have already covered one way to wait for a specific time in PsychoPy: `core.wait(2)` waits exactly two seconds before the next line of code is executed. However, this has the major disadvantage that nothing can happen during the waiting time, as the entire experiment is blocked for this duration.
+
+In contrast, timers can be used to achieve exact timing while not blocking the execution of the experiment (so timers run in the background). PsychoPy provides two types of timers:
+
+1. `core.Clock` contains the time elapsed since the timer was created (in seconds), counting up.
+2. `core.CountdownTimer` contains the time remaining since the timer was created (in seconds), counting down from an initial value.
+
+The first timer is created with `clock = core.Clock()`. With this assignment, the timer starts ticking at second 0. We can get the seconds passed since creation with `clock.getTime()`.
+
+When creating a countdown timer, we can specify the start time (in seconds) from which we want to count down, e.g., `timer = core.CountdownTimer(10)` counts down from second 10. Note that the time can also become negative here (in the example, if more than 10 seconds have passed). The currently remaining time can also be queried with `timer.getTime()`.
+
+A script can contain any number of timers. Timers can also be reset to any value at any time. The two timers `clock` and `timer` created earlier can be reset to their original times with `clock.reset()` and `timer.reset()`, respectively. This sets `clock` to 0 and `timer` to 10.
+
+The following example demonstrates how to use timers. The `while` loops run as long as the values of the timers are greater than zero. This means that the loop lasts exactly as long as specified when the timer was created (or actually when it was reset).
+
+```python
+from psychopy import core, visual
+
+win = visual.Window(size=[800, 800])
+
+text1 = visual.TextStim(win, text="", color="blue")
+text2 = visual.TextStim(win, text="", color="red")
+
+timer1 = core.CountdownTimer(3)
+timer2 = core.CountdownTimer(5)
+
+timer1.reset()
+while timer1.getTime() > 0:
+    text1.setText("{:.2f}".format(timer1.getTime()))
+    text1.draw()
+    win.flip()
+timer2.reset()
+while timer2.getTime() > 0:
+    text2.setText("{:.2f}".format(timer2.getTime()))
+    text2.draw()
+    win.flip()
+
+win.close()
+core.quit()
+```
+
+
+## Stroop code
+
+This brings us back to the Stroop experiment, which we can now write with custom Python code in just 43 lines of code. Although the script does not save data such as response times, this would only take a few additional lines. Compared to the almost 500 lines of automatically generated code, our custom version is much more concise (and therefore probably easier to understand).
+
+```python
+from psychopy import core, visual, event, data
+
+
+win = visual.Window(fullscr=True)
+
+s = """Simple Stroop
+
+Name the color of the word on the screen.
+Do not read the word!
+
+If the word is red, press 'r'.
+If the word is blue, press 'b'.
+If the word is green, press 'g'.
+
+Press Space when you are ready.
+"""
+text = visual.TextStim(win=win, text=s, color="white", height=0.05)
+text.draw()
+win.flip()
+event.waitKeys(keyList=["space"])
+
+conditions = data.importConditions("conditions.xlsx")
+trials = data.TrialHandler(trialList=conditions, nReps=5)
+timer = core.CountdownTimer()
+text.setHeight(0.1)
+
+for trial in trials:
+    timer.reset(2)
+    text.setText(trial["word"])
+    text.setColor(trial["color"])
+    while timer.getTime() > 0:
+        if timer.getTime() > 1:
+            text.draw()
+        keys = event.getKeys(keyList=["r", "g", "b", "escape"])
+        win.flip()
+        if keys:
+            rt = 2 - timer.getTime()
+            if keys[0] == "escape":
+                core.quit()
+            break
+
+win.close()
+core.quit()
+```
+
+This example also contains a new concept, namely the use of `data.TrialHandler`. This function automatically generates trials from the file `conditions.xlsx`. The result of this command can then be iterated over (which corresponds to iterating over the individual trials). The `trial` variable contains the current trial, which is a dictionary with the keys "word" and "color". The values of these keys are then used to set the text and color of the text stimulus.
+
+
+## Further reading
+
+PsychoPy Coder includes many example scripts in the *Demos* menu item, which can be used as a template and adapted for own experiments or just as learning material. The PsychoPy website also offers a [short tutorial on PsychoPy Coder](https://www.psychopy.org/coder/tutorial1.html).
+
+
+## Exercises
+
+### Exercise 1
+
+Create the following experiment directly with Python code (using PsychoPy Coder):
+
+The experiment should contain three different visual stimuli (e.g., circle, polygon, text, image) that are animated simultaneously. Within a loop that should run until the escape key is pressed, at least one property of each of the three stimuli (e.g., position, size, color, orientation) should change continuously. All three stimuli should change simultaneously within the loop.

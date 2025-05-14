@@ -1,8 +1,8 @@
 ---
-title: "12 – Lösungen"
-subtitle: "Einführung in Python und PsychoPy"
+title: "12 – Solutions"
+subtitle: "Introduction to Python and PsychoPy"
 author: "Clemens Brunner"
-date: 2025-01-16
+date: 2025-06-02
 format:
   html:
     page-layout: full
@@ -12,12 +12,9 @@ title-block-banner: true
 theme:
   light: flatly
   dark: darkly
-lang: de
-author-title: "Autor"
-published-title: "Veröffentlicht"
 ---
 
-## Übung 1
+## Exercise 1
 
 ```python
 from psychopy import core, visual, event
