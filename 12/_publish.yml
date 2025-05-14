@@ -1,8 +1,8 @@
 - source: 12.qmd
   netlify:
     - id: 8143b7ba-8836-437e-ada6-371655b20e75
-      url: https://friendly-stroopwafel-7b4787.netlify.app
+      url: https://python-25s-12.netlify.app/
 - source: 12-solutions.qmd
   netlify:
     - id: 433af873-92c0-41ec-b3be-fcf243476a72
-      url: https://dulcet-eclair-dd95fd.netlify.app
+      url: https://python-25s-12-solutions.netlify.app/
