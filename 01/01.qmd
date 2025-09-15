@@ -1,8 +1,8 @@
 ---
-title: "1 – Basics"
-subtitle: "Introduction to Python and PsychoPy"
+title: "1 – Grundlagen"
+subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-03-03
+date: 2025-10-09
 format:
   html:
     page-layout: full
@@ -12,44 +12,49 @@ title-block-banner: true
 theme:
   light: flatly
   dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
 ---
 
-## Overview
+## Überblick
 
-This course teaches the fundamentals of the [Python](https://www.python.org/) programming language. We'll start by introducing key elements of the language, such as loops, functions, conditions, and basic data types. After thoroughly covering these basics, you'll learn how to use Python for data analysis (e.g., reading text files, representing numerical data, and creating visualizations). Lastly,  we will create simple experiments using the popular [PsychoPy](https://www.psychopy.org/) package.
+Dieser Kurs vermittelt die Grundlagen der Programmiersprache [Python](https://www.python.org/). Zunächst werden die wichtigsten Elemente der Sprache wie Schleifen, Funktionen, Bedingungen und grundlegende Datentypen vorgestellt. Nach einer ausführlichen Behandlung dieser Grundlagen lernen Sie auch, wie man Python für die Datenanalyse verwenden kann. Dabei werden sehr grundlegende Themen wie das Einlesen von Textdateien, das Arbeiten mit numerischen Daten und das Erstellen einfacher Grafiken behandelt. Abschließend werden Sie mit dem in der Psychologie populären Python-Paket [PsychoPy](https://www.psychopy.org) einfache Experimente erstellen.
 
-This course doesn't require any prior programming knowledge. You will learn the programming fundamentals in a hands-on way, allowing you to apply this knowledge to most other programming languages. Although this course covers only basic Python concepts due to time constraints, these concepts serve as the foundation for more complex applications. You'll develop a solid knowledge of these basics to continue learning more advanced methods on your own.
+Für diesen Kurs sind keinerlei Vorkenntnisse erforderlich. Sie werden die Grundlagen der Programmierung anhand praktischer Beispiele erlernen und können dieses Wissen anschließend auf die meisten anderen Programmiersprachen übertragen. Aufgrund der begrenzten Zeit werden nur grundlegende Python-Konzepte behandelt, aber diese bilden die Basis für alle weiterführenden Anwendungen. Sie werden somit ein solides Wissen über diese Grundlagen erwerben, um anschließend selbständig weiterführende Methoden zu erlernen.
 
 
-## What is Python?
+## Was ist Python?
 
-Python is a general-purpose programming language, which means it is not specialized like [R](https://www.r-project.org/) is for data analysis/statistics. Specialized programming languages may allow you to solve certain tasks faster, better, or more elegantly than general-purpose ones. However, general-purpose languages offer more versatility, allowing you to work across many different fields. With Python, you can perform data analysis, numerical calculations, and statistics, as well as create web applications or programs with graphical user interfaces. Before solving a specific problem, you should consider which programming language is best suited for it.
+Python ist eine universelle Programmiersprache, welche für viele verschiedene Anwendungen eingesetzt werden kann. Im Gegensatz dazu gibt es spezialisierte Programmiersprachen wie z.B. [R](https://www.r-project.org/), welche für sehr spezifische Aufgaben entwickelt wurden. Beide Ansätze haben Vor- und Nachteile: Spezialisierte Programmiersprachen erlauben es oft, bestimmte Aufgaben schneller, besser oder eleganter zu lösen als universelle Programmiersprachen. Universelle Programmiersprachen sind dafür vielseitiger einsetzbar, was auch den Vorteil hat, dass man nicht unbedingt mehrere Programmiersprachen erlernen muss. Python deckt nicht nur Datenanalyse und Statistik ab, sondern auch komplett andere Anwendungsfälle wie z.B. Webapplikationen, das Erstellen von Programmen mit grafischen Benutzeroberflächen oder auch das Programmieren des [Raspberry Pi](https://www.raspberrypi.org/).
+
+Wichtig ist auf jeden Fall, dass man sich vorher überlegt, welche Programmiersprache für ein gegebenes Problem geeignet ist, denn es gibt keine "beste" Programmiersprache, die für alle Anwendungsfälle optimal ist.
 
 ![© [xkcd](https://xkcd.com/353/), CC BY-NC 2.5](python-xkcd.png){fig-align="left"}
 
-People often associate Python with these characteristics:
+Python wird oft mit den folgenden Eigenschaften beschrieben:
 
-- Simple, elegant, and fun to learn and use
-- Open source (not only [free as in beer but also free as in speech](https://en.wikipedia.org/wiki/Gratis_versus_libre))
-- Cross-platform (Python runs on Windows, macOS, and Linux)
-- General-purpose programming language for many different applications including data science, web servers, graphical user interfaces, programming the [Raspberry Pi](https://www.raspberrypi.org/), ...
-- Batteries included approach (the [standard library](https://docs.python.org/3/library/) shipping with Python contains many useful things ready for use)
-- Huge number of [third-party packages](https://pypi.org/) that implement even more useful things
-- Large and friendly community (Python users are called Pythonistas)
-
-
-## Popularity
-
-Python was first released by [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum) way back in 1991, and its popularity has skyrocketed in the past years. While there are many ways to measure the popularity of a programming language, Python has consistently ranked among the top languages for years (for example according to [PYPL](https://pypl.github.io/PYPL.html), the [TIOBE index](https://www.tiobe.com/tiobe-index/), and the [IEEE Spectrum Top Programming Languages](https://spectrum.ieee.org/top-programming-languages-2024)). Also, one of the results of the [Stack Overflow Developer Survey 2024](https://survey.stackoverflow.co/2024/) is that Python is among the [most popular technologies](https://survey.stackoverflow.co/2024/technology/#most-popular-technologies) as well as highly [admired and desired](https://survey.stackoverflow.co/2024/technology/#admired-and-desired).
-
-In practice, the popularity of a programming language matters. The larger and more active a language's community is, the easier it becomes to find existing solutions to problems or to quickly get answers to new questions.
+- Einfach und elegant
+- [Open Source](https://de.wikipedia.org/wiki/Open_Source) (nicht nur gratis, sondern auch offen, da der [Quellcode](https://github.com/python/cpython) frei verfügbar ist)
+- [Plattformübergreifend](https://de.wikipedia.org/wiki/Plattformunabh%C3%A4ngigkeit) (läuft auf Windows, macOS und Linux)
+- Universelle Programmiersprache mit vielen Anwendungsgebieten
+- Umfangreiche [Standardbibliothek](https://docs.python.org/3/library/), welche viele nützliche Funktionen und Werkzeuge enthält und direkt mit Python mitgeliefert wird
+- Extrem viele [Zusatzpakete](https://pypi.org/), die weitere Funktionalität bereitstellen
+- Riesige und aktive Community
 
 
-## What does Python code look like?
+## Popularität
 
-Here are a few examples of Python code. Some parts may seem intuitive, while others may be confusing (for now). Don't worry – we'll cover all these examples throughout the course. For now, these examples just serve to illustrate what Python code looks like.
+Python wurde bereits 1991 von [Guido van Rossum](https://de.wikipedia.org/wiki/Guido_van_Rossum) veröffentlicht und hat gerade in den letzten Jahren enorm an Popularität gewonnen. Bereits seit einiger Zeit ist Python die beliebteste bzw. meistverwendete Programmiersprache weltweit (siehe beispielsweise [PYPL](https://pypl.github.io/PYPL.html), [TIOBE](https://www.tiobe.com/tiobe-index/) und [IEEE Spectrum Top Programming Languages](https://spectrum.ieee.org/top-programming-languages-2024)). Außerdem zeigt die Stack Overflow Developer Survey 2025, dass Python nach wie vor [sehr stark wächst](https://survey.stackoverflow.co/2025/technology#most-popular-technologies) und [sehr gefragt ist](https://survey.stackoverflow.co/2025/technology#2-programming-scripting-and-markup-languages). 
 
-The gray boxes show Python commands, with the results of those commands directly below:
+In der Praxis ist die Popularität einer Programmiersprache durchaus relevant, denn je größer und aktiver die Community einer Sprache ist, desto einfacher wird es, bestehende Lösungen für Probleme zu finden oder schnell Antworten auf neue Fragen zu bekommen.
+
+
+## Wie sieht Python-Code aus?
+
+Im Folgenden sehen Sie einige Beispiele für Python-Code. Manche Befehle sind vielleicht intuitiv verständlich, andere wiederum können durchaus verwirrend wirken. Alle Beispiele werden aber im Laufe der Lehrveranstaltung erklärt, im Moment sollen diese nur der Veranschaulichung dienen.
+
+Die grauen Kästchen zeigen Python-Befehle, unmittelbar darunter folgt das Ergebnis des jeweiligen Befehls.
 
 ```{python}
 print("Hello World!")
@@ -75,44 +80,44 @@ print(", ".join([str(i) for i in range(10)]))
 
 ## Installation
 
-The [official Python website](https://www.python.org/) is a great resource for everything related to Python. The [download](https://www.python.org/downloads/) section contains installers for many platforms, including Windows and macOS. If you are on Linux, I recommend that you use your package manager to install Python (in most cases, Python will already be installed anyway).
+Die [offizielle Python-Website](https://www.python.org/) enthält viele nützliche Informationen rund um Python. Im [Download-Bereich](https://www.python.org/downloads/) findet man Installationspakete für Windows und macOS. Bei den meisten Linux-Distributionen ist Python bereits vorinstalliert, ansonsten kann man dieses sehr einfach über den Paketmanager der jeweiligen Distribution installieren.
 
 :::{.callout-note}
-These instructions use version 3.13.1, but you should install and use the latest version.
+Diese Unterlagen zeigen die Installation von Python 3.13.1. Installieren und verwenden Sie jedoch stets die neueste verfügbare Version!
 :::
 
 
 ### Windows
 
-On Windows, choose the standard installation (*"Install Now"*), but make sure to check the box for *"Add python.exe to PATH"*. The image below shows these settings:
+Für die Installation unter Windows wählen Sie die Standardinstallation (*"Install Now"*) aus, aber setzen Sie unbedingt das Häkchen bei *"Add python.exe to PATH"*. Falls Sie keine Administratorrechte haben, können Sie hier auch das Häkchen bei *"User admin privileges when installing py.exe"* entfernen. In diesem Fall wird Python nur für den aktuellen Benutzer installiert. Die folgende Abbildung zeigt die empfohlenen Einstellungen:
 
 ![](install-python-windows.png){width=50%}
 
-For more details on using Python on Windows, see the [official Python documentation](https://docs.python.org/3/using/windows.html).
+Weitere Informationen zur Verwendung von Python unter Windows finden Sie in der [offiziellen Python-Dokumentation](https://docs.python.org/3/using/windows.html).
 
 
 ### macOS
 
-On macOS, run the installer using the default settings. Once the installation is complete, double-click the *"Install Certificates"* command in the Applications folder to finish the setup process.
+Für die Installation unter macOS führen Sie die Installation mit den Standardeinstellungen durch. Danach starten Sie das Programm *"Install Certificates"* im Ordner *Python 3.13* (siehe folgende Abbildung), um die Installation abzuschließen.
 
 ![](install-python-macos.png){width=50%}
 
-For more details on using Python on macOS, see the [official Python documentation](https://docs.python.org/3/using/mac.html).
+Für weiterführende Informationen zur Verwendung von Python unter macOS lesen Sie bitte die [offizielle Python-Dokumentation](https://docs.python.org/3/using/mac.html).
 
 
-## First steps
+## Erste Schritte
 
-After installing Python, it is instructive to enter some simple Python commands and see what happens. The program which understands and interprets Python commands is called the *Python interpreter*. It can be invoked in various ways, but one of the easiest options is to use IDLE, which is a simple Python learning environment that comes with Python.
+Nachdem Sie Python installiert haben, können Sie den sogenannten *Python-Interpreter* starten. Dabei handelt es sich um ein Programm, welches Python-Befehle verstehen und verarbeiten kann. Man kann mit dem Python-Interpreter auch interaktiv arbeiten. Dies bedeutet, dass man einen Befehl eintippt und mit der Eingabetaste bestätigt. Danach wird der eingegebene Befehl direkt verarbeitet und das Ergebnis ausgegeben.
 
-IDLE will display a window running the so-called *interactive* Python interpreter (which is also referred to as *shell* or [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop)). The interactive Python interpreter includes a *prompt*, which is typically the character sequence `>>>`. This prompt indicates that Python is ready to receive user input. You can type any Python command and hit <kbd>Enter</kbd> to evaluate it. Python will immediately show the result of this command (if any) on the next line.
+Es gibt viele Möglichkeiten, den Python-Interpreter zu starten. Eine der einfachsten Methoden ist die Verwendung von [IDLE](https://docs.python.org/3/library/idle.html), einer einfachen Lernumgebung für Python, die mit der Python-Installation mitgeliefert wird. Nach dem Start von IDLE öffnet sich ein Fenster mit dem Titel *IDLE Shell*, in dem der interaktive Python-Interpreter läuft. Ein sogenannter *Prompt* (die Symbole `>>>`) zeigt an, dass der Interpreter bereit für Eingaben ist. Hier können wir also einen Python-Befehl eingeben und mit der Eingabetaste bestätigen. Der Interpreter verarbeitet den Befehl und gibt das Ergebnis (falls vorhanden) in der nächsten Zeile aus.
 
 ![](idle.png){width=75%}
 
 :::{.callout-note}
-Throughout the course material, we show Python code in gray boxes and never include the prompt `>>>`. 
+In den Kursunterlagen wird Python-Code immer in grauen Kästchen dargestellt. Der Prompt `>>>` wird dabei weggelassen, da er ohnehin nicht Teil des Python-Codes ist.
 :::
 
-Let's try to use Python as a calculator. Python supports the four basic arithmetic operations (addition, subtraction, multiplication, and division). To follow along, type the following commands into the IDLE shell and confirm with <kbd>Enter</kbd>:
+Versuchen wir nun, mit Python einfache arithmetische Aufgaben zu lösen. Die Symbole für die vier Grundrechenarten sind `+` (Addition), `-` (Subtraktion), `*` (Multiplikation) und `/` (Division). Tippen Sie dazu die folgenden Befehle in die IDLE-Shell ein und bestätigen Sie jeweils mit der Eingabetaste:
 
 ```{python}
 1 + 1
@@ -131,44 +136,46 @@ Let's try to use Python as a calculator. Python supports the four basic arithmet
 ```
 
 :::{.callout-tip}
-To make your code easier to read, include spaces before and after operators. For example, `10 - 7` is more readable than `10-7`, though both are valid Python commands.
+Aus Gründen der besseren Lesbarkeit sollten Leerzeichen vor und nach einem Operator eingefügt werden, also besser `10 - 7` und nicht `10-7`. Für Python ist zwar beides korrekt, aber die erste Variante ist leichter lesbar.
 :::
 
 :::{.callout-important}
-Remember that Python uses the English format for decimal numbers, with a *period* as the decimal separator, rather than the *comma* used in some other languages (including German). Always input decimal numbers with a period, regardless of your operating system's language settings.
+Beachten Sie, dass Python die *englische* Zahlenschreibweise mit einem *Punkt* als Dezimaltrennzeichen verwendet und nicht das im deutschen Sprachraum übliche *Komma*. Dezimalzahlen müssen daher immer mit einem Punkt eingegeben werden, ganz egal welche Sprache im Betriebssystem eingestellt ist. In diesen Unterlagen wird ebenfalls ein Punkt als Dezimaltrennzeichen verwendet.
 :::
 
-You can perform integer division with the `//` operator (which consists of two characters):
+Die ganzzahlige Division hat einen eigenen Operator `//`, der aus zwei Zeichen besteht:
 
 ```{python}
 120 // 7
 ```
 
-The remainder of a division (modulus) is calculated like this:
+Der ganzzahlige Rest einer Division wird mit dem Rest-Operator `%` berechnet:
 
 ```{python}
 120 % 7
 ```
 
-You can raise a number to a power:
+Potenzieren (also eine Zahl hoch eine andere Zahl) ist ebenso möglich:
 
 ```{python}
 2**64
 ```
 
-Python respects the standard order of operations and parentheses:
+Python kennt die Vorrangs- und Klammerregeln:
 
 ```{python}
 (13 + 6) * 8 - 12 / (2.5 + 1.6)
 ```
 
-To use mathematical functions like sine or cosine, you'll first need to import the `math` module. Do this by entering the following command once:
+Wenn man mathematische Funktionen wie beispielsweise Sinus oder Cosinus verwenden möchte, muss man zuerst das `math`-Modul importieren (aktivieren). Dazu tippt man den folgenden Befehl ein:
 
 ```{python}
 import math
 ```
 
-This makes a wide range of mathematical functions available, such as `sqrt` (square root), `log` (logarithm), `sin` (sine), `cos` (cosine), and constants like `pi` (the circle constant $\pi$) or `e` ([Euler's number](https://en.wikipedia.org/wiki/E_(mathematical_constant))), all of which are used with a preceding `math.`:
+Danach kann man eine Vielzahl an mathematischen Funktionen und Konstanten verwenden, z.B. `sqrt` (Quadratwurzel), `log` (Logarithmus), `sin` (Sinus), `cos` (Kosinus) sowie Konstanten wie `pi` (die [Kreiszahl $\pi$](https://de.wikipedia.org/wiki/Kreiszahl)) oder `e` ([Eulersche Zahl](https://de.wikipedia.org/wiki/Eulersche_Zahl)).
+
+Wichtig ist, dass diese Funktionen und Konstanten immer mit einem vorangestellten `math.` verwendet werden müssen:
 
 ```{python}
 math.sqrt(2)
@@ -187,107 +194,103 @@ math.e
 ```
 
 ::: {.callout-tip}
-Importing modules is a common practice in Python. You can think of modules as collections of functions and variables that are not available by default. By importing a module, you make its contents available for use in your program. We will import and use many modules throughout this course.
+In Python ist es notwendig, Module zu importieren, um deren Funktionen und Variablen verwenden zu können. Wir werden im Laufe dieses Kurses viele verschiedene Module importieren und verwenden.
 :::
 
 
-## Application examples
+## Anwendungsbeispiele
 
-The following selection of examples demonstrates Python's versatility. It is by no means exhaustive and mainly reflects my personal experience.
+Python wird heutzutage in vielen verschiedenen Bereichen verwendet. Um zu verdeutlichen, wie vielfältig man Python vor allem in der Forschung einsetzen kann, sind hier einige relevante Beispiele angeführt. Diese Auswahl ist jedoch bei weitem nicht vollständig und spiegelt vor allem meine persönliche Erfahrung wider.
 
 
-### Stimulus presentation
+### Präsentation von Stimuli
 
-[PsychoPy](http://www.psychopy.org/) is a program designed for presenting stimuli in psychophysiological studies. You can use it to create experiments that involve measuring reaction times (such as fMRI and EEG studies), allowing precise presentation of visual and auditory stimuli. While PsychoPy can be used via a graphical user interface, creating highly customized experimental designs works best by directly writing Python code. We will explore PsychoPy in the last two sessions.
+[PsychoPy](http://www.psychopy.org/) ist ein Programm zur Präsentation von Stimuli für psychophysiologische Untersuchungen. Beispielsweise kann man mit PsychoPy Experimente erstellen, um Reaktionszeiten zu messen. Das Programm kann aber auch für fMRI- bzw. EEG-Untersuchungen verwendet werden, um die dort benötigten (visuellen bzw. auditorischen) Stimuli zeitpräzise zu präsentieren. PsychoPy kann über eine grafische Oberfläche bedient werden, aber spezielle Versuchsdesigns, die über die mitgelieferten Standardparadigmen hinausgehen, erstellt man am besten direkt mit Python-Code. Wir werden uns in den letzten beiden Einheiten mit PsychoPy beschäftigen.
 
 ![](psychopy.png){width=75%}
 
 
-### Neuroscience
+### Neurowissenschaften
 
-Python has become popular in neuroscience. The [NIPY website](https://nipy.org/) (Neuroimaging for Python) hosts multiple projects covering various tasks in neuroscience. There are numerous packages for analyzing [functional magnetic resonance imaging (fMRI)](https://en.wikipedia.org/wiki/Functional_magnetic_resonance_imaging) data in particular. For example, [NiBabel](https://nipy.org/nibabel/) supports reading various neuroimaging data formats, [Nipype](https://www.mit.edu/~satra/nipype-nightly/) unifies the use of different fMRI analysis programs, and [NIPY](https://nipy.org/nipy/), [NiTime](https://nipy.org/nitime/), and [Nilearn](https://nilearn.github.io/) support fMRI data analysis.
+Python ist sehr populär in den Neurowissenschaften. Auf der [NIPY-Website](https://nipy.org/) (Neuroimaging for Python) haben sich einzelne Projekte zusammengeschlossen, welche spezifische Aufgaben im Bereich der Neurowissenschaften abdecken. Besonders viele Pakete gibt es für die Auswertung von [fMRT](https://de.wikipedia.org/wiki/Funktionelle_Magnetresonanztomographie)-Daten. Hier gibt es z.B. [NiBabel](https://nipy.org/nibabel/) zum Einlesen verschiedenster Neuroimaging-Datenformate, [Nipype](https://www.mit.edu/~satra/nipype-nightly/) zur einheitlichen Verwendung unterschiedlicher fMRT-Analyseprogramme, sowie [NIPY](https://nipy.org/nipy/), [NiTime](https://nipy.org/nitime/) und [Nilearn](https://nilearn.github.io/) zur Analyse von fMRT-Daten.
 
 ![](nilearn.png)
 
-[MNE-Python](https://mne.tools/) is the most popular Python package for processing electrophysiological brain signals, such as filtering, artifact correction, source localization, and connectivity analysis. A graphical user interface called [MNELAB](https://github.com/cbrnr/mnelab) is also available.
+[MNE-Python](https://mne.tools/) kann man zur Analyse von EEG- bzw. MEG-Signalen verwenden. Es werden eine Vielzahl an Methoden unterstützt, welche in der Verarbeitung von elektrophysiologischen Gehirnsignalen eine Rolle spielen, wie z.B. Filterung, Artefaktbereinigung, Quelllokalisation und Konnektivitätsanalysen. Es gibt dafür auch eine grafische Oberfläche names [MNELAB](https://github.com/cbrnr/mnelab).
 
 
-### Statistical data analysis
+### Statistische Datenanalyse
 
-Python offers many packages for statistical data analysis. Popular packages include [NumPy](https://www.numpy.org/), [SciPy](https://scipy.org/), [pandas](https://pandas.pydata.org/), [statsmodels](https://www.statsmodels.org/stable/index.html), [Matplotlib](https://matplotlib.org/), [seaborn](https://seaborn.pydata.org/) and [scikit-learn](https://scikit-learn.org/stable/). We will cover some of these packages in this course, though only superficially.
+Zur statistischen Auswertung von Daten gibt es in Python ebenfalls eine große Anzahl an Paketen. Besonders hervorzuheben sind hier [NumPy](https://www.numpy.org/), [SciPy](https://scipy.org/), [pandas](https://pandas.pydata.org/), [statsmodels](https://www.statsmodels.org/stable/index.html), [Matplotlib](https://matplotlib.org/), [seaborn](https://seaborn.pydata.org/) und [Scikit-learn](https://scikit-learn.org/stable/). Einige dieser Pakete werden wir im Rahmen dieses Kurses kennenlernen (wenn auch nur sehr oberflächlich).
 
 ![](scatter.png)
 
 
-### Graphical user interfaces
+### Grafische Oberflächen
 
-You can also create standalone programs with graphical user interfaces in Python. A notable example is [Spyder](https://www.spyder-ide.org/), an integrated development environment for Python, which itself is entirely written in Python. The graphical user interfaces of [PsychoPy](http://www.psychopy.org/) and [MNELAB](https://github.com/cbrnr/mnelab) are also written in Python.
+In Python kann man auch eigenständige Programme mit grafischen Oberflächen erstellen. Ein Beispiel dafür ist [Spyder](https://www.spyder-ide.org/), eine Entwicklungsumgebung für Python, welche selbst komplett in Python geschrieben ist. Auch die grafischen Oberflächen von [PsychoPy](http://www.psychopy.org/) und [MNELAB](https://github.com/cbrnr/mnelab) sind in Python geschrieben.
 
 
-### Astronomy
+### Astronomie
 
-The [first image of a black hole](https://eventhorizontelescope.org/press-release-april-10-2019-astronomers-capture-first-image-black-hole) at the center of the galaxy [Messier 87](https://de.wikipedia.org/wiki/Messier_87), approximately 55 million light-years away, was generated [with the help of Python](https://numpy.org/case-studies/blackhole-image/):
+Zwei sehr prominente Beispiele dürfen an dieser Stelle nicht fehlen: das [erste Bild eines schwarzen Lochs](https://eventhorizontelescope.org/press-release-april-10-2019-astronomers-capture-first-image-black-hole) (im Zentrum der etwa 55 Millionen Lichtjahre entfernten Galaxie [Messier 87](https://de.wikipedia.org/wiki/Messier_87)) wurde [mit Hilfe von Python](https://numpy.org/case-studies/blackhole-image/) erzeugt:
 
 ![© [EHT](https://eventhorizontelescope.org/press-release-april-10-2019-astronomers-capture-first-image-black-hole), CC BY 4.0](m87.png){fig-align="left" width=500}
 
-Researchers also [used Python](https://doi.org/10.3847/2041-8213/ac6736) when visualizing the [black hole Sagittarius A*](https://eventhorizontelescope.org/blog/astronomers-reveal-first-image-black-hole-heart-our-galaxy) at the center of our own galaxy:
+Auch bei der Visualisierung des [schwarzen Lochs Sagittarius A*](https://eventhorizontelescope.org/blog/astronomers-reveal-first-image-black-hole-heart-our-galaxy) im Zentrum unser eigenen Galaxie wurde [Python](https://doi.org/10.3847/2041-8213/ac6736) verwendet:
 
 ![© [EHT](https://eventhorizontelescope.org/blog/astronomers-reveal-first-image-black-hole-heart-our-galaxy), CC BY 4.0](sgr_astar.png){fig-align="left" width=500}
 
 
-## Exercises
+## Übungen
 
-### Exercise 1
+### Übung 1
 
-Install Python on your computer and start the Python interpreter. What version of Python does the interpreter report? Is this the latest version?
-
-
-### Exercise 2
-
-Type `import antigravity` into the Python interpreter. What happens? What happens when you enter `import this`? What does `import math` do?
+Installieren Sie Python auf Ihrem Rechner. Starten Sie dann den Python-Interpreter. Welche Version von Python meldet der Interpreter? Ist dies die aktuellste Version?
 
 
-### Exercise 3
+### Übung 2
 
-We can approximate the Earth as a sphere with a radius of 6371 km. Use Python to calculate the surface area of the Earth. The formula for the surface area $A$ of a sphere with radius $r$ is:
+Tippen Sie im Python-Interpreter `import antigravity` ein. Was passiert? Was geschieht, wenn Sie `import this` eingeben? Was bewirkt `import math`?
+
+
+### Übung 3
+
+Die Erde kann näherungsweise als Kugel mit einem Radius von 6371 km betrachtet werden. Berechnen Sie damit die Oberfläche der Erde! Die Formel für die Oberfläche $A$ einer Kugel mit Radius $r$ lautet:
 
 $$A = 4 \pi r^2$$
 
 
-### Exercise 4
+### Übung 4
 
-Given the data points 11, 27, 15, 10, 33, 18, 25, 22, 39, and 11, calculate both the arithmetic mean and the geometric mean using basic arithmetic operations. Perform each calculation with a single command (without intermediate results).
+Gegeben seien folgende Messwerte: 11, 27, 15, 10, 33, 18, 25, 22, 39, 11. Berechnen Sie den arithmetischen sowie den geometrischen Mittelwert (unter Verwendung von Grundrechenarten). Führen Sie die Berechnung mit jeweils einem einzigen Befehl (ohne Zwischenergebnisse) durch.
 
-The formulas for the arithmetic mean $\bar x$ and geometric mean $\bar x_g$ are:
+Die Formeln für den arithmetischen bzw. geometrischen Mittelwert lauten:
 
 $$\bar x = \frac{1}{n} \sum_{i=1}^n x_i$$
 
 $$\bar x_g = \sqrt[n]{\prod_{i=1}^n x_i}$$
 
-:::{.callout-tip}
-The symbol $\prod$ represents the product of all numbers $x_i$. You can also express the n-th root as a power, i.e., $\sqrt[n]{x}$ is equivalent to $x^\frac{1}{n}$.
+:::{.callout-note}
+Die *n*-te Wurzel kann man auch als Potenz anschreiben, also $\sqrt[n]{x}$ ist gleichbedeutend mit $x^\frac{1}{n}$.
 :::
 
 
-### Exercise 5
+### Übung 5
 
-Calculate the result of the following expression with a single command:
+Berechnen Sie das Ergebnis des folgenden Ausdrucks mit einem Befehl (in einer Zeile):
 
 $$\frac{(5^5 - \pi) \cdot \frac{19}{3}}{\sqrt{13} + 7^\frac{2}{3}}$$
 
-:::{.callout-tip}
-Pay attention to parentheses! The correct result is approximately 2722.
+:::{.callout-note}
+Achten Sie auf die Klammersetzung! Das richtige Ergebnis beträgt ungefähr 2722.
 :::
 
 
-### Exercise 6
+### Übung 6
 
-Why does the following command not work (assuming `import math` was executed earlier)?
+Warum funktioniert der folgende Befehl nicht (unter der Annahme, dass vorher `import math` ausgeführt wurde)?
 
 ```python
 math.Sqrt(4)
 ```
-
-:::{.callout-note}
-This example illustrates how you can use the interactive Python interpreter to test commands. It doesn't matter if your input is incorrect! In fact, an incorrect input yields an error message that might help you understand the mistake. So feel free to try things out – you really cannot break anything!
-:::

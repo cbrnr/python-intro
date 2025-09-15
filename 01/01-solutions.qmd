@@ -1,8 +1,8 @@
 ---
-title: "1 – Solutions"
-subtitle: "Introduction to Python and PsychoPy"
+title: "1 – Lösungen"
+subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-03-03
+date: 2025-10-09
 format:
   html:
     page-layout: full
@@ -12,18 +12,21 @@ title-block-banner: true
 theme:
   light: flatly
   dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
 ---
 
-## Exercise 1
+## Übung 1
 
-The installed Python version can be seen directly after starting the interactive Python interpreter. The latest version can be downloaded from the [official website](https://www.python.org/).
+Die installierte Python-Version ist direkt nach dem Starten des interaktiven Python-Interpreters zu sehen. Die aktuellste Version kann von der [offiziellen Website](https://www.python.org/) heruntergeladen werden.
 
 
-## Exercise 2
+## Übung 2
 
-`import antigravity` opens a web browser with the [xkcd comic about Python](https://xkcd.com/353/).
+`import antigravity` öffnet den Webbrowser mit dem [xkcd-Comic über Python](https://xkcd.com/353/).
 
-`import this` displays the Zen of Python:
+`import this` gibt das Zen von Python am Bildschirm aus:
 
 > | *The Zen of Python, by Tim Peters*
 > |
@@ -47,10 +50,10 @@ The installed Python version can be seen directly after starting the interactive
 > | If the implementation is easy to explain, it may be a good idea.
 > | Namespaces are one honking great idea -- let's do more of those!
 
-The command `import math` allows us to use commands contained in the `math` module.
+Der Befehl `import math` bewirkt, dass man danach die im Modul `math` enthaltenen Befehle verwenden kann.
 
 
-## Exercise 3
+## Übung 3
 
 ```{python}
 import math
@@ -58,8 +61,10 @@ import math
 4 * math.pi * 6371**2
 ```
 
+Die Erdoberfläche beträgt also ungefähr 510 Millionen km².
 
-## Exercise 4
+
+## Übung 4
 
 ```{python}
 (11 + 27 + 15 + 10 + 33 + 18 + 25 + 22 + 39 + 11) / 10
@@ -70,7 +75,7 @@ import math
 ```
 
 
-## Exercise 5
+## Übung 5
 
 ```{python}
 import math
@@ -79,11 +84,11 @@ import math
 ```
 
 
-## Exercise 6
+## Übung 6
 
-The command `math.Sqrt(4)` does not exist – since Python is case-sensitive, `math.Sqrt` is not identical to `math.sqrt`. The latter is the correct spelling of the square root function, which is contained in the `math` module.
+Den Befehl `math.Sqrt(4)` gibt es nicht – da Python zwischen Groß- und Kleinschreibung unterscheidet, ist `math.Sqrt` nicht identisch mit `math.sqrt`. Letzteres ist die korrekte Schreibweise der Wurzelfunktion, welche im `math`-Modul enthalten ist.
 
-So the correct command is:
+Richtig wäre also:
 
 ```{python}
 math.sqrt(4)

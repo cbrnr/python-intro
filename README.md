@@ -2,7 +2,7 @@
 
 Die folgenden Unterlagen geben eine kurze Einführung in die Grundlagen von Python und dienen als Basis für die Lehrveranstaltung [Einführung in Python und PsychoPy (PSY.922)](https://online.uni-graz.at/kfu_online/pl/ui/$ctx/wbLv.wbShowLVDetail?pStpSpNr=951779).
 
- 1. [Grundlagen]() ([Lösungen]())
+ 1. [Grundlagen](https://cbrnr.quarto.pub/python-25w-01/) ([Lösungen](https://cbrnr.quarto.pub/python-25w-01-solutions))
  2. [Die Python-Umgebung]() ([Lösungen]())
  3. [Namen, Ausdrücke, Anweisungen]() ([Lösungen]())
  4. [Funktionen]() ([Lösungen]())
