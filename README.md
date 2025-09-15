@@ -1,6 +1,6 @@
 ## Einführung in Python und PsychoPy
 
-Dieses Repository enthält Unterlagen für die Lehrveranstaltung [Einführung in Python und PsychoPy (PSY.922)]().
+Die folgenden Unterlagen geben eine kurze Einführung in die Grundlagen von Python und dienen als Basis für die Lehrveranstaltung [Einführung in Python und PsychoPy (PSY.922)](https://online.uni-graz.at/kfu_online/pl/ui/$ctx/wbLv.wbShowLVDetail?pStpSpNr=951779).
 
  1. [Grundlagen]() ([Lösungen]())
  2. [Die Python-Umgebung]() ([Lösungen]())
