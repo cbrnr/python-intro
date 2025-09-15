@@ -167,7 +167,7 @@ Python kennt die Vorrangs- und Klammerregeln:
 (13 + 6) * 8 - 12 / (2.5 + 1.6)
 ```
 
-Wenn man mathematische Funktionen wie beispielsweise Sinus oder Cosinus verwenden möchte, muss man zuerst das `math`-Modul importieren (aktivieren). Dazu tippt man den folgenden Befehl ein:
+Wenn man mathematische Funktionen wie beispielsweise Sinus oder Kosinus verwenden möchte, muss man zuerst das `math`-Modul importieren (aktivieren). Dazu tippt man den folgenden Befehl ein:
 
 ```{python}
 import math
