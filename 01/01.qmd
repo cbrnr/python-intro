@@ -26,7 +26,7 @@ Für diesen Kurs sind keinerlei Vorkenntnisse erforderlich. Sie werden die Grund
 
 ## Was ist Python?
 
-Python ist eine universelle Programmiersprache, welche für viele verschiedene Anwendungen eingesetzt werden kann. Im Gegensatz dazu gibt es spezialisierte Programmiersprachen wie z.B. [R](https://www.r-project.org/), welche für sehr spezifische Aufgaben entwickelt wurden. Beide Ansätze haben Vor- und Nachteile: Spezialisierte Programmiersprachen erlauben es oft, bestimmte Aufgaben schneller, besser oder eleganter zu lösen als universelle Programmiersprachen. Universelle Programmiersprachen sind dafür vielseitiger einsetzbar, was auch den Vorteil hat, dass man nicht unbedingt mehrere Programmiersprachen erlernen muss. Python deckt nicht nur Datenanalyse und Statistik ab, sondern auch komplett andere Anwendungsfälle wie z.B. Webapplikationen, das Erstellen von Programmen mit grafischen Benutzeroberflächen oder auch das Programmieren des [Raspberry Pi](https://www.raspberrypi.org/).
+Python ist eine universelle Programmiersprache, welche in vielen verschiedenen Anwendungsgebieten eingesetzt werden kann. Im Gegensatz dazu gibt es spezialisierte Programmiersprachen (wie z.B. [R](https://www.r-project.org/)), welche für sehr spezifische Aufgaben entwickelt wurden. Beide Ansätze haben Vor- und Nachteile: Spezialisierte Programmiersprachen erlauben es oft, bestimmte Aufgaben schneller, besser oder eleganter zu lösen als universelle Programmiersprachen. Universelle Programmiersprachen sind dafür vielseitiger einsetzbar, was auch den Vorteil hat, dass man nicht unbedingt mehrere Programmiersprachen erlernen muss. Python deckt nicht nur Datenanalyse und Statistik ab, sondern auch komplett andere Anwendungen wie z.B. Webapplikationen, das Erstellen von Programmen mit grafischen Benutzeroberflächen oder auch das Programmieren des [Raspberry Pi](https://www.raspberrypi.org/).
 
 Wichtig ist auf jeden Fall, dass man sich vorher überlegt, welche Programmiersprache für ein gegebenes Problem geeignet ist, denn es gibt keine "beste" Programmiersprache, die für alle Anwendungsfälle optimal ist.
 
@@ -45,7 +45,7 @@ Python wird oft mit den folgenden Eigenschaften beschrieben:
 
 ## Popularität
 
-Python wurde bereits 1991 von [Guido van Rossum](https://de.wikipedia.org/wiki/Guido_van_Rossum) veröffentlicht und hat gerade in den letzten Jahren enorm an Popularität gewonnen. Bereits seit einiger Zeit ist Python die beliebteste bzw. meistverwendete Programmiersprache weltweit (siehe beispielsweise [PYPL](https://pypl.github.io/PYPL.html), [TIOBE](https://www.tiobe.com/tiobe-index/) und [IEEE Spectrum Top Programming Languages](https://spectrum.ieee.org/top-programming-languages-2024)). Außerdem zeigt die Stack Overflow Developer Survey 2025, dass Python nach wie vor [sehr stark wächst](https://survey.stackoverflow.co/2025/technology#most-popular-technologies) und [sehr gefragt ist](https://survey.stackoverflow.co/2025/technology#2-programming-scripting-and-markup-languages). 
+Python wurde bereits 1991 von [Guido van Rossum](https://de.wikipedia.org/wiki/Guido_van_Rossum) veröffentlicht und hat gerade in den letzten Jahren enorm an Popularität gewonnen. Bereits seit einiger Zeit ist Python die beliebteste bzw. meistverwendete Programmiersprache weltweit (siehe beispielsweise [PYPL](https://pypl.github.io/PYPL.html), [TIOBE](https://www.tiobe.com/tiobe-index/) und [IEEE Spectrum Top Programming Languages](https://spectrum.ieee.org/top-programming-languages-2024)). Außerdem zeigt die [Stack Overflow Developer Survey 2025](https://survey.stackoverflow.co/2025/), dass Python nach wie vor [sehr stark wächst](https://survey.stackoverflow.co/2025/technology#most-popular-technologies) und [sehr gefragt ist](https://survey.stackoverflow.co/2025/technology#2-programming-scripting-and-markup-languages). 
 
 In der Praxis ist die Popularität einer Programmiersprache durchaus relevant, denn je größer und aktiver die Community einer Sprache ist, desto einfacher wird es, bestehende Lösungen für Probleme zu finden oder schnell Antworten auf neue Fragen zu bekommen.
 
@@ -89,7 +89,7 @@ Diese Unterlagen zeigen die Installation von Python 3.13.1. Installieren und ver
 
 ### Windows
 
-Für die Installation unter Windows wählen Sie die Standardinstallation (*"Install Now"*) aus, aber setzen Sie unbedingt das Häkchen bei *"Add python.exe to PATH"*. Falls Sie keine Administratorrechte haben, können Sie hier auch das Häkchen bei *"User admin privileges when installing py.exe"* entfernen. In diesem Fall wird Python nur für den aktuellen Benutzer installiert. Die folgende Abbildung zeigt die empfohlenen Einstellungen:
+Für die Installation unter Windows wählen Sie die Standardinstallation (*"Install Now"*) aus, aber setzen Sie unbedingt das Häkchen bei *"Add python.exe to PATH"*. Falls Sie keine Administratorrechte haben, können Sie hier auch das Häkchen bei *"Use admin privileges when installing py.exe"* entfernen. In diesem Fall wird Python nur für den aktuellen Benutzer installiert. Die folgende Abbildung zeigt die empfohlenen Einstellungen:
 
 ![](install-python-windows.png){width=50%}
 
@@ -114,7 +114,7 @@ Es gibt viele Möglichkeiten, den Python-Interpreter zu starten. Eine der einfac
 ![](idle.png){width=75%}
 
 :::{.callout-note}
-In den Kursunterlagen wird Python-Code immer in grauen Kästchen dargestellt. Der Prompt `>>>` wird dabei weggelassen, da er ohnehin nicht Teil des Python-Codes ist.
+In den Kursunterlagen wird Python-Code immer in grauen Kästchen dargestellt. Der Prompt `>>>` wird dabei weggelassen, da er nicht Teil des Python-Codes ist.
 :::
 
 Versuchen wir nun, mit Python einfache arithmetische Aufgaben zu lösen. Die Symbole für die vier Grundrechenarten sind `+` (Addition), `-` (Subtraktion), `*` (Multiplikation) und `/` (Division). Tippen Sie dazu die folgenden Befehle in die IDLE-Shell ein und bestätigen Sie jeweils mit der Eingabetaste:
@@ -140,7 +140,7 @@ Aus Gründen der besseren Lesbarkeit sollten Leerzeichen vor und nach einem Oper
 :::
 
 :::{.callout-important}
-Beachten Sie, dass Python die *englische* Zahlenschreibweise mit einem *Punkt* als Dezimaltrennzeichen verwendet und nicht das im deutschen Sprachraum übliche *Komma*. Dezimalzahlen müssen daher immer mit einem Punkt eingegeben werden, ganz egal welche Sprache im Betriebssystem eingestellt ist. In diesen Unterlagen wird ebenfalls ein Punkt als Dezimaltrennzeichen verwendet.
+Beachten Sie, dass Python die *englische* Zahlenschreibweise mit einem *Punkt* als Dezimaltrennzeichen verwendet und nicht das im deutschen Sprachraum übliche *Komma*. Dezimalzahlen müssen daher immer mit einem Punkt eingegeben werden, ganz egal welche Sprache im Betriebssystem eingestellt ist.
 :::
 
 Die ganzzahlige Division hat einen eigenen Operator `//`, der aus zwei Zeichen besteht:
@@ -216,7 +216,7 @@ Python ist sehr populär in den Neurowissenschaften. Auf der [NIPY-Website](http
 
 ![](nilearn.png)
 
-[MNE-Python](https://mne.tools/) kann man zur Analyse von EEG- bzw. MEG-Signalen verwenden. Es werden eine Vielzahl an Methoden unterstützt, welche in der Verarbeitung von elektrophysiologischen Gehirnsignalen eine Rolle spielen, wie z.B. Filterung, Artefaktbereinigung, Quelllokalisation und Konnektivitätsanalysen. Es gibt dafür auch eine grafische Oberfläche names [MNELAB](https://github.com/cbrnr/mnelab).
+[MNE-Python](https://mne.tools/) kann man zur Analyse von [EEG](https://de.wikipedia.org/wiki/Elektroenzephalografie)- bzw. [MEG](https://de.wikipedia.org/wiki/Magnetoenzephalographie)-Signalen verwenden. Es werden eine Vielzahl an Methoden unterstützt, welche in der Verarbeitung von elektrophysiologischen Gehirnsignalen eine Rolle spielen, wie z.B. Filterung, Artefaktbereinigung, Quelllokalisation und Konnektivitätsanalysen. Es gibt auch eine grafische Oberfläche names [MNELAB](https://github.com/cbrnr/mnelab).
 
 
 ### Statistische Datenanalyse
