@@ -17,7 +17,7 @@ author-title: "Autor"
 published-title: "Veröffentlicht"
 ---
 
-## Exercise 1
+## Übung 1
 
 Eine Liste aller installierten Pakete erhält man, wenn man folgenden Befehl in einem Terminal eingibt:
 
