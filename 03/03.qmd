@@ -1,8 +1,8 @@
 ---
-title: "3 – Names, Expressions, Statements"
-subtitle: "Introduction to Python and PsychoPy"
+title: "3 – Namen, Ausdrücke, Anweisungen"
+subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-03-17
+date: 2025-10-16
 format:
   html:
     page-layout: full
@@ -12,11 +12,14 @@ title-block-banner: true
 theme:
   light: flatly
   dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
 ---
 
-## Objects, values, and types
+## Objekte, Werte und Typen
 
-Everything in Python is an *object*. An object has a specific value, e.g.
+Alles in Python ist ein *Objekt*. Ein Objekt hat einen bestimmten Wert, z.B.
 
 ```{python}
 1
@@ -27,7 +30,7 @@ Everything in Python is an *object*. An object has a specific value, e.g.
 ```
 
 ```{python}
-"Hello"
+"Hallo"
 ```
 
 ```{python}
@@ -35,10 +38,10 @@ Everything in Python is an *object*. An object has a specific value, e.g.
 ```
 
 :::{.callout-tip}
-As we already know, Python outputs the *value* of the last command automatically in the REPL (the interactive interpreter).
+Python gibt im interaktiven Modus Werte automatisch aus.
 :::
 
-Every object has a specific type. You can determine the type of an object with the `type` function:
+Jedes Objekt hat neben einem Wert auch einen bestimmten Typ. Mit `type` kann man den Typ eines beliebigen Objekts herausfinden:
 
 ```{python}
 type(1)
@@ -49,18 +52,18 @@ type(2.15)
 ```
 
 ```{python}
-type("Hello")
+type("Hallo")
 ```
 
 ```{python}
 type("3")
 ```
 
-Conceptually, we can think of an object as an entity of a specific type with a specific value living in the computer's memory:
+Man kann sich ein Objekt als eine Entität eines bestimmten Typs vorstellen, die einen bestimmten Wert hat und im Speicher des Computers lebt:
 
-![A Python object.](python_object.png)
+![Ein Python-Objekt.](python_object.png)
 
-Each object also has a unique identifier. We can use the `id` function to find out:
+Jedes Objekt hat auch einen eindeutigen Identifikator. Mit der Funktion `id` kann man diesen herausfinden:
 
 ```{python}
 id(3)
@@ -70,38 +73,38 @@ id(3)
 id(4)
 ```
 
-The actual identifier numbers are irrelevant (and probably different on your computer). The only thing that's interesting about these identifiers is whether or not they are identical. In the previous example, the object `3` has a different identifier than the object `4`, so we know that these are two different objects.
+Die tatsächlichen Identifikationsnummern sind irrelevant (und sehr wahrscheinlich von Sitzung zu Sitzung unterschiedlich). Es ist nur wichtig, ob zwei Identifikationsnummern in einer laufenden Python-Sitzung identisch sind oder nicht. Im vorherigen Beispiel hat das Objekt `3` eine andere Identifikationsnummer als das Objekt `4`, daher wissen wir, dass dies zwei verschiedene Objekte sind.
 
 
-## Names
+## Namen
 
-Objects can have names (in other programming languages, names are often called variables). We can assign a name to an object with the assignment operator `=` as follows:
+Namen in Python sind nichts anderes als Namen für bestimmte Objekte (in anderen Programmiersprachen werden Namen meistens als Variablen bezeichnet). Mit dem Zuweisungsoperator `=` können wir einem Objekt einen Namen geben:
 
 ```{python}
 a = 1
 ```
 
-This attaches the name `a` to the object `1` (of type `int`). We can visualize names as tags or labels attached to an object.
+Einen Namen kann man sich als Etikett vorstellen, das an ein Objekt gehängt wird:
 
-![The name `a` is attached to the object `1`. Another object `2.4` does not have a name.](python_names_1.png)
+![Der Name `a` ist dem Objekt `1` zugeordnet. Ein weiteres Objekt `2.4` hat (noch) keinen Namen.](python_names_1.png)
 
-Python lets us reassign an existing name to a different object. Notice how the object on the left does not have a name anymore after we re-assign `a`:
+In Python kann man einen existierenden Namen jederzeit einem anderen Objekt zuweisen. Dabei verliert der Name seine Verbindung zum alten Objekt (im folgenden Beispiel hat das Objekt `1` danach keinen Namen mehr):
 
 ```{python}
 a = 2.4
 ```
 
-![Now `a` is attached to the object `2.4`, and the object `1` does not have a name anymore.](python_names_2.png)
+![Nun ist `a` dem Objekt `2.4` zugeordnet, und das Objekt `1` hat keinen Namen mehr.](python_names_2.png)
 
-An object can also have more than one name attached to it:
+Ein Objekt kann auch mehr als einen Namen haben:
 
 ```{python}
 b = a
 ```
 
-![Now the object `2.4` has two names `a` and `b`.](python_names_3.png)
+![Jetzt hat das Objekt `2.4` zwei Namen `a` und `b`.](python_names_3.png)
 
-We can confirm that `a` and `b` point to the same object by inspecting their corresponding identifiers:
+Wir können bestätigen, dass die Namen `a` und `b` auf dasselbe Objekt verweisen, indem wir ihre entsprechenden Identifikatoren überprüfen:
 
 ```{python}
 id(a)
@@ -111,13 +114,13 @@ id(a)
 id(b)
 ```
 
-Indeed, they are identical, so there is just one object with two names. If we want to check if two names are attached to one and the same object, we can also use the `is` keyword as a shortcut:
+Tatsächlich sind sie identisch, es gibt also nur ein Objekt mit zwei Namen. Wenn wir überprüfen wollen, ob zwei Namen an ein und dasselbe Objekt gebunden sind, können wir auch das Schlüsselwort `is` als Abkürzung verwenden:
 
 ```{python}
 a is b
 ```
 
-The type of a name corresponds to the type of the object the name is attached to:
+Der Typ eines Namens entspricht dem Typ des Objekts, auf das er verweist:
 
 ```{python}
 type(a)
@@ -127,62 +130,62 @@ type(a)
 type(b)
 ```
 
-Whenever Python works with a name, it always replaces it with the value of the corresponding object. Furthermore, Python always evaluates the right-hand side of an assignment first before assigning the name. Consider the following example:
+Wenn Python einen Namen verwendet, ersetzt es diesen Namen immer durch den Wert des entsprechenden Objekts. Außerdem wertet Python immer zuerst die rechte Seite einer Zuweisung aus, bevor es den Namen zuweist. Betrachten wir folgendes Beispiel:
 
 ```{python}
 x = 11
-9 + x  # x is evaluated to 11, then 9 + 11 is evaluated to 20
+9 + x  # x wird zu 11 ausgewertet, dann wird 9 + 11 zu 20 ausgewertet
 ```
 
-After this line, `x` still has the value `11`:
+Nun hat `x` immer noch den Wert `11`:
 
 ```{python}
 x
 ```
 
-We now reassign the name `x` to a different object `2`:
+Wir können jetzt den Namen `x` einem anderen Objekt `2` zuweisen:
 
 ```{python}
 x = 2
-2 * x  # x is evaluated to 2, then 2 * 2 is evaluated to 4
+2 * x  # x wird zu 2 ausgewertet, dann wird 2 * 2 zu 4 ausgewertet
 ```
 
-After this line, `x` has the value `2`. However, we can reassign `x` again and even use the old value of `x` in the right-hand side of the assignment:
+Hier hat `x` den Wert `2` (nicht `4`). Wir können `x` jedoch erneut zuweisen und sogar den alten Wert von `x` auf der rechten Seite der Zuweisung verwenden:
 
 ```{python}
-x = 2 * x  # first evaluate the right-hand side to 2 * 2 = 4, then assign x = 4
+x = 2 * x  # zuerst wird die rechte Seite zu 2 * 2 = 4 ausgewertet, dann wird x = 4 zugewiesen
 x
 ```
 
 
-## Choosing names
+## Gültige und gute Namen
 
-### Basic rules
+### Grundregeln
 
-Valid names can contain letters (lower and upper case), digits, and underscores (but a name cannot start with a digit). [PEP8](https://www.python.org/dev/peps/pep-0008/#naming-conventions) lists recommendations for choosing good names – we only need to remember one rule for now: almost all names should be lowercase, and if necessary can also contain underscores, such as `lower_case_with_underscores`.
+Gültige Namen können Buchstaben (Groß- und Kleinbuchstaben), Ziffern und Unterstriche enthalten (aber ein Name darf nicht mit einer Ziffer beginnen). Zusätzlich gibt es noch [PEP8](https://www.python.org/dev/peps/pep-0008/#naming-conventions), welches Empfehlungen zur Auswahl guter Namen enthält. Vorerst ist nur eine Konvention für uns wichtig, nämlich dass alle Namen in Kleinbuchstaben geschrieben werden sollten und, wenn nötig, auch Unterstriche enthalten dürfen, wie z.B. `lower_case_with_underscores`.
 
-Names should convey meaning, so instead of a generic `x` or `i`, we should try to find a name that tells us something about its intended use. Also, it is good practice to use English (and not e.g. German) names, because you never know who will read your code in the future.
+Namen sollten Bedeutung vermitteln, daher sollte man anstelle eines generischen `x` oder `i` versuchen, einen Namen zu finden, der etwas über die beabsichtigte Verwendung aussagt. Außerdem ist es gute Praxis, englische (und nicht z.B. deutsche) Namen zu verwenden, da man nie weiß, wer den eigenen Code in Zukunft lesen wird.
 
-Here are a few examples for naming an object which represents the number of students in a school class:
+Hier sind einige Beispiele für die Benennung eines Objekts, das die Anzahl der Schüler in einer Schulklasse darstellt:
 
 ```{python}
-number_of_students_in_class = 23  # too long
-NumberOfStudents = 23  # wrong style, not separated with underscores
-n_students = 23  # pretty nice
-n = 23  # probably too short (but may be OK sometimes)
+number_of_students_in_class = 23  # zu lang
+NumberOfStudents = 23  # falscher Stil, nicht mit Unterstrichen getrennt
+n_students = 23  # sehr gut
+n = 23  # wahrscheinlich zu kurz (aber manchmal OK)
 ```
 
 
-### Keywords
+### Schlüsselwörter
 
-Python defines several reserved keywords that are a core part of the language. They *cannot* be used to name objects, so it is important to know what they are. The following code snippet produces a list of all keywords:
+Es gibt in Python vordefinierte Namen (sogenannte *Schlüsselwörter* oder englisch *Keywords*) – diese dürfen *nicht* als eigene Namen verwendet werden, da sie vom Python-Interpreter benötigt werden, um die Struktur eines Programmes zu erkennen. Mit folgenden Befehlen bekommt man eine Liste aller Schlüsselwörter:
 
 ```{python}
 import keyword
 keyword.kwlist
 ```
 
-For example, this means that you cannot use the name `lambda`. If you do, Python will generate an error:
+Das bedeutet zum Beispiel, dass man den Namen `lambda` nicht verwenden kann. Wenn man es doch tut, wird Python einen Fehler ausgeben:
 
 ```{python}
 #| error: true
@@ -190,71 +193,83 @@ lambda = 7
 ```
 
 
-### Built-in functions
+### Eingebaute Funktionen
 
-Python also has a number of [built-in functions](https://docs.python.org/3/library/functions.html) that are always available (without importing). Although it is possible to assign the names of these built-in functions to other objects, it is considered bad practice, because it might lead to subtle bugs. The following code generates a list of all built-ins:
+Neben Schlüsselwörtern gibt es aber auch sogenannte [eingebaute Funktionen](https://docs.python.org/3/library/functions.html), die standardmäßig in Python verfügbar sind. Diese Funktionen kann man also ohne `import` direkt verwenden. Es ist nicht sinnvoll, diese Funktionen zu "überschreiben", obwohl dies nicht explizit verboten ist. Eine Liste aller eingebauten Funktionen bekommt man mit folgendem Funktionsaufruf (beachten Sie, dass `dir` ebenfalls eine eingebaute Funktion ist):
 
 ```python
 dir(__builtins__)
 ```
 
 :::{.callout-tip}
-If you really want to use a name that is already taken by a built-in function, it is better to change the name slightly by appending an underscore. For example, instead of using `lambda`, you could use `lambda_`.
+Wenn man wirklich einen Namen einer eingebauten Funktion verwenden möchte, ist es besser, den Namen leicht zu verändern, z.B. indem man einen Unterstrich anhängt. Anstelle von `lambda` könnte man daher `lambda_` verwenden.
 :::
 
 
-## Operators
+## Operatoren
 
-In general, operators work with objects. We have already used several (arithmetic) operators such as `+`, `-`, `*`, `/`, `**`, `//`, and `%`. Some operators are *binary* and require *two* operands (for example, the multiplication `2 * 3`), whereas other operators are *unary* and require only *one* operand (for example, the negation `-5`).
+Operatoren sind spezielle Symbole, mit denen man Berechnungen wie Additionen, Subtraktionen usw. durchführen kann, also z.B. `+`, `-`, `*`, `/`, `**`, `//`, `%`, usw. Wir haben einige Operatoren bereits bei der Verwendung von Python als Taschenrechner kennengelernt. Manche Operatoren benötigen zwei Operanden (z.B. die Multiplikation `2 * 3`), andere brauchen hingegen nur einen einzigen Operanden (z.B. die Negierung `-5`). Solche Operatoren werden als *binäre* bzw. *unäre* Operatoren bezeichnet.
 
 
-## Expressions
+## Ausdrücke
 
-An *expression* is any combination of values, names, and operators. Importantly, an expression *always evaluates to a single value* (or short, an expression *has* a value). Here are a few examples for expressions (remember that their values are automatically printed in the REPL):
+Ein *Ausdruck* ist eine Kombination aus Werten, Namen und Operatoren. Wichtig ist, dass ein Ausdruck *immer zu einem einzigen Wert ausgewertet wird* (kurz: ein Ausdruck *hat* einen Wert). Hier sind einige Beispiele für Ausdrücke:
 
 ```{python}
-17  # just one value
-```
-   
-```{python}
-23 + 4**2 - 2  # four values and three operators
+17  # nur ein Wert
 ```
 
 ```{python}
-n = 25  # an assignment is not an expression!
+23 + 4**2 - 2  # vier Werte und drei Operatoren
 ```
 
 ```{python}
-n  # one name (evaluates to its value)
+n = 25  # eine Zuweisung ist kein Ausdruck!
 ```
 
 ```{python}
-n + 5  # a name, an operator, and a value
+n + 5  # ein Name, ein Wert und ein Operator
 ```
 
-Python reduces an expression to a *single value*. A more complex expression is evaluated step by step according to operator precedence rules (think [PEMDAS](https://en.wikipedia.org/wiki/Order_of_operations#Mnemonics)) from left to right. As we've already discussed, Python evaluates the right-hand side of an assignment first before assigning a name.
+Python reduziert einen Ausdruck immer auf einen *einzigen Wert*. Ein komplexerer Ausdruck wird schrittweise gemäß den Regeln der [Operatorpräzedenz](https://de.wikipedia.org/wiki/Operatorrangfolge) (z.B. Punkt- vor Strichrechnung) von links nach rechts ausgewertet. Wie bereits erwähnt wertet Python zuerst die rechte Seite einer Zuweisung aus, bevor es einen Namen zuweist.
 
 
-## Statements
+## Anweisungen
 
-A statement is a unit of code which Python can run. This is a rather broad definition, and statements therefore include expressions as a special case (in other words, an expression is a statement with a value). However, there are also statements that do *not* have a value, such as an assignment. Here are two examples for statements that are not expressions:
+Eine Anweisung ist eine Einheit Code, die Python ausführen kann. Dies ist eine recht breite Definition, und Anweisungen umfassen daher Ausdrücke als Sonderfall (ein Ausdruck ist also eine Anweisung mit einem Wert). Es gibt jedoch auch Anweisungen, die *keinen* Wert haben, wie z.B. eine Zuweisung. Hier sind zwei Beispiele für Anweisungen, die keine Ausdrücke sind:
 
 ```{python}
 x = 13
 print("Hello world!")
 ```
 
-Note that although the `print` function call generates output, this output is not its value (try assigning a name to the function call)!
+Wenn man diese Anweisungen im interaktiven Interpreter ausführt, gibt es keine Ausgaben – der Grund dafür ist, dass diese beiden Anweisungen keine Werte haben, d.h. es gibt hier im interaktiven Modus des Python-Interpreters nichts, was ausgegeben werden könnte.
+
+:::{.callout-note}
+Dass der Aufruf der `print`-Funktion trotzdem eine Ausgabe am Bildschirm bewirkt, liegt an der Funktion, deren Zweck ja genau diese Ausgabe ist. Dies kann man sehen, wenn man dem Funktionsaufruf einen Namen zuweist:
+
+```{python}
+s = print("Python")
+```
+
+Der Typ des Wertes von `print("Python")`, der ja jetzt den Namen `s` hat, ist also:
+
+```{python}
+type(s)
+```
+
+Damit ist also klar, dass `print("Python")` keinen Wert hat (eigentlich `None`).
+:::
 
 
-## Data types
+## Datentypen
 
-Python comes with a lot of useful data types. The most important types are listed and briefly described below. A more detailed treatment of selected (important) data types will follow in the next sessions.
+Python bringt eine Menge nützlicher Datentypen mit. Im Folgenden werden die wichtigsten Typen aufgelistet und kurz beschrieben. Eine ausführliche Behandlung ausgewählter (wichtiger) Datentypen folgt dann in den nächsten Einheiten.
 
 
-### Logical type
+### Logische Typen
 
-The `bool` type is used for comparisons; there are only two possible values, namely `True` and `False`.
+Der Typ `bool` wird für Vergleiche verwendet; es gibt nur zwei mögliche Werte, nämlich `True` und `False`.
 
 ```{python}
 b = True
@@ -267,11 +282,11 @@ type(c)
 ```
 
 
-### Numeric types
+### Numerische Typen
 
-- `int` (integer numbers)
-- `float` (decimal numbers)
-- `complex` (complex numbers)
+- `int` (Ganzzahlen)
+- `float` (Dezimalzahlen)
+- `complex` (Komplexe Zahlen)
 
 ```{python}
 a = 17
@@ -283,20 +298,20 @@ a = 23.221
 type(a)
 ```
 
-Because computers represent decimal numbers with limited precision, rounding errors can occur (decimal numbers cannot generally be represented exactly). Example:
+Aufgrund der begrenzten Rechengenauigkeit, mit denen Computer Dezimalzahlen darstellen, kann es zu Rundungsfehlern kommen (Dezimalzahlen können im Allgemeinen nicht exakt repräsentiert werden). Beispiel:
 
 ```{python}
 0.1 + 0.2
 ```
 
-Therefore, it is dangerous to compare decimal numbers:
+Man sollte daher Dezimalzahlen nie miteinander vergleichen:
 
 ```{python}
 0.1 + 0.2 == 0.3
 ```
 
 :::{.callout-note}
-Instead of comparing decimal numbers with `==`, it is better to check whether the difference between the two numbers is very small. For this purpose, there is a special function `math.isclose` in the `math` module, which can be used as follows:
+Statt Dezimalzahlen mit `==` zu vergleichen ist es besser, wenn man überprüft, ob der Unterschied zwischen den beiden Zahlen sehr klein ist. Dazu gibt es im `math`-Modul eine eigene Funktion `math.isclose`, die man wie folgt verwendet:
 
 ```{python}
 import math
@@ -305,9 +320,9 @@ math.isclose(0.1 + 0.2, 0.3)
 ```
 :::
 
-Comparing integers is not a problem, as these numbers are always represented exactly.
+Bei Ganzzahlen ist ein Vergleich aber kein Problem, da diese Zahlen exakt repräsentiert werden.
 
-Some special applications require complex numbers, which are directly supported by Python. The imaginary unit is represented by `j`.
+In speziellen Anwendungsfällen benötigt man komplexe Zahlen, welche direkt von Python unterstützt werden. Die imaginäre Einheit wird durch `j` dargestellt.
 
 ```{python}
 a = 3 + 5.5j
@@ -315,14 +330,14 @@ type(a)
 ```
 
 
-### Sequence types
+### Sequenzen
 
-Sequence data types can contain multiple elements. The following important sequence data types are supported by Python:
+Sequenzdatentypen können mehrere Elemente beinhalten. Folgende wichtige Sequenzdatentypen werden von Python unterstützt:
 
-- `str` (string of characters)
-- `list` (list of arbitrary elements)
-- `tuple` (similar to lists, but cannot be changed after creation)
-- `set` (set of unique elements)
+- `str` (String bzw. Zeichenkette)
+- `list` (Liste)
+- `tuple` (ähnlich wie `list`, kann aber nachträglich nicht mehr verändert werden)
+- `set` (Ansammlung von *unterschiedlichen* Elementen, d.h. keine Duplikate)
 
 ```{python}
 s = "Python"
@@ -354,9 +369,9 @@ type(s)
 ```
 
 
-### Mapping types
+### Zuordnungen
 
-The mapping type `dict` contains key-value pairs. This mechanism works similar to a real dictionary (hence the name).
+Der Datentyp `dict` beinhaltet Wertepaare, also Schlüssel (Keys) und zugehörige Werte (Values). Dieser Mechanismus funktioniert ähnlich wie ein Wörterbuch, daher auch die englische Bezeichnung "dictionary".
 
 ```{python}
 d = {"a": 12, "b": 3.14, 5: "Python", "c": "yes"}
@@ -364,11 +379,11 @@ type(d)
 ```
 
 
-## Exercises
+## Übungen
 
-### Exercise 1
+### Übung 1
 
-Given the following statements:
+Gegeben seien folgende Anweisungen:
 
 ```python
 width = 17
@@ -376,7 +391,7 @@ height = 12
 delimiter = "."
 ```
 
-Specify the value and type of each of the following expressions. Try to determine the answers by reasoning first and only then use the Python interpreter to check your answers.
+Geben Sie zu jedem der folgenden Ausdrücke dessen Wert und Typ an. Versuchen Sie zunächst, die Antworten durch Überlegen herauszufinden und verwenden Sie erst dann den Python-Interpreter zum Überprüfen Ihrer Antworten.
 
 - `width / 2`
 - `height / 3`
@@ -388,39 +403,41 @@ Specify the value and type of each of the following expressions. Try to determin
 - `"12 + 3"`
 
 
-### Exercise 2
+### Übung 2
 
-What is the difference between an expression and a statement? Provide an example for each of these concepts.
-
-
-### Exercise 3
-
-What are keywords in Python and how do you get a list of all keywords? What are built-ins and how do you get a list of all built-ins? What do you have to consider when creating names in the context of these two concepts? Also, provide some guidelines on how to create good names. Give an example of a good name!
+Was ist der Unterschied zwischen einem Ausdruck und einer Anweisung? Führen Sie jeweils ein Beispiel an.
 
 
-### Exercise 4
+### Übung 3
 
-What is the surface area and volume of a sphere with a radius of $r=5$? Perform these calculations with Python and assign the results to the names `area` and `volume`, respectively. Use the name `r` for the radius and set the value of `r` to 5.
+Was sind Schlüsselwörter in Python und wie erhalten Sie eine Liste aller Schlüsselwörter? Was sind eingebaute Funktionen und wie erhalten Sie eine Liste aller eingebauten Funktionen? Was müssen Sie beim Erstellen von Namen im Zusammenhang mit diesen beiden Konzepten beachten?
+
+Nennen Sie außerdem einige Richtlinien, wie man gute Namen erstellt. Führen Sie ein Beispiel für einen guten Namen an!
+
+
+### Übung 4
+
+Wie groß ist die Oberfläche bzw. das Volumen einer Kugel mit einem Radius von $r=5$? Führen Sie die Berechnung mit Python durch und weisen Sie den Ergebnissen die Namen `area` bzw. `volume` zu. Verwenden Sie für den Radius den Namen `r` und setzen Sie den Wert von `r` auf 5.
 
 :::{.callout-note}
-You can use the number $\pi$ as `math.pi` if you add the following line at the very beginning of your script:
+Sie können die Zahl $\pi$ als `math.pi` verwenden, wenn Sie folgende Zeile ganz am Anfang Ihres Scripts hinzufügen:
 
 ```python
 import math
 ```
 
-The formula for the surface area $A$ of a sphere is:
+Die Formel für die Oberfläche $A$ einer Kugel lautet:
 
 $$A = 4 \pi r^2$$
 
-The volume $V$ of a sphere can be calculated with the following formula:
+Das Volumen $V$ einer Kugel kann man mit folgender Formel berechnen:
 
 $$V = \frac{4}{3} \pi r^3$$
 :::
 
 
-### Exercise 5
+### Übung 5
 
-Which command can you use to determine the type of the value `True`? What type is it? What type does the name `x` have if you execute `x = "True"` beforehand? Note: the values `True` and `"True"` in this example have different types!
+Mit welchem Befehl können Sie den Typ des Wertes `True` bestimmen? Um welchen Typ handelt es sich dabei? Welchen Typ hat der Name `x`, wenn Sie vorher `x = "True"` ausführen? Achtung: die Werte `True` und `"True"` in diesem Beispiel haben unterschiedliche Typen!
 
-If you executed the command `import math` in Exercise 4, what type does the name `math` have?
+Wenn Sie in Übung 4 den Befehl `import math` ausgeführt haben, welchen Typ hat der Name `math`?
