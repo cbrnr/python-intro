@@ -1,8 +1,8 @@
 ---
-title: "2 – Solutions"
-subtitle: "Introduction to Python and PsychoPy"
+title: "2 – Lösungen"
+subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2024-10-10
+date: 2025-10-09
 format:
   html:
     page-layout: full
@@ -12,64 +12,76 @@ title-block-banner: true
 theme:
   light: flatly
   dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
 ---
 
 ## Exercise 1
 
-You can get a list of all installed packages by entering the following command in a terminal or command prompt:
+Eine Liste aller installierten Pakete erhält man, wenn man folgenden Befehl in einem Terminal eingibt:
 
 ```
 pip list
 ```
 
-In a fresh Python installation, only a few packages are installed. The output might look like this:
+In einer frischen Python-Installation sind nur wenige Pakete installiert. Die Ausgabe könnte folgendermaßen aussehen:
 
 ```
-Package    Version
----------- -------
-pip        23.2.1
-setuptools 68.2.2
+Package Version
+------- -------
+pip     25.2
 ```
 
 
-## Exercise 2
+## Übung 2
 
-Updating all installed packages must be done separately for each package. First, display a list of all packages that can be updated:
+Zunächst überprüft man, ob es Updates für installierte Pakete gibt:
 
 ```
 pip list --outdated
 ```
 
-If there is no output, all packages are already up to date. If packages are listed, you can update them with `pip install --upgrade <package>` (replace `<package>` with the actual package name).
+Wenn hier keine Ausgabe erscheint, sind alle Pakete auf dem neuesten Stand. Bei mir ist das der Fall, aber falls Pakete aktualisiert werden können, kann man jedes Paket einzeln mit folgendem Befehl aktualisieren (`<package>` ist durch den tatsächlichen Paketnamen zu ersetzen):
 
-In the list of installed packages, `ipython` does not appear, so it is not installed. You can install it with the following command:
+```
+pip install --upgrade <package>
+```
+
+Wir überprüfen nun, ob das Paket `ipython` installiert ist:
+
+```
+pip list
+```
+
+Hier taucht es nicht in der Liste auf, also installiert man es mit folgendem Befehl:
 
 ```
 pip install ipython
 ```
 
-You can install other packages in the same way, such as `numpy`:
+Analog dazu macht man das auch für das Paket `numpy`:
 
 ```
 pip install numpy
 ```
 
-If you no longer need a package, you can uninstall it:
+Wenn man ein Paket wieder entfernen möchte, kann man es mit folgendem Befehl deinstallieren:
 
 ```
 pip uninstall ipython
 ```
 
 :::{.callout-note}
-When you install a package, additional packages that are required by the package are usually installed automatically. For example, the `ipython` package requires some additional packages, including `backcall`, `decorator`, `jedi`, and so on. These dependencies are automatically installed when you run `pip install ipython`.
+Wenn man ein Paket installiert, werden gegebenenfalls automatisch weitere Pakete installiert, die von dem Paket benötigt werden (sogenannte Abhängigkeiten). Beispielsweise benötigt das Paket `ipython` einige weitere Pakete, darunter `backcall`, `decorator`, `jedi` und so weiter. Diese Abhängigkeiten werden automatisch mit `pip install ipython` installiert.
 
-However, when you uninstall a package (e.g., `pip uninstall ipython`), its dependencies are not automatically removed, since they may still be needed by other packages. You have to manually remove them or leave them installed.
+Allerdings werden Abhängigkeiten bei der Deinstallation eines Pakets (z.B. `pip uninstall ipython`) nicht automatisch entfernt, da sie möglicherweise noch von anderen Paketen benötigt werden. Man muss sie daher manuell entfernen oder einfach installiert lassen (da sie normalerweise nicht stören).
 :::
 
 
-## Exercise 3
+## Übung 3
 
-The script could look like this:
+Das Skript sollte folgendermaßen aussehen:
 
 ```python
 # Clemens Brunner
@@ -79,7 +91,7 @@ print("Hello World!")
 ```
 
 
-## Exercise 4
+## Übung 4
 
 ```python
 help(print)

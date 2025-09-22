@@ -1,8 +1,8 @@
 ---
-title: "2 – The Python Environment"
-subtitle: "Introduction to Python and PsychoPy"
+title: "2 – Die Python-Umgebung"
+subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-03-10
+date: 2025-10-09
 format:
   html:
     page-layout: full
@@ -12,146 +12,137 @@ title-block-banner: true
 theme:
   light: flatly
   dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
 ---
 
-## The Python ecosystem
+## Aufbau von Python
 
-Python consists of the Python programming language, a Python interpreter (a program that interprets and runs Python code), and an extensive standard library. The Python programming language includes only relatively few keywords and built-in functions. However, the [standard library](https://docs.python.org/3/library/) extends the core functionality with additional data types, input/output, regular expressions, mathematical functions, data compression, networking, multimedia services, graphical user interfaces, and much more. The standard library is part of any Python installation, so it is always available at your fingertips.
+Eine Python-Installation besteht aus der Programmiersprache Python, einem [Interpreter](https://de.wikipedia.org/wiki/Interpreter) (ein Programm, welches Python-Code ausführen kann), und der umfangreichen [Standardbibliothek](https://docs.python.org/3/library/). Python selbst stellt nur *grundlegende* Programmierkonstrukte zur Verfügung, wie z.B. Schleifen, Bedingungen und einige fest eingebaute Funktionen. Die mitgelieferte Standardbibliothek erweitert die Kernfunktionalität um zusätzliche Datentypen, Ein-/Ausgabe, reguläre Ausdrücke, mathematische Funktionen, Datenkompression, Netzwerkfunktionen, grafische Benutzeroberflächen und vieles mehr.
 
 :::{.callout-tip}
-In the previous chapter, we used `import math` to access mathematical functions and constants. Importing is necessary before we can use things contained in any module.
+Im vorigen Kapitel haben wir `import math` verwendet, um auf mathematische Funktionen und Konstanten zuzugreifen. Diese Vorgehensweise ist notwendig, um Objekte aus einem Modul verwenden zu können. In diesem Beispiel importieren wir also das `math`-Modul aus der Standardbibliothek, um danach auf mathematische Funktionen wie `math.sqrt` (Quadratwurzel) oder Konstanten wie `math.pi` (Kreiszahl) zugreifen zu können.
 :::
 
-Python can be further extended with third-party packages that are not part of the official Python distribution. Installing these packages is straightforward, because they are available from a central repository called the [Python Packaging Index (PyPI)](https://pypi.org). We will discuss how to install, update, and uninstall third-party packages later in this chapter.
+Zusätzlich gibt es noch tausende Python-Pakete, die sehr einfach zu einer existierenden Python-Installation hinzugefügt werden können. Diese Python-Pakete sind komplett unabhängig von Python, werden also auch nicht von denselben Personen entwickelt und veröffentlicht. Der [Python Package Index (PyPI)](https://pypi.python.org/pypi) sammelt alle verfügbaren Pakete an einer zentralen Stelle. Das offizielle Werkzeug, um Pakete aus dem PyPI zu installieren, nennt sich `pip` und wird automatisch mit Python mitgeliefert (mehr dazu weiter unten).
 
-As for any programming language, a code editor or integrated development environment (IDE) is an essential tool for writing Python code. Good code editors include support for syntax highlighting, indentation, line numbers, [linting](https://en.wikipedia.org/wiki/Lint_(software)), code inspection, and more. We will use [IDLE](https://docs.python.org/3/library/idle.html) in this course, which is included in the official Python installers. IDLE is a simple learning environment, which is ideal for anyone who is just getting started with Python. However, you might want to switch to a more advanced code editor, such as [Visual Studio Code](https://code.visualstudio.com/) or [PyCharm](https://www.jetbrains.com/pycharm/), as you become more proficient with Python.
-
-The following figure illustrates these three main building blocks of the Python ecosystem:
-
-![](python-components.png){width=50%}
+Um komfortabel Python-Code schreiben zu können, sollte man auch einen guten Code-Editor installieren. Wir werden in diesem Kurs das Programm [IDLE](https://docs.python.org/3/library/idle.html) verwenden, das mit der offiziellen Python-Installation mitgeliefert wird. IDLE ist eine sehr einfache Lernumgebung, die ideal für Anfänger geeignet ist, weil sie wirklich nur die allernötigsten Funktionen bietet. Sobald man aber etwas geübter im Umgang mit Python ist, sollte man auf einen richtigen Code-Editor wie [Visual Studio Code](https://code.visualstudio.com/) oder [PyCharm](https://www.jetbrains.com/pycharm/) umsteigen.
 
 
 ## IDLE
 
-After starting IDLE, you will see a window with a Python shell (also called the interactive interpreter):
+Wie bereits im vorigen Kapitel erwähnt, öffnet sich nach dem Start von IDLE ein Fenster namens *IDLE Shell*, in welchem der interaktive Python-Interpreter läuft:
 
 ![](idle-shell.png)
 
-In the previous chapter, we used the interactive interpreter directly from the terminal, but we can also use IDLE to run Python code interactively. The interactive interpreter is a great tool for testing small code snippets, for example to check the result of a calculation or to experiment with a new function. However, the interactive interpreter does not save your code. If you restart it, everything you typed in a previous session is lost, because you will always start with a clean slate.
+Der interaktive Interpreter wird benutzt, um einzelne Zeilen Python-Code interaktiv auszuführen. Dies bedeutet, dass Python das Ergebnis einer Berechnung direkt nach dem Ausführen eines Befehls anzeigt. Allerdings speichert der interaktive Interpreter den eingegebenen Code nicht, d.h. wenn man IDLE neu startet, sind alle vorherigen Eingaben nicht mehr verfügbar. Jedes Python-Programm startet also immer "von Null"!
 
-To save your code, you need to write it to a text file with the file extension `.py` (such files are also called *Python scripts*). IDLE provides a text editor for creating, writing, and modifying Python scripts, which can then be executed by the Python interpreter:
+Um Code zu speichern, muss man ihn in eine Textdatei mit der Dateiendung `.py` schreiben (solche Dateien werden auch *Python-Skripte* oder *Python-Programme* genannt). IDLE bietet einen Texteditor zum Erstellen und Bearbeiten von Python-Skripten, die dann vom Python-Interpreter ausgeführt werden können:
 
 ![](idle-editor.png)
 
-To create a new script, select "File" > "New File" from the menu. You can then write your Python code in the editor and save it to a file with the `.py` extension. To run the entire script, select "Run" > "Run Module" from the menu. The output of the script will be displayed in the interactive interpreter.
+Um ein neues Skript zu erstellen, wählt man im Menü "File" > "New File". Es öffnet sich ein neues Fenster, welches im Prinzip ein sehr einfacher Texteditor ist. Hier kann man Python-Code schreiben und in einer Datei mit der Endung `.py` speichern. Um das gesamte Skript auszuführen, wählt man im Menü "Run" > "Run Module" (oder drückt <kbd>F5</kbd>). Das Skript wird dann im interaktiven Interpreter ausgeführt.
 
 
-## Getting help
+## Zusatzpakete verwalten
 
-One of the most important activities when programming is reading documentation. Besides querying your favorite web search engine or AI assistant, the Python interpreter can display short help texts for many Python commands. For example, to view the documentation for the `print` function, you can type `help(print)` in the Python interpreter.
+Wie bereits erwähnt, wird `pip` zur Verwaltung von Zusatzpaketen verwendet. Es kann neue Pakete installieren, bereits installierte Pakete aktualisieren oder auch komplett wieder entfernen. Eine Python-Installation sollte damit regelmäßig gewartet werden, d.h. veraltete Pakete sollten nach Möglichkeit aktualisiert werden. Die Standardbibliothek wird dadurch allerdings nicht beeinflusst – diese ändert sich nur, wenn man eine neuere Python-Version installiert.
 
+Dabei ist `pip` ein sogenanntes Kommandozeilenprogramm, d.h. es verfügt über keine grafische Oberfläche, sondern wird im Terminal (oft auch Eingabeaufforderung genannt) ausgeführt. Um die folgenden Beispiele nachzuvollziehen, müssen Sie also zuerst ein Terminal öffnen (das Programm heißt in den diversen Betriebssystemen praktischerweise auch einfach "Terminal").
 
-## Managing packages
+Nach dem Starten des Terminals kann man nun Textbefehle eintippen. Beachten Sie, dass hier *kein* Python-Interpreter läuft, sondern eine sogenannte [Shell](https://de.wikipedia.org/wiki/Shell_(Betriebssystem)) – Sie können also keine Python-Befehle eintippen, sondern ausschließlich Shell-Befehle! Um zu testen, ob `pip` funktioniert und welche Version installiert ist, gibt man folgendes ein:
 
-Almost any real-world project requires functionality that is not available in Python out of the box. Therefore, it is important to know how to install additional third-party packages. You might also want to uninstall packages that you don't need anymore to keep your environment clean and save some disk space. It is also a good idea to keep all installed packages up to date, as package maintainers regularly fix bugs and add new features.
-
-All of these tasks can be performed with the `pip` command line tool, which is bundled with the Python installation. To use it, we need to open a terminal:
-
-- On Windows, open the "Terminal" app from the start menu.
-- On macOS, open the "Terminal" app.
-- On Linux, open your favorite terminal app.
-
-:::{.callout-note}
-On macOS, the command line tool is called `pip3` instead of `pip` (just like we use `python3` instead of `python` to invoke the Python interpreter).
-:::
-
-:::{.callout-important}
-A [terminal](https://en.wikipedia.org/wiki/Terminal_emulator) is a program that runs a [shell](https://en.wikipedia.org/wiki/Shell_(computing)), which interprets text commands to interact with the operating system.
-
-Note that `pip` is *not* a Python command, so make sure to enter `pip` commands in the shell and not in the Python interpreter! Usually, the prompt is a good indicator of where to enter commands. As a rule of thumb, if the prompt ends with a `$` or `>`, you are in the shell. If the prompt ends with `>>>`, you are in the Python interpreter.
-:::
-
-Let's test if we can successfully run the `pip` tool. In a terminal, type:
-
-```shell
+```sh
 pip --version
 ```
 
-This command should display the `pip` version (for example, 23.3.1) and its location in the file system. If this results in an error message, something is wrong with your Python installation (in this case, consult the [installation instructions](https://docs.python.org/3/using/index.html) to fix the problem).
+Wenn man hier eine Versionsnummer angezeigt bekommt (z.B. `25.2`), funktioniert `pip` korrekt. Falls hier eine Fehlermeldung ausgegeben wird, wurde vermutlich die Python-Installation nicht korrekt durchgeführt. In diesem Fall installieren Sie am besten anhand der in der ersten Einheit beschriebenen Schritte Python erneut.
 
-It is useful to know which Python packages are already installed. We can use the following command to find out:
+:::{.callout-important}
+Unter macOS muss man `pip3` statt `pip` schreiben, so wie man auch `python3` statt `python` zum Starten des Interpreters verwenden muss.
+:::
 
-```shell
+Wenn man wissen möchte, welche Pakete installiert sind, verwendet man den folgenden Befehl:
+
+```sh
 pip list
 ```
 
-This will print a list of installed packages, including their names and versions. If you have just installed Python, this list will only contain a few entries (usually just `pip`).
+Die Ausgabe beinhaltet alle installierten Pakete, einschließlich ihrer Namen und Versionen. Wenn Sie Python gerade erst installiert haben, enthält diese Liste nur wenige Einträge (normalerweise nur `pip`).
 
-Before installing a new package, we need to know the name of the package. You can query the [PyPI website](https://pypi.org/) to find a specific package. You can then install that package as follows (replace `<package_name>` with the actual name):
+Bevor man ein neues Paket installieren kann, muss man dessen Namen kennen. Die [PyPI-Website](https://pypi.org/) kann verwendet werden, um nach einem bestimmten Paket zu suchen. Ein Paket kann dann wie folgt installiert werden (ersetzen Sie `<package_name>` durch den tatsächlichen Namen):
 
-```shell
+```sh
 pip install <package_name>
 ```
 
-It is also straightforward to uninstall a package:
+Das Entfernen eines Pakets ist ähnlich einfach:
 
-```shell
+```sh
 pip uninstall <package_name>
 ```
 
-Finally, you can get a list of outdated packages:
+Eine Liste aller Pakete, die aktualisiert werden können, erhalten Sie mit:
 
-```shell
+```sh
 pip list --outdated
 ```
 
-If this command shows packages that have newer versions available, you can upgrade each individual package with:
+Falls dieser Befehl veraltete Pakete anzeigt, können Sie jedes einzelne Paket mit folgendem Befehl aktualisieren:
 
-```shell
+```sh
 pip install --upgrade <package_name>
 ```
 
 :::{.callout-note}
-As you get more proficient with Python, you might want to create a [virtual environment](https://docs.python.org/3/library/venv.html) for each project. This allows you to install packages for each project in separate isolated environments, which avoids conflicts between different projects. However, this is a slightly advanced topic and not necessary for this introductory course.
+Sobald man mit Python etwas vertrauter ist, sollte man eine sogenannte [virtuelle Umgebung](https://docs.python.org/3/library/venv.html) für jedes Projekt verwenden, anstatt alle Zusatzpakete global zu installieren. Dies ermöglicht es, die für ein Projekt benötigten Pakete in separaten isolierten Umgebungen zu installieren und so Konflikte zwischen verschiedenen Projekten zu vermeiden. In diesem Kurs werden wir aber virtuelle Umgebungen nicht verwenden.
 :::
 
 
-## The Python interpreter
+## Der Python-Interpreter
 
-The Python interpreter can operate in two modes, namely in interactive or in script mode.
+Der Python-Interpreter führt Python-Code aus. Er kann auf zwei unterschiedliche Arten verwendet werden:
+
+- Interaktiver Modus
+- Script-Modus
 
 
-### Interactive mode (REPL)
+### Interaktiver Modus
 
-The interactive mode is useful for executing single lines of code, because Python immediately shows the result. We have already encountered this mode before when we used Python as a calculator. To recap, interactive mode features a prompt (`>>>`), which indicates that Python is ready and waiting for user input. Importantly, Python also displays the results of calculations automatically in interactive mode. For example:
+Im interaktiven Modus hat man die Möglichkeit, einzelne Python-Befehle einzugeben. Diese werden sofort ausgeführt und eventuelle Ergebnisse am Bildschirm ausgegeben. Python läuft also ständig im Hintergrund und wartet darauf, dass Sie Python-Befehle eintippen. Ein sogenannter Prompt (`>>>`) signalisiert im interaktiven Modus, dass Befehle eingegeben werden können, zum Beispiel:
 
 ```{python}
 1 + 4
 ```
 
-The result `5` is displayed automatically right after the command. In general, if you start Python by typing `python` on the command line, Python will start in interactive mode.
+Das Ergebnis `5` wird unmittelbar nach dem Befehl ausgegeben.
 
 :::{.callout-tip}
-You can exit the interactive interpreter by typing `exit()` (or alternatively <kbd>Ctrl</kbd><kbd>D</kbd> on macOS or Linux).
+Wir werden den interaktiven Interpreter hauptsächlich innerhalb von IDLE verwenden ("IDLE Shell"), aber es ist auch möglich, den interaktiven Interpreter direkt im Terminal mit dem Befehl `python` (bzw. `python3` auf macOS) zu starten. Sie können den interaktiven Interpreter beenden, indem Sie `exit()` oder `exit` eingeben.
 :::
 
 
-### Script mode
+### Script-Modus
 
-In contrast to interactive mode, Python can run many lines of code in one go using script mode. A Python script is a plain text file (ending in `.py`) containing Python code. In general, one line contains exactly one code statement. Compared to interactive mode, Python does *not* display results automatically. For example, let's assume that a Python script named `test.py` contains the following line:
+Im Gegensatz zum interaktiven Modus kann Python im Script-Modus viele Zeilen Code, also insbesondere ein komplettes Skript, auf einmal ausführen. Wie wir bereits wissen, ist ein Python-Skript eine Textdatei (mit der Endung `.py`), die Python-Code enthält. Im Allgemeinen enthält eine Zeile des Skripts genau einen Python-Befehl. Im Vergleich zum interaktiven Modus zeigt Python die Ergebnisse allerdings *nicht* automatisch an. Angenommen, ein Python-Skript mit dem Namen `test.py` enthält die folgende Zeile:
 
 ```python
 1 + 4
 ```
 
-When we run this script with `python test.py` from the command line, Python executes all commands line by line, but it does not automatically show the results. Therefore, there will be no output when running this script. However, you can always explicitly print something on the screen with the `print` function (more on functions later), so in this example script we could write `print(1 + 4)` instead.
+Das Ausführen dieses Skripts (z.B. in IDLE mittels <kbd>F5</kbd> oder im Terminal mit `python test.py`) führt zwar jeden Befehl im Skript aus, aber es wird kein Ergebnis angezeigt. Dies ist durchaus beabsichtigt und sinnvoll, weil ein Skript oft viele Befehle enthält und es nicht immer erwünscht ist, dass jedes Ergebnis ausgegeben wird. Im Gegensatz dazu ist der interaktive Modus genau dafür gedacht, einzelne Befehle auszuprobieren und sofort die Ergebnisse zu sehen. Wenn man ein Ergebnis im Script-Modus sehen möchte, muss man dieses explizit mit der `print`-Funktion ausgeben lassen. Der Code in `test.py` müsste also stattdessen so aussehen:
+
+```python
+print(1 + 4)
+```
 
 
 ## Syntax
 
-Let's return to the Python programming language and in particular its syntax (which describes the rules and structure of code statements). One of the most unique features of Python is that it uses significant [whitespace](https://en.wikipedia.org/wiki/Whitespace_character) (in almost all cases this means spaces) for grouping code into blocks. This results in fewer lines of code and therefore less visual noise, because no special grouping symbols (such as `begin` or `end`) are needed.
+Unter Syntax versteht man die Regeln einer Sprache, die festlegen, wie man aus grundlegenden Zeichen gültige Sprachkonstrukte erzeugt.
 
-Consider the following example code snippet:
+Ein spezielles Merkmal der Syntax von Python ist, dass *Einrückungen* Bedeutung haben – sie gruppieren zusammengehörigen Code. Die meisten anderen Programmiersprachen verwenden dafür spezielle Zeichen oder Schlüsselwörter wie z.B. `begin`, `end`, `{` oder `}`. Durch Einrückungen benötigt Python diese Zeichen nicht, und der Code wird dadurch automatisch strukturierter und kürzer. Dies ist im folgenden Beispiel veranschaulicht (bitte achten Sie nur auf die Struktur, der Inhalt/die Bedeutung des Beispiels ist hier *nicht* relevant; die Zeilennummern sind außerdem nicht Teil der Syntax und werden nur zur besseren Orientierung angezeigt):
 
 ```{.python code-line-numbers="true"}
 # this is a comment
@@ -168,33 +159,45 @@ counter = do_something()
 print(counter)
 ```
 
+Versuchen wir, die wichtigsten syntaktischen Elemente in diesem Beispiel zu identifizieren. Zunächst fällt auf, dass in Zeilen 1 und 6 sogenannte Kommentare verwendet werden. Diese werden durch ein `#`-Zeichen eingeleitet. Alles, was danach folgt, wird von Python bis zum Zeilenende ignoriert. So kann man Kommentare in natürlicher Sprache zur Erklärung des Codes hinzufügen (weil Python sie ohnehin ignoriert).
+
+Wenden wir uns nun den einzelnen durch Einrückungen definierten Blöcken in diesem Beispiel zu. Standardmäßig wird ein Block mit vier Leerzeichen eingerückt, d.h. der erste Block beginnt in Zeile 2. Zu diesem Block gehören alle folgenden eingerückten Codezeilen, also Zeilen 3–9. Da die Zeilen 11–12 nicht mehr eingerückt sind, gehören diese auch nicht zu diesem Block.
+
 :::{.callout-note}
-It is not important to understand what this code is doing at this point as we only want to focus on its structure!
+Ein neuer Block wird immer durch eine Code-Zeile eingeleitet, welche mit einem `:` endet.
 :::
 
-First, we notice that line 1 starts with a `#` character. This line is a *comment*, and Python ignores everything from the `#` character to the end of the line. This means that we can use comments to explain portions of the code in plain English (or whatever natural language you like to use). Line 6 also contains a comment, but this time directly after a statement.
+Innerhalb dieses Blocks gibt es aber noch weitere untergeordnete Blöcke. Ein Block wird in Zeile 4 definiert, er beinhaltet die Zeilen 5–8. Darin gibt es einen weiteren Block, eingeleitet in Zeile 6 und bestehend aus Code in den Zeilen 7–8. Zeile 9 gehört wieder zum ersten Block (in Zeile 2 definiert).
 
-Lines 3–9 are *indented* (which means shifted to the right). By convention, most Pythonistas^[People using Python] use *four spaces* to denote one level of indentation. Indented lines of code belong together. For example, lines 3–9 below `def do_something(n_times=10):` define a block of code belonging to that `def` statement (note that statements introducing a block always end with a colon). Within this block, there are two additional blocks defined by additional indentation (lines 5–8 and lines 7–8, respectively).
+Des Weiteren sieht man noch die Verwendung von Funktionen – diese werden mit ihrem Namen und den Argumenten in *Klammern* aufgerufen, z.B. `do_something(6)` in Zeile 11 oder `print(counter)` in Zeile 12 . Hier ist `print` der Name der Funktion und `counter` ist das Argument (Zusatzinformation) für die Funktion. Es gibt auch Funktionen ohne Argumente, diese müssen aber trotzdem mit den Klammern aufgerufen werden, z.B. `print()`. Mehr zu Funktionen werden wir in einer der nächsten Einheiten lernen. Wichtig ist zu diesem Zeitpunkt nur, dass Sie erkennen können, wie ein Funktionsaufruf aussieht. Ein solcher ist nämlich immer über das Klammernpaar (innerhalb derer eventuelle Argumente vorkommen können) erkennbar, welches direkt auf den Namen der Funktion folgt. Wenn man eine Funktion aufruft, wird diese ausgeführt – sie erledigt also sozusagen die in ihr definierten Aufgaben.
 
-Blocks are necessary to define scopes, something which we will discuss later in this course.
+:::{.callout-note}
+Das Klammernpaar `()` wird benötigt, um eine Funktion *aufzurufen*. Man nennt es daher auch *Aufrufoperator*.
+:::
 
-Finally, the example contains *function calls*. We will discuss functions in detail later in this course, but for now you can think of a function as a mini-script. Whenever you call a function, Python runs the whole mini-script defined by the function. The syntax for calling a function is a pair of parenthesis `()` right after the function name. In the example code, `range(n_times)`, `print(i)`, `print("Odd")`, `do_something()`, and `print(counter)` are all function calls. Note that you can supply so-called *arguments* between the parentheses if the function takes parameters. All function calls in the example have exactly one argument, except for `do_something()`, which has no argument. Arguments allow us to pass additional information to the function (but again, more on functions later).
+Veranschaulichen wir dieses Thema noch mit einem Beispiel. In der ersten Einheit haben wir die Quadratwurzel einer Zahl berechnet. Dazu haben wir die Funktion `math.sqrt` aufgerufen, und zwar mit der gewünschten Zahl als Argument, welches wir innerhalb der Klammern angegeben haben. Durch Aufrufen der Funktion wird also deren Code ausgeführt:
+
+```{python}
+import math
+
+math.sqrt(4)
+```
 
 :::{.callout-tip}
-Like most programming languages, Python is very picky about correct syntax. For example, capitalization matters, so `print` is not the same as `Print`. A missing `:` in places where a colon should be triggers a syntax error. Incorrect indentation can either lead to a syntax error or to non-intended behavior (which means the Python program runs without errors, but does not do what the programmer intended). It is very instructive to try out invalid code in the interactive interpreter, for example:
+Python ist sehr genau, was die Syntax betrifft. Zum Beispiel ist es wichtig, die korrekte Groß-/Kleinschreibung zu beachten, d.h. `print` ist nicht dasselbe wie `Print`. Ein fehlender `:` an Stellen, an denen dieser notwendig ist, führt zu einem Syntaxfehler. Falsche Einrückungen können entweder zu einem Syntaxfehler oder zu unerwünschtem Verhalten führen (was bedeutet, dass das Python-Programm ohne Fehler ausgeführt wird, aber nicht das tut, was man eigentlich beabsichtigt hat). Es ist auf jeden Fall sehr lehrreich, fehlerhaften Code im interaktiven Interpreter auszuprobieren, zum Beispiel:
 
 ```{python}
 #| error: true
 Print("Hello")
 ```
 
-It is important to be familiar with Python error messages to interpret them correctly and efficiently (after all, the goal should be to fix them), so make errors and learn from them!
+Es ist wichtig, mit den Fehlermeldungen von Python vertraut zu sein, um sie korrekt und effizient zu interpretieren (schließlich sollte das Ziel sein, sie zu beheben). Machen Sie also Fehler und lernen Sie daraus!
 :::
 
 
-## Code style
+## Stilistische Konventionen
 
-There are also stylistic issues that Python does not care about at all. The following three statements are equivalent for Python:
+Im Gegensatz zur Syntax, die man strikt einhalten muss, gibt es auch stilistische Konventionen, die den Code lesbarer und verständlicher machen. Diese Konventionen sind zwar nicht zwingend notwendig, aber es ist sehr empfehlenswert, sich trotzdem daran zu halten. Beispielsweise sind die folgenden drei Anweisungen syntaktisch korrekt und führen alle zum selben Ergebnis:
 
 ```{python}
 x = 1 + 2 + 3 * (16 - 7)
@@ -202,12 +205,45 @@ x=1+    2+  3*  (   16-7    )
 x=1+2+3*(16-7)
 ```
 
-Arguably, the first statement is much easier to read than the other two. The [Python Enhancement Proposal 8 (PEP8)](https://www.python.org/dev/peps/pep-0008/) summarizes coding conventions that describe how Python code should look like to enhance readability. There are automated tools that reformat Python code according to PEP8 (such as [Ruff](https://docs.astral.sh/ruff/)), but we will not use them in this course. However, it is still a good idea to follow PEP8 as closely as possible, because it makes your code more readable and understandable for others (and for yourself in the future).
+Der erste Befehl ist vermutlich am besten lesbar, weil die Leerzeichen sinnvoll gesetzt sind, und deswegen sollte man darauf achten, den Code entsprechend zu formatieren. Viele solche stilistischen Empfehlungen sind im [Python Enhancement Proposal 8 (PEP8)](https://www.python.org/dev/peps/pep-0008/) zusammengefasst. Sie können mit [Ruff](https://docs.astral.sh/ruff/) Python-Code auch automatisch formatieren lassen, dazu installieren sie es zunächst mittels `pip`:
+
+```sh
+pip install ruff
+```
+
+Danach können Sie die folgenden Befehle im Terminal verwenden, um eine Datei namens `test.py` zu formatieren:
+
+```sh
+ruff check test.py
+ruff format test.py
+```
+
+Probieren Sie aus, wie sich der Code in einer Datei namens `test.py` verändert, wenn Sie die beiden Befehle ausführen! Verwenden Sie dazu die drei oben angeführten Varianten des Befehls zur Berechnung von `x`.
 
 
-### Online courses
+## Hilfe
 
-There are many introductory and more advanced courses on Python. Here is a small selection of free courses that you might want to take after this class (or even alongside it):
+### Integrierte Hilfe
+
+Hilfe zu Python-Befehlen kann man auch direkt im Python-Interpreter bekommen. Möchte man z.B. Informationen zur Funktion `print` bekommen, tippt man einfach folgenden Befehl ein:
+
+```{python}
+help(print)
+```
+
+
+### Online-Hilfe
+
+Einen guten Überblick bietet die [offizielle Python-Dokumentation](https://docs.python.org/3/). Hier werden die allermeisten Themengebiete rund um Python sehr umfangreich beschrieben. Auch das [Tutorial](https://docs.python.org/3/tutorial/index.html) ist sehr zu empfehlen.
+
+Durch die große und sehr aktive Community findet man mit einer Suchmaschine besonders viele Fragen und Antworten rund um Python. Sehr hochwertige Antworten findet man meist auf [StackOverflow](http://stackoverflow.com/questions/tagged/python).
+
+Auch KI-Tools wie ChatGPT können sehr hilfreich sein, um schnell Antworten auf konkrete Fragen zu bekommen oder um sich Code erklären zu lassen.
+
+
+### Online-Kurse
+
+Einführungskurse bzw. leicht fortgeschrittene Kurse über Python gibt es viele, hier eine kleine Auswahl frei verfügbarer Kurse, die Sie vielleicht nach dieser Lehrveranstaltung (oder sogar parallel dazu) absolvieren könnten:
 
 - [Learn to Program: The Fundamentals](https://www.coursera.org/learn/learn-to-program)
 - [Learn to Program: Crafting Quality Code](https://www.coursera.org/learn/program-code)
@@ -218,9 +254,9 @@ There are many introductory and more advanced courses on Python. Here is a small
 - [Learn Python](http://www.learnpython.org/)
 
 
-### Books
+### Bücher
 
-Classic books or websites are also excellent for self-study. Here is a small selection of free resources:
+Klassische Bücher oder Websites eignen sich ebenfalls sehr gut zum Selbststudium, hier eine kleine Auswahl an kostenlos verfügbaren Ressourcen:
 
 - [Think Python](http://greenteapress.com/wp/think-python/)
 - [A Byte of Python](http://python.swaroopch.com/)
@@ -228,32 +264,32 @@ Classic books or websites are also excellent for self-study. Here is a small sel
 - [Real Python](https://realpython.com)
 
 
-## Exercises
+## Übungen
 
-### Exercise 1
+### Übung 1
 
-List all installed packages in your Python installation – which command do you use, and what does the list look like? How many packages are installed on your system?
-
-
-### Exercise 2
-
-First, update all installed packages. Then check if the `ipython` package is installed – if not, install it! Perform the same steps for the `numpy` package. Finally, uninstall the `ipython` package.
-
-What happened to the dependencies of the `ipython` package when you uninstall it?
+Geben Sie eine Liste aller installierten Pakete in Ihrer Python-Installation aus – welchen Befehl verwenden Sie dazu und wie sieht die Liste aus? Wie viele Pakete sind bei Ihnen installiert?
 
 
-### Exercise 3
+### Übung 2
 
-Create a Python script named `test.py` in IDLE. The script should simply print *Hello World!* to the screen (use the `print` function). Try to follow this structure:
+Aktualisieren Sie zunächst alle installierten Pakete. Suchen Sie dann nach dem Paket `ipython` – ist dieses Paket bereits installiert? Falls nicht, installieren Sie es! Führen Sie diese beiden Schritte auch für das Paket `numpy` durch. Abschließend deinstallieren Sie die beiden Pakete wieder.
 
-- The first line should be a comment with your name
-- The second line should be empty
-- The third line should contain the `print` function
-- The last line should be empty
-
-Make sure your script follows PEP8 conventions. Also, run your script to ensure the code works correctly and produces no errors.
+Geben Sie dann die Liste aller installierten Pakete erneut aus – sind `ipython` und `numpy` noch vorhanden? Was ist mit den Abhängigkeiten dieser Pakete passiert – wurden diese ebenfalls deinstalliert?
 
 
-### Exercise 4
+### Übung 3
 
-Inspect the documentation for the `print` and `sum` functions directly in the Python interpreter.
+Erstellen Sie ein einfaches Python-Skript namens `test.py` mit IDLE. Das Script soll lediglich *Hello World!* am Bildschirm ausgeben (verwenden Sie dazu die `print`-Funktion). Versuchen Sie, folgende Struktur zu erzeugen:
+
+- Die erste Zeile soll eine Kommentarzeile mit Ihrem Namen sein
+- Die zweite Zeile soll leer sein
+- Die dritte Zeile soll die `print`-Funktion beinhalten
+- Die letzte Zeile soll wieder leer sein
+
+Achten Sie darauf, dass Ihr Script PEP8-konform ist. Führen Sie Ihr Script auch aus – so können Sie sicherstellen, dass der Code korrekt ist und keine Fehler produziert.
+
+
+### Übung 4
+
+Sehen Sie sich die Hilfe zu den Funktionen `print` und `sum` direkt im Python-Interpreter an.
