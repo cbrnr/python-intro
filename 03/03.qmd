@@ -258,7 +258,7 @@ Der Typ des Wertes von `print("Python")`, der ja jetzt den Namen `s` hat, ist al
 type(s)
 ```
 
-Damit ist also klar, dass `print("Python")` keinen Wert hat (eigentlich `None`).
+Damit ist also klar, dass `print("Python")` keinen Wert hat (eigentlich `None`, denn in Python gibt es einen speziellen Wert `None` vom Typ `NoneType`, welcher für "kein Wert" steht).
 :::
 
 
