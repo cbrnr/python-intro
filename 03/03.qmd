@@ -150,7 +150,7 @@ x = 2
 2 * x  # x wird zu 2 ausgewertet, dann wird 2 * 2 zu 4 ausgewertet
 ```
 
-Hier hat `x` den Wert `2` (nicht `4`). Wir können `x` jedoch erneut zuweisen und sogar den alten Wert von `x` auf der rechten Seite der Zuweisung verwenden:
+An dieser Stelle hat `x` nach wie vor den Wert `2` (und nicht `4`). Wir können `x` jedoch erneut zuweisen und sogar den alten Wert von `x` auf der rechten Seite der Zuweisung verwenden:
 
 ```{python}
 x = 2 * x  # zuerst wird die rechte Seite zu 2 * 2 = 4 ausgewertet, dann wird x = 4 zugewiesen
