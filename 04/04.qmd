@@ -1,8 +1,8 @@
 ---
-title: "4 – Functions"
-subtitle: "Introduction to Python and PsychoPy"
+title: "4 – Funktionen"
+subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-03-24
+date: 2025-10-23
 format:
   html:
     page-layout: full
@@ -12,24 +12,29 @@ title-block-banner: true
 theme:
   light: flatly
   dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
 ---
 
-## Introduction
+## Allgemeines
 
-Functions in Python are like "mini scripts" or "mini programs", as they group multiple statements into a single block. A function in Python is similar to a mathematical function, such as the square function $f(x) = x^2$. This mathematical function $f$ calculates a new output value $x^2$ from a given input value $x$ (which can be an arbitrary number). Similarly, a Python function can take one or more input values (called *arguments*) and return a new output value (or perform some other action).
+Funktionen kann man sich wie "Mini-Programme" bzw. "Mini-Scripts" vorstellen. Sie gruppieren mehrere Anweisungen zu einem zusammengehörigen Block. Eine Funktion in Python ist durchaus mit einer mathematischen Funktion vergleichbar, wie zum Beispiel der Quadratfunktion $f(x) = x^2$. Diese mathematische Funktion $f$ berechnet aus einem gegebenen Wert $x$ einen neuen Wert $x^2$. Diese Funktion kann man dann mit konkreten Werten für $x$ verwenden, um die entsprechenden Ergebnisse zu erhalten, z.B. $f(3) = 9$ oder $f(5) = 25$.
 
-A function has a clearly defined task. In Python, functions are used to structure code (which increases readability). Functions also make programs shorter, as repeated code can be moved into functions. If changes are necessary, they only need to be made in one place within the function. Functions can also be reused in other programs.
+Auch in Python hat eine Funktion eine klar definierte Aufgabe. Hier dienen Funktionen unter anderem dazu, Programmcode zu strukturieren (was die Lesbarkeit erhöht) und wiederverwendbar zu machen (wiederverwendbar bedeutet, dass man eine Funktion beliebig oft verwenden kann). Funktionen machen Programme in der Regel auch kürzer, weil wiederholt auszuführender Code in Funktionen ausgelagert werden kann. Sollten einmal Änderungen notwendig sein, muss man diese nur an einer Stelle innerhalb der Funktion vornehmen. Funktionen lassen sich außerdem auch in anderen Programmen wiederverwenden.
 
 :::{.callout-note}
-We have already learned about some built-in functions like `print` and `type` in previous sessions.
+Einige Funktionen wie `print` und `type` haben wir bereits in den vorigen Einheiten kennengelernt und verwendet.
 :::
 
 
-## Calling functions
+## Funktionen aufrufen
 
-*Calling* a function means executing the code contained within it (i.e., the "mini script") – the function "does" its work. In Python, you call a function by stating its name followed by a *pair of parentheses*. Inside the parentheses, you pass *arguments* to the function (if necessary). Arguments are the values provided to a function that it needs to carry out its task. For example, the `type` function requires one argument; otherwise, it it cannot perform its intended task (to determine the type of the argument). Similarly, the `math.sqrt` function from the `math` module requires one argument to calculate the square root of the given number.
+Eine Funktion *aufrufen* bedeutet, dass der in ihr enthaltene Code (also das "Mini-Programm") ausgeführt wird – die Funktion verrichtet also ihre Arbeit.
 
-Here are two examples of calling two different functions with one argument each:
+In Python ruft man eine Funktion mit ihrem Namen gefolgt von einem *Paar runder Klammern* auf. Innerhalb der Klammern werden die *Argumente* für die Funktion übergeben (falls notwendig). Mit Argumenten übergibt man der Funktion Werte, welche diese für die Ausführung benötigt. Beispielsweise benötigt die Funktion `type` ein Argument, denn sonst kann sie ihre Aufgabe nicht erfüllen – nämlich den Typ des übergebenen Arguments zu bestimmen. Gleichermaßen braucht auch die Funktion `math.sqrt` aus dem `math`-Modul ein Argument, damit diese die Wurzel der übergebenen Zahl berechnen kann.
+
+Hier sind drei Beispiele für Aufrufe von bereits bekannten Funktionen mit jeweils einem Argument:
 
 ```{python}
 print("Hello")
@@ -39,34 +44,49 @@ print("Hello")
 type("Hello")
 ```
 
-However, there are also functions that can be called without arguments (the following function call outputs a blank line to the screen):
+```{python}
+import math
+math.sqrt(16)
+```
+
+Es gibt aber auch Funktionen, die man *ohne* Argument aufrufen kann (der folgende Funktionsaufruf bewirkt eine Ausgabe einer Leerzeile am Bildschirm):
 
 ```{python}
 print()
 ```
 
-It is important to know how many arguments a function requires, as this is defined by the function itself (this information can be found in the function's documentation).
+Wie viele Argumente eine Funktion tatsächlich benötigt, hängt ganz alleine von der jeweiligen Funktion ab (dies ist in ihrer Dokumentation nachzulesen).
 
-::: {.callout-important}
-If you omit the parentheses, the function is *not* called – only the value (i.e., the function object) is displayed when using Python in interactive mode.
+:::{.callout-important}
+Lässt man die Klammern weg, wird die Funktion *nicht* aufgerufen – es wird dann lediglich der Wert des Namens (also das Funktionsobjekt) angezeigt, wenn man Python im interaktiven Modus verwendet.
 
 ```{python}
 print
 ```
 
-This name refers to a function object:
+Dabei handelt es sich um einen Namen, welcher auf ein Funktionsobjekt verweist:
 
 ```{python}
 type(print)
 ```
 
-We have already learned about the concept of names in Python in the last session. It does not matter what object a name refers to; it can be an integer, a function, or any other object.
+Das Konzept von Namen in Python haben wir bereits in der letzten Einheit kennengelernt. Es ist unerheblich, auf welches Objekt ein Name verweist, dies kann eine Ganzzahl, eine Funktion, oder jedes beliebige andere Objekt sein. So können wir z.B. auch den Namen `f` erstellen, welcher auf die Funktion `print` verweist:
+
+```{python}
+f = print
+```
+
+Nun hat die Funktion zwei Namen, nämlich `print` und `f`:
+
+```{python}
+f("Hello via f")
+```
 :::
 
 
-## Defining functions
+## Funktionen definieren
 
-Fortunately, we are not limited to existing functions, but we can write our own functions. In Python, a function is *defined* as follows (the lines in `<...>` are placeholders and must be replaced with concrete commands):
+Wir sind glücklicherweise nicht auf bereits existierende Funktionen beschränkt, sondern können selbst unsere eigenen Funktionen schreiben. In Python wird eine Funktion wie folgt *definiert* (die Zeilen in spitzen Klammern sind Platzhalter und müssen durch konkrete Befehle ersetzt werden):
 
 ```python
 def function_name(parameter1, parameter2, ...):
@@ -75,37 +95,37 @@ def function_name(parameter1, parameter2, ...):
     <optionally return something>
 ```
 
-A function definition always begins with the `def` keyword, followed by the function name. The usual rules for valid names apply, just like with any other object. According to PEP8, function names should be lowercase, and underscores should separate words, for example:
+Eine Funktionsdefinition beginnt immer mit dem Schlüsselwort `def`. Danach folgt der (frei wählbare) Funktionsname (aber auch hier muss man sich an die Regeln für gültige Namen halten). Die PEP8-Konvention empfiehlt außerdem, dass Funktionsnamen keine Großbuchstaben enthalten sollten. Falls der Name aus mehreren Wörtern bestehen soll, sollten Unterstrichen zur Trennung verwendet werden, z.B.:
 
 ```python
 def test_function
 ```
 
-After the function name, a pair of parentheses follows. Inside these parentheses, we list the *parameters* required by the function, separating multiple parameters by commas. When the function is called, these parameters are replaced by specific values known as *arguments*. However, some functions *do not* have parameters, but the parentheses must always be included:
+Nach dem Funktionsnamen folgt ein Paar runder Klammern. Innerhalb dieser können von der Funktion benötigte *Parameter* aufgelistet werden (mehrere Parameter werden durch Kommas voneinander getrennt). Parameter sind Platzhalter, welche beim Ausführen der Funktion mit spezifischen Werten ersetzt werden. Diese spezifischen Werte (auch *Argumente* genannt) werden beim Aufruf übergeben. Es gibt aber auch Funktionen, die *keine* Parameter haben – die beiden runden Klammern müssen aber trotzdem immer vorhanden sein:
 
 ```python
-def test_function()  # no parameters
+def test_function()  # ohne Parameter
 ```
 
-If a function needs two parameters, you would write it like this:
+Falls eine Funktion zwei Parameter haben soll, würde man dies wie folgt anschreiben:
 
 ```python
-def test_function(n, v)  # two parameters n and v
+def test_function(n, v)  # zwei Parameter namens n und v
 ```
 
-Regardless of the number of parameters, a *colon* concludes the so-called *function header*:
+Unabhängig von der Anzahl der Parameter schließt ein Doppelpunkt den sogenannten *Funktionskopf* ab:
 
 ```python
 def test_function(n, v):
 ```
 
-Next comes the code that runs when the function is called. This code, known as the *function body*, must be *indented* one level (typically four spaces). Within the function body, parameters act as regular names—they serve as placeholders and exist only inside the function. When the function is called, these parameters are replaced by the specific values of the provided arguments.
+Nun folgt der Code, welcher von der Funktion ausgeführt wird, wenn diese aufgerufen wird – dieser Code muss um eine Ebene *eingerückt* werden (also normalerweise vier Leerzeichen). Man spricht hier vom sogenannten *Funktionskörper*. Im Funktionskörper kann man insbesondere alle Parameter wie normale Namen verwenden – diese sind nur innerhalb der Funktion vorhanden und erhalten dann die konkreten Werte der Argumente, welche beim Funktionsaufruf übergeben wurden.
 
 :::{.callout-important}
-A function can have *parameters*, which must be listed when the function is *defined*. When *calling* the function, you must pass specific values for all parameters – these specific values are called *arguments*.
+Eine Funktion kann *Parameter* haben, welche bei der *Definition* aufgelistet werden müssen. Wenn man die Funktion aufruft, muss man für alle Parameter konkrete Werte übergeben – diese konkreten Werte nennt man *Argumente*.
 :::
 
-The following example defines a function called `test_function`, which consists of two lines of code in the function body:
+Das folgende Beispiel definiert eine Funktion namens `test_function`, welche aus zwei Zeilen Code im Funktionskörper besteht:
 
 ```{python}
 def test_function():
@@ -113,7 +133,7 @@ def test_function():
     print(s)
 ```
 
-Note that the function is only *defined* here, i.e., it has not been called yet. However, the Python interpreter now knows about this function (i.e., there is a name `test_function` that refers to a function object):
+Man beachte, dass die Funktion hier lediglich definiert wurde, d.h. sie wurde noch nicht ausgeführt. Sie ist aber dem Python-Interpreter ab jetzt bekannt (d.h. es existiert ein Name `test_function`, welcher auf ein Funktionsobjekt verweist):
 
 ```{python}
 test_function
@@ -123,47 +143,47 @@ test_function
 type(test_function)
 ```
 
-We can now call our function as follows (the parentheses are essential):
+Aufgerufen kann unsere Funktion nun wie folgt werden (die runden Klammern sind essentiell):
 
 ```{python}
 test_function()
 ```
 
-We can call a function as often as we like:
+Wir können eine bereits definierte Funktion beliebig oft aufrufen.
 
 ```{python}
 test_function()
 ```
 
-If a function has parameters, the definition and the call would look like this (we have not yet discussed the `if` statement used here, but it is not essential to understand what this function does):
+Im Fall einer Funktion mit Parametern würden die Definition und der Aufruf z.B. so aussehen (wir haben den verwendeten `if`-Befehl noch nicht besprochen, es ist aber nicht wichtig, dass Sie verstehen, was diese Funktion genau macht):
 
 ```{python}
-def test_function_2(n, v):  # definition with two parameters
+def test_function_2(n, v):  # Definition, zwei Parameter
     if v:
         print(n)
 ```
 
 ```{python}
-test_function_2("Hello world!", True)  # call with two arguments
+test_function_2("Hello world!", True)  # Aufruf mit zwei konkreten Argumenten
 ```
 
 ```{python}
-test_function_2("Hi!", False)  # another call with two arguments
+test_function_2("Hi!", False)  # weiterer Aufruf mit anderen Argumenten
 ```
 
-If you do not pass the expected number of arguments when calling this function, you will get an error:
+Übergibt man beim Aufruf dieser Funktion nicht genau die erwartete Anzahl an Argumenten, bekommt man einen Fehler:
 
 ```{python}
 #| error: true
-test_function_2()  # expected two arguments, but none were given
+test_function_2()  # zwei Argumente erwartet, aber keine übergeben!
 ```
 
 :::{.callout-important}
-All parameters defined in the function header must be provided with specific arguments when the function is called.
+Alle in der Funktionsdefinition definierten Parameter müssen beim Aufrufen der Funktion mit konkreten Argumenten befüllt werden!
 :::
 
 :::{.callout-tip}
-By convention, it is common to include a brief description of the function in a so-called *docstring* in the first line of the function body. This string can span multiple lines and is enclosed in triple quotation marks `"""`. While the presence of a docstring does not affect the function's functionality, it serves as documentation and reflects good coding practice, as shown in the following example:
+Es ist üblich, gleich in der ersten Zeile des Funktionskörpers eine kurze Beschreibung der Funktion in einem sogenannten *Docstring* anzugeben (dieser kann sich auch über mehr als eine Zeile erstrecken). Ein Docstring wird von jeweils drei Anführungszeichen `"""` umschlossen. Das Vorhandensein eines Docstrings ändert nichts an der Funktionsweise, dient aber der Dokumentation und gehört zum guten Coding-Stil dazu, wie folgendes Beispiel demonstriert:
 
 ```{python}
 def test_function():
@@ -171,14 +191,16 @@ def test_function():
     s = "Hello world!"
     print(s)
 ```
+
+Ein solcher Docstring ist übrigens kein Kommentar! Verwenden Sie für Kommentare also weiterhin das `#`-Zeichen!
 :::
 
 
-## Return values
+## Rückgabewerte
 
-Functions can *return* values (results). Neither `test_function` nor `test_function_2`, as defined previously, explicitly returns a value; they only execute code and implicitly return `None`, which represents "nothing" in Python.
+Funktionen können Werte (Ergebnisse) *zurückgeben*. In beiden soeben definierten Funktionen `test_function` und `test_function_2` wird allerdings *kein* Wert explizit zurückgegeben (d.h. die Funktionen führen nur Code aus und geben implizit `None` zurück, der spezielle Wert für "nichts" in Python). Diese beiden Funktionen können also nicht auf einen Wert reduziert werden, wenn man sie aufruft – sie sind also keine Ausdrücke.
 
-If a function is supposed to return a value (a result), we use the `return` keyword, followed by the desired return value:
+Wenn eine Funktion explizit einen Wert (ein Ergebnis) zurückgeben soll, verwendet man dazu das Schlüsselwort `return`, gefolgt vom gewünschten Rückgabewert:
 
 ```{python}
 def add_one(number):
@@ -186,13 +208,13 @@ def add_one(number):
     return number + 1
 ```
 
-When the function is called, its code in the function body executes until the `return` statement is reached. At that point, the function exits immediately, returning the specified value of `number + 1`. Any lines of code following the return statement are unreachable and will not be executed.
+Beim Aufrufen der Funktion wird ihr Code im Funktionskörper ausgeführt, bis die Zeile mit `return` erreicht wird. Diese bewirkt, dass die Funktion sofort verlassen und der angegebene Wert `number + 1` zurückgegeben wird (hier wird für `number` natürlich der als Argument übergebene konkrete Wert verwendet). Sollten also nach dem `return`-Befehl noch weitere Zeilen Code im Funktionskörper folgen, werden diese nicht mehr ausgeführt.
 
 ```{python}
 add_one(5)
 ```
 
-A function call is always reduced to its return value. A call to a function that returns a value is an expression. You can also assign a name to this expression:
+Ein Funktionsaufruf wird also immer auf seinen Rückgabewert reduziert. Ein Aufruf einer Funktion, die einen Wert zurückgibt, ist also ein Ausdruck. Nun könnte man diesem auch einen Namen geben:
 
 ```{python}
 x = add_one(9)
@@ -202,14 +224,14 @@ x = add_one(9)
 x
 ```
 
-We can also explicitly display the value of a function (i.e., the return value) using the `print` function:
+Man kann den Wert einer Funktion (also den Rückgabewert) auch explizit mit Hilfe der `print`-Funktion am Bildschirm ausgeben:
 
 ```{python}
 print(add_one(122))
 ```
 
 :::{.callout-tip}
-You can use such a function call anywhere a value or expression is expected. This is known as *composition*. The values are processed and inserted sequentially, moving from *inside* to *outside*, until only a single value remains:
+Man kann überall dort, wo man einen Wert angeben kann, auch einen Ausdruck (eine beliebige Kombination aus Werten und Operatoren) einsetzen – eben auch einen Funktionsaufruf, der einen Wert zurückgibt. Dies wird als *Komposition* bezeichnet. Die Werte werden der Reihe nach (von *innen* nach *außen*) verarbeitet und eingesetzt, bis zum Schluss ein einziger Wert übrig bleibt:
 
 ```{python}
 add_one(add_one(add_one(1)))
@@ -217,39 +239,35 @@ add_one(add_one(add_one(1)))
 :::
 
 
-## Arguments
+## Argumente
 
-### Default arguments
+### Standard-Argumente
 
-A function can have no parameters or expect a specific number of parameters. When a specific number of parameters is defined in the function header, individual parameters can be assigned default values (so-called default arguments). This means that the function can also be called with fewer arguments than expected if default values exist for the missing arguments. Here is an example of a function with one mandatory and one default argument:
+Eine Funktion kann keine Parameter haben oder eine bestimmte Anzahl an Parametern erwarten. Wenn eine bestimmte Anzahl an Parametern im Funktionskopf definiert wird, können einzelnen Parametern Standardwerte (sogenannte Standard- oder auch Default-Argumente) zugewiesen werden. Dies bedeutet, dass die Funktion auch mit weniger Argumenten als erwartet aufgerufen werden kann, wenn für die fehlenden Argumente Standardwerte existieren.
 
 ```{python}
-def add(number, increment=1):  # the default value for increment is 1
+def add(number, increment=1):  # das Standard-Argument für increment ist 1
     return number + increment
 ```
 
-As usual, this function can be called with two arguments:
+Diese Funktion kann jetzt mit zwei Argumenten oder nur mit dem ersten Argument aufgerufen werden:
 
 ```{python}
 add(7, 1)
 ```
 
-However, if the second argument is omitted, the default value of 1 for `increment` is used:
-
 ```{python}
-add(7)  # equivalent to add(7, 1)
+add(7)  # hier wird das Standard-Argument 1 für increment verwendet
 ```
-
-In addition, the default argument can be overridden by passing a different value:
 
 ```{python}
 add(7, 3)
 ```
 
 
-### Keyword arguments
+### Schlüsselwort-Argumente
 
-Functions can also be called by explicitly specifying the parameter names along with their corresponding arguments in the format `kwarg=value`. This is known as using *keyword arguments* (not to be confused with Python keywords). For example, the `add` function can also be called like this:
+Funktionen können auch so aufgerufen werden, dass die Namen der Parameter gemeinsam mit den Argumenten in der Form `kwarg=value` explizit hingeschrieben werden. Man spricht dann von Schlüsselwort-Argumenten (englisch "Keyword Arguments") (nicht zu verwechseln mit den Python-Schlüsselwörtern). D.h. die obige Funktion `add` kann auch so aufgerufen werden:
 
 ```{python}
 add(number=5)
@@ -263,15 +281,15 @@ add(number=5, increment=2)
 add(increment=2, number=5)
 ```
 
-This serves two purposes: (1) it improves readability, as it is immediately clear which parameters receive which specific arguments, and (2) it allows arguments to be passed in any order.
+Dies dient einerseits der besseren Lesbarkeit, da unmittelbar klar ist, welche Parameter welche konkreten Argumente erhalten. Andererseits kann man so die Argumente auch in beliebiger Reihenfolge übergeben.
 
-If the argument name is not specified, the position of the argument determines its assignment. In this case, these arguments are referred to as *positional arguments*. You can mix positional and keyword arguments when calling a function, but all positional arguments must come *before* the first keyword argument.
+Wenn der Argumentname nicht angegeben wird, wird die Position des Arguments bei der Zuweisung herangezogen. Man spricht in diesem Fall von *positionalen Argumenten*. Man kann positionale und Schlüsselwort-Argumente beim Funktionsaufruf auch mischen, aber alle positionalen Argumente müssen *vor* dem ersten Schlüsselwort-Argument kommen.
 
 ```{python}
 add(5, increment=2)
 ```
 
-We illustrate this with the following function definition:
+Zur Veranschaulichung dient folgende Funktionsdefinition:
 
 ```{python}
 def test(name, number, exponent=5, skip=7, text="Hello"):
@@ -279,7 +297,7 @@ def test(name, number, exponent=5, skip=7, text="Hello"):
     return number**exponent - skip
 ```
 
-The following three function calls use only positional arguments:
+Die folgenden drei Funktionsaufrufe verwenden nur positionale Argumente:
 
 ```{python}
 test("Python", 2)
@@ -293,22 +311,22 @@ test("Python", 3)
 test("Test", 3, 4)
 ```
 
-Keyword arguments are very useful when you want to use default arguments for most parameters but want to set a different value for a single parameter. In this case, you do not have to pass all arguments in order, but only those for which you want different values than the default values:
+Schlüsselwort-Argumente sind sehr praktisch, wenn man für viele Parameter deren Standard-Argumente verwenden möchte, aber z.B. für einen einzigen Parameter einen anderen Wert setzen will. Dann muss man nämlich nicht alle Argumente der Reihe nach übergeben, sondern nur jene, für die man andere Werte als die Standardwerte haben möchte:
 
 ```{python}
 test("Test", 2, skip=2)
 ```
 
-Without keyword arguments, the same call would look like this using only positional arguments:
+Ohne Schlüsselwort-Argumente würde derselbe Aufruf nämlich wie folgt aussehen:
 
 ```{python}
 test("Test", 2, 5, 2)
 ```
 
-In this example, you must pass the value `5` for the `exponent` parameter, even though you want to use its default value. This means that you must pass an additional argument `5` (for the `exponent` parameter) when using positional arguments, which is rather cumbersome.
+Man muss also in diesem Beispiel ein zusätzliches Argument `5` (für den Parameter `exponent`) übergeben, wenn man positionale Argumente verwendet, obwohl man ja ohnehin den Standardwert dieses Arguments verwendet.
 
 :::{.callout-note}
-Python also supports functions that have an *arbitrary/variable* number of parameters. This means that when the function is defined, it is not yet clear how many arguments will be passed when the function is called. The `print` function is an example of such a function: it can be called with no, one, two, or any number of arguments:
+In Python gibt es auch Funktionen, die eine *beliebige/variable* Anzahl an Parametern besitzen. Dies bedeutet, dass bei der Funktionsdefinition festgelegt wird, dass eine beliebige Anzahl an Argumenten übergeben werden kann. Die `print`-Funktion ist ein Beispiel für eine solche Funktion: diese kann man mit keinem, einem, zwei, oder beliebig vielen Argumenten aufrufen:
 
 ```{python}
 print()
@@ -317,95 +335,95 @@ print("Hello", "Python")
 print("Hello", "Python", 1, 2, 3, 4)
 ```
 
-However, we will not discuss such functions in detail (especially not how to define them ourselves), but we will encounter such functions from time to time.
+Wir werden solche Funktionen nicht im Detail besprechen (vor allem nicht, wie man diese selbst definieren kann), aber wir werden solche Funktionen mitunter verwenden (aufrufen).
 :::
 
 
-## Scopes
+## Gültigkeitsbereiche
 
-Everything defined within a function (body) is only visible and accessible within that function. This is known as a *local* scope, which is limited to the function and any subordinate scopes within it. Scopes in Python correspond to indentations.
+Alles, was innerhalb einer Funktion (im Funktionskörper) definiert wird, ist nur innerhalb dieser Funktion sichtbar und zugreifbar. Man spricht von einem *lokalen* Gültigkeitsbereich (englisch "Scope"), welcher sich auf die Funktion und eventuelle weitere in ihr vorhandene untergeordnete Bereiche erstreckt. Gültigkeitsbereiche entsprechen in Python im Prinzip den Einrückungen.
 
-The following example defines a name `s = 15` within the function `test`. This name can be used within the function:
+Im folgenden Beispiel wird innerhalb der Funktion `test` der Name `s = 15` definiert. Dieser kann innerhalb der Funktion verwendet werden.
 
 ```{python}
 def test():
-    s = 15  # s is defined only within the function
+    s = 15  # s ist nur lokal in der Funktion definiert
     print(s)
 
 test()
 ```
 
-However, `s` does not exist outside of the function:
+Außerhalb dieser Funktion existiert dieses `s` aber nicht:
 
 ```{python}
 #| error: true
-print(s)  # s is not defined outside the function
+print(s)  # außerhalb der Funktion existiert s nicht
 ```
 
-Conversely, you actually can access names defined *outside* a given scope:
+Umgekehrt kann man aber sehr wohl auf Namen, die *außerhalb* (bzw. oberhalb) eines Gültigkeitsbereichs definiert wurden, zugreifen:
 
 ```{python}
-s = 15  # "global" s
+s = 15  # "globales" s
 
 def test():
-    print(s)  # s is accessible within the function
+    print(s)  # s aus dem globalen Scope ist zugänglich
 
 test()
-print(s)  # s exists outside the function
+print(s)  # s existiert global
 ```
 
-If you create a new name that matches an existing one outside the function, only the new local name is accessible within the function, effectively hiding (shadowing) the outer name. In the following example, the two names `s` refer to different objects:
+Wenn man innerhalb einer Funktion einen neuen Namen erstellt, welcher auch außerhalb existiert, dann ist nur der neue lokale Name zugänglich und der Name von außerhalb wird innerhalb der Funktion versteckt (englisch "shadowed"). Im folgenden Beispiel verweisen die beiden Namen `s` auf *unterschiedliche* Objekte:
 
 ```{python}
-s = 15  # global s
+s = 15  # globales s
 
 def test():
-    s = 12  # local s (different from the global s)
-    print(s)  # local s
-
-test()
-print(s)  # global s
-```
-
-The following example is particularly strange and causes an error:
-
-```{python}
-#| error: true
-s = 15  # global s
-
-def test():
-    print(s)  # local s (not yet defined)
-    s = 12  # local s
+    s = 12  # lokales s ändert globales s nicht, versteckt es aber in der Funktion
     print(s)
 
 test()
 print(s)
 ```
 
-The line `print(s)` in the function causes an error because Python recognizes that `s` will be a local name from the subsequent line. As a result, `print(s)` fails because that local `s` does not exist at that point. Here, Python does not mix global and local names.
-
-If you want to use the globally defined name, you can do so with the `global` keyword:
+Besonders seltsam mutet folgendes Beispiel an, welches eine Fehlermeldung verursacht:
 
 ```{python}
-s = 15  # global s
+#| error: true
+s = 15  # globales s
 
 def test():
-    global s  # explicitly use the global s
-    print(s)
-    s = 12  # modifies global s
+    print(s)  # lokales s existiert noch nicht - daher Fehler!
+    s = 12  # lokales s
     print(s)
 
 test()
 print(s)
 ```
 
-However, you should generally avoid using the `global` declaration in local scopes and cleanly separate global and local scopes. If you want to access an object from an outer scope, it is best to define a parameter so that you can pass the desired object as an argument to the function:
+Die Zeile `print(s)` in der Funktion verursacht einen Fehler, weil Python aufgrund der folgenden Zeile bereits weiß, dass `s` ein lokaler Name sein wird. Daher kann `print(s)` auch nicht funktionieren, weil `s` in der ersten Zeile noch nicht existiert! Hier mischt Python also nicht zwischen globalen und lokalen Namen.
+
+Möchte man aber tatsächlich den global definierten Namen verwenden, kann man dies mit dem Schlüsselwort `global` tun:
 
 ```{python}
-s = 15  # global s
+s = 15  # globales s
 
-def test(s):
-    print(s)  # local s (argument)
+def test():
+    global s  # Ermöglicht Zugriff auf das globale s
+    print(s)
+    s = 12  # ändert globales s
+    print(s)
+
+test()
+print(s)
+```
+
+Prinzipiell sollte man die Deklaration `global` aber vermeiden und globale/lokale Scopes sauber voneinander trennen. Will man auf ein Objekt aus einem äußeren Scope zugreifen, definiert man am besten einen Parameter, damit man das gewünschte Objekt als Argument an die Funktion übergeben kann:
+
+```{python}
+s = 15  # globales s
+
+def test(s):  # Parameter s
+    print(s)  # lokales s (übergebenes Argument)
     s = 12
     print(s)
 
@@ -414,31 +432,31 @@ test(s)
 print(s)
 ```
 
-If you want to continue using a local variable in an outer scope, it is best to return the corresponding value with `return`:
+Will man eine lokale Variable in einem äußeren Scope weiter nutzen, gibt man den entsprechenden Wert am besten mit `return` zurück:
 
 ```{python}
-s = 15  # global s
+s = 15  # globales s
 
 def test(s):
-    print(s)  # local s (argument)
+    print(s)  # lokales s (Argument)
     s = 12
     print(s)
     return s
 
 print(s)
-s = test(s)  # redefine global s with the return value
+s = test(s)  # globales s bekommt Rückgabewert der Funktion (lokales s)
 print(s)
 ```
 
 :::{.callout-tip}
-The behavior described here also applies to parameters. These behave like locally defined names within the function and automatically receive the values passed with the corresponding arguments when called. In the last two examples, the functions each had a parameter named `s`. Coincidentally, the functions were also called with an argument named `s` – but these are two different names or objects. You could just as easily call the function directly with a value or with any other name:
+Das hier beschriebene Verhalten gilt auch für Parameter. Diese verhalten sich wie lokal innerhalb der Funktion definierte Namen und erhalten automatisch die Werte, die mit den entsprechenden Argumenten beim Aufruf übergeben wurden. In den letzten beiden Beispielen hatten die Funktionen jeweils einen Parameter namens `s`. Zufälligerweise wurden die Funktionen auch mit einem Argument namens `s` aufgerufen – dabei handelt es sich aber um zwei unterschiedliche Namen bzw. Objekte. Man könnte die Funktion genauso gut auch direkt mit einem Wert oder mit einem beliebigen anderen Namen aufrufen:
 
 ```{python}
 x = 15
-test(x)  # parameter s receives the value 15
+test(x)  # Parameter s erhält den Wert x = 15
 ```
 
-This is especially evident when using keyword arguments:
+Dies sieht man insbesondere dann, wenn man Schlüsselwort-Argumente verwendet:
 
 ```{python}
 test(s=x)
@@ -446,48 +464,47 @@ test(s=x)
 :::
 
 
-## Exercises
+## Übungen
 
-### Exercise 1
+### Übung 1
 
-Choose three functions from the list of built-in functions (see previous session) and answer the following questions:
+Suchen Sie sich aus der Liste der eingebauten Funktionen (siehe vorige Einheit) drei beliebige Funktionen aus.
 
-- Read the documentation for each function to find out what the function does.
-- Call each function with suitable arguments.
-- Indicate for each function whether it returns a value or not. If a value is returned, specify the value and its type!
-
-
-### Exercise 2
-
-Write a function `mult` that multiplies two numbers and *returns* their product. The two numbers should be able to be passed as arguments. Call your function with a few pairs of values and make sure your function works as intended. The function should return the result as a value, i.e., do not use `print` within the function, but use `return`!
+- Rufen Sie den Hilfetext zu jeder Funktion auf und lesen Sie diesen durch, um herauszufinden was die Funktion tut.
+- Rufen Sie die drei Funktionen mit geeigneten Argumenten auf.
+- Geben Sie für jede Funktion an, ob diese einen Wert zurückgibt oder nicht. Falls ein Wert zurückgegeben wird, geben Sie diesen Wert sowie dessen Typ an!
 
 
-### Exercise 3
+### Übung 2
 
-Write a function `to_fahrenheit` that takes a parameter `celsius` and converts this Celsius temperature to Fahrenheit, *returning* the result. To test your function, call it with the Celsius temperatures 0, 20, 38, and 100.
-
-Write a function `to_celsius` (with a corresponding parameter `fahrenheit`) and convert the four Fahrenheit temperatures you received when calling the `to_fahrenheit` function back to Celsius temperatures!
+Schreiben Sie eine Funktion `mult`, welche zwei Zahlen multipliziert und deren Produkt *zurückgibt*. Die beiden Zahlen sollen als Argumente übergeben werden können. Rufen Sie Ihre Funktion mit ein paar Wertepaaren auf und stellen Sie sicher, dass Ihre Funktion wie gewünscht funktioniert. Die Funktion soll das Ergebnis als Wert zurückgeben, d.h. verwenden Sie innerhalb der Funktion nicht `print`, sondern `return`!
 
 
-### Exercise 4
+### Übung 3
 
-Explain why functions are used. Also briefly explain the difference between a function definition and a function call! What is the difference between parameters and arguments?
+Schreiben Sie eine Funktion `to_fahrenheit`, welche einen Parameter `celsius` hat und diese Celsius-Temperatur in Fahrenheit umwandelt und *zurückgibt*. Zum Testen rufen Sie Ihre Funktion mit den Celsius-Temperaturen 0, 20, 38 und 100 auf.
+
+Schreiben Sie außerdem eine Funktion `to_celsius` (mit entsprechendem Parameter `fahrenheit`) und wandeln Sie die vier Fahrenheit-Temperaturen, die Sie vorher beim Aufruf der Funktion `to_fahrenheit` erhalten haben, wieder in Celsius-Temperaturen um!
+
+### Übung 4
+
+Nennen Sie Gründe, warum man Funktionen verwendet. Erklären Sie auch kurz den Unterschied zwischen Funktionsdefinition und Funktionsaufruf! Was ist der Unterschied zwischen Parametern und Argumenten?
 
 
-### Exercise 5
+### Übung 5
 
-Define a function called `nonsense` that has three parameters named `a`, `b`, and `c`. The two arguments `b` and `c` should be optional and have default values of 10 and 13, respectively. The function should calculate and return `a**2 - b * 2 + c**2` (we assume that you always pass numerical values for `a`, `b`, and `c`). Then call the function with the following arguments:
+Schreiben Sie eine Funktion namens `nonsense`, welche drei Parameter namens `a`, `b` und `c` hat. Die beiden Argumente `b` und `c` sollen optional sein und die Standardwerte 10 bzw. 13 besitzen. Die Funktion soll `a**2 - b * 2 + c**2` berechnen und zurückgeben (wir setzen voraus, dass man für `a`, `b` und `c` immer Zahlenwerte übergibt). Rufen Sie die Funktion dann mit folgenden Argumenten auf:
 
-1. Without arguments
-2. With three positional arguments
-3. With two positional arguments
-4. With one keyword argument
-5. With two keyword arguments
-6. With two positional arguments and one keyword argument
-7. With one positional and one keyword argument
+1. Ohne Argumente
+2. Mit drei positionalen Argumenten
+3. Mit zwei positionalen Argumenten
+4. Mit einem Keyword-Argument
+5. Mit zwei Keyword-Argumenten
+6. Mit zwei positionalen Argumenten und einem Keyword-Argument
+7. Mit einem positionalem und einem Keyword-Argument
 
-What do these function calls look like? What are the return values? Provide the values of *all three arguments* for *each* function call!
+Wie sehen diese Funktionsaufrufe aus? Wie lauten die Rückgabewerte? Geben Sie für *jeden* Aufruf die Werte *aller drei Argumente* an!
 
 :::{.callout-note}
-Only the first function call (without arguments) will cause an error; all subsequent calls are possible!
+Nur der erste Funktionsaufruf (ohne Argumente) verursacht einen Fehler, alle weiteren Aufrufe sind möglich!
 :::

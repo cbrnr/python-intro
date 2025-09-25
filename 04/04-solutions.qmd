@@ -1,8 +1,8 @@
 ---
-title: "4 – Solutions"
-subtitle: "Introduction to Python and PsychoPy"
+title: "4 – Lösungen"
+subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-03-24
+date: 2025-10-23
 format:
   html:
     page-layout: full
@@ -12,62 +12,65 @@ title-block-banner: true
 theme:
   light: flatly
   dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
 ---
 
-## Exercise 1
+## Übung 1
 
-The `print` function prints values to the screen:
+Die Funktion `print` gibt Werte am Bildschirm aus:
 
 ```python
 help(print)
 ```
 
 ```{python}
-print("Hello World!")  # no return value (None)
+print("Hello World!")  # kein Rückgabewert (None)
 ```
 
-The `str` function creates a string object:
+Die Funktion `str` erstellt ein String-Objekt:
 
 ```python
 help(str)
 ```
 
 ```{python}
-str(59)  # returns '59' (str)
+str(59)  # Rückgabewert '59' (str)
 ```
 
-The `int` function creates an integer object:
+Die Funktion `int` erstellt ein Integer-Objekt:
 
 ```python
 help(int)
 ```
 
 ```{python}
-int("59")  # returns 59 (int)
+int("59")  # Rückgabewert 59 (int)
 ```
 
-The `max` function returns the maximum of the arguments:
+Die Funktion `max` gibt das Maximum der Argumente zurück:
 
 ```python
 help(max)
 ```
 
 ```{python}
-max(54, -12, 33, -100, -2)  # returns -100 (int)
+max(54, -12, 33, -100, -2)  # Rückgabewert -100 (int)
 ```
 
-The `sum` function returns the sum of a sequence (e.g., list of numbers):
+Die Funktion `sum` gibt die Summe einer Sequenz (z.B. Liste an Zahlen) zurück:
 
 ```python
 help(sum)
 ```
 
 ```{python}
-sum([1, 2, 3, 4])  # returns 10 (int)
+sum([1, 2, 3, 4])  # Rückgabewert 10 (int)
 ```
 
 
-## Exercise 2
+## Übung 2
 
 ```{python}
 def mult(a, b):
@@ -88,7 +91,7 @@ mult(-12, 36)  # -432
 ```
 
 
-## Exercise 3
+## Übung 3
 
 ```{python}
 def to_fahrenheit(celsius):
@@ -151,23 +154,23 @@ to_celsius(to_fahrenheit(100))
 ```
 
 
-## Exercise 4
+## Übung 4
 
-Functions
+Funktionen
 
-- structure programs,
-- make code reusable,
-- generalize code (through parameters), and
-- shorten programs (repetitive code is written only once and can then be called as often as needed).
+- strukturieren Programme,
+- machen Code wiederverwendbar,
+- verallgemeinern Code (durch Parameter) und
+- verkürzen Programme (repetitiver Code wird nur einmal geschrieben und kann dann beliebig oft aufgerufen werden).
 
-A function must be *defined* before it can be used (called). Through the definition, Python knows which code must be executed when the function is called.
+Eine Funktion muss *definiert* sein, bevor man sie benutzen (aufrufen) kann. Durch die Definition weiß Python, welcher Code dann beim Aufruf ausgeführt werden muss.
 
-Only when the function is *called* is the code in the function body actually executed. For all parameters, the actual values passed (the arguments) are then used.
+Erst beim *Aufrufen* der Funktion wird der Code im Funktionskörper tatsächlich ausgeführt. Für alle Parameter werden dann die tatsächlich übergebenen Werte (die Argumente) verwendet.
 
-A function can have parameters when defined. When calling the function, you pass actual values for these parameters, known as arguments.
+Eine Funktion kann bei der Definition Parameter haben. Beim Aufruf einer Funktion übergibt man dann für die Parameter tatsächliche Werte, welche man Argumente nennt.
 
 
-## Exercise 5
+## Übung 5
 
 ```{python}
 def nonsense(a, b=10, c=13):
@@ -176,7 +179,7 @@ def nonsense(a, b=10, c=13):
 
 ```{python}
 #| error: true
-nonsense()  # TypeError, because a=?, b=10, c=13
+nonsense()  # TypeError, da a=undefiniert, b=10, c=13
 ```
 
 ```{python}
