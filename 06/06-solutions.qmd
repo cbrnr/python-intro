@@ -1,8 +1,8 @@
 ---
-title: "6 – Solutions"
-subtitle: "Introduction to Python and PsychoPy"
+title: "6 – Lösungen"
+subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-04-07
+date: 2025-11-13
 format:
   html:
     page-layout: full
@@ -12,9 +12,12 @@ title-block-banner: true
 theme:
   light: flatly
   dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
 ---
 
-## Exercise 1
+## Übung 1
 
 ```{python}
 def reverse(s):
@@ -22,7 +25,7 @@ def reverse(s):
 ```
 
 
-## Exercise 2
+## Übung 2
 
 ```{python}
 s = "educational neuroscience"
@@ -30,7 +33,7 @@ s.title()
 ```
 
 
-## Exercise 3
+## Übung 3
 
 ```{python}
 s = "Edukational Neuroscience"
@@ -38,7 +41,7 @@ s[:3] + "c" + s[4:]
 ```
 
 
-## Exercise 4
+## Übung 4
 
 ```{python}
 def is_palindrome(s):
@@ -49,9 +52,9 @@ def is_palindrome(s):
 ```
 
 
-## Exercise 5
+## Übung 5
 
-We could use a `while` loop here, because we don't know in advance how many iterations will be needed until we find the character. We track the current position in the string `s` with the name `i`:
+Da wir die Position des gesuchten Zeichens benötigen, ist eine `while`-Schleife eine geeignete Lösung (wir wissen nicht im Vorhinein, wie viele Iterationen stattfinden werden). Hier zählen wir mit dem Namen `i` die aktuelle Position im String `s` mit.
 
 ```{python}
 def find(s, sub):
@@ -59,36 +62,37 @@ def find(s, sub):
     while i < len(s):
         if s[i] == sub:
             return i
-        i += 1  # increment i (could also be written as i = i + 1)
-    return -1  # only returned if the character was not found
+        i += 1  # erhöhe i um 1 (äquivalent zu i = i + 1)
+    return -1  # wird nur zurückgegeben, falls vorher kein return erfolgte
 ```
 
-Here's an alternative solution using a `for` loop (the `enumerate` function returns both the position and the current character within the string `s):
+Eine Alternative mit `for`-Schleife ist aber auch möglich (die Funktion `enumerate` gibt sowohl die Position als auch das aktuelle Zeichen innerhalb des Strings `s` zurück):
 
 ```{python}
 def find(s, sub):
     for i, char in enumerate(s):
         if char == sub:
             return i
-    return -1  # only returned if the character was not found
+    return -1  # wird nur zurückgegeben falls das Zeichen nicht gefunden wurde
 ```
 
 
-## Exercise 6
+## Übung 6
 
 ```{python}
 def count(word, letter):
-    i = 0  # we have not found any occurrences yet
+    i = 0  # wir haben das Zeichen noch nicht gefunden
     for c in word:
-        if c == letter:  # if we find the letter
-            i += 1  # we increment the counter i by 1
+        if c == letter:  # falls es das gesuchte Zeichen ist
+            i += 1  # erhöhen wir i um 1 (i = i + 1 oder kurz i += 1)
     return i
 ```
 
 
-## Exercise 7
+## Übung 7
+
 
 ```{python}
-path = "C:\\Program Files\\Python\\Python3.13\\python.exe"
+path = "C:\\Program Files\\Python\\Python3.12\\python.exe"
 print(path)
 ```
