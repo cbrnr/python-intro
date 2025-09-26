@@ -1,8 +1,8 @@
 ---
 title: "5 – Solutions"
-subtitle: "Introduction to Python and Psychopy"
+subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-03-31
+date: 2025-11-06
 format:
   html:
     page-layout: full
@@ -12,9 +12,12 @@ title-block-banner: true
 theme:
   light: flatly
   dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
 ---
 
-## Exercise 1
+## Übung 1
 
 ```python
 x = int(input("x: "))
@@ -29,7 +32,7 @@ else:
 ```
 
 
-## Exercise 2
+## Übung 2
 
 ```python
 def is_odd(x):
@@ -39,7 +42,7 @@ def is_odd(x):
         return False
 ```
 
-Or shorter:
+Oder kürzer:
 
 ```python
 def is_odd(x):
@@ -47,7 +50,7 @@ def is_odd(x):
 ```
 
 
-## Exercise 3
+## Übung 3
 
 ```{python}
 lst = ["I", "love", "Python"]
@@ -56,7 +59,7 @@ for element in lst:
 ```
 
 
-## Exercise 4
+## Übung 4
 
 ```{python}
 for element in lst:
@@ -65,7 +68,7 @@ for element in lst:
 ```
 
 
-## Exercise 5
+## Übung 5
 
 ```{python}
 x = 5  # x = -11, x = 0
@@ -78,7 +81,7 @@ else:
 ```
 
 
-## Exercise 6
+## Übung 6
 
 ```python
 while True:
