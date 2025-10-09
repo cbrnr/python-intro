@@ -214,11 +214,19 @@ pip install ruff
 Danach können Sie die folgenden Befehle im Terminal verwenden, um eine Datei namens `test.py` zu formatieren:
 
 ```sh
-ruff check test.py
+ruff check --fix test.py
 ruff format test.py
 ```
 
 Probieren Sie aus, wie sich der Code in einer Datei namens `test.py` verändert, wenn Sie die beiden Befehle ausführen! Verwenden Sie dazu die drei oben angeführten Varianten des Befehls zur Berechnung von `x`.
+
+::: {.callout-note}
+Die beiden obigen Befehle sind Shell-Befehle und müssen, genau wie `pip`, im Terminal ausgeführt werden (*nicht* im Python-Interpreter). Damit sie funktionieren, muss sich die Datei `test.py` im aktuellen Verzeichnis befinden. Sie können den Befehl `ls` (bzw. `dir`) verwenden, um den Inhalt des aktuellen Verzeichnisses anzuzeigen. Falls die Datei nicht aufscheint, können Sie mit dem Befehl `cd <Verzeichnis>` in das entsprechende Verzeichnis wechseln (ersetzen Sie `<Verzeichnis>` durch den tatsächlichen Pfad, also z.B. `cd C:\Users\IhrName\Documents` unter Windows oder `cd /Users/IhrName/Documents` unter macOS).
+
+Je nach Installation kann es außerdem sein, dass Sie `ruff` nicht direkt verwenden können. In diesem Fall versuchen Sie es mit `python -m ruff` (bzw. `python3 -m ruff` unter macOS) anstelle von `ruff`.
+
+Manche Dinge können übrigens nicht automatisch korrigiert werden, z.B. wenn `import` nicht am Beginn eines Scripts steht. In solchen Fällen müssen Sie den Code manuell anpassen.
+:::
 
 
 ## Hilfe
