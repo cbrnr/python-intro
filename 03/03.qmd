@@ -213,7 +213,7 @@ Operatoren sind spezielle Symbole, mit denen man Berechnungen wie Additionen, Su
 
 ## Ausdrücke
 
-Ein *Ausdruck* ist eine Kombination aus Werten, Namen und Operatoren. Wichtig ist, dass ein Ausdruck *immer zu einem einzigen Wert ausgewertet wird* (kurz: ein Ausdruck *hat* einen Wert). Hier sind einige Beispiele für Ausdrücke:
+Ein Ausdruck ist Code, der zu einem Wert ausgewertet (reduziert) werden kann. Das kann ein einzelner Wert (z.B. `42`), ein Name (z.B. `x`) oder eine Kombination aus Werten, Namen und Operatoren (z.B. `x + 2`) sein. Hier sind einige Beispiele für Ausdrücke:
 
 ```{python}
 17  # nur ein Wert
@@ -231,7 +231,7 @@ n = 25  # eine Zuweisung ist kein Ausdruck!
 n + 5  # ein Name, ein Wert und ein Operator
 ```
 
-Python reduziert einen Ausdruck immer auf einen *einzigen Wert*. Ein komplexerer Ausdruck wird schrittweise gemäß den Regeln der [Operatorpräzedenz](https://de.wikipedia.org/wiki/Operatorrangfolge) (z.B. Punkt- vor Strichrechnung) von links nach rechts ausgewertet. Wie bereits erwähnt wertet Python zuerst die rechte Seite einer Zuweisung aus, bevor es einen Namen zuweist.
+Python reduziert einen Ausdruck immer auf einen *einzigen Wert*. Ein komplexerer Ausdruck wird schrittweise gemäß den Regeln der [Operatorpräzedenz](https://de.wikipedia.org/wiki/Operatorrangfolge) (z.B. Punkt- vor Strichrechnung) von links nach rechts ausgewertet. Wie bereits erwähnt, wertet Python zuerst die rechte Seite einer Zuweisung aus, bevor es einen Namen zuweist.
 
 
 ## Anweisungen
