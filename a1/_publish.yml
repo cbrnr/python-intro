@@ -1,16 +1,8 @@
-- source: a1-de.qmd
-  netlify:
-    - id: 0ee22e4e-b1b3-4ddc-9e17-936265e07cad
-      url: 'https://python-24w-a1-de.netlify.app'
-- source: a1-solutions-de.qmd
-  netlify:
-    - id: 32f76e63-f03b-47bd-80f0-956e1c807652
-      url: 'https://python-24w-a1-solutions-de.netlify.app'
-- source: a1-en.qmd
-  netlify:
-    - id: bc2e05fd-c322-411c-8103-562cc8a27368
-      url: 'https://python-24w-a1-en.netlify.app'
-- source: a1-solutions-en.qmd
-  netlify:
-    - id: 5c67d0ca-710e-43ef-85fa-3cf950550e19
-      url: 'https://python-24w-a1-solutions-en.netlify.app'
+- source: a1.qmd
+  quarto-pub:
+    - id: 16101a50-787c-445b-80d6-c4392ca0ba5d
+      url: https://cbrnr.quarto.pub/python-25w-exercises
+- source: a1-solutions.qmd
+  quarto-pub:
+    - id: 64f32a7e-9676-443a-a978-f1eb465c7403
+      url: https://cbrnr.quarto.pub/python-25w-exercises-solutions

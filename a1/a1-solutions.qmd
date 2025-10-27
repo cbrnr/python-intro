@@ -1,0 +1,519 @@
+---
+title: "Lösungen"
+subtitle: "Einführung in Python und PsychoPy"
+author: "Clemens Brunner"
+date: 2024-11-14
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
+---
+
+## Übung 1
+
+```{python}
+def serial(r1, r2):
+    return r1 + r2
+
+
+def parallel(r1, r2):
+    return 1 / (1 / r1 + 1 / r2)
+
+
+r1 = 10
+r2 = 20
+r3 = 50
+
+print(serial(r1, r2))
+print(parallel(r1, r2))
+print(parallel(serial(r1, r2), r3))
+```
+
+
+## Übung 2
+
+Eine einfache Implementierung der Funktion verwendet einen langen `if`/`elif`/`else`-Block:
+
+```python
+def month_name(month):
+    if month == 1:
+        return "Januar"
+    elif month == 2:
+        return "Februar"
+    elif month == 3:
+        return "März"
+    elif month == 4:
+        return "April"
+    elif month == 5:
+        return "Mai"
+    elif month == 6:
+        return "Juni"
+    elif month == 7:
+        return "Juli"
+    elif month == 8:
+        return "August"
+    elif month == 9:
+        return "September"
+    elif month == 10:
+        return "Oktober"
+    elif month == 11:
+        return "November"
+    elif month == 12:
+        return "Dezember"
+
+
+while True:
+    month = int(input("Bitte geben Sie eine Zahl zwischen 1 und 12 ein: "))
+    if 1 <= month <= 12:
+        break
+    print("Ungültige Eingabe, bitte versuchen Sie es erneut.")
+
+print(month_name(month))
+```
+
+Etwas kürzer könnte man die Funktion mit Hilfe einer Liste schreiben (der restliche Code bleibt gleich):
+
+```python
+def month_name(month):
+    months = [
+        "Januar",
+        "Februar",
+        "März",
+        "April",
+        "Mai",
+        "Juni",
+        "Juli",
+        "August",
+        "September",
+        "Oktober",
+        "November",
+        "Dezember",
+    ]
+    return months[month - 1]
+```
+
+Auch mit einem Dictionary lässt sich die Funktion umsetzen:
+
+```python
+def month_name(month):
+    months = {
+        1: "Januar",
+        2: "Februar",
+        3: "März",
+        4: "April",
+        5: "Mai",
+        6: "Juni",
+        7: "Juli",
+        8: "August",
+        9: "September",
+        10: "Oktober",
+        11: "November",
+        12: "Dezember",
+    }
+    return months[month]
+```
+
+::: {.callout-note}
+Eine sehr kompakte Lösung ergibt sich, wenn man das Modul `calendar` aus der Standardbibliothek verwendet. Dies setzt aber natürlich voraus, dass man das Modul kennt (in diesem Kurs haben wir es nicht behandelt, daher ist diese Lösung nur der Vollständigkeit halber aufgeführt):
+
+```python
+import calendar
+
+def month_name(month):
+    return calendar.month_name[month]
+```
+:::
+
+
+## Übung 3
+
+```{python}
+def count_words(text, sep=" "):
+    return len(text.split(sep))
+
+
+text = (
+    "Python is an easy to learn, powerful programming language. It has efficient "
+    "high-level data structures and a simple but effective approach to object-oriented "
+    "programming. Python's elegant syntax and dynamic typing, together with its "
+    "interpreted nature, make it an ideal language for scripting and rapid application "
+    "development in many areas."
+)
+count_words(text)
+```
+
+
+## Übung 4
+
+```{python}
+def factorial(n):
+    if n == 0:
+        return 1
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
+
+factorial(5)
+```
+
+
+## Übung 5
+
+```{python}
+def is_divisible(n, m):
+    return n % m == 0
+
+
+print(is_divisible(10, 2))
+print(is_divisible(10, 3))
+print(is_divisible(10, 5))
+print(is_divisible(10, 7))
+```
+
+
+## Übung 6
+
+Das Problem ist, dass der `elif`-Zweig *nach* dem `else`-Block steht. In Python muss der (optionale) `else`-Block immer am Ende eines `if`/`elif`/`else`-Blocks stehen. Die korrigierte Version sieht also wie folgt aus:
+
+```python
+x = 10
+
+if x > 0:
+    print("x is positive.")
+elif x < 0:
+    print("x is negative.")
+else:
+    print("x is zero.")
+```
+
+
+## Übung 7
+
+```{python}
+import math
+
+numbers = [math.sqrt(i) for i in range(0, 1001, 10)]
+print(len(numbers), sum(numbers))
+```
+
+
+## Übung 8
+
+Der Code funktioniert nicht, weil nach der `for`-Schleife ein Doppelpunkt (`:`) fehlt. Der korrekte Code lautet:
+
+```python
+for x in range(10):
+    print(x)
+```
+
+
+## Übung 9
+
+```{python}
+import math
+
+result = (17 * (math.sqrt(5) + 2/3)) / (27.7 - 3**math.pi) + 42**(2/7)
+print(f"{result:.2f}")
+```
+
+
+## Übung 10
+
+Der Code funktioniert nicht, weil `lambda` ein reserviertes Schlüsselwort in Python ist und daher nicht als Name verwendet werden kann. Der korrekte Code könnte wie folgt aussehen:
+
+```python
+alpha = 5
+lambda_ = 7
+print(alpha + lambda_)
+```
+
+
+## Übung 11
+
+```{python}
+import math
+
+def std(x):
+    n = len(x)
+    mean = sum(x) / n
+    var = sum([(xi - mean)**2 for xi in x]) / (n - 1)
+    return math.sqrt(var)
+
+std([10, 12, 23, 23, 16, 23, 21, 16])
+```
+
+
+## Übung 12
+
+```{python}
+def get_even(x):
+    return [xi for xi in x if xi % 2 == 0]
+
+get_even([1, 45, -4, -5, 17, 2])
+```
+
+
+## Übung 13
+
+Schreiben Sie eine Funktion `fizzbuzz`, welche eine Zahl als Argument entgegennimmt. Wenn die Zahl sowohl durch 3 als auch durch 5 teilbar ist, soll die Funktion den String `Fizzbuzz` zurückgeben. Wenn die Zahl nur durch 3 teilbar ist, soll die Funktion `Fizz` zurückgeben. Wenn die Zahl nur durch 5 teilbar ist, soll die Funktion `Buzz` zurückgeben. Für alle anderen Zahlen soll die Zahl selbst als String zurückgegeben werden.
+
+Rufen Sie die Funktion dann in einer Schleife mit den Zahlen von 1 bis 15 auf und geben Sie die zurückgegebenen Werte mit `print` am Bildschirm aus!
+
+Die ausgegebenen Werte sollten lauten: 1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, Fizzbuzz.
+
+::: {.callout-note}
+Der Rest-Operator `%` kann die Teilbarkeit einer Zahl überprüfen. Eine Zahl ist durch 3 teilbar, wenn der Rest der Division durch 3 Null ergibt. Eine Zahl ist sowohl durch 3 als auch durch 5 teilbar, wenn der Rest der Division durch 15 Null ergibt.
+:::
+
+
+## Übung 14
+
+```{python}
+def add(x, y=1):
+    return x + y
+```
+
+
+## Übung 15
+
+1. Es fehlt das verpflichtende Argument für `x`.
+2. Das Argument für `x` wurde doppelt übergeben, einmal als positionales Argument (`4`) und einmal als Schlüsselwortargument (`x=2`).
+3. Es fehlt das verpflichtende Argument für `x`.
+
+
+## Übung 16
+
+```{python}
+def is_even(n):
+    return n % 2 == 0
+
+print(is_even(10))
+print(is_even(11))
+```
+
+
+## Übung 17
+
+```{python}
+def sign(n):
+    if n > 0:
+        return 1
+    elif n < 0:
+        return -1
+    else:
+        return 0
+```
+
+Beachten Sie, dass der `else`-Block nicht notwendig ist und weggelassen werden kann:
+
+```{python}
+def sign(n):
+    if n > 0:
+        return 1
+    elif n < 0:
+        return -1
+    return 0
+```
+
+::: {.callout-tip}
+Eine noch kompaktere Version verwendet die Tatsache, dass in Python Werte vom Typ `bool` als Ganzzahlen interpretiert werden können (`True` entspricht `1`, `False` entspricht `0`):
+
+```{python}
+def sign(n):
+    return (n > 0) - (n < 0)
+```
+
+Im Rahmen dieses Kurses ist diese Lösung aber zu fortgeschritten, da wir diese Eigenschaft von `bool`-Werten nicht behandelt haben.
+:::
+
+
+## Übung 18
+
+```{python}
+x = "Pythonista"
+
+for c in x:
+    print(c)
+```
+
+
+## Übung 19
+
+```{python}
+y = ["This", "is", "a", "sample", "list"]
+z = [word.upper() for word in y]
+z
+```
+
+
+## Übung 20
+
+```{python}
+s = "Donaudampfschifffahrtsgesellschaft"
+print(len(s))
+print(s.index("f"))
+print(s.count("e"))
+```
+
+
+## Übung 21
+
+```{python}
+x = [-13, 22, -2, -14, 33, -16]
+y = [abs(num) for num in x]
+y
+```
+
+
+## Übung 22
+
+```{python}
+from numpy.random import default_rng
+
+rng = default_rng(1)
+x = rng.integers(0, 101, size=(15, 5))
+x.mean(axis=0)
+```
+
+
+## Übung 23
+
+```{python}
+import numpy as np
+
+x = np.linspace(10, 13, 1000)
+```
+
+
+## Übung 24
+
+```{python}
+from numpy.random import default_rng
+
+rng = default_rng(2)
+x = 10 + 2 * rng.standard_normal(10000)
+
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots()
+ax.hist(x, bins=50)
+plt.show()
+```
+
+
+## Übung 25
+
+```{python}
+from numpy.random import default_rng
+
+rng = default_rng(2)
+x = 10 + 2 * rng.standard_normal(10000)
+
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots()
+ax.bar(range(100), x[:100])
+plt.show()
+```
+
+
+## Übung 26
+
+```{python}
+with open("shakespeare.txt") as f:
+    lines = 0
+    for line in f:
+        lines += 1
+        if "Go antickly, show outward hideousness," in line:
+            print(f'"Go antickly, show outward hideousness," found in line {lines}.')
+
+print(f"Total number of lines: {lines}")
+```
+
+
+## Übung 27
+
+```{python}
+numbers = []
+for n in range(1001):
+    if (n % 3 == 0 or n % 5 == 0) and n % 15 != 0:
+        numbers.append(n)
+
+sum(numbers)
+```
+
+
+## Übung 28
+
+```{python}
+x = "Pythonista"
+for c in x:
+    print(c.upper(), end='-')
+```
+
+
+## Übung 29
+
+```{python}
+def kmh_to_mph(kmh):
+    return kmh / 1.609
+
+def mph_to_kmh(mph):
+    return 1.609 * mph
+    
+kmh_to_mph(mph_to_kmh(65))
+```
+
+
+## Übung 30
+
+Jede Listen-Methode ändert die Liste *in-place* und gibt daher nichts (`None`) zurück – daher wird im Beispiel `x` auf `None` gesetzt. Die korrekte Variante ist:
+
+```python
+x = [1, 2, 3, 4]
+x.append(5)
+```
+
+
+## Übung 31
+
+Da der String selbst doppelte Anführungszeichen enthält, können wir diesen entweder mit einfachen Anführungszeichen umschließen:
+
+```python
+s = 'Er sagte: "Sicher!"'
+```
+
+Alternativ können wir die doppelten Anführungszeichen mit einem Backslash maskieren (Escape-Zeichen):
+
+```python
+s = "Er sagte: \"Sicher!\""
+```
+
+
+## Übung 32
+
+```{python}
+x = "abcdefghijklmnopqrstuvwxyz"
+a = x[::2]
+b = x[1::2]
+print(a)
+print(b)
+```
+
+
+## Übung 33
+
+```{python}
+s = "eins/zwei/drei/vier/fünf/sechs/sieben/acht"
+words = s.split("/")
+words
+```

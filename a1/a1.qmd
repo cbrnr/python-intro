@@ -1,0 +1,370 @@
+---
+title: "Übungen"
+subtitle: "Einführung in Python und PsychoPy"
+author: "Clemens Brunner"
+date: 2025-10-27
+format:
+  html:
+    page-layout: full
+engine: jupyter
+highlight-style: github
+title-block-banner: true
+theme:
+  light: flatly
+  dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
+---
+
+## Übung 1
+
+Elektrische Widerstände können in Serie oder parallel geschaltet werden. In einer Serienschaltung addieren sich die Widerstände, während in einer Parallelschaltung der Kehrwert der Gesamtwiderstandes gleich der Summe der Kehrwerte der Einzelwiderstände ist. In Formeln kann dies wie folgt ausgedrückt werden:
+
+- Serienschaltung: $R_G = R_1 + R_2$
+- Parallelschaltung: $R_G = R_1 \parallel R_2 \rightarrow \frac{1}{R_G} = \frac{1}{R_1} + \frac{1}{R_2}$
+
+Schreiben Sie zwei Funktionen `serial` und `parallel`, welche die jeweiligen Gesamtwiderstände zurückgeben. Beide Funktionen sollen jeweils zwei Parameter `r1` und `r2` haben, welche die beiden zu kombinierenden Widerstände darstellen.
+
+Testen Sie beide Funktionen mit den Widerständen $R_1 = 10\,\Omega$ und $R_2 = 20\,\Omega$. Die Gesamtwiderstände sollten $30\,\Omega$ (Serienschaltung) und $6.67\,\Omega$ (Parallelschaltung) betragen.
+
+Berechnen Sie außerdem den Gesamtwiderstand von $(R_1 + R_2) \parallel R_3$ mit den Werten $R_1 = 10\,\Omega$, $R_2 = 20\,\Omega$ und $R_3 = 50\,\Omega$ mit einem Ausdruck (unter Verwendung der beiden Funktionen)!
+
+
+## Übung 2
+
+Schreiben Sie ein Programm, welches die Benutzer auffordert, eine Zahl zwischen 1 und 12 einzugeben (entsprechend den Monaten). Das Programm soll dann den Namen des Monats ausgeben. Falls die eingegebene Zahl nicht im Bereich 1 bis 12 liegt, soll eine Fehlermeldung ausgegeben werden. Die Eingabe soll so lange wiederholt werden, bis eine gültige Zahl eingegeben wird.
+
+Zur Bestimmung des Monatsnamens definieren Sie eine Funktion `month_name`, welche die Nummer des Monats als Argument erhält und den Namen des Monats zurückgibt.
+
+::: {.callout-note}
+Sie können davon ausgehen, dass die Benutzer nur ganze Zahlen eingeben.
+:::
+
+
+## Übung 3
+
+Schreiben Sie eine Funktion `count_words`, welche die Anzahl der Wörter in einem Text zählt. Die Funktion soll zwei Parameter haben: `text` (der Text, in dem die Wörter gezählt werden sollen) und `sep` (das Trennzeichen, Standardwert ist ein Leerzeichen). Verwenden Sie dafür die String-Methode `split`, welche eine Liste von Strings zurückgibt; die Länge dieser Liste kann mit der Funktion `len` ermittelt werden.
+
+Testen Sie die Funktion mit folgendem Text:
+
+> Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python's elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas.
+
+::: {.callout-note}
+Für diese Funktion reicht uns eine einfache Definition von Wörtern, die durch Leerzeichen getrennt sind. In der Praxis ist die Definition von Wörtern komplexer, da auch Satzzeichen und andere Zeichen berücksichtigt werden müssten.
+:::
+
+::: {.callout-tip}
+Definiert man den gegebenen Text als normalen String, entsteht eine sehr lange Zeile. Das ist in Python zwar erlaubt, aber aus stilistischen Gründen sollten Zeilen nicht länger als 88 Zeichen sein. Da Ruff dies derzeit nicht automatisch korrigiert, müssen Zeilenumbrüche manuell eingefügt werden. Wichtig ist dabei, dass Python benachbarte Strings automatisch zu einem einzigen String zusammenfügt:
+
+```{python}
+text = "This is" " an example."
+text
+```
+
+Diese Eigenschaft lässt sich nutzen, um lange Strings über mehrere Zeilen zu verteilen. Voraussetzung ist, dass die einzelnen Strings in Klammern stehen:
+
+```{python}
+text = (
+    "This is"
+    " an example."
+)
+text
+```
+:::
+
+
+## Übung 4
+
+Schreiben Sie eine Funktion `factorial`, welche die Fakultät $n!$ einer positiven Zahl $n$ berechnet. Die Fakultät $n!$ einer Zahl $n$ ist das Produkt aller positiven ganzen Zahlen kleiner oder gleich $n$. Die Fakultät von 0 ist mit 1 definiert. Berechnen Sie abschließend $5!$.
+
+
+## Übung 5
+
+Schreiben Sie eine Funktion `is_divisible`, welche überprüft, ob eine Zahl $n$ durch eine andere Zahl $m$ ohne Rest teilbar ist. Die Funktion soll zwei Parameter haben: `n` (die zu überprüfende Zahl) und `m` (die Zahl, durch die geteilt werden soll). Die Funktion soll `True` zurückgeben, wenn die Division ohne Rest möglich ist, andernfalls `False`.
+
+Testen Sie die Funktion mit den Zahlenpaaren (10, 2), (10, 3), (10, 5) und (10, 7).
+
+
+## Übung 6
+
+Was ist das Problem im folgenden Beispiel? Korrigieren Sie den Code so, dass er funktioniert.
+
+```python
+x = 10
+
+if x > 0:
+    print("x is positive.")
+else:
+    print("x is zero.")
+elif x < 0:
+    print("x is negative.")
+```
+
+
+## Übung 7
+
+Erstellen Sie eine Liste `numbers`, welche die Wurzeln der Zahlen 0, 10, 20, ... , 990, 1000 beinhaltet. Verwenden Sie dazu eine List Comprehension.
+
+Bestimmen Sie dann mit einer geeigneten Python-Funktion die Anzahl und die Summe der Elemente der so entstandenen Liste.
+
+
+## Übung 8
+
+Erklären Sie, warum folgender Code nicht funktioniert:
+
+```python
+for x in range(10)
+    print(x)
+```
+
+Geben Sie den korrekten Code an!
+
+
+## Übung 9
+
+Berechnen Sie mit Python das Ergebnis des folgenden mathematischen Ausdruckes und weisen Sie es dem Namen `result` zu:
+
+$$\frac{17 \cdot (\sqrt{5} + \frac{2}{3})}{27.7 - 3^\pi} + 42^{\frac{2}{7}}$$
+
+Geben Sie mit Hilfe der `print`-Funktion das Ergebnis auf zwei Nachkommastellen gerundet aus (es sollte ca. $-9.93$ lauten).
+
+
+## Übung 10
+
+Erklären Sie, warum folgender Code nicht funktioniert:
+
+```python
+alpha = 5
+lambda = 7
+print(alpha + lambda)
+```
+
+Geben Sie auch den korrekten Code an!
+
+
+## Übung 11
+
+Die Standardabweichung $s$ von $N$ Werten $x_i$ kann mit folgender Formel berechnet werden:
+
+$$s = \sqrt{\frac{1}{N-1} \sum_{i=1}^{N}(x_i - \bar{x})^2}$$
+
+Dabei ist $\bar{x}$ der arithmetische Mittelwert der Werte:
+
+$$\bar{x} = \frac{1}{N} \sum_{i=1}^{N} x_i$$
+
+Schreiben Sie eine Funktion namens `std`, welche eine Liste an Zahlen als Argument entgegennimmt und deren Standardabweichung zurückgibt. Verwenden Sie in Ihrer Lösung *nicht* das Modul `statistics`, sondern berechnen Sie die Kenngrößen selbst (z.B. mittels List Comprehensions)!
+
+Testen Sie Ihre Funktion mit der Liste `[10, 12, 23, 23, 16, 23, 21, 16]`. Die Standardabweichung sollte ca. `5.237` betragen.
+
+
+## Übung 12
+
+Schreiben Sie eine Funktion `get_even`, welche eine Liste an Zahlen als Argument entgegennimmt und eine neue Liste, welche nur die *geraden* Zahlen der ursprünglichen Liste beinhaltet, zurückgibt.
+
+::: {.callout-note}
+Der Aufruf `get_even([1, 45, -4, -5, 17, 2])` gibt also die Liste `[-4, 2]` zurück.
+:::
+
+
+### Übung 13
+
+Wichtig ist, dass die Teilbarkeit durch 3 *und* 5 (also 15) zuerst überprüft wird!
+
+```{python}
+def fizzbuzz(n):
+    if n % 15 == 0:
+        return "Fizzbuzz"
+    elif n % 3 == 0:
+        return "Fizz"
+    elif n % 5 == 0:
+        return "Buzz"
+    else:
+        return str(n)
+
+for i in range(1, 16):
+    print(fizzbuzz(i))
+```
+
+
+## Übung 14
+
+Schreiben Sie eine Funktion `add`, welche zwei Zahlen addiert und deren Summe zurückgibt. Die Funktion soll also mit zwei Argumenten aufgerufen werden können, wobei aber das zweite Argument optional sein soll. Wenn nur ein Argument übergeben wird, soll die Funktion 1 zu diesem Wert addieren und zurückgeben.
+
+
+## Übung 15
+
+Gegeben sei folgender Funktionskopf:
+
+```python
+def test(x, y=1, z=5):
+```
+
+Erklären Sie, warum folgende drei Aufrufe nicht funktionieren:
+
+1. `test(y=2, z=2)`
+2. `test(4, y=2, x=2)`
+3. `test()`
+
+
+## Übung 16
+
+Schreiben Sie eine Funktion `is_even`, welche überprüft, ob das übergebene Argument gerade ist. Falls dies der Fall ist, soll die Funktion `True` zurückgeben, sonst `False`. Testen Sie Ihre Funktion, indem Sie sie mit mindestens zwei verschiedenen Argumenten (eine gerade Zahl und eine ungerade Zahl) aufrufen!
+
+
+## Übung 17
+
+Schreiben Sie eine Funktion `sign`, welche das Vorzeichen einer Zahl bestimmt. Die Funktion soll in Abhängigkeit der übergebenen Zahl folgende Werte zurückgeben:
+
+- Ist die Zahl positiv, soll `1` zurückgegeben werden.
+- Ist die Zahl negativ, soll `-1` zurückgegeben werden.
+- Ist die Zahl gleich Null, soll `0` zurückgegeben werden.
+
+
+## Übung 18
+
+Gegeben ist der String `x = "Pythonista"`. Schreiben Sie eine `for`-Schleife, welche über den String iteriert und jedes Zeichen dieses Strings in einer neuen Zeile ausgibt.
+
+
+## Übung 19
+
+Gegeben ist die Liste `y = ["This", "is", "a", "sample", "list"]`. Erzeugen Sie mit einer List Comprehension aus dieser Liste eine neue Liste `z`, welche alle Elemente von `y` in Großbuchstaben beinhaltet.
+
+
+## Übung 20
+
+Gegeben ist der String `s = "Donaudampfschifffahrtsgesellschaft"`. Verwenden Sie geeignete Funktionen oder String-Methoden um folgende Fragen zu beantworten:
+
+1. Aus wie vielen Zeichen besteht `s`?
+2. An welcher Stelle (Index) tritt der Buchstabe `f` das erste mal auf?
+3. Wie viele `e` kommen in dem String vor?
+
+
+## Übung 21
+
+Gegeben ist eine Liste `x = [-13, 22, -2, -14, 33, -16]`. Erzeugen Sie mit einer List Comprehension eine neue Liste `y`, welche die Absolutwerte der Zahlen in `x` enthält.
+
+::: {.callout-note}
+Die eingebaute Funktion `abs` liefert den Absolutwert einer Zahl zurück.
+:::
+
+
+## Übung 22
+
+Erzeugen Sie ein NumPy-Array `x` mit 15 Zeilen und 5 Spalten, welches ganzzahlige Zufallszahlen im Bereich 0 bis 100 (inklusive) beinhalten soll. Initialisieren Sie den Zufallszahlengenerator mit dem Wert `1`. Berechnen Sie abschließend die fünf Spaltenmittelwerte von `x`.
+
+
+## Übung 23
+
+Erzeugen Sie ein NumPy-Array `x` mit 1000 Zahlen im gleichmäßigen Abstand von 10 bis 13 (inklusive).
+
+
+## Übung 24
+
+Gegeben ist ein NumPy-Array `x`, welches durch folgenden Code erzeugt werden kann:
+
+```{python}
+from numpy.random import default_rng
+
+rng = default_rng(2)
+x = 10 + 2 * rng.standard_normal(10000)
+```
+
+Erzeugen Sie mit Matplotlib ein Histogram mit 50 Bins von `x`.
+
+
+## Übung 25
+
+Gegeben ist ein NumPy-Array `x`, welches durch folgenden Code erzeugt werden kann:
+
+```{python}
+from numpy.random import default_rng
+
+rng = default_rng(2)
+x = 10 + 2 * rng.standard_normal(10000)
+```
+
+Stellen Sie mit Matplotlib die ersten 100 Werte von `x` als Balkengrafik dar.
+
+
+## Übung 26
+
+Die Datei *shakespeare.txt* beinhaltet die gesammelten Werke von William Shakespeare. Bestimmen Sie mit Python, wie viele Zeilen diese Datei enthält. Finden Sie außerdem heraus, in welcher Zeile der Text "Go antickly, show outward hideousness," vorkommt!
+
+::: {.callout-note}
+Der gesuchte Text kann auch Leerzeichen am Anfang oder Ende der Zeile enthalten. Verwenden Sie zur Suche daher entweder den `in`-Operator oder die String-Methode `strip`, um führende und nachfolgende Leerzeichen zu entfernen.
+:::
+
+
+## Übung 27
+
+Berechnen Sie die Summe aller natürlichen Zahlen von 0 bis 1000 (inklusive), die durch 3 *oder* 5 aber *nicht* durch 3 *und* 5 teilbar sind.
+
+::: {.callout-note}
+Eine Zahl ist durch 3 teilbar, wenn der Rest der Division durch 3 gleich Null ist. Eine Zahl ist durch 3 *und* 5 teilbar, wenn der Rest der Division durch 15 gleich Null ist.
+
+Verwenden Sie `and` bzw. `or`, um die Bedingungen zu verknüpfen und achten Sie auf die korrekte Klammersetzung.
+:::
+
+
+## Übung 28
+
+Gegeben ist der String `x = "Pythonista"`. Schreiben Sie eine `for`-Schleife, welche über den String iteriert und jedes Zeichen dieses Strings als Großbuchstaben getrennt durch Bindestriche ausgibt. Die gewünschte Ausgabe sollte also wie folgt aussehen:
+
+```
+P-Y-T-H-O-N-I-S-T-A-
+```
+
+
+## Übung 29
+
+Definieren Sie zwei Funktionen `kmh_to_mph` bzw. `mph_to_kmh`, welche Geschwindigkeiten von Kilometer pro Stunde in Meilen pro Stunde bzw. umgekehrt umwandeln und zurückgeben. Die Umrechnungsvorschriften lauten:
+
+$$\mathrm{mph} = \frac{\mathrm{kmh}}{\mathrm{1.609}} \hspace{35pt} \mathrm{kmh} = 1.609 \cdot \mathrm{mph}$$
+
+Testen Sie die Funktionen dann mit folgendem Befehl:
+
+```python
+kmh_to_mph(mph_to_kmh(65))
+```
+
+
+## Übung 30
+
+Angenommen Sie möchten zu einer bestehenden Liste `x` ein Element am Ende hinzufügen. Was stimmt nicht im folgenden Code:
+
+```python
+x = [1, 2, 3, 4]
+x = x.append(5)
+```
+
+Erklären Sie was hier passiert und geben Sie auch die korrekte Variante an!
+
+
+## Übung 31
+
+Wie können Sie folgenden Text dem Namen `s` zuweisen:
+
+*Er sagte: "Sicher!"*
+
+Geben Sie in Ihrer Antwort die korrekte Zuweisung an!
+
+
+## Übung 32
+
+Gegeben sei folgender String:
+
+```python
+x = "abcdefghijklmnopqrstuvwxyz"
+```
+
+Wie können Sie durch indizieren/slicen jedes zweite Zeichen herausgreifen? Erzeugen Sie damit einen neuen String `a` (beginnend mit dem Zeichen `"a"`) und einen neuen String `b` (beginnend mit dem Zeichen `"b"`).
+
+
+## Übung 33
+
+Erzeugen Sie eine Liste `words` mit den einzelnen Wörtern in folgendem String unter Verwendung einer geeigneten String-Methode:
+
+```python
+s = "eins/zwei/drei/vier/fünf/sechs/sieben/acht"
+```
