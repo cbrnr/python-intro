@@ -368,3 +368,237 @@ Erzeugen Sie eine Liste `words` mit den einzelnen Wörtern in folgendem String u
 ```python
 s = "eins/zwei/drei/vier/fünf/sechs/sieben/acht"
 ```
+
+
+## Übung 34
+
+Definieren Sie eine Funktion `replace_vowels`, die einen Text und ein Zeichen als Argumente entgegennimmt. Die Funktion soll einen neuen String zurückgeben, in dem alle Vokale (Groß- und Kleinbuchstaben) im ursprünglichen Text durch das spezifizierte Zeichen ersetzt werden.
+
+Beispiele:
+
+```python
+>>> replace_vowels("Hello World!", "*")
+"H*ll* W*rld!"
+>>> replace_vowels("PYTHON IS FUN", "#")
+"PYTH#N #S F#N"
+```
+
+
+## Übung 35
+
+Erklären Sie, warum der folgende Code zur Berechnung der Summe von fünf Zahlen nicht funktioniert:
+
+```python
+sum(1, 2, 3, 4, 5)
+```
+
+Geben Sie einen korrekten Funktionsaufruf an, der die Summe dieser Zahlen berechnet!
+
+
+## Übung 36
+
+Define a function `countdown` that prints a countdown on the screen. The countdown should start from a given number and count down to zero. The start number and the step size should be optional arguments (with default values of 5 for the start number and 1 for the step size).
+Definieren Sie eine Funktion `countdown`, die einen Countdown am Bildschirm ausgibt. Der Countdown soll von einer gegebenen Zahl starten und bis Null herunterzählen. Die Startzahl und die Schrittweite sollen optionale Argumente sein (mit Standardwerten von 5 für die Startzahl und 1 für die Schrittweite).
+
+Zwei mögliche Funktionsaufrufe und deren Ausgaben sind unten gezeigt:
+
+```python
+>>> countdown()
+5 - 4 - 3 - 2 - 1 - 0 - Liftoff!
+>>> countdown(7, 2)
+7 - 5 - 3 - 1 - Liftoff!
+```
+
+Stellen Sie sicher, dass die Ausgabe *genau* wie gezeigt aussieht!
+
+
+## Übung 37
+
+Gegeben sei ein NumPy-Array `y`, welches durch folgenden Code erzeugt wird:
+
+```python
+from numpy.random import default_rng
+
+rng = default_rng(2)
+y = 10 + 2 * rng.standard_normal(10000)
+```
+
+Erzeugen Sie mit Matplotlib eine Grafik mit zwei nebeneinanderliegenden Plots. Der linke Plot soll ein Streudiagramm der ersten 100 Werte von `y` (*y*-Achse) gegen eine Zahlenfolge von 1 bis 100 (*x*-Achse) enthalten. Der rechte Plot soll ein Histogramm der Werte in `y` mit 30 Bins enthalten.
+
+
+## Übung 38
+
+Gegeben sei eine Liste von Strings `x = ["This", "is", "a", "sample", "list"]`. Verwenden Sie eine List Comprehension, um eine neue Liste namens `lengths` zu erstellen, welche die Längen jedes Strings in `x` enthält.
+
+
+## Übung 39
+
+Ein Anagramm ist ein Wort, das durch Umordnen der Buchstaben eines anderen Wortes gebildet wird. Schreiben Sie eine Funktion `is_anagram`, die überprüft, ob zwei gegebene Strings Anagramme voneinander sind. Die Funktion soll `True` oder `False` zurückgeben. Testen Sie Ihre Funktion mit den Strings "listen" und "silent" sowie "hello" und "world" (die Funktion sollte für das erste Paar `True` und für das zweite Paar `False` zurückgeben).
+
+::: {.callout-note}
+The eingebaute Funktion `sorted` könnte hilfreich sein.
+:::
+
+
+## Übung 40
+
+Definieren Sie eine Funktion `filter_numbers`, die eine Liste von Ganzzahlen als Argument entgegennimmt und eine neue Liste zurückgibt. Diese soll nur die geraden oder ungeraden Zahlen aus der Eingabeliste enthalten, abhängig vom Wert eines zweiten Arguments `even`. Wenn `even` gleich `True` ist (Standardwert), soll die Funktion eine Liste mit geraden Zahlen zurückgeben; wenn `even` gleich `False` ist, soll sie eine Liste mit ungeraden Zahlen zurückgeben.
+
+
+## Übung 41
+
+Verwenden Sie eine Schleife, um den Text `"Hello number X!"` 10 Mal auszugeben, wobei `X` die aktuelle Iterationsnummer ist (beginnend bei 1). Die Ausgabe sollte wie folgt aussehen:
+
+```
+Hello number 1!
+Hello number 2!
+Hello number 3!
+Hello number 4!
+Hello number 5!
+Hello number 6!
+Hello number 7!
+Hello number 8!
+Hello number 9!
+Hello number 10!
+```
+
+
+## Übung 42
+
+Definieren Sie zwei Funktionen `ps_to_kw` und `kw_to_ps`, die zwischen Pferdestärken (PS) und Kilowatt (kW) umrechnen. 1 kW entspricht ungefähr 1.36 PS. Die Funktion `ps_to_kw` soll eine Leistung in PS in kW zurückgeben, während `kw_to_ps` eine Leistung in kW in PS zurückgeben soll.
+
+Testen Sie Ihre Funktionen mit den folgenden Argumenten:
+
+```python
+>>> ps_to_kw(100)
+73.52941176470588
+>>> kw_to_ps(73.53)
+100.00080000000001
+```
+
+
+## Übung 43
+
+Gegeben sei der String `s = "supercalifragilisticexpialidocious"`. Verwenden Sie geeignete String-Methoden oder eingebaute Funktionen, um folgendes herauszufinden:
+
+1. Die Länge des Strings.
+2. Den Index der ersten Vorkommen des Buchstabens `"i"`.
+3. Den Index der zweiten Vorkommen des Buchstabens `"i"`.
+4. Die Anzahl der Vorkommen des Buchstabens `"i"` im String.
+5. Einen neuen String, der alle Zeichen in `s` in Großbuchstaben umwandelt.
+6. Einen neuen String, der alle Vorkommen des Buchstabens `"i"` durch `"!"` ersetzt.
+
+::: {.callout-note}
+Definieren Sie für die Lösung dieser Aufgabe keine eigenen Funktionen!
+:::
+
+
+## Übung 44
+
+Schreiben Sie eine Funktion `longest_word`, die einen String `sentence` als Eingabe erhält und das längste Wort in diesem String zurückgibt. Falls es mehrere längste Wörter mit derselben Länge gibt, soll einfach das erste längste Wort zurückgegeben werden. Testen Sie Ihre Funktion mit dem Satz `"The quick brown fox jumps over the lazy dog"` (das längste Wort in diesem Satz ist `"quick"`).
+
+::: {.callout-note}
+Verwenden Sie die String-Methode `split()`, um den String `sentence` in einzelne Wörter aufzuteilen. Sie können davon ausgehen, dass der Eingabestring nur alphabetische Zeichen und Leerzeichen enthält (keine Satzzeichen, Zahlen oder Sonderzeichen). Iterieren Sie dann über alle gefundenen Wörter, um das längste zu finden und zurückzugeben.
+:::
+
+
+## Übung 45
+
+Erzeugen Sie eine Liste, welche die Wurzeln der *geraden* Zahlen im Bereich von 300 bis 700 (beides inklusive) beinhaltet. Bestimmen Sie die Anzahl der Elemente sowie die Summe aller Elemente!
+
+
+## Übung 46
+
+Definieren Sie eine Funktion `count_lower`, die die Anzahl der Kleinbuchstaben in einem String zählt und diese Anzahl zurückgibt (der String soll als Argument übergeben werden). Verwenden Sie die String-Methode `islower`, um jedes einzelne Zeichen im String zu überprüfen.
+
+Rufen Sie Ihre Funktion mit den folgenden Argumenten auf und überprüfen Sie, ob die Ausgaben korrekt sind:
+
+```
+>>> count_lower("Hello World!")
+8
+>>> count_lower("WHAT IS GOING ON???")
+0
+>>> count_lower("nnYzKllLSIkcJD4eEx")
+9
+```
+
+
+## Übung 47
+
+Definieren Sie eine Funktion `check_parity`, die überprüft, ob eine Zahl (als Argument übergeben) gerade oder ungerade ist. Der Rückgabewert soll wie folgt bestimmt werden:
+
+- Ist das Argument gerade, soll die Funktion 0 zurückgeben.
+- Ist das Argument ungerade, soll die Funktion 1 zurückgeben.
+
+Testen Sie Ihre Funktion mit den folgenden Argumenten und überprüfen Sie, ob die Ausgaben korrekt sind:
+
+```
+>>> check_parity(4)
+0
+>>> check_parity(-7)
+1
+```
+
+
+## Übung 48
+
+Erklären Sie, warum der folgende Code nicht funktioniert:
+
+```python
+def lambda(x):
+    return x + 1
+```
+
+Geben Sie eine korrekte Implementierung an!
+
+
+## Übung 49
+
+Definieren Sie zwei Funktionen `cm_to_inches` und `inches_to_cm`, die Zentimeter in Zoll und umgekehrt umrechnen. Die Umrechnungsfaktoren sind 1 Zoll = 2.54 cm und 1 cm = 1 / 2.54 Zoll. Testen Sie Ihre Funktionen mit den folgenden Argumenten und überprüfen Sie, ob die Ausgaben korrekt sind:
+
+```
+>>> cm_to_inches(10)
+3.937007874015748
+>>> inches_to_cm(5)
+12.7
+>>> cm_to_inches(inches_to_cm(5))
+5.0
+```
+
+
+## Übung 50
+
+Definieren Sie eine Funktion `sum_squares`, die die Summe der Quadrate der in einer Liste enthaltenen Zahlen (als Argument übergeben) berechnet und zurückgibt. Testen Sie Ihre Funktion mit der folgenden Liste und überprüfen Sie, ob die Ausgabe korrekt ist:
+
+```
+>>> sum_squares([1, 2, 3, 4, 5])
+55
+```
+
+
+## Übung 51
+
+Erzeugen Sie die folgenden drei NumPy-Arrays `x`, `y` und `z`:
+
+- `x` soll 1000 normalverteilte Zufallszahlen mit einem Mittelwert von 10 und einer Standardabweichung von 2 enthalten.
+- `y` soll 1000 gleichmäßig verteilte Zufallszahlen im Bereich von 5 bis 15 enthalten.
+- `z` soll 1000 Chi-Quadrat-verteilte Zufallszahlen mit 6 Freiheitsgraden enthalten.
+
+Initialisieren Sie den Zufallszahlengenerator mit dem Wert `1`.
+
+Verwenden Sie anschließend Matplotlib, um eine Grafik bestehend aus drei Streudiagrammen in einer Zeile zu erstellen. Das linke Streudiagramm soll `x` gegen `y`, das mittlere `x` gegen `z` und das rechte `y` gegen `z` darstellen. Setzen Sie abschließend `fig.set_tight_layout(True)` für ein schöneres Layout.
+
+::: {.callout-note}
+Zur Erzeugung der Zufallszahlen benötigen Sie die Methoden `normal`, `uniform` und `chisquare` des Zufallszahlengenerators.
+:::
+
+
+## Übung 52
+
+Eine Primzahl ist eine natürliche Zahl größer als 1, die keine positiven Teiler außer 1 und sich selbst hat. Schreiben Sie eine Funktion `is_prime`, die überprüft, ob eine gegebene Zahl eine Primzahl ist oder nicht. Die Funktion soll `True` oder `False` zurückgeben. Testen Sie Ihre Funktion mit den Zahlen 7 und 10 (die Funktion sollte für die erste Zahl `True` und für die zweite Zahl `False` zurückgeben).
+
+::: {.callout-note}
+Der Modulo-Operator `%` könnte im Zusammenhang mit der Tatsache, dass eine Primzahl nur durch 1 und sich selbst teilbar ist, hilfreich sein. Sie könnten also überprüfen, ob die Zahl $n$ durch irgendeine Zahl zwischen 2 und $n - 1$ teilbar ist. Falls ja, ist $n$ *keine* Primzahl (sonst schon).
+:::
+
+

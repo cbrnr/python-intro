@@ -517,3 +517,278 @@ s = "eins/zwei/drei/vier/fünf/sechs/sieben/acht"
 words = s.split("/")
 words
 ```
+
+
+## Übung 34
+
+```{python}
+def replace_vowels(text, char):
+    vowels = "aeiouAEIOU"
+    for vowel in vowels:
+        text = text.replace(vowel, char)
+    return text
+
+print(replace_vowels("Hello World!", "*"))
+print(replace_vowels("PYTHON IS FUN", "#"))
+```
+
+
+## Übung 35
+
+Der Code funktioniert nicht, weil die eingebaute Funktion `sum` nur ein einziges Argument (wie z.B. eine Liste oder ein Tupel) akzeptiert. Der Versuch, mehrere separate Argumente zu übergeben, führt zu einem Fehler.
+
+Ein korrekter Funktionsaufruf wäre daher:
+
+```python
+sum([1, 2, 3, 4, 5])
+```
+
+
+## Übung 36
+
+Lösung mit einer `while`-Schleife:
+
+```{python}
+def countdown(start=5, step=1):
+    n = start
+    while n >= 0:
+        print(n, end=" - ")
+        n -= step
+    print("Liftoff!")
+
+countdown()
+countdown(7, 2)
+```
+
+Lösung mit einer `for`-Schleife:
+
+```{python}
+def countdown(start=5, step=1):
+    for n in range(start, -1, -step):
+        print(n, end=" - ")
+    print("Liftoff!")
+
+countdown()
+countdown(7, 2)
+```
+
+
+## Übung 37
+
+```{python}
+from numpy.random import default_rng
+rng = default_rng(2)
+y = 10 + 2 * rng.standard_normal(10000)
+
+import matplotlib.pyplot as plt
+
+fig, axes = plt.subplots(1, 2)
+axes[0].scatter(range(1, 101), y[:100])
+axes[1].hist(y, bins=30)
+
+fig.set_tight_layout(True)
+plt.show()
+```
+
+
+## Übung 38
+
+```{python}
+x = ["This", "is", "a", "sample", "list"]
+lengths = [len(word) for word in x]
+lengths
+```
+
+
+## Übung 39
+
+```{python}
+def is_anagram(str1, str2):
+    return sorted(str1) == sorted(str2)
+
+print(is_anagram("listen", "silent"))
+print(is_anagram("hello", "world"))
+```
+
+
+## Übung 40
+
+```{python}
+def filter_numbers(numbers, even=True):
+    if even:
+        return [n for n in numbers if n % 2 == 0]
+    else:
+        return [n for n in numbers if n % 2 != 0]
+```
+
+
+## Übung 41
+
+```{python}
+for i in range(1, 11):
+    print(f"Hello number {i}!")
+```
+
+
+## Übung 42
+
+```{python}
+def ps_to_kw(ps):
+    return ps / 1.36
+
+def kw_to_ps(kw):
+    return kw * 1.36
+
+print(ps_to_kw(100))
+print(kw_to_ps(73.53))
+```
+
+
+## Übung 43
+
+```{python}
+s = "supercalifragilisticexpialidocious"
+print("1.", len(s))
+first_i = s.index("i")
+print("2.", first_i)
+second_i = s.index("i", first_i + 1)
+print("3.", second_i)
+print("4.", s.count("i"))
+print("5.", s.upper())
+print("6.", s.replace("i", "!"))
+```
+
+
+## Übung 44
+
+```{python}
+def longest_word(sentence):
+    words = sentence.split()
+    longest = ""
+    for word in words:
+        if len(word) > len(longest):
+            longest = word
+    return longest
+
+longest_word("The quick brown fox jumps over the lazy dog")
+```
+
+
+## Übung 45
+
+```{python}
+import math
+
+x = [math.sqrt(i) for i in range(300, 701) if i % 2 == 0]
+
+print(len(x))
+print(sum(x))
+```
+
+
+## Übung 46
+
+```{python}
+def count_lower(s):
+    count = 0
+    for char in s:
+        if char.islower():
+            count += 1
+    return count
+
+print(count_lower("Hello World!"))
+print(count_lower("WHAT IS GOING ON???"))
+print(count_lower("nnYzKllLSIkcJD4eEx"))
+```
+
+
+## Übung 47
+
+```{python}
+def check_parity(n):
+    if n % 2 == 0:
+        return 0
+    else:
+        return 1
+
+print(check_parity(4))
+print(check_parity(-7))
+```
+
+
+## Übung 48
+
+Der Code funktioniert nicht, weil `lambda` ein reserviertes Schlüsselwort in Python ist und daher nicht als Funktionsname verwendet werden kann. Um die Funktion korrekt zu implementieren, sollte ein anderer Name verwendet werden, zum Beispiel `lambda_`:
+
+```python
+def lambda_(x):
+    return x + 1
+```
+
+
+## Übung 49
+
+```{python}
+def cm_to_inches(cm):
+    return cm / 2.54
+
+def inches_to_cm(inches):
+    return inches * 2.54
+
+print(cm_to_inches(10))
+print(inches_to_cm(5))
+print(cm_to_inches(inches_to_cm(5)))
+```
+
+
+## Übung 50
+
+```{python}
+def sum_squares(numbers):
+    return sum([x**2 for x in numbers])
+
+print(sum_squares([1, 2, 3, 4, 5]))
+```
+
+
+## Übung 51
+
+```{python}
+from numpy.random import default_rng
+
+rng = default_rng(1)
+x = rng.normal(10, 2, 1000)
+y = rng.uniform(5, 15, 1000)
+z = rng.chisquare(6, 1000)
+
+import matplotlib.pyplot as plt
+
+fig, axes = plt.subplots(1, 3)
+axes[0].scatter(x, y)
+axes[1].scatter(x, z)
+axes[2].scatter(y, z)
+fig.set_tight_layout(True)
+```
+
+
+## Übung 52
+
+```{python}
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, n):
+        if n % i == 0:
+            return False
+    return True
+
+print(is_prime(7))
+print(is_prime(10))
+```
+
+::: {.callout-tip}
+Um die Effizienz der Funktion zu verbessern, können Sie die Schleife so ändern, dass sie nur bis zur Quadratwurzel von $n$ (inklusive) geht. Wenn $n$ durch eine Zahl größer als seine Quadratwurzel teilbar ist, muss es auch durch eine kleinere Zahl teilbar sein.
+:::
+
+
+TODO: 2024W fertig, durchschauen noch 2024S bis 2021W
