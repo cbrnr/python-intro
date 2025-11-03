@@ -8,7 +8,7 @@ Die folgenden Unterlagen geben eine kurze Einführung in die Grundlagen von Pyth
  4. [Funktionen](https://cbrnr.quarto.pub/python-25w-04) ([Lösungen](https://cbrnr.quarto.pub/python-25w-04-solutions))
  5. [Bedingungen und Schleifen](https://cbrnr.quarto.pub/python-25w-05) ([Lösungen](https://cbrnr.quarto.pub/python-25w-05-solutions))
  6. [Strings](https://cbrnr.quarto.pub/python-25w-06) ([Lösungen](https://cbrnr.quarto.pub/python-25w-06-solutions))
- 7. [Listen und Dictionaries]() ([Lösungen]())
+ 7. [Listen und Dictionaries](https://cbrnr.quarto.pub/python-25w-07) ([Lösungen](https://cbrnr.quarto.pub/python-25w-07-solutions))
  8. [Ein- und Ausgabe]() ([Lösungen]())
  9. [Numerische Daten]() ([Lösungen]())
 10. [Grafiken]() ([Lösungen]())

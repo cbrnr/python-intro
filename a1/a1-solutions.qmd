@@ -791,4 +791,139 @@ Um die Effizienz der Funktion zu verbessern, können Sie die Schleife so ändern
 :::
 
 
-TODO: 2024W fertig, durchschauen noch 2024S bis 2021W
+## Übung 53
+
+```{python}
+def f(x):
+    return x // 2 if x % 2 == 0 else 3 * x + 1
+
+n = 1000
+i = 0
+while n > 1:
+    n = f(n)
+    i += 1
+print(i)
+```
+
+
+## Übung 54
+
+Im Funktionskopf fehlen die Klammern nach f für die (leere) Parameterliste. Der korrekte Code lautet:
+
+```python
+def f():
+    return 42
+```
+
+
+## Übung 55
+
+```{python}
+print("Countdown starting now!")
+for i in range(10, -1, -1):
+    print(f"t minus {i}...")
+print("Lift-off!")
+```
+
+
+## Übung 56
+
+```{python}
+def f_statistic(ssm, ssr, p, n):
+    return (ssm / (p - 1)) / (ssr / (n - p))
+
+f_statistic(2452, 1688, 4, 412)
+```
+
+
+## Übung 57
+
+```{python}
+def convert_celsius(c, to="K"):
+    if to == "K":
+        return c + 273.15
+    elif to == "F":
+        return c * 9 / 5 + 32
+
+convert_celsius(100)
+convert_celsius(38, to="F")
+convert_celsius(0, to="K")
+```
+
+
+## Übung 58
+
+`sum` ist eine eingebaute Funktion und wird im Beispiel "überschrieben", und zwar mit
+einem Integer, welcher eine Summe über eine Schleife beinhaltet. Danach kann die eingebaute
+Funktion `sum` nicht mehr aufgerufen werden. Es wäre hier also besser, anstelle von `sum`
+einen Namen zu verwenden, der keiner eingebauten Funktion entspricht, z.B. `s`:
+
+```{python}
+s = 0
+for i in range(10):
+    s += i
+sum([1, 2, 3, 4, 5])
+```
+
+
+## Übung 59
+
+Ein Tuple mit einem einzigen Element erstellt man mit einem Komma am Ende:
+
+```{python}
+x = 2,
+print(x[0])
+```
+
+
+## Übung 60
+
+```{python}
+def describe_number(n):
+    if n % 10 == 0:
+        return 10
+    elif n % 2 == 0:
+        return 1
+    else:
+        return 2
+
+s = 0
+for n in range(-110, 231):
+    s += describe_number(n)
+print(s)  # 826
+```
+
+
+## Übung 61
+
+```{python}
+a = 3
+if a < 10:  # Doppelpunkt am Ende fehlte
+    print("a is less than 10.")  # Klammern für Funktionsaufruf fehlten
+```
+
+
+## Übung 62
+
+```{python}
+import math
+
+def f(s1, s2):
+    return math.sqrt((s1**2 + s2**2) / 2)
+
+f(5, 27)  # 19.4164878389476
+```
+
+
+## Übung 63
+
+```{python}
+import math
+
+def decibel(x, to="power"):
+    if to == "power":
+        return 10 * math.log10(x)
+    elif to == "amplitude":
+        return 20 * math.log10(x)
+```
+

@@ -602,3 +602,161 @@ Der Modulo-Operator `%` könnte im Zusammenhang mit der Tatsache, dass eine Prim
 :::
 
 
+## Übung 53
+
+Definieren Sie eine Funktion `f`, welche eine beliebige positive ganze Zahl entgegennimmt und sich wie folgt verhält:
+
+- Falls die Zahl gerade ist, soll die Hälfte dieser Zahl zurückgegeben werden (verwenden Sie hier den Ganzzahl-Divisionsoperator).
+- Falls die Zahl ungerade ist, soll das um 1 erhöhte Dreifache der Zahl zurückgegeben werden.
+
+Rufen Sie diese Funktion mit der Zahl 1000 auf. Danach rufen Sie die Funktion erneut auf, und zwar mit dem Rückgabewert des ersten Funktionsaufrufs. Wiederholen Sie diese Prozedur (den Rückgabewert als neues Argument verwenden), bis die Funktion die Zahl `1` zurückgibt. Wie oft wird die Funktion insgesamt aufgerufen?
+
+::: {.callout-note}
+Verwenden Sie für den zweiten Teil der Aufgabenstellung eine `while`-Schleife!
+:::
+
+
+## Übung 54
+
+Erklären Sie, warum folgender Code nicht funktioniert:
+
+```python
+def f:
+    return 42
+```
+
+Geben Sie auch die korrekte Funktionsdefinition an!
+
+
+## Übung 55
+
+Geben Sie mit Hilfe einer Schleife den folgenden Text am Bildschirm aus:
+
+```
+Countdown starting now!
+t minus 10...
+t minus 9...
+t minus 8...
+t minus 7...
+t minus 6...
+t minus 5...
+t minus 4...
+t minus 3...
+t minus 2...
+t minus 1...
+t minus 0...
+Lift-off!
+```
+
+
+## Übung 56
+
+Die *F*-Statistik berechnet sich mit folgender Formel:
+
+$$F = \frac{\text{MSM}}{\text{MSR}}$$
+
+Hier ist MSM die mittlere Modellquadratsumme und MSR die mittlere Residuenquadratsumme, welche sich wie folgt berechnen lassen:
+
+$$\text{MSM} = \frac{\text{SSM}}{p - 1}$$
+$$\text{MSR} = \frac{\text{SSR}}{N - p}$$
+
+Definieren Sie eine Funktion `f_statistic`, welche den Wert der *F*-Statistik in Abhängigkeit von SSM (Modellquadratsumme), SSR (Residuenquadratsumme), *p* (Anzahl der Modellparameter) und *N* (Stichprobengröße) zurückgibt! Wie lautet der Wert von *F* für die konkreten Werte von 2452, 1688, 4 und 412 für SSM, SSR, *p* sowie *n*?
+
+
+## Übung 57
+
+Definieren Sie eine Funktion namens `convert_celsius`, welche eine Temperatur in °C (Grad Celsius) entweder in K (Kelvin) oder °F (Grad Fahrenheit) umwandelt und zurückgibt! Ob Kelvin oder Fahrenheit zurückgegeben werden soll, wird durch einen optionalen Parameter namens `to` bestimmt; dieser soll standardmäßig so gesetzt sein, dass die Temperatur in Kelvin zurückgegeben wird.
+
+Die Umrechnungsvorschriften lauten:
+
+$$F = C \cdot \frac{9}{5} + 32$$
+$$K = C + 273.15$$
+
+Rufen Sie Ihre Funktion dann auf, um folgende Temperaturen umzuwandeln:
+
+- 100°C in K
+- 38°C in °F
+- 0°C in K
+
+
+## Übung 58
+
+Erklären Sie, warum folgender Code nicht funktioniert:
+
+```python
+sum = 0
+for i in range(10):
+    sum += i
+sum([1, 2, 3, 4, 5])
+```
+
+Geben Sie auch eine korrekte Implementierung an!
+
+
+## Übung 59
+
+Erklären Sie, warum folgender Code nicht funktioniert und geben Sie eine korrekte Lösung an:
+
+```python
+x = (2)  # create tuple with one element
+print(x[0])  # access and print that element
+```
+
+Es soll ein Tuple mit einem einzigen Element angelegt werden. Anschließend soll dieses Element per Indizierung am Bildschirm ausgegeben werden.
+
+
+## Übung 60
+
+Schreiben Sie eine Funktion `describe_number`, welche überprüft, ob eine per Argument übergebene ganze Zahl gleich 10, gerade oder ungerade ist. Ist sie gerade, soll die Zahl `1` zurückgegeben werden. Ist sie ungerade, soll `2` zurückgegeben werden. Ist die Zahl durch 10 teilbar, soll `10` zurückgegeben werden.
+
+Rufen Sie anschließend Ihre Funktion mit den ganzen Zahlen von $-110$ bis $230$ (inklusive) auf und summieren Sie alle Rückgabewerte. Die korrekte Summe beträgt 826.
+
+::: {.callout-note}
+Zahlen, die durch 10 teilbar sind, sind auch gerade Zahlen. Dennoch soll für diese Zahlen immer `10` zurückgegeben werden (und nicht `1`).
+:::
+
+
+## Übung 61
+
+Erklären Sie, warum folgender Code nicht funktioniert (er enthält zwei Fehler):
+
+```python
+a = 3
+if a < 10
+    print "a is less than 10."
+```
+
+Geben Sie auch den korrekten Code an!
+
+
+## Übung 62
+
+Definieren Sie eine Funktion `f`, welche zwei Parameter hat und damit folgenden mathematischen Ausdruck berechnet und zurückgibt:
+
+$$\sqrt{\frac{s_1^2 + s_2^2}{2}}$$
+
+Rufen Sie anschließend Ihre Funktion mit Werten von $s_1 = 5$ und $s_2 = 27$ auf!
+
+
+## Übung 63
+
+Schreiben Sie eine Funktion `decibel`, welche eine Zahl in die Einheit Dezibel umrechnet und zurückgibt. Es gibt zwei verschiedene Arten, diese Umrechnung für eine gegebene Zahl $x$ durchzuführen:
+
+1. $10 \cdot \log_{10}(x)$
+2. $20 \cdot \log_{10}(x)$
+
+Die Funktion soll beide Varianten berechnen können – welche berechnet wird soll durch einen optionalen Parameter bestimmt werden können. Standardmäßig soll die Variante 1 durchgeführt werden. Die beiden möglichen Werte dieses Parameters sollen die Strings `"power"` (Variante 1) bzw. `"amplitude"` (Variante 2) sein.
+
+Verwenden Sie die Funktion `log10` aus dem Modul `math`.
+
+Hier einige Beispiele für mögliche Funktionsaufrufe:
+
+```
+>>> decibel(10)
+10.0
+>>> decibel(10, "amplitude")
+20.0
+>>> decibel(2, "power")
+3.010299956639812
+```
+

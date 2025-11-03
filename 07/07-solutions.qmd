@@ -1,8 +1,8 @@
 ---
-title: "7 – Solutions"
-subtitle: "Introduction to Python and PsychoPy"
+title: "7 – Lösungen"
+subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-04-28
+date: 2025-11-20
 format:
   html:
     page-layout: full
@@ -12,9 +12,12 @@ title-block-banner: true
 theme:
   light: flatly
   dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
 ---
 
-## Exercise 1
+## Übung 1
 
 ```{python}
 def histogram(x, char="*"):
@@ -26,7 +29,7 @@ histogram([1, 8, 5, 17, 2], char="-")
 ```
 
 
-## Exercise 2
+## Übung 2
 
 ```{python}
 def sum_of_squares(x):
@@ -34,7 +37,7 @@ def sum_of_squares(x):
 ```
 
 
-## Exercise 3
+## Übung 3
 
 ```{python}
 import math
@@ -48,7 +51,7 @@ logs = [math.log(x) for x in numbers]
 ```
 
 
-## Exercise 4
+## Übung 4
 
 ```{python}
 z = [x**2 - y for x in range(7) for y in [3, 1, 5] if x != y]
@@ -66,7 +69,7 @@ z
 ```
 
 
-## Exercise 5
+## Übung 5
 
 ```{python}
 a = {"eins": "one", "zwei": "two", "drei": "three"}
@@ -74,7 +77,7 @@ a["zwei"]
 ```
 
 
-## Exercise 6
+## Übung 6
 
 ```{python}
 a["vier"] = "four"
@@ -82,7 +85,7 @@ a
 ```
 
 
-## Exercise 7
+## Übung 7
 
 Option 1:
 
@@ -103,10 +106,10 @@ Option 3:
 a.setdefault("zehn", "undefiniert")
 ```
 
-`a.get("zehn", "undefiniert")` returns `"undefiniert"` if the entry `"zehn"` does not exist. The dictionary `a` is not modified, i.e., the entry `a["zehn"]` is not added automatically. This is different from `a.setdefault("zehn", "undefiniert")`, which does add `a["zehn"]`.
+`a.get("zehn", "undefiniert")`  gibt `"undefiniert"` zurück wenn der Eintrag `"zehn"` nicht existiert. Das Dictionary `a` wird dadurch aber nicht verändert, d.h. der Eintrag `a["zehn"]` wird nicht hinzugefügt. Die ist aber bei `a.setdefault("zehn", "undefiniert")` der Fall, d.h. nach diesem Aufruf existiert `a["zehn"]`.
 
 
-## Exercise 8
+## Übung 8
 
 ```{python}
 def find(s, sub):
