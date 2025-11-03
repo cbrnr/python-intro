@@ -15,4 +15,4 @@ Die folgenden Unterlagen geben eine kurze Einführung in die Grundlagen von Pyth
 11. [PsychoPy (1)]() ([Lösungen]())
 12. [PsychoPy (2)]() ([Lösungen]())
 
-- [Zusätzliche Übungsaufgaben]() ([Lösungen]())
+- [Zusätzliche Übungsaufgaben](https://cbrnr.quarto.pub/python-25w-exercises) ([Lösungen](https://cbrnr.quarto.pub/python-25w-solutions))
