@@ -2,7 +2,7 @@
 title: "7 – Listen und Dictionaries"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-11-20
+date: 2025-11-27
 format:
   html:
     page-layout: full

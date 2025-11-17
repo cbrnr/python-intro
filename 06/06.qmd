@@ -2,7 +2,7 @@
 title: "6 – Strings"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-11-13
+date: 2025-11-20
 format:
   html:
     page-layout: full

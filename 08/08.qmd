@@ -1,8 +1,8 @@
 ---
-title: "8 – Input and Output"
-subtitle: "Introduction to Python and PsychoPy"
+title: "8 – Ein- und Ausgabe"
+subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-05-05
+date: 2025-11-27
 format:
   html:
     page-layout: full
@@ -12,6 +12,9 @@ title-block-banner: true
 theme:
   light: flatly
   dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
 ---
 
 ## Introduction

@@ -30,8 +30,8 @@ Der Plan für dieses Semester sieht wie folgt aus:
 | 3       | 16.10.2025 | Namen, Ausdrücke, Anweisungen |
 | 4       | 23.10.2025 | Funktionen                    |
 | 5       |  6.11.2025 | Bedingungen und Schleifen     |
-| 6       | 13.11.2025 | Strings                       |
-| 7       | 20.11.2025 | Listen und Dictionaries       |
+| 6       | 20.11.2025 | Strings                       |
+| 7       | 27.11.2025 | Listen und Dictionaries       |
 | 8       | 27.11.2025 | Ein- und Ausgabe              |
 | 9       |  4.12.2025 | Numerische Daten              |
 | 10      | 11.12.2025 | Grafiken                      |
