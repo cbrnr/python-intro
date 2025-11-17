@@ -1,8 +1,0 @@
-- source: 08.qmd
-  netlify:
-    - id: 218e3af1-c004-4114-9af0-8b129a8a122f
-      url: https://python-25s-08.netlify.app/
-- source: 08-solutions.qmd
-  netlify:
-    - id: 1aa692a9-fa70-4195-a34b-be3171435490
-      url: https://python-25s-08-solutions.netlify.app/

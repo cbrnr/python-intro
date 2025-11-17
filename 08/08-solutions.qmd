@@ -1,8 +1,8 @@
 ---
-title: "8 – Solutions"
-subtitle: "Introduction to Python and PsychoPy"
+title: "8 – Lösungen"
+subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-05-05
+date: 2025-11-27
 format:
   html:
     page-layout: full
@@ -12,9 +12,42 @@ title-block-banner: true
 theme:
   light: flatly
   dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
 ---
 
-## Exercise 1
+## Übung 1
+
+```{python}
+name = "Anna"
+a = 7
+b = 13
+print(f"Hallo {name}! {a} / {b} ≈ {a / b:.3f}, oder?")
+```
+
+
+## Übung 2
+
+```{python}
+students = [
+    {"name": "Lukas", "score": 87.5},
+    {"name": "Maya", "score": 42.0},
+    {"name": "Anna", "score": 59.0},
+    {"name": "Tim", "score": 49.9},
+    {"name": "Zoe", "score": 100.0},
+]
+
+for i, s in enumerate(students, 1):
+    if s["score"] >= 50:
+        status = "PASS"
+    else:
+        status = "FAIL"
+    print(f"{i:2d} | {s['name']:<12} | {s['score']:6.1f} | {status}")
+```
+
+
+## Übung 3
 
 ```python
 lst = range(0, 101, 2)
@@ -24,7 +57,7 @@ with open("ex1.txt", "w") as f:
 ```
 
 
-## Exercise 2
+## Übung 4
 
 ```python
 with open("ex2.txt", "w") as f:
@@ -32,7 +65,7 @@ with open("ex2.txt", "w") as f:
 ```
 
 
-## Exercise 3
+## Übung 5
 
 ```{python}
 with open("sowpods.txt") as f:
@@ -40,14 +73,14 @@ with open("sowpods.txt") as f:
         f.readline()
     counter = 0
     for line in f:
-        if len(line.strip()) > 0:  # there are empty lines in the file
+        if len(line.strip()) > 0:  # there are empty lines in the file!
             counter += 1
 
 print(f"There are {counter} words in the Scrabble list.")
 ```
 
 
-## Exercise 4
+## Übung 6
 
 ```{python}
 with open("sowpods.txt") as f:
@@ -62,4 +95,4 @@ with open("sowpods.txt") as f:
 print(f"There are {counter} words with 15+ letters in the Scrabble list.")
 ```
 
-If you want to print the words that have 15 or more letters, you can uncomment the corresponding line (i.e., remove the `#`).
+Wenn Sie die langen Wörter ausgeben lassen möchten, entfernen Sie einfach das Kommentarzeichen vor der `print`-Anweisung innerhalb der Schleife.
