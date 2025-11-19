@@ -10,7 +10,7 @@ Die folgenden Unterlagen geben eine kurze Einführung in die Grundlagen von Pyth
  6. [Strings](https://cbrnr.quarto.pub/python-25w-06) ([Lösungen](https://cbrnr.quarto.pub/python-25w-06-solutions))
  7. [Listen und Dictionaries](https://cbrnr.quarto.pub/python-25w-07) ([Lösungen](https://cbrnr.quarto.pub/python-25w-07-solutions))
  8. [Ein- und Ausgabe](https://cbrnr.quarto.pub/python-25w-08) ([Lösungen](https://cbrnr.quarto.pub/python-25w-08-solutions))
- 9. [Numerische Daten]() ([Lösungen]())
+ 9. [Numerische Daten](https://cbrnr.quarto.pub/python-25w-09) ([Lösungen](https://cbrnr.quarto.pub/python-25w-09-solutions))
 10. [Grafiken]() ([Lösungen]())
 11. [PsychoPy (1)]() ([Lösungen]())
 12. [PsychoPy (2)]() ([Lösungen]())

@@ -1,8 +1,8 @@
 ---
-title: "9 – Solutions"
-subtitle: "Introduction to Python and PsychoPy"
+title: "9 – Lösungen"
+subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-05-12
+date: 2025-12-04
 format:
   html:
     page-layout: full
@@ -12,15 +12,18 @@ title-block-banner: true
 theme:
   light: flatly
   dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
 ---
 
-## Exercise 1
+## Übung 1
 
 ```{python}
 import numpy as np
 
 t = np.arange(0, 10, 0.1)
-t.size  # 100 elements
+t.size  # 100 Elemente
 ```
 
 ```{python}
@@ -28,57 +31,57 @@ t.shape  # (100,)
 ```
 
 
-## Exercise 2
+## Übung 2
 
 ```{python}
-s = t.reshape((20, -1))  # 20 rows, 5 columns
+s = t.reshape((20, -1))  # 20 Zeilen, 5 Spalten
 ```
 
 
-## Exercise 3
+## Übung 3
 
 ```{python}
 from numpy.random import default_rng
 
 rng = default_rng(seed=18)
 u = rng.integers(low=-1000, high=1000, size=(100, 8))
-u.sum()  # sum of all elements
+u.sum()  # Summe aller Elemente
 ```
 
 ```{python}
-u.mean()  # mean of all elements
+u.mean()  # Mittelwert aller Elemente
 ```
 
 ```{python}
-u.mean(1)  # row means
+u.mean(1)  # Zeilenmittelwerte
 ```
 
 ```{python}
-u.mean(0)  # column means
+u.mean(0)  # Spaltenmittelwerte
 ```
 
 ```{python}
-u.max(0)  # column maxima
+u.max(0)  # Spaltenmaxima
 ```
 
 ```{python}
-u.min(0)  # column minima
+u.min(0)  # Spaltenminima
 ```
 
 ```{python}
-u.max(1)  # row maxima
+u.max(1)  # Zeilenmaxima
 ```
 
 ```{python}
-u.min(1)  # row minima
+u.min(1)  # Zeilennminima
 ```
 
 ```{python}
-u.mean(1).max()  # maximum of row means
+u.mean(1).max()  # Maximum der Zeilenmittelwerte
 ```
 
 
-## Exercise 4
+## Übung 4
 
 ```{python}
 x = np.arange(1, 151).reshape(3, 10, 5)
@@ -86,12 +89,12 @@ x.mean(axis=(1, 2))
 ```
 
 
-## Exercise 5
+## Übung 5
 
-There are several solutions, here are three possibilities:
+Es gibt viele Möglichkeiten, diese Aufgabe zu lösen. Hier sind drei Varianten:
 
 
-### Option 1
+### Möglichkeit 1
 
 ```{python}
 chess = np.zeros((8, 8), dtype=int)
@@ -104,7 +107,7 @@ chess
 ```
 
 
-### Option 2
+### Möglichkeit 2
 
 ```{python}
 chess = np.tile(np.array([[0, 1], [1, 0]]), (4, 4))
@@ -112,7 +115,7 @@ chess
 ```
 
 
-### Option 3
+### Möglichkeit 3
 
 ```{python}
 chess = np.zeros((8, 8), dtype=int)
@@ -121,7 +124,7 @@ chess[1::2, ::2] = 1
 chess
 ```
 
-As an additional exercise, you could try to write a function that generates a chessboard pattern of a certain size `size`, e.g.
+Als zusätzliche Übung könnten Sie versuchen, eine Lösung in eine Funktion zu verpacken, welche ein Schachbrettmuster mit bestimmter Größe `size` erzeugt, also z.B.
 
 ```python
 def generate_chess(size=8):
