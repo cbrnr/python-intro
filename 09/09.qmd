@@ -504,7 +504,7 @@ c
 ```
 
 :::{.callout-tip}
-Man muss bei `reshape` nicht alle Dimensionen angeben – eine kann man auf `-1` setzen, was bedeutet, dass NumPy die korrekte Anzahl automatisch bestimmt. Dies ist möglich, da die Anzahl aller Elemente konstant bleiben muss.
+Man muss bei `reshape` nicht alle Dimensionen angeben – eine kann man auf `-1` setzen, was bedeutet, dass NumPy die korrekte Anzahl automatisch bestimmt. Dies ist möglich, da die Anzahl aller Elemente konstant bleiben muss.
 :::
 
 Der Unterschied zwischen `resize` und `reshape` ist also, das `resize` das Array direkt modifiziert und `reshape` ein *neues* (geändertes) Array zurückgibt.
