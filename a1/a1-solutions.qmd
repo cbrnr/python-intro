@@ -264,15 +264,22 @@ get_even([1, 45, -4, -5, 17, 2])
 
 ## Übung 13
 
-Schreiben Sie eine Funktion `fizzbuzz`, welche eine Zahl als Argument entgegennimmt. Wenn die Zahl sowohl durch 3 als auch durch 5 teilbar ist, soll die Funktion den String `Fizzbuzz` zurückgeben. Wenn die Zahl nur durch 3 teilbar ist, soll die Funktion `Fizz` zurückgeben. Wenn die Zahl nur durch 5 teilbar ist, soll die Funktion `Buzz` zurückgeben. Für alle anderen Zahlen soll die Zahl selbst als String zurückgegeben werden.
+Wichtig ist, dass die Teilbarkeit durch 3 *und* 5 (also 15) zuerst überprüft wird!
 
-Rufen Sie die Funktion dann in einer Schleife mit den Zahlen von 1 bis 15 auf und geben Sie die zurückgegebenen Werte mit `print` am Bildschirm aus!
+```{python}
+def fizzbuzz(n):
+    if n % 15 == 0:
+        return "Fizzbuzz"
+    elif n % 3 == 0:
+        return "Fizz"
+    elif n % 5 == 0:
+        return "Buzz"
+    else:
+        return str(n)
 
-Die ausgegebenen Werte sollten lauten: 1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, Fizzbuzz.
-
-::: {.callout-note}
-Der Rest-Operator `%` kann die Teilbarkeit einer Zahl überprüfen. Eine Zahl ist durch 3 teilbar, wenn der Rest der Division durch 3 Null ergibt. Eine Zahl ist sowohl durch 3 als auch durch 5 teilbar, wenn der Rest der Division durch 15 Null ergibt.
-:::
+for i in range(1, 16):
+    print(fizzbuzz(i))
+```
 
 
 ## Übung 14
