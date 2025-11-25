@@ -1,8 +1,8 @@
 ---
-title: "10 – Solutions"
-subtitle: "Introduction to Python and PsychoPy"
+title: "10 – Lösungen"
+subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-05-19
+date: 2025-12-11
 format:
   html:
     page-layout: full
@@ -12,20 +12,23 @@ title-block-banner: true
 theme:
   light: flatly
   dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
 ---
 
-## Exercise 1
+## Übung 1
 
 ```{python}
 import numpy as np
 import matplotlib.pyplot as plt
 
 air = np.genfromtxt("airquality.csv", delimiter=",", skip_header=1)
-air.shape  # 153 rows, 6 columns
+air.shape  # 153 Zeilen, 6 Spalten
 ```
 
 
-## Exercise 2
+## Übung 2
 
 ```{python}
 ozone = air[:, 0]
@@ -37,29 +40,44 @@ day = air[:, 5]
 ```
 
 
-## Exercise 3
+## Übung 3
 
-```{python}
+```python
 fig, ax = plt.subplots()
 ax.hist(wind, edgecolor="white")
 ax.set_title("Wind (mph)")
 ```
 
-
-## Exercise 4
-
 ```{python}
+#| echo: false
+fig, ax = plt.subplots()
+ax.hist(wind, edgecolor="white")
+_ = ax.set_title("Wind (mph)")
+```
+
+
+## Übung 4
+
+```python
 fig, ax = plt.subplots()
 ax.scatter(temp, wind, alpha=0.5)
 ax.set_xlabel("Temperature (°F)")
 ax.set_ylabel("Wind (mph)")
 ```
 
+```{python}
+#| echo: false
+fig, ax = plt.subplots()
+ax.scatter(temp, wind, alpha=0.5)
+ax.set_xlabel("Temperature (°F)")
+_ = ax.set_ylabel("Wind (mph)")
+```
 
-## Exercise 5
+
+## Übung 5
 
 ```{python}
-fig, axes = plt.subplots(2, 2)
+fig, axes = plt.subplots(2, 2)  # 2 Zeilen, 2 Spalten
 
 axes[0, 0].scatter(ozone, solar, alpha=0.5)
 axes[0, 0].set(xlabel="Ozone (ppb)", ylabel="Solar (lang)")

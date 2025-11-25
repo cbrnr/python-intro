@@ -1,8 +1,8 @@
 ---
-title: "10 – Visualization"
-subtitle: "Introduction to Python and PsychoPy"
+title: "10 – Grafiken"
+subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-05-19
+date: 2025-12-11
 format:
   html:
     page-layout: full
@@ -12,11 +12,14 @@ title-block-banner: true
 theme:
   light: flatly
   dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
 ---
 
-## Introduction
+## Allgemeines
 
-Python offers a large number of packages for visualizing data (an overview of this ecosystem can be found [here](https://rougier.github.io/python-visualization-landscape/)). The most popular packages are:
+In Python gibt es eine große Anzahl an Paketen, welche sich auf das Erstellen von Grafiken spezialisiert haben. Eine Übersicht über dieses sehr umfangreiche Ökosystem gibt es [hier](https://rougier.github.io/python-visualization-landscape/), die bekanntesten Pakete sind momentan:
 
 - [Matplotlib](https://matplotlib.org/)
 - [Seaborn](https://seaborn.pydata.org/)
@@ -24,52 +27,54 @@ Python offers a large number of packages for visualizing data (an overview of th
 - [Bokeh](https://docs.bokeh.org/en/latest/)
 - [Vega-Altair](https://altair-viz.github.io/)
 
-Matplotlib is the oldest and most established package. It allows for customizing graphics down to the smallest detail. Many other graphic packages are based on Matplotlib, so it is helpful to have at least a basic understanding of Matplotlib.
+Matplotlib ist das älteste und bekannteste Paket, es ist aber manchmal etwas umständlich zu bedienen – dafür ist es möglich, Grafiken bis ins kleinste Detail anzupassen. Matplotlib erzeugt grundsätzlich statische Grafiken und ist daher nicht für interaktive Anwendungen geeignet. Nachdem viele Grafikpakete auf Matplotlib basieren, ist es auf jeden Fall hilfreich, wenn man zumindest ein grundlegendes Verständnis von Matplotlib besitzt.
 
-Bokeh and Plotly are particularly suitable for creating interactive graphics for web applications. Seaborn and Vega-Altair are specialized in statistical plots. Whereas seaborn builds on Matplotlib and offers many additional graphic types, Vega-Altair aims to make creating complex interactive graphics as intuitive as possible.
+Bokeh und Plotly können vor allem interaktive Grafiken für Webanwendungen erstellen. Seaborn und Vega-Altair haben sich auf statistische Grafiken spezialisiert. Seaborn baut auf Matplotlib auf und bietet sehr viele zusätzliche Grafiktypen zur Datenvisualisierung. Vega-Altair hat sich außerdem das Ziel gesetzt, komplexe Grafiken möglichst einfach erstellen zu können (auch interaktive Grafiken können damit erzeugt werden).
 
-In addition to these commonly used packages, there is also [plotnine](https://github.com/has2k1/plotnine), which is very similar to [ggplot2](https://ggplot2.tidyverse.org/) for R. If you are already familiar with ggplot2, you might want to check out plotnine.
+Neben diesen häufig verwendeten Paketen gibt es noch [plotnine](https://github.com/has2k1/plotnine), welches sehr ähnlich wie [ggplot2](https://ggplot2.tidyverse.org/) für R zu verwenden ist.
 
-In summary, Matplotlib, seaborn, and plotnine are suitable for creating classic *static* graphics, while Vega-Altair, Bokeh, and Plotly are suitable for creating *interactive* graphics.
+Kurz zusammengefasst kann man also die Pakete Matplotlib, seaborn und plotnine zur Erzeugung von klassischen *statischen* Grafiken sowie Vega-Altair, Bokeh und Plotly zur Erstellung von *interaktiven* Grafiken empfehlen.
+
+In den folgenden Abschnitten werden wir uns mit Matplotlib beschäftigen und die Grundlagen zur Erstellung von Grafiken kennenlernen.
 
 
 ## Matplotlib
 
-Matplotlib is particularly well-suited for creating a wide variety of plots, especially for scientific purposes. The data to be visualized is typically stored in NumPy arrays.
+Mit Matplotlib kann man verschiedenste Grafiken vor allem für wissenschaftliche Anwendungen erstellen. Meist stehen die darzustellenden Daten als NumPy-Arrays zur Verfügung.
 
 :::{.callout-note}
-The official Matplotlib website offers several [tutorials](https://matplotlib.org/stable/tutorials/index.html). In particular, the [Quick Start Guide](https://matplotlib.org/stable/tutorials/introductory/quick_start.html) is a good complement to the material covered in this chapter.
+Die offizielle Matplotlib-Website beinhaltet einige [Tutorials](https://matplotlib.org/stable/tutorials/index.html). Insbesondere der [Quick Start Guide](https://matplotlib.org/stable/tutorials/introductory/quick_start.html) ist eine gute Ergänzung zu den Unterlagen dieser Einheit.
 :::
 
-As always, we start with the necessary imports:
+Wir beginnen wie immer mit den entsprechenden Import-Befehlen:
 
 ```{python}
 import numpy as np
 import matplotlib.pyplot as plt
 ```
 
-Note that we import `matplotlib.pyplot as plt` and not `matplotlib` directly, because the vast majority of functions for creating plots are located in the `matplotlib.pyplot` subpackage.
+Wir importieren hier `matplotlib.pyplot` (als `plt`) und nicht direkt `matplotlib`. Dies hat historische Gründe, denn die allermeisten Funktionen zur Erstellung von Grafiken befinden sich in `matplotlib.pyplot` und nicht direkt in `matplotlib`.
 
 :::{.callout-important}
-Plots created with Matplotlib are *not* displayed by default. To display a plot in a separate window, you must explicitly run the following command:
+Mit Matplotlib erstellte Grafiken werden standardmäßig *nicht* angezeigt. Um eine Grafik in einem separaten Fenster anzuzeigen, muss man explizit den folgenden Befehl ausführen:
 
 ```python
 plt.show()
 ```
 
-However, this window blocks the Python interpreter, i.e., you cannot enter any further commands as long as the graphics window is open. To avoid this behavior, you can enter the following command in the interactive Python interpreter directly after importing:
+Dieses Fenster blockiert aber den Python-Interpreter, d.h. man kann keine weiteren Befehle eingeben, so lange das Grafik-Fenster geöffnet ist. Um dieses Verhalten zu umgehen, kann man im interaktiven Python-Interpreter direkt nach dem Importieren folgenden Befehl eingeben:
 
 ```python
 plt.ion()
 ```
 
-This command ensures that plots are displayed immediately after they are created ("ion" stands for "interactive on"). Note that scripts should not use this command, as it can lead to unexpected behavior.
+Damit werden Grafiken sofort nach deren Erstellung angezeigt und blockieren auch nicht den Python-Interpreter ("ion" steht für "interactive on").
 :::
 
 
-### Creating plots
+### Erstellung von Grafiken
 
-Before we start creating plots with Matplotlib, it is helpful to familiarize ourselves with some basic concepts and the structure of a plot, as illustrated in the following figure (modified from [here](https://matplotlib.org/stable/gallery/showcase/anatomy.html)):
+Um mit Matplotlib Grafiken zu erzeugen, sollte man sich mit einigen Grundbegriffen sowie dem Aufbau einer Grafik vertraut machen, was in der folgenden Abbildung veranschaulicht wird (modifiziert von [hier](https://matplotlib.org/stable/gallery/showcase/anatomy.html)):
 
 ```{python}
 #| echo: false
@@ -187,44 +192,44 @@ annotate(4.0, 0.7, "Spine", "ax.spines")
 _ = fig.patch.set(linewidth=2, edgecolor="0.5")
 ```
 
-This figure shows the most important components of a Matplotlib plot, but we only need two concepts to get started: `Figure` and `Axes` (highlighted in red). A `Figure` corresponds to the entire figure area, which can contain one or more plots (so-called `Axes`).
+Für den Anfang benötigen wir nur die zwei Begriffe `Figure` und `Axes` (in der Abbildung rot dargestellt). Eine `Figure` entspricht einer Abbildung, welche eine oder mehrere Grafiken (sogenannte `Axes`) enthalten kann.
 
-The `plt.subplots` function creates an empty `Figure` containing one empty `Axes` object by default:
+Die Funktion `plt.subplots` erzeugt eine `Figure` und die gewünschte Anzahl an `Axes`. Möchte man also z.B. eine Abbildung mit einer einzigen Grafik erzeugen, erstellt man diese beiden (leeren) Objekte mit folgendem Befehl:
 
 ```{python}
 fig, ax = plt.subplots()
 ```
 
-The function returns both the `Figure` and the `Axes` objects (we call them `fig` and `ax`). We can now call methods of the `Axes` object (which we named `ax`) to create the desired plot (more on this in the next section).
+Die Funktion gibt die `Figure` sowie die `Axes` zurück; wir nennen diese `fig` bzw. `ax`. Danach kann man Methoden des `Axes`-Objekts (welches wir `ax` genannt haben) aufrufen, um die gewünschte Grafik zu erstellen (mehr dazu im nächsten Abschnitt).
 
-If we want to combine multiple plots in a single figure, we can again use `plt.subplots` to create a `Figure` with the desired number of `Axes`. To do this, we use the first and second arguments, which correspond to the number of rows and columns of the plots, respectively:
+Wenn man mehrere Grafiken in einer Abbildung kombinieren möchte, kann man mit `plt.subplots` eine `Figure` mit der gewünschten Anzahl an `Axes` erzeugen. Dazu verwendet man das erste bzw. die ersten beiden Argumente, welche der Anzahl an Zeilen bzw. Spalten, in denen die Grafiken angeordnet werden sollen, entsprechen:
 
 ```python
-fig, axes = plt.subplots(1, 3)  # 1 row, 3 columns
+fig, axes = plt.subplots(1, 3)  # 1 Zeile, 3 Spalten
 ```
 
 ```{python}
 #| echo: false
-fig, axes = plt.subplots(1, 3, figsize=(9, 4))
+fig, axes = plt.subplots(1, 3, figsize=(9, 4))  # 1 Zeile, 3 Spalten
 ```
 
-This example creates a `Figure` containing three `Axes` arranged in one row and three columns. We named this collection of three `Axes` objects `axes`, which is a one-dimensional NumPy array. Therefore, we can access the individual elements using `axes[0]`, `axes[1]`, and `axes[2]` to create the desired plots.
+In diesem Beispiel erzeugen wir eine `Figure`, welche drei `Axes` beinhaltet, die in einer Zeile und drei Spalten angeordnet sind. In anderen Worten sind das also drei Grafiken, die nebeneinander dargestellt werden. Diese drei `Axes`-Objekte haben wir `axes` genannt, und dabei handelt es sich um ein eindimensionales NumPy-Array. Wir können daher auf die einzelnen Elemente mittels `axes[0]`, `axes[1]` und `axes[2]` zugreifen und damit die gewünschten Grafiken erzeugen.
 
-We can also generate a two-dimensional arrangements consisting of multiple rows and columns. In this case, the returned axes are available in a *two-dimensional* NumPy array. Therefore, we need to extract the individual `Axes` objects with a two-dimensional index (i.e., row and column). For example, `axes[0, 2]` would be the `Axes` object in row 0 (i.e., the first row) and column 2 (i.e., the third column).
+Auch eine echte zweidimensionale Anordnung, bestehend aus mehreren Zeilen und Spalten, ist so möglich. Zu beachten ist in diesem Fall aber, dass die zurückgegebenen Achsen in einem *zweidimensionalen* NumPy-Array vorhanden sind. Daher kann man die einzelnen `Axes`-Objekte auch mit einem zweidimensionalen Index (also Zeile und Spalte) ansprechen, z.B. `axes[0, 2]` wäre das `Axes`-Objekt in Zeile 0 (also erste Zeile) und Spalte 2 (also dritte Spalte).
 
-To avoid any overlap in a `Figure` with multiple `Axes` objects, it is recommended to run the following line after all plots have been created:
+Damit sich in einer `Figure` mit mehreren `Axes`-Objekten keine Überlappungen ergeben, sollte man zum Abschluss folgende Zeile ausführen:
 
 ```python
 fig.set_tight_layout(True)
 ```
 
-This will adjust the spacing between the `Axes` objects so that no text or other elements are cut off or overlap. Let's look at an example. First, we create a figure with two rows and three columns:
+Dies bewirkt, dass die Abstände zwischen den `Axes`-Objekten so angepasst werden, dass keine Texte oder andere Elemente abgeschnitten werden oder überlappen. Sehen wir uns das anhand eines Beispiels an. Zunächst erzeugen wir eine Grafik mit 2 Zeilen und 3 Spalten und verwenden das Standard-Layout:
 
 ```{python}
 fig, axes = plt.subplots(2, 3)
 ```
 
-And this is the figure using the optimized layout:
+Und so sieht die Grafik mit optimiertem Layout aus:
 
 ```{python}
 fig, axes = plt.subplots(2, 3)
@@ -232,60 +237,74 @@ fig.set_tight_layout(True)
 ```
 
 
-### Line plots
+### x/y-Grafiken
 
-Matplotlib supports many different [plot types](https://matplotlib.org/stable/plot_types/index.html). First, let's look at line plots, which are useful for displaying time series data. We use the following example data `x` and `y`:
+Matplotlib unterstützt viele unterschiedliche [Grafiktypen](https://matplotlib.org/stable/plot_types/index.html). Als erstes sehen wir uns an, wie wir Liniengrafiken (z.B. zur Darstellung von Zeitverläufen) erstellen können. Dazu verwenden wir die folgenden Beispieldaten `x` und `y`:
 
 ```{python}
 x = np.linspace(0, 10, 100)
 y = np.sin(x)
 ```
 
-To create a line plot, we call the `plot` method and pass the data for the x- and y-axes:
+Eine Liniengrafik erhält man dann durch Aufruf der `plot`-Methode, welcher man die Daten für die x- bzw. y-Achsen übergibt:
 
 ```{python}
 fig, ax = plt.subplots()
 ax.plot(x, y)
 ```
 
+Zur Erstellung eines Scatterplots verwendet man die Methode `scatter`, welche sinnvolle Standardwerte für diesen Grafiktyp bietet:
 
-### Scatter plots
-
-To create a scatter plot, we use the `scatter` method, which provides sensible default values for this type of plot:
-
-```{python}
+```python
 fig, ax = plt.subplots()
 ax.scatter(x, y)
 ```
 
+```{python}
+#| echo: false
+fig, ax = plt.subplots()
+_ = ax.scatter(x, y)
+```
 
-### Bar charts and stem plots
 
-For a bar chart, we need the heights of the individual bars as well as the positions of the bars on the x-axis:
+### Balken- und Stängelgrafiken
+
+Für eine Balkengrafik benötigt man die Höhen der einzelnen Balken sowie die Positionen der Balken auf der x-Achse:
 
 ```{python}
 x = np.arange(8)
 y = [17, 5, 23, 33, 12, 21, 27, 18]
 ```
 
-We can then display these values with the `bar` method:
+Diese Werte kann man dann mit der `bar`-Methode darstellen:
 
-```{python}
+```python
 fig, ax = plt.subplots()
 ax.bar(x, y)
 ```
 
-Alternatively, we could also visualize these values as a stem plot:
-
 ```{python}
+#| echo: false
+fig, ax = plt.subplots()
+_ = ax.bar(x, y)
+```
+
+Dieselben Werte könnte man auch als Stängelgrafik visualisieren:
+
+```python
 fig, ax = plt.subplots()
 ax.stem(x, y)
 ```
 
+```{python}
+#| echo: false
+fig, ax = plt.subplots()
+_ = ax.stem(x, y)
+```
 
-### Histograms
+### Histogramme
 
-Matplotlib also supports more complex statistical plots like histograms. To create a histogram, we first generate new example data `x` (10,000 normally distributed random numbers with a mean of 100 and a standard deviation of 15):
+Auch komplexere statistische Grafiken können erzeugt werden. Dazu erstellen wir zunächst neue Beispieldaten `x` (10000 normalverteilte Zufallszahlen mit Mittelwert 100 und Standardabweichung 15):
 
 ```{python}
 from numpy.random import default_rng
@@ -294,7 +313,7 @@ rng = default_rng(1)
 x = rng.normal(loc=100, scale=15, size=10000)
 ```
 
-We can now display the distribution of `x` as a histogram:
+Nun können wir die Verteilung von `x` als Histogramm darstellen:
 
 ```python
 fig, ax = plt.subplots()
@@ -307,16 +326,16 @@ fig, ax = plt.subplots()
 _ = ax.hist(x, bins=50, edgecolor="white")
 ```
 
-In this example, we manually set the number of bins to 50. We also use a white edge color to better separate the individual bars.
+In diesem Beispiel haben wir die Anzahl der Bins manuell auf 50 gesetzt. Außerdem verwenden wir eine weiße Randfarbe, um die einzelnen Balken besser voneinander abzugrenzen.
 
 :::{.callout-tip}
-All plotting methods (e.g., `plot`, `scatter`, `bar`, `stem`) have optional arguments that allow us to customize the appearance of the plot. These are described in the respective documentations.
+Alle Methoden (also z.B. auch `plot`, `scatter`, `bar`, `stem`) haben optionale Argumente, mit denen man das Aussehen der Grafik anpassen kann. Diese sind in den jeweiligen Dokumentationen beschrieben.
 :::
 
 
 ### Boxplots
 
-Boxplots are also used to visualize the distribution of one or more variables. Let's create the following three example arrays:
+Auch Boxplots dienen zur Visualisierung der Verteilung einer oder auch mehrerer Variablen. Erzeugen wir daher die folgenden drei Beispiel-Arrays:
 
 ```{python}
 x = rng.normal(loc=0, scale=5, size=10000)
@@ -324,7 +343,7 @@ y = rng.exponential(5, size=10000)
 z = rng.poisson(2.8, size=10000)
 ```
 
-We can visualize the distributions of the three variables with three boxplots:
+Die Verteilungen der drei Variablen können wir mit drei Boxplots darstellen:
 
 ```python
 fig, ax = plt.subplots()
@@ -338,20 +357,13 @@ _ = ax.boxplot([x, y, z])
 ```
 
 :::{.callout-note}
-A boxplot displays the distribution of a dataset based on its quartiles. The box spans from the first quartile (Q1) to the third quartile (Q3), so its height (in a vertical boxplot) represents the interquartile range (IQR) – the middle 50% of the data. The horizontal line inside the box marks the median (Q2).
-
-The whiskers extend from the edges of the box to the most extreme data points that are within 1.5 times the IQR from the quartiles:
-
-- The lower whisker reaches down to the smallest value that is greater than or equal to Q1 − 1.5 × IQR.
-- The upper whisker extends up to the largest value that is less than or equal to Q3 + 1.5 × IQR.
-
-Any data points beyond these limits are shown individually and are considered outliers.
+Eine Box erstreckt sich vom ersten bis zum dritten Quartil, ihre Höhe entspricht also dem Interquartilsabstand (IQR). Die orange Linie innerhalb der Box entspricht dem Median. Die sogenannten Whiskers außerhalb der Box erstrecken sich bis zum 1,5-fachen des IQR über bzw. unter dem ersten bzw. dritten Quartil. Punkte außerhalb dieser Grenzen werden als Ausreißer einzeln dargestellt.
 :::
 
 
-### Violin plots
+### Violinenplots
 
-Violin plots can be used as an alternative to boxplots. For example, the data from the previous section could also be visualized like this:
+Eine Alternative zu Boxplots sind sogenannte Violinenplots. Die Daten aus dem vorigen Abschnitt könnte man also auch so darstellen:
 
 ```python
 fig, ax = plt.subplots()
@@ -365,14 +377,14 @@ _ = ax.violinplot([x, y, z])
 ```
 
 
-### Additional plot types
+### Weitere statistische Grafiken
 
-Matplotlib supports many other plot types, such as pie charts, contour plots, and 3D plots. However, if you want to create scatter plots with overlaid regression lines or other more complex statistical plot types, you should take a look at more specialized packages like seaborn. While it is theoretically possible to create these types of plots with Matplotlib, it would require many manual steps (e.g., you would have to fit a linear regression model to the data before including it in a plot). Seaborn automates these steps and provides sensible defaults for many common plot types.
+Möchte man beispielsweise Scatterplots mit überlagerten Regressionsgeraden oder andere komplexere Grafiktypen erstellen, sollte man einen Blick auf andere Pakete wie seaborn oder plotnine werfen. Mit Matplotlib wäre das zwar prinzipiell auch möglich, aber es wären sehr viele manuelle Schritte notwendig (z.B. müsste man selbst ein lineares Regressionsmodell rechnen, um dieses dann als Gerade in eine Grafik einzubinden).
 
 
-### Title and axis labels
+### Titel und Achsenbeschriftungen
 
-By default, Matplotlib does not add titles or axis labels to the plots. However, you can customize an existing plot with specific methods. Let's take the very first plot we created in this chapter as an example:
+Matplotlib fügt den Grafiken standardmäßig keine Titel oder Achsenbeschriftungen hinzu. Selbstverständlich kann man das aber anpassen, und zwar mit speziellen Methoden. Nehmen wir als Beispiel nochmals die allererste Grafik, die wir in diesen Unterlagen erzeugt haben:
 
 ```{python}
 x = np.linspace(0, 10, 100)
@@ -382,13 +394,13 @@ fig, ax = plt.subplots()
 ax.plot(x, y)
 ```
 
-We can add a title and axis labels to this plot as follows:
+Wir können dieser Grafik einen Titel sowie Achsenbeschriftungen hinzufügen:
 
 ```python
 fig, ax = plt.subplots()
 ax.plot(x, y)
-ax.set_title("Sine")
-ax.set_xlabel("Time (s)")
+ax.set_title("Eine Sinuskurve")
+ax.set_xlabel("Zeit (s)")
 ax.set_ylabel("Amplitude (V)")
 ```
 
@@ -396,74 +408,74 @@ ax.set_ylabel("Amplitude (V)")
 #| echo: false
 fig, ax = plt.subplots()
 ax.plot(x, y)
-ax.set_title("Sine")
-ax.set_xlabel("Time (s)")
+ax.set_title("Eine Sinuskurve")
+ax.set_xlabel("Zeit (s)")
 _ = ax.set_ylabel("Amplitude (V)")
 ```
 
-Alternatively, instead of using the three separate methods, you could also use the following shorter version:
+Alternativ könnte man statt den drei separaten Methoden auch folgende Variante verwenden:
 
 ```python
 fig, ax = plt.subplots()
 ax.plot(x, y)
-ax.set(title="Sine", xlabel="Time (s)", ylabel="Amplitude (V)")
+ax.set(title="Eine Sinuskurve", xlabel="Zeit (s)", ylabel="Amplitude (V)")
 ```
 
 ```{python}
 #| echo: false
 fig, ax = plt.subplots()
 ax.plot(x, y)
-_ = ax.set(title="Sine", xlabel="Time (s)", ylabel="Amplitude (V)")
+_ = ax.set(title="Eine Sinuskurve", xlabel="Zeit (s)", ylabel="Amplitude (V)")
 ```
 
 
-## Exercises
+## Übungen
 
-### Exercise 1
+### Übung 1
 
-Import the data from [`airquality.csv`](airquality.csv) into a NumPy array called `air` using the following code (note that the file must be in the working directory):
+Lesen Sie die Daten in der Datei [`airquality.csv`](airquality.csv) mit folgendem Code in ein NumPy-Array namens `air` ein (beachten Sie, dass sich die Datei im Arbeitsverzeichnis befinden muss):
 
-```python
+```Python
 import numpy as np
 air = np.genfromtxt("airquality.csv", delimiter=",", skip_header=1)
 ```
 
-This dataset contains the time course of four different air quality values over a period of five months.
+Dieser Datensatz den Verlauf von vier verschiedenen Luftgütewerten über einen Zeitraum von fünf Monaten.
 
-Which command returns the number of rows and columns of `air`?
-
-
-### Exercise 2
-
-The columns in `air` contain measurements for the following variables:
-
-1. Ozone concentration (in ppb, or "parts per billion")
-2. Solar radiation (in Langleys)
-3. Wind speed (in miles per hour)
-4. Temperature (in degrees Fahrenheit)
-5. Month (numeric value between 1 and 12)
-6. Day (numeric value between 1 and 31)
-
-Create a separate variable for each column (use the names `ozone`, `solar`, `wind`, `temp`, `month`, and `day`). Use these names in all subsequent exercises.
+Mit welchem Befehl können Sie die Anzahl der Zeilen und Spalten von `air` herausfinden?
 
 
-### Exercise 3
+### Übung 2
 
-Create a histogram of the wind values using Matplotlib.
+Die Spalten in `air` beinhalten Messwerte für folgende Variablen:
+
+1. Ozonkonzentration (in ppb, oder "parts per billion")
+2. Sonneneinstrahlung (in der Einheit Langleys)
+3. Windgeschwindigkeit (in Meilen pro Stunde)
+4. Temperatur (in Grad Fahrenheit)
+5. Monat (Zahlenwert zwischen 1 und 12)
+6. Tag (Zahlenwert zwischen 1 und 31)
+
+Erstellen Sie für jede Spalte einen eigenen Namen (verwenden Sie die Namen `ozone`, `solar`, `wind`, `temp`, `month` und `day`). Verwenden Sie diese Namen in allen folgenden Übungen.
 
 
-### Exercise 4
+### Übung 3
 
-Create a scatter plot with temperature on the x-axis and wind on the y-axis. Add appropriate axis labels.
+Erzeugen Sie mit Matplotlib ein Histogramm der Wind-Werte.
 
 
-### Exercise 5
+### Übung 4
 
-Display the following four plots in a single figure (use a layout with two rows and two columns):
+Erstellen Sie mit Matplotlib einen Scatterplot mit der Temperatur auf der x-Achse und dem Wind auf der y-Achse.
 
-1. A scatter plot of `ozone` against `solar`.
-2. A line plot showing the temperature values.
-3. A violin plot of the temperature values for the five months. The values for these months correspond to the following slices: `temp[:31]`, `temp[31:61]`, `temp[61:92]`, `temp[92:123]`, `temp[123:]`.
-4. A scatter plot of `wind` against `ozone`.
 
-Add appropriate axis labels and do not forget to call `fig.set_tight_layout(True)` as a final step!
+### Übung 5
+
+Stellen Sie folgende vier Grafiken in einer Abbildung dar (verwenden Sie dazu eine Anordung aus zwei Zeilen und zwei Spalten):
+
+1. Ein Scatterplot von `ozone` gegen `solar`.
+2. Eine Liniengrafik mit dem Verlauf von `temp`.
+3. Ein Violinenplot mit den Werten von `temp` für die fünf Monate. Die Werte für diese Monate entsprechen den folgenden Slices: `temp[:31]`, `temp[31:61]`, `temp[61:92]`, `temp[92:123]`, `temp[123:]`.
+4. Ein Scatterplot von `wind` gegen `ozone`.
+
+Fügen Sie geeignete Achsenbeschriftungen hinzu und vergessen Sie nicht, zum Schluss `fig.set_tight_layout(True)` aufzurufen!
