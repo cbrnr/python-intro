@@ -1,8 +1,8 @@
 ---
-title: "11 – Solutions"
-subtitle: "Introduction to Python and PsychoPy"
+title: "11 – Lösungen"
+subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-05-26
+date: 2026-01-08
 format:
   html:
     page-layout: full
@@ -12,13 +12,16 @@ title-block-banner: true
 theme:
   light: flatly
   dark: darkly
+lang: de
+author-title: "Autor"
+published-title: "Veröffentlicht"
 ---
 
-## Exercise 1
+## Übung 1
 
-The Stroop experiment is available [here](stroop.zip).
+Das Stroop-Experiment ist [hier](stroop.zip) verfügbar.
 
 
-## Exercise 2
+## Übung 2
 
-The number comparison experiment is available [here](number_comparison.zip).
+Das Zahlenvergleichsexperiment ist [hier](number_comparison.zip) verfügbar.
