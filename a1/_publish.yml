@@ -1,8 +1,0 @@
-- source: a1.qmd
-  quarto-pub:
-    - id: 16101a50-787c-445b-80d6-c4392ca0ba5d
-      url: https://cbrnr.quarto.pub/python-25w-exercises
-- source: a1-solutions.qmd
-  quarto-pub:
-    - id: 64f32a7e-9676-443a-a978-f1eb465c7403
-      url: https://cbrnr.quarto.pub/python-25w-exercises-solutions

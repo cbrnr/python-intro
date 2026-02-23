@@ -1,0 +1,21 @@
+---
+title: "Einführung in Python und PsychoPy"
+---
+
+Die folgenden Unterlagen dienen als Basis für die Lehrveranstaltung [Einführung in Python und PsychoPy](https://online.uni-graz.at/kfu_online/wbLv.wbShowLVDetail?pStpSpNr=940461).
+
+ 0. [Organisatorisches](00/00.qmd)
+ 1. [Grundlagen](01/01.qmd) ([Lösungen](01/01-solutions.qmd))
+ 2. [Die Python-Umgebung](02/02.qmd) ([Lösungen](02/02-solutions.qmd))
+ 3. [Namen, Ausdrücke, Anweisungen](03/03.qmd) ([Lösungen](03/03-solutions.qmd))
+ 4. [Funktionen](04/04.qmd) ([Lösungen](04/04-solutions.qmd))
+ 5. [Bedingungen und Schleifen](05/05.qmd) ([Lösungen](05/05-solutions.qmd))
+ 6. [Strings](06/06.qmd) ([Lösungen](06/06-solutions.qmd))
+ 7. [Listen und Dictionaries](07/07.qmd) ([Lösungen](07/07-solutions.qmd))
+ 8. [Ein- und Ausgabe](08/08.qmd) ([Lösungen](08/08-solutions.qmd))
+ 9. [Numerische Daten](09/09.qmd) ([Lösungen](09/09-solutions.qmd))
+10. [Grafiken](10/10.qmd) ([Lösungen](10/10-solutions.qmd))
+11. [PsychoPy (1)](11/11.qmd) ([Lösungen](11/11-solutions.qmd))
+12. [PsychoPy (2)](12/12.qmd) ([Lösungen](12/12-solutions.qmd))
+
+- [Übungen](a1/a1.qmd) ([Lösungen](a1/a1-solutions.qmd))

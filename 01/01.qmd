@@ -2,7 +2,7 @@
 title: "1 – Grundlagen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-10-02
+date: 2026-03-02
 format:
   html:
     page-layout: full
@@ -47,7 +47,7 @@ Python wird oft mit den folgenden Eigenschaften beschrieben:
 
 Python wurde bereits 1991 von [Guido van Rossum](https://de.wikipedia.org/wiki/Guido_van_Rossum) veröffentlicht und hat gerade in den letzten Jahren enorm an Popularität gewonnen. Bereits seit einiger Zeit ist Python die beliebteste bzw. meistverwendete Programmiersprache weltweit (siehe beispielsweise [PYPL](https://pypl.github.io/PYPL.html), [TIOBE](https://www.tiobe.com/tiobe-index/) und [IEEE Spectrum Top Programming Languages](https://spectrum.ieee.org/top-programming-languages-2024)). Außerdem zeigt die [Stack Overflow Developer Survey 2025](https://survey.stackoverflow.co/2025/), dass Python nach wie vor [sehr stark wächst](https://survey.stackoverflow.co/2025/technology#most-popular-technologies) und [sehr gefragt ist](https://survey.stackoverflow.co/2025/technology#2-programming-scripting-and-markup-languages). 
 
-In der Praxis ist die Popularität einer Programmiersprache durchaus relevant, denn je größer und aktiver die Community einer Sprache ist, desto einfacher wird es, bestehende Lösungen für Probleme zu finden oder schnell Antworten auf neue Fragen zu bekommen.
+In der Praxis ist die Popularität einer Programmiersprache durchaus relevant, denn je größer und aktiver die Community einer Sprache ist, desto einfacher wird es, bestehende Lösungen für Probleme zu finden oder Antworten auf neue Fragen zu bekommen.
 
 
 ## Wie sieht Python-Code aus?
@@ -80,29 +80,11 @@ print(", ".join([str(i) for i in range(10)]))
 
 ## Installation
 
-Die [offizielle Python-Website](https://www.python.org/) enthält viele nützliche Informationen rund um Python. Im [Download-Bereich](https://www.python.org/downloads/) findet man Installationspakete für Windows und macOS. Bei den meisten Linux-Distributionen ist Python bereits vorinstalliert, ansonsten kann man dieses sehr einfach über den Paketmanager der jeweiligen Distribution installieren.
+Die [offizielle Python-Website](https://www.python.org/) enthält viele nützliche Informationen rund um Python. Im [Download-Bereich](https://www.python.org/downloads/) findet man Installationspakete für Windows und macOS. Unter Windows installiert man den Python Install Manager, welchen man auch aus dem [Microsoft Store](https://apps.microsoft.com/detail/9NQ7512CXL7T) beziehen kann. Weitere Informationen zur Verwendung von Python unter Windows finden Sie in der [offiziellen Python-Dokumentation](https://docs.python.org/3/using/windows.html). Für weiterführende Informationen zur Verwendung von Python unter macOS lesen Sie bitte die [offizielle Python-Dokumentation](https://docs.python.org/3/using/mac.html). Bei den meisten Linux-Distributionen ist Python bereits vorinstalliert, ansonsten kann man dieses sehr einfach über den Paketmanager der jeweiligen Distribution installieren.
 
 :::{.callout-note}
-Diese Unterlagen zeigen die Installation von Python 3.13.1. Installieren und verwenden Sie jedoch stets die neueste verfügbare Version!
+Es ist sinnvoll, stets die neueste Python-Version zu verwenden.
 :::
-
-
-### Windows
-
-Für die Installation unter Windows wählen Sie die Standardinstallation (*"Install Now"*) aus, aber setzen Sie unbedingt das Häkchen bei *"Add python.exe to PATH"*. Falls Sie keine Administratorrechte haben, können Sie hier auch das Häkchen bei *"Use admin privileges when installing py.exe"* entfernen. In diesem Fall wird Python nur für den aktuellen Benutzer installiert. Die folgende Abbildung zeigt die empfohlenen Einstellungen:
-
-![](install-python-windows.png){width=50%}
-
-Weitere Informationen zur Verwendung von Python unter Windows finden Sie in der [offiziellen Python-Dokumentation](https://docs.python.org/3/using/windows.html).
-
-
-### macOS
-
-Für die Installation unter macOS führen Sie die Installation mit den Standardeinstellungen durch. Danach starten Sie das Programm *"Install Certificates"* im Ordner *Python 3.13* (siehe folgende Abbildung), um die Installation abzuschließen.
-
-![](install-python-macos.png){width=50%}
-
-Für weiterführende Informationen zur Verwendung von Python unter macOS lesen Sie bitte die [offizielle Python-Dokumentation](https://docs.python.org/3/using/mac.html).
 
 
 ## Erste Schritte
@@ -194,7 +176,7 @@ math.e
 ```
 
 ::: {.callout-tip}
-In Python ist es notwendig, Module zu importieren, um deren Funktionen und Variablen verwenden zu können. Wir werden im Laufe dieses Kurses viele verschiedene Module importieren und verwenden.
+In Python ist es notwendig, Module zu *importieren*, um deren Funktionen und Variablen verwenden zu können. Wir werden im Laufe dieses Kurses viele verschiedene Module importieren und verwenden.
 :::
 
 
@@ -221,7 +203,7 @@ Python ist sehr populär in den Neurowissenschaften. Auf der [NIPY-Website](http
 
 ### Statistische Datenanalyse
 
-Zur statistischen Auswertung von Daten gibt es in Python ebenfalls eine große Anzahl an Paketen. Besonders hervorzuheben sind hier [NumPy](https://www.numpy.org/), [SciPy](https://scipy.org/), [pandas](https://pandas.pydata.org/), [statsmodels](https://www.statsmodels.org/stable/index.html), [Matplotlib](https://matplotlib.org/), [seaborn](https://seaborn.pydata.org/) und [Scikit-learn](https://scikit-learn.org/stable/). Einige dieser Pakete werden wir im Rahmen dieses Kurses kennenlernen (wenn auch nur sehr oberflächlich).
+Zur statistischen Auswertung von Daten gibt es in Python ebenfalls eine große Anzahl an Paketen. Besonders hervorzuheben sind hier [NumPy](https://www.numpy.org/), [SciPy](https://scipy.org/), [Polars](https://www.pola.rs/), [pandas](https://pandas.pydata.org/), [statsmodels](https://www.statsmodels.org/stable/index.html), [Matplotlib](https://matplotlib.org/), [seaborn](https://seaborn.pydata.org/) und [scikit-learn](https://scikit-learn.org/stable/). Einige dieser Pakete werden wir im Rahmen dieses Kurses kennenlernen (wenn auch nur sehr oberflächlich).
 
 ![](scatter.png)
 
