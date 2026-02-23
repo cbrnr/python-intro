@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Clemens Brunner">
+
+<title>11 – PsychoPy (1) – Einführung in Python und PsychoPy</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-f1aadacce99040138bbb613f9330654f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-70acd5334efd903f5a7ee98cc20b8936.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-f43fd6ecb9380c5f2fb0abebe514624c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-70acd5334efd903f5a7ee98cc20b8936.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Einführung in Python und PsychoPy</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Suchen"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navigation umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../01/01.html"> 
+<span class="menu-text">1</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../02/02.html"> 
+<span class="menu-text">2</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../03/03.html"> 
+<span class="menu-text">3</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../04/04.html"> 
+<span class="menu-text">4</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../05/05.html"> 
+<span class="menu-text">5</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../06/06.html"> 
+<span class="menu-text">6</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../07/07.html"> 
+<span class="menu-text">7</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../08/08.html"> 
+<span class="menu-text">8</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../09/09.html"> 
+<span class="menu-text">9</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../10/10.html"> 
+<span class="menu-text">10</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../11/11.html" aria-current="page"> 
+<span class="menu-text">11</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../12/12.html"> 
+<span class="menu-text">12</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://orcid.org/0000-0002-6030-2233"> 
+<span class="menu-text"><i class="ai  ai-orcid" title="" style="color:"></i></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://scholar.social/web/@cbrnr"> 
+<span class="menu-text"><i class="fa-brands fa-mastodon" aria-label="mastodon"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cbrnr"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:clemens.brunner@gmail.com"> <i class="bi bi-envelope-fill" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page">
+      <h1 class="title">11 – PsychoPy (1)</h1>
+            <p class="subtitle lead">Einführung in Python und PsychoPy</p>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page">
+
+      <div>
+      <div class="quarto-title-meta-heading">Autor</div>
+      <div class="quarto-title-meta-contents">
+               <p>Clemens Brunner </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Veröffentlicht</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">8. Januar 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+
+
+
+
+
+
+<section id="allgemeines" class="level2">
+<h2 class="anchored" data-anchor-id="allgemeines">Allgemeines</h2>
+<p><a href="https://www.psychopy.org/">PsychoPy</a> ist ein in Python geschriebenes Paket zur Erstellung von Experimenten in den Neurowissenschaften oder der experimentellen Psychologie. Es ist frei verfügbar (Open Source) und unterstützt zwei verschiedene Möglichkeiten Experimente zu erstellen:</p>
+<ol type="1">
+<li>Visuelle Erstellung über eine grafische Oberfläche (GUI) namens <em>Builder</em></li>
+<li>Programmatische Erstellung mit Python-Code (z.B. mit dem mitgelieferten Editor namens <em>Coder</em>)</li>
+</ol>
+<p>Ersteres erleichtert den Einstieg, da keinerlei Programmierwissen notwendig ist. Ein mit Builder erstelltes Experiment wird automatisch in Python-Code übersetzt, welcher dann ausgeführt werden kann. Obwohl viele Parameter des Experimentes grafisch angepasst werden können, ist es mit dem Builder mitunter schwierig, komplexere Designs umzusetzen. Dafür ist die zweite Möglichkeit gedacht – man kann die grafische Oberfläche auch komplett ignorieren und das Experiment direkt mit Python-Code erstellen, oder man verfeinert ein mit dem Builder erstelltes Experiment mit angepasstem Python-Code. Dazu sind allerdings sowohl grundlegende Python-Kenntnisse als auch Wissen über die Funktionsweise von PsychoPy notwendig.</p>
+<p>In dieser Lehrveranstaltung werden wir beide Möglichkeiten kennenlernen. Zunächst werden wir die grafische Oberfläche Builder verwenden, um einfache Experimente zu erstellen. Im nächsten Kapitel werden wir dann den zugrundeliegenden Python-Code näher betrachten und Experimente direkt mit Python-Code erstellen.</p>
+</section>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<p>Da PsychoPy ein Python-Paket ist, kann es prinzipiell mit <code>pip install psychopy</code> installiert werden. Allerdings ist es durch die vielen und teilweise sehr spezifischen Abhängigkeiten von PsychoPy in der Praxis relativ aufwändig, eine funktionsfähige PsychoPy-Umgebung zu erhalten.</p>
+<p>Die <a href="https://www.psychopy.org/download.html">offizielle Dokumentation</a> beschreibt einige mögliche Installationsvarianten für unterschiedliche Betriebssysteme. In vielen Fällen ist es am einfachsten, die vorgefertigten <a href="https://github.com/psychopy/psychopy/releases">Standalone-Pakete</a> zu verwenden. Diese Pakete beinhalten eine komplette Python-Umgebung inklusive aller notwendigen Zusatzpakete, welche parallel zu einer eventuell bereits vorhandenen Python-Umgebung installiert werden können. Es gibt diese Standalone-Pakete sowohl für Windows als auch macOS. Für Linux werden keine Installer angeboten, hier muss man PsychoPy manuell installieren (es gibt aber <a href="https://github.com/wieluk/psychopy_linux_installer">PsychoPy Installation Script for Linux</a>, welches die Installation automatisiert und daher drastisch vereinfacht).</p>
+</section>
+<section id="builder" class="level2">
+<h2 class="anchored" data-anchor-id="builder">Builder</h2>
+<p>Nach dem Start von PsychoPy öffnen sich normalerweise drei unabhängige Fenster, nämlich die grafische Oberfläche Builder, der Code-Editor Coder sowie der Runner (welcher zum Starten von Experimenten dient).</p>
+<p>Das Builder-Fenster sollte nach dem Starten ungefähr so aussehen:</p>
+<p><img src="psychopy_builder.png" class="img-fluid"></p>
+<section id="flow" class="level3">
+<h3 class="anchored" data-anchor-id="flow">Flow</h3>
+<p>Im unteren Bereich (“Flow”) sieht man eine Übersicht über das gesamte Experiment, welches aus Routinen und Schleifen besteht. Momentan gibt es nur eine einzige Routine namens “trial” (als blaues Kästchen dargestellt).</p>
+</section>
+<section id="routinen" class="level3">
+<h3 class="anchored" data-anchor-id="routinen">Routinen</h3>
+<p>Die Routinen sind im Hauptbereich des Programmfensters (“Routines”) mit einer Zeitleiste detailliert dargestellt. Wenn mehrere Routinen im Experiment vorhanden sind, werden diese in separaten Tabs visualisiert. Mit der Zeitleiste kann man nachvollziehen, wann bestimmte Komponenten in einer Routine aktiv sind.</p>
+</section>
+<section id="komponenten" class="level3">
+<h3 class="anchored" data-anchor-id="komponenten">Komponenten</h3>
+<p>Komponenten kann man einer Routine hinzufügen, indem man diese aus dem Bereich rechts auswählt. Es gibt viele unterschiedliche Komponenten, wie beispielsweise Text-Stimuli, Tastatur-Eingaben, Bild-Stimuli, Sound-Stimuli, usw.</p>
+</section>
+</section>
+<section id="stroop-experiment" class="level2">
+<h2 class="anchored" data-anchor-id="stroop-experiment">Stroop-Experiment</h2>
+<p>Wenden wir uns jetzt aber einem praktischen Beispiel zu. Die folgenden Schritte demonstrieren, wie man mit PsychoPy Builder ein Experiment erstellt, welches den <a href="https://en.wikipedia.org/wiki/Stroop_effect">Stroop-Effekt</a> misst.</p>
+<section id="experiment-einstellungen" class="level3">
+<h3 class="anchored" data-anchor-id="experiment-einstellungen">Experiment-Einstellungen</h3>
+<p>Zunächst sollte man grundlegende Eigenschaften in den “Experiment Settings” festlegen. Durch einen Klick auf das Icon mit dem Zahnrad (siehe Abbildung unten) öffnet sich ein Dialog, in dem man diverse Einstellungen für das Experiment vornehmen kann. Für unser Beispiel ändern wir den Namen auf “stroop” und löschen die zweite Zeile von “Experiment info” durch Klicken auf das Minus-Symbol ganz rechts in dieser Zeile. Dies bewirkt, dass vor dem Starten des Experiments nur der Name der Versuchsperson (“participant”) abgefragt wird.</p>
+<p>Das Dialogfenster sollte also wie folgt aussehen und kann durch Klicken auf OK bestätigt werden:</p>
+<p><img src="exp_settings.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Während man ein Experiment erstellt, sollte man den Vollbildmodus ausschalten (da es sonst teilweise nicht möglich ist, ein laufendes Experiment vorzeitig abzubrechen). Dies kann man in den Experiment Settings im Tab “Screen” tun, indem man die Option “Full-screen window” deaktiviert. Wenn das Experiment dann fertig ist, kann man den Vollbildmodus wieder aktivieren.</p>
+</div>
+</div>
+</section>
+<section id="routine-instructions" class="level3">
+<h3 class="anchored" data-anchor-id="routine-instructions">Routine “Instructions”</h3>
+<p>Bevor das eigentliche Experiment beginnt, sollte man eine kurze Erklärung am Bildschirm anzeigen. Dies setzen wir in einer eigenen Routine um – wir können die bereits vorhandene Routine “trial” (die ja noch keine Komponenten enthält) dafür verwenden.</p>
+<p>Durch einen Rechtsklick auf das blaue Routinen-Symbol und Auswahl von “rename” können wir einen neuen Namen vergeben – für dieses Beispiel verwenden wir <code>instructions</code>. Danach fügen wir einen Text-Stimulus aus der Komponenten-Ansicht hinzu, mit dem wir einen kurzen Text anzeigen können. Ein Klick auf die Text-Stimulus-Schaltfläche öffnet einen Dialog, in dem wir diverse Eigenschaften ändern können. Wichtige Punkte sind hier</p>
+<ul>
+<li>der Name,</li>
+<li>die Start- und Stopp-Zeit,</li>
+<li>die Textgröße sowie</li>
+<li>der eigentliche Text (die Instruktionen).</li>
+</ul>
+<p>Die Instruktionen sollen so lange angezeigt werden, bis die Leertaste gedrückt wird. Deswegen löschen wir die Zahl aus dem Eingabefeld “Stop” – dies bedeutet, dass der Stimulus unendlich lange angezeigt wird. Wir werden aber gleich mit einer weiteren Komponente das Beenden durch einen Tastendruck erzwingen. Die Eigenschaften des Text-Stimulus sollten wie folgt eingegeben werden:</p>
+<p><img src="instructions_text.png" class="img-fluid"></p>
+<p>In der Zeitleiste wird, nachdem man OK geklickt hat, der Text-Stimulus grafisch dargestellt. Man erkennt, dass dieser bei Sekunde 0 startet und kein Ende hat. Durch Klicken auf den Stimulus in der Zeitleiste können die Eigenschaften nachträglich verändert bzw. angepasst werden.</p>
+<p>Um die Routine per Tastendruck zu beenden und das eigentliche Experiment zu starten, fügen wir eine Keyboard-Komponente hinzu, welche Tastatureingaben aufzeichnen kann. In deren Eigenschaften vergeben wir wieder einen sinnvollen Namen (<code>instructions_resp</code>), lassen das Feld “Stop” leer, lassen das Häkchen bei “Force end of Routine” gesetzt (dies bewirkt, dass die gesamte Routine nach dem Drücken einer Taste beendet wird) und schreiben in die Liste der “Allowed keys” lediglich <code>'space'</code> (dies bedeutet, dass nur die Leertaste die Routine beendet). Bei “Store” im Tab “Data” kann man “nothing” auswählen, da wir die Information, wann genau die Leertaste gedrückt wurde, nicht benötigen.</p>
+<p>Das PsychoPy-Fenster sollte nun wie folgt aussehen:</p>
+<p><img src="intro_created.png" class="img-fluid"></p>
+</section>
+<section id="ausführen-des-experiments" class="level3">
+<h3 class="anchored" data-anchor-id="ausführen-des-experiments">Ausführen des Experiments</h3>
+<p>Wir können nun bereits versuchen, das Experiment zu starten. Dazu klickt man auf das grüne “Run experiment” Icon. Nachdem unser Experiment noch nicht gespeichert ist, müssen wir dies nun tun (z.B. unter dem Namen <code>stroop.psyexp</code>). Danach öffnet sich der Runner-Dialog und das Experiment startet.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Wichtig
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Unter macOS muss man PsychoPy erlauben, den Computer zu steuern (sonst funktionieren die Experimente nicht). Dies kann man in den Systemeinstellungen im Bereich “Sicherheit &amp; Datenschutz” tun, indem man im Tab “Datenschutz” unter “Bedienungshilfen” auf “PsychoPy” klickt (zuvor muss man auf das Schloss links unten klicken und das Administratorpasswort eingeben).</p>
+<p><img src="macos-accessibility.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Wie erwartet erscheint zuerst ein Dialogfenster, in dem wir den Namen (bzw. den Code) der Versuchsperson eingeben müssen. Dieser Name wird in den von PsychoPy erstellten Dateien verwendet, welche alle Informationen über das Experiment automatisch abspeichern (also wann etwas passiert ist) – standardmäßig befinden sich diese Dateien im Unterordner <code>data</code>.</p>
+</section>
+<section id="routine-task" class="level3">
+<h3 class="anchored" data-anchor-id="routine-task">Routine “Task”</h3>
+<p>Nun soll das eigentliche Stroop-Experiment beginnen. Dazu erstellen wir eine neue Routine durch Klicken auf “Insert Routine” – “(new)”. Für die neue Routine vergeben wir den Namen <code>trial</code>. Danach klicken wir an das rechte Ende der Routine “instructions”, um “trial” direkt danach einzufügen. Durch Klicken auf die soeben erstellte Routine können wir dieser wieder Komponenten hinzufügen.</p>
+<p>Spätestens jetzt sollte man sich Gedanken über den exakten Ablauf des Experimentes machen. In unserem einfachen Stroop-Beispiel möchten wir nur die drei Farben rot, grün und blau verwenden. Die Wörter, die am Bildschirm erscheinen, sollen die englischen Begriffe “red”, “green” und “blue” sein. Die Versuchspersonen sollen mit den Tasten “r”, “g” und “b” die Farbe des Wortes angeben (und nicht den Text des Wortes). Wir möchten alle neun möglichen Kombinationen dieser Farben und Begriffe verwenden, also z.B. das rote Wort “red”, das grüne Wort “blue”, usw.</p>
+<p>Dazu können wir alle möglichen Bedingungen in einer Excel-Tabelle zusammenfassen. Folgende Tabelle sollte in der Datei <a href="conditions.xlsx"><code>conditions.xlsx</code></a> abgespeichert werden (Textformatierungen wie z.B. fett sollten nicht verwendet werden):</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">word</th>
+<th style="text-align: left;">color</th>
+<th style="text-align: left;">correct</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">r</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">g</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">b</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">r</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">g</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">b</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">r</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">g</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">b</td>
+</tr>
+</tbody>
+</table>
+<p>Die erste Zeile beinhaltet die Spaltennamen – diese Namen können wir dann in PsychoPy verwenden. Die erste Spalte beinhaltet den Text der am Bildschirm angezeigt werden soll, und die zweite Spalte bestimmt die Farbe des Textes. In der dritten Spalte halten wir den korrekten Tastendruck fest.</p>
+<p>Unsere Routine “trial” zeigt genau ein Wort an (mehr dazu gleich) – wir möchten diese Routine aber für jede Zeile in der Excel-Tabelle wiederholen. Dazu benötigen wir eine Schleife, die wir durch Klicken auf “Insert Loop” einfügen können. Als Startpunkt klicken wir auf den Punkt links von “trial”, und als Endpunkt auf den Punkt rechts von “trial”. Danach öffnet sich ein Dialog mit den Eigenschaften der Schleife. Hier können wir z.B. die Anzahl an Wiederholungen einstellen (standardmäßig ist hier <code>5</code> gesetzt, diesen Wert können wir beibehalten). Im Eingabefeld “Conditions” können wir nun durch Klicken auf das Ordner-Icon unsere Datei <code>conditions.xlsx</code> auswählen. Die neun Bedingungen und drei Parameter werden erkannt, und diese werden nach Klicken auf OK insgesamt fünf Mal wiederholt (d.h. das Experiment besteht aus insgesamt 45 Trials).</p>
+<p>Das PsychoPy-Fenster sollte jetzt in etwa so aussehen:</p>
+<p><img src="trial_loop.png" class="img-fluid"></p>
+<p>Nun müssen wir die Routine “trial” mit den benötigten Komponenten befüllen. Wir möchten die Wörter für jeweils eine Sekunde am Bildschirm anzeigen, daher fügen wir einen Text-Stimulus hinzu. Die Eigenschaften sollten wie folgt gesetzt werden:</p>
+<p><img src="trial_text_1.png" class="img-fluid"></p>
+<p><img src="trial_text_2.png" class="img-fluid"></p>
+<p>Der Clou an diesem Stimulus liegt in der Verwendung von Variablennamen, welche wir mit einem Dollar-Zeichen kennzeichnen können. Der darzustellende Text ist also nicht konstant, sondern wird durch den Inhalt der Variablen <code>$word</code> bestimmt. Wichtig ist hier, dass “set every repeat” ausgewählt ist, damit der Inhalt des Textes bei jeder Schleifenwiederholung aktualisiert wird. Wir können alle Spaltennamen aus der Datei <code>conditions.xlsx</code> als Variablen verwenden, <code>$word</code> bezieht sich hier also auf die erste Spalte mit diesem Namen.</p>
+<p>Die Textfarbe wird im Tab “Appearance” durch <code>$color</code> bestimmt (“set every repeat” muss auch ausgewählt sein) – <code>color</code> ist ebenso ein Spaltenname in der Datei <code>conditions.xlsx</code>.</p>
+<p>Wir möchten außerdem das jeweilige Wort etwas größer am Bildschirm darstellen, deswegen ändern wir im Tab “Formatting” den Eintrag von “Letter height” auf <code>0.1</code>.</p>
+<p>Nun ist ein guter Zeitpunkt, das Experiment wieder auszuführen, um zu prüfen, ob und wie alles funktioniert. Nach den Instruktionen sollten dann <span class="math inline">\(9 \cdot 5 = 45\)</span> Wörter in verschiedenen Farben für jeweils 1 Sekunde am Bildschirm erscheinen.</p>
+<p>Es fehlt noch die Möglichkeit, Tastatureingaben als Antworten geben zu können. Dazu können wir eine Keyboard-Komponente mit folgenden Eigenschaften hinzufügen:</p>
+<p><img src="trial_key_1.png" class="img-fluid"></p>
+<p><img src="trial_key_2.png" class="img-fluid"></p>
+<p>Damit haben die Versuchspersonen 2 Sekunden Zeit, eine der drei Tasten <kbd>r</kbd>, <kbd>g</kbd> oder <kbd>b</kbd> zu drücken. Falls dies nicht geschieht, wird die Routine beendet und der nächste Schleifendurchlauf startet. Außerdem wird gespeichert, ob die Antwort korrekt war oder nicht – dies wird mit Hilfe der Spalte <code>correct</code> (aus des Excel-Datei) erreicht, die ja bereits die erwarteten korrekten Tasteneingaben enthält. Damit kann die erwartete Antwort mit der tatsächlichen Antwort verglichen werden – das Ergebnis dieses Vergleichs wird dann automatisch in die Ergebnisdateien gespeichert. Wir sollten auch den ersten Tastendruck (“first key”) speichern, da dieser für die Antwort relevant ist.</p>
+<p>Wir können das Experiment speichern und ausführen – unser einfaches Stroop-Experiment sollte bereits funktionieren. Das Experiment sollte in PsychoPy in etwa so aussehen:</p>
+<p><img src="simple_stroop.png" class="img-fluid"></p>
+</section>
+<section id="auswerten-der-ergebnisse" class="level3">
+<h3 class="anchored" data-anchor-id="auswerten-der-ergebnisse">Auswerten der Ergebnisse</h3>
+<p>Nachdem ein Experiment erfolgreich ausgeführt wurde, befinden sich im Ergebnisordner (standardmäßig ist das der Unterordner <code>data</code>) drei Dateien mit folgendem Inhalt:</p>
+<ul>
+<li>Kompakte Informationen für jedes Trial (.csv-Datei)</li>
+<li>Detailliertere Informationen über den zeitlichen Ablauf des gesamten Experimentes (.log-Datei)</li>
+<li>Für das Debuggen relevante Informationen über das gesamte Experiment (.psydat-Datei)</li>
+</ul>
+<p>Die Namen dieser Dateien setzen sich normalerweise aus dem Probandencode, dem Experimentnamen, dem Datum sowie der Uhrzeit zusammen (dies kann aber in den Experiment-Einstellungen angepasst werden, falls man ein anderes Namensschema verwenden möchte).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Angenommen, wir hätten die folgende Aufzeichnung durchgeführt:</p>
+<ul>
+<li>Für den Probandencode wurde im Dialogfenster gleich nach dem Start des Experimentes <code>s01</code> eingegeben.</li>
+<li>Der Name des Experimentes wurde in den Experiment-Einstellungen auf <code>stroop</code> gesetzt.</li>
+<li>Das Experiment wurde am 30. Oktober 2022 um 11:32 gestartet.</li>
+</ul>
+<p>Die drei Dateinamen lauten dann <code>s01_stroop_2022-10-30_11h32.51.619</code> mit den Endungen <code>.csv</code>, <code>.log</code> und <code>.psydat</code>.</p>
+</div>
+</div>
+<p>Üblicherweise ist es ausreichend, die .csv-Datei zur Auswertung des Experimentes zu verwenden. Man kann diese Datei z.B. in Excel öffnen bzw. importieren. Eine Zeile entspricht einem bestimmten Trial im Experiment, die Spalten enthalten diverse Variablen. Die folgende Tabelle zeigt die für die Auswertung relevanten Spalten (in der Datei sind noch viel mehr zusätzliche Spalten enthalten, die für uns aber nicht von Interesse sind):</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 13%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">word</th>
+<th style="text-align: left;">color</th>
+<th style="text-align: left;">correct</th>
+<th style="text-align: left;">trial_key.keys</th>
+<th style="text-align: left;">trial_key.corr</th>
+<th style="text-align: left;">trial_key.rt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.9099219</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1.0798603</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0.6511786</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1.377726</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1.0776839</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0.7208335</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1.4581527</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1.0556199</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1.5644918</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.6078371</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.574091</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1.1114685</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1.2182108</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.7759897</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1.0443643</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.4471338</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.8137774</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.50785</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.9630382</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.4799467</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.5921032</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.5423042</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.9103351</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.9621963</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0.7260921</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1.0694482</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.652598</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1.2136657</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0.761413</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1.2664384</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.4940767</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.4782196</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.4826069</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.4881791</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.6130762</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.4593343</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.5275998</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">b</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.4871046</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">blue</td>
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.6172059</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">red</td>
+<td style="text-align: left;">green</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0.4211524</td>
+</tr>
+</tbody>
+</table>
+<p>Man könnte nun beispielsweise die mittleren Reaktionszeiten (Spalte <code>trial_key.rt</code>) der kongruenten (Wort und Farbe stimmen überein) und inkongruenten (Wort und Farbei stimmen nicht überein) korrekt gelösten (Spalte <code>trial_key.corr</code>) Trials vergleichen.</p>
+</section>
+</section>
+<section id="erweitertes-stroop-experiment" class="level2">
+<h2 class="anchored" data-anchor-id="erweitertes-stroop-experiment">Erweitertes Stroop-Experiment</h2>
+<p>In den folgenden Abschnitten wollen wir versuchen, das Stroop-Experiment um folgende zwei Features zu erweitern:</p>
+<ol type="1">
+<li>Anzeigen eines Textes am Ende des Experimentes (z.B. könnte man sich bei den Versuchspersonen für die Teilnahme bedanken).</li>
+<li>Feedback nach jedem Trial, welches die Versuchspersonen informiert ob die gerade erfolgte Antwort korrekt oder inkorrekt war (oder zu langsam, falls sie nicht innerhalb von zwei Sekunden geantwortet haben).</li>
+</ol>
+<section id="verabschiedungstext" class="level3">
+<h3 class="anchored" data-anchor-id="verabschiedungstext">Verabschiedungstext</h3>
+<p>Um einen Text am Ende des Experimentes anzuzeigen, können wir ähnlich wie bei den Instruktionen eine Routine mit einem Text-Stimulus erstellen, welcher so lange angezeigt wird, bis die Leertaste gedrückt wird.</p>
+</section>
+<section id="feedback-nach-jedem-trial" class="level3">
+<h3 class="anchored" data-anchor-id="feedback-nach-jedem-trial">Feedback nach jedem Trial</h3>
+<p>Um nach jedem Trial rückzumelden, ob die Versuchsperson die richtige Taste gedrückt hat, fügen wir direkt nach der Routine “trial” eine neue Routine namens “feedback” hinzu. Es ist wichtig, dass sich diese noch <em>innerhalb der Schleife</em> befindet, da wir das Feedback nach jedem Trial geben möchten. Da wir dazu einen Text anzeigen möchten, fügen wir einen Text-Stimulus names “feedback_text” hinzu. Weil wir keinen fixen Text anzeigen können, geben wir die Namen <code>$msg</code> bei Text bzw. <code>$msg_color</code> (im Tab “Appearance”) bei der Textfarbe an (bei beiden Feldern muss “set every repeat” gesetzt werden). Diese beiden Python-Objekte sollen den Text (“Correct!”, “Wrong!” oder “Too slow!”) sowie die zugehörigen Farben (grün, rot oder weiß) beinhalten – dies werden wir im nächsten Schritt implementieren.</p>
+<p><img src="feedback_text.png" class="img-fluid"></p>
+<p>Wir können Python-Objekte in einer Code-Komponente erstellen – dazu klickt man auf das entsprechende Icon in der Gruppe “Custom”. Im Dialogfeld kann man nun Python-Code einfügen.</p>
+<p>In PsychoPy muss man alle Python-Objekte zu Beginn des Experimentes erstellen und z.B. auf Standardwerte setzen. Dazu fügt man im Abschnitt “Begin Experiment” folgenden Code ein:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>msg <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>msg_color <span class="op">=</span> <span class="st">"white"</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p><img src="feedback_code_1.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Den Wert von “Code Type” können wir auf “Py” setzen, da wir unser Experiment nur mit Python erstellen wollen. PsychoPy unterstützt zusätzlich noch Javascript, was eine Ausführung des Experiments im Browser ermöglicht. Wir benötigen diese Funktionalität aber nicht.</p>
+</div>
+</div>
+<p>Im Abschnitt “Begin Routine” befindet sich der Code, der immer am Beginn der Routine ausgeführt wird:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> trial_key.keys:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> trial_key.corr:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        msg <span class="op">=</span> <span class="st">"Correct!"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        msg_color <span class="op">=</span> <span class="st">"green"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        msg <span class="op">=</span> <span class="st">"Wrong!"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        msg_color <span class="op">=</span> <span class="st">"red"</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    msg <span class="op">=</span> <span class="st">"Too slow!"</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    msg_color <span class="op">=</span> <span class="st">"white"</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p><img src="feedback_code_2.png" class="img-fluid"></p>
+<p>Sehen wir uns an, wie dieser Code funktioniert. Wir verwenden hier die Keyboard-Komponente <code>trial_key</code>, welche wie jede Keyboard-Komponente zwei wichtige Eigenschaften (als Attribute) enthält:</p>
+<ul>
+<li><code>trial_key.keys</code> ist eine Liste, welche die im aktuellen Trial gedrückte Taste(n) enthält. Wurde noch keine Taste gedrückt, ist diese Liste leer.</li>
+<li><code>trial_key.corr</code> ist ein <code>bool</code>-Wert (also <code>True</code> oder <code>False</code>), welcher angibt, ob die gedrückte Taste richtig oder falsch ist.</li>
+</ul>
+<p>Die Bedingung <code>if trial_key.keys</code> überprüft, ob die Liste Elemente enthält oder leer ist. Dies ist eine abgekürzte und empfohlene Schreibweise, denn eine nicht-leere Liste entspricht dem <code>bool</code>-Wert <code>True</code>, und eine leere Liste entspricht dem <code>bool</code>-Wert <code>False</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Angenommen, wir hätten <code>x = True</code>, dann wäre die Bedingung <code>if x:</code> äquivalent zu <code>if x == True:</code>. Ebenso wäre <code>if not x:</code> äquivalent zu <code>if x == False:</code>. In Python ist es üblich, Bedingungen so kompakt wie möglich zu formulieren, daher werden diese abgekürzten Schreibweisen empfohlen.</p>
+</div>
+</div>
+<p>Wenn die Liste <code>trial_key.keys</code> also nicht leer ist, wurde eine Taste gedrückt, und der entsprechende Codezweig wird ausgeführt. Dieser besteht aus einer weiteren Bedingung, nämlich <code>if trial_key.corr</code> (auch das ist eine abgekürzte Schreibweise für <code>if trial_key.corr == True</code>). Dies bedeutet also, wenn die gedrückte Taste der korrekten Antwort entspricht, wird <code>msg</code> auf <code>"Correct!"</code> und <code>msg_color</code> auf <code>"green"</code> gesetzt. Falls die Taste nicht korrekt war, wird der <code>else</code>-Zweig ausgeführt (<code>msg = "Wrong!"</code> und <code>msg_color = "red"</code>).</p>
+<p>Der abschließende <code>else</code>-Zweig wird nur ausgeführt, wenn keine Taste gedrückt wurde (also <code>trial_key.keys</code> leer ist). Dann werden <code>msg</code> und <code>msg_color</code> entsprechend gesetzt.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Wichtig
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Es ist wichtig, dass die Code-Komponente ganz am Beginn der Routine ausgeführt wird, d.h. sie muss sich auch ganz oben in der Zeitübersicht (über dem Text-Stimulus) befinden. Die Position in der Liste der Komponenten kann man verändern, wenn man auf eine Komponente rechtsklickt und z.B. “move to top” auswählt.</p>
+</div>
+</div>
+<p>Die fertige Feedback-Routine sollte dann so aussehen:</p>
+<p><img src="extended_stroop.png" class="img-fluid"></p>
+<p>Unser erweitertes Stroop-Experiment ist nun fertig und kann ausgeführt werden. Als Übung könnten Sie versuchen, zu Beginn jedes Trials einen kurzen Ton abzuspielen.</p>
+</section>
+</section>
+<section id="übungen" class="level2">
+<h2 class="anchored" data-anchor-id="übungen">Übungen</h2>
+<section id="übung-1" class="level3">
+<h3 class="anchored" data-anchor-id="übung-1">Übung 1</h3>
+<p>Erstellen Sie das in den Unterlagen beschriebene Stroop-Experiment mit Feedback und führen Sie als Versuchsperson das Experiment durch. Berechnen Sie dann aus den Ergebnisdaten die mittleren Reaktionszeiten für korrekte kongruente und inkongruente Stimuli!</p>
+</section>
+<section id="übung-2" class="level3">
+<h3 class="anchored" data-anchor-id="übung-2">Übung 2</h3>
+<p>Erstellen Sie mit PsychoPy Builder ein Experiment namens <code>number_comparison</code>, in dem die Versuchsperson zwei am Bildschirm erscheinende Zahlen vergleichen soll. Sie soll angeben, ob die rechte oder linke Zahl die (numerisch) größere der beiden Zahlen ist.</p>
+<p>Verwenden Sie als Stimuli alle 20 Kombinationen der Zahlen von 1 bis 5, also z.B. 1–2, 1–3, 1–4, 1–5, 2–1, 2–3, usw. (die Excel-Datei soll also inklusive Kopfzeile 21 Zeilen beinhalten; gleiche Zahlen sollen nicht miteinander verglichen werden).</p>
+<p>Für die Antworten sollen entweder die Pfeil-nach-links-Taste oder die Pfeil-nach-rechts-Taste gedrückt werden können. Die Pfeil-nach-links-Taste heißt in PsychoPy <code>"left"</code> und bedeutet in diesem Experiment, dass die linke Zahl größer als die rechte ist. Die Pfeil-nach-rechts-Taste heißt <code>"right"</code> und bedeutet, dass die rechte Zahl größer ist.</p>
+<p>Ein Trial (also ein Zahlenpaar) soll maximal 2 Sekunden am Bildschirm sichtbar sein – falls bis dahin keine Antwort gegeben wurde, soll das nächste Trial starten. Nach einer gegebenen Antwort bzw. nach dem Timeout von 2 Sekunden soll ein kurzes Feedback gegeben werden, ob die Antwort richtig oder falsch war (Dauer 1 Sekunde). Wenn keine Antwort gegeben wurde, soll kein Text (also ein leerer String) angezeigt werden.</p>
+<p>Die 20 Bedingungen sollen alle in zufälliger Reihenfolge angezeigt werden und drei mal wiederholt werden, d.h. insgesamt soll das Experiment aus 60 Trials bestehen.</p>
+<p>Das Experiment soll außerdem einen Instruktionstext sowie einen Verabschiedungstext beinhalten, welche nur durch Drücken der Leertaste beendet werden können.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Kopiert");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Kopiert");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/cbrnr\.github\.io\/python-intro\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© Clemens Brunner</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

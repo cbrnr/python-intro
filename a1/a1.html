@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Clemens Brunner">
+
+<title>Übungen – Einführung in Python und PsychoPy</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-f1aadacce99040138bbb613f9330654f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-8b4baf804e461d9b72633f0de59a0cac.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-70acd5334efd903f5a7ee98cc20b8936.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-f43fd6ecb9380c5f2fb0abebe514624c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-70acd5334efd903f5a7ee98cc20b8936.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Einführung in Python und PsychoPy</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Suchen"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navigation umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../01/01.html"> 
+<span class="menu-text">1</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../02/02.html"> 
+<span class="menu-text">2</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../03/03.html"> 
+<span class="menu-text">3</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../04/04.html"> 
+<span class="menu-text">4</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../05/05.html"> 
+<span class="menu-text">5</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../06/06.html"> 
+<span class="menu-text">6</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../07/07.html"> 
+<span class="menu-text">7</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../08/08.html"> 
+<span class="menu-text">8</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../09/09.html"> 
+<span class="menu-text">9</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../10/10.html"> 
+<span class="menu-text">10</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../11/11.html"> 
+<span class="menu-text">11</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../12/12.html"> 
+<span class="menu-text">12</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://orcid.org/0000-0002-6030-2233"> 
+<span class="menu-text"><i class="ai  ai-orcid" title="" style="color:"></i></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://scholar.social/web/@cbrnr"> 
+<span class="menu-text"><i class="fa-brands fa-mastodon" aria-label="mastodon"></i></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cbrnr"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:clemens.brunner@gmail.com"> <i class="bi bi-envelope-fill" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Dunkelmodus umschalten"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page">
+      <h1 class="title">Übungen</h1>
+            <p class="subtitle lead">Einführung in Python und PsychoPy</p>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page">
+
+      <div>
+      <div class="quarto-title-meta-heading">Autor</div>
+      <div class="quarto-title-meta-contents">
+               <p>Clemens Brunner </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Veröffentlicht</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">3. November 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+
+
+
+
+
+
+<section id="übung-1" class="level2">
+<h2 class="anchored" data-anchor-id="übung-1">Übung 1</h2>
+<p>Elektrische Widerstände können in Serie oder parallel geschaltet werden. In einer Serienschaltung addieren sich die Widerstände, während in einer Parallelschaltung der Kehrwert der Gesamtwiderstandes gleich der Summe der Kehrwerte der Einzelwiderstände ist. In Formeln kann dies wie folgt ausgedrückt werden:</p>
+<ul>
+<li>Serienschaltung: <span class="math inline">\(R_G = R_1 + R_2\)</span></li>
+<li>Parallelschaltung: <span class="math inline">\(R_G = R_1 \parallel R_2 \rightarrow \frac{1}{R_G} = \frac{1}{R_1} + \frac{1}{R_2}\)</span></li>
+</ul>
+<p>Schreiben Sie zwei Funktionen <code>serial</code> und <code>parallel</code>, welche die jeweiligen Gesamtwiderstände zurückgeben. Beide Funktionen sollen jeweils zwei Parameter <code>r1</code> und <code>r2</code> haben, welche die beiden zu kombinierenden Widerstände darstellen.</p>
+<p>Testen Sie beide Funktionen mit den Widerständen <span class="math inline">\(R_1 = 10\,\Omega\)</span> und <span class="math inline">\(R_2 = 20\,\Omega\)</span>. Die Gesamtwiderstände sollten <span class="math inline">\(30\,\Omega\)</span> (Serienschaltung) und <span class="math inline">\(6.67\,\Omega\)</span> (Parallelschaltung) betragen.</p>
+<p>Berechnen Sie außerdem den Gesamtwiderstand von <span class="math inline">\((R_1 + R_2) \parallel R_3\)</span> mit den Werten <span class="math inline">\(R_1 = 10\,\Omega\)</span>, <span class="math inline">\(R_2 = 20\,\Omega\)</span> und <span class="math inline">\(R_3 = 50\,\Omega\)</span> mit einem Ausdruck (unter Verwendung der beiden Funktionen)!</p>
+</section>
+<section id="übung-2" class="level2">
+<h2 class="anchored" data-anchor-id="übung-2">Übung 2</h2>
+<p>Schreiben Sie ein Programm, welches die Benutzer auffordert, eine Zahl zwischen 1 und 12 einzugeben (entsprechend den Monaten). Das Programm soll dann den Namen des Monats ausgeben. Falls die eingegebene Zahl nicht im Bereich 1 bis 12 liegt, soll eine Fehlermeldung ausgegeben werden. Die Eingabe soll so lange wiederholt werden, bis eine gültige Zahl eingegeben wird.</p>
+<p>Zur Bestimmung des Monatsnamens definieren Sie eine Funktion <code>month_name</code>, welche die Nummer des Monats als Argument erhält und den Namen des Monats zurückgibt.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sie können davon ausgehen, dass die Benutzer nur ganze Zahlen eingeben.</p>
+</div>
+</div>
+</section>
+<section id="übung-3" class="level2">
+<h2 class="anchored" data-anchor-id="übung-3">Übung 3</h2>
+<p>Schreiben Sie eine Funktion <code>count_words</code>, welche die Anzahl der Wörter in einem Text zählt. Die Funktion soll zwei Parameter haben: <code>text</code> (der Text, in dem die Wörter gezählt werden sollen) und <code>sep</code> (das Trennzeichen, Standardwert ist ein Leerzeichen). Verwenden Sie dafür die String-Methode <code>split</code>, welche eine Liste von Strings zurückgibt; die Länge dieser Liste kann mit der Funktion <code>len</code> ermittelt werden.</p>
+<p>Testen Sie die Funktion mit folgendem Text:</p>
+<blockquote class="blockquote">
+<p>Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python’s elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas.</p>
+</blockquote>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Für diese Funktion reicht uns eine einfache Definition von Wörtern, die durch Leerzeichen getrennt sind. In der Praxis ist die Definition von Wörtern komplexer, da auch Satzzeichen und andere Zeichen berücksichtigt werden müssten.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Definiert man den gegebenen Text als normalen String, entsteht eine sehr lange Zeile. Das ist in Python zwar erlaubt, aber aus stilistischen Gründen sollten Zeilen nicht länger als 88 Zeichen sein. Da Ruff dies derzeit nicht automatisch korrigiert, müssen Zeilenumbrüche manuell eingefügt werden. Wichtig ist dabei, dass Python benachbarte Strings automatisch zu einem einzigen String zusammenfügt:</p>
+<div id="37365ea6" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"This is"</span> <span class="st">" an example."</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>text</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>'This is an example.'</code></pre>
+</div>
+</div>
+<p>Diese Eigenschaft lässt sich nutzen, um lange Strings über mehrere Zeilen zu verteilen. Voraussetzung ist, dass die einzelnen Strings in Klammern stehen:</p>
+<div id="947f56f3" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> (</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"This is"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">" an example."</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>text</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>'This is an example.'</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="übung-4" class="level2">
+<h2 class="anchored" data-anchor-id="übung-4">Übung 4</h2>
+<p>Schreiben Sie eine Funktion <code>factorial</code>, welche die Fakultät <span class="math inline">\(n!\)</span> einer positiven Zahl <span class="math inline">\(n\)</span> berechnet. Die Fakultät <span class="math inline">\(n!\)</span> einer Zahl <span class="math inline">\(n\)</span> ist das Produkt aller positiven ganzen Zahlen kleiner oder gleich <span class="math inline">\(n\)</span>. Die Fakultät von 0 ist mit 1 definiert. Berechnen Sie abschließend <span class="math inline">\(5!\)</span>.</p>
+</section>
+<section id="übung-5" class="level2">
+<h2 class="anchored" data-anchor-id="übung-5">Übung 5</h2>
+<p>Schreiben Sie eine Funktion <code>is_divisible</code>, welche überprüft, ob eine Zahl <span class="math inline">\(n\)</span> durch eine andere Zahl <span class="math inline">\(m\)</span> ohne Rest teilbar ist. Die Funktion soll zwei Parameter haben: <code>n</code> (die zu überprüfende Zahl) und <code>m</code> (die Zahl, durch die geteilt werden soll). Die Funktion soll <code>True</code> zurückgeben, wenn die Division ohne Rest möglich ist, andernfalls <code>False</code>.</p>
+<p>Testen Sie die Funktion mit den Zahlenpaaren (10, 2), (10, 3), (10, 5) und (10, 7).</p>
+</section>
+<section id="übung-6" class="level2">
+<h2 class="anchored" data-anchor-id="übung-6">Übung 6</h2>
+<p>Was ist das Problem im folgenden Beispiel? Korrigieren Sie den Code so, dass er funktioniert.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x is positive."</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x is zero."</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x is negative."</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="übung-7" class="level2">
+<h2 class="anchored" data-anchor-id="übung-7">Übung 7</h2>
+<p>Erstellen Sie eine Liste <code>numbers</code>, welche die Wurzeln der Zahlen 0, 10, 20, … , 990, 1000 beinhaltet. Verwenden Sie dazu eine List Comprehension.</p>
+<p>Bestimmen Sie dann mit einer geeigneten Python-Funktion die Anzahl und die Summe der Elemente der so entstandenen Liste.</p>
+</section>
+<section id="übung-8" class="level2">
+<h2 class="anchored" data-anchor-id="übung-8">Übung 8</h2>
+<p>Erklären Sie, warum folgender Code nicht funktioniert:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Geben Sie den korrekten Code an!</p>
+</section>
+<section id="übung-9" class="level2">
+<h2 class="anchored" data-anchor-id="übung-9">Übung 9</h2>
+<p>Berechnen Sie mit Python das Ergebnis des folgenden mathematischen Ausdruckes und weisen Sie es dem Namen <code>result</code> zu:</p>
+<p><span class="math display">\[\frac{17 \cdot (\sqrt{5} + \frac{2}{3})}{27.7 - 3^\pi} + 42^{\frac{2}{7}}\]</span></p>
+<p>Geben Sie mit Hilfe der <code>print</code>-Funktion das Ergebnis auf zwei Nachkommastellen gerundet aus (es sollte ca. <span class="math inline">\(-9.93\)</span> lauten).</p>
+</section>
+<section id="übung-10" class="level2">
+<h2 class="anchored" data-anchor-id="übung-10">Übung 10</h2>
+<p>Erklären Sie, warum folgender Code nicht funktioniert:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">lambda</span> <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(alpha <span class="op">+</span> <span class="kw">lambda</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Geben Sie auch den korrekten Code an!</p>
+</section>
+<section id="übung-11" class="level2">
+<h2 class="anchored" data-anchor-id="übung-11">Übung 11</h2>
+<p>Die Standardabweichung <span class="math inline">\(s\)</span> von <span class="math inline">\(N\)</span> Werten <span class="math inline">\(x_i\)</span> kann mit folgender Formel berechnet werden:</p>
+<p><span class="math display">\[s = \sqrt{\frac{1}{N-1} \sum_{i=1}^{N}(x_i - \bar{x})^2}\]</span></p>
+<p>Dabei ist <span class="math inline">\(\bar{x}\)</span> der arithmetische Mittelwert der Werte:</p>
+<p><span class="math display">\[\bar{x} = \frac{1}{N} \sum_{i=1}^{N} x_i\]</span></p>
+<p>Schreiben Sie eine Funktion namens <code>std</code>, welche eine Liste an Zahlen als Argument entgegennimmt und deren Standardabweichung zurückgibt. Verwenden Sie in Ihrer Lösung <em>nicht</em> das Modul <code>statistics</code>, sondern berechnen Sie die Kenngrößen selbst (z.B. mittels List Comprehensions)!</p>
+<p>Testen Sie Ihre Funktion mit der Liste <code>[10, 12, 23, 23, 16, 23, 21, 16]</code>. Die Standardabweichung sollte ca. <code>5.237</code> betragen.</p>
+</section>
+<section id="übung-12" class="level2">
+<h2 class="anchored" data-anchor-id="übung-12">Übung 12</h2>
+<p>Schreiben Sie eine Funktion <code>get_even</code>, welche eine Liste an Zahlen als Argument entgegennimmt und eine neue Liste, welche nur die <em>geraden</em> Zahlen der ursprünglichen Liste beinhaltet, zurückgibt.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Der Aufruf <code>get_even([1, 45, -4, -5, 17, 2])</code> gibt also die Liste <code>[-4, 2]</code> zurück.</p>
+</div>
+</div>
+<section id="übung-13" class="level3">
+<h3 class="anchored" data-anchor-id="übung-13">Übung 13</h3>
+<p>Schreiben Sie eine Funktion <code>fizzbuzz</code>, welche eine Zahl als Argument entgegennimmt. Wenn die Zahl sowohl durch 3 als auch durch 5 teilbar ist, soll die Funktion den String <code>Fizzbuzz</code> zurückgeben. Wenn die Zahl nur durch 3 teilbar ist, soll die Funktion <code>Fizz</code> zurückgeben. Wenn die Zahl nur durch 5 teilbar ist, soll die Funktion <code>Buzz</code> zurückgeben. Für alle anderen Zahlen soll die Zahl selbst als String zurückgegeben werden.</p>
+<p>Rufen Sie die Funktion dann in einer Schleife mit den Zahlen von 1 bis 15 auf und geben Sie die zurückgegebenen Werte mit <code>print</code> am Bildschirm aus!</p>
+<p>Die ausgegebenen Werte sollten lauten: 1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, Fizzbuzz.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Der Rest-Operator <code>%</code> kann die Teilbarkeit einer Zahl überprüfen. Eine Zahl ist durch 3 teilbar, wenn der Rest der Division durch 3 Null ergibt. Eine Zahl ist sowohl durch 3 als auch durch 5 teilbar, wenn der Rest der Division durch 15 Null ergibt.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="übung-14" class="level2">
+<h2 class="anchored" data-anchor-id="übung-14">Übung 14</h2>
+<p>Schreiben Sie eine Funktion <code>add</code>, welche zwei Zahlen addiert und deren Summe zurückgibt. Die Funktion soll also mit zwei Argumenten aufgerufen werden können, wobei aber das zweite Argument optional sein soll. Wenn nur ein Argument übergeben wird, soll die Funktion 1 zu diesem Wert addieren und zurückgeben.</p>
+</section>
+<section id="übung-15" class="level2">
+<h2 class="anchored" data-anchor-id="übung-15">Übung 15</h2>
+<p>Gegeben sei folgender Funktionskopf:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test(x, y<span class="op">=</span><span class="dv">1</span>, z<span class="op">=</span><span class="dv">5</span>):</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Erklären Sie, warum folgende drei Aufrufe nicht funktionieren:</p>
+<ol type="1">
+<li><code>test(y=2, z=2)</code></li>
+<li><code>test(4, y=2, x=2)</code></li>
+<li><code>test()</code></li>
+</ol>
+</section>
+<section id="übung-16" class="level2">
+<h2 class="anchored" data-anchor-id="übung-16">Übung 16</h2>
+<p>Schreiben Sie eine Funktion <code>is_even</code>, welche überprüft, ob das übergebene Argument gerade ist. Falls dies der Fall ist, soll die Funktion <code>True</code> zurückgeben, sonst <code>False</code>. Testen Sie Ihre Funktion, indem Sie sie mit mindestens zwei verschiedenen Argumenten (eine gerade Zahl und eine ungerade Zahl) aufrufen!</p>
+</section>
+<section id="übung-17" class="level2">
+<h2 class="anchored" data-anchor-id="übung-17">Übung 17</h2>
+<p>Schreiben Sie eine Funktion <code>sign</code>, welche das Vorzeichen einer Zahl bestimmt. Die Funktion soll in Abhängigkeit der übergebenen Zahl folgende Werte zurückgeben:</p>
+<ul>
+<li>Ist die Zahl positiv, soll <code>1</code> zurückgegeben werden.</li>
+<li>Ist die Zahl negativ, soll <code>-1</code> zurückgegeben werden.</li>
+<li>Ist die Zahl gleich Null, soll <code>0</code> zurückgegeben werden.</li>
+</ul>
+</section>
+<section id="übung-18" class="level2">
+<h2 class="anchored" data-anchor-id="übung-18">Übung 18</h2>
+<p>Gegeben ist der String <code>x = "Pythonista"</code>. Schreiben Sie eine <code>for</code>-Schleife, welche über den String iteriert und jedes Zeichen dieses Strings in einer neuen Zeile ausgibt.</p>
+</section>
+<section id="übung-19" class="level2">
+<h2 class="anchored" data-anchor-id="übung-19">Übung 19</h2>
+<p>Gegeben ist die Liste <code>y = ["This", "is", "a", "sample", "list"]</code>. Erzeugen Sie mit einer List Comprehension aus dieser Liste eine neue Liste <code>z</code>, welche alle Elemente von <code>y</code> in Großbuchstaben beinhaltet.</p>
+</section>
+<section id="übung-20" class="level2">
+<h2 class="anchored" data-anchor-id="übung-20">Übung 20</h2>
+<p>Gegeben ist der String <code>s = "Donaudampfschifffahrtsgesellschaft"</code>. Verwenden Sie geeignete Funktionen oder String-Methoden um folgende Fragen zu beantworten:</p>
+<ol type="1">
+<li>Aus wie vielen Zeichen besteht <code>s</code>?</li>
+<li>An welcher Stelle (Index) tritt der Buchstabe <code>f</code> das erste mal auf?</li>
+<li>Wie viele <code>e</code> kommen in dem String vor?</li>
+</ol>
+</section>
+<section id="übung-21" class="level2">
+<h2 class="anchored" data-anchor-id="übung-21">Übung 21</h2>
+<p>Gegeben ist eine Liste <code>x = [-13, 22, -2, -14, 33, -16]</code>. Erzeugen Sie mit einer List Comprehension eine neue Liste <code>y</code>, welche die Absolutwerte der Zahlen in <code>x</code> enthält.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Die eingebaute Funktion <code>abs</code> liefert den Absolutwert einer Zahl zurück.</p>
+</div>
+</div>
+</section>
+<section id="übung-22" class="level2">
+<h2 class="anchored" data-anchor-id="übung-22">Übung 22</h2>
+<p>Erzeugen Sie ein NumPy-Array <code>x</code> mit 15 Zeilen und 5 Spalten, welches ganzzahlige Zufallszahlen im Bereich 0 bis 100 (inklusive) beinhalten soll. Initialisieren Sie den Zufallszahlengenerator mit dem Wert <code>1</code>. Berechnen Sie abschließend die fünf Spaltenmittelwerte von <code>x</code>.</p>
+</section>
+<section id="übung-23" class="level2">
+<h2 class="anchored" data-anchor-id="übung-23">Übung 23</h2>
+<p>Erzeugen Sie ein NumPy-Array <code>x</code> mit 1000 Zahlen im gleichmäßigen Abstand von 10 bis 13 (inklusive).</p>
+</section>
+<section id="übung-24" class="level2">
+<h2 class="anchored" data-anchor-id="übung-24">Übung 24</h2>
+<p>Gegeben ist ein NumPy-Array <code>x</code>, welches durch folgenden Code erzeugt werden kann:</p>
+<div id="074a2336" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> default_rng</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> default_rng(<span class="dv">2</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> rng.standard_normal(<span class="dv">10000</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Erzeugen Sie mit Matplotlib ein Histogram mit 50 Bins von <code>x</code>.</p>
+</section>
+<section id="übung-25" class="level2">
+<h2 class="anchored" data-anchor-id="übung-25">Übung 25</h2>
+<p>Gegeben ist ein NumPy-Array <code>x</code>, welches durch folgenden Code erzeugt werden kann:</p>
+<div id="0872d72c" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> default_rng</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> default_rng(<span class="dv">2</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> rng.standard_normal(<span class="dv">10000</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Stellen Sie mit Matplotlib die ersten 100 Werte von <code>x</code> als Balkengrafik dar.</p>
+</section>
+<section id="übung-26" class="level2">
+<h2 class="anchored" data-anchor-id="übung-26">Übung 26</h2>
+<p>Die Datei <a href="shakespeare.txt">shakespeare.txt</a> beinhaltet die gesammelten Werke von William Shakespeare. Bestimmen Sie mit Python, wie viele Zeilen diese Datei enthält. Finden Sie außerdem heraus, in welcher Zeile der Text “Go antickly, show outward hideousness,” vorkommt!</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Der gesuchte Text kann auch Leerzeichen am Anfang oder Ende der Zeile enthalten. Verwenden Sie zur Suche daher entweder den <code>in</code>-Operator oder die String-Methode <code>strip</code>, um führende und nachfolgende Leerzeichen zu entfernen.</p>
+</div>
+</div>
+</section>
+<section id="übung-27" class="level2">
+<h2 class="anchored" data-anchor-id="übung-27">Übung 27</h2>
+<p>Berechnen Sie die Summe aller natürlichen Zahlen von 0 bis 1000 (inklusive), die durch 3 <em>oder</em> 5 aber <em>nicht</em> durch 3 <em>und</em> 5 teilbar sind.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Eine Zahl ist durch 3 teilbar, wenn der Rest der Division durch 3 gleich Null ist. Eine Zahl ist durch 3 <em>und</em> 5 teilbar, wenn der Rest der Division durch 15 gleich Null ist.</p>
+<p>Verwenden Sie <code>and</code> bzw. <code>or</code>, um die Bedingungen zu verknüpfen und achten Sie auf die korrekte Klammersetzung.</p>
+</div>
+</div>
+</section>
+<section id="übung-28" class="level2">
+<h2 class="anchored" data-anchor-id="übung-28">Übung 28</h2>
+<p>Gegeben ist der String <code>x = "Pythonista"</code>. Schreiben Sie eine <code>for</code>-Schleife, welche über den String iteriert und jedes Zeichen dieses Strings als Großbuchstaben getrennt durch Bindestriche ausgibt. Die gewünschte Ausgabe sollte also wie folgt aussehen:</p>
+<pre><code>P-Y-T-H-O-N-I-S-T-A-</code></pre>
+</section>
+<section id="übung-29" class="level2">
+<h2 class="anchored" data-anchor-id="übung-29">Übung 29</h2>
+<p>Definieren Sie zwei Funktionen <code>kmh_to_mph</code> bzw. <code>mph_to_kmh</code>, welche Geschwindigkeiten von Kilometer pro Stunde in Meilen pro Stunde bzw. umgekehrt umwandeln und zurückgeben. Die Umrechnungsvorschriften lauten:</p>
+<p><span class="math display">\[\mathrm{mph} = \frac{\mathrm{kmh}}{\mathrm{1.609}} \hspace{35pt} \mathrm{kmh} = 1.609 \cdot \mathrm{mph}\]</span></p>
+<p>Testen Sie die Funktionen dann mit folgendem Befehl:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>kmh_to_mph(mph_to_kmh(<span class="dv">65</span>))</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="übung-30" class="level2">
+<h2 class="anchored" data-anchor-id="übung-30">Übung 30</h2>
+<p>Angenommen Sie möchten zu einer bestehenden Liste <code>x</code> ein Element am Ende hinzufügen. Was stimmt nicht im folgenden Code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> x.append(<span class="dv">5</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Erklären Sie was hier passiert und geben Sie auch die korrekte Variante an!</p>
+</section>
+<section id="übung-31" class="level2">
+<h2 class="anchored" data-anchor-id="übung-31">Übung 31</h2>
+<p>Wie können Sie folgenden Text dem Namen <code>s</code> zuweisen:</p>
+<p><em>Er sagte: “Sicher!”</em></p>
+<p>Geben Sie in Ihrer Antwort die korrekte Zuweisung an!</p>
+</section>
+<section id="übung-32" class="level2">
+<h2 class="anchored" data-anchor-id="übung-32">Übung 32</h2>
+<p>Gegeben sei folgender String:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"abcdefghijklmnopqrstuvwxyz"</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Wie können Sie durch indizieren/slicen jedes zweite Zeichen herausgreifen? Erzeugen Sie damit einen neuen String <code>a</code> (beginnend mit dem Zeichen <code>"a"</code>) und einen neuen String <code>b</code> (beginnend mit dem Zeichen <code>"b"</code>).</p>
+</section>
+<section id="übung-33" class="level2">
+<h2 class="anchored" data-anchor-id="übung-33">Übung 33</h2>
+<p>Erzeugen Sie eine Liste <code>words</code> mit den einzelnen Wörtern in folgendem String unter Verwendung einer geeigneten String-Methode:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"eins/zwei/drei/vier/fünf/sechs/sieben/acht"</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="übung-34" class="level2">
+<h2 class="anchored" data-anchor-id="übung-34">Übung 34</h2>
+<p>Definieren Sie eine Funktion <code>replace_vowels</code>, die einen Text und ein Zeichen als Argumente entgegennimmt. Die Funktion soll einen neuen String zurückgeben, in dem alle Vokale (Groß- und Kleinbuchstaben) im ursprünglichen Text durch das spezifizierte Zeichen ersetzt werden.</p>
+<p>Beispiele:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> replace_vowels(<span class="st">"Hello World!"</span>, <span class="st">"*"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">"H*ll* W*rld!"</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> replace_vowels(<span class="st">"PYTHON IS FUN"</span>, <span class="st">"#"</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">"PYTH#N #S F#N"</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="übung-35" class="level2">
+<h2 class="anchored" data-anchor-id="übung-35">Übung 35</h2>
+<p>Erklären Sie, warum der folgende Code zur Berechnung der Summe von fünf Zahlen nicht funktioniert:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Geben Sie einen korrekten Funktionsaufruf an, der die Summe dieser Zahlen berechnet!</p>
+</section>
+<section id="übung-36" class="level2">
+<h2 class="anchored" data-anchor-id="übung-36">Übung 36</h2>
+<p>Define a function <code>countdown</code> that prints a countdown on the screen. The countdown should start from a given number and count down to zero. The start number and the step size should be optional arguments (with default values of 5 for the start number and 1 for the step size). Definieren Sie eine Funktion <code>countdown</code>, die einen Countdown am Bildschirm ausgibt. Der Countdown soll von einer gegebenen Zahl starten und bis Null herunterzählen. Die Startzahl und die Schrittweite sollen optionale Argumente sein (mit Standardwerten von 5 für die Startzahl und 1 für die Schrittweite).</p>
+<p>Zwei mögliche Funktionsaufrufe und deren Ausgaben sind unten gezeigt:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> countdown()</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="op">-</span> <span class="dv">4</span> <span class="op">-</span> <span class="dv">3</span> <span class="op">-</span> <span class="dv">2</span> <span class="op">-</span> <span class="dv">1</span> <span class="op">-</span> <span class="dv">0</span> <span class="op">-</span> Liftoff<span class="op">!</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> countdown(<span class="dv">7</span>, <span class="dv">2</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> <span class="op">-</span> <span class="dv">5</span> <span class="op">-</span> <span class="dv">3</span> <span class="op">-</span> <span class="dv">1</span> <span class="op">-</span> Liftoff<span class="op">!</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Stellen Sie sicher, dass die Ausgabe <em>genau</em> wie gezeigt aussieht!</p>
+</section>
+<section id="übung-37" class="level2">
+<h2 class="anchored" data-anchor-id="übung-37">Übung 37</h2>
+<p>Gegeben sei ein NumPy-Array <code>y</code>, welches durch folgenden Code erzeugt wird:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> default_rng</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> default_rng(<span class="dv">2</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">10</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> rng.standard_normal(<span class="dv">10000</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Erzeugen Sie mit Matplotlib eine Grafik mit zwei nebeneinanderliegenden Plots. Der linke Plot soll ein Streudiagramm der ersten 100 Werte von <code>y</code> (<em>y</em>-Achse) gegen eine Zahlenfolge von 1 bis 100 (<em>x</em>-Achse) enthalten. Der rechte Plot soll ein Histogramm der Werte in <code>y</code> mit 30 Bins enthalten.</p>
+</section>
+<section id="übung-38" class="level2">
+<h2 class="anchored" data-anchor-id="übung-38">Übung 38</h2>
+<p>Gegeben sei eine Liste von Strings <code>x = ["This", "is", "a", "sample", "list"]</code>. Verwenden Sie eine List Comprehension, um eine neue Liste namens <code>lengths</code> zu erstellen, welche die Längen jedes Strings in <code>x</code> enthält.</p>
+</section>
+<section id="übung-39" class="level2">
+<h2 class="anchored" data-anchor-id="übung-39">Übung 39</h2>
+<p>Ein Anagramm ist ein Wort, das durch Umordnen der Buchstaben eines anderen Wortes gebildet wird. Schreiben Sie eine Funktion <code>is_anagram</code>, die überprüft, ob zwei gegebene Strings Anagramme voneinander sind. Die Funktion soll <code>True</code> oder <code>False</code> zurückgeben. Testen Sie Ihre Funktion mit den Strings “listen” und “silent” sowie “hello” und “world” (die Funktion sollte für das erste Paar <code>True</code> und für das zweite Paar <code>False</code> zurückgeben).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The eingebaute Funktion <code>sorted</code> könnte hilfreich sein.</p>
+</div>
+</div>
+</section>
+<section id="übung-40" class="level2">
+<h2 class="anchored" data-anchor-id="übung-40">Übung 40</h2>
+<p>Definieren Sie eine Funktion <code>filter_numbers</code>, die eine Liste von Ganzzahlen als Argument entgegennimmt und eine neue Liste zurückgibt. Diese soll nur die geraden oder ungeraden Zahlen aus der Eingabeliste enthalten, abhängig vom Wert eines zweiten Arguments <code>even</code>. Wenn <code>even</code> gleich <code>True</code> ist (Standardwert), soll die Funktion eine Liste mit geraden Zahlen zurückgeben; wenn <code>even</code> gleich <code>False</code> ist, soll sie eine Liste mit ungeraden Zahlen zurückgeben.</p>
+</section>
+<section id="übung-41" class="level2">
+<h2 class="anchored" data-anchor-id="übung-41">Übung 41</h2>
+<p>Verwenden Sie eine Schleife, um den Text <code>"Hello number X!"</code> 10 Mal auszugeben, wobei <code>X</code> die aktuelle Iterationsnummer ist (beginnend bei 1). Die Ausgabe sollte wie folgt aussehen:</p>
+<pre><code>Hello number 1!
+Hello number 2!
+Hello number 3!
+Hello number 4!
+Hello number 5!
+Hello number 6!
+Hello number 7!
+Hello number 8!
+Hello number 9!
+Hello number 10!</code></pre>
+</section>
+<section id="übung-42" class="level2">
+<h2 class="anchored" data-anchor-id="übung-42">Übung 42</h2>
+<p>Definieren Sie zwei Funktionen <code>ps_to_kw</code> und <code>kw_to_ps</code>, die zwischen Pferdestärken (PS) und Kilowatt (kW) umrechnen. 1 kW entspricht ungefähr 1.36 PS. Die Funktion <code>ps_to_kw</code> soll eine Leistung in PS in kW zurückgeben, während <code>kw_to_ps</code> eine Leistung in kW in PS zurückgeben soll.</p>
+<p>Testen Sie Ihre Funktionen mit den folgenden Argumenten:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> ps_to_kw(<span class="dv">100</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fl">73.52941176470588</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> kw_to_ps(<span class="fl">73.53</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fl">100.00080000000001</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="übung-43" class="level2">
+<h2 class="anchored" data-anchor-id="übung-43">Übung 43</h2>
+<p>Gegeben sei der String <code>s = "supercalifragilisticexpialidocious"</code>. Verwenden Sie geeignete String-Methoden oder eingebaute Funktionen, um folgendes herauszufinden:</p>
+<ol type="1">
+<li>Die Länge des Strings.</li>
+<li>Den Index der ersten Vorkommen des Buchstabens <code>"i"</code>.</li>
+<li>Den Index der zweiten Vorkommen des Buchstabens <code>"i"</code>.</li>
+<li>Die Anzahl der Vorkommen des Buchstabens <code>"i"</code> im String.</li>
+<li>Einen neuen String, der alle Zeichen in <code>s</code> in Großbuchstaben umwandelt.</li>
+<li>Einen neuen String, der alle Vorkommen des Buchstabens <code>"i"</code> durch <code>"!"</code> ersetzt.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Definieren Sie für die Lösung dieser Aufgabe keine eigenen Funktionen!</p>
+</div>
+</div>
+</section>
+<section id="übung-44" class="level2">
+<h2 class="anchored" data-anchor-id="übung-44">Übung 44</h2>
+<p>Schreiben Sie eine Funktion <code>longest_word</code>, die einen String <code>sentence</code> als Eingabe erhält und das längste Wort in diesem String zurückgibt. Falls es mehrere längste Wörter mit derselben Länge gibt, soll einfach das erste längste Wort zurückgegeben werden. Testen Sie Ihre Funktion mit dem Satz <code>"The quick brown fox jumps over the lazy dog"</code> (das längste Wort in diesem Satz ist <code>"quick"</code>).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Verwenden Sie die String-Methode <code>split()</code>, um den String <code>sentence</code> in einzelne Wörter aufzuteilen. Sie können davon ausgehen, dass der Eingabestring nur alphabetische Zeichen und Leerzeichen enthält (keine Satzzeichen, Zahlen oder Sonderzeichen). Iterieren Sie dann über alle gefundenen Wörter, um das längste zu finden und zurückzugeben.</p>
+</div>
+</div>
+</section>
+<section id="übung-45" class="level2">
+<h2 class="anchored" data-anchor-id="übung-45">Übung 45</h2>
+<p>Erzeugen Sie eine Liste, welche die Wurzeln der <em>geraden</em> Zahlen im Bereich von 300 bis 700 (beides inklusive) beinhaltet. Bestimmen Sie die Anzahl der Elemente sowie die Summe aller Elemente!</p>
+</section>
+<section id="übung-46" class="level2">
+<h2 class="anchored" data-anchor-id="übung-46">Übung 46</h2>
+<p>Definieren Sie eine Funktion <code>count_lower</code>, die die Anzahl der Kleinbuchstaben in einem String zählt und diese Anzahl zurückgibt (der String soll als Argument übergeben werden). Verwenden Sie die String-Methode <code>islower</code>, um jedes einzelne Zeichen im String zu überprüfen.</p>
+<p>Rufen Sie Ihre Funktion mit den folgenden Argumenten auf und überprüfen Sie, ob die Ausgaben korrekt sind:</p>
+<pre><code>&gt;&gt;&gt; count_lower("Hello World!")
+8
+&gt;&gt;&gt; count_lower("WHAT IS GOING ON???")
+0
+&gt;&gt;&gt; count_lower("nnYzKllLSIkcJD4eEx")
+9</code></pre>
+</section>
+<section id="übung-47" class="level2">
+<h2 class="anchored" data-anchor-id="übung-47">Übung 47</h2>
+<p>Definieren Sie eine Funktion <code>check_parity</code>, die überprüft, ob eine Zahl (als Argument übergeben) gerade oder ungerade ist. Der Rückgabewert soll wie folgt bestimmt werden:</p>
+<ul>
+<li>Ist das Argument gerade, soll die Funktion 0 zurückgeben.</li>
+<li>Ist das Argument ungerade, soll die Funktion 1 zurückgeben.</li>
+</ul>
+<p>Testen Sie Ihre Funktion mit den folgenden Argumenten und überprüfen Sie, ob die Ausgaben korrekt sind:</p>
+<pre><code>&gt;&gt;&gt; check_parity(4)
+0
+&gt;&gt;&gt; check_parity(-7)
+1</code></pre>
+</section>
+<section id="übung-48" class="level2">
+<h2 class="anchored" data-anchor-id="übung-48">Übung 48</h2>
+<p>Erklären Sie, warum der folgende Code nicht funktioniert:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="kw">lambda</span>(x):</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">+</span> <span class="dv">1</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Geben Sie eine korrekte Implementierung an!</p>
+</section>
+<section id="übung-49" class="level2">
+<h2 class="anchored" data-anchor-id="übung-49">Übung 49</h2>
+<p>Definieren Sie zwei Funktionen <code>cm_to_inches</code> und <code>inches_to_cm</code>, die Zentimeter in Zoll und umgekehrt umrechnen. Die Umrechnungsfaktoren sind 1 Zoll = 2.54 cm und 1 cm = 1 / 2.54 Zoll. Testen Sie Ihre Funktionen mit den folgenden Argumenten und überprüfen Sie, ob die Ausgaben korrekt sind:</p>
+<pre><code>&gt;&gt;&gt; cm_to_inches(10)
+3.937007874015748
+&gt;&gt;&gt; inches_to_cm(5)
+12.7
+&gt;&gt;&gt; cm_to_inches(inches_to_cm(5))
+5.0</code></pre>
+</section>
+<section id="übung-50" class="level2">
+<h2 class="anchored" data-anchor-id="übung-50">Übung 50</h2>
+<p>Definieren Sie eine Funktion <code>sum_squares</code>, die die Summe der Quadrate der in einer Liste enthaltenen Zahlen (als Argument übergeben) berechnet und zurückgibt. Testen Sie Ihre Funktion mit der folgenden Liste und überprüfen Sie, ob die Ausgabe korrekt ist:</p>
+<pre><code>&gt;&gt;&gt; sum_squares([1, 2, 3, 4, 5])
+55</code></pre>
+</section>
+<section id="übung-51" class="level2">
+<h2 class="anchored" data-anchor-id="übung-51">Übung 51</h2>
+<p>Erzeugen Sie die folgenden drei NumPy-Arrays <code>x</code>, <code>y</code> und <code>z</code>:</p>
+<ul>
+<li><code>x</code> soll 1000 normalverteilte Zufallszahlen mit einem Mittelwert von 10 und einer Standardabweichung von 2 enthalten.</li>
+<li><code>y</code> soll 1000 gleichmäßig verteilte Zufallszahlen im Bereich von 5 bis 15 enthalten.</li>
+<li><code>z</code> soll 1000 Chi-Quadrat-verteilte Zufallszahlen mit 6 Freiheitsgraden enthalten.</li>
+</ul>
+<p>Initialisieren Sie den Zufallszahlengenerator mit dem Wert <code>1</code>.</p>
+<p>Verwenden Sie anschließend Matplotlib, um eine Grafik bestehend aus drei Streudiagrammen in einer Zeile zu erstellen. Das linke Streudiagramm soll <code>x</code> gegen <code>y</code>, das mittlere <code>x</code> gegen <code>z</code> und das rechte <code>y</code> gegen <code>z</code> darstellen. Setzen Sie abschließend <code>fig.set_tight_layout(True)</code> für ein schöneres Layout.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Zur Erzeugung der Zufallszahlen benötigen Sie die Methoden <code>normal</code>, <code>uniform</code> und <code>chisquare</code> des Zufallszahlengenerators.</p>
+</div>
+</div>
+</section>
+<section id="übung-52" class="level2">
+<h2 class="anchored" data-anchor-id="übung-52">Übung 52</h2>
+<p>Eine Primzahl ist eine natürliche Zahl größer als 1, die keine positiven Teiler außer 1 und sich selbst hat. Schreiben Sie eine Funktion <code>is_prime</code>, die überprüft, ob eine gegebene Zahl eine Primzahl ist oder nicht. Die Funktion soll <code>True</code> oder <code>False</code> zurückgeben. Testen Sie Ihre Funktion mit den Zahlen 7 und 10 (die Funktion sollte für die erste Zahl <code>True</code> und für die zweite Zahl <code>False</code> zurückgeben).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Der Modulo-Operator <code>%</code> könnte im Zusammenhang mit der Tatsache, dass eine Primzahl nur durch 1 und sich selbst teilbar ist, hilfreich sein. Sie könnten also überprüfen, ob die Zahl <span class="math inline">\(n\)</span> durch irgendeine Zahl zwischen 2 und <span class="math inline">\(n - 1\)</span> teilbar ist. Falls ja, ist <span class="math inline">\(n\)</span> <em>keine</em> Primzahl (sonst schon).</p>
+</div>
+</div>
+</section>
+<section id="übung-53" class="level2">
+<h2 class="anchored" data-anchor-id="übung-53">Übung 53</h2>
+<p>Definieren Sie eine Funktion <code>f</code>, welche eine beliebige positive ganze Zahl entgegennimmt und sich wie folgt verhält:</p>
+<ul>
+<li>Falls die Zahl gerade ist, soll die Hälfte dieser Zahl zurückgegeben werden (verwenden Sie hier den Ganzzahl-Divisionsoperator).</li>
+<li>Falls die Zahl ungerade ist, soll das um 1 erhöhte Dreifache der Zahl zurückgegeben werden.</li>
+</ul>
+<p>Rufen Sie diese Funktion mit der Zahl 1000 auf. Danach rufen Sie die Funktion erneut auf, und zwar mit dem Rückgabewert des ersten Funktionsaufrufs. Wiederholen Sie diese Prozedur (den Rückgabewert als neues Argument verwenden), bis die Funktion die Zahl <code>1</code> zurückgibt. Wie oft wird die Funktion insgesamt aufgerufen?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Verwenden Sie für den zweiten Teil der Aufgabenstellung eine <code>while</code>-Schleife!</p>
+</div>
+</div>
+</section>
+<section id="übung-54" class="level2">
+<h2 class="anchored" data-anchor-id="übung-54">Übung 54</h2>
+<p>Erklären Sie, warum folgender Code nicht funktioniert:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f:</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">42</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Geben Sie auch die korrekte Funktionsdefinition an!</p>
+</section>
+<section id="übung-55" class="level2">
+<h2 class="anchored" data-anchor-id="übung-55">Übung 55</h2>
+<p>Geben Sie mit Hilfe einer Schleife den folgenden Text am Bildschirm aus:</p>
+<pre><code>Countdown starting now!
+t minus 10...
+t minus 9...
+t minus 8...
+t minus 7...
+t minus 6...
+t minus 5...
+t minus 4...
+t minus 3...
+t minus 2...
+t minus 1...
+t minus 0...
+Lift-off!</code></pre>
+</section>
+<section id="übung-56" class="level2">
+<h2 class="anchored" data-anchor-id="übung-56">Übung 56</h2>
+<p>Die <em>F</em>-Statistik berechnet sich mit folgender Formel:</p>
+<p><span class="math display">\[F = \frac{\text{MSM}}{\text{MSR}}\]</span></p>
+<p>Hier ist MSM die mittlere Modellquadratsumme und MSR die mittlere Residuenquadratsumme, welche sich wie folgt berechnen lassen:</p>
+<p><span class="math display">\[\text{MSM} = \frac{\text{SSM}}{p - 1}\]</span> <span class="math display">\[\text{MSR} = \frac{\text{SSR}}{N - p}\]</span></p>
+<p>Definieren Sie eine Funktion <code>f_statistic</code>, welche den Wert der <em>F</em>-Statistik in Abhängigkeit von SSM (Modellquadratsumme), SSR (Residuenquadratsumme), <em>p</em> (Anzahl der Modellparameter) und <em>N</em> (Stichprobengröße) zurückgibt! Wie lautet der Wert von <em>F</em> für die konkreten Werte von 2452, 1688, 4 und 412 für SSM, SSR, <em>p</em> sowie <em>n</em>?</p>
+</section>
+<section id="übung-57" class="level2">
+<h2 class="anchored" data-anchor-id="übung-57">Übung 57</h2>
+<p>Definieren Sie eine Funktion namens <code>convert_celsius</code>, welche eine Temperatur in °C (Grad Celsius) entweder in K (Kelvin) oder °F (Grad Fahrenheit) umwandelt und zurückgibt! Ob Kelvin oder Fahrenheit zurückgegeben werden soll, wird durch einen optionalen Parameter namens <code>to</code> bestimmt; dieser soll standardmäßig so gesetzt sein, dass die Temperatur in Kelvin zurückgegeben wird.</p>
+<p>Die Umrechnungsvorschriften lauten:</p>
+<p><span class="math display">\[F = C \cdot \frac{9}{5} + 32\]</span> <span class="math display">\[K = C + 273.15\]</span></p>
+<p>Rufen Sie Ihre Funktion dann auf, um folgende Temperaturen umzuwandeln:</p>
+<ul>
+<li>100°C in K</li>
+<li>38°C in °F</li>
+<li>0°C in K</li>
+</ul>
+</section>
+<section id="übung-58" class="level2">
+<h2 class="anchored" data-anchor-id="übung-58">Übung 58</h2>
+<p>Erklären Sie, warum folgender Code nicht funktioniert:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">sum</span> <span class="op">+=</span> i</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Geben Sie auch eine korrekte Implementierung an!</p>
+</section>
+<section id="übung-59" class="level2">
+<h2 class="anchored" data-anchor-id="übung-59">Übung 59</h2>
+<p>Erklären Sie, warum folgender Code nicht funktioniert und geben Sie eine korrekte Lösung an:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> (<span class="dv">2</span>)  <span class="co"># create tuple with one element</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">0</span>])  <span class="co"># access and print that element</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Es soll ein Tuple mit einem einzigen Element angelegt werden. Anschließend soll dieses Element per Indizierung am Bildschirm ausgegeben werden.</p>
+</section>
+<section id="übung-60" class="level2">
+<h2 class="anchored" data-anchor-id="übung-60">Übung 60</h2>
+<p>Schreiben Sie eine Funktion <code>describe_number</code>, welche überprüft, ob eine per Argument übergebene ganze Zahl gleich 10, gerade oder ungerade ist. Ist sie gerade, soll die Zahl <code>1</code> zurückgegeben werden. Ist sie ungerade, soll <code>2</code> zurückgegeben werden. Ist die Zahl durch 10 teilbar, soll <code>10</code> zurückgegeben werden.</p>
+<p>Rufen Sie anschließend Ihre Funktion mit den ganzen Zahlen von <span class="math inline">\(-110\)</span> bis <span class="math inline">\(230\)</span> (inklusive) auf und summieren Sie alle Rückgabewerte. Die korrekte Summe beträgt 826.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Zahlen, die durch 10 teilbar sind, sind auch gerade Zahlen. Dennoch soll für diese Zahlen immer <code>10</code> zurückgegeben werden (und nicht <code>1</code>).</p>
+</div>
+</div>
+</section>
+<section id="übung-61" class="level2">
+<h2 class="anchored" data-anchor-id="übung-61">Übung 61</h2>
+<p>Erklären Sie, warum folgender Code nicht funktioniert (er enthält zwei Fehler):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a <span class="op">&lt;</span> <span class="dv">10</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span> <span class="st">"a is less than 10."</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Geben Sie auch den korrekten Code an!</p>
+</section>
+<section id="übung-62" class="level2">
+<h2 class="anchored" data-anchor-id="übung-62">Übung 62</h2>
+<p>Definieren Sie eine Funktion <code>f</code>, welche zwei Parameter hat und damit folgenden mathematischen Ausdruck berechnet und zurückgibt:</p>
+<p><span class="math display">\[\sqrt{\frac{s_1^2 + s_2^2}{2}}\]</span></p>
+<p>Rufen Sie anschließend Ihre Funktion mit Werten von <span class="math inline">\(s_1 = 5\)</span> und <span class="math inline">\(s_2 = 27\)</span> auf!</p>
+</section>
+<section id="übung-63" class="level2">
+<h2 class="anchored" data-anchor-id="übung-63">Übung 63</h2>
+<p>Schreiben Sie eine Funktion <code>decibel</code>, welche eine Zahl in die Einheit Dezibel umrechnet und zurückgibt. Es gibt zwei verschiedene Arten, diese Umrechnung für eine gegebene Zahl <span class="math inline">\(x\)</span> durchzuführen:</p>
+<ol type="1">
+<li><span class="math inline">\(10 \cdot \log_{10}(x)\)</span></li>
+<li><span class="math inline">\(20 \cdot \log_{10}(x)\)</span></li>
+</ol>
+<p>Die Funktion soll beide Varianten berechnen können – welche berechnet wird soll durch einen optionalen Parameter bestimmt werden können. Standardmäßig soll die Variante 1 durchgeführt werden. Die beiden möglichen Werte dieses Parameters sollen die Strings <code>"power"</code> (Variante 1) bzw. <code>"amplitude"</code> (Variante 2) sein.</p>
+<p>Verwenden Sie die Funktion <code>log10</code> aus dem Modul <code>math</code>.</p>
+<p>Hier einige Beispiele für mögliche Funktionsaufrufe:</p>
+<pre><code>&gt;&gt;&gt; decibel(10)
+10.0
+&gt;&gt;&gt; decibel(10, "amplitude")
+20.0
+&gt;&gt;&gt; decibel(2, "power")
+3.010299956639812</code></pre>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Kopiert");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Kopiert");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/cbrnr\.github\.io\/python-intro\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© Clemens Brunner</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
