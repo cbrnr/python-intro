@@ -2,7 +2,7 @@
 title: "3 – Namen, Ausdrücke, Anweisungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-10-16
+date: 2026-03-16
 format:
   html:
     page-layout: full
@@ -38,7 +38,7 @@ Alles in Python ist ein *Objekt*. Ein Objekt hat einen bestimmten Wert, z.B.
 ```
 
 :::{.callout-tip}
-Python gibt im interaktiven Modus Werte automatisch aus.
+Zur Erinnerung: Python gibt im interaktiven Modus Werte automatisch aus.
 :::
 
 Jedes Objekt hat neben einem Wert auch einen bestimmten Typ. Mit `type` kann man den Typ eines beliebigen Objekts herausfinden:
@@ -178,7 +178,7 @@ n = 23  # wahrscheinlich zu kurz (aber manchmal OK)
 
 ### Schlüsselwörter
 
-Es gibt in Python vordefinierte Namen (sogenannte *Schlüsselwörter* oder englisch *Keywords*) – diese dürfen *nicht* als eigene Namen verwendet werden, da sie vom Python-Interpreter benötigt werden, um die Struktur eines Programmes zu erkennen. Mit folgenden Befehlen bekommt man eine Liste aller Schlüsselwörter:
+Es gibt in Python vordefinierte Namen (sogenannte *Schlüsselwörter* oder englisch *Keywords*) – diese können *nicht* als eigene Namen verwendet werden, da sie vom Python-Interpreter benötigt werden, um die Struktur eines Programmes zu erkennen. Mit folgenden Befehlen bekommt man eine Liste aller Schlüsselwörter:
 
 ```{python}
 import keyword
@@ -202,7 +202,7 @@ dir(__builtins__)
 ```
 
 :::{.callout-tip}
-Wenn man wirklich einen Namen einer eingebauten Funktion verwenden möchte, ist es besser, den Namen leicht zu verändern, z.B. indem man einen Unterstrich anhängt. Anstelle von `lambda` könnte man daher `lambda_` verwenden.
+Wenn man wirklich einen Namen einer eingebauten Funktion oder eines Schlüsselwortes verwenden möchte, kann man z.B. einfach einen Unterstrich anhängen. Anstelle von `lambda` könnte man daher `lambda_` verwenden, anstelle von `dir` wäre `dir_` möglich, usw.
 :::
 
 
