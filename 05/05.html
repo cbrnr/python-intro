@@ -468,7 +468,7 @@ Tipp
 <li><p>Wenn sich die aktuelle Zeile bereits in einer Funktion befindet und Sie diese Funktion sofort verlassen möchten, klicken Sie auf “Out”.</p></li>
 </ol>
 <p>Zum Ausprobieren kann man das folgende kurze Script debuggen:</p>
-<div id="ecd22626" class="cell" data-execution_count="1">
+<div id="8a1597ed" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> f(x):</span>
 <span id="cb1-2"><a href="#cb1-2"></a>    y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a>    <span class="cf">return</span> y</span>
@@ -505,66 +505,66 @@ Tipp
 <p>Während <code>==</code> zwei <em>Werte</em> miteinander vergleicht, überprüft <code>is</code> zwei <em>Objekte</em> auf Gleichheit (also ob es sich um ein und dasselbe Objekt handelt). Ein Objekt hat einen Wert, zwei verschiedene Objekte können auch denselben Wert haben. Die Funktion <code>id</code> liefert eine eindeutige Nummer (ID) für ein Objekt zurück – zwei verschiedene Objekte haben immer eine unterschiedliche ID (ansonsten handelt es sich um ein und dasselbe Objekt).</p>
 <section id="beispiele" class="level3">
 <h3 class="anchored" data-anchor-id="beispiele">Beispiele</h3>
-<div id="c952aa95" class="cell" data-execution_count="2">
+<div id="ad7e2c89" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">2</span>  <span class="co"># Zuweisung</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="6388f7ed" class="cell" data-execution_count="3">
+<div id="b53dcb36" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">==</span> <span class="dv">2</span>  <span class="co"># Vergleich</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>True</code></pre>
 </div>
 </div>
-<div id="b619e746" class="cell" data-execution_count="4">
+<div id="bf52673f" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">&gt;</span> <span class="dv">2</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>False</code></pre>
 </div>
 </div>
-<div id="013d6554" class="cell" data-execution_count="5">
+<div id="c85eddfc" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">&lt;</span> <span class="dv">10</span> <span class="kw">and</span> x <span class="op">&gt;</span> <span class="dv">5</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>False</code></pre>
 </div>
 </div>
 <p>Die vorige <code>and</code>-Verknüpfung von zwei Vergleichen kann in Python kürzer dargestellt werden:</p>
-<div id="e35ad2d6" class="cell" data-execution_count="6">
+<div id="34be26b1" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="op">&lt;</span> x <span class="op">&lt;</span> <span class="dv">10</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>False</code></pre>
 </div>
 </div>
-<div id="f15ad095" class="cell" data-execution_count="7">
+<div id="86904f29" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">&lt;</span> <span class="dv">10</span> <span class="kw">or</span> x <span class="op">&gt;</span> <span class="dv">5</span>  <span class="co"># macht das Sinn?</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>True</code></pre>
 </div>
 </div>
-<div id="900055f9" class="cell" data-execution_count="8">
+<div id="697354de" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">2</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="1adc7bda" class="cell" data-execution_count="9">
+<div id="622882a0" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">==</span> y  <span class="co"># Werte vergleichen</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>True</code></pre>
 </div>
 </div>
-<div id="fe35cb60" class="cell" data-execution_count="10">
+<div id="8c877577" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>x <span class="kw">is</span> y  <span class="co"># Objekte vergleichen</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>True</code></pre>
 </div>
 </div>
 <p>Wir können mit der Funktion <code>id</code> die IDs der Objekte <code>x</code> und <code>y</code> bestimmen:</p>
-<div id="263f3b7c" class="cell" data-execution_count="11">
+<div id="40414a57" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(x)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>4403127824</code></pre>
+<pre><code>4338083344</code></pre>
 </div>
 </div>
-<div id="84bac86f" class="cell" data-execution_count="12">
+<div id="bbcedb25" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(y)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
-<pre><code>4403127824</code></pre>
+<pre><code>4338083344</code></pre>
 </div>
 </div>
 <p>Man erkennt, dass beide Objekte <code>x</code> und <code>y</code> dieselbe ID haben. Dies bedeutet, dass das zugrundeliegende Objekt <code>2</code> ein und dasselbe Objekt ist und lediglich zwei Namen <code>x</code> und <code>y</code> hat.</p>
@@ -581,52 +581,52 @@ Hinweis
 </div>
 <div class="callout-body-container callout-body">
 <p>Ein weiteres Implementierungsdetail von Python ist, dass es kleine Ganzzahlen genau ein Mal gibt – d.h. wenn man zwei oder mehrere Male kleine Zahlen verwenden möchte (wie im vorigen Beispiel mit <code>x = 2</code> und <code>y = 2</code>), dann wird immer nur <em>ein</em> Objekt verwendet. Dies dient der Beschleunigung bzw. effizienteren Speichernutzung. Bei großen Zahlen ist das allerdings nicht mehr so:</p>
-<div id="b8949e8d" class="cell" data-execution_count="13">
+<div id="7309a0a8" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">500</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>500</code></pre>
 </div>
 </div>
-<div id="3592f523" class="cell" data-execution_count="14">
+<div id="f73a8750" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(a)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>4506208656</code></pre>
+<pre><code>4437969680</code></pre>
 </div>
 </div>
-<div id="1e1c881b" class="cell" data-execution_count="15">
+<div id="7ec2c1bb" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a  <span class="co"># b und a sind Namen für dasselbe Objekt</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>500</code></pre>
 </div>
 </div>
-<div id="a3b6e021" class="cell" data-execution_count="16">
+<div id="2a19b7d8" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(b)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
-<pre><code>4506208656</code></pre>
+<pre><code>4437969680</code></pre>
 </div>
 </div>
-<div id="5e240430" class="cell" data-execution_count="17">
+<div id="0224a144" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">500</span>  <span class="co"># b ist nun ein unterschiedliches Objekt 500</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>500</code></pre>
 </div>
 </div>
-<div id="d17a5e45" class="cell" data-execution_count="18">
+<div id="c85e2c13" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(b)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
-<pre><code>4506210832</code></pre>
+<pre><code>4437971472</code></pre>
 </div>
 </div>
-<div id="b8d4e3f0" class="cell" data-execution_count="19">
+<div id="dd7e1330" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">==</span> b  <span class="co"># Werte gleich?</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>True</code></pre>
 </div>
 </div>
-<div id="1ecd43a8" class="cell" data-execution_count="20">
+<div id="aab4d9b9" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>a <span class="kw">is</span> b  <span class="co"># Objekte gleich?</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>False</code></pre>
@@ -636,38 +636,38 @@ Hinweis
 </div>
 </div>
 <p>Das folgende Beispiel veranschaulicht, dass es einen Unterschied zwischen Ganzzahlen (<code>int</code>) und Kommazahlen (<code>float</code>) gibt, obwohl deren Werte (zumindest mathematisch) gleich sein können.</p>
-<div id="936e9404" class="cell" data-execution_count="21">
+<div id="34b7b3bf" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="dv">12</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="fl">12.0</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="cddb5ae4" class="cell" data-execution_count="22">
+<div id="27570c87" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>c <span class="op">==</span> d</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>True</code></pre>
 </div>
 </div>
-<div id="0f12bb71" class="cell" data-execution_count="23">
+<div id="6ccb8d35" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>c <span class="kw">is</span> d</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>False</code></pre>
 </div>
 </div>
 <p>Man sollte Kommazahlen aber ohnehin nie auf Gleichheit überprüfen, da diese aufgrund der begrenzten Genauigkeit nicht exakt repräsentiert werden können. Das folgende Beispiel illustriert diese Eigenschaft von Zahlen des Typs <code>float</code>:</p>
-<div id="20379ed6" class="cell" data-execution_count="24">
+<div id="b8efd402" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.1</span> <span class="op">+</span> <span class="fl">0.1</span> <span class="op">+</span> <span class="fl">0.1</span> <span class="op">==</span> <span class="fl">0.3</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>False</code></pre>
 </div>
 </div>
 <p>Möchte man so einen Vergleich durchführen, ist es sinnvoller zu fragen, ob der Unterschied zwischen den beiden Werten einen bestimmten (kleinen) Betrag (z.B. <span class="math inline">\(10^{-15}\)</span>) nicht überschreitet – dann kann man davon ausgehen, dass die Werte numerisch <em>praktisch</em> identisch sind.</p>
-<div id="c6b82557" class="cell" data-execution_count="25">
+<div id="1ce32059" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>(<span class="fl">0.1</span> <span class="op">+</span> <span class="fl">0.1</span> <span class="op">+</span> <span class="fl">0.1</span>) <span class="op">-</span> <span class="fl">0.3</span> <span class="op">&lt;</span> <span class="fl">1e-15</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>True</code></pre>
 </div>
 </div>
 <p>Das <code>math</code>-Modul liefert die Funktion <code>isclose</code> mit, welche genau diese Überprüfung durchführt:</p>
-<div id="58cfb3be" class="cell" data-execution_count="26">
+<div id="e61c1d15" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>math.isclose(<span class="fl">0.1</span> <span class="op">+</span> <span class="fl">0.1</span> <span class="op">+</span> <span class="fl">0.1</span>, <span class="fl">0.3</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
@@ -685,37 +685,37 @@ Tipp
 </div>
 <div class="callout-body-container callout-body">
 <p>In Python kann man Dezimalzahlen auch in der sogenannten <a href="https://de.wikipedia.org/wiki/Wissenschaftliche_Notation">wissenschaftlichen Notation</a> anschreiben. Hier verwendet man eine Darstellung mit Zehnerpotenzen, die man in Python mit <code>e</code> eingeben kann – <code>e</code> kann man als “mal zehn hoch” lesen.</p>
-<div id="43175026" class="cell" data-execution_count="27">
+<div id="54f082e0" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1e0</span>  <span class="co"># 1 mal 10 hoch 0</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>1.0</code></pre>
 </div>
 </div>
-<div id="0e204a46" class="cell" data-execution_count="28">
+<div id="14c9605f" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="fl">4e0</span>  <span class="co"># -4 mal 10 hoch 0</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>-4.0</code></pre>
 </div>
 </div>
-<div id="01b0870a" class="cell" data-execution_count="29">
+<div id="256e821d" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1e1</span>  <span class="co"># 1 mal 10 hoch 1</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>10.0</code></pre>
 </div>
 </div>
-<div id="38c4f0dd" class="cell" data-execution_count="30">
+<div id="52d4ad4a" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fl">3.5e2</span>  <span class="co"># 3.5 mal 10 hoch 2</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>350.0</code></pre>
 </div>
 </div>
-<div id="cc1e8b26" class="cell" data-execution_count="31">
+<div id="d76588fb" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1e-2</span>  <span class="co"># 1 mal 10 hoch -2</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>0.01</code></pre>
 </div>
 </div>
-<div id="77b86fc1" class="cell" data-execution_count="32">
+<div id="e8583faa" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1e-15</span>  <span class="co"># 1 mal 10 hoch -15 = 0.000000000000001</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>1e-15</code></pre>
@@ -758,7 +758,7 @@ Wichtig
 <section id="beispiele-1" class="level3">
 <h3 class="anchored" data-anchor-id="beispiele-1">Beispiele</h3>
 <p>Beginnen wir mit einem einfachen Beispiel, bei dem nur ein <code>if</code>-Zweig vorhanden ist:</p>
-<div id="7210f35b" class="cell" data-execution_count="33">
+<div id="4feb62c7" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">2</span></span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a <span class="op">&gt;</span> <span class="dv">0</span>:</span>
@@ -770,7 +770,7 @@ this is good to know</code></pre>
 </div>
 </div>
 <p>Ergibt der Vergleich <code>a &gt; 0</code> also <code>False</code>, wird der eingerückte Code <em>nicht</em> ausgeführt:</p>
-<div id="816d1131" class="cell" data-execution_count="34">
+<div id="aa2c3850" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="op">-</span><span class="dv">10</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a <span class="op">&gt;</span> <span class="dv">0</span>:</span>
@@ -778,7 +778,7 @@ this is good to know</code></pre>
 <span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"this is good to know"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Man kann optional einen <code>else</code>-Zweig verwenden, der immer dann ausgeführt wird, wenn <em>alle</em> vorhergehenden Zweige <code>False</code> waren:</p>
-<div id="f1c1317c" class="cell" data-execution_count="35">
+<div id="ff0b3438" class="cell" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a <span class="op">&gt;</span> <span class="dv">0</span>:</span>
@@ -791,7 +791,7 @@ this is good to know</code></pre>
 </div>
 </div>
 <p>Schließlich kann man noch mit <code>elif</code> beliebig viele weitere Zweige einbauen:</p>
-<div id="34f16a15" class="cell" data-execution_count="36">
+<div id="0435aef3" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a <span class="op">&gt;</span> <span class="dv">0</span>:</span>
@@ -806,7 +806,7 @@ this is good to know</code></pre>
 </div>
 </div>
 <p>Sobald ein Ausdruck in einem <code>if</code>-Block <code>True</code> ist, wird dieser ausgeführt und der gesamte Block wird verlassen. Es werden also keine weiteren Vergleiche mehr durchgeführt.</p>
-<div id="be41c2a5" class="cell" data-execution_count="37">
+<div id="a0a6232d" class="cell" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">2</span></span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">==</span> <span class="dv">2</span>:</span>
@@ -822,7 +822,7 @@ this is good to know</code></pre>
 </div>
 </div>
 <p>Dementsprechend ist die Reihenfolge der einzelnen Zweige von Bedeutung:</p>
-<div id="44f75880" class="cell" data-execution_count="38">
+<div id="fc166a6b" class="cell" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">4</span></span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a <span class="op">&gt;</span> <span class="dv">5</span>:</span>
@@ -837,7 +837,7 @@ this is good to know</code></pre>
 <pre><code>Two</code></pre>
 </div>
 </div>
-<div id="f32e72da" class="cell" data-execution_count="39">
+<div id="61084033" class="cell" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">4</span></span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a <span class="op">&gt;</span> <span class="dv">5</span>:</span>
@@ -853,7 +853,7 @@ this is good to know</code></pre>
 </div>
 </div>
 <p>Selbstverständlich kann man Vergleiche nicht nur mit Zahlen durchführen:</p>
-<div id="d28014e2" class="cell" data-execution_count="40">
+<div id="a5ed2302" class="cell" data-execution_count="40">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"Python"</span></span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> s <span class="op">==</span> <span class="st">"Python"</span>:</span>
@@ -866,7 +866,7 @@ this is good to know</code></pre>
 <pre><code>Way to go!</code></pre>
 </div>
 </div>
-<div id="4dc76c35" class="cell" data-execution_count="41">
+<div id="12430ab6" class="cell" data-execution_count="41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"R"</span></span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> s <span class="op">==</span> <span class="st">"Python"</span>:</span>
@@ -884,7 +884,7 @@ this is good to know</code></pre>
 <section id="for-schleifen" class="level2">
 <h2 class="anchored" data-anchor-id="for-schleifen">for-Schleifen</h2>
 <p>Um Befehle zu wiederholen, gibt es die Möglichkeit, Schleifen zu verwenden. Eine häufig verwendete Schleife ist die sogenannte <code>for</code>-Schleife. Als einfaches Beispiel ersetzen wir folgenden repetitiven Code durch eine Schleife:</p>
-<div id="a4eb7559" class="cell" data-execution_count="42">
+<div id="53dcb245" class="cell" data-execution_count="42">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hallo"</span>)</span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hallo"</span>)</span>
 <span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hallo"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -894,7 +894,7 @@ Hallo
 Hallo</code></pre>
 </div>
 </div>
-<div id="c5a7946a" class="cell" data-execution_count="43">
+<div id="8a6c908f" class="cell" data-execution_count="43">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Hallo"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -922,14 +922,14 @@ Hinweis
 </div>
 </div>
 <p>Die Funktion <code>range</code> wird mit <code>range(start, stop, step)</code> aufgerufen (der Hilfetext verrät dazu mehr Details) und erzeugt eine Sequenz, welche aus ganzen Zahlen besteht, die von <code>start</code> (optional) bis <code>stop</code> in der Schrittweite <code>step</code> (optional) läuft. Wenn man sich die einzelnen Elemente in einem <code>range</code>-Objekt ansehen will, muss man dieses zuerst in eine Liste umwandeln:</p>
-<div id="1c83f42c" class="cell" data-execution_count="44">
+<div id="2467a56e" class="cell" data-execution_count="44">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">range</span>(<span class="dv">10</span>)</span>
 <span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="43">
 <pre><code>range(0, 10)</code></pre>
 </div>
 </div>
-<div id="43ed3ff3" class="cell" data-execution_count="45">
+<div id="5dbe2c11" class="cell" data-execution_count="45">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(x)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="44">
 <pre><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
@@ -937,7 +937,7 @@ Hinweis
 </div>
 <p>Grundsätzlich beginnt Python mit 0 zu zählen, d.h. auch <code>range</code> beginnt standardmäßig bei 0. Die letzte Zahl ist nicht mehr Teil der Sequenz, da man so einfach die Anzahl der erzeugten Elemente sehen kann (im Beispiel oben sieht man, dass <code>range(10)</code> aus 10 Elementen besteht).</p>
 <p>In Python iteriert eine <code>for</code>-Schleife über alle Elemente einer Sequenz (d.h. alle Datentypen, die aus mehreren Elementen bestehen und iterierbar sind, wie z.B. Strings oder Listen). Im folgenden Beispiel iteriert die Schleife über einen String, d.h. bei jedem Schleifendurchlauf werden die einzelnen Elemente (Buchstaben) eines Strings der Schleifenvariable <code>s</code> zugewiesen:</p>
-<div id="f4d2afa3" class="cell" data-execution_count="46">
+<div id="37288484" class="cell" data-execution_count="46">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> <span class="st">"String"</span>:</span>
 <span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -950,7 +950,7 @@ g</code></pre>
 </div>
 </div>
 <p>Dies funktioniert genauso mit Listen, da diese auch zur Gruppe der Sequenzdatentypen gehören und mehrere Elemente beinhalten können:</p>
-<div id="27f45a2a" class="cell" data-execution_count="47">
+<div id="d4780006" class="cell" data-execution_count="47">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="st">"Hello"</span>, <span class="st">"world!"</span>, <span class="st">"I"</span>, <span class="st">"love"</span>, <span class="st">"Python!"</span>]</span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> element <span class="kw">in</span> a:</span>
@@ -964,7 +964,7 @@ Python!</code></pre>
 </div>
 </div>
 <p>Der Befehl <code>break</code> bricht die Schleife ab. Python springt ans Ende der Schleife und macht von hier mit der Ausführung der noch folgenden Befehlszeilen weiter.</p>
-<div id="5ad4718f" class="cell" data-execution_count="48">
+<div id="00c82132" class="cell" data-execution_count="48">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> <span class="st">"Suchstring"</span>:</span>
@@ -979,7 +979,7 @@ Python!</code></pre>
 </div>
 <p>Im Beispiel oben wird ein bestimmtes Zeichen in einem String gesucht, dessen Position dann in <code>i</code> abzulesen ist.</p>
 <p>Der Befehl <code>continue</code> geht sofort zur nächsten Iteration der Schleife (überspringt also den restlichen Code der Schleife, der noch danach folgt).</p>
-<div id="2576e0fa" class="cell" data-execution_count="49">
+<div id="080fc6b2" class="cell" data-execution_count="49">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">10</span>):</span>
 <span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> num <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:  <span class="co"># gerade Zahl?</span></span>
 <span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Found an even number"</span>, num)</span>
