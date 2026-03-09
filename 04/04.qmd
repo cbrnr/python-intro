@@ -2,7 +2,7 @@
 title: "4 – Funktionen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-10-23
+date: 2026-03-23
 format:
   html:
     page-layout: full
@@ -19,9 +19,9 @@ published-title: "Veröffentlicht"
 
 ## Allgemeines
 
-Funktionen kann man sich wie "Mini-Programme" bzw. "Mini-Scripts" vorstellen. Sie gruppieren mehrere Anweisungen zu einem zusammengehörigen Block. Eine Funktion in Python ist durchaus mit einer mathematischen Funktion vergleichbar, wie zum Beispiel der Quadratfunktion $f(x) = x^2$. Diese mathematische Funktion $f$ berechnet aus einem gegebenen Wert $x$ einen neuen Wert $x^2$. Diese Funktion kann man dann mit konkreten Werten für $x$ verwenden, um die entsprechenden Ergebnisse zu erhalten, z.B. $f(3) = 9$ oder $f(5) = 25$.
+Funktionen kann man sich wie kleine Programme bzw. Skripte vorstellen. Sie fassen mehrere Anweisungen zu einem Block zusammen. Eine Funktion in Python lässt sich gut mit einer mathematischen Funktion vergleichen, zum Beispiel mit der Quadratfunktion $f(x) = x^2$. Diese berechnet aus einem gegebenen Wert $x$ einen neuen Wert $x^2$. Anschließend kann man die Funktion mit konkreten Werten für $x$ verwenden, um die entsprechenden Ergebnisse zu erhalten, z.B. $f(3) = 9$ oder $f(5) = 25$.
 
-Auch in Python hat eine Funktion eine klar definierte Aufgabe. Hier dienen Funktionen unter anderem dazu, Programmcode zu strukturieren (was die Lesbarkeit erhöht) und wiederverwendbar zu machen (wiederverwendbar bedeutet, dass man eine Funktion beliebig oft verwenden kann). Funktionen machen Programme in der Regel auch kürzer, weil wiederholt auszuführender Code in Funktionen ausgelagert werden kann. Sollten einmal Änderungen notwendig sein, muss man diese nur an einer Stelle innerhalb der Funktion vornehmen. Funktionen lassen sich außerdem auch in anderen Programmen wiederverwenden.
+Auch in Python hat eine Funktion eine klar definierte Aufgabe. Funktionen dienen unter anderem dazu, Programmcode zu strukturieren und dadurch die Lesbarkeit zu erhöhen. Außerdem ermöglichen sie es, Code wiederzuverwenden. Das bedeutet, dass man eine einmal definierte Funktion beliebig oft aufrufen (verwenden) kann. Funktionen machen Programme häufig auch kürzer, weil sich wiederkehrende Anweisungen in einer Funktion bündeln lassen. Sollten später einmal Änderungen notwendig sein, muss man den Code nur an einer Stelle (innerhalb der Funktion) anpassen. Funktionen lassen sich oft auch in anderen Programmen wiederverwenden.
 
 :::{.callout-note}
 Einige Funktionen wie `print` und `type` haben wir bereits in den vorigen Einheiten kennengelernt und verwendet.
@@ -30,7 +30,7 @@ Einige Funktionen wie `print` und `type` haben wir bereits in den vorigen Einhei
 
 ## Funktionen aufrufen
 
-Eine Funktion *aufrufen* bedeutet, dass der in ihr enthaltene Code (also das "Mini-Programm") ausgeführt wird – die Funktion verrichtet also ihre Arbeit.
+Eine Funktion *aufrufen* bedeutet, dass der in ihr enthaltene Code ausgeführt wird – die Funktion verrichtet also ihre Arbeit.
 
 In Python ruft man eine Funktion mit ihrem Namen gefolgt von einem *Paar runder Klammern* auf. Innerhalb der Klammern werden die *Argumente* für die Funktion übergeben (falls notwendig). Mit Argumenten übergibt man der Funktion Werte, welche diese für die Ausführung benötigt. Beispielsweise benötigt die Funktion `type` ein Argument, denn sonst kann sie ihre Aufgabe nicht erfüllen – nämlich den Typ des übergebenen Arguments zu bestimmen. Gleichermaßen braucht auch die Funktion `math.sqrt` aus dem `math`-Modul ein Argument, damit diese die Wurzel der übergebenen Zahl berechnen kann.
 
@@ -86,7 +86,7 @@ f("Hello via f")
 
 ## Funktionen definieren
 
-Wir sind glücklicherweise nicht auf bereits existierende Funktionen beschränkt, sondern können selbst unsere eigenen Funktionen schreiben. In Python wird eine Funktion wie folgt *definiert* (die Zeilen in spitzen Klammern sind Platzhalter und müssen durch konkrete Befehle ersetzt werden):
+Wir sind glücklicherweise nicht auf bereits existierende Funktionen beschränkt, sondern können selbst unsere eigenen Funktionen schreiben. In Python wird eine Funktion wie folgt *definiert* (die Zeilen in spitzen Klammern sind Pseudo-Code und müssen durch konkrete Befehle ersetzt werden):
 
 ```python
 def function_name(parameter1, parameter2, ...):
@@ -101,7 +101,7 @@ Eine Funktionsdefinition beginnt immer mit dem Schlüsselwort `def`. Danach folg
 def test_function
 ```
 
-Nach dem Funktionsnamen folgt ein Paar runder Klammern. Innerhalb dieser können von der Funktion benötigte *Parameter* aufgelistet werden (mehrere Parameter werden durch Kommas voneinander getrennt). Parameter sind Platzhalter, welche beim Ausführen der Funktion mit spezifischen Werten ersetzt werden. Diese spezifischen Werte (auch *Argumente* genannt) werden beim Aufruf übergeben. Es gibt aber auch Funktionen, die *keine* Parameter haben – die beiden runden Klammern müssen aber trotzdem immer vorhanden sein:
+Nach dem Funktionsnamen folgt ein Paar runder Klammern. Innerhalb dieser werden von der Funktion benötigte *Parameter* aufgelistet (mehrere Parameter werden durch Kommas voneinander getrennt). Parameter sind Platzhalter, welche beim Ausführen der Funktion mit spezifischen Werten ersetzt werden. Diese spezifischen Werte (auch *Argumente* genannt) werden bei jedem Aufruf übergeben. Es gibt aber auch Funktionen, die *keine* Parameter haben – die beiden runden Klammern müssen aber trotzdem immer vorhanden sein:
 
 ```python
 def test_function()  # ohne Parameter
