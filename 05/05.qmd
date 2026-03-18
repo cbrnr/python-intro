@@ -2,7 +2,7 @@
 title: "5 – Bedingungen und Schleifen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-11-06
+date: 2026-04-13
 format:
   html:
     page-layout: full
@@ -195,24 +195,7 @@ c == d
 c is d
 ```
 
-Man sollte Kommazahlen aber ohnehin nie auf Gleichheit überprüfen, da diese aufgrund der begrenzten Genauigkeit nicht exakt repräsentiert werden können. Das folgende Beispiel illustriert diese Eigenschaft von Zahlen des Typs `float`:
-
-```{python}
-0.1 + 0.1 + 0.1 == 0.3
-```
-
-Möchte man so einen Vergleich durchführen, ist es sinnvoller zu fragen, ob der Unterschied zwischen den beiden Werten einen bestimmten (kleinen) Betrag (z.B. $10^{-15}$) nicht überschreitet – dann kann man davon ausgehen, dass die Werte numerisch *praktisch* identisch sind.
-
-```{python}
-(0.1 + 0.1 + 0.1) - 0.3 < 1e-15
-```
-
-Das `math`-Modul liefert die Funktion `isclose` mit, welche genau diese Überprüfung durchführt:
-
-```{python}
-import math
-math.isclose(0.1 + 0.1 + 0.1, 0.3)
-```
+Man sollte Kommazahlen aber ohnehin nie auf Gleichheit überprüfen, da diese aufgrund der begrenzten Genauigkeit nicht exakt repräsentiert werden können (wie bereits in [Einheit 3](../03/03.qmd) besprochen).
 
 :::{.callout-tip}
 In Python kann man Dezimalzahlen auch in der sogenannten [wissenschaftlichen Notation](https://de.wikipedia.org/wiki/Wissenschaftliche_Notation) anschreiben. Hier verwendet man eine Darstellung mit Zehnerpotenzen, die man in Python mit `e` eingeben kann – `e` kann man als "mal zehn hoch" lesen.
@@ -413,7 +396,7 @@ for i in range(3):
     print("Hello")
 ```
 
-Die richtige Antwort lautet `2`, da dies der letzte Wert ist, welcher in der Schleife zugewiesen wird. Der Funktionsaufruf `range(3)` erzeugt nämlich die drei Werte `0`, `1` und `2`. Die Zuweisung `i = 800` zu Beginn hat hier eigenlich überhaupt keinen Effekt (oder anders formuliert, diese Zuweisung ist sinnlos und könnte daher ohne Auswirkungen entfernt werden).
+Die richtige Antwort lautet `2`, da dies der letzte Wert ist, welcher in der Schleife zugewiesen wird. Der Funktionsaufruf `range(3)` erzeugt nämlich die drei Werte `0`, `1` und `2`. Die Zuweisung `i = 800` zu Beginn hat hier eigentlich überhaupt keinen Effekt (oder anders formuliert, diese Zuweisung ist sinnlos und könnte daher ohne Auswirkungen entfernt werden).
 :::
 
 Die Funktion `range` wird mit `range(start, stop, step)` aufgerufen (der Hilfetext verrät dazu mehr Details) und erzeugt eine Sequenz, welche aus ganzen Zahlen besteht, die von `start` (optional) bis `stop` in der Schrittweite `step` (optional) läuft. Wenn man sich die einzelnen Elemente in einem `range`-Objekt ansehen will, muss man dieses zuerst in eine Liste umwandeln:
