@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,6 +10,9 @@
 
 <title>Lösungen – Einführung in Python und PsychoPy</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -68,19 +71,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a06763021a52c43c40a351ac8b799b8f.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-dbc92dda8186f57fa2e333fbb71d6a9d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a06763021a52c43c40a351ac8b799b8f.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-94a11f9d2ef63b4d3e14a49c60b54d86.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-31dd7b97cc2105c3f43b9904fe8c5fac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-94a11f9d2ef63b4d3e14a49c60b54d86.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c6344c862f46cf6a68a6928f4c326ca4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-a4cc7722e2170b143ab83d7d6445229a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-c6344c862f46cf6a68a6928f4c326ca4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
@@ -114,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -445,7 +447,7 @@ window.Quarto = {
 
 <section id="übung-1" class="level2">
 <h2 class="anchored" data-anchor-id="übung-1">Übung 1</h2>
-<div id="f94c37c9" class="cell" data-execution_count="1">
+<div id="5cc43ab1" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> serial(r1, r2):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> r1 <span class="op">+</span> r2</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -559,7 +561,7 @@ Hinweis
 </section>
 <section id="übung-3" class="level2">
 <h2 class="anchored" data-anchor-id="übung-3">Übung 3</h2>
-<div id="fba4a74e" class="cell" data-execution_count="2">
+<div id="34161a1e" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count_words(text, sep<span class="op">=</span><span class="st">" "</span>):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">len</span>(text.split(sep))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -579,7 +581,7 @@ Hinweis
 </section>
 <section id="übung-4" class="level2">
 <h2 class="anchored" data-anchor-id="übung-4">Übung 4</h2>
-<div id="2c72185b" class="cell" data-execution_count="3">
+<div id="ee4a7a9d" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> factorial(n):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
@@ -596,7 +598,7 @@ Hinweis
 </section>
 <section id="übung-5" class="level2">
 <h2 class="anchored" data-anchor-id="übung-5">Übung 5</h2>
-<div id="faf6569f" class="cell" data-execution_count="4">
+<div id="07262f18" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_divisible(n, m):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n <span class="op">%</span> m <span class="op">==</span> <span class="dv">0</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -627,7 +629,7 @@ False</code></pre>
 </section>
 <section id="übung-7" class="level2">
 <h2 class="anchored" data-anchor-id="übung-7">Übung 7</h2>
-<div id="333d45e3" class="cell" data-execution_count="5">
+<div id="6ec5a516" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [math.sqrt(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">1001</span>, <span class="dv">10</span>)]</span>
@@ -645,7 +647,7 @@ False</code></pre>
 </section>
 <section id="übung-9" class="level2">
 <h2 class="anchored" data-anchor-id="übung-9">Übung 9</h2>
-<div id="4675aad2" class="cell" data-execution_count="6">
+<div id="b281b228" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> (<span class="dv">17</span> <span class="op">*</span> (math.sqrt(<span class="dv">5</span>) <span class="op">+</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span>)) <span class="op">/</span> (<span class="fl">27.7</span> <span class="op">-</span> <span class="dv">3</span><span class="op">**</span>math.pi) <span class="op">+</span> <span class="dv">42</span><span class="op">**</span>(<span class="dv">2</span><span class="op">/</span><span class="dv">7</span>)</span>
@@ -664,7 +666,7 @@ False</code></pre>
 </section>
 <section id="übung-11" class="level2">
 <h2 class="anchored" data-anchor-id="übung-11">Übung 11</h2>
-<div id="63525b76" class="cell" data-execution_count="7">
+<div id="2998e97f" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> std(x):</span>
@@ -681,7 +683,7 @@ False</code></pre>
 </section>
 <section id="übung-12" class="level2">
 <h2 class="anchored" data-anchor-id="übung-12">Übung 12</h2>
-<div id="71cec9f7" class="cell" data-execution_count="8">
+<div id="0dac3c23" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_even(x):</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [xi <span class="cf">for</span> xi <span class="kw">in</span> x <span class="cf">if</span> xi <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>]</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -694,7 +696,7 @@ False</code></pre>
 <section id="übung-13" class="level2">
 <h2 class="anchored" data-anchor-id="übung-13">Übung 13</h2>
 <p>Wichtig ist, dass die Teilbarkeit durch 3 <em>und</em> 5 (also 15) zuerst überprüft wird!</p>
-<div id="5ac354ed" class="cell" data-execution_count="9">
+<div id="a3d0fcd8" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fizzbuzz(n):</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">%</span> <span class="dv">15</span> <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Fizzbuzz"</span></span>
@@ -728,7 +730,7 @@ Fizzbuzz</code></pre>
 </section>
 <section id="übung-14" class="level2">
 <h2 class="anchored" data-anchor-id="übung-14">Übung 14</h2>
-<div id="8d2c107a" class="cell" data-execution_count="10">
+<div id="327f6270" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add(x, y<span class="op">=</span><span class="dv">1</span>):</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">+</span> y</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -743,7 +745,7 @@ Fizzbuzz</code></pre>
 </section>
 <section id="übung-16" class="level2">
 <h2 class="anchored" data-anchor-id="übung-16">Übung 16</h2>
-<div id="918bbf95" class="cell" data-execution_count="11">
+<div id="b630b5e5" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_even(n):</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -757,7 +759,7 @@ False</code></pre>
 </section>
 <section id="übung-17" class="level2">
 <h2 class="anchored" data-anchor-id="übung-17">Übung 17</h2>
-<div id="03e0b457" class="cell" data-execution_count="12">
+<div id="b6b58511" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sign(n):</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&gt;</span> <span class="dv">0</span>:</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
@@ -767,7 +769,7 @@ False</code></pre>
 <span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Beachten Sie, dass der <code>else</code>-Block nicht notwendig ist und weggelassen werden kann:</p>
-<div id="f7e3f7d1" class="cell" data-execution_count="13">
+<div id="b3b2c976" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sign(n):</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&gt;</span> <span class="dv">0</span>:</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
@@ -786,7 +788,7 @@ Tipp
 </div>
 <div class="callout-body-container callout-body">
 <p>Eine noch kompaktere Version verwendet die Tatsache, dass in Python Werte vom Typ <code>bool</code> als Ganzzahlen interpretiert werden können (<code>True</code> entspricht <code>1</code>, <code>False</code> entspricht <code>0</code>):</p>
-<div id="39ea8db0" class="cell" data-execution_count="14">
+<div id="7e315fe9" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sign(n):</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (n <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">-</span> (n <span class="op">&lt;</span> <span class="dv">0</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -796,7 +798,7 @@ Tipp
 </section>
 <section id="übung-18" class="level2">
 <h2 class="anchored" data-anchor-id="übung-18">Übung 18</h2>
-<div id="ebc6217c" class="cell" data-execution_count="15">
+<div id="fdddfc4a" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"Pythonista"</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> x:</span>
@@ -817,7 +819,7 @@ a</code></pre>
 </section>
 <section id="übung-19" class="level2">
 <h2 class="anchored" data-anchor-id="übung-19">Übung 19</h2>
-<div id="f5110e7d" class="cell" data-execution_count="16">
+<div id="c821ea93" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [<span class="st">"This"</span>, <span class="st">"is"</span>, <span class="st">"a"</span>, <span class="st">"sample"</span>, <span class="st">"list"</span>]</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> [word.upper() <span class="cf">for</span> word <span class="kw">in</span> y]</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>z</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -828,7 +830,7 @@ a</code></pre>
 </section>
 <section id="übung-20" class="level2">
 <h2 class="anchored" data-anchor-id="übung-20">Übung 20</h2>
-<div id="8901be9d" class="cell" data-execution_count="17">
+<div id="db202e1b" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"Donaudampfschifffahrtsgesellschaft"</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(s))</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s.index(<span class="st">"f"</span>))</span>
@@ -842,7 +844,7 @@ a</code></pre>
 </section>
 <section id="übung-21" class="level2">
 <h2 class="anchored" data-anchor-id="übung-21">Übung 21</h2>
-<div id="c6f76cc8" class="cell" data-execution_count="18">
+<div id="1ea11418" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="op">-</span><span class="dv">13</span>, <span class="dv">22</span>, <span class="op">-</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">14</span>, <span class="dv">33</span>, <span class="op">-</span><span class="dv">16</span>]</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [<span class="bu">abs</span>(num) <span class="cf">for</span> num <span class="kw">in</span> x]</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -853,7 +855,7 @@ a</code></pre>
 </section>
 <section id="übung-22" class="level2">
 <h2 class="anchored" data-anchor-id="übung-22">Übung 22</h2>
-<div id="806a0774" class="cell" data-execution_count="19">
+<div id="a90f3baf" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> default_rng</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> default_rng(<span class="dv">1</span>)</span>
@@ -866,7 +868,7 @@ a</code></pre>
 </section>
 <section id="übung-23" class="level2">
 <h2 class="anchored" data-anchor-id="übung-23">Übung 23</h2>
-<div id="37c3b2fb" class="cell" data-execution_count="20">
+<div id="f118c63d" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">10</span>, <span class="dv">13</span>, <span class="dv">1000</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -874,7 +876,7 @@ a</code></pre>
 </section>
 <section id="übung-24" class="level2">
 <h2 class="anchored" data-anchor-id="übung-24">Übung 24</h2>
-<div id="fac1e968" class="cell" data-execution_count="21">
+<div id="c4d1c561" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> default_rng</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> default_rng(<span class="dv">2</span>)</span>
@@ -896,7 +898,7 @@ a</code></pre>
 </section>
 <section id="übung-25" class="level2">
 <h2 class="anchored" data-anchor-id="übung-25">Übung 25</h2>
-<div id="f61f53d6" class="cell" data-execution_count="22">
+<div id="fcb2805d" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> default_rng</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> default_rng(<span class="dv">2</span>)</span>
@@ -918,7 +920,7 @@ a</code></pre>
 </section>
 <section id="übung-26" class="level2">
 <h2 class="anchored" data-anchor-id="übung-26">Übung 26</h2>
-<div id="a6b58599" class="cell" data-execution_count="23">
+<div id="dcbccc1f" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"shakespeare.txt"</span>) <span class="im">as</span> f:</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    lines <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> f:</span>
@@ -935,7 +937,7 @@ Total number of lines: 151570</code></pre>
 </section>
 <section id="übung-27" class="level2">
 <h2 class="anchored" data-anchor-id="übung-27">Übung 27</h2>
-<div id="13a88d77" class="cell" data-execution_count="24">
+<div id="1b1aab63" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> []</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1001</span>):</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (n <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> n <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span>) <span class="kw">and</span> n <span class="op">%</span> <span class="dv">15</span> <span class="op">!=</span> <span class="dv">0</span>:</span>
@@ -949,7 +951,7 @@ Total number of lines: 151570</code></pre>
 </section>
 <section id="übung-28" class="level2">
 <h2 class="anchored" data-anchor-id="übung-28">Übung 28</h2>
-<div id="1cadc029" class="cell" data-execution_count="25">
+<div id="0ef18fc0" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"Pythonista"</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> x:</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(c.upper(), end<span class="op">=</span><span class="st">'-'</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -960,7 +962,7 @@ Total number of lines: 151570</code></pre>
 </section>
 <section id="übung-29" class="level2">
 <h2 class="anchored" data-anchor-id="übung-29">Übung 29</h2>
-<div id="879faff3" class="cell" data-execution_count="26">
+<div id="3e674ec6" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> kmh_to_mph(kmh):</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> kmh <span class="op">/</span> <span class="fl">1.609</span></span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -988,7 +990,7 @@ Total number of lines: 151570</code></pre>
 </section>
 <section id="übung-32" class="level2">
 <h2 class="anchored" data-anchor-id="übung-32">Übung 32</h2>
-<div id="d8f9b564" class="cell" data-execution_count="27">
+<div id="f8b21dd0" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"abcdefghijklmnopqrstuvwxyz"</span></span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> x[::<span class="dv">2</span>]</span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> x[<span class="dv">1</span>::<span class="dv">2</span>]</span>
@@ -1002,7 +1004,7 @@ bdfhjlnprtvxz</code></pre>
 </section>
 <section id="übung-33" class="level2">
 <h2 class="anchored" data-anchor-id="übung-33">Übung 33</h2>
-<div id="4b92e07e" class="cell" data-execution_count="28">
+<div id="ed165e47" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"eins/zwei/drei/vier/fünf/sechs/sieben/acht"</span></span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>words <span class="op">=</span> s.split(<span class="st">"/"</span>)</span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>words</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1013,7 +1015,7 @@ bdfhjlnprtvxz</code></pre>
 </section>
 <section id="übung-34" class="level2">
 <h2 class="anchored" data-anchor-id="übung-34">Übung 34</h2>
-<div id="e060d652" class="cell" data-execution_count="29">
+<div id="53acaeea" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> replace_vowels(text, char):</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    vowels <span class="op">=</span> <span class="st">"aeiouAEIOU"</span></span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> vowel <span class="kw">in</span> vowels:</span>
@@ -1037,7 +1039,7 @@ PYTH#N #S F#N</code></pre>
 <section id="übung-36" class="level2">
 <h2 class="anchored" data-anchor-id="übung-36">Übung 36</h2>
 <p>Lösung mit einer <code>while</code>-Schleife:</p>
-<div id="494e0e6d" class="cell" data-execution_count="30">
+<div id="947ebc4a" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> countdown(start<span class="op">=</span><span class="dv">5</span>, step<span class="op">=</span><span class="dv">1</span>):</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> start</span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> n <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
@@ -1053,7 +1055,7 @@ PYTH#N #S F#N</code></pre>
 </div>
 </div>
 <p>Lösung mit einer <code>for</code>-Schleife:</p>
-<div id="d33528bd" class="cell" data-execution_count="31">
+<div id="74e2fa38" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> countdown(start<span class="op">=</span><span class="dv">5</span>, step<span class="op">=</span><span class="dv">1</span>):</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(start, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span>step):</span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(n, end<span class="op">=</span><span class="st">" - "</span>)</span>
@@ -1069,7 +1071,7 @@ PYTH#N #S F#N</code></pre>
 </section>
 <section id="übung-37" class="level2">
 <h2 class="anchored" data-anchor-id="übung-37">Übung 37</h2>
-<div id="8e4f251f" class="cell" data-execution_count="32">
+<div id="7fa4ee06" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> default_rng</span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> default_rng(<span class="dv">2</span>)</span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">10</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> rng.standard_normal(<span class="dv">10000</span>)</span>
@@ -1093,7 +1095,7 @@ PYTH#N #S F#N</code></pre>
 </section>
 <section id="übung-38" class="level2">
 <h2 class="anchored" data-anchor-id="übung-38">Übung 38</h2>
-<div id="97e8b4e6" class="cell" data-execution_count="33">
+<div id="3b9f462f" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="st">"This"</span>, <span class="st">"is"</span>, <span class="st">"a"</span>, <span class="st">"sample"</span>, <span class="st">"list"</span>]</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>lengths <span class="op">=</span> [<span class="bu">len</span>(word) <span class="cf">for</span> word <span class="kw">in</span> x]</span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>lengths</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1104,7 +1106,7 @@ PYTH#N #S F#N</code></pre>
 </section>
 <section id="übung-39" class="level2">
 <h2 class="anchored" data-anchor-id="übung-39">Übung 39</h2>
-<div id="0686b7bb" class="cell" data-execution_count="34">
+<div id="fa4ae2c6" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_anagram(str1, str2):</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sorted</span>(str1) <span class="op">==</span> <span class="bu">sorted</span>(str2)</span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1118,7 +1120,7 @@ False</code></pre>
 </section>
 <section id="übung-40" class="level2">
 <h2 class="anchored" data-anchor-id="übung-40">Übung 40</h2>
-<div id="e595c584" class="cell" data-execution_count="35">
+<div id="8ea626c7" class="cell" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> filter_numbers(numbers, even<span class="op">=</span><span class="va">True</span>):</span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> even:</span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [n <span class="cf">for</span> n <span class="kw">in</span> numbers <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>]</span>
@@ -1128,7 +1130,7 @@ False</code></pre>
 </section>
 <section id="übung-41" class="level2">
 <h2 class="anchored" data-anchor-id="übung-41">Übung 41</h2>
-<div id="dcaa3c3b" class="cell" data-execution_count="36">
+<div id="02a65b64" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Hello number </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">!"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1147,7 +1149,7 @@ Hello number 10!</code></pre>
 </section>
 <section id="übung-42" class="level2">
 <h2 class="anchored" data-anchor-id="übung-42">Übung 42</h2>
-<div id="f35c167a" class="cell" data-execution_count="37">
+<div id="e320d762" class="cell" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ps_to_kw(ps):</span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ps <span class="op">/</span> <span class="fl">1.36</span></span>
 <span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1164,7 +1166,7 @@ Hello number 10!</code></pre>
 </section>
 <section id="übung-43" class="level2">
 <h2 class="anchored" data-anchor-id="übung-43">Übung 43</h2>
-<div id="a13d8c87" class="cell" data-execution_count="38">
+<div id="da45921e" class="cell" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"supercalifragilisticexpialidocious"</span></span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"1."</span>, <span class="bu">len</span>(s))</span>
 <span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>first_i <span class="op">=</span> s.index(<span class="st">"i"</span>)</span>
@@ -1186,7 +1188,7 @@ Hello number 10!</code></pre>
 </section>
 <section id="übung-44" class="level2">
 <h2 class="anchored" data-anchor-id="übung-44">Übung 44</h2>
-<div id="a9e41f58" class="cell" data-execution_count="39">
+<div id="6f70faed" class="cell" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> longest_word(sentence):</span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>    words <span class="op">=</span> sentence.split()</span>
 <span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>    longest <span class="op">=</span> <span class="st">""</span></span>
@@ -1203,7 +1205,7 @@ Hello number 10!</code></pre>
 </section>
 <section id="übung-45" class="level2">
 <h2 class="anchored" data-anchor-id="übung-45">Übung 45</h2>
-<div id="b9348104" class="cell" data-execution_count="40">
+<div id="3c3afced" class="cell" data-execution_count="40">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [math.sqrt(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">300</span>, <span class="dv">701</span>) <span class="cf">if</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>]</span>
@@ -1218,7 +1220,7 @@ Hello number 10!</code></pre>
 </section>
 <section id="übung-46" class="level2">
 <h2 class="anchored" data-anchor-id="übung-46">Übung 46</h2>
-<div id="b0572043" class="cell" data-execution_count="41">
+<div id="a0140904" class="cell" data-execution_count="41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count_lower(s):</span>
 <span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> char <span class="kw">in</span> s:</span>
@@ -1238,7 +1240,7 @@ Hello number 10!</code></pre>
 </section>
 <section id="übung-47" class="level2">
 <h2 class="anchored" data-anchor-id="übung-47">Übung 47</h2>
-<div id="fb9c991a" class="cell" data-execution_count="42">
+<div id="ad7b584a" class="cell" data-execution_count="42">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> check_parity(n):</span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
@@ -1261,7 +1263,7 @@ Hello number 10!</code></pre>
 </section>
 <section id="übung-49" class="level2">
 <h2 class="anchored" data-anchor-id="übung-49">Übung 49</h2>
-<div id="d5ae7f70" class="cell" data-execution_count="43">
+<div id="fd650b39" class="cell" data-execution_count="43">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cm_to_inches(cm):</span>
 <span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> cm <span class="op">/</span> <span class="fl">2.54</span></span>
 <span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1280,7 +1282,7 @@ Hello number 10!</code></pre>
 </section>
 <section id="übung-50" class="level2">
 <h2 class="anchored" data-anchor-id="übung-50">Übung 50</h2>
-<div id="b3057dde" class="cell" data-execution_count="44">
+<div id="c4dc9a36" class="cell" data-execution_count="44">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sum_squares(numbers):</span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>([x<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> numbers])</span>
 <span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1292,7 +1294,7 @@ Hello number 10!</code></pre>
 </section>
 <section id="übung-51" class="level2">
 <h2 class="anchored" data-anchor-id="übung-51">Übung 51</h2>
-<div id="19141d95" class="cell" data-execution_count="45">
+<div id="7f51e10e" class="cell" data-execution_count="45">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> default_rng</span>
 <span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> default_rng(<span class="dv">1</span>)</span>
@@ -1318,7 +1320,7 @@ Hello number 10!</code></pre>
 </section>
 <section id="übung-52" class="level2">
 <h2 class="anchored" data-anchor-id="übung-52">Übung 52</h2>
-<div id="2fb8727e" class="cell" data-execution_count="46">
+<div id="f2b80fb9" class="cell" data-execution_count="46">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_prime(n):</span>
 <span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
 <span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
@@ -1350,7 +1352,7 @@ Tipp
 </section>
 <section id="übung-53" class="level2">
 <h2 class="anchored" data-anchor-id="übung-53">Übung 53</h2>
-<div id="8ab0849c" class="cell" data-execution_count="47">
+<div id="b78fd1f5" class="cell" data-execution_count="47">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
 <span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">//</span> <span class="dv">2</span> <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">3</span> <span class="op">*</span> x <span class="op">+</span> <span class="dv">1</span></span>
 <span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1373,7 +1375,7 @@ Tipp
 </section>
 <section id="übung-55" class="level2">
 <h2 class="anchored" data-anchor-id="übung-55">Übung 55</h2>
-<div id="26ad8082" class="cell" data-execution_count="48">
+<div id="61710e35" class="cell" data-execution_count="48">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Countdown starting now!"</span>)</span>
 <span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>):</span>
 <span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"t minus </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">..."</span>)</span>
@@ -1397,7 +1399,7 @@ Lift-off!</code></pre>
 </section>
 <section id="übung-56" class="level2">
 <h2 class="anchored" data-anchor-id="übung-56">Übung 56</h2>
-<div id="fcae43fe" class="cell" data-execution_count="49">
+<div id="75f0d1b4" class="cell" data-execution_count="49">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f_statistic(ssm, ssr, p, n):</span>
 <span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (ssm <span class="op">/</span> (p <span class="op">-</span> <span class="dv">1</span>)) <span class="op">/</span> (ssr <span class="op">/</span> (n <span class="op">-</span> p))</span>
 <span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1409,7 +1411,7 @@ Lift-off!</code></pre>
 </section>
 <section id="übung-57" class="level2">
 <h2 class="anchored" data-anchor-id="übung-57">Übung 57</h2>
-<div id="2c30e055" class="cell" data-execution_count="50">
+<div id="6ecfe2af" class="cell" data-execution_count="50">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> convert_celsius(c, to<span class="op">=</span><span class="st">"K"</span>):</span>
 <span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> to <span class="op">==</span> <span class="st">"K"</span>:</span>
 <span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> c <span class="op">+</span> <span class="fl">273.15</span></span>
@@ -1427,7 +1429,7 @@ Lift-off!</code></pre>
 <section id="übung-58" class="level2">
 <h2 class="anchored" data-anchor-id="übung-58">Übung 58</h2>
 <p><code>sum</code> ist eine eingebaute Funktion und wird im Beispiel “überschrieben”, und zwar mit einem Integer, welcher eine Summe über eine Schleife beinhaltet. Danach kann die eingebaute Funktion <code>sum</code> nicht mehr aufgerufen werden. Es wäre hier also besser, anstelle von <code>sum</code> einen Namen zu verwenden, der keiner eingebauten Funktion entspricht, z.B. <code>s</code>:</p>
-<div id="82dde356" class="cell" data-execution_count="51">
+<div id="5fda14b5" class="cell" data-execution_count="51">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
 <span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a>    s <span class="op">+=</span> i</span>
@@ -1440,7 +1442,7 @@ Lift-off!</code></pre>
 <section id="übung-59" class="level2">
 <h2 class="anchored" data-anchor-id="übung-59">Übung 59</h2>
 <p>Ein Tuple mit einem einzigen Element erstellt man mit einem Komma am Ende:</p>
-<div id="21ede047" class="cell" data-execution_count="52">
+<div id="22790567" class="cell" data-execution_count="52">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">2</span>,</span>
 <span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">0</span>])</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1450,7 +1452,7 @@ Lift-off!</code></pre>
 </section>
 <section id="übung-60" class="level2">
 <h2 class="anchored" data-anchor-id="übung-60">Übung 60</h2>
-<div id="a7d9ffd0" class="cell" data-execution_count="53">
+<div id="ac9a9f92" class="cell" data-execution_count="53">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> describe_number(n):</span>
 <span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">10</span></span>
@@ -1470,7 +1472,7 @@ Lift-off!</code></pre>
 </section>
 <section id="übung-61" class="level2">
 <h2 class="anchored" data-anchor-id="übung-61">Übung 61</h2>
-<div id="dff62eb9" class="cell" data-execution_count="54">
+<div id="eb7df096" class="cell" data-execution_count="54">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">3</span></span>
 <span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a <span class="op">&lt;</span> <span class="dv">10</span>:  <span class="co"># Doppelpunkt am Ende fehlte</span></span>
 <span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"a is less than 10."</span>)  <span class="co"># Klammern für Funktionsaufruf fehlten</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1481,7 +1483,7 @@ Lift-off!</code></pre>
 </section>
 <section id="übung-62" class="level2">
 <h2 class="anchored" data-anchor-id="übung-62">Übung 62</h2>
-<div id="508a2491" class="cell" data-execution_count="55">
+<div id="168a8736" class="cell" data-execution_count="55">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(s1, s2):</span>
@@ -1495,7 +1497,7 @@ Lift-off!</code></pre>
 </section>
 <section id="übung-63" class="level2">
 <h2 class="anchored" data-anchor-id="übung-63">Übung 63</h2>
-<div id="e4b97074" class="cell" data-execution_count="56">
+<div id="1553521b" class="cell" data-execution_count="56">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> decibel(x, to<span class="op">=</span><span class="st">"power"</span>):</span>

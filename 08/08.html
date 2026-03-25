@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,6 +10,9 @@
 
 <title>8 – Ein- und Ausgabe – Einführung in Python und PsychoPy</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -68,19 +71,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a06763021a52c43c40a351ac8b799b8f.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-dbc92dda8186f57fa2e333fbb71d6a9d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a06763021a52c43c40a351ac8b799b8f.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-94a11f9d2ef63b4d3e14a49c60b54d86.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-31dd7b97cc2105c3f43b9904fe8c5fac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-94a11f9d2ef63b4d3e14a49c60b54d86.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c6344c862f46cf6a68a6928f4c326ca4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-a4cc7722e2170b143ab83d7d6445229a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-c6344c862f46cf6a68a6928f4c326ca4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
@@ -117,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -455,28 +457,28 @@ window.Quarto = {
 <section id="strings-verketten" class="level3">
 <h3 class="anchored" data-anchor-id="strings-verketten">Strings verketten</h3>
 <p>Wir haben bereits die <code>print</code>-Funktion kennengelernt, welche Strings (und andere Objekte) als Text am Bildschirm ausgeben kann. Im einfachsten Fall kann so ein String ausgegeben werden:</p>
-<div id="224792b7" class="cell" data-execution_count="1">
+<div id="0cef9b4d" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hallo"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hallo</code></pre>
 </div>
 </div>
 <p>Auch Zahlen kann man als Argument für <code>print</code> verwenden:</p>
-<div id="491f7d6e" class="cell" data-execution_count="2">
+<div id="d9eae246" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">55</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>55</code></pre>
 </div>
 </div>
 <p>Mit der Funktion <code>str</code> kann man beliebige Objekte (also auch z.B. Ganzzahlen) in einen String umwandeln:</p>
-<div id="4f2cb7d7" class="cell" data-execution_count="3">
+<div id="1f7da898" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">str</span>(<span class="dv">55</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>'55'</code></pre>
 </div>
 </div>
 <p>Die <code>print</code>-Funktion kann <em>beliebig viele</em> Argumente entgegennehmen. Sie gibt dann alle Argumente, getrennt mit Leerzeichen, am Bildschirm aus.</p>
-<div id="8fa60c69" class="cell" data-execution_count="4">
+<div id="eeda5b6f" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a, <span class="st">"+"</span>, b, <span class="st">"="</span>, a <span class="op">+</span> b)  <span class="co"># fünf Argumente</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -503,7 +505,7 @@ Hinweis
 </div>
 </div>
 <p>Wie wir bereits wissen, kann man mehrere Strings mit <code>+</code> verketten. Daher könnte man obige Ausgabe auch durch Ausgabe eines einzigen Strings durch Verketten von einzelnen Strings erzeugen:</p>
-<div id="29692dd9" class="cell" data-execution_count="5">
+<div id="fb178971" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">str</span>(a) <span class="op">+</span> <span class="st">" + "</span> <span class="op">+</span> <span class="bu">str</span>(b) <span class="op">+</span> <span class="st">" = "</span> <span class="op">+</span> <span class="bu">str</span>(a <span class="op">+</span> b))  <span class="co"># ein Argument</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>5 + 10 = 15</code></pre>
@@ -513,14 +515,14 @@ Hinweis
 <section id="f-strings" class="level3">
 <h3 class="anchored" data-anchor-id="f-strings">f-Strings</h3>
 <p>Sogenannte f-Strings sind ganz normale Strings, man kann aber bei ihrer Erzeugung beliebige Ausdrücke verwenden, die dann ausgewertet in den String eingesetzt (interpoliert) werden. Man definiert einen f-String wie einen regulären String mittels Anführungszeichen, stellt aber ein <code>f</code> voran, also z.B.:</p>
-<div id="70c18c9d" class="cell" data-execution_count="6">
+<div id="6810ad9a" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ss">f"Hallo"</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>'Hallo'</code></pre>
 </div>
 </div>
 <p>Sinnvoll sind f-Strings nur dann, wenn man auch tatsächlich Ausdrücke integriert, welche innerhalb von geschwungenen Klammern <code>{}</code> angegeben werden. Alle Ausdrücke werden ausgewertet und in den String interpoliert:</p>
-<div id="f61e2153" class="cell" data-execution_count="7">
+<div id="0b61ac7a" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">"World"</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ss">f"Hello </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -528,14 +530,14 @@ Hinweis
 </div>
 </div>
 <p>Den fertigen String kann man dann einfach mit <code>print</code> am Bildschirm ausgeben. Das Beispiel aus dem vorigen Abschnitt kann man daher wie folgt anschreiben:</p>
-<div id="e376c319" class="cell" data-execution_count="8">
+<div id="906f3764" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss"> + </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>a <span class="op">+</span> b<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>5 + 10 = 15</code></pre>
 </div>
 </div>
 <p>Ausdrücke wie z.B. Zahlen, können optional auch <em>formatiert</em> werden. Sehen wir uns zunächst an, wie die Kreiszahl <span class="math inline">\(\pi\)</span> standardmäßig ausgegeben wird:</p>
-<div id="ce9ee63b" class="cell" data-execution_count="9">
+<div id="edfc7b59" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"π ≈ </span><span class="sc">{</span>math<span class="sc">.</span>pi<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -544,21 +546,21 @@ Hinweis
 </div>
 </div>
 <p>Mit einem optionalen Doppelpunkt und einem sogenannten <em>Format Specifier</em> innerhalb der geschwungenen Klammern kann ein Ausdruck gezielt formatiert werden. Das folgende Beispiel formatiert die Zahl <span class="math inline">\(\pi\)</span> so, dass sie mit drei Nachkommastellen ausgegeben wird:</p>
-<div id="6b6e3e97" class="cell" data-execution_count="10">
+<div id="62beebab" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"π ≈ </span><span class="sc">{</span>math<span class="sc">.</span>pi<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>π ≈ 3.142</code></pre>
 </div>
 </div>
 <p>Oder mit 16 Nachkommastellen:</p>
-<div id="1aaa57e9" class="cell" data-execution_count="11">
+<div id="59a7c968" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"π ≈ </span><span class="sc">{</span>math<span class="sc">.</span>pi<span class="sc">:.16f}</span><span class="ss">"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>π ≈ 3.1415926535897931</code></pre>
 </div>
 </div>
 <p>Eine Ganzzahl wird mit dem Format Specifier <code>d</code> ausgegeben:</p>
-<div id="5b72cac7" class="cell" data-execution_count="12">
+<div id="ebfc9988" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>number <span class="op">=</span> <span class="dv">42</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"number = </span><span class="sc">{</span>number<span class="sc">:d}</span><span class="ss">"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -579,14 +581,14 @@ Hinweis
 </div>
 </div>
 <p>Die minimale Feldbreite kann mit einer Zahl direkt nach dem Doppelpunkt spezifiziert werden, im folgenden Beispiel soll diese 15 Zeichen betragen:</p>
-<div id="802638da" class="cell" data-execution_count="13">
+<div id="13239aa5" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"π ≈ </span><span class="sc">{</span>math<span class="sc">.</span>pi<span class="sc">:15.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>π ≈           3.142</code></pre>
 </div>
 </div>
 <p>Man kann auch die Ausrichtung innerhalb des Feldes spezifizieren. Standardmäßig wird rechtsbündig ausgerichtet (für Zahlen sinnvoll), mit <code>&lt;</code> wird linksbündig ausgerichtet:</p>
-<div id="b538364a" class="cell" data-execution_count="14">
+<div id="6219029a" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"π ≈ </span><span class="sc">{</span>math<span class="sc">.</span>pi<span class="sc">:&lt;15.3f}</span><span class="ss">, more text"</span>)  <span class="co"># linksbündig</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"π ≈ </span><span class="sc">{</span>math<span class="sc">.</span>pi<span class="sc">:15.3f}</span><span class="ss">, more text"</span>)  <span class="co"># rechtsbündig (Standard)</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -595,7 +597,7 @@ Hinweis
 </div>
 </div>
 <p>Führende Nullen können ebenfalls hinzugefügt werden, indem man eine <code>0</code> vor die Feldbreite setzt:</p>
-<div id="0c2a5c08" class="cell" data-execution_count="15">
+<div id="72d0e6a9" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"number = </span><span class="sc">{</span>number<span class="sc">:5d}</span><span class="ss">"</span>)    <span class="co"># 5 Stellen, mit Leerzeichen</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"number = </span><span class="sc">{</span>number<span class="sc">:05d}</span><span class="ss">"</span>)   <span class="co"># 5 Stellen, mit führenden Nullen</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -604,7 +606,7 @@ number = 00042</code></pre>
 </div>
 </div>
 <p>Dies funktioniert auch mit Dezimalzahlen:</p>
-<div id="81c772ab" class="cell" data-execution_count="16">
+<div id="bba2c562" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"π ≈ </span><span class="sc">{</span>math<span class="sc">.</span>pi<span class="sc">:015.3f}</span><span class="ss">, more text"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>π ≈ 00000000003.142, more text</code></pre>
@@ -651,7 +653,7 @@ Hinweis
 </div>
 </div>
 <p>Die Methode <code>read</code> eines Datei-Objektes liest die <em>gesamte Datei</em> ein und gibt den Inhalt als String zurück:</p>
-<div id="f96e1354" class="cell" data-execution_count="17">
+<div id="49e759da" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">"test.txt"</span>)</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> f.read()</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -675,20 +677,20 @@ Tipp
 </div>
 <div class="callout-body-container callout-body">
 <p>Der Inhalt einer Datei kann immer nur ein Mal gelesen werden. Wenn bereits der gesamte Inhalt gelesen wurde, befindet sich der sogenannte Dateizeiger am Ende der Datei. Wenn dann nochmals gelesen wird, wird nur mehr ein leerer String zurückgegeben:</p>
-<div id="0b2f356c" class="cell" data-execution_count="18">
+<div id="90736688" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>f.read()  <span class="co"># Ende der Datei bereits erreicht</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>''</code></pre>
 </div>
 </div>
 <p>Möchte man die Datei erneut lesen, muss man sie schließen und kann sie dann wieder erneut öffnen:</p>
-<div id="c301b554" class="cell" data-execution_count="19">
+<div id="8bd3e492" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>f.close()  <span class="co"># schließt Datei (notwendig wenn man kein with verwendet)</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 <p>Die Methode <code>readline</code> liest <em>eine Zeile</em> aus der Datei:</p>
-<div id="441916b7" class="cell" data-execution_count="20">
+<div id="797aca62" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"test.txt"</span>) <span class="im">as</span> f:</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"1. Zeile: "</span>, f.readline(), end<span class="op">=</span><span class="st">""</span>)</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"2. Zeile: "</span>, f.readline(), end<span class="op">=</span><span class="st">""</span>)</span>
@@ -700,7 +702,7 @@ Tipp
 </div>
 </div>
 <p>In einer Schleife kann man die Datei ebenso Zeile für Zeile auslesen, in dem man über das Datei-Objekt iteriert:</p>
-<div id="66fb912e" class="cell" data-execution_count="21">
+<div id="31b6d205" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"test.txt"</span>) <span class="im">as</span> f:</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> f:</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(line, end<span class="op">=</span><span class="st">""</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -713,7 +715,7 @@ Nice!</code></pre>
 </div>
 </div>
 <p>So kann man einzelne Zeilen einfach manipulieren, z.B. um Zeilennummern auszugeben (die nicht in der Datei selbst sind):</p>
-<div id="25161984" class="cell" data-execution_count="22">
+<div id="80a9f99a" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"test.txt"</span>) <span class="im">as</span> f:</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> no, line <span class="kw">in</span> <span class="bu">enumerate</span>(f):</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(no, line, end<span class="op">=</span><span class="st">""</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -750,13 +752,13 @@ Tipp
 <section id="möglichkeit-1" class="level3">
 <h3 class="anchored" data-anchor-id="möglichkeit-1">Möglichkeit 1</h3>
 <p>Wir starten mit einer leeren Liste <code>data</code>. Dieser Liste fügen wir den Inhalt jeder Zeile schrittweise (mittels <code>append</code>) hinzu. Eine Zeile wird dabei als Liste mit zwei Strings abgebildet. Zuerst entfernen wir eventuelle Leerzeichen am Anfang und Ende einer Zeile mittels <code>.strip()</code>, und danach spalten wir die Zeile am Komma in eine Liste mit zwei Elementen mittels <code>.split(",")</code> auf:</p>
-<div id="71aa8688" class="cell" data-execution_count="23">
+<div id="409707c5" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> []  <span class="co"># leere Liste</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"correlation.csv"</span>) <span class="im">as</span> f:</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> f:</span>
 <span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>        data.append(row.strip().split(<span class="st">","</span>))</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="c5228e16" class="cell" data-execution_count="24">
+<div id="89bef88b" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>[['essay', 'hours'],
@@ -808,35 +810,35 @@ Tipp
 </div>
 </div>
 <p>Nun können die Daten in eine Struktur umgewandelt werden, die sich besser für nachfolgende Berechnungen eignet (also inbesondere werden die Zahlen, die als Strings vorliegen, mit der Funktion <code>float</code> in Kommazahlen umgewandelt).</p>
-<div id="36d0b9b2" class="cell" data-execution_count="25">
+<div id="94386e4d" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [[], []]  <span class="co"># zwei leere Listen für die zwei Spalten</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> data[<span class="dv">1</span>:]:  <span class="co"># die erste Zeile 0 wird übersprungen (Kopfzeile)</span></span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    cols[<span class="dv">0</span>].append(<span class="bu">float</span>(row[<span class="dv">0</span>]))  <span class="co"># erste Spalte</span></span>
 <span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    cols[<span class="dv">1</span>].append(<span class="bu">float</span>(row[<span class="dv">1</span>]))  <span class="co"># zweite Spalte</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Nun stehen die beiden Spalten in der Liste <code>cols</code> zur weiteren Verfügung. Diese Liste hat zwei Elemente:</p>
-<div id="bd7fe2b5" class="cell" data-execution_count="26">
+<div id="f74776b9" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(cols)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>2</code></pre>
 </div>
 </div>
 <p>Die beiden Einträge in <code>cols</code> sind ebenfalls Listen:</p>
-<div id="394237b5" class="cell" data-execution_count="27">
+<div id="d08033c6" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(cols[<span class="dv">0</span>]), <span class="bu">type</span>(cols[<span class="dv">1</span>])</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>(list, list)</code></pre>
 </div>
 </div>
 <p>Die Länge beider Listen entspricht der Anzahl an Zeilen in der CSV-Datei (ohne Kopfzeile):</p>
-<div id="e885c78f" class="cell" data-execution_count="28">
+<div id="f22d0195" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(cols[<span class="dv">0</span>]), <span class="bu">len</span>(cols[<span class="dv">1</span>])</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>(45, 45)</code></pre>
 </div>
 </div>
 <p>Die Elemente in diesen beiden Listen sind Zahlen:</p>
-<div id="feef07e8" class="cell" data-execution_count="29">
+<div id="1d7d7e72" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>cols[<span class="dv">0</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>[61.6754974920745,
@@ -886,7 +888,7 @@ Tipp
  79.8777504975499]</code></pre>
 </div>
 </div>
-<div id="0c348e45" class="cell" data-execution_count="30">
+<div id="83a08bf6" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>cols[<span class="dv">1</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>[10.6303372921189,
@@ -937,13 +939,13 @@ Tipp
 </div>
 </div>
 <p>Mit diesen beiden Listen kann man jetzt also Berechnungen durchführen. Beispielsweise kann man die Spaltenmittelwerte so ausrechnen:</p>
-<div id="fb841516" class="cell" data-execution_count="31">
+<div id="11851698" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(cols[<span class="dv">0</span>]) <span class="op">/</span> <span class="bu">len</span>(cols[<span class="dv">0</span>])</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>63.449913700936655</code></pre>
 </div>
 </div>
-<div id="6b3766a6" class="cell" data-execution_count="32">
+<div id="59ac2bb5" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(cols[<span class="dv">1</span>]) <span class="op">/</span> <span class="bu">len</span>(cols[<span class="dv">1</span>])</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>8.349021354368457</code></pre>
@@ -954,7 +956,7 @@ Tipp
 <section id="möglichkeit-2" class="level3">
 <h3 class="anchored" data-anchor-id="möglichkeit-2">Möglichkeit 2</h3>
 <p>Eine verallgemeinerte Lösung für eine <em>beliebige</em> Anzahl an Spalten sieht wie folgt aus:</p>
-<div id="e402ff88" class="cell" data-execution_count="33">
+<div id="f00bab1c" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"correlation.csv"</span>) <span class="im">as</span> f:</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>    header <span class="op">=</span> f.readline().strip().split(<span class="st">","</span>)  <span class="co"># erste Zeile</span></span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -968,7 +970,7 @@ Tipp
 <span id="cb66-11"><a href="#cb66-11" aria-hidden="true" tabindex="-1"></a>            data[h].append(<span class="bu">float</span>(v))  <span class="co"># füge zur jeweiligen Liste hinzu</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Hier werden zunächst die Variablennamen aus der ersten Zeile (der Kopfzeile) gelesen. Die Daten werden dann in ein Dictionary geschrieben, wobei die Werte der Spalten zu den richtigen Dictionary-Einträgen (Listen) hinzugefügt werden. Die Funktion <code>zip</code> kombiniert die Werte von <code>header</code> und <code>values</code> in ein Tupel, die dann innerhalb der Schleife als <code>h</code> bzw. <code>v</code> zur Verfügung stehen (so kann man in einer Schleife also gleichzeitig über zwei Objekte iterieren).</p>
-<div id="55f73498" class="cell" data-execution_count="34">
+<div id="c12b28ef" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>{'essay': [61.6754974920745,
@@ -1064,13 +1066,13 @@ Tipp
 </div>
 </div>
 <p>Diese Lösung funktioniert also bereits mit einer beliebigen Spaltenanzahl, setzt aber voraus, dass es eine Kopfzeile gibt. Die Spaltenmittelwerte können dann wie folgt berechnet werden:</p>
-<div id="c7ffc7fb" class="cell" data-execution_count="35">
+<div id="403da340" class="cell" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(data[<span class="st">"essay"</span>]) <span class="op">/</span> <span class="bu">len</span>(data[<span class="st">"essay"</span>])</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>63.449913700936655</code></pre>
 </div>
 </div>
-<div id="82beea0e" class="cell" data-execution_count="36">
+<div id="493c2941" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(data[<span class="st">"hours"</span>]) <span class="op">/</span> <span class="bu">len</span>(data[<span class="st">"hours"</span>])</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>8.349021354368457</code></pre>
@@ -1080,12 +1082,12 @@ Tipp
 <section id="möglichkeit-3" class="level3">
 <h3 class="anchored" data-anchor-id="möglichkeit-3">Möglichkeit 3</h3>
 <p>Das Package <code>pandas</code> eignet sich ideal zum Verarbeiten von tabellarischen Daten. Es beinhaltet auch Funktionen zum Lesen von Dateien. Damit würde der Code wie folgt aussehen:</p>
-<div id="de3a8f4c" class="cell" data-execution_count="37">
+<div id="ceaedc67" class="cell" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">"correlation.csv"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="b7767c50" class="cell" data-execution_count="38">
+<div id="e9e158fd" class="cell" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <div>
@@ -1332,7 +1334,7 @@ Tipp
 </div>
 </div>
 <p>Die Spaltenmittelwerte kann man dann wie folgt berechnen:</p>
-<div id="49e35b12" class="cell" data-execution_count="39">
+<div id="f6a2b01b" class="cell" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>data.mean()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>essay    63.449914
