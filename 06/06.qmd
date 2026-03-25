@@ -2,7 +2,7 @@
 title: "6 – Strings"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-11-20
+date: 2026-04-20
 format:
   html:
     page-layout: full
@@ -53,7 +53,7 @@ Für uns relevante nicht veränderbare Typen sind:
 
 ### Immutable Typen
 
-Befassen wir uns zunächst mit den nicht veränderbaren (immutable) Typen. Als Beispiel betrachten wir das Objekt `2` vom Typ `int`. Dieses Objekt ist nicht veränderbar. Im folgenden Beispiel wird das Objekt `2`, welches den Namen `a` hat, tatsächlich auch nicht verändert. Wenn man nämlich `a = 3` setzt, ändert man lediglich den Namen `a` – dieser verweist dann auf das Objekt `3` (ein anderes Objekt, denken Sie an die Analogie mit dem Namensschildchen).
+Befassen wir uns zunächst mit den nicht veränderbaren (immutable) Typen. Als Beispiel betrachten wir das Objekt `2` vom Typ `int`. Dieses Objekt ist nicht veränderbar. Im folgenden Beispiel wird das Objekt `2`, welches den Namen `a` hat, tatsächlich auch nicht verändert. Wenn man nämlich `a = 3` setzt, ändert man lediglich den Namen `a` – dieser verweist dann auf das Objekt `3` (ein anderes Objekt).
 
 Dies kann man auch mit Hilfe der `id`-Funktion verifizieren; man erkennt, dass die IDs (also die Objekte) tatsächlich unterschiedlich sind.
 
@@ -422,7 +422,7 @@ Für Strings gibt es in Python sehr viele praktische spezielle Funktionen. Diese
 x.upper()
 ```
 
-Zuerst gibt man das String-Objekt an (im Beispiel `x`), gefolgt von einem Punkt, gefolgt vom Namen der Funktion (im Beispiel `upper`), die man aufrufen möchte. Eine solche Funktion nennt man auch *Methode*, da sie direkt auf ein zuvor spezifiziertes Objekt angewendet wird. Im Beispiel oben wird ein neuer String erzeugt, welcher aus den Zeichen des Strings `x` in Großbuchstaben besteht. Diese Schreibweise hat den Vorteil, dass sofort klar wird, dass die Methode zum Objekt gehört; im Prinzip entspricht der Aufruf aber einem klassischen Funktionsaufruf `str.upper(x)`.
+Zuerst gibt man das String-Objekt an (im Beispiel `x`), gefolgt von einem Punkt, gefolgt vom Namen der Funktion (im Beispiel `upper`), die man aufrufen möchte. Eine solche Funktion nennt man *Methode*, da sie direkt auf ein zuvor spezifiziertes Objekt angewendet wird. Im Beispiel oben wird ein neuer String erzeugt, welcher aus den Zeichen des Strings `x` in Großbuchstaben besteht. Diese Schreibweise hat den Vorteil, dass sofort klar wird, dass die Methode zum Objekt gehört; im Prinzip entspricht der Aufruf aber einem klassischen Funktionsaufruf `str.upper(x)`.
 
 ```{python}
 "abcdefg".upper()  # Großbuchstaben
