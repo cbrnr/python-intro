@@ -2,7 +2,7 @@
 title: "7 – Listen und Dictionaries"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-11-27
+date: 2026-04-27
 format:
   html:
     page-layout: full
@@ -196,7 +196,7 @@ x
 ```
 
 :::{.callout-note}
-Beachten Sie, dass `del` ein Python-Keyword ist und keine Funktion. Daher handelt es sich bei `del x[1]` auch nicht um einen Funktionsaufruf, Klammern als Aufrufeoperator sind also nicht notwendig!
+Beachten Sie, dass `del` ein Python-Keyword ist und keine Funktion. Daher handelt es sich bei `del x[1]` auch nicht um einen Funktionsaufruf, Klammern als Aufrufoperator sind also nicht notwendig!
 :::
 
 Alternativ kann man auch die Methode `pop` zum Löschen eines Elementes an einem bestimmten Index verwenden. Diese gibt das entfernte Element auch zurück (was `del` nicht tut).
@@ -273,7 +273,7 @@ for k in [2, "fünf", 3.14, "sieben"]:
     print(k)
 ```
 
-Die Schleifenvariable `k` nimmt in jeder Interation die einzelnen Werte der Liste an.
+Die Schleifenvariable `k` nimmt in jeder Iteration die einzelnen Werte der Liste an.
 
 
 ## Tupel
@@ -389,7 +389,7 @@ x = [4, -3, 7, 81, 11]
 x * 2
 ```
 
-So werden die einzelnen Elemente nicht mit 2 multipliziert, sondern die Liste wird "verzweifacht". Immer dann, wenn man eine Operation elementweise anwenden möchte, muss man daher eine List Comprehension (oder die entsprechende Schleife) verwenden.
+So werden die einzelnen Elemente nicht mit 2 multipliziert, sondern die Liste wird "verdoppelt". Immer dann, wenn man eine Operation elementweise anwenden möchte, muss man daher eine List Comprehension (oder die entsprechende Schleife) verwenden.
 
 Für numerische Anwendungen ist das aber denkbar unpraktisch. Wir werden in einer der folgenden Einheiten lernen, wie man Python dennoch für numerische Berechnungen verwenden kann (nämlich dank eines neuen Datentyps namens NumPy Array, welches vom Zusatzpaket NumPy zur Verfügung gestellt wird).
 :::
@@ -557,7 +557,7 @@ d["psy"]  # Fehler, Key "psy" existiert nicht
 ```
 
 ```{python}
-d.get("psy", 0)  # Key "psy" exisitiert nicht, also wird 0 zurückgegeben
+d.get("psy", 0)  # Key "psy" existiert nicht, also wird 0 zurückgegeben
 ```
 
 ```{python}
