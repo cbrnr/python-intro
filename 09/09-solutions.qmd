@@ -2,7 +2,7 @@
 title: "9 – Lösungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-12-04
+date: 2026-05-11
 format:
   html:
     page-layout: full
@@ -73,7 +73,7 @@ u.max(1)  # Zeilenmaxima
 ```
 
 ```{python}
-u.min(1)  # Zeilennminima
+u.min(1)  # Zeilenminima
 ```
 
 ```{python}

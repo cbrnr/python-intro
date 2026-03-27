@@ -2,7 +2,7 @@
 title: "9 – Numerische Daten"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-12-04
+date: 2026-05-11
 format:
   html:
     page-layout: full
@@ -26,12 +26,12 @@ Python wurde ursprünglich als einfach zu erlernende Programmiersprache entwicke
 * [Matplotlib](http://matplotlib.org/) (Erstellung von Grafiken)
 * [Pandas](http://pandas.pydata.org/) (Arbeiten mit Tabellen)
 
-Darüber hinaus gibt es viele weitere Pakete für spezifischere Anwendungen wie z.B. Scikit-learn (Machine Learning), statsmodels (Statistik), scikit-image (Bildverarbeitung) und SymPy (symbolisches Rechnen). Diese Pakete setzen alle NumPy als Grundlage voraus, welches wir in dieser Einheit näher kennenlernen werden.
+Darüber hinaus gibt es viele weitere Pakete für spezifischere Anwendungen wie z.B. [Scikit-learn](https://scikit-learn.org/) (Machine Learning), [statsmodels](https://www.statsmodels.org/stable/index.html) (Statistik), [scikit-image](https://scikit-image.org) (Bildverarbeitung) und [SymPy](https://www.sympy.org/en/index.html) (symbolisches Rechnen). Diese Pakete setzen alle NumPy als Grundlage voraus, welches wir in dieser Einheit näher kennenlernen werden.
 
 
 ## NumPy
 
-NumPy stellt einen hocheffizienten Datentyp für numerische Daten zur Verfügung, nämlich ein homogenes multidimensionales (*n*-dimensionales) Array (auch kurz ND-Array bzw. `ndarray` oder einfach Array genannt). Listen sind aufgrund ihrer Flexibilität dafür viel zu ineffizient, da sie unterschiedliche Elemente enthalten können. *Homogen* bedeutet in diesem Zusammenhang, dass alle Elemente eines Arrays *denselben* Datentyp haben müssen (z.B. lauter `float`-Werte) – dadurch können Berechnungen wesentlich effizienter und schneller ausgeführt werden. *Multidimensional* bedeutet, dass ein Array beliebig viele Dimensionen (auch Achsen genannt) besitzen kann. Jedes Element wird daher mit einem Tupel indiziert, welches seine genaue Position innerhalb des Arrays beschreibt.
+NumPy stellt einen hocheffizienten Datentyp für numerische Daten zur Verfügung, nämlich ein homogenes multidimensionales (*n*-dimensionales) Array (auch kurz ND-Array bzw. `ndarray` oder einfach Array genannt). Normale Listen sind aufgrund ihrer Flexibilität dafür viel zu ineffizient, da sie unterschiedliche Elemente enthalten können. *Homogen* bedeutet in diesem Zusammenhang, dass alle Elemente eines Arrays *denselben* Datentyp haben müssen (z.B. lauter `float`-Werte) – dadurch können Berechnungen wesentlich effizienter und schneller ausgeführt werden. *Multidimensional* bedeutet, dass ein Array beliebig viele Dimensionen (auch Achsen genannt) besitzen kann. Jedes Element wird daher mit einem Tupel indiziert, welches seine genaue Position innerhalb des Arrays beschreibt.
 
 ::: {.callout-tip}
 Das offizielle Tutorial [NumPy: the absolute basics for beginners](https://numpy.org/doc/stable/user/absolute_beginners.html) ergänzt bzw. vertieft die Inhalte dieser Unterlagen – die Lektüre ist sehr zu empfehlen!
@@ -43,7 +43,7 @@ Beginnen wir aber mit einem einfachen Beispiel, Details zu den einzelnen Befehle
 import numpy as np
 ```
 
-Dies bedeutet, dass man das Paket mit `np` ansprechen kann statt mit `numpy` – man spart sich also ein paar Zeichen zu tippen. Wir erstellen nun eine Zahlensequenz aus 15 Zahlen:
+Dies bedeutet, dass man das Paket mit `np` ansprechen muss statt mit `numpy` – man spart sich also ein paar Zeichen zu tippen. Wir erstellen nun eine Zahlensequenz aus 15 Zahlen:
 
 ```{python}
 a = np.arange(15)  # 15 Zahlen (von 0 bis 14)
@@ -217,7 +217,7 @@ Danach erzeugt man damit ein Generator-Objekt. Dieses kann man auch in einen def
 rng = default_rng(seed=42)
 ```
 
-In diesem Beispiel initialisieren wir den Generator mit `42` (wir könnten aber auch jede beliebige andere Zahl nehmen). Die Initialisierung bewirkt, dass der Generator danach dieselbe Folge an Zufallszahlen ausspuckt (es bedeutet *nicht*, dass die erste Zufallszahl 42 ist!). Lässt man die Initialisierung mit einer Zahl weg, dann wird der Generator in einen nicht-reproduzierbaren Zustand initialisiert (der Seed wird z.B. aus der aktuellen Uhrzeit, der Mausposition u.ä. gebildet). Das bedeutet, dass bei jeder erneuten Ausführung eines Scripts andere Zufallszahlen gezogen werden, was nicht im Sinne der Reproduzierbarkeit von Ergebnissen ist.
+In diesem Beispiel initialisieren wir den Generator mit `42` (wir könnten aber auch jede beliebige andere Zahl nehmen). Die Initialisierung bewirkt, dass der Generator danach immer dieselbe reproduzierbare Folge an Zufallszahlen ausspuckt (es bedeutet *nicht*, dass die erste Zufallszahl 42 ist). Lässt man die Initialisierung mit einer Zahl weg, dann wird der Generator in einen nicht-reproduzierbaren Zustand initialisiert (der Seed wird z.B. aus der aktuellen Uhrzeit, der Mausposition u.ä. gebildet). Das bedeutet, dass bei jeder erneuten Ausführung eines Scripts andere Zufallszahlen gezogen werden, was nicht im Sinne der Reproduzierbarkeit von Ergebnissen ist.
 
 Durch Methoden des Generators kann man jetzt Zufallszahlen mit der gewünschten Verteilung erzeugen:
 
