@@ -2,7 +2,7 @@
 title: "10 – Grafiken"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-12-11
+date: 2026-05-18
 format:
   html:
     page-layout: full
@@ -19,7 +19,7 @@ published-title: "Veröffentlicht"
 
 ## Allgemeines
 
-In Python gibt es eine große Anzahl an Paketen, welche sich auf das Erstellen von Grafiken spezialisiert haben. Eine Übersicht über dieses sehr umfangreiche Ökosystem gibt es [hier](https://rougier.github.io/python-visualization-landscape/), die bekanntesten Pakete sind momentan:
+In Python gibt es eine große Anzahl an Paketen, welche sich auf das Erstellen von Grafiken spezialisiert haben. Die bekanntesten Pakete sind momentan:
 
 - [Matplotlib](https://matplotlib.org/)
 - [Seaborn](https://seaborn.pydata.org/)
