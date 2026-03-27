@@ -416,14 +416,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="übung-1" class="level2">
 <h2 class="anchored" data-anchor-id="übung-1">Übung 1</h2>
-<div id="62c7378f" class="cell" data-execution_count="1">
+<div id="934f68b1" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reverse(s):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> s[::<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="übung-2" class="level2">
 <h2 class="anchored" data-anchor-id="übung-2">Übung 2</h2>
-<div id="f6405ca1" class="cell" data-execution_count="2">
+<div id="6075ce0c" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"educational neuroscience"</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>s.title()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -433,7 +433,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="übung-3" class="level2">
 <h2 class="anchored" data-anchor-id="übung-3">Übung 3</h2>
-<div id="a441715a" class="cell" data-execution_count="3">
+<div id="5b85b309" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"Edukational Neuroscience"</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>s[:<span class="dv">3</span>] <span class="op">+</span> <span class="st">"c"</span> <span class="op">+</span> s[<span class="dv">4</span>:]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -443,7 +443,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="übung-4" class="level2">
 <h2 class="anchored" data-anchor-id="übung-4">Übung 4</h2>
-<div id="26c55cb3" class="cell" data-execution_count="4">
+<div id="0bfee0b2" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_palindrome(s):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> s.lower()</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> s.replace(<span class="st">"?"</span>, <span class="st">""</span>).replace(<span class="st">"!"</span>, <span class="st">""</span>).replace(<span class="st">"."</span>, <span class="st">""</span>).replace(<span class="st">","</span>, <span class="st">""</span>)</span>
@@ -454,7 +454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="übung-5" class="level2">
 <h2 class="anchored" data-anchor-id="übung-5">Übung 5</h2>
 <p>Da wir die Position des gesuchten Zeichens benötigen, ist eine <code>while</code>-Schleife eine geeignete Lösung (wir wissen nicht im Vorhinein, wie viele Iterationen stattfinden werden). Hier zählen wir mit dem Namen <code>i</code> die aktuelle Position im String <code>s</code> mit.</p>
-<div id="0a52830c" class="cell" data-execution_count="5">
+<div id="65a7cb08" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find(s, sub):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    i <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> i <span class="op">&lt;</span> <span class="bu">len</span>(s):</span>
@@ -464,7 +464,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span>  <span class="co"># wird nur zurückgegeben, falls vorher kein return erfolgte</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Eine Alternative mit <code>for</code>-Schleife ist aber auch möglich (die Funktion <code>enumerate</code> gibt sowohl die Position als auch das aktuelle Zeichen innerhalb des Strings <code>s</code> zurück):</p>
-<div id="7fe18c5d" class="cell" data-execution_count="6">
+<div id="d6b46591" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find(s, sub):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, char <span class="kw">in</span> <span class="bu">enumerate</span>(s):</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> char <span class="op">==</span> sub:</span>
@@ -474,7 +474,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="übung-6" class="level2">
 <h2 class="anchored" data-anchor-id="übung-6">Übung 6</h2>
-<div id="bf4d1dd4" class="cell" data-execution_count="7">
+<div id="b61597a6" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count(word, letter):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    i <span class="op">=</span> <span class="dv">0</span>  <span class="co"># wir haben das Zeichen noch nicht gefunden</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> c <span class="kw">in</span> word:</span>
@@ -485,7 +485,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="übung-7" class="level2">
 <h2 class="anchored" data-anchor-id="übung-7">Übung 7</h2>
-<div id="7638d921" class="cell" data-execution_count="8">
+<div id="e1486ff9" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"C:</span><span class="ch">\\</span><span class="st">Program Files</span><span class="ch">\\</span><span class="st">Python</span><span class="ch">\\</span><span class="st">Python3.12</span><span class="ch">\\</span><span class="st">python.exe"</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(path)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">

@@ -394,7 +394,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Veröffentlicht</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">4. Dezember 2025</p>
+        <p class="date">11. Mai 2026</p>
       </div>
     </div>
     
@@ -416,7 +416,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="übung-1" class="level2">
 <h2 class="anchored" data-anchor-id="übung-1">Übung 1</h2>
-<div id="02054a3c" class="cell" data-execution_count="1">
+<div id="9b7071ae" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">10</span>, <span class="fl">0.1</span>)</span>
@@ -425,7 +425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>100</code></pre>
 </div>
 </div>
-<div id="cf8adacb" class="cell" data-execution_count="2">
+<div id="c76cef70" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>t.shape  <span class="co"># (100,)</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>(100,)</code></pre>
@@ -434,13 +434,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="übung-2" class="level2">
 <h2 class="anchored" data-anchor-id="übung-2">Übung 2</h2>
-<div id="52a5d313" class="cell" data-execution_count="3">
+<div id="bc39991e" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> t.reshape((<span class="dv">20</span>, <span class="op">-</span><span class="dv">1</span>))  <span class="co"># 20 Zeilen, 5 Spalten</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="übung-3" class="level2">
 <h2 class="anchored" data-anchor-id="übung-3">Übung 3</h2>
-<div id="d0a5840a" class="cell" data-execution_count="4">
+<div id="84aa2d2c" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> default_rng</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> default_rng(seed<span class="op">=</span><span class="dv">18</span>)</span>
@@ -450,13 +450,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>np.int64(20663)</code></pre>
 </div>
 </div>
-<div id="9ab27643" class="cell" data-execution_count="5">
+<div id="44395b6c" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>u.mean()  <span class="co"># Mittelwert aller Elemente</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>np.float64(25.82875)</code></pre>
 </div>
 </div>
-<div id="2914f7e5" class="cell" data-execution_count="6">
+<div id="963eb59f" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>u.mean(<span class="dv">1</span>)  <span class="co"># Zeilenmittelwerte</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>array([ -45.   ,  428.875,   66.25 ,  345.125,  106.5  ,  123.   ,
@@ -478,25 +478,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
          60.625,   19.75 , -266.125,  212.875])</code></pre>
 </div>
 </div>
-<div id="10fd0475" class="cell" data-execution_count="7">
+<div id="ca313357" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>u.mean(<span class="dv">0</span>)  <span class="co"># Spaltenmittelwerte</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>array([162.55,  23.24, -21.51, -19.6 ,  -3.16, -26.86,  72.6 ,  19.37])</code></pre>
 </div>
 </div>
-<div id="1c2f6a42" class="cell" data-execution_count="8">
+<div id="6d8a9c02" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>u.<span class="bu">max</span>(<span class="dv">0</span>)  <span class="co"># Spaltenmaxima</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>array([994, 986, 969, 983, 957, 998, 995, 996])</code></pre>
 </div>
 </div>
-<div id="050601ff" class="cell" data-execution_count="9">
+<div id="fe4f6483" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>u.<span class="bu">min</span>(<span class="dv">0</span>)  <span class="co"># Spaltenminima</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>array([ -985,  -994,  -875,  -990, -1000,  -988,  -963,  -997])</code></pre>
 </div>
 </div>
-<div id="1cb9e03b" class="cell" data-execution_count="10">
+<div id="ba6d2fb2" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>u.<span class="bu">max</span>(<span class="dv">1</span>)  <span class="co"># Zeilenmaxima</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>array([787, 939, 612, 896, 527, 710, 842, 760, 859, 699, 758, 405, 750,
@@ -509,8 +509,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
        709, 628, 913, 868, 772, 770, 769, 335, 962])</code></pre>
 </div>
 </div>
-<div id="f388997f" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>u.<span class="bu">min</span>(<span class="dv">1</span>)  <span class="co"># Zeilennminima</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="d977b5be" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>u.<span class="bu">min</span>(<span class="dv">1</span>)  <span class="co"># Zeilenminima</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>array([ -835,   127,  -756,  -950,  -703,  -986,  -864,  -883,  -341,
         -761,  -966,  -638,  -955,  -937,  -875,  -913,  -618,  -265,
@@ -526,7 +526,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         -808])</code></pre>
 </div>
 </div>
-<div id="c17b63e1" class="cell" data-execution_count="12">
+<div id="e9989ef6" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>u.mean(<span class="dv">1</span>).<span class="bu">max</span>()  <span class="co"># Maximum der Zeilenmittelwerte</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>np.float64(589.5)</code></pre>
@@ -535,7 +535,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="übung-4" class="level2">
 <h2 class="anchored" data-anchor-id="übung-4">Übung 4</h2>
-<div id="9ca2d4be" class="cell" data-execution_count="13">
+<div id="4dfc92a9" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">151</span>).reshape(<span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>x.mean(axis<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
@@ -548,7 +548,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Es gibt viele Möglichkeiten, diese Aufgabe zu lösen. Hier sind drei Varianten:</p>
 <section id="möglichkeit-1" class="level3">
 <h3 class="anchored" data-anchor-id="möglichkeit-1">Möglichkeit 1</h3>
-<div id="43e3cbc2" class="cell" data-execution_count="14">
+<div id="a702aa5f" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>chess <span class="op">=</span> np.zeros((<span class="dv">8</span>, <span class="dv">8</span>), dtype<span class="op">=</span><span class="bu">int</span>)</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">8</span>):</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> row <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>:</span>
@@ -570,7 +570,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="möglichkeit-2" class="level3">
 <h3 class="anchored" data-anchor-id="möglichkeit-2">Möglichkeit 2</h3>
-<div id="8179cd0f" class="cell" data-execution_count="15">
+<div id="da5e89e4" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>chess <span class="op">=</span> np.tile(np.array([[<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">0</span>]]), (<span class="dv">4</span>, <span class="dv">4</span>))</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>chess</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
@@ -587,7 +587,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="möglichkeit-3" class="level3">
 <h3 class="anchored" data-anchor-id="möglichkeit-3">Möglichkeit 3</h3>
-<div id="5ea87727" class="cell" data-execution_count="16">
+<div id="c9a714bd" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>chess <span class="op">=</span> np.zeros((<span class="dv">8</span>, <span class="dv">8</span>), dtype<span class="op">=</span><span class="bu">int</span>)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>chess[::<span class="dv">2</span>, <span class="dv">1</span>::<span class="dv">2</span>] <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>chess[<span class="dv">1</span>::<span class="dv">2</span>, ::<span class="dv">2</span>] <span class="op">=</span> <span class="dv">1</span></span>
