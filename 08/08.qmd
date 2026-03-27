@@ -2,7 +2,7 @@
 title: "8 – Ein- und Ausgabe"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2025-11-27
+date: 2026-05-04
 format:
   html:
     page-layout: full
@@ -19,7 +19,7 @@ published-title: "Veröffentlicht"
 
 ## Allgemeines
 
-Unter Eingabe versteht man die Eingabe von Informationen von der Tastatur bzw. aus einer Datei, um diese in einem Programm verarbeiten zu können. Unter Ausgabe versteht man die Ausgabe von Informationen am Bildschirm bzw. in eine Datei (also z.B. Ergebnisse einer Berechnung). Im Folgenden werden wir sehen, wie wir Strings für die Ausgabe formatieren können und wie wir damit Textdateien lesen bzw. schreiben können.
+Unter *Eingabe* versteht man die Eingabe von Informationen von der Tastatur bzw. aus einer Datei, um diese in einem Programm verarbeiten zu können. Unter *Ausgabe* versteht man die Ausgabe von Informationen am Bildschirm bzw. in eine Datei (also z.B. Ergebnisse einer Berechnung). Strings spielen dabei eine zentrale Rolle. Im Folgenden werden wir sehen, wie wir Strings für die Ausgabe formatieren können und wie wir damit Textdateien lesen bzw. schreiben können.
 
 
 ## Ausgabe von Strings
@@ -38,13 +38,17 @@ Auch Zahlen kann man als Argument für `print` verwenden:
 print(55)
 ```
 
-Mit der Funktion `str` kann man beliebige Objekte (also auch z.B. Ganzzahlen) in einen String umwandeln:
+Mit der Funktion `str` kann man beliebige Objekte (also auch z.B. Ganzzahlen) in einen String "umwandeln":
 
 ```{python}
 str(55)
 ```
 
-Die `print`-Funktion kann *beliebig viele* Argumente entgegennehmen. Sie gibt dann alle Argumente, getrennt mit Leerzeichen, am Bildschirm aus.
+::: {.callout-note}
+"Umwandeln" ist hier eigentlich nicht ganz korrekt, da die Funktion `str` eine String-Repräsentation des übergebenen Objekts zurückgibt (also ein neues String-Objekt erzeugt). Das ursprüngliche Objekt (z.B. die Zahl `55`) bleibt unverändert bestehen.
+:::
+
+Die `print`-Funktion kann *beliebig viele* Argumente entgegennehmen. Sie gibt dann alle Argumente, getrennt mit Leerzeichen, am Bildschirm aus:
 
 ```{python}
 a = 5
@@ -193,7 +197,7 @@ print(text)
 Zu beachten ist hier, dass der *gesamte* Inhalt der Datei in den Speicher geladen wird. Bei sehr großen Dateien kann das eventuell zu Problemen führen, weswegen man diese *zeilenweise* einlesen sollte (dazu gleich mehr).
 
 :::{.callout-tip}
-Der Inhalt einer Datei kann immer nur ein Mal gelesen werden. Wenn bereits der gesamte Inhalt gelesen wurde, befindet sich der sogenannte Dateizeiger am Ende der Datei. Wenn dann nochmals gelesen wird, wird nur mehr ein leerer String zurückgegeben:
+Der Inhalt einer Datei kann immer nur *ein Mal* gelesen werden. Wenn bereits der gesamte Inhalt gelesen wurde, befindet sich der sogenannte Dateizeiger am Ende der Datei. Wenn dann nochmals gelesen wird, wird nur mehr ein leerer String zurückgegeben:
 
 ```{python}
 f.read()  # Ende der Datei bereits erreicht
@@ -269,7 +273,7 @@ with open("correlation.csv") as f:
 data
 ```
 
-Nun können die Daten in eine Struktur umgewandelt werden, die sich besser für nachfolgende Berechnungen eignet (also inbesondere werden die Zahlen, die als Strings vorliegen, mit der Funktion `float` in Kommazahlen umgewandelt).
+Nun können die Daten in eine Struktur umgewandelt werden, die sich besser für nachfolgende Berechnungen eignet (mit der Funktion `float` werden die Strings in Dezimalzahlen umgewandelt).
 
 ```{python}
 cols = [[], []]  # zwei leere Listen für die zwei Spalten
