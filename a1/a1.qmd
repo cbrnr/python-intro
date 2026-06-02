@@ -753,3 +753,67 @@ Hier einige Beispiele für mögliche Funktionsaufrufe:
 3.010299956639812
 ```
 
+
+## Übung 64
+
+Schreiben Sie eine Funktion `product(n, k)`, die das Produkt aller Zahlen von 1 bis `n` berechnet, die durch `k` teilbar sind. Der Parameter `k` soll einen Standardwert von 1 haben.
+
+*Beispiele:*
+
+```python
+>>> product(10, 2)
+3840
+>>> product(5)
+120
+```
+
+
+## Übung 65
+
+Gegeben ist die folgende Liste:
+
+```python
+words = ["Python", "ist", "eine", "sehr", "beliebte", "Sprache"]
+```
+
+Erstellen Sie daraus mit Hilfe einer List Comprehension eine neue Liste, welche nur die Wörter mit mehr als 4 Buchstaben enthält. Diese sollen in der neuen Liste in Großbuchstaben vorhanden sein.
+
+
+## Übung 66
+
+Schreiben Sie zwei Funktionen `meters_to_feet(meters)` und `feet_to_meters(feet)`, die jeweils Meter in Fuß bzw.&nbsp;Fuß in Meter umrechnen. Verwenden Sie dabei den Umrechnungsfaktor 1 Meter = 3.28084 Fuß.
+
+Konvertieren Sie damit 6 Fuß in Meter und geben Sie das Ergebnis auf zwei Dezimalstellen gerundet aus!
+
+*Beispiele:*
+
+```python
+>>> meters_to_feet(10)
+32.8084
+>>> feet_to_meters(32.8084)
+10.0
+>>> meters_to_feet(feet_to_meters(50))
+50.0
+```
+
+
+## Übung 67
+
+Erklären Sie, warum folgender Code zur Erstellung eines zweidimensionalen NumPy-Arrays mit 3 Zeilen und 4 Spalten nicht funktioniert:
+
+```python
+import numpy as np
+
+x = np.zeros(3, 4)
+```
+
+Was ist der Fehler und wie sieht der korrekte Code aus?
+
+
+## Übung 68
+
+Definieren Sie eine Funktion `f`, die eine Zahl `x` als Eingabe erhält und den folgenden mathematischen Ausdruck berechnet und zurückgibt:
+
+$$ f(x) = \frac{e^{2x} + \sin(x)}{\sqrt{1 + x^2}} $$
+
+Berechnen Sie den Funktionswert für $x = 0.5$ und geben Sie das Ergebnis auf vier Dezimalstellen gerundet aus! Das korrekte Ergebnis lautet 2.8601.

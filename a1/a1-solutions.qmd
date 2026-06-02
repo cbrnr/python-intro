@@ -934,3 +934,68 @@ def decibel(x, to="power"):
         return 20 * math.log10(x)
 ```
 
+
+## Übung 64
+
+```{python}
+def product(n, k=1):
+    result = 1
+    for i in range(1, n + 1):
+        if i % k == 0:
+            result *= i
+    return result
+```
+
+Oder noch kürzer (eleganter):
+
+```{python}
+def product(n, k=1):
+    result = 1
+    for i in range(k, n + 1, k):
+        result *= i
+    return result
+```
+
+
+## Übung 65
+
+```{python}
+words = ["Python", "ist", "eine", "sehr", "beliebte", "Sprache"]
+
+new = [word.upper() for word in words if len(word) > 4]
+```
+
+
+## Übung 66
+
+```{python}
+def meters_to_feet(meters):
+    return meters * 3.28084
+
+def feet_to_meters(feet):
+    return feet / 3.28084
+
+print(f"{feet_to_meters(6):.2f}")
+```
+
+
+## Übung 67
+
+Der Fehler liegt darin, dass die Funktion `np.zeros` ein Tupel (oder eine Liste) mit den Dimensionen des Arrays erwartet, nicht zwei separate Argumente. Der korrekte Code lautet daher:
+
+```{python}
+x = np.zeros((3, 4))
+```
+
+
+## Übung 68
+
+```{python}
+import math
+
+def f(x):
+    return (math.exp(2 * x) + math.sin(x)) / math.sqrt(1 + x**2)
+
+
+print(f"{f(0.5):.4f}")
+```
