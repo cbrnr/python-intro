@@ -76,7 +76,11 @@ text
 
 ## Übung 4
 
-Schreiben Sie eine Funktion `factorial`, welche die Fakultät $n!$ einer positiven Zahl $n$ berechnet. Die Fakultät $n!$ einer Zahl $n$ ist das Produkt aller positiven ganzen Zahlen kleiner oder gleich $n$. Die Fakultät von 0 ist mit 1 definiert. Berechnen Sie abschließend $5!$.
+Schreiben Sie eine Funktion `factorial`, die die Fakultät $n!$ einer nichtnegativen ganzen Zahl $n$ berechnet. Dabei gilt
+
+$$n! = 1 \cdot 2 \cdot \ldots \cdot n,$$
+
+wobei $0! = 1$ definiert ist. Verwenden Sie Ihre Funktion anschließend, um $7!$ zu berechnen.
 
 
 ## Übung 5
@@ -88,7 +92,7 @@ Testen Sie die Funktion mit den Zahlenpaaren (10, 2), (10, 3), (10, 5) und (10, 
 
 ## Übung 6
 
-Was ist das Problem im folgenden Beispiel? Korrigieren Sie den Code so, dass er funktioniert.
+Was ist das Problem im folgenden Beispiel? Geben Sie auch den korrekten Code an.
 
 ```python
 x = 10
@@ -123,11 +127,11 @@ Geben Sie den korrekten Code an!
 
 ## Übung 9
 
-Berechnen Sie mit Python das Ergebnis des folgenden mathematischen Ausdruckes und weisen Sie es dem Namen `result` zu:
+Berechnen Sie mit Python den folgenden mathematischen Ausdruck und weisen Sie das Ergebnis dem Namen `result` zu.
 
 $$\frac{17 \cdot (\sqrt{5} + \frac{2}{3})}{27.7 - 3^\pi} + 42^{\frac{2}{7}}$$
 
-Geben Sie mit Hilfe der `print`-Funktion das Ergebnis auf zwei Nachkommastellen gerundet aus (es sollte ca. $-9.93$ lauten).
+Geben Sie mit Hilfe der `print`-Funktion das Ergebnis auf zwei Nachkommastellen gerundet aus (es sollte $-9.93$ lauten).
 
 
 ## Übung 10
