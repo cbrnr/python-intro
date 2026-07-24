@@ -19,26 +19,26 @@ published-title: "Veröffentlicht"
 
 ## Allgemeines
 
-In dieser Lehrveranstaltung werden Sie die Programmiersprache [Python](https://www.python.org/) kennenlernen. Nach einer detaillierten Einführung in die Grundlagen werden auch praxisrelevante Themen wie das Importieren von Textdateien, die Arbeit mit numerischen Daten und das Erstellen von Grafiken behandelt. Außerdem werden Sie lernen, mit dem in der Psychologie populären Python-Paket [PsychoPy](https://www.psychopy.org) einfache Experimente zu erstellen.
+In dieser Lehrveranstaltung werden Sie die Programmiersprache [Python](https://www.python.org/) kennenlernen. Nach einer detaillierten Einführung in die Grundlagen werden auch praxisrelevante Themen wie das Installieren und Verwenden von Zusatzpaketen, die Arbeit mit numerischen Daten und das Erstellen von Grafiken behandelt. Außerdem werden Sie lernen, mit dem in der Psychologie populären Python-Paket [PsychoPy](https://www.psychopy.org) einfache Experimente zu erstellen.
 
 Der Plan für dieses Semester sieht wie folgt aus:
 
-| Einheit | Datum      | Inhalt                        |
-|--------:|-----------:|-------------------------------|
-| 1       |   2.3.2026 | Grundlagen                    |
-| 2       |   9.3.2026 | Die Python-Umgebung           |
-| 3       |  16.3.2026 | Namen, Ausdrücke, Anweisungen |
-| 4       |  23.3.2026 | Funktionen                    |
-| 5       |  13.4.2026 | Bedingungen und Schleifen     |
-| 6       |  20.4.2026 | Strings                       |
-| 7       |  27.4.2026 | Listen und Dictionaries       |
-| 8       |   4.5.2026 | Ein- und Ausgabe              |
-| 9       |  11.5.2026 | Numerische Daten              |
-| 10      |  18.5.2026 | Grafiken                      |
-| 11      |   1.6.2026 | PsychoPy (1)                  |
-| 12      |   8.6.2026 | PsychoPy (2)                  |
-| 13      |  15.6.2026 | Prüfung                       |
-| 14      |  22.6.2026 | Prüfung (Ersatztermin)        |
+| Einheit | Datum      | Inhalt                          |
+|--------:|-----------:|---------------------------------|
+| 1       |   2.3.2026 | Setup und erste Schritte        |
+| 2       |   9.3.2026 | Objekte, Namen und Typen        |
+| 3       |  16.3.2026 | Kontrollfluss                   |
+| 4       |  23.3.2026 | Funktionen I                    |
+| 5       |  13.4.2026 | Funktionen II                   |
+| 6       |  20.4.2026 | Listen, Tupel und Dictionaries  |
+| 7       |  27.4.2026 | Strings                         |
+| 8       |   4.5.2026 | Pakete installieren und verwenden |
+| 9       |  11.5.2026 | NumPy                           |
+| 10      |  18.5.2026 | Matplotlib                      |
+| 11      |   1.6.2026 | PsychoPy Builder                |
+| 12      |   8.6.2026 | PsychoPy Coder                  |
+| 13      |  15.6.2026 | Prüfung                         |
+| 14      |  22.6.2026 | Prüfung (Ersatztermin)          |
 
 : {tbl-colwidths="[10,10,80]"}
 

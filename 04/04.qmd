@@ -1,5 +1,5 @@
 ---
-title: "4 – Funktionen"
+title: "4 – Funktionen I"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
 date: 2026-03-23
@@ -70,7 +70,7 @@ Dabei handelt es sich um einen Namen, welcher auf ein Funktionsobjekt verweist:
 type(print)
 ```
 
-Das Konzept von Namen in Python haben wir bereits in der letzten Einheit kennengelernt. Es ist unerheblich, auf welches Objekt ein Name verweist, dies kann eine Ganzzahl, eine Funktion, oder jedes beliebige andere Objekt sein. So können wir z.B. auch den Namen `f` erstellen, welcher auf die Funktion `print` verweist:
+Das Konzept von Namen in Python haben wir bereits in einer der vorigen Einheiten kennengelernt. Es ist unerheblich, auf welches Objekt ein Name verweist, dies kann eine Ganzzahl, eine Funktion, oder jedes beliebige andere Objekt sein. So können wir z.B. auch den Namen `f` erstellen, welcher auf die Funktion `print` verweist:
 
 ```{python}
 f = print
@@ -238,229 +238,8 @@ add_one(add_one(add_one(1)))
 ```
 :::
 
-
-## Argumente
-
-### Standard-Argumente
-
-Eine Funktion kann keine Parameter haben oder eine bestimmte Anzahl an Parametern erwarten. Wenn eine bestimmte Anzahl an Parametern im Funktionskopf definiert wird, können einzelnen Parametern Standardwerte (sogenannte Standard- oder auch Default-Argumente) zugewiesen werden. Dies bedeutet, dass die Funktion auch mit weniger Argumenten als erwartet aufgerufen werden kann, wenn für die fehlenden Argumente Standardwerte existieren.
-
-```{python}
-def add(number, increment=1):  # das Standard-Argument für increment ist 1
-    return number + increment
-```
-
-Diese Funktion kann jetzt mit zwei Argumenten oder nur mit dem ersten Argument aufgerufen werden:
-
-```{python}
-add(7, 1)
-```
-
-```{python}
-add(7)  # hier wird das Standard-Argument 1 für increment verwendet
-```
-
-```{python}
-add(7, 3)
-```
-
-
-### Schlüsselwort-Argumente
-
-Funktionen können auch so aufgerufen werden, dass die Namen der Parameter gemeinsam mit den Argumenten in der Form `kwarg=value` explizit hingeschrieben werden. Man spricht dann von Schlüsselwort-Argumenten (englisch "Keyword Arguments") (nicht zu verwechseln mit den Python-Schlüsselwörtern). D.h. die obige Funktion `add` kann auch so aufgerufen werden:
-
-```{python}
-add(number=5)
-```
-
-```{python}
-add(number=5, increment=2)
-```
-
-```{python}
-add(increment=2, number=5)
-```
-
-Dies dient einerseits der besseren Lesbarkeit, da unmittelbar klar ist, welche Parameter welche konkreten Argumente erhalten. Andererseits kann man so die Argumente auch in beliebiger Reihenfolge übergeben.
-
-Wenn der Argumentname nicht angegeben wird, wird die Position des Arguments bei der Zuweisung herangezogen. Man spricht in diesem Fall von *positionalen Argumenten*. Man kann positionale und Schlüsselwort-Argumente beim Funktionsaufruf auch mischen, aber alle positionalen Argumente müssen *vor* dem ersten Schlüsselwort-Argument kommen.
-
-```{python}
-add(5, increment=2)
-```
-
-Zur Veranschaulichung dient folgende Funktionsdefinition:
-
-```{python}
-def test(name, number, exponent=5, skip=7, text="Hello"):
-    print(text, name, end=" ")
-    return number**exponent - skip
-```
-
-Die folgenden drei Funktionsaufrufe verwenden nur positionale Argumente:
-
-```{python}
-test("Python", 2)
-```
-
-```{python}
-test("Python", 3)
-```
-
-```{python}
-test("Test", 3, 4)
-```
-
-Schlüsselwort-Argumente sind sehr praktisch, wenn man für viele Parameter deren Standard-Argumente verwenden möchte, aber z.B. für einen einzigen Parameter einen anderen Wert setzen will. Dann muss man nämlich nicht alle Argumente der Reihe nach übergeben, sondern nur jene, für die man andere Werte als die Standardwerte haben möchte:
-
-```{python}
-test("Test", 2, skip=2)
-```
-
-Ohne Schlüsselwort-Argumente würde derselbe Aufruf nämlich wie folgt aussehen:
-
-```{python}
-test("Test", 2, 5, 2)
-```
-
-Man muss also in diesem Beispiel ein zusätzliches Argument `5` (für den Parameter `exponent`) übergeben, wenn man positionale Argumente verwendet, obwohl man ja ohnehin den Standardwert dieses Arguments verwendet.
-
 :::{.callout-note}
-In Python gibt es auch Funktionen, die eine *beliebige/variable* Anzahl an Parametern besitzen. Dies bedeutet, dass bei der Funktionsdefinition festgelegt wird, dass eine beliebige Anzahl an Argumenten übergeben werden kann. Die `print`-Funktion ist ein Beispiel für eine solche Funktion: diese kann man mit keinem, einem, zwei, oder beliebig vielen Argumenten aufrufen:
-
-```{python}
-print()
-print("Hello")
-print("Hello", "Python")
-print("Hello", "Python", 1, 2, 3, 4)
-```
-
-Wir werden solche Funktionen nicht im Detail besprechen (vor allem nicht, wie man diese selbst definieren kann), aber wir werden solche Funktionen mitunter verwenden (aufrufen).
-:::
-
-
-## Gültigkeitsbereiche
-
-Alles, was innerhalb einer Funktion (im Funktionskörper) definiert wird, ist nur innerhalb dieser Funktion sichtbar und zugreifbar. Man spricht von einem *lokalen* Gültigkeitsbereich (englisch "Scope"), welcher sich auf die Funktion und eventuelle weitere in ihr vorhandene untergeordnete Bereiche erstreckt. Gültigkeitsbereiche entsprechen in Python im Prinzip den Einrückungen.
-
-Im folgenden Beispiel wird innerhalb der Funktion `test` der Name `s = 15` definiert. Dieser kann innerhalb der Funktion verwendet werden.
-
-```{python}
-def test():
-    s = 15  # s ist nur lokal in der Funktion definiert
-    print(s)
-
-test()
-```
-
-Außerhalb dieser Funktion existiert dieses `s` aber nicht:
-
-```{python}
-#| error: true
-print(s)  # außerhalb der Funktion existiert s nicht
-```
-
-Umgekehrt kann man aber sehr wohl auf Namen, die *außerhalb* (bzw. oberhalb) eines Gültigkeitsbereichs definiert wurden, zugreifen:
-
-```{python}
-s = 15  # "globales" s
-
-def test():
-    print(s)  # s aus dem globalen Scope ist zugänglich
-
-test()
-print(s)  # s existiert global
-```
-
-Wenn man innerhalb einer Funktion einen neuen Namen erstellt, welcher auch außerhalb existiert, dann ist nur der neue lokale Name zugänglich und der Name von außerhalb wird innerhalb der Funktion versteckt (englisch "shadowed"). Im folgenden Beispiel verweisen die beiden Namen `s` auf *unterschiedliche* Objekte:
-
-```{python}
-s = 15  # globales s
-
-def test():
-    s = 12  # lokales s ändert globales s nicht, versteckt es aber in der Funktion
-    print(s)
-
-test()
-print(s)
-```
-
-Besonders seltsam mutet folgendes Beispiel an, welches eine Fehlermeldung verursacht:
-
-```{python}
-#| error: true
-s = 15  # globales s
-
-def test():
-    print(s)  # lokales s existiert noch nicht - daher Fehler!
-    s = 12  # lokales s
-    print(s)
-
-test()
-print(s)
-```
-
-Die Zeile `print(s)` in der Funktion verursacht einen Fehler, weil Python aufgrund der folgenden Zeile bereits weiß, dass `s` ein lokaler Name sein wird. Daher kann `print(s)` auch nicht funktionieren, weil `s` in der ersten Zeile noch nicht existiert! Hier mischt Python also nicht zwischen globalen und lokalen Namen.
-
-Möchte man aber tatsächlich den global definierten Namen verwenden, kann man dies mit dem Schlüsselwort `global` tun:
-
-```{python}
-s = 15  # globales s
-
-def test():
-    global s  # Ermöglicht Zugriff auf das globale s
-    print(s)
-    s = 12  # ändert globales s
-    print(s)
-
-test()
-print(s)
-```
-
-Prinzipiell sollte man die Deklaration `global` aber vermeiden und globale/lokale Scopes sauber voneinander trennen. Will man auf ein Objekt aus einem äußeren Scope zugreifen, definiert man am besten einen Parameter, damit man das gewünschte Objekt als Argument an die Funktion übergeben kann:
-
-```{python}
-s = 15  # globales s
-
-def test(s):  # Parameter s
-    print(s)  # lokales s (übergebenes Argument)
-    s = 12
-    print(s)
-
-print(s)
-test(s)
-print(s)
-```
-
-Will man eine lokale Variable in einem äußeren Scope weiter nutzen, gibt man den entsprechenden Wert am besten mit `return` zurück:
-
-```{python}
-s = 15  # globales s
-
-def test(s):
-    print(s)  # lokales s (Argument)
-    s = 12
-    print(s)
-    return s
-
-print(s)
-s = test(s)  # globales s bekommt Rückgabewert der Funktion (lokales s)
-print(s)
-```
-
-:::{.callout-tip}
-Das hier beschriebene Verhalten gilt auch für Parameter. Diese verhalten sich wie lokal innerhalb der Funktion definierte Namen und erhalten automatisch die Werte, die mit den entsprechenden Argumenten beim Aufruf übergeben wurden. In den letzten beiden Beispielen hatten die Funktionen jeweils einen Parameter namens `s`. Zufälligerweise wurden die Funktionen auch mit einem Argument namens `s` aufgerufen – dabei handelt es sich aber um zwei unterschiedliche Namen bzw. Objekte. Man könnte die Funktion genauso gut auch direkt mit einem Wert oder mit einem beliebigen anderen Namen aufrufen:
-
-```{python}
-x = 15
-test(x)  # Parameter s erhält den Wert x = 15
-```
-
-Dies sieht man insbesondere dann, wenn man Schlüsselwort-Argumente verwendet:
-
-```{python}
-test(s=x)
-```
+Wie man Funktionen mit *Argumenten* (insbesondere Standard- und Schlüsselwort-Argumenten) aufruft und was es mit *Gültigkeitsbereichen* auf sich hat, sehen wir uns in der nächsten Einheit (Funktionen II) genauer an.
 :::
 
 
@@ -468,7 +247,7 @@ test(s=x)
 
 ### Übung 1
 
-Suchen Sie sich aus der Liste der eingebauten Funktionen (siehe vorige Einheit) drei beliebige Funktionen aus.
+Suchen Sie sich aus der Liste der eingebauten Funktionen (siehe Einheit 2) drei beliebige Funktionen aus.
 
 - Rufen Sie den Hilfetext zu jeder Funktion auf und lesen Sie diesen durch, um herauszufinden was die Funktion tut.
 - Rufen Sie die drei Funktionen mit geeigneten Argumenten auf.
@@ -486,25 +265,7 @@ Schreiben Sie eine Funktion `to_fahrenheit`, welche einen Parameter `celsius` ha
 
 Schreiben Sie außerdem eine Funktion `to_celsius` (mit entsprechendem Parameter `fahrenheit`) und wandeln Sie die vier Fahrenheit-Temperaturen, die Sie vorher beim Aufruf der Funktion `to_fahrenheit` erhalten haben, wieder in Celsius-Temperaturen um!
 
+
 ### Übung 4
 
 Nennen Sie Gründe, warum man Funktionen verwendet. Erklären Sie auch kurz den Unterschied zwischen Funktionsdefinition und Funktionsaufruf! Was ist der Unterschied zwischen Parametern und Argumenten?
-
-
-### Übung 5
-
-Schreiben Sie eine Funktion namens `nonsense`, welche drei Parameter namens `a`, `b` und `c` hat. Die beiden Argumente `b` und `c` sollen optional sein und die Standardwerte 10 bzw. 13 besitzen. Die Funktion soll `a**2 - b * 2 + c**2` berechnen und zurückgeben (wir setzen voraus, dass man für `a`, `b` und `c` immer Zahlenwerte übergibt). Rufen Sie die Funktion dann mit folgenden Argumenten auf:
-
-1. Ohne Argumente
-2. Mit drei positionalen Argumenten
-3. Mit zwei positionalen Argumenten
-4. Mit einem Keyword-Argument
-5. Mit zwei Keyword-Argumenten
-6. Mit zwei positionalen Argumenten und einem Keyword-Argument
-7. Mit einem positionalem und einem Keyword-Argument
-
-Wie sehen diese Funktionsaufrufe aus? Wie lauten die Rückgabewerte? Geben Sie für *jeden* Aufruf die Werte *aller drei Argumente* an!
-
-:::{.callout-note}
-Nur der erste Funktionsaufruf (ohne Argumente) verursacht einen Fehler, alle weiteren Aufrufe sind möglich!
-:::

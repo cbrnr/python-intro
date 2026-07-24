@@ -1,5 +1,5 @@
 ---
-title: "10 – Grafiken"
+title: "10 – Matplotlib"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
 date: 2026-05-18

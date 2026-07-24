@@ -1,5 +1,5 @@
 ---
-title: "5 – Solutions"
+title: "5 – Lösungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
 date: 2026-04-13
@@ -19,77 +19,36 @@ published-title: "Veröffentlicht"
 
 ## Übung 1
 
-```python
-x = int(input("x: "))
-y = int(input("y: "))
-
-if x + y > 50:
-    print("x + y > 50")
-elif x + y < 50:
-    print("x + y < 50")
-else:
-    print("x + y == 50")
+```{python}
+def nonsense(a, b=10, c=13):
+    return a**2 - b * 2 + c**2
 ```
-
-
-## Übung 2
-
-```python
-def is_odd(x):
-    if x % 2 == 1:
-        return True
-    else:
-        return False
-```
-
-Oder kürzer:
-
-```python
-def is_odd(x):
-    return x % 2 == 1
-```
-
-
-## Übung 3
 
 ```{python}
-lst = ["I", "love", "Python"]
-for element in lst:
-    print(element)
+#| error: true
+nonsense()  # TypeError, da a=undefiniert, b=10, c=13
 ```
-
-
-## Übung 4
 
 ```{python}
-for element in lst:
-    for ch in element:
-        print(ch, end="-")
+nonsense(22, 15, 78)  # 6538; a=22, b=15, c=78
 ```
-
-
-## Übung 5
 
 ```{python}
-x = 5  # x = -11, x = 0
-if x > 0:
-    print("x is positive")
-elif x < 0:
-    print("x is negative")
-else:
-    print("x is equal to 0")
+nonsense(11, 3)  # 284; a=11, b=3, c=13
 ```
 
+```{python}
+nonsense(a=42)  # 1913; a=42, b=10, c=13
+```
 
-## Übung 6
+```{python}
+nonsense(a=17, c=88)  # 8013; a=17, b=10, c=88
+```
 
-```python
-while True:
-    x = int(input("Enter an integer between 1 and 10: "))
-    if 0 < x <= 10:
-        break
-    else:
-        print("Invalid input. Please try again.")
+```{python}
+nonsense(3, 4, c=5)  # 26; a=3, b=4, c=5
+```
 
-print("You entered:", x)
+```{python}
+nonsense(3, c=2)  # -7; a=3, b=10, c=2
 ```

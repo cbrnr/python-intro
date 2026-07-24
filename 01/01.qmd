@@ -1,5 +1,5 @@
 ---
-title: "1 – Grundlagen"
+title: "1 – Setup und erste Schritte"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
 date: 2026-03-02
@@ -19,7 +19,7 @@ published-title: "Veröffentlicht"
 
 ## Überblick
 
-Dieser Kurs vermittelt die Grundlagen der Programmiersprache [Python](https://www.python.org/). Zunächst werden die wichtigsten Elemente der Sprache wie Schleifen, Funktionen, Bedingungen und grundlegende Datentypen vorgestellt. Nach einer ausführlichen Behandlung dieser Grundlagen lernen Sie auch, wie man Python für die Datenanalyse verwenden kann. Dabei werden sehr grundlegende Themen wie das Einlesen von Textdateien, das Arbeiten mit numerischen Daten und das Erstellen einfacher Grafiken behandelt. Abschließend werden Sie mit dem in der Psychologie populären Python-Paket [PsychoPy](https://www.psychopy.org) einfache Experimente erstellen.
+Dieser Kurs vermittelt die Grundlagen der Programmiersprache [Python](https://www.python.org/). Zunächst werden die wichtigsten Elemente der Sprache wie Schleifen, Funktionen, Bedingungen und grundlegende Datentypen vorgestellt. Nach einer ausführlichen Behandlung dieser Grundlagen lernen Sie auch, wie man Python für die Datenanalyse verwenden kann. Dabei werden grundlegende Themen wie das Installieren von Zusatzpaketen, das Arbeiten mit numerischen Daten und das Erstellen einfacher Grafiken behandelt. Abschließend werden Sie mit dem in der Psychologie populären Python-Paket [PsychoPy](https://www.psychopy.org) einfache Experimente erstellen.
 
 Für diesen Kurs sind keinerlei Vorkenntnisse erforderlich. Sie werden die Grundlagen der Programmierung anhand praktischer Beispiele erlernen und können dieses Wissen anschließend auf die meisten anderen Programmiersprachen übertragen. Aufgrund der begrenzten Zeit werden nur grundlegende Python-Konzepte behandelt, aber diese bilden die Basis für alle weiterführenden Anwendungen. Sie werden somit ein solides Wissen über diese Grundlagen erwerben, um anschließend selbständig weiterführende Methoden zu erlernen.
 
@@ -180,6 +180,43 @@ In Python ist es notwendig, Module zu *importieren*, um deren Funktionen und Var
 :::
 
 
+## Skripte
+
+Der interaktive Interpreter ist ideal, um einzelne Befehle auszuprobieren und sofort das Ergebnis zu sehen. Allerdings speichert er den eingegebenen Code nicht – startet man IDLE neu, sind alle vorherigen Eingaben verloren.
+
+Um Code dauerhaft zu speichern, schreibt man ihn in eine Textdatei mit der Endung `.py` (solche Dateien nennt man *Python-Skripte* oder *Python-Programme*). IDLE bietet dafür einen einfachen Texteditor. Um ein neues Skript zu erstellen, wählt man im Menü "File" > "New File". Es öffnet sich ein Editor-Fenster, in dem man Python-Code schreiben und mit "File" > "Save" in eine `.py`-Datei speichern kann.
+
+![](idle-editor.png)
+
+Um das gesamte Skript auszuführen, wählt man im Menü "Run" > "Run Module" (oder drückt <kbd>F5</kbd>). Das Skript wird dann von Anfang bis Ende ausgeführt.
+
+Ein wichtiger Unterschied zum interaktiven Modus: Im Skript-Modus zeigt Python die Ergebnisse *nicht* automatisch an. Angenommen, ein Skript enthält die folgende Zeile:
+
+```python
+1 + 4
+```
+
+Führt man dieses Skript aus, wird der Befehl zwar ausgeführt, aber es erscheint keine Ausgabe. Das ist durchaus beabsichtigt, weil ein Skript oft viele Befehle enthält und man nicht jedes Zwischenergebnis sehen möchte. Möchte man ein Ergebnis im Skript-Modus ausgeben, muss man das explizit mit der `print`-Funktion tun:
+
+```python
+print(1 + 4)
+```
+
+:::{.callout-tip}
+Jedes Python-Programm beginnt "bei Null", d.h. beim Ausführen sind keine Ergebnisse aus früheren Sitzungen vorhanden. Das ist sinnvoll, da es dazu beiträgt, reproduzierbaren Code zu schreiben.
+:::
+
+
+## Terminal und Interpreter
+
+Neben der IDLE-Shell gibt es auf jedem Betriebssystem noch ein weiteres wichtiges Programm: das *Terminal* (unter Windows auch "Eingabeaufforderung" genannt). Es ist wichtig, das Terminal *nicht* mit dem Python-Interpreter zu verwechseln:
+
+- In der **IDLE-Shell** (bzw. im Python-Interpreter) tippt man *Python-Befehle* ein (z.B. `1 + 1` oder `import math`).
+- Im **Terminal** läuft *kein* Python, sondern eine sogenannte [Shell](https://de.wikipedia.org/wiki/Shell_(Betriebssystem)). Hier tippt man *Shell-Befehle* ein, um z.B. Programme zu starten oder Dateien zu verwalten.
+
+Wir werden den Python-Interpreter in diesem Kurs hauptsächlich innerhalb von IDLE verwenden. Das Terminal benötigen wir später, um Zusatzpakete zu installieren (mehr dazu in einer späteren Einheit).
+
+
 ## Anwendungsbeispiele
 
 Python wird heutzutage in vielen verschiedenen Bereichen verwendet. Um zu verdeutlichen, wie vielfältig man Python vor allem in der Forschung einsetzen kann, sind hier einige relevante Beispiele angeführt. Diese Auswahl ist jedoch bei weitem nicht vollständig und spiegelt vor allem meine persönliche Erfahrung wider.
@@ -206,22 +243,6 @@ Python ist sehr populär in den Neurowissenschaften. Auf der [NIPY-Website](http
 Zur statistischen Auswertung von Daten gibt es in Python ebenfalls eine große Anzahl an Paketen. Besonders hervorzuheben sind hier [NumPy](https://www.numpy.org/), [SciPy](https://scipy.org/), [Polars](https://www.pola.rs/), [pandas](https://pandas.pydata.org/), [statsmodels](https://www.statsmodels.org/stable/index.html), [Matplotlib](https://matplotlib.org/), [seaborn](https://seaborn.pydata.org/) und [scikit-learn](https://scikit-learn.org/stable/). Einige dieser Pakete werden wir im Rahmen dieses Kurses kennenlernen (wenn auch nur sehr oberflächlich).
 
 ![](scatter.png)
-
-
-### Grafische Oberflächen
-
-In Python kann man auch eigenständige Programme mit grafischen Oberflächen erstellen. Ein Beispiel dafür ist [Spyder](https://www.spyder-ide.org/), eine Entwicklungsumgebung für Python, welche selbst komplett in Python geschrieben ist. Auch die grafischen Oberflächen von [PsychoPy](http://www.psychopy.org/) und [MNELAB](https://github.com/cbrnr/mnelab) sind in Python geschrieben.
-
-
-### Astronomie
-
-Zwei sehr prominente Beispiele dürfen an dieser Stelle nicht fehlen: das [erste Bild eines schwarzen Lochs](https://eventhorizontelescope.org/press-release-april-10-2019-astronomers-capture-first-image-black-hole) (im Zentrum der etwa 55 Millionen Lichtjahre entfernten Galaxie [Messier 87](https://de.wikipedia.org/wiki/Messier_87)) wurde [mit Hilfe von Python](https://numpy.org/case-studies/blackhole-image/) erzeugt:
-
-![© [EHT](https://eventhorizontelescope.org/press-release-april-10-2019-astronomers-capture-first-image-black-hole), CC BY 4.0](m87.png){fig-align="left" width=500}
-
-Auch bei der Visualisierung des [schwarzen Lochs Sagittarius A*](https://eventhorizontelescope.org/blog/astronomers-reveal-first-image-black-hole-heart-our-galaxy) im Zentrum unser eigenen Galaxie wurde [Python](https://doi.org/10.3847/2041-8213/ac6736) verwendet:
-
-![© [EHT](https://eventhorizontelescope.org/blog/astronomers-reveal-first-image-black-hole-heart-our-galaxy), CC BY 4.0](sgr_astar.png){fig-align="left" width=500}
 
 
 ## Übungen

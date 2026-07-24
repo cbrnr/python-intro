@@ -436,14 +436,17 @@ plt.show()
 ## Übung 26
 
 ```{python}
-with open("shakespeare.txt") as f:
-    lines = 0
-    for line in f:
-        lines += 1
-        if "Go antickly, show outward hideousness," in line:
-            print(f'"Go antickly, show outward hideousness," found in line {lines}.')
+text = """From fairest creatures we desire increase,
+That thereby beauty's rose might never die,
+But as the riper should by time decease,
+His tender heir might bear his memory:"""
 
-print(f"Total number of lines: {lines}")
+lines = text.splitlines()
+print(f"Anzahl der Zeilen: {len(lines)}")
+
+for i, line in enumerate(lines, start=1):
+    if "thereby" in line:
+        print(f'"thereby" gefunden in Zeile {i}.')
 ```
 
 

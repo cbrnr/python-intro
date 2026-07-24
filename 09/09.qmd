@@ -1,5 +1,5 @@
 ---
-title: "9 – Numerische Daten"
+title: "9 – NumPy"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
 date: 2026-05-11

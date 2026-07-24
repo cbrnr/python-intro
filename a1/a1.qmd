@@ -286,10 +286,19 @@ Stellen Sie mit Matplotlib die ersten 100 Werte von `x` als Balkengrafik dar.
 
 ## Übung 26
 
-Die Datei [shakespeare.txt](shakespeare.txt) beinhaltet die gesammelten Werke von William Shakespeare. Bestimmen Sie mit Python, wie viele Zeilen diese Datei enthält. Finden Sie außerdem heraus, in welcher Zeile der Text "Go antickly, show outward hideousness," vorkommt!
+Gegeben sei folgender mehrzeiliger String (die ersten Zeilen eines Sonetts von William Shakespeare):
+
+```python
+text = """From fairest creatures we desire increase,
+That thereby beauty's rose might never die,
+But as the riper should by time decease,
+His tender heir might bear his memory:"""
+```
+
+Bestimmen Sie mit Python, aus wie vielen Zeilen der Text besteht. Finden Sie außerdem heraus, in welcher Zeile der Text "thereby" vorkommt!
 
 ::: {.callout-note}
-Der gesuchte Text kann auch Leerzeichen am Anfang oder Ende der Zeile enthalten. Verwenden Sie zur Suche daher entweder den `in`-Operator oder die String-Methode `strip`, um führende und nachfolgende Leerzeichen zu entfernen.
+Mit der String-Methode `splitlines` können Sie einen mehrzeiligen String in eine Liste einzelner Zeilen zerlegen. Über diese Liste können Sie dann mit einer `for`-Schleife iterieren (die Funktion `enumerate` zählt dabei die Zeilennummer mit) und mit dem `in`-Operator prüfen, ob eine Zeile den gesuchten Text enthält.
 :::
 
 

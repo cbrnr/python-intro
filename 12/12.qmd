@@ -1,5 +1,5 @@
 ---
-title: "12 – PsychoPy (2)"
+title: "12 – PsychoPy Coder"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
 date: 2026-06-08

@@ -20,79 +20,72 @@ published-title: "Veröffentlicht"
 ## Übung 1
 
 ```{python}
-def reverse(s):
-    return s[::-1]
+def histogram(x, char="*"):
+    for n in x:
+        print(char * n)
+
+histogram([1, 8, 5, 17, 14, 9, 2])
+histogram([1, 8, 5, 17, 2], char="-")
 ```
 
 
 ## Übung 2
 
 ```{python}
-s = "educational neuroscience"
-s.title()
+def sum_of_squares(x):
+    return sum([n**2 for n in x])
 ```
 
 
 ## Übung 3
 
 ```{python}
-s = "Edukational Neuroscience"
-s[:3] + "c" + s[4:]
+import math
+
+numbers = range(1, 26)
+squares = [x**2 for x in numbers]
+evens = [x for x in numbers if x % 2 == 0]
+odds = [x for x in numbers if x % 2 != 0]
+roots = [math.sqrt(x) for x in numbers]
+logs = [math.log(x) for x in numbers]
 ```
 
 
 ## Übung 4
 
 ```{python}
-def is_palindrome(s):
-    s = s.lower()
-    s = s.replace("?", "").replace("!", "").replace(".", "").replace(",", "")
-    s = s.replace(" ", "")
-    return s == s[::-1]
+a = {"eins": "one", "zwei": "two", "drei": "three"}
+a["zwei"]
 ```
 
 
 ## Übung 5
 
-Da wir die Position des gesuchten Zeichens benötigen, ist eine `while`-Schleife eine geeignete Lösung (wir wissen nicht im Vorhinein, wie viele Iterationen stattfinden werden). Hier zählen wir mit dem Namen `i` die aktuelle Position im String `s` mit.
-
 ```{python}
-def find(s, sub):
-    i = 0
-    while i < len(s):
-        if s[i] == sub:
-            return i
-        i += 1  # erhöhe i um 1 (äquivalent zu i = i + 1)
-    return -1  # wird nur zurückgegeben, falls vorher kein return erfolgte
-```
-
-Eine Alternative mit `for`-Schleife ist aber auch möglich (die Funktion `enumerate` gibt sowohl die Position als auch das aktuelle Zeichen innerhalb des Strings `s` zurück):
-
-```{python}
-def find(s, sub):
-    for i, char in enumerate(s):
-        if char == sub:
-            return i
-    return -1  # wird nur zurückgegeben falls das Zeichen nicht gefunden wurde
+a["vier"] = "four"
+a
 ```
 
 
 ## Übung 6
 
-```{python}
-def count(word, letter):
-    i = 0  # wir haben das Zeichen noch nicht gefunden
-    for c in word:
-        if c == letter:  # falls es das gesuchte Zeichen ist
-            i += 1  # erhöhen wir i um 1 (i = i + 1 oder kurz i += 1)
-    return i
-```
-
-
-## Übung 7
-
+Option 1:
 
 ```{python}
-path = "C:\\Program Files\\Python\\Python3.12\\python.exe"
-print(path)
+#| error: true
+a["zehn"]  # KeyError
 ```
+
+Option 2:
+
+```{python}
+a.get("zehn", "undefiniert")
+```
+
+Option 3:
+
+```{python}
+a.setdefault("zehn", "undefiniert")
+```
+
+`a.get("zehn", "undefiniert")`  gibt `"undefiniert"` zurück wenn der Eintrag `"zehn"` nicht existiert. Das Dictionary `a` wird dadurch aber nicht verändert, d.h. der Eintrag `a["zehn"]` wird nicht hinzugefügt. Die ist aber bei `a.setdefault("zehn", "undefiniert")` der Fall, d.h. nach diesem Aufruf existiert `a["zehn"]`.
