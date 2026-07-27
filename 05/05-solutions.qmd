@@ -52,3 +52,78 @@ nonsense(3, 4, c=5)  # 26; a=3, b=4, c=5
 ```{python}
 nonsense(3, c=2)  # -7; a=3, b=10, c=2
 ```
+
+
+## Übung 2
+
+```{python}
+def maximum(*numbers):
+    max_value = numbers[0]  # Startwert: erstes Element
+    for number in numbers:  # wir iterieren über alle Zahlen
+        if number > max_value:  # die aktuell Zahl ist größer als der bisherige Maximalwert
+            max_value = number  # das ist jetzt der neue Maximalwert
+    return max_value
+```
+
+
+## Übung 3
+
+```{python}
+def count_even(*numbers):
+    count = 0
+    for number in numbers:
+        if number % 2 == 0:
+            count += 1
+    return count
+```
+
+
+## Übung 4
+
+Es werden die folgenden Werte ausgegeben:
+
+```
+7  # test(x)
+5  # print(x)
+```
+
+Der Wert von `x` außerhalb der Funktion bleibt unverändert, da `x` innerhalb der Funktion lokal ist. Das bedeutet, dass `x = x + 2` nur innerhalb der Funktion `test` gilt. Wenn man das `x` außerhalb der Funktion ändern möchte, könnte man das mit einem Rückgabewert machen:
+
+```python
+x = 5
+
+def test(x):
+    x = x + 2
+    print(x)
+    return x
+
+x = test(x)  # neue Zuweisung
+print(x)
+```
+
+
+## Übung 5
+
+In den Kommentaren werden die Werte der Parameter `a`, `b` und `c` beim jeweiligen Funktionsaufruf angegeben. Ein `*` nach einem Wert soll verdeutlichen, dass ein Standardwert verwendet wird.
+
+```python
+def show(a, b=2, c=3):
+    print(a, b, c)
+
+show(1)  # 1, 2*, 3*
+show(1, 5)  # 1, 5, 3*
+show(1, c=7)  # 1, 2*, 7
+show(c=7, a=1)  # 1, 2*, 7
+show(1, 5, c=7)  # 1, 5, 7
+```
+
+
+## Übung 6
+
+```python
+def power_sum(exponent, *numbers):
+    total = 0
+    for number in numbers:
+        total += number ** exponent
+    return total
+```
