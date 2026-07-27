@@ -34,24 +34,6 @@ else:
 
 ## Übung 2
 
-```python
-def is_odd(x):
-    if x % 2 == 1:
-        return True
-    else:
-        return False
-```
-
-Oder kürzer:
-
-```python
-def is_odd(x):
-    return x % 2 == 1
-```
-
-
-## Übung 3
-
 ```{python}
 lst = ["I", "love", "Python"]
 for element in lst:
@@ -59,7 +41,7 @@ for element in lst:
 ```
 
 
-## Übung 4
+## Übung 3
 
 ```{python}
 for element in lst:
@@ -68,7 +50,7 @@ for element in lst:
 ```
 
 
-## Übung 5
+## Übung 4
 
 ```{python}
 x = 5  # x = -11, x = 0
@@ -81,7 +63,7 @@ else:
 ```
 
 
-## Übung 6
+## Übung 5
 
 ```python
 while True:

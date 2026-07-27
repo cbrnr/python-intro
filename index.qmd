@@ -5,7 +5,7 @@ title: "Einführung in Python und PsychoPy"
 Die folgenden Unterlagen dienen als Basis für die Lehrveranstaltung [Einführung in Python und PsychoPy](https://online.uni-graz.at/kfu_online/wbLv.wbShowLVDetail?pStpSpNr=940461).
 
  0. [Organisatorisches](00/00.qmd)
- 1. [Setup und erste Schritte](01/01.qmd) ([Lösungen](01/01-solutions.qmd))
+ 1. [Erste Schritte](01/01.qmd) ([Lösungen](01/01-solutions.qmd))
  2. [Objekte, Namen und Typen](02/02.qmd) ([Lösungen](02/02-solutions.qmd))
  3. [Kontrollfluss](03/03.qmd) ([Lösungen](03/03-solutions.qmd))
  4. [Funktionen I](04/04.qmd) ([Lösungen](04/04-solutions.qmd))

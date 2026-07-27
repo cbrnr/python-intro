@@ -243,6 +243,42 @@ Wie man Funktionen mit *Argumenten* (insbesondere Standard- und Schlüsselwort-A
 :::
 
 
+## Debugging
+
+Mit Hilfe des sogenannten [Debuggers](https://realpython.com/python-idle/#how-to-debug-in-idle) können wir ein Script in "Zeitlupe" ausführen. Im Debug-Modus wartet der Python-Interpreter nach jedem Befehl, bis der nächste manuell gestartet wird. Dadurch können wir den Programmfluss beobachten und den Zustand des Programms bei jedem Schritt inspizieren. Dabei geht man wie folgt vor:
+
+1. In der IDLE-Shell wählt man Debug – Debugger. Dadurch wird ein neues Werkzeugfenster geöffnet und der Debugger aktiviert. Stellen Sie sicher, dass das Kontrollkästchen "Source" aktiviert ist, um die aktuelle Codezeile zu sehen.
+
+    ![](idle-debug-1.png){width=50%}
+
+2. Setzen Sie dann einen Haltepunkt im Python-Skript, indem Sie mit der rechten Maustaste auf die Zeile klicken, an der Sie die Ausführung stoppen möchten und wählen Sie "Set Breakpoint". Für dieses Beispiel setzen wir einen Haltepunkt gleich in der ersten Zeile (diese wird dann gelb).
+
+    ![](idle-debug-2.png)
+
+3. Führen Sie jetzt das Skript mit Run – Run Module aus (oder drücken Sie <kbd>F5</kbd>). Das Skript wird dann am ersten Haltepunkt gestoppt (und diese Zeile wird noch *nicht* ausgeführt).
+
+4. Um die Ausführung fortzusetzen, wählen Sie "Step", um die aktuelle Zeile auszuführen und in der nächsten Zeile anzuhalten. Wenn die aktuelle Zeile einen Funktionsaufruf enthält und Sie *nicht* in die Funktion springen möchten (zum Beispiel, weil Sie nicht daran interessiert sind, den Code einer eingebauten Funktion zu sehen), klicken Sie stattdessen auf "Over".
+
+5. Wenn sich die aktuelle Zeile bereits in einer Funktion befindet und Sie diese Funktion sofort verlassen möchten, klicken Sie auf "Out".
+
+Zum Ausprobieren kann man das folgende kurze Script debuggen:
+
+```{python}
+#| eval: false
+#| code-line-numbers: true
+def f(x):
+    y = x * 2
+    return y
+
+a = f(3)
+print("Done.")
+```
+
+In welcher Reihenfolge werden die Code-Zeilen ausgeführt?
+
+Alternativ kann die Website [PythonTutor](http://pythontutor.com/visualize.html#mode=edit) den Programmfluss ebenfalls Schritt für Schritt darstellen. Dazu kopiert man einfach den gesamten Code in das Eingabefeld und klickt auf "Visualize Execution". So kann man durch wiederholtes Klicken auf "Next" nachvollziehen, wie Python den Code ausführt.
+
+
 ## Übungen
 
 ### Übung 1

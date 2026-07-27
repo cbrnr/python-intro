@@ -1,5 +1,5 @@
 ---
-title: "1 – Setup und erste Schritte"
+title: "1 – Erste Schritte"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
 date: 2026-03-02
@@ -19,9 +19,9 @@ published-title: "Veröffentlicht"
 
 ## Überblick
 
-Dieser Kurs vermittelt die Grundlagen der Programmiersprache [Python](https://www.python.org/). Zunächst werden die wichtigsten Elemente der Sprache wie Schleifen, Funktionen, Bedingungen und grundlegende Datentypen vorgestellt. Nach einer ausführlichen Behandlung dieser Grundlagen lernen Sie auch, wie man Python für die Datenanalyse verwenden kann. Dabei werden grundlegende Themen wie das Installieren von Zusatzpaketen, das Arbeiten mit numerischen Daten und das Erstellen einfacher Grafiken behandelt. Abschließend werden Sie mit dem in der Psychologie populären Python-Paket [PsychoPy](https://www.psychopy.org) einfache Experimente erstellen.
+Dieser Kurs vermittelt die Grundlagen der Programmiersprache [Python](https://www.python.org/). Zunächst werden die wichtigsten Elemente der Sprache wie Schleifen, Bedingungen, Funktionen, und häufig verwendete Datentypen vorgestellt. Nach einer ausführlichen Behandlung dieser Grundlagen lernen Sie auch, wie man Python für die Datenanalyse verwenden kann. Dabei werden essentielle Themen wie das Installieren von Zusatzpaketen, das Arbeiten mit numerischen Daten und das Erstellen einfacher Grafiken behandelt. Abschließend werden Sie mit dem in der Psychologie populären Python-Paket [PsychoPy](https://www.psychopy.org) einfache Experimente erstellen.
 
-Für diesen Kurs sind keinerlei Vorkenntnisse erforderlich. Sie werden die Grundlagen der Programmierung anhand praktischer Beispiele erlernen und können dieses Wissen anschließend auf die meisten anderen Programmiersprachen übertragen. Aufgrund der begrenzten Zeit werden nur grundlegende Python-Konzepte behandelt, aber diese bilden die Basis für alle weiterführenden Anwendungen. Sie werden somit ein solides Wissen über diese Grundlagen erwerben, um anschließend selbständig weiterführende Methoden zu erlernen.
+Für diesen Kurs sind keinerlei Vorkenntnisse erforderlich. Sie werden das Programmieren anhand praktischer Beispiele erlernen und können dieses Wissen anschließend auf die meisten anderen Programmiersprachen übertragen. Aufgrund der begrenzten Zeit werden nur die wichtigsten Python-Konzepte behandelt, aber diese bilden die Basis für alle weiterführenden Anwendungen. Sie werden somit ein solides Wissen über diese Grundlagen erwerben, um anschließend selbständig weiterführende Methoden zu erlernen.
 
 
 ## Was ist Python?
@@ -203,13 +203,13 @@ print(1 + 4)
 ```
 
 :::{.callout-tip}
-Jedes Python-Programm beginnt "bei Null", d.h. beim Ausführen sind keine Ergebnisse aus früheren Sitzungen vorhanden. Das ist sinnvoll, da es dazu beiträgt, reproduzierbaren Code zu schreiben.
+Jedes Python-Programm beginnt immer "bei Null", d.h. beim Ausführen sind keine Ergebnisse aus früheren Sitzungen vorhanden. Das ist sinnvoll, da es dazu beiträgt, reproduzierbaren Code zu schreiben.
 :::
 
 
 ## Terminal und Interpreter
 
-Neben der IDLE-Shell gibt es auf jedem Betriebssystem noch ein weiteres wichtiges Programm: das *Terminal* (unter Windows auch "Eingabeaufforderung" genannt). Es ist wichtig, das Terminal *nicht* mit dem Python-Interpreter zu verwechseln:
+Neben der IDLE-Shell gibt es noch ein weiteres wichtiges Programm, das wir im Lauf des Kurses verwenden werden: das *Terminal*. Es ist wichtig, das Terminal *nicht* mit dem Python-Interpreter zu verwechseln.
 
 - In der **IDLE-Shell** (bzw. im Python-Interpreter) tippt man *Python-Befehle* ein (z.B. `1 + 1` oder `import math`).
 - Im **Terminal** läuft *kein* Python, sondern eine sogenannte [Shell](https://de.wikipedia.org/wiki/Shell_(Betriebssystem)). Hier tippt man *Shell-Befehle* ein, um z.B. Programme zu starten oder Dateien zu verwalten.
@@ -297,3 +297,8 @@ Warum funktioniert der folgende Befehl nicht (unter der Annahme, dass vorher `im
 ```python
 math.Sqrt(4)
 ```
+
+
+## Lösungen
+
+Siehe [hier](01-solutions.qmd).

@@ -21,43 +21,6 @@ published-title: "Veröffentlicht"
 
 Komplexe Programme laufen nicht linear ab (also Zeile für Zeile vom Anfang eines Scripts bis zum Ende), sondern beinhalten Verzweigungen und Schleifen. Diese sogenannten Kontrollstrukturen steuern den Programmfluss. Wesentlich dabei sind Vergleiche, die bestimmen, ob bestimmte Codezeilen ausgeführt werden oder nicht bzw. wie oft diese wiederholt werden.
 
-Schon bei Funktionen haben wir beobachtet, dass Programmcode nicht linear ausgeführt wird, denn erst beim *Aufrufen* einer Funktion springt Python zu den entsprechenden Zeilen im Funktionskörper und führt diese aus.
-
-:::{.callout-tip}
-Mit Hilfe des sogenannten [Debuggers](https://realpython.com/python-idle/#how-to-debug-in-idle) können wir ein Script in "Zeitlupe" ausführen. Im Debug-Modus wartet der Python-Interpreter nach jedem Befehl, bis der nächste manuell gestartet wird. Dadurch können wir den Programmfluss beobachten und den Zustand des Programms bei jedem Schritt inspizieren. Dabei geht man wie folgt vor:
-
-1. In der IDLE-Shell wählt man Debug – Debugger. Dadurch wird ein neues Werkzeugfenster geöffnet und der Debugger aktiviert. Stellen Sie sicher, dass das Kontrollkästchen "Source" aktiviert ist, um die aktuelle Codezeile zu sehen.
-
-    ![](idle-debug-1.png){width=50%}
-
-2. Setzen Sie dann einen Haltepunkt im Python-Skript, indem Sie mit der rechten Maustaste auf die Zeile klicken, an der Sie die Ausführung stoppen möchten und wählen Sie "Set Breakpoint". Für dieses Beispiel setzen wir einen Haltepunkt gleich in der ersten Zeile (diese wird dann gelb).
-
-    ![](idle-debug-2.png)
-
-3. Führen Sie jetzt das Skript mit Run – Run Module aus (oder drücken Sie <kbd>F5</kbd>). Das Skript wird dann am ersten Haltepunkt gestoppt (und diese Zeile wird noch *nicht* ausgeführt).
-
-4. Um die Ausführung fortzusetzen, wählen Sie "Step", um die aktuelle Zeile auszuführen und in der nächsten Zeile anzuhalten. Wenn die aktuelle Zeile einen Funktionsaufruf enthält und Sie *nicht* in die Funktion springen möchten (zum Beispiel, weil Sie nicht daran interessiert sind, den Code einer eingebauten Funktion zu sehen), klicken Sie stattdessen auf "Over".
-
-5. Wenn sich die aktuelle Zeile bereits in einer Funktion befindet und Sie diese Funktion sofort verlassen möchten, klicken Sie auf "Out".
-
-Zum Ausprobieren kann man das folgende kurze Script debuggen:
-
-```{python}
-#| eval: false
-#| code-line-numbers: true
-def f(x):
-    y = x * 2
-    return y
-
-a = f(3)
-print("Done.")
-```
-
-In welcher Reihenfolge werden die Code-Zeilen ausgeführt?
-
-Alternativ kann die Website [PythonTutor](http://pythontutor.com/visualize.html#mode=edit) den Programmfluss ebenfalls Schritt für Schritt darstellen. Dazu kopiert man einfach den gesamten Code in das Eingabefeld und klickt auf "Visualize Execution". So kann man durch wiederholtes Klicken auf "Next" nachvollziehen, wie Python den Code ausführt.
-:::
-
 
 ## Vergleiche
 
@@ -80,7 +43,7 @@ Ein Ausdruck kann mit dem Operator `not` logisch invertiert werden (d.h. aus `Tr
 * `is`: Identität (prüft, ob es sich um ein und dasselbe *Objekt* handelt, nicht nur um gleiche *Werte*)
 * `in`: Prüft, ob ein Wert in einer Sequenz enthalten ist
 
-Während `==` zwei *Werte* miteinander vergleicht, überprüft `is` zwei *Objekte* auf Gleichheit (also ob es sich um ein und dasselbe Objekt handelt). Ein Objekt hat einen Wert, zwei verschiedene Objekte können auch denselben Wert haben. Die Funktion `id` liefert eine eindeutige Nummer (ID) für ein Objekt zurück – zwei verschiedene Objekte haben immer eine unterschiedliche ID (ansonsten handelt es sich um ein und dasselbe Objekt).
+Während `==` zwei *Werte* miteinander vergleicht, überprüft `is` zwei *Objekte* auf Gleichheit (also ob es sich um ein und dasselbe Objekt handelt).
 
 
 ### Beispiele
@@ -139,47 +102,6 @@ Man erkennt, dass beide Objekte `x` und `y` dieselbe ID haben. Dies bedeutet, da
 
 Die tatsächlichen IDs von Objekten sind ein Implementierungsdetail von Python, d.h. es ist nicht relevant, welche Zahl hier zurückgegeben wird. Dennoch kann man diese IDs verwenden, um zwei Objekte auf Gleichheit zu überprüfen, denn nur dann haben beide Objekte dieselbe ID.
 
-:::{.callout-note}
-Ein weiteres Implementierungsdetail von Python ist, dass es kleine Ganzzahlen genau ein Mal gibt – d.h. wenn man zwei oder mehrere Male kleine Zahlen verwenden möchte (wie im vorigen Beispiel mit `x = 2` und `y = 2`), dann wird immer nur *ein* Objekt verwendet. Dies dient der Beschleunigung bzw. effizienteren Speichernutzung. Bei großen Zahlen ist das allerdings nicht mehr so:
-
-```{python}
-a = 500
-a
-```
-
-```{python}
-id(a)
-```
-
-```{python}
-b = a  # b und a sind Namen für dasselbe Objekt
-b
-```
-
-```{python}
-id(b)
-```
-
-```{python}
-b = 500  # b ist nun ein unterschiedliches Objekt 500
-b
-```
-
-```{python}
-id(b)
-```
-
-```{python}
-a == b  # Werte gleich?
-```
-
-```{python}
-a is b  # Objekte gleich?
-```
-
-![](names_500.png)
-:::
-
 Das folgende Beispiel veranschaulicht, dass es einen Unterschied zwischen Ganzzahlen (`int`) und Kommazahlen (`float`) gibt, obwohl deren Werte (zumindest mathematisch) gleich sein können.
 
 ```{python}
@@ -194,8 +116,6 @@ c == d
 ```{python}
 c is d
 ```
-
-Man sollte Kommazahlen aber ohnehin nie auf Gleichheit überprüfen, da diese aufgrund der begrenzten Genauigkeit nicht exakt repräsentiert werden können (wie bereits in [Einheit 2](../02/02.qmd) besprochen).
 
 :::{.callout-tip}
 In Python kann man Dezimalzahlen auch in der sogenannten [wissenschaftlichen Notation](https://de.wikipedia.org/wiki/Wissenschaftliche_Notation) anschreiben. Hier verwendet man eine Darstellung mit Zehnerpotenzen, die man in Python mit `e` eingeben kann – `e` kann man als "mal zehn hoch" lesen.
@@ -245,7 +165,7 @@ else:  # optional
     ...
 ```
 
-Die Struktur einer Bedingung ist also im Prinzip dieselbe wie die einer Funktion. Zuerst gibt es den Kopf, welcher mit dem Keyword `if` eingeleitet wird. Danach folgt ein logischer Ausdruck (meist ein Vergleich), und zum Schluss wird die Kopfzeile mit einem `:` abgeschlossen. Der darauf folgende eingerückte Code wird nur ausgeführt, wenn der logische Ausdruck `True` ergibt – wenn das nicht der Fall ist, wird der gesamte eingerückte Codeblock übersprungen.
+Zuerst gibt es eine Kopfzeile, welche mit dem Schlüsselword `if` eingeleitet wird. Danach folgt ein logischer Ausdruck (meist ein Vergleich), und zum Schluss wird die Kopfzeile mit einem `:` abgeschlossen. Der darauf folgende eingerückte Code wird nur ausgeführt, wenn der logische Ausdruck `True` ergibt – wenn das nicht der Fall ist, wird der gesamte eingerückte Codeblock übersprungen.
 
 Nur wenn der erste Ausdruck `True` ist, wird also der eingerückte Code ausgeführt. Danach wird der gesamte restliche `if`/`elif`/`else`-Block verlassen, es wird also kein weiterer Code mehr ausgeführt. Wenn der erste Ausdruck `False` ist, wird der zugehörige Codeblock nicht ausgeführt und es wird zum nächsten `elif`-Ausdruck gesprungen (falls vorhanden). Hier wird dann ein weiterer logischer Ausdruck ausgewertet, und falls dieser `True` ist, wird der dazugehörige eingerückte Codeblock ausgeführt. Falls kein logischer Ausdruck in den `elif`-Zweigen `True` ist, wird schließlich der Codeblock im `else`-Zweig ausgeführt (falls vorhanden).
 
@@ -345,7 +265,7 @@ else:
     print("Four")
 ```
 
-Selbstverständlich kann man Vergleiche nicht nur mit Zahlen durchführen:
+Man kann Vergleiche nicht nur mit Zahlen durchführen, sondern auch z.B. mit Strings:
 
 ```{python}
 s = "Python"
@@ -372,7 +292,7 @@ else:
 
 ## for-Schleifen
 
-Um Befehle zu wiederholen, gibt es die Möglichkeit, Schleifen zu verwenden. Eine häufig verwendete Schleife ist die sogenannte `for`-Schleife. Als einfaches Beispiel ersetzen wir folgenden repetitiven Code durch eine Schleife:
+Um Befehle zu wiederholen, gibt es die Möglichkeit, Schleifen zu verwenden. Eine häufig verwendete Schleifenart ist die sogenannte `for`-Schleife. Als einfaches Beispiel ersetzen wir folgenden repetitiven Code durch eine Schleife:
 
 ```{python}
 print("Hallo")
@@ -385,9 +305,9 @@ for i in range(3):
     print("Hallo")
 ```
 
-Die sogenannte Schleifenvariable `i` nimmt hier in den drei Durchläufen drei verschiedene Werte 0, 1 und 2 an – dies sind nämlich genau die Werte, die die Funktion `range` zurückgibt. Der Name der Schleifenvariable kann beliebig gewählt werden, oft wird für kurze Schleifen einfach `i` verwendet (man könnte auch `_` verwenden, um anzudeuten, dass man an diesem Namen eigentlich nicht weiter interessiert ist). Dieser Name bleibt nach dem Ausführen der Schleife übrigens bestehen, er unterscheidet sich nicht von anderen durch Zuweisung entstandenen Namen.
+Die sogenannte Schleifenvariable `i` nimmt hier in den drei Durchläufen drei verschiedene Werte 0, 1 und 2 an – dies sind nämlich genau die Werte, die der Funktionsaufruf `range(3)` zurückgibt. Der Name der Schleifenvariable kann beliebig gewählt werden, oft wird für kurze Schleifen einfach `i` verwendet (man könnte auch `_` verwenden, um anzudeuten, dass man an diesem Namen eigentlich nicht weiter interessiert ist). Dieser Name bleibt nach dem Ausführen der Schleife übrigens bestehen, er unterscheidet sich nicht von anderen durch Zuweisung entstandenen Namen.
 
-:::{.callout-note}
+:::{.callout-tip}
 Überlegen Sie, welchen Wert `i` am Ende des folgenden Beispiels hat:
 
 ```python
@@ -396,7 +316,7 @@ for i in range(3):
     print("Hello")
 ```
 
-Die richtige Antwort lautet `2`, da dies der letzte Wert ist, welcher in der Schleife zugewiesen wird. Der Funktionsaufruf `range(3)` erzeugt nämlich die drei Werte `0`, `1` und `2`. Die Zuweisung `i = 800` zu Beginn hat hier eigentlich überhaupt keinen Effekt (oder anders formuliert, diese Zuweisung ist sinnlos und könnte daher ohne Auswirkungen entfernt werden).
+Die richtige Antwort lautet `2`, da dies der letzte Wert ist, der in der Schleife zugewiesen wird. Der Funktionsaufruf `range(3)` erzeugt nämlich die drei Werte `0`, `1` und `2`. Die Zuweisung `i = 800` zu Beginn hat hier überhaupt keinen Effekt. Anders ausgedrückt ist diese Zuweisung überflüssig und könnte ohne Auswirkungen entfernt werden, da die Schleife `i` unmittelbar danach nacheinander die Werte `0`, `1` und `2` zuweist.
 :::
 
 Die Funktion `range` wird mit `range(start, stop, step)` aufgerufen (der Hilfetext verrät dazu mehr Details) und erzeugt eine Sequenz, welche aus ganzen Zahlen besteht, die von `start` (optional) bis `stop` in der Schrittweite `step` (optional) läuft. Wenn man sich die einzelnen Elemente in einem `range`-Objekt ansehen will, muss man dieses zuerst in eine Liste umwandeln:
@@ -412,7 +332,7 @@ list(x)
 
 Grundsätzlich beginnt Python mit 0 zu zählen, d.h. auch `range` beginnt standardmäßig bei 0. Die letzte Zahl ist nicht mehr Teil der Sequenz, da man so einfach die Anzahl der erzeugten Elemente sehen kann (im Beispiel oben sieht man, dass `range(10)` aus 10 Elementen besteht).
 
-In Python iteriert eine `for`-Schleife über alle Elemente einer Sequenz (d.h. alle Datentypen, die aus mehreren Elementen bestehen und iterierbar sind, wie z.B. Strings oder Listen). Im folgenden Beispiel iteriert die Schleife über einen String, d.h. bei jedem Schleifendurchlauf werden die einzelnen Elemente (Buchstaben) eines Strings der Schleifenvariable `s` zugewiesen:
+In Python iteriert eine `for`-Schleife also eigentlich über alle Elemente einer Sequenz. Im folgenden Beispiel iteriert die Schleife über einen String, d.h. bei jedem Schleifendurchlauf werden die einzelnen Elemente (Buchstaben) eines Strings der Schleifenvariable `s` zugewiesen:
 
 ```{python}
 for s in "String":
@@ -428,7 +348,7 @@ for element in a:
     print(element)
 ```
 
-Der Befehl `break` bricht die Schleife ab. Python springt ans Ende der Schleife und macht von hier mit der Ausführung der noch folgenden Befehlszeilen weiter.
+Der Befehl `break` bricht die Schleife vorzeitig ab. Python springt sofort ans Ende der Schleife und macht von hier mit der Ausführung der noch folgenden Befehlszeilen weiter.
 
 ```{python}
 i = 0
@@ -506,15 +426,10 @@ Die Builtin-Funktion `input` ermöglicht es, Eingaben von der Tastatur einzulese
 
 ### Übung 2
 
-Schreiben Sie eine Funktion `is_odd`, welche einen Parameter hat und überprüft, ob das übergebene Argument gerade oder ungerade ist (das können Sie z.B. durch den Rest der Division durch 2 überprüfen). Falls das Argument ungerade ist, soll die Funktion `True` mittels `return` zurückgeben, sonst `False`.
-
-
-### Übung 3
-
 Gegeben ist eine Liste `lst = ["I", "love", "Python"]`. Schreiben Sie eine `for`-Schleife, welche die einzelnen Elemente in der Liste mit `print` Zeile für Zeile am Bildschirm ausgibt.
 
 
-### Übung 4
+### Übung 3
 
 Gegeben ist wieder eine Liste `lst = ["I", "love", "Python"]`. Schreiben Sie eine `for`-Schleife, welche über die einzelnen Elemente in der Liste iteriert. Eine zweite (geschachtelte) `for`-Schleife soll dann über jeden Buchstaben der einzelnen Strings iterieren und jeden Buchstaben einzeln gefolgt vom Zeichen `-` ausgeben.
 
@@ -527,7 +442,7 @@ I-l-o-v-e-P-y-t-h-o-n-
 :::
 
 
-### Übung 5
+### Übung 4
 
 Schreiben Sie das folgende verschachtelte `if`–`else`-Konstrukt als `if`–`elif`–`else`-Block:
 
@@ -544,6 +459,11 @@ else:
 Überprüfen Sie Ihre Lösung mit den drei Werten `x = 5`, `x = -11` und `x = 0` (d.h. bei beiden Varianten soll dasselbe Ergebnis herauskommen).
 
 
-### Übung 6
+### Übung 5
 
 Schreiben Sie ein Programm, welches die Eingabe einer ganzen Zahl zwischen 1 und 10 erwartet. Falls die Eingabe nicht im erlaubten Bereich liegt, soll eine Meldung ausgegeben werden ("Invalid input. Please try again.") und die Eingabe wiederholt werden. Falls die Eingabe im erlaubten Bereich liegt, soll die Schleife beendet werden und die eingegebene Zahl ausgegeben werden (z.B. "You entered: 5").
+
+
+## Lösungen
+
+Siehe [hier](03-solutions.qmd).
