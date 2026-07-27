@@ -266,7 +266,3 @@ Wie sehen diese Funktionsaufrufe aus? Wie lauten die Rückgabewerte? Geben Sie f
 :::{.callout-note}
 Nur der erste Funktionsaufruf (ohne Argumente) verursacht einen Fehler, alle weiteren Aufrufe sind möglich!
 :::
-
-### Übung 2
-
-Schreiben Sie eine Funktion `is_odd`, welche einen Parameter hat und überprüft, ob das übergebene Argument gerade oder ungerade ist (das können Sie z.B. durch den Rest der Division durch 2 überprüfen). Falls das Argument ungerade ist, soll die Funktion `True` mittels `return` zurückgeben, sonst `False`.

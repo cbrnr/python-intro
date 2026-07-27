@@ -21,10 +21,10 @@ published-title: "Veröffentlicht"
 
 Funktionen kann man sich wie kleine Programme bzw. Skripte vorstellen. Sie fassen mehrere Anweisungen zu einem Block zusammen. Eine Funktion in Python lässt sich gut mit einer mathematischen Funktion vergleichen, zum Beispiel mit der Quadratfunktion $f(x) = x^2$. Diese berechnet aus einem gegebenen Wert $x$ einen neuen Wert $x^2$. Anschließend kann man die Funktion mit konkreten Werten für $x$ verwenden, um die entsprechenden Ergebnisse zu erhalten, z.B. $f(3) = 9$ oder $f(5) = 25$.
 
-Auch in Python hat eine Funktion eine klar definierte Aufgabe. Funktionen dienen unter anderem dazu, Programmcode zu strukturieren und dadurch die Lesbarkeit zu erhöhen. Außerdem ermöglichen sie es, Code wiederzuverwenden. Das bedeutet, dass man eine einmal definierte Funktion beliebig oft aufrufen (verwenden) kann. Funktionen machen Programme häufig auch kürzer, weil sich wiederkehrende Anweisungen in einer Funktion bündeln lassen. Sollten später einmal Änderungen notwendig sein, muss man den Code nur an einer Stelle (innerhalb der Funktion) anpassen. Funktionen lassen sich oft auch in anderen Programmen wiederverwenden.
+Auch in Python hat eine Funktion eine klar definierte Aufgabe. Funktionen dienen unter anderem dazu, Programmcode zu strukturieren und dadurch die Lesbarkeit zu erhöhen. Außerdem ermöglichen sie es, Code wiederzuverwenden. Das bedeutet, dass man eine einmal definierte Funktion beliebig oft aufrufen (verwenden) kann. Funktionen machen Programme häufig auch kürzer, weil sich wiederkehrende Anweisungen in einer Funktion bündeln lassen. Sollten später einmal Änderungen notwendig sein, muss man den Code nur an einer Stelle (in der Funktion) anpassen. Funktionen lassen sich auch in anderen Programmen wiederverwenden.
 
 :::{.callout-note}
-Einige Funktionen wie `print` und `type` haben wir bereits in den vorigen Einheiten kennengelernt und verwendet.
+Einige Funktionen wie `print`, `type` und `math.sqrt` haben wir bereits in den vorigen Einheiten kennengelernt und verwendet.
 :::
 
 
@@ -41,7 +41,7 @@ print("Hello")
 ```
 
 ```{python}
-type("Hello")
+type(3.14)
 ```
 
 ```{python}
@@ -70,7 +70,7 @@ Dabei handelt es sich um einen Namen, welcher auf ein Funktionsobjekt verweist:
 type(print)
 ```
 
-Das Konzept von Namen in Python haben wir bereits in einer der vorigen Einheiten kennengelernt. Es ist unerheblich, auf welches Objekt ein Name verweist, dies kann eine Ganzzahl, eine Funktion, oder jedes beliebige andere Objekt sein. So können wir z.B. auch den Namen `f` erstellen, welcher auf die Funktion `print` verweist:
+Das Konzept von Namen in Python haben wir bereits kennengelernt. Es ist unerheblich, auf welches Objekt ein Name verweist, dies kann eine Ganzzahl, eine Funktion, oder jedes beliebige andere Objekt sein. So können wir z.B. auch den Namen `f` erstellen, welcher auf die Funktion `print` verweist:
 
 ```{python}
 f = print
@@ -119,7 +119,7 @@ Unabhängig von der Anzahl der Parameter schließt ein Doppelpunkt den sogenannt
 def test_function(n, v):
 ```
 
-Nun folgt der Code, welcher von der Funktion ausgeführt wird, wenn diese aufgerufen wird – dieser Code muss um eine Ebene *eingerückt* werden (also normalerweise vier Leerzeichen). Man spricht hier vom sogenannten *Funktionskörper*. Im Funktionskörper kann man insbesondere alle Parameter wie normale Namen verwenden – diese sind nur innerhalb der Funktion vorhanden und erhalten dann die konkreten Werte der Argumente, welche beim Funktionsaufruf übergeben wurden.
+Nun folgt der Code, welcher von der Funktion ausgeführt wird, wenn diese aufgerufen wird – dieser Code muss um eine Ebene *eingerückt* werden (also vier Leerzeichen). Man spricht hier vom sogenannten *Funktionskörper*. Im Funktionskörper kann man insbesondere alle Parameter wie normale Namen verwenden – diese sind nur innerhalb der Funktion vorhanden und erhalten dann die konkreten Werte der Argumente, welche beim Funktionsaufruf übergeben wurden.
 
 :::{.callout-important}
 Eine Funktion kann *Parameter* haben, welche bei der *Definition* aufgelistet werden müssen. Wenn man die Funktion aufruft, muss man für alle Parameter konkrete Werte übergeben – diese konkreten Werte nennt man *Argumente*.
@@ -133,7 +133,7 @@ def test_function():
     print(s)
 ```
 
-Man beachte, dass die Funktion hier lediglich definiert wurde, d.h. sie wurde noch nicht ausgeführt. Sie ist aber dem Python-Interpreter ab jetzt bekannt (d.h. es existiert ein Name `test_function`, welcher auf ein Funktionsobjekt verweist):
+Man beachte, dass die Funktion hier lediglich definiert wurde, d.h. sie wurde noch *nicht* ausgeführt. Sie ist aber dem Python-Interpreter ab jetzt bekannt (d.h. es existiert ein Name `test_function`, welcher auf ein Funktionsobjekt verweist):
 
 ```{python}
 test_function
@@ -155,7 +155,7 @@ Wir können eine bereits definierte Funktion beliebig oft aufrufen.
 test_function()
 ```
 
-Im Fall einer Funktion mit Parametern würden die Definition und der Aufruf z.B. so aussehen (wir haben den verwendeten `if`-Befehl noch nicht besprochen, es ist aber nicht wichtig, dass Sie verstehen, was diese Funktion genau macht):
+Im Fall einer Funktion mit Parametern würden die Definition und der Aufruf z.B. so aussehen:
 
 ```{python}
 def test_function_2(n, v):  # Definition, zwei Parameter
@@ -198,7 +198,7 @@ Ein solcher Docstring ist übrigens kein Kommentar! Verwenden Sie für Kommentar
 
 ## Rückgabewerte
 
-Funktionen können Werte (Ergebnisse) *zurückgeben*. In beiden soeben definierten Funktionen `test_function` und `test_function_2` wird allerdings *kein* Wert explizit zurückgegeben (d.h. die Funktionen führen nur Code aus und geben implizit `None` zurück, der spezielle Wert für "nichts" in Python). Diese beiden Funktionen können also nicht auf einen Wert reduziert werden, wenn man sie aufruft – sie sind also keine Ausdrücke.
+Funktionen können Werte (Ergebnisse) *zurückgeben*. In beiden soeben definierten Funktionen `test_function` und `test_function_2` wird allerdings *kein* Wert explizit zurückgegeben (d.h. die Funktionen führen nur Code aus und geben implizit `None` zurück, der spezielle Wert für "nichts" in Python). Diese beiden Funktionsaufrufe können also nicht auf einen Wert reduziert werden – sie sind also keine Ausdrücke.
 
 Wenn eine Funktion explizit einen Wert (ein Ergebnis) zurückgeben soll, verwendet man dazu das Schlüsselwort `return`, gefolgt vom gewünschten Rückgabewert:
 
@@ -236,10 +236,6 @@ Man kann überall dort, wo man einen Wert angeben kann, auch einen Ausdruck (ein
 ```{python}
 add_one(add_one(add_one(1)))
 ```
-:::
-
-:::{.callout-note}
-Wie man Funktionen mit *Argumenten* (insbesondere Standard- und Schlüsselwort-Argumenten) aufruft und was es mit *Gültigkeitsbereichen* auf sich hat, sehen wir uns in der nächsten Einheit (Funktionen II) genauer an.
 :::
 
 
@@ -305,3 +301,13 @@ Schreiben Sie außerdem eine Funktion `to_celsius` (mit entsprechendem Parameter
 ### Übung 4
 
 Nennen Sie Gründe, warum man Funktionen verwendet. Erklären Sie auch kurz den Unterschied zwischen Funktionsdefinition und Funktionsaufruf! Was ist der Unterschied zwischen Parametern und Argumenten?
+
+
+### Übung 5
+
+Schreiben Sie eine Funktion `is_odd`, welche einen Parameter hat und überprüft, ob das übergebene Argument gerade oder ungerade ist (das können Sie z.B. durch den Rest der Division durch 2 überprüfen). Falls das Argument ungerade ist, soll die Funktion `True` mittels `return` zurückgeben, sonst `False`.
+
+
+## Lösungen
+
+Siehe [hier](04-solutions.qmd).
