@@ -315,14 +315,14 @@ type(a)
 ```
 
 
-### Sequenzen
+### Sammlungstypen
 
-Sequenzdatentypen können mehrere Elemente beinhalten. Folgende wichtige Sequenzdatentypen werden von Python unterstützt:
+Sammlungstypen können mehrere Elemente beinhalten. Die wichtigsten Sammlungstypen in Python sind:
 
 - `str` (String bzw. Zeichenkette)
 - `list` (Liste)
 - `tuple` (ähnlich wie `list`, kann aber nachträglich nicht mehr verändert werden)
-- `set` (Ansammlung von *unterschiedlichen* Elementen, d.h. keine Duplikate)
+- `dict` (Wertepaare aus Schlüsseln und Werten)
 
 ```{python}
 s = "Python"
@@ -338,20 +338,6 @@ type(k)
 t = 1, 2, 18.33, "Python", 44
 type(t)
 ```
-
-```{python}
-s = {1, 2, "test", "test", "test", 1, 2, 3}
-s
-```
-
-```{python}
-type(s)
-```
-
-
-### Zuordnungen
-
-Der Datentyp `dict` beinhaltet Wertepaare, also Schlüssel (Keys) und zugehörige Werte (Values). Dieser Mechanismus funktioniert ähnlich wie ein Wörterbuch, daher auch die englische Bezeichnung "dictionary".
 
 ```{python}
 d = {"a": 12, "b": 3.14, 5: "Python", "c": "yes"}

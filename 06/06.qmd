@@ -19,26 +19,26 @@ published-title: "Veröffentlicht"
 
 ## Datentypen im Überblick
 
-Die Datentypen in Python können grob in folgende Kategorien unterteilt werden:
+Die grundlegenden Datentypen in Python können grob in folgende Kategorien unterteilt werden:
 
 - Logischer Datentyp (`bool`)
-- Numerische Datentypen (`int`, `float`)
-- Sequenzen (bestehen aus mehreren Elementen) (`str`, `list`, `tuple`)
-- Mappings (Wertepaare) (`dict`)
+- Numerische Datentypen (`int`, `float`, `complex`)
+- Sammlungstypen (`str`, `list`, `tuple`, `dict`)
 
-Den logischen und die numerischen Datentypen sind wir bereits begegnet. In dieser Einheit lernen wir die *Sammlungstypen* `list`, `tuple` und `dict` kennen, mit denen man mehrere Objekte in einem einzigen Objekt zusammenfasst. Den Sequenzdatentyp `str` (String) behandeln wir dann in der nächsten Einheit im Detail.
+Den logischen und die numerischen Datentypen sind wir bereits begegnet. In dieser Einheit lernen wir die *Sammlungstypen* `list`, `tuple` und `dict` kennen, mit denen man mehrere Objekte in einem einzigen Objekt zusammenfasst. Strings (`str`) behandeln wir dann in der nächsten Einheit im Detail.
 
-Eine wichtige Eigenschaft von Datentypen ist, ob sie *mutable* (veränderbar) oder *immutable* (nicht veränderbar) sind. Objekte eines *mutable* Typs können auch nach ihrer Erstellung noch verändert werden, Objekte eines *immutable* Typs hingegen nicht:
+Eine wichtige Eigenschaft vieler Datentypen ist, ob ihre Objekte *mutable* (veränderbar) oder *immutable* (nicht veränderbar) sind. Erstere können auch nach ihrer Erstellung verändert werden, letztere hingegen nicht.
 
 - Mutable (veränderbar): `list`, `dict`
-- Immutable (nicht veränderbar): `int`, `float`, `str`, `tuple`
-
-Diese Unterscheidung wird uns im Verlauf der Einheit immer wieder begegnen.
+- Immutable (nicht veränderbar): `int`, `float`, `complex`, `str`, `tuple`
 
 
 ## Listen erstellen
 
-Eine Liste (`list`) ist ein Sequenzdatentyp, kann also aus mehreren Elementen bestehen. Im Gegensatz zu einem Text (String) kann eine Liste Elemente mit *unterschiedlichen* und *beliebigen* Datentypen enthalten, z.B. Strings, Zahlen, weitere Listen, und so weiter. Eine Liste erstellt man mit eckigen Klammern, innerhalb derer die einzelnen Elemente durch Kommas getrennt angegeben werden:
+Wir widmen uns nun dem Sammlungstyp `list`. Listen zählen zu den wichtigsten Datentypen in Python und eignen sich hervorragend, um mehrere zusammengehörige Werte zu speichern. Viele Konzepte, die wir anhand von Listen kennenlernen, lassen sich später auch auf andere Sammlungstypen übertragen.
+
+Eine Liste (`list`) gehört zu den *Sequenzdatentypen*. Sequenzen sind Sammlungstypen, deren Elemente in einer festen Reihenfolge gespeichert werden. Im Gegensatz zu anderen Sequenzdatentypen können Listen Elemente mit unterschiedlichen und beliebigen Datentypen enthalten, zum Beispiel Zahlen, Wahrheitswerte oder sogar weitere Listen. Eine Liste erstellt man mit eckigen Klammern, innerhalb derer die einzelnen Elemente durch Kommas getrennt angegeben werden:
+
 
 ```{python}
 x = [23, "Hallo", "test", 1.44, True]
@@ -113,16 +113,30 @@ Wenn man die Reihenfolge der Elemente umdrehen möchte, gibt man als Schrittweit
 x[::-1]  # Liste in umgekehrter Reihenfolge
 ```
 
-Man kann sich die Indizes als Grenzen _zwischen_ den Elementen vorstellen:
-
-![](slicing.png)
-
 :::{.callout-note}
-Indizieren und Slicen funktionieren bei *allen* Sequenzdatentypen auf dieselbe Weise – also auch bei Strings, die wir in der nächsten Einheit behandeln.
+Indizieren und Slicen funktionieren bei *allen* Sequenzdatentypen auf dieselbe Weise – also auch bei Strings, die wir in der nächsten Einheit behandeln werden.
 :::
 
 
 ## Arbeiten mit Listen
+
+### Methoden
+
+Für Listen gibt es in Python viele praktische spezielle Funktionen. Diese werden direkt auf ein Listen-Objekt angewandt:
+
+```{python}
+x.append(13)
+```
+
+Zuerst gibt man das Objekt an (im Beispiel die Liste `x`), gefolgt von einem Punkt, gefolgt vom Namen der Funktion (im Beispiel `append`), die man aufrufen möchte. Eine solche Funktion nennt man *Methode*, da sie direkt auf ein zuvor spezifiziertes Objekt angewendet wird. Diese Schreibweise hat den Vorteil, dass sofort klar wird, dass die Methode zum Objekt gehört.
+
+::: callout-tip
+Welche Methoden verfügbar sind, hängt vom Datentyp des Objekts ab. Im interaktiven Interpreter kann man sich die Methoden eines Objekts anzeigen lassen, indem man seinen Namen, gefolgt von einem Punkt, eingibt und dann die Tabulator-Taste drückt. Alternativ listet die Funktion `dir` alle möglichen Methoden eines Objekts auf:
+
+```{python}
+dir(x)
+```
+:::
 
 ### Länge
 
@@ -210,7 +224,7 @@ Der `*`-Operator vervielfältigt eine Liste:
 
 ### Elemente zu Listen hinzufügen
 
-Mit der Methode `append` kann man neue Elemente am Ende der Liste hinzufügen.
+Mit der bereits im einführenden Beispiel erwähnten Methode `append` kann man neue Elemente am Ende der Liste hinzufügen.
 
 ```{python}
 x
@@ -236,7 +250,7 @@ x  # geänderte Liste
 ```
 
 :::{.callout-important}
-Listen-Methoden *verändern* die Liste *direkt* (in-place) und geben *nichts* (`None`) zurück. Dies steht im Gegensatz zu immutable Typen wie Strings, deren Methoden das Objekt nicht verändern können und daher immer ein neues Objekt zurückgeben (mehr dazu in der nächsten Einheit).
+Listen-Methoden *verändern* die Liste *direkt* (in-place) und geben *nichts* (`None`) zurück.
 :::
 
 Möchte man gleich mehrere Elemente hinzufügen, kann man die Methode `extend` benutzen:
@@ -722,3 +736,8 @@ Fügen Sie dem Dictionary `a` aus der vorigen Übung einen neuen Eintrag ("vier"
 ### Übung 6
 
 Was passiert, wenn Sie im Dictionary `a` auf den nicht existierenden Key `"zehn"` zugreifen wollen? Welche zwei Alternativen gibt es, um für nicht existierende Keys einen Standardwert (z.B. `"undefiniert"`) zurückzugeben (und daher die Fehlermeldung zu vermeiden)? Was ist der Unterschied zwischen diesen beiden Möglichkeiten? Geben Sie in Ihrer Antwort auch den konkreten Code für die drei Zugriffsmöglichkeiten auf das Element `"zehn"` von `a` an!
+
+
+## Lösungen
+
+Siehe [hier](06-solutions.qmd).

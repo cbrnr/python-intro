@@ -185,13 +185,13 @@ Dementsprechend kann man einen String mit dem `*`-Operator vervielfältigen:
 
 ## String-Methoden
 
-Für Strings gibt es in Python sehr viele praktische spezielle Funktionen. Diese werden direkt auf ein String-Objekt wie folgt angewandt:
+Wie im vorigen Kapitel eingeführt, werden Methoden direkt auf ein Objekt angewandt. Für Strings gibt es in Python sehr viele praktische spezielle Funktionen:
 
 ```{python}
 x.upper()
 ```
 
-Zuerst gibt man das String-Objekt an (im Beispiel `x`), gefolgt von einem Punkt, gefolgt vom Namen der Funktion (im Beispiel `upper`), die man aufrufen möchte. Eine solche Funktion nennt man *Methode*, da sie direkt auf ein zuvor spezifiziertes Objekt angewendet wird. Im Beispiel oben wird ein neuer String erzeugt, welcher aus den Zeichen des Strings `x` in Großbuchstaben besteht. Diese Schreibweise hat den Vorteil, dass sofort klar wird, dass die Methode zum Objekt gehört; im Prinzip entspricht der Aufruf aber einem klassischen Funktionsaufruf `str.upper(x)`.
+Im Beispiel oben wird ein neuer String erzeugt, welcher aus den Zeichen des Strings `x` in Großbuchstaben besteht.
 
 ```{python}
 "abcdefg".upper()  # Großbuchstaben
@@ -207,23 +207,6 @@ Eine wichtige Tatsache ist, dass alle String-Methoden einen *neuen* String *zur�
 x = x.upper()  # Namensschildchen x hängt am neuen String (in Großbuchstaben)
 x
 ```
-
-:::{.callout-tip}
-Im interaktiven Interpreter kann man einfach herausfinden, welche Methoden man auf ein Objekt anwenden kann. Dazu tippt man den Namen eines Objektes ein, gefolgt von einem Punkt, und dann drückt man die Tabulator-Taste. Es werden dann alle passenden Methoden aufgelistet. Zu jeder Methode kann man sich dann natürlich die interaktive Hilfe anzeigen lassen.
-
-Beispieleingabe:
-
-```
-x = "Test String"
-x.<TAB>
-```
-
-Alternativ kann man die Funktion `dir` verwenden, um alle möglichen Methoden eines Objektes aufzulisten, also z.B.
-
-```python
-dir(x)
-```
-:::
 
 Im Folgenden werden einige praktische String-Methoden aufgelistet.
 
