@@ -53,31 +53,31 @@ u.mean()  # Mittelwert aller Elemente
 ```
 
 ```{python}
-u.mean(1)  # Zeilenmittelwerte
+u.mean(axis=1)  # Zeilenmittelwerte
 ```
 
 ```{python}
-u.mean(0)  # Spaltenmittelwerte
+u.mean(axis=0)  # Spaltenmittelwerte
 ```
 
 ```{python}
-u.max(0)  # Spaltenmaxima
+u.max(axis=0)  # Spaltenmaxima
 ```
 
 ```{python}
-u.min(0)  # Spaltenminima
+u.min(axis=0)  # Spaltenminima
 ```
 
 ```{python}
-u.max(1)  # Zeilenmaxima
+u.max(axis=1)  # Zeilenmaxima
 ```
 
 ```{python}
-u.min(1)  # Zeilenminima
+u.min(axis=1)  # Zeilenminima
 ```
 
 ```{python}
-u.mean(1).max()  # Maximum der Zeilenmittelwerte
+u.mean(axis=1).max()  # Maximum der Zeilenmittelwerte
 ```
 
 

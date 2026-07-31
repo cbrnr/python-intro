@@ -26,18 +26,18 @@ Python wurde ursprünglich als einfach zu erlernende Programmiersprache entwicke
 * [Matplotlib](http://matplotlib.org/) (Erstellung von Grafiken)
 * [Pandas](http://pandas.pydata.org/) (Arbeiten mit Tabellen)
 
-Darüber hinaus gibt es viele weitere Pakete für spezifischere Anwendungen wie z.B. [Scikit-learn](https://scikit-learn.org/) (Machine Learning), [statsmodels](https://www.statsmodels.org/stable/index.html) (Statistik), [scikit-image](https://scikit-image.org) (Bildverarbeitung) und [SymPy](https://www.sympy.org/en/index.html) (symbolisches Rechnen). Diese Pakete setzen alle NumPy als Grundlage voraus, welches wir in dieser Einheit näher kennenlernen werden.
+Darüber hinaus gibt es viele weitere Pakete für spezifischere Anwendungen wie z.B. [Scikit-learn](https://scikit-learn.org/) (Machine Learning), [statsmodels](https://www.statsmodels.org/stable/index.html) (Statistik), [scikit-image](https://scikit-image.org) (Bildverarbeitung) und [SymPy](https://www.sympy.org/en/index.html) (symbolisches Rechnen). Viele dieser Pakete bauen auf NumPy auf; daher werden wir es in dieser Einheit näher kennenlernen.
 
 
 ## NumPy
 
-NumPy stellt einen hocheffizienten Datentyp für numerische Daten zur Verfügung, nämlich ein homogenes multidimensionales (*n*-dimensionales) Array (auch kurz ND-Array bzw. `ndarray` oder einfach Array genannt). Normale Listen sind aufgrund ihrer Flexibilität dafür viel zu ineffizient, da sie unterschiedliche Elemente enthalten können. *Homogen* bedeutet in diesem Zusammenhang, dass alle Elemente eines Arrays *denselben* Datentyp haben müssen (z.B. lauter `float`-Werte) – dadurch können Berechnungen wesentlich effizienter und schneller ausgeführt werden. *Multidimensional* bedeutet, dass ein Array beliebig viele Dimensionen (auch Achsen genannt) besitzen kann. Jedes Element wird daher mit einem Tupel indiziert, welches seine genaue Position innerhalb des Arrays beschreibt.
+Für umfangreiche numerische Berechnungen sind normale Python-Listen nur bedingt geeignet. Sie können zwar beliebige Datentypen enthalten, benötigen dadurch aber mehr Speicher und viele Berechnungen werden vergleichsweise langsam ausgeführt. Für solche Anwendungsfälle stellt NumPy einen effizienten Datentyp bereit: das homogene multidimensionale (n-dimensionale) Array (kurz ND-Array, ndarray oder einfach Array). Ein Array speichert Werte eines gemeinsamen Datentyps sehr kompakt und NumPy kann viele Operationen effizient ausführen. Homogen bedeutet dabei, dass alle Elemente eines Arrays denselben Datentyp haben (z.B. lauter `float`-Werte). Multidimensional bedeutet, dass ein Array beliebig viele Dimensionen (auch Achsen genannt) besitzen kann. Jedes Element wird daher mit einem Tupel indiziert, das seine genaue Position innerhalb des Arrays beschreibt (dazu später mehr).
 
 ::: {.callout-tip}
 Das offizielle Tutorial [NumPy: the absolute basics for beginners](https://numpy.org/doc/stable/user/absolute_beginners.html) ergänzt bzw. vertieft die Inhalte dieser Unterlagen – die Lektüre ist sehr zu empfehlen!
 :::
 
-Beginnen wir aber mit einem einfachen Beispiel, Details zu den einzelnen Befehlen folgen dann später. Konventionell importiert man NumPy mit dem Kürzel `np`:
+Beginnen wir mit einem einfachen Beispiel, Details zu den einzelnen Befehlen folgen dann später. Konventionell importiert man NumPy so:
 
 ```{python}
 import numpy as np
@@ -97,7 +97,7 @@ a.dtype  # Datentyp aller Elemente im Array
 
 Hier steht `int64` für 64-Bit-Ganzzahlen (Integer). Hätten wir stattdessen Dezimalzahlen (Gleitkommazahlen, `float`), würde hier z.B. `float64` stehen.
 
-Beginnen wir nach diesem einführenden Beispiel nun aber von vorne und sehen wir uns an, wie wir unterschiedlichste NumPy-Arrays erstellen können.
+Beginnen wir nach diesem einführenden Beispiel nun aber von vorne und sehen wir uns an, wie wir unterschiedliche NumPy-Arrays erstellen können.
 
 
 ## Erstellen von Arrays
@@ -123,24 +123,24 @@ c.shape  # 2 Zeilen, 3 Spalten
 ```
 
 :::{.callout-note}
-Ein eindimensionales Array kann man sich wie eine Liste vorstellen, wohingegen ein zweidimensionales Array einer Tabelle entspricht. Für höherdimensionale Arrays gibt es keine speziellen Bezeichnungen.
+Ein eindimensionales Array kann man sich wie eine Liste vorstellen, wohingegen ein zweidimensionales Array einer Tabelle entspricht.
 :::
 
 
 ### Konstant befüllte Arrays
 
-Im Gegensatz zu Listen, welche dynamisch wachsen können (z.B. mit der `append`-Methode), sollte die Größe von Arrays bereits bei der Erstellung bekannt sein, da das Hinzufügen von Zeilen oder Spalten relativ langsam ist. Hierfür gibt es einige praktische Konstruktionen, welche Arrays mit Platzhalterelementen wie z.B. lauter Nullen erzeugen.
+Im Gegensatz zu Listen, welche dynamisch wachsen können (z.B. mit der `append`-Methode), sollte die Größe von Arrays bereits bei der Erstellung bekannt sein, da das Hinzufügen von Zeilen oder Spalten ineffizient ist. Hierfür gibt es einige praktische Konstruktionen, welche Arrays mit Platzhalterelementen wie z.B. lauter Nullen erzeugen.
 
 ```{python}
 np.zeros((3, 4))  # Nullen in 3 Zeilen und 4 Spalten
 ```
 
 :::{.callout-important}
-Die Funktion `np.zeros` wird mit *einem* Argument für die gewünschte Form (Shape) aufgerufen, nämlich mit dem Tupel `(3, 4)` im vorigen Beispiel. Deswegen benötigt man hier ein weiteres Klammernpaar, um ein Tupel als erstes Argument zu übergeben. Der Aufruf `np.zeros(3, 4)` funktioniert *nicht*, da man hier zwei Argumente übergeben würde. Lesen Sie in der Hilfe nach, was die ersten beiden Parameter der Funktion bedeuten!
+Die Funktion `np.zeros` erwartet als erstes Argument die gewünschte Form (Shape) des Arrays. Diese wird als Tupel angegeben, im vorigen Beispiel also `(3, 4)`. Deshalb sind zwei Klammerpaare erforderlich: eines für den Funktionsaufruf und eines für das Tupel. Der Aufruf `np.zeros(3, 4)` funktioniert *nicht*, da `3` und `4` dabei als zwei getrennte Argumente interpretiert werden. Lesen Sie in der Dokumentation nach, welche Bedeutung die ersten beiden Parameter der Funktion haben!
 :::
 
 :::{.callout-tip}
-Übersichtlicher ist es, wenn Sie Keyword-Argumente nutzen, also beispielsweise:
+Übersichtlicher ist es, wenn man Keyword-Argumente nutzt, also beispielsweise:
 
 ```python
 np.zeros(shape=(3, 4))
@@ -160,7 +160,7 @@ np.full((3, 4), 66)  # 3 Zeilen, 4 Spalten, alle Elemente gleich 66
 
 ### Sequenzen
 
-Analog zur Builtin-Funktion `range` können mit `np.arange` Arrays mit Zahlenfolgen erstellt werden. Hier sind nicht nur ganze Zahlen möglich, sondern auch Dezimalzahlen. Auch hier zählt der letzte Wert (Stopp-Wert) nicht mehr zum Bereich dazu.
+Analog zur eingebauten Funktion `range` können mit `np.arange` Arrays mit Zahlenfolgen erstellt werden. Hier sind nicht nur ganze Zahlen möglich, sondern auch Dezimalzahlen. Wie gewohnt zählt der letzte Wert (Stopp-Wert) nicht mehr zum Bereich dazu.
 
 ```{python}
 np.arange(5, 17)
@@ -171,14 +171,14 @@ np.arange(0.3, 5.4, 0.6)  # von 0.3 bis 5.4 mit Schrittweite 0.6
 ```
 
 ::: {.callout-tip}
-Auch hier sind Keyword-Argumente vielleicht übersichtlicher:
+Auch hier sind Keyword-Argumente übersichtlicher:
 
 ```python
 np.arange(start=0.3, stop=5.4, step=0.6)
 ```
 :::
 
-Wenn man die Anzahl der Elemente (anstatt der Schrittweite) vorgeben will, verwendet man am besten die Funktion `linspace`. Achtung: Hier zählen sowohl Start- als auch Endwert zum Bereich dazu!
+Bei Dezimalzahlen als Schrittweite können durch die begrenzte Genauigkeit von Gleitkommazahlen manchmal unerwartete Ergebnisse auftreten. Wenn die Anzahl der Elemente bekannt ist, ist `np.linspace` daher oft die bessere Wahl. Achtung: Hier zählen sowohl Start- als auch Endwert zum Bereich dazu!
 
 ```{python}
 np.linspace(1, 10, 10)  # 10 Elemente von 1 bis 10
@@ -217,7 +217,7 @@ Danach erzeugt man damit ein Generator-Objekt. Dieses kann man auch in einen def
 rng = default_rng(seed=42)
 ```
 
-In diesem Beispiel initialisieren wir den Generator mit `42` (wir könnten aber auch jede beliebige andere Zahl nehmen). Die Initialisierung bewirkt, dass der Generator danach immer dieselbe reproduzierbare Folge an Zufallszahlen ausspuckt (es bedeutet *nicht*, dass die erste Zufallszahl 42 ist). Lässt man die Initialisierung mit einer Zahl weg, dann wird der Generator in einen nicht-reproduzierbaren Zustand initialisiert (der Seed wird z.B. aus der aktuellen Uhrzeit, der Mausposition u.ä. gebildet). Das bedeutet, dass bei jeder erneuten Ausführung eines Scripts andere Zufallszahlen gezogen werden, was nicht im Sinne der Reproduzierbarkeit von Ergebnissen ist.
+In diesem Beispiel initialisieren wir den Generator mit `42` (wir könnten aber auch jede beliebige andere Zahl nehmen). Die Initialisierung bewirkt, dass der Generator danach immer dieselbe reproduzierbare Folge an Zufallszahlen ausspuckt (es bedeutet *nicht*, dass die erste Zufallszahl 42 ist). Lässt man die Initialisierung mit einer konkreten Zahl weg, verwendet NumPy einen nicht-deterministischen Seed. Das bedeutet, dass bei jeder erneuten Ausführung eines Scripts andere Zufallszahlen gezogen werden, was nicht im Sinne der Reproduzierbarkeit von Ergebnissen ist.
 
 Durch Methoden des Generators kann man jetzt Zufallszahlen mit der gewünschten Verteilung erzeugen:
 
@@ -230,7 +230,7 @@ rng.uniform(size=(2, 2))  # gleichverteilte Zufallszahlen
 ```
 
 ```{python}
-rng.integers(low=-3, high=99, size=(2, 5))  # Ganzzahlen
+rng.integers(low=-3, high=99, size=(2, 5))  # Ganzzahlen von -3 bis 98
 ```
 
 :::{.callout-note}
@@ -279,7 +279,7 @@ b**2
 a < 300
 ```
 
-Sind die zwei Arrays nicht gleich groß, wird das kleinere Array falls möglich vergrößert (d.h. Werte werden automatisch dupliziert) – dies nennt man *Broadcasting*. Das folgende Beispiel zeigt eine Multiplikation von einem Array der Shape `(2, 3)` mit der Zahl 5, was einer Shape von `(1,)` entspricht:
+Sind die zwei Arrays nicht gleich groß, kann NumPy das kleinere Array (oder ein Skalar) entlang kompatibler Achsen für die Operation erweitern – dies nennt man *Broadcasting*. Das folgende Beispiel zeigt eine Multiplikation eines Arrays der Shape `(2, 3)` mit der Zahl 5:
 
 ```{python}
 b.shape
@@ -289,19 +289,19 @@ b.shape
 b * 5
 ```
 
-Hier wird also die Zahl 5 automatisch vervielfältigt, sodass die Operation elementweise durchgeführt werden kann. Im Prinzip ist diese Operation äquivalent zu folgender Schreibweise:
+Hier wird die Zahl 5 also für jedes Element verwendet, sodass die Operation elementweise durchgeführt werden kann. Im Prinzip ist diese Operation äquivalent zu folgender Schreibweise:
 
 ```{python}
-b * np.array([[5, 5, 5], [5, 5, 5]])
+b * np.full(b.shape, 5)
 ```
 
-Ein weiteres Beispiel für Broadcasting ist, wenn wir ein Array `c` wie folgt erstellen:
+Sehen wir uns ein weiteres Beispiel für Broadcasting mit dem Array `c` an:
 
 ```{python}
 c = np.array([1, 2, 3])
 ```
 
-Wir können nun das Array `c` direkt zum Array `b` addieren, weil die Dimensionen kompatibel sind: `b` hat 2 Zeilen und 3 Spalten und `c` hat 3 Elemente. Durch Broadcasting wird die Operation nun spaltenweise angewendet:
+Wir können nun `c` direkt zu `b` addieren, weil die Dimensionen kompatibel sind: `b` hat 2 Zeilen und 3 Spalten und `c` hat 3 Elemente. Durch Broadcasting wird die Operation nun spaltenweise angewendet:
 
 ```{python}
 b
@@ -342,8 +342,8 @@ a.min()
 
 Man kann diese Funktionen/Methoden aber auch auf einzelne Dimensionen (auch "Achsen" genannt) anwenden, z.B. auf Zeilen oder Spalten. Dabei entspricht die Dimension `0` den Zeilen und die Dimension `1` den Spalten.
 
-:::{.callout-tip}
-Eigentlich entsprechen die *letzten beiden* Dimensionen den Zeilen und Spalten (bei einem zweidimensionalen Array sind das die Dimensionen 0 für die Zeilen und 1 für die Spalten). Ein dreidimensionales Array mit den Dimensionen `(3, 4, 5)` besteht also aus 3 Blöcke zu je 4 Zeilen und 5 Spalten.
+::: {.callout-note}
+Bei einem zweidimensionalen Array entsprechen die beiden Achsen den Zeilen (Achse 0) und Spalten (Achse 1). Ein dreidimensionales Array mit der Shape `(3, 4, 5)` besteht aus 3 Blöcken mit je 4 Zeilen und 5 Spalten: Achse 0 beschreibt die Blöcke, Achse 1 die Zeilen und Achse 2 die Spalten. Somit entsprechen immer die letzten beiden Achsen den Zeilen und Spalten.
 :::
 
 ```{python}
@@ -373,14 +373,14 @@ a[0]  # erstes Element (Indizierung beginnt bei 0)
 ```
 
 ::: {.callout-note}
-Ein einzelnes Element eines NumPy-Arrays ist kein Array mehr, sondern ein Skalar (also eine einzelne Zahl). Der NumPy-Datentyp wird aber beibehalten und entspricht nicht den normalen Python-Datentypen wie `int` oder `float` (sondern z.B. `numpy.int64` oder `numpy.float64`). Wenn man so einen Wert in einer Berechnung verwendet, wird er automatisch in den entsprechenden Python-Datentyp konvertiert. Man kann den Wert aber auch explizit mit `item()` in einen eingebauten Python-Datentyp umwandeln (dies ist aber wie gesagt normalerweise nicht notwendig):
+Ein einzelnes Element eines NumPy-Arrays ist kein Array mehr, sondern ein Skalar (also eine einzelne Zahl). Der NumPy-Datentyp wird dabei beibehalten und entspricht meist nicht den eingebauten Python-Datentypen wie `int` oder `float` (sondern z.B. `numpy.int64` oder `numpy.float64`). Solche Skalare lassen sich in Berechnungen in der Regel wie die entsprechenden Python-Zahlen verwenden. Mit `item()` kann man einen Wert bei Bedarf explizit in einen eingebauten Python-Datentyp umwandeln; normalerweise ist das aber nicht notwendig:
 
 ```{python}
 a[0].item()  # erstes Element als int
 ```
 
 ```{python}
-a.item(0)  # oder noch einfacher
+a.item(0)  # dasselbe über den expliziten Index 0
 ```
 :::
 
@@ -440,7 +440,7 @@ a
 ```
 
 ```{python}
-idx = [2, 7, 10, 10]  # wir wollen das 2., 7., 10. und 10. Element
+idx = [2, 7, 10, 10]  # wir wollen die Elemente an diesen Indizes
 idx
 ```
 
@@ -464,7 +464,7 @@ a % 2 == 0  # wird elementweise verglichen
 a[a % 2 == 0]
 ```
 
-Es werden hier also nur jene Elemente herausgegriffen, für die das Indexarray `True` ist.
+Es werden hier also nur jene Elemente herausgegriffen, für die das Indexarray (die Maske) `True` ist.
 
 
 ## Form (Shape)
@@ -481,17 +481,12 @@ c.shape  # gibt die aktuelle Form aus
 ```
 
 ```{python}
-c.shape = 2, 6  # ändert die Form in place
-c
-```
-
-```{python}
 c.resize((4, 3))  # ändert die Form in place
 c
 ```
 
 ```{python}
-c.reshape((1, -1))  # reshape gibt ein neues Array zurück
+c.reshape((1, -1))  # reshape gibt ein neu geformtes Array zurück
 ```
 
 ```{python}
@@ -504,10 +499,10 @@ c
 ```
 
 :::{.callout-tip}
-Man muss bei `reshape` nicht alle Dimensionen angeben – eine kann man auf `-1` setzen, was bedeutet, dass NumPy die korrekte Anzahl automatisch bestimmt. Dies ist möglich, da die Anzahl aller Elemente konstant bleiben muss.
+Man muss bei `reshape` nicht alle Dimensionen angeben – eine kann man auf `-1` setzen, was bedeutet, dass NumPy die passende Anzahl automatisch bestimmt. Dies ist möglich, da die Anzahl aller Elemente konstant bleiben muss.
 :::
 
-Der Unterschied zwischen `resize` und `reshape` ist also, das `resize` das Array direkt modifiziert und `reshape` ein *neues* (geändertes) Array zurückgibt.
+Der Unterschied zwischen `resize` und `reshape` ist also, dass `resize` das Array direkt modifiziert und `reshape` ein neues Array-Objekt zurückgibt. Dieses ist nach Möglichkeit eine View und teilt dann den Speicher mit dem ursprünglichen Array.
 
 
 ## Kombinieren von Arrays
@@ -611,3 +606,8 @@ Das Array `x` kann man sich als 3 Tabellen à 10 Zeilen und 5 Spalten vorstellen
 ### Übung 5
 
 Erstellen Sie ein (8, 8)-Array namens `chess` mit einem Schachbrettmuster (verwenden Sie dafür die Werte 0 und 1). Es gibt viele mögliche Lösungen, gerne können Sie auch mehrere Varianten anführen. Sehen Sie sich z.B. die Hilfe zur Funktion `np.tile` an, oder erzeugen Sie zuerst ein Array aus lauter Nullen und fügen Sie dann an den entsprechenden Stellen Einsen ein (z.B. durch entsprechendes Indizieren oder mit `for`-Schleifen).
+
+
+## Lösungen
+
+Siehe [hier](09-solutions.qmd).
