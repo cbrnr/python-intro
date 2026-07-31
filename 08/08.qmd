@@ -298,3 +298,8 @@ import math
 import math as m
 from math import sqrt
 ```
+
+
+## Lösungen
+
+Siehe [hier](08-solutions.qmd).
