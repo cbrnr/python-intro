@@ -57,10 +57,10 @@ def is_palindrome(s):
 Da wir die Position des gesuchten Zeichens benötigen, ist eine `while`-Schleife eine geeignete Lösung (wir wissen nicht im Vorhinein, wie viele Iterationen stattfinden werden). Hier zählen wir mit dem Namen `i` die aktuelle Position im String `s` mit.
 
 ```{python}
-def find(s, sub):
+def find(s, char):
     i = 0
     while i < len(s):
-        if s[i] == sub:
+        if s[i] == char:
             return i
         i += 1  # erhöhe i um 1 (äquivalent zu i = i + 1)
     return -1  # wird nur zurückgegeben, falls vorher kein return erfolgte
@@ -69,9 +69,9 @@ def find(s, sub):
 Eine Alternative mit `for`-Schleife ist aber auch möglich (die Funktion `enumerate` gibt sowohl die Position als auch das aktuelle Zeichen innerhalb des Strings `s` zurück):
 
 ```{python}
-def find(s, sub):
-    for i, char in enumerate(s):
-        if char == sub:
+def find(s, char):
+    for i, current_char in enumerate(s):
+        if current_char == char:
             return i
     return -1  # wird nur zurückgegeben falls das Zeichen nicht gefunden wurde
 ```
@@ -107,10 +107,12 @@ find_all("Werkstatttreppe", "t")
 ## Übung 8
 
 ```{python}
-name = "Anna"
-a = 7
-b = 13
-print(f"Hallo {name}! {a} / {b} ≈ {a / b:.3f}, oder?")
+def greeting(name, a, b):
+    print(f"Hallo {name}! {a} / {b} ≈ {a / b:.3f}, oder?")
+
+
+greeting("Anna", 7, 13)
+greeting("Max", 5, 8)
 ```
 
 

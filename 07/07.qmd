@@ -21,7 +21,7 @@ published-title: "Veröffentlicht"
 
 In der vorigen Einheit haben wir mit Listen, Tupeln und Dictionaries bereits Sammlungstypen kennengelernt und dabei gesehen, wie *Indizieren* und *Slicen* bei Sequenzdatentypen funktionieren. Der in dieser Einheit behandelte Datentyp `str` (String) ist ebenfalls ein Sequenzdatentyp – ein String besteht aus einer Sequenz von Zeichen.
 
-Wie Tupel sind Strings *immutable*: Ein einmal erstellter String kann nicht mehr verändert werden. Der Versuch, ein einzelnes Zeichen zu überschreiben, führt zu einem Fehler:
+Wie Tupel sind Strings *immutable* – ein einmal erstellter String kann nicht mehr verändert werden. Der Versuch, ein einzelnes Zeichen zu überschreiben, führt zu einem Fehler:
 
 ```{python}
 s = "Python"
@@ -63,7 +63,7 @@ s4 = "And that's a string too!"
 s4
 ```
 
-Lange Strings, die sich auch über mehrere Zeilen erstrecken können, kann man mit drei Anführungszeichen umschließen (Zeilenumbrüche sind dabei möglich und Teil des Strings).
+Lange Strings, die sich auch über mehrere Zeilen erstrecken können (was bei den mit einfachen Anführungszeichen erzeugten Strings nicht möglich ist), kann man mit drei Anführungszeichen umschließen:
 
 ```{python}
 s5 = """Dies ist ein sehr langer Text.
@@ -185,23 +185,25 @@ Dementsprechend kann man einen String mit dem `*`-Operator vervielfältigen:
 
 ## String-Methoden
 
-Wie im vorigen Kapitel eingeführt, werden Methoden direkt auf ein Objekt angewandt. Für Strings gibt es in Python sehr viele praktische spezielle Funktionen:
+Wie im vorigen Kapitel eingeführt, werden Methoden direkt auf ein Objekt angewandt. Für Strings gibt es in Python sehr viele praktische Methoden:
 
 ```{python}
 x.upper()
 ```
 
-Im Beispiel oben wird ein neuer String erzeugt, welcher aus den Zeichen des Strings `x` in Großbuchstaben besteht.
+Hier wird also ein neuer String erzeugt, welcher aus den Zeichen des Strings `x` in Großbuchstaben besteht.
 
 ```{python}
 "abcdefg".upper()  # Großbuchstaben
 ```
 
+Dementsprechend gibt es auch die Methode `lower`, welche einen neuen String in Kleinbuchstaben erzeugt:
+
 ```{python}
 "dsKJsdJKJKK".lower()  # Kleinbuchstaben
 ```
 
-Eine wichtige Tatsache ist, dass alle String-Methoden einen *neuen* String *zurückgeben*. Da Strings immutable sind, können diese von den Methoden ja nicht mehr verändert werden! Dies bedeutet, dass man dem Rückgabewert einen Namen zuweisen muss, wenn man diesen weiterverwenden möchte, also z.B.:
+Viele String-Methoden erzeugen einen *neuen* String. Da Strings immutable sind, können diese Methoden den ursprünglichen String nicht verändern. Möchte man den neuen String weiterverwenden, muss man dem Rückgabewert einen Namen zuweisen. Man kann natürlich auch den ursprünglichen Namen verwenden:
 
 ```{python}
 x = x.upper()  # Namensschildchen x hängt am neuen String (in Großbuchstaben)
@@ -216,23 +218,31 @@ Die Methode `strip` entfernt Leerzeichen am Anfang und am Ende eines Strings.
 "      Satz mit vielen unnötigen Leerzeichen         ".strip()
 ```
 
-Mit `split` kann man einen String in eine Liste von Strings aufteilen (splitten). Als Argument gibt man das Zeichen an, an dem man splitten will (standardmäßig wird dafür Whitespace, also Leerzeichen und Tabulatoren, verwendet).
+Mit `replace` kann man alle Vorkommen eines Teilstrings durch einen anderen String ersetzen:
 
 ```{python}
-"Viele Sätze. Getrennt mit Punkten. Warum?".split(".")
+"Edukational Neuroscience".replace("k", "c")
 ```
+
+Mit `split` kann man einen String in eine Liste von Strings aufteilen (splitten). Als Argument gibt man das Zeichen an, an dem man splitten will (standardmäßig wird dafür Whitespace, also Leerzeichen und Tabulatoren, verwendet).
 
 ```{python}
 "Viele Sätze. Getrennt mit Punkten. Warum?".split()
 ```
 
-Das "Gegenteil" von `split` ist `join`, welches Strings in einer Liste zu einem einzelnen String verbindet. Als Verbindungszeichen wird der angegebene String verwendet.
+```{python}
+"Viele Sätze. Getrennt mit Punkten. Warum?".split(".")
+```
+
+Man erkennet, dass nicht alle String-Methoden einen String zurückgeben: `split` gibt eine Liste zurück, während `count` und `find` jeweils eine Ganzzahl zurückgeben (siehe weiter unten).
+
+Das Gegenteil von `split` ist `join`, welches eine Liste von Strings zu einem einzelnen String verbindet. Als Verbindungszeichen wird der angegebene String verwendet.
 
 ```{python}
 ";".join(["das", "ist", "ein", "Test"])
 ```
 
-Listen haben wir in der vorigen Einheit im Detail kennengelernt. Die Möglichkeit, Strings in einer Liste mit `join` zu einem einzigen String zu verbinden, ist übrigens wesentlich effizienter, als die einzelnen Strings mit `+` zu verbinden.
+Listen haben wir in der vorigen Einheit im Detail kennengelernt. Die Möglichkeit, Strings in einer Liste mit `join` zu einem einzigen String zu verbinden, ist übrigens effizienter, als die einzelnen Strings mit `+` zu verbinden.
 
 Die Methode `count` zählt, wie oft das als Argument angegebene Zeichen im String vorkommt:
 
@@ -273,33 +283,29 @@ Mit dem `in`-Operator kann man abfragen, ob ein bestimmtes Zeichen in einem Stri
 Ein String ist iterierbar, d.h. man kann mit einer `for`-Schleife über die einzelnen Elemente iterieren:
 
 ```{python}
-s = "Computer"
+s = "abc"
 
 for c in s:
     print(c)
 ```
 
+::: callout-note
 Möglich wäre auch folgende `for`-Schleife, wie sie in vielen anderen Programmiersprachen üblich ist:
 
 ```{python}
-s = "Computer"
+s = "abc"
 
 for i in range(len(s)):  # sollte man in Python nicht machen!
     print(s[i])
 ```
 
 Dies ist aber schlechter lesbar als die direkte Variante, daher sollte man immer direkt über einen String iterieren!
+:::
 
 
 ## Ausgabe von Strings
 
-Wir haben bereits die `print`-Funktion kennengelernt, welche Strings (und andere Objekte) als Text am Bildschirm ausgeben kann. Mit der Funktion `str` kann man beliebige Objekte (also auch z.B. Ganzzahlen) in einen String "umwandeln":
-
-```{python}
-str(55)
-```
-
-Die `print`-Funktion kann *beliebig viele* Argumente entgegennehmen. Sie gibt dann alle Argumente, getrennt mit Leerzeichen, am Bildschirm aus:
+Wir haben bereits die `print`-Funktion kennengelernt, mit der sich Strings (und andere Objekte) als Text am Bildschirm ausgeben lassen. Sie kann *beliebig viele* Argumente entgegennehmen und gibt diese (standardmäßig durch Leerzeichen getrennt) am Bildschirm aus:
 
 ```{python}
 a = 5
@@ -307,7 +313,7 @@ b = 10
 print(a, "+", b, "=", a + b)  # fünf Argumente
 ```
 
-:::{.callout-note}
+::: callout-tip
 Die `print`-Funktion hat zwei optionale Parameter `sep` bzw. `end`, welche das Trennzeichen zwischen den Argumenten und das Zeichen am Ende der Ausgabe beeinflussen:
 
 - `sep=" "`: Trennzeichen zwischen den Argumenten (Standard: Leerzeichen)
@@ -316,7 +322,13 @@ Die `print`-Funktion hat zwei optionale Parameter `sep` bzw. `end`, welche das T
 Was wäre die Ausgabe des obigen Beispiels, wenn man `sep=""` setzen würde? Was bewirkt `end="!!!"`?
 :::
 
-Wie wir bereits wissen, kann man mehrere Strings mit `+` verketten. Daher könnte man obige Ausgabe auch durch Verketten von einzelnen Strings erzeugen:
+Wie wir bereits wissen, kann man mehrere Strings mit `+` verketten. Mit der Funktion `str` kann man beliebige Objekte (also auch z.B. Ganzzahlen) in einen String umwandeln:
+
+```{python}
+str(55)
+```
+
+Daher könnte man die obige Ausgabe auch durch Verketten von einzelnen Strings erzeugen:
 
 ```{python}
 print(str(a) + " + " + str(b) + " = " + str(a + b))  # ein Argument
@@ -327,9 +339,7 @@ Das ist allerdings umständlich. Eine wesentlich elegantere Möglichkeit sind so
 
 ## f-Strings
 
-Sogenannte f-Strings sind ganz normale Strings, man kann aber bei ihrer Erzeugung beliebige Ausdrücke verwenden, die dann ausgewertet in den String eingesetzt (interpoliert) werden. Man definiert einen f-String wie einen regulären String mittels Anführungszeichen, stellt aber ein `f` voran.
-
-Sinnvoll sind f-Strings nur dann, wenn man auch tatsächlich Ausdrücke integriert, welche innerhalb von geschwungenen Klammern `{}` angegeben werden. Alle Ausdrücke werden ausgewertet und in den String interpoliert:
+f-Strings sind Strings, in die sich bei ihrer Erzeugung beliebige Ausdrücke einsetzen lassen. Dazu stellt man dem String ein `f` voran und schreibt die Ausdrücke in geschweifte Klammern `{}`. Diese werden ausgewertet und ihre Werte in den String eingesetzt (interpoliert):
 
 ```{python}
 name = "World"
@@ -342,7 +352,7 @@ Den fertigen String kann man dann einfach mit `print` am Bildschirm ausgeben. Da
 print(f"{a} + {b} = {a + b}")
 ```
 
-Ausdrücke wie z.B. Zahlen können optional auch *formatiert* werden. Mit einem optionalen Doppelpunkt und einem sogenannten *Format Specifier* innerhalb der geschwungenen Klammern kann ein Ausdruck gezielt formatiert werden. Das folgende Beispiel formatiert die Kreiszahl $\pi$ so, dass sie mit drei Nachkommastellen ausgegeben wird:
+Ausdrücke wie z.B. Zahlen können optional auch *formatiert* werden. Dazu verwendet man einen Doppelpunkt und einen sogenannten *Format Specifier* innerhalb der geschwungenen Klammern direkt nach dem Ausdruck. Das folgende Beispiel formatiert die Kreiszahl $\pi$ so, dass sie mit drei Nachkommastellen ausgegeben wird:
 
 ```{python}
 import math
@@ -384,6 +394,10 @@ s = "educational neuroscience"
 
 Gibt es eine Methode, die aus einem gegebenen String einen neuen String erzeugt, bei dem alle *Wörter* (nicht Buchstaben!) mit einem Großbuchstaben beginnen? Wenn ja, verwenden Sie diese Methode für `s` aus diesem Beispiel!
 
+:::{.callout-tip}
+Welche String-Methoden verfügbar sind, können Sie wie im vorigen Kapitel mit `dir(s)` oder durch Tab-Vervollständigung im interaktiven Interpreter herausfinden.
+:::
+
 
 ### Übung 3
 
@@ -396,18 +410,22 @@ s = "Edukational Neuroscience"
 Das Zeichen `k` an der Position 3 soll durch ein `c` ersetzt werden. Wie können Sie aus `s` einen neuen String erzeugen, in welcher diese Ersetzung vorgenommen wurde?
 
 :::{.callout-note}
-Verwenden Sie Slices, um auf die Teile von `s` vor dem `k` bzw. nach dem `k` zuzugreifen.
+Verwenden Sie Slices, um die Teile von `s` vor und nach dem `k` mit dem Ersatzzeichen `"c"` dazwischen zu einem neuen String zu verbinden.
 :::
 
 
 ### Übung 4
 
-Palindrome sind Wörter oder Sätze, welche von vorn und hinten gelesen dasselbe ergeben, z.B. Anna, Lagerregal und Reittier. Palindrome können sogar aus mehreren Wörtern bzw. ganzen Sätzen bestehen, wie z.B. "Dr. Awkward" oder "Was it a cat I saw?" (allerdings nur wenn man Groß-/Kleinschreibung sowie Leerzeichen und Satzzeichen ignoriert).
+Palindrome sind Wörter, welche von vorn und hinten gelesen dasselbe ergeben, z.B. Anna, Lagerregal und Reittier.
 
-Schreiben Sie eine Funktion `is_palindrome`, welche einen String entgegennimmt und `True` zurückgibt, falls es sich bei dem String um ein Palindrom handelt. Wenn nicht, soll `False` zurückgegeben werden.
+Schreiben Sie eine Funktion `is_palindrome`, welche ein Wort als String entgegennimmt und `True` zurückgibt, falls es sich dabei um ein Palindrom handelt. Wenn nicht, soll `False` zurückgegeben werden.
 
 :::{.callout-note}
-Wandeln Sie den String zuerst in Kleinbuchstaben um, denn sonst wird Anna nicht als Palindrom erkannt, da ein A nicht gleich einem a ist. Ihre Funktion muss außerdem nicht mit Sätzen funktionieren, sondern nur mit einzelnen Wörtern! Falls sie auch mit Sätzen funktionieren soll, müssen Sie alle Leerzeichen ignorieren.
+Wandeln Sie das Wort zuerst in Kleinbuchstaben um, denn sonst wird Anna nicht als Palindrom erkannt, da ein A nicht gleich einem a ist.
+:::
+
+:::{.callout-tip}
+Erweiterung: Palindrome können auch aus mehreren Wörtern oder ganzen Sätzen bestehen, z.B. "Dr. Awkward" oder "Was it a cat I saw?". Erweitern Sie Ihre Funktion so, dass sie zusätzlich Leerzeichen sowie die Satzzeichen `?`, `!`, `.` und `,` ignoriert.
 :::
 
 
@@ -421,7 +439,7 @@ s.find("t")
 ```
 Die Position der ersten Fundstelle wird zurückgegeben, in diesem Beispiel also 5. Wird der gesuchte String gar nicht gefunden, wird −1 zurückgegeben.
 
-Schreiben Sie eine Funktion `find(s, sub)`, welche diese Funktionalität repliziert (ohne aber die Methode `find` oder andere String-Methoden zu benutzen). Sie können davon ausgehen, dass `sub` immer nur ein einzelnes Zeichen ist! Ihre Funktion sollte also dasselbe Ergebnis liefern wie im obigen Beispiel `s.find("t")`; der Aufruf Ihrer Funktion sieht für dieses Beispiel so aus:
+Schreiben Sie eine Funktion `find(s, char)`, welche diese Funktionalität repliziert (ohne aber die Methode `find` oder andere String-Methoden zu benutzen). Sie können davon ausgehen, dass `char` immer nur ein einzelnes Zeichen ist! Ihre Funktion sollte also dasselbe Ergebnis liefern wie im obigen Beispiel `s.find("t")`; der Aufruf Ihrer Funktion sieht für dieses Beispiel so aus:
 
 ```python
 find(s, "t")
@@ -450,9 +468,11 @@ In Übung 5 haben wir eine Funktion namens `find` definiert, welche sich wie die
 
 ### Übung 8
 
-Gegeben sind die Zuweisungen `name = "Anna"`, `a = 7` und `b = 13`. Erzeugen Sie mit einem f-String eine Ausgabe der Form:
+Schreiben Sie eine Funktion `greeting(name, a, b)`, die mit einem f-String eine Ausgabe der folgenden Form erzeugt:
 
 > Hallo Anna! 7 / 13 ≈ 0.538, oder?
+
+Die Funktion soll für beliebige Werte von `name`, `a` und `b` funktionieren. Testen Sie sie mit `greeting("Anna", 7, 13)` und `greeting("Max", 5, 8)`.
 
 
 ### Übung 9
@@ -464,3 +484,8 @@ C:\Program Files\Python\Python3.12\python.exe
 ```
 
 Geben Sie `path` dann mit Hilfe der `print`-Funktion am Bildschirm aus.
+
+
+## Lösungen
+
+Siehe [hier](07-solutions.qmd).
