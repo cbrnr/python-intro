@@ -19,21 +19,23 @@ published-title: "Veröffentlicht"
 
 ## Standardbibliothek und Zusatzpakete
 
-Eine Python-Installation besteht aus der Programmiersprache Python, einem Interpreter (der Python-Code ausführt) und der umfangreichen [Standardbibliothek](https://docs.python.org/3/library/). Python selbst stellt nur *grundlegende* Programmierkonstrukte zur Verfügung (z.B. Schleifen, Bedingungen und einige eingebaute Funktionen). Die mitgelieferte Standardbibliothek erweitert diese Kernfunktionalität um zusätzliche Datentypen, Ein-/Ausgabe, mathematische Funktionen und vieles mehr. Auf die einzelnen Module der Standardbibliothek greift man mit `import` zu – so haben wir z.B. bereits `import math` verwendet, um auf `math.sqrt` oder `math.pi` zugreifen zu können.
+Eine Python-Installation besteht aus der Programmiersprache Python, einem Interpreter (der Python-Code ausführt) und der umfangreichen [Standardbibliothek](https://docs.python.org/3/library/). Python selbst stellt nur *grundlegende* Programmierkonstrukte zur Verfügung (z.B. Schleifen, Bedingungen und einige eingebaute Funktionen). Die mitgelieferte Standardbibliothek erweitert diese Kernfunktionalität um zusätzliche Datentypen, Ein-/Ausgabe, mathematische Funktionen und vieles mehr. Auf die einzelnen Module der Standardbibliothek greift man mit `import` zu – so haben wir z.B. bereits `import math` verwendet, um `math.sqrt` oder `math.pi` benutzen zu können.
 
-Zusätzlich gibt es tausende sogenannte *Python-Pakete*, die sehr einfach zu einer existierenden Python-Installation hinzugefügt werden können. Diese Pakete sind komplett unabhängig von Python, werden also auch nicht von denselben Personen entwickelt und veröffentlicht. Der [Python Package Index (PyPI)](https://pypi.org/) sammelt alle verfügbaren Pakete an einer zentralen Stelle. Das offizielle Werkzeug, um Pakete aus dem PyPI zu installieren, nennt sich `pip` und wird automatisch mit der offiziellen Python-Installation mitgeliefert.
+Zusätzlich gibt es hunderttausende sogenannte *Python-Pakete*, die sehr einfach zu einer existierenden Python-Installation hinzugefügt werden können. Diese Pakete sind komplett unabhängig von Python, werden also auch nicht von denselben Personen entwickelt und veröffentlicht. Der [Python Package Index (PyPI)](https://pypi.org/) sammelt alle verfügbaren Pakete an einer zentralen Stelle. Das offizielle Werkzeug, um Pakete aus dem PyPI zu installieren, nennt sich `pip` und wird automatisch mit der offiziellen Python-Installation mitgeliefert.
 
-In dieser Einheit lernen wir, wie man mit `pip` Zusatzpakete verwaltet und wie man installierte Pakete mit `import` in eigenen Programmen verwendet. Dieses Wissen benötigen wir in den folgenden Einheiten, in denen wir die Zusatzpakete NumPy, Matplotlib und PsychoPy einsetzen.
+In dieser Einheit lernen wir, wie man mit `pip` Zusatzpakete verwaltet und wie man installierte Pakete mit `import` in eigenen Programmen verwendet. Dieses Wissen benötigen wir in den folgenden Einheiten, in denen wir die Zusatzpakete NumPy, Matplotlib und PsychoPy verwenden werden.
 
 
 ## Pakete mit pip verwalten
 
 Das Werkzeug `pip` kann neue Pakete installieren, bereits installierte Pakete aktualisieren oder auch komplett wieder entfernen. Eine Python-Installation sollte damit regelmäßig gewartet werden, d.h. veraltete Pakete sollten nach Möglichkeit aktualisiert werden. Die Standardbibliothek wird dadurch allerdings nicht beeinflusst – diese ändert sich nur, wenn man eine neuere Python-Version installiert.
 
-Dabei ist `pip` ein sogenanntes Kommandozeilenprogramm, d.h. es verfügt über keine grafische Oberfläche, sondern wird im *Terminal* (oft auch Eingabeaufforderung genannt) ausgeführt. Um die folgenden Beispiele nachzuvollziehen, muss man also zuerst ein Terminal öffnen.
+Dabei ist `pip` ein sogenanntes Kommandozeilenprogramm, d.h. es verfügt über keine grafische Oberfläche, sondern wird im *Terminal* ausgeführt. Um die folgenden Beispiele nachzuvollziehen, muss man also zuerst ein Terminal öffnen.
 
 :::{.callout-important}
-Im Terminal läuft *kein* Python-Interpreter, sondern eine sogenannte [Shell](https://de.wikipedia.org/wiki/Shell_(Betriebssystem)) – man kann also keine Python-Befehle eintippen, sondern ausschließlich Shell-Befehle! Die folgenden Befehle gehören also alle ins Terminal und *nicht* in die IDLE-Shell.
+Das *Terminal* ist ein Programm bzw. Fenster, in dem man Textbefehle eingibt. Darin läuft eine sogenannte [Shell](https://de.wikipedia.org/wiki/Shell_(Betriebssystem)), die Betriebssystem-Befehle ausführen kann.
+
+Davon zu unterscheiden ist der Python-Interpreter: er führt Python-Code wie `import math` aus. Die folgenden `pip`-Befehle gehören daher ins Terminal bzw. in die Shell und *nicht* in die IDLE-Shell, in der der Python-Interpreter läuft!
 :::
 
 Wir rufen `pip` immer über den Python-Interpreter mit der Option `-m` auf (mehr dazu weiter unten). Um zu testen, ob `pip` funktioniert und welche Version installiert ist, gibt man Folgendes ein:
@@ -66,11 +68,15 @@ py -m pip list
 
 Die Ausgabe beinhaltet alle installierten Pakete, einschließlich ihrer Namen und Versionen. Wenn man Python gerade erst frisch installiert hat, enthält diese Liste nur wenige Einträge.
 
-Bevor man ein neues Paket installieren kann, muss man dessen Namen kennen. Die [PyPI-Website](https://pypi.org/) kann verwendet werden, um nach einem bestimmten Paket zu suchen. Ein Paket kann dann wie folgt installiert werden (`<package_name>` muss durch den tatsächlichen Namen ersetzt werden):
+Bevor man ein neues Paket installieren kann, muss man dessen Namen kennen. Die [PyPI-Website](https://pypi.org/) kann verwendet werden, um nach einem bestimmten Paket zu suchen. Ein Paket kann dann wie folgt installiert werden (`<package-name>` muss durch den tatsächlichen Namen ersetzt werden):
 
 ```sh
-py -m pip install <package_name>
+py -m pip install <package-name>
 ```
+
+:::{.callout-note}
+Der Name hinter `pip install` ist ein vorgegebener Projektname auf PyPI und kein selbstgewählter Name in einem Python-Programm. Daher muss er nicht den Regeln aus Kapitel 2 folgen: er kann beispielsweise Bindestriche enthalten. Außerdem kann er vom Namen abweichen, mit dem das Paket später importiert wird. So wird z.B. das Projekt `scikit-learn` mit `py -m pip install scikit-learn` installiert, aber im Python-Programm mit `import sklearn` verwendet.
+:::
 
 Das Entfernen eines Pakets ist ähnlich einfach:
 
@@ -87,19 +93,14 @@ py -m pip list --outdated
 Falls dieser Befehl veraltete Pakete anzeigt, kann man jedes einzelne Paket mit folgendem Befehl aktualisieren:
 
 ```sh
-py -m pip install --upgrade <package_name>
+py -m pip install --upgrade <package-name>
 ```
 
-:::{.callout-note}
-Sobald man mit Python etwas vertrauter ist, sollte man eine sogenannte [virtuelle Umgebung](https://docs.python.org/3/library/venv.html) für jedes Projekt verwenden, anstatt alle Zusatzpakete global zu installieren. Dies ermöglicht es, die für ein Projekt benötigten Pakete in separaten isolierten Umgebungen zu installieren und so Konflikte zwischen verschiedenen Projekten zu vermeiden. In diesem Kurs werden wir virtuelle Umgebungen aber nicht verwenden.
+::: callout-tip
+Grundsätzlich könnte man `pip` auch direkt aufrufen (also einfach `pip install ...` bzw. `pip3 install ...`). Es kann aber vorkommen, dass mehrere Python-Versionen auf einem Computer installiert sind. Dann ist nicht immer eindeutig, zu welcher Python-Installation ein direkt aufgerufenes `pip` gehört – und man installiert das Paket womöglich in die "falsche" Python-Version.
+
+Die Option `-m` weist den Python-Interpreter an, ein *Modul als Programm auszuführen* – in diesem Fall das Modul `pip`. Der große Vorteil: Man ruft `pip` immer über *genau jenen* Python-Interpreter auf, den man auch zum Ausführen von Programmen verwendet (`py` unter Windows bzw. `python3` unter macOS/Linux). So installiert man ein Paket garantiert in die richtige Python-Installation. Aus diesem Grund verwenden wir in diesem Kurs durchgängig die Schreibweise `py -m pip` bzw. `python3 -m pip`.
 :::
-
-
-## Warum `py -m pip`?
-
-Grundsätzlich könnte man `pip` auch direkt aufrufen (also einfach `pip install ...`). Es kann aber vorkommen, dass mehrere Python-Versionen auf einem Computer installiert sind. Dann ist nicht immer eindeutig, zu welcher Python-Installation ein direkt aufgerufenes `pip` gehört – und man installiert das Paket womöglich in die "falsche" Python-Version.
-
-Die Option `-m` weist den Python-Interpreter an, ein *Modul als Programm auszuführen* – in diesem Fall das Modul `pip`. Der große Vorteil: Man ruft `pip` immer über *genau jenen* Python-Interpreter auf, den man auch zum Ausführen seiner Programme verwendet (`py` unter Windows bzw. `python3` unter macOS/Linux). So installiert man ein Paket garantiert in die richtige Python-Installation. Aus diesem Grund verwenden wir in diesem Kurs durchgängig die Schreibweise `py -m pip` bzw. `python3 -m pip`.
 
 
 ## Pakete verwenden: `import`
@@ -139,11 +140,91 @@ Der Alias ist frei wählbar, aber für viele bekannte Pakete gibt es etablierte 
 :::
 
 
+## Module und Pakete
+
+Ein *Modul* ist eine einzelne Python-Datei mit der Endung `.py`. In einem Modul können Funktionen, Variablen und Klassen stehen, die man in anderen Programmen wiederverwenden möchte. Die Datei `math.py` wäre beispielsweise ein Modul mit dem Namen `math`.
+
+Ein *Paket* ist dagegen ein Verzeichnis, das mehrere Module zusammenfasst. So kann zusammengehöriger Code übersichtlich organisiert werden. Ein Paket kann auch weitere Pakete enthalten; diese nennt man *Unterpakete* (englisch *subpackages*). Ein einfaches Paket könnte so aussehen:
+
+```text
+my_package/
+  __init__.py
+  arithmetic.py
+  text.py
+  analysis/
+    __init__.py
+    statistics.py
+```
+
+Die Dateien `arithmetic.py`, `text.py` und `statistics.py` sind Module, `my_package` und `analysis` sind Pakete. Die Datei `__init__.py` markiert ein Verzeichnis üblicherweise als Paket; sie kann leer bleiben. Bei vielen modernen Paketen ist sie zwar nicht mehr zwingend erforderlich, für selbst geschriebene Pakete ist sie aber eine gute Konvention.
+
+Punkte in einem Import beschreiben diese Struktur. Im folgenden Beispiel ist `matplotlib` ein Paket und `pyplot` ein darin enthaltenes Modul:
+
+```python
+import matplotlib.pyplot as plt
+```
+
+Aus der oben gezeigten Struktur könnte man beispielsweise ein Modul aus einem Unterpaket importieren:
+
+```python
+from my_package.analysis import statistics
+```
+
+
+## Eigene Module schreiben
+
+Um ein eigenes Modul zu schreiben, erstellt man einfach eine Python-Datei. Angenommen, im selben Verzeichnis befinden sich die beiden folgenden Dateien:
+
+```python
+# greetings.py
+def greeting(name):
+    return f"Hallo, {name}!"
+```
+
+```python
+# main.py
+import greetings
+
+print(greetings.greeting("Mara"))
+```
+
+Wenn man `main.py` ausführt, findet Python die Datei `greetings.py` im selben Verzeichnis und importiert sie als Modul. Die Funktion wird mit `greetings.greeting(...)` aufgerufen. Dieses Beispiel zeigt auch, warum Modulnamen kurz, aussagekräftig und vollständig klein geschrieben werden sollten.
+
+Auch bei eigenen Modulen kann man einzelne Namen direkt importieren oder einen Alias verwenden:
+
+```python
+from greetings import greeting
+import greetings as gr
+
+print(greeting("Mara"))
+print(gr.greeting("Jonas"))
+```
+
+
+## Neue Pakete erkunden
+
+Nach dem Import eines neuen Moduls oder Pakets kann die eingebaute Funktion `dir` einen ersten Überblick geben. Sie gibt eine Liste der Namen zurück, die darin verfügbar sind:
+
+```python
+import math
+
+dir(math)
+```
+
+Viele Einträge, die mit zwei Unterstrichen beginnen und enden (z.B. `__name__`), gehören zu den internen Eigenschaften eines Moduls. Für die tägliche Arbeit sind meist die übrigen Namen interessant. Um nur diese anzuzeigen, kann man sie mit einer List Comprehension filtern:
+
+```python
+[name for name in dir(math) if not name.startswith("__")]
+```
+
+Bei einem neu installierten Paket funktioniert das genauso. Nach `import numpy` zeigt `dir(numpy)` beispielsweise die verfügbaren Funktionen, Klassen und Unterpakete. `dir` ersetzt keine Dokumentation, hilft aber beim ersten Erkunden eines unbekannten Pakets.
+
+
 ## Code automatisch formatieren mit Ruff
 
 Als konkretes Beispiel für ein nützliches Zusatzpaket sehen wir uns [Ruff](https://docs.astral.sh/ruff/) an. Damit kann man Python-Code automatisch überprüfen und formatieren lassen.
 
-Warum ist das sinnvoll? Neben der Syntax, die man strikt einhalten *muss*, gibt es auch stilistische Konventionen, die den Code lesbarer machen. Beispielsweise sind die folgenden drei Anweisungen alle syntaktisch korrekt und führen zum selben Ergebnis:
+Das ist sinnvoll, weil es neben der Syntax, die man strikt einhalten muss, auch stilistische Konventionen gibt, die den Code lesbarer machen. Beispielsweise sind die folgenden drei Anweisungen alle syntaktisch korrekt und führen zum selben Ergebnis:
 
 ```{python}
 x = 1 + 2 + 3 * (16 - 7)
@@ -151,7 +232,7 @@ x=1+    2+  3*  (   16-7    )
 x=1+2+3*(16-7)
 ```
 
-Der erste Befehl ist am besten lesbar, weil alle Operatoren von jeweils einem Leerzeichen umgeben sind. Viele solche Empfehlungen sind im [Python Enhancement Proposal 8 (PEP8)](https://peps.python.org/pep-0008/) zusammengefasst. Ruff kann Code automatisch entsprechend formatieren.
+Der erste Befehl ist aber am besten lesbar, weil alle Operatoren von jeweils einem Leerzeichen umgeben sind. Viele solche Empfehlungen sind im [Python Enhancement Proposal 8 (PEP8)](https://peps.python.org/pep-0008/) zusammengefasst. Ruff kann Code automatisch entsprechend formatieren.
 
 Zunächst installiert man Ruff mit `pip`:
 
@@ -200,4 +281,20 @@ Installieren Sie das Paket Ruff (falls noch nicht vorhanden). Erstellen Sie mit 
 x=1+2
 y = [1,2,3 ,4]
 print( x,y )
+```
+
+
+### Übung 5
+
+Erstellen Sie im selben Verzeichnis zwei Dateien. Schreiben Sie in `temperature.py` eine Funktion `celsius_to_fahrenheit`, die eine Temperatur in Grad Celsius entgegennimmt und den entsprechenden Wert in Grad Fahrenheit zurückgibt. Importieren Sie das Modul anschließend in `main.py` und berechnen Sie damit den Wert für 20 Grad Celsius.
+
+
+### Übung 6
+
+Welche der folgenden Importanweisungen sind möglich? Erklären Sie jeweils kurz, unter welchem Namen Sie anschließend auf die Funktion `sqrt` zugreifen. Was zeigt `dir(math)` an?
+
+```python
+import math
+import math as m
+from math import sqrt
 ```

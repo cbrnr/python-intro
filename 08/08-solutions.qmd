@@ -34,7 +34,7 @@ Alle Befehle werden im Terminal ausgeführt (unter macOS/Linux `python3` statt `
 
 ```sh
 py -m pip list --outdated
-py -m pip install --upgrade <package_name>
+py -m pip install --upgrade <package-name>
 py -m pip install ipython
 py -m pip install numpy
 py -m pip uninstall ipython
@@ -72,3 +72,47 @@ x = 1 + 2
 y = [1, 2, 3, 4]
 print(x, y)
 ```
+
+
+## Übung 5
+
+Die Funktion wird in einem eigenen Modul namens `temperature.py` gespeichert:
+
+```python
+# temperature.py
+def celsius_to_fahrenheit(celsius):
+  return celsius * 9 / 5 + 32
+```
+
+Das Hauptprogramm `main.py` importiert das Modul. Beide Dateien müssen im selben Verzeichnis liegen:
+
+```python
+# main.py
+import temperature
+
+temperature.celsius_to_fahrenheit(20)
+```
+
+Der Rückgabewert ist `68.0`.
+
+
+## Übung 6
+
+Alle drei Importanweisungen sind möglich. Sie erzeugen unterschiedliche Namen im eigenen Programm:
+
+```python
+import math
+math.sqrt(16)
+```
+
+```python
+import math as m
+m.sqrt(16)
+```
+
+```python
+from math import sqrt
+sqrt(16)
+```
+
+`dir(math)` gibt eine Liste der Namen zurück, die im Modul `math` verfügbar sind, darunter `sqrt`, `pi`, `cos` und viele weitere mathematische Funktionen und Konstanten. Interne Namen beginnen und enden meist mit zwei Unterstrichen.
