@@ -69,20 +69,20 @@ a
 
 ## Übung 6
 
-Option 1:
+*Option 1:*
 
 ```{python}
 #| error: true
 a["zehn"]  # KeyError
 ```
 
-Option 2:
+*Option 2:*
 
 ```{python}
 a.get("zehn", "undefiniert")
 ```
 
-Option 3:
+*Option 3:*
 
 ```{python}
 a.setdefault("zehn", "undefiniert")
