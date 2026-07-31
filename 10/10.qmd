@@ -19,7 +19,7 @@ published-title: "Veröffentlicht"
 
 ## Allgemeines
 
-In Python gibt es eine große Anzahl an Paketen, welche sich auf das Erstellen von Grafiken spezialisiert haben. Die bekanntesten Pakete sind momentan:
+In Python gibt es zahlreiche Pakete zur Erstellung von Grafiken. Zu den bekanntesten gehören derzeit:
 
 - [Matplotlib](https://matplotlib.org/)
 - [Seaborn](https://seaborn.pydata.org/)
@@ -27,15 +27,13 @@ In Python gibt es eine große Anzahl an Paketen, welche sich auf das Erstellen v
 - [Bokeh](https://docs.bokeh.org/en/latest/)
 - [Vega-Altair](https://altair-viz.github.io/)
 
-Matplotlib ist das älteste und bekannteste Paket, es ist aber manchmal etwas umständlich zu bedienen – dafür ist es möglich, Grafiken bis ins kleinste Detail anzupassen. Matplotlib erzeugt grundsätzlich statische Grafiken und ist daher nicht für interaktive Anwendungen geeignet. Nachdem viele Grafikpakete auf Matplotlib basieren, ist es auf jeden Fall hilfreich, wenn man zumindest ein grundlegendes Verständnis von Matplotlib besitzt.
+Matplotlib ist eines der ältesten und bekanntesten Grafikpakete für Python. Es bietet sehr umfangreiche Möglichkeiten zur Erstellung und Anpassung von Grafiken und eignet sich besonders für hochwertige statische Abbildungen. Die Bedienung ist teilweise etwas ausführlicher als bei neueren Paketen, dafür lässt sich nahezu jeder Aspekt einer Grafik individuell anpassen. Außerdem bauen mehrere andere Grafikpakete auf Matplotlib auf oder orientieren sich an dessen Konzepten. Ein grundlegendes Verständnis von Matplotlib ist daher sehr hilfreich.
 
-Bokeh und Plotly können vor allem interaktive Grafiken für Webanwendungen erstellen. Seaborn und Vega-Altair haben sich auf statistische Grafiken spezialisiert. Seaborn baut auf Matplotlib auf und bietet sehr viele zusätzliche Grafiktypen zur Datenvisualisierung. Vega-Altair hat sich außerdem das Ziel gesetzt, komplexe Grafiken möglichst einfach erstellen zu können (auch interaktive Grafiken können damit erzeugt werden).
+Seaborn erweitert Matplotlib um eine einfachere Schnittstelle für die statistische Datenvisualisierung und stellt zahlreiche zusätzliche Diagrammtypen bereit. Plotly und Bokeh legen ihren Schwerpunkt auf interaktive Grafiken, die sich beispielsweise zoomen oder durch Mausbewegungen erkunden lassen. Altair verfolgt einen deklarativen Ansatz und ermöglicht es, mit vergleichsweise wenig Code sowohl statische als auch interaktive Visualisierungen zu erstellen.
 
-Neben diesen häufig verwendeten Paketen gibt es noch [plotnine](https://github.com/has2k1/plotnine), welches sehr ähnlich wie [ggplot2](https://ggplot2.tidyverse.org/) für R zu verwenden ist.
+Welches Paket am besten geeignet ist, hängt vom jeweiligen Anwendungsfall ab. Für wissenschaftliche Abbildungen und allgemeine Diagramme ist Matplotlib nach wie vor die am häufigsten verwendete Wahl. Seaborn vereinfacht viele statistische Visualisierungen, während Plotly, Bokeh und Altair besonders dann interessant sind, wenn interaktive Grafiken benötigt werden.
 
-Kurz zusammengefasst kann man also die Pakete Matplotlib, seaborn und plotnine zur Erzeugung von klassischen *statischen* Grafiken sowie Vega-Altair, Bokeh und Plotly zur Erstellung von *interaktiven* Grafiken empfehlen.
-
-In den folgenden Abschnitten werden wir uns mit Matplotlib beschäftigen und die Grundlagen zur Erstellung von Grafiken kennenlernen.
+In den folgenden Abschnitten beschäftigen wir uns mit Matplotlib und lernen die Grundlagen zur Erstellung von Grafiken kennen.
 
 
 ## Matplotlib
@@ -56,19 +54,19 @@ import matplotlib.pyplot as plt
 Wir importieren hier `matplotlib.pyplot` (als `plt`) und nicht direkt `matplotlib`. Dies hat historische Gründe, denn die allermeisten Funktionen zur Erstellung von Grafiken befinden sich in `matplotlib.pyplot` und nicht direkt in `matplotlib`.
 
 :::{.callout-important}
-Mit Matplotlib erstellte Grafiken werden standardmäßig *nicht* angezeigt. Um eine Grafik in einem separaten Fenster anzuzeigen, muss man explizit den folgenden Befehl ausführen:
+Um eine mit Matplotlib erstellte Grafik in einem separaten Fenster anzuzeigen, muss man explizit den folgenden Befehl ausführen:
 
 ```python
 plt.show()
 ```
 
-Dieses Fenster blockiert aber den Python-Interpreter, d.h. man kann keine weiteren Befehle eingeben, so lange das Grafik-Fenster geöffnet ist. Um dieses Verhalten zu umgehen, kann man im interaktiven Python-Interpreter direkt nach dem Importieren folgenden Befehl eingeben:
+Dieses Fenster blockiert aber den Python-Interpreter, d.h. man kann keine weiteren Befehle eingeben, solange das Grafikfenster geöffnet ist. Um dieses Verhalten zu umgehen, kann man im interaktiven Python-Interpreter direkt nach dem Importieren folgenden Befehl eingeben:
 
 ```python
 plt.ion()
 ```
 
-Damit werden Grafiken sofort nach deren Erstellung angezeigt und blockieren auch nicht den Python-Interpreter ("ion" steht für "interactive on").
+Damit werden Grafiken sofort nach ihrer Erstellung angezeigt und blockieren den Python-Interpreter nicht ("ion" steht für "interactive on").
 :::
 
 
@@ -192,7 +190,7 @@ annotate(4.0, 0.7, "Spine", "ax.spines")
 _ = fig.patch.set(linewidth=2, edgecolor="0.5")
 ```
 
-Für den Anfang benötigen wir nur die zwei Begriffe `Figure` und `Axes` (in der Abbildung rot dargestellt). Eine `Figure` entspricht einer Abbildung, welche eine oder mehrere Grafiken (sogenannte `Axes`) enthalten kann.
+Für den Anfang benötigen wir nur die zwei Begriffe `Figure` und `Axes` (in der Abbildung rot dargestellt). Eine `Figure` entspricht einer Abbildung, die eine oder mehrere Grafiken (sogenannte `Axes`) enthalten kann.
 
 Die Funktion `plt.subplots` erzeugt eine `Figure` und die gewünschte Anzahl an `Axes`. Möchte man also z.B. eine Abbildung mit einer einzigen Grafik erzeugen, erstellt man diese beiden (leeren) Objekte mit folgendem Befehl:
 
@@ -200,7 +198,7 @@ Die Funktion `plt.subplots` erzeugt eine `Figure` und die gewünschte Anzahl an 
 fig, ax = plt.subplots()
 ```
 
-Die Funktion gibt die `Figure` sowie die `Axes` zurück; wir nennen diese `fig` bzw. `ax`. Danach kann man Methoden des `Axes`-Objekts (welches wir `ax` genannt haben) aufrufen, um die gewünschte Grafik zu erstellen (mehr dazu im nächsten Abschnitt).
+Die Funktion gibt die `Figure` sowie die `Axes` zurück; wir nennen diese `fig` bzw. `ax`. Danach kann man Methoden des `Axes`-Objekts `ax` aufrufen, um die gewünschte Grafik zu erstellen (mehr dazu im nächsten Abschnitt).
 
 Wenn man mehrere Grafiken in einer Abbildung kombinieren möchte, kann man mit `plt.subplots` eine `Figure` mit der gewünschten Anzahl an `Axes` erzeugen. Dazu verwendet man das erste bzw. die ersten beiden Argumente, welche der Anzahl an Zeilen bzw. Spalten, in denen die Grafiken angeordnet werden sollen, entsprechen:
 
@@ -357,7 +355,7 @@ _ = ax.boxplot([x, y, z])
 ```
 
 :::{.callout-note}
-Eine Box erstreckt sich vom ersten bis zum dritten Quartil, ihre Höhe entspricht also dem Interquartilsabstand (IQR). Die orange Linie innerhalb der Box entspricht dem Median. Die sogenannten Whiskers außerhalb der Box erstrecken sich bis zum 1,5-fachen des IQR über bzw. unter dem ersten bzw. dritten Quartil. Punkte außerhalb dieser Grenzen werden als Ausreißer einzeln dargestellt.
+Eine Box erstreckt sich vom ersten bis zum dritten Quartil, ihre Höhe entspricht also dem Interquartilsabstand (IQR). Die orange Linie innerhalb der Box entspricht dem Median. Die sogenannten Whiskers erstrecken sich standardmäßig bis zum letzten Datenpunkt, der höchstens das 1,5-Fache des IQR unter dem ersten bzw. über dem dritten Quartil liegt. Punkte außerhalb dieser Grenzen werden einzeln als Ausreißer dargestellt.
 :::
 
 
@@ -379,7 +377,7 @@ _ = ax.violinplot([x, y, z])
 
 ### Weitere statistische Grafiken
 
-Möchte man beispielsweise Scatterplots mit überlagerten Regressionsgeraden oder andere komplexere Grafiktypen erstellen, sollte man einen Blick auf andere Pakete wie seaborn oder plotnine werfen. Mit Matplotlib wäre das zwar prinzipiell auch möglich, aber es wären sehr viele manuelle Schritte notwendig (z.B. müsste man selbst ein lineares Regressionsmodell rechnen, um dieses dann als Gerade in eine Grafik einzubinden).
+Möchte man beispielsweise Scatterplots mit überlagerten Regressionsgeraden oder andere komplexere Grafiktypen erstellen, sollte man einen Blick auf seaborn werfen. Mit Matplotlib wäre das zwar prinzipiell auch möglich, aber es wären very viele manuelle Schritte notwendig (z.B. müsste man selbst ein lineares Regressionsmodell rechnen, um dieses dann als Gerade in der Grafik darzustellen).
 
 
 ### Titel und Achsenbeschriftungen
@@ -440,7 +438,11 @@ import numpy as np
 air = np.genfromtxt("airquality.csv", delimiter=",", skip_header=1)
 ```
 
-Dieser Datensatz den Verlauf von vier verschiedenen Luftgütewerten über einen Zeitraum von fünf Monaten.
+Dieser Datensatz enthält den Verlauf von vier verschiedenen Luftgütewerten über einen Zeitraum von fünf Monaten.
+
+:::{.callout-note}
+Einige Werte im Datensatz fehlen und werden beim Einlesen als `nan` (*not a number*) gespeichert. Das ist für die folgenden Grafiken kein Problem: Matplotlib lässt diese Werte an den betroffenen Stellen aus.
+:::
 
 Mit welchem Befehl können Sie die Anzahl der Zeilen und Spalten von `air` herausfinden?
 
@@ -456,7 +458,7 @@ Die Spalten in `air` beinhalten Messwerte für folgende Variablen:
 5. Monat (Zahlenwert zwischen 1 und 12)
 6. Tag (Zahlenwert zwischen 1 und 31)
 
-Erstellen Sie für jede Spalte einen eigenen Namen (verwenden Sie die Namen `ozone`, `solar`, `wind`, `temp`, `month` und `day`). Verwenden Sie diese Namen in allen folgenden Übungen.
+Weisen Sie jeder Spalte eine eigene Variable zu. Verwenden Sie dafür die Namen `ozone`, `solar`, `wind`, `temp`, `month` und `day`, und verwenden Sie diese Variablen in allen folgenden Übungen.
 
 
 ### Übung 3
@@ -471,7 +473,7 @@ Erstellen Sie mit Matplotlib einen Scatterplot mit der Temperatur auf der x-Achs
 
 ### Übung 5
 
-Stellen Sie folgende vier Grafiken in einer Abbildung dar (verwenden Sie dazu eine Anordung aus zwei Zeilen und zwei Spalten):
+Stellen Sie die folgenden vier Grafiken in einer Abbildung dar. Verwenden Sie dazu eine Anordnung aus zwei Zeilen und zwei Spalten:
 
 1. Ein Scatterplot von `ozone` gegen `solar`.
 2. Eine Liniengrafik mit dem Verlauf von `temp`.
@@ -479,3 +481,8 @@ Stellen Sie folgende vier Grafiken in einer Abbildung dar (verwenden Sie dazu ei
 4. Ein Scatterplot von `wind` gegen `ozone`.
 
 Fügen Sie geeignete Achsenbeschriftungen hinzu und vergessen Sie nicht, zum Schluss `fig.set_tight_layout(True)` aufzurufen!
+
+
+## Lösungen
+
+Siehe [hier](10-solutions.qmd).
