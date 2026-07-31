@@ -17,7 +17,100 @@ author-title: "Autor"
 published-title: "Veröffentlicht"
 ---
 
-## Übung 1
+Die folgenden Übungen sind nach Kapiteln sortiert. Um eine Übung zu lösen, genügt es, die Inhalte des jeweils angegebenen Kapitels sowie aller vorigen Kapitel zu kennen.
+
+
+## Kapitel 2 – Objekte, Namen und Typen
+
+### Übung 1
+
+Erklären Sie, warum folgender Code nicht funktioniert:
+
+```python
+alpha = 5
+lambda = 7
+print(alpha + lambda)
+```
+
+Geben Sie auch den korrekten Code an!
+
+
+## Kapitel 3 – Kontrollfluss
+
+### Übung 1
+
+Was ist das Problem im folgenden Beispiel? Geben Sie auch den korrekten Code an.
+
+```python
+x = 10
+
+if x > 0:
+    print("x is positive.")
+else:
+    print("x is zero.")
+elif x < 0:
+    print("x is negative.")
+```
+
+
+### Übung 2
+
+Erklären Sie, warum folgender Code nicht funktioniert:
+
+```python
+for x in range(10)
+    print(x)
+```
+
+Geben Sie den korrekten Code an!
+
+
+### Übung 3
+
+Gegeben ist der String `x = "Pythonista"`. Schreiben Sie eine `for`-Schleife, welche über den String iteriert und jedes Zeichen dieses Strings in einer neuen Zeile ausgibt.
+
+
+### Übung 4
+
+Berechnen Sie die Summe aller natürlichen Zahlen von 0 bis 1000 (inklusive), die durch 3 *oder* 5 aber *nicht* durch 3 *und* 5 teilbar sind.
+
+::: {.callout-note}
+Eine Zahl ist durch 3 teilbar, wenn der Rest der Division durch 3 gleich Null ist. Eine Zahl ist durch 3 *und* 5 teilbar, wenn der Rest der Division durch 15 gleich Null ist.
+
+Verwenden Sie `and` bzw. `or`, um die Bedingungen zu verknüpfen und achten Sie auf die korrekte Klammersetzung.
+:::
+
+
+### Übung 5
+
+Erklären Sie, warum folgender Code nicht funktioniert:
+
+```python
+sum = 0
+for i in range(10):
+    sum += i
+sum([1, 2, 3, 4, 5])
+```
+
+Geben Sie auch eine korrekte Implementierung an!
+
+
+### Übung 6
+
+Erklären Sie, warum folgender Code nicht funktioniert (er enthält zwei Fehler):
+
+```python
+a = 3
+if a < 10
+    print "a is less than 10."
+```
+
+Geben Sie auch den korrekten Code an!
+
+
+## Kapitel 4 – Funktionen I
+
+### Übung 1
 
 Elektrische Widerstände können in Serie oder parallel geschaltet werden. In einer Serienschaltung addieren sich die Widerstände, während in einer Parallelschaltung der Kehrwert der Gesamtwiderstandes gleich der Summe der Kehrwerte der Einzelwiderstände ist. In Formeln kann dies wie folgt ausgedrückt werden:
 
@@ -31,7 +124,7 @@ Testen Sie beide Funktionen mit den Widerständen $R_1 = 10\,\Omega$ und $R_2 = 
 Berechnen Sie außerdem den Gesamtwiderstand von $(R_1 + R_2) \parallel R_3$ mit den Werten $R_1 = 10\,\Omega$, $R_2 = 20\,\Omega$ und $R_3 = 50\,\Omega$ mit einem Ausdruck (unter Verwendung der beiden Funktionen)!
 
 
-## Übung 2
+### Übung 2
 
 Schreiben Sie ein Programm, welches die Benutzer auffordert, eine Zahl zwischen 1 und 12 einzugeben (entsprechend den Monaten). Das Programm soll dann den Namen des Monats ausgeben. Falls die eingegebene Zahl nicht im Bereich 1 bis 12 liegt, soll eine Fehlermeldung ausgegeben werden. Die Eingabe soll so lange wiederholt werden, bis eine gültige Zahl eingegeben wird.
 
@@ -42,7 +135,377 @@ Sie können davon ausgehen, dass die Benutzer nur ganze Zahlen eingeben.
 :::
 
 
-## Übung 3
+### Übung 3
+
+Schreiben Sie eine Funktion `factorial`, die die Fakultät $n!$ einer nichtnegativen ganzen Zahl $n$ berechnet. Dabei gilt
+
+$$n! = 1 \cdot 2 \cdot \ldots \cdot n,$$
+
+wobei $0! = 1$ definiert ist. Verwenden Sie Ihre Funktion anschließend, um $7!$ zu berechnen.
+
+
+### Übung 4
+
+Schreiben Sie eine Funktion `is_divisible`, welche überprüft, ob eine Zahl $n$ durch eine andere Zahl $m$ ohne Rest teilbar ist. Die Funktion soll zwei Parameter haben: `n` (die zu überprüfende Zahl) und `m` (die Zahl, durch die geteilt werden soll). Die Funktion soll `True` zurückgeben, wenn die Division ohne Rest möglich ist, andernfalls `False`.
+
+Testen Sie die Funktion mit den Zahlenpaaren (10, 2), (10, 3), (10, 5) und (10, 7).
+
+
+### Übung 5
+
+Schreiben Sie eine Funktion `fizzbuzz`, welche eine Zahl als Argument entgegennimmt. Wenn die Zahl sowohl durch 3 als auch durch 5 teilbar ist, soll die Funktion den String `Fizzbuzz` zurückgeben. Wenn die Zahl nur durch 3 teilbar ist, soll die Funktion `Fizz` zurückgeben. Wenn die Zahl nur durch 5 teilbar ist, soll die Funktion `Buzz` zurückgeben. Für alle anderen Zahlen soll die Zahl selbst als String zurückgegeben werden.
+
+Rufen Sie die Funktion dann in einer Schleife mit den Zahlen von 1 bis 15 auf und geben Sie die zurückgegebenen Werte mit `print` am Bildschirm aus!
+
+Die ausgegebenen Werte sollten lauten: 1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, Fizzbuzz.
+
+::: {.callout-note}
+Der Rest-Operator `%` kann die Teilbarkeit einer Zahl überprüfen. Eine Zahl ist durch 3 teilbar, wenn der Rest der Division durch 3 Null ergibt. Eine Zahl ist sowohl durch 3 als auch durch 5 teilbar, wenn der Rest der Division durch 15 Null ergibt.
+:::
+
+
+### Übung 6
+
+Schreiben Sie eine Funktion `is_even`, welche überprüft, ob das übergebene Argument gerade ist. Falls dies der Fall ist, soll die Funktion `True` zurückgeben, sonst `False`. Testen Sie Ihre Funktion, indem Sie sie mit mindestens zwei verschiedenen Argumenten (eine gerade Zahl und eine ungerade Zahl) aufrufen!
+
+
+### Übung 7
+
+Schreiben Sie eine Funktion `sign`, welche das Vorzeichen einer Zahl bestimmt. Die Funktion soll in Abhängigkeit der übergebenen Zahl folgende Werte zurückgeben:
+
+- Ist die Zahl positiv, soll `1` zurückgegeben werden.
+- Ist die Zahl negativ, soll `-1` zurückgegeben werden.
+- Ist die Zahl gleich Null, soll `0` zurückgegeben werden.
+
+
+### Übung 8
+
+Definieren Sie zwei Funktionen `kmh_to_mph` bzw. `mph_to_kmh`, welche Geschwindigkeiten von Kilometer pro Stunde in Meilen pro Stunde bzw. umgekehrt umwandeln und zurückgeben. Die Umrechnungsvorschriften lauten:
+
+$$\mathrm{mph} = \frac{\mathrm{kmh}}{\mathrm{1.609}} \hspace{35pt} \mathrm{kmh} = 1.609 \cdot \mathrm{mph}$$
+
+Testen Sie die Funktionen dann mit folgendem Befehl:
+
+```python
+kmh_to_mph(mph_to_kmh(65))
+```
+
+
+### Übung 9
+
+Definieren Sie zwei Funktionen `ps_to_kw` und `kw_to_ps`, die zwischen Pferdestärken (PS) und Kilowatt (kW) umrechnen. 1 kW entspricht ungefähr 1.36 PS. Die Funktion `ps_to_kw` soll eine Leistung in PS in kW zurückgeben, während `kw_to_ps` eine Leistung in kW in PS zurückgeben soll.
+
+Testen Sie Ihre Funktionen mit den folgenden Argumenten:
+
+```python
+>>> ps_to_kw(100)
+73.52941176470588
+>>> kw_to_ps(73.53)
+100.00080000000001
+```
+
+
+### Übung 10
+
+Definieren Sie eine Funktion `check_parity`, die überprüft, ob eine Zahl (als Argument übergeben) gerade oder ungerade ist. Der Rückgabewert soll wie folgt bestimmt werden:
+
+- Ist das Argument gerade, soll die Funktion 0 zurückgeben.
+- Ist das Argument ungerade, soll die Funktion 1 zurückgeben.
+
+Testen Sie Ihre Funktion mit den folgenden Argumenten und überprüfen Sie, ob die Ausgaben korrekt sind:
+
+```
+>>> check_parity(4)
+0
+>>> check_parity(-7)
+1
+```
+
+
+### Übung 11
+
+Erklären Sie, warum der folgende Code nicht funktioniert:
+
+```python
+def lambda(x):
+    return x + 1
+```
+
+Geben Sie eine korrekte Implementierung an!
+
+
+### Übung 12
+
+Definieren Sie zwei Funktionen `cm_to_inches` und `inches_to_cm`, die Zentimeter in Zoll und umgekehrt umrechnen. Die Umrechnungsfaktoren sind 1 Zoll = 2.54 cm und 1 cm = 1 / 2.54 Zoll. Testen Sie Ihre Funktionen mit den folgenden Argumenten und überprüfen Sie, ob die Ausgaben korrekt sind:
+
+```
+>>> cm_to_inches(10)
+3.937007874015748
+>>> inches_to_cm(5)
+12.7
+>>> cm_to_inches(inches_to_cm(5))
+5.0
+```
+
+
+### Übung 13
+
+Eine Primzahl ist eine natürliche Zahl größer als 1, die keine positiven Teiler außer 1 und sich selbst hat. Schreiben Sie eine Funktion `is_prime`, die überprüft, ob eine gegebene Zahl eine Primzahl ist oder nicht. Die Funktion soll `True` oder `False` zurückgeben. Testen Sie Ihre Funktion mit den Zahlen 7 und 10 (die Funktion sollte für die erste Zahl `True` und für die zweite Zahl `False` zurückgeben).
+
+::: {.callout-note}
+Der Modulo-Operator `%` könnte im Zusammenhang mit der Tatsache, dass eine Primzahl nur durch 1 und sich selbst teilbar ist, hilfreich sein. Sie könnten also überprüfen, ob die Zahl $n$ durch irgendeine Zahl zwischen 2 und $n - 1$ teilbar ist. Falls ja, ist $n$ *keine* Primzahl (sonst schon).
+:::
+
+
+### Übung 14
+
+Definieren Sie eine Funktion `f`, welche eine beliebige positive ganze Zahl entgegennimmt und sich wie folgt verhält:
+
+- Falls die Zahl gerade ist, soll die Hälfte dieser Zahl zurückgegeben werden (verwenden Sie hier den Ganzzahl-Divisionsoperator).
+- Falls die Zahl ungerade ist, soll das um 1 erhöhte Dreifache der Zahl zurückgegeben werden.
+
+Rufen Sie diese Funktion mit der Zahl 1000 auf. Danach rufen Sie die Funktion erneut auf, und zwar mit dem Rückgabewert des ersten Funktionsaufrufs. Wiederholen Sie diese Prozedur (den Rückgabewert als neues Argument verwenden), bis die Funktion die Zahl `1` zurückgibt. Wie oft wird die Funktion insgesamt aufgerufen?
+
+::: {.callout-note}
+Verwenden Sie für den zweiten Teil der Aufgabenstellung eine `while`-Schleife!
+:::
+
+
+### Übung 15
+
+Erklären Sie, warum folgender Code nicht funktioniert:
+
+```python
+def f:
+    return 42
+```
+
+Geben Sie auch die korrekte Funktionsdefinition an!
+
+
+### Übung 16
+
+Die *F*-Statistik berechnet sich mit folgender Formel:
+
+$$F = \frac{\text{MSM}}{\text{MSR}}$$
+
+Hier ist MSM die mittlere Modellquadratsumme und MSR die mittlere Residuenquadratsumme, welche sich wie folgt berechnen lassen:
+
+$$\text{MSM} = \frac{\text{SSM}}{p - 1}$$
+$$\text{MSR} = \frac{\text{SSR}}{N - p}$$
+
+Definieren Sie eine Funktion `f_statistic`, welche den Wert der *F*-Statistik in Abhängigkeit von SSM (Modellquadratsumme), SSR (Residuenquadratsumme), *p* (Anzahl der Modellparameter) und *N* (Stichprobengröße) zurückgibt! Wie lautet der Wert von *F* für die konkreten Werte von 2452, 1688, 4 und 412 für SSM, SSR, *p* sowie *n*?
+
+
+### Übung 17
+
+Schreiben Sie eine Funktion `describe_number`, welche überprüft, ob eine per Argument übergebene ganze Zahl gleich 10, gerade oder ungerade ist. Ist sie gerade, soll die Zahl `1` zurückgegeben werden. Ist sie ungerade, soll `2` zurückgegeben werden. Ist die Zahl durch 10 teilbar, soll `10` zurückgegeben werden.
+
+Rufen Sie anschließend Ihre Funktion mit den ganzen Zahlen von $-110$ bis $230$ (inklusive) auf und summieren Sie alle Rückgabewerte. Die korrekte Summe beträgt 826.
+
+::: {.callout-note}
+Zahlen, die durch 10 teilbar sind, sind auch gerade Zahlen. Dennoch soll für diese Zahlen immer `10` zurückgegeben werden (und nicht `1`).
+:::
+
+
+### Übung 18
+
+Definieren Sie eine Funktion `f`, welche zwei Parameter hat und damit folgenden mathematischen Ausdruck berechnet und zurückgibt:
+
+$$\sqrt{\frac{s_1^2 + s_2^2}{2}}$$
+
+Rufen Sie anschließend Ihre Funktion mit Werten von $s_1 = 5$ und $s_2 = 27$ auf!
+
+
+## Kapitel 5 – Funktionen II
+
+### Übung 1
+
+Schreiben Sie eine Funktion `add`, welche zwei Zahlen addiert und deren Summe zurückgibt. Die Funktion soll also mit zwei Argumenten aufgerufen werden können, wobei aber das zweite Argument optional sein soll. Wenn nur ein Argument übergeben wird, soll die Funktion 1 zu diesem Wert addieren und zurückgeben.
+
+
+### Übung 2
+
+Gegeben sei folgender Funktionskopf:
+
+```python
+def test(x, y=1, z=5):
+```
+
+Erklären Sie, warum folgende drei Aufrufe nicht funktionieren:
+
+1. `test(y=2, z=2)`
+2. `test(4, y=2, x=2)`
+3. `test()`
+
+
+### Übung 3
+
+Definieren Sie eine Funktion namens `convert_celsius`, welche eine Temperatur in °C (Grad Celsius) entweder in K (Kelvin) oder °F (Grad Fahrenheit) umwandelt und zurückgibt! Ob Kelvin oder Fahrenheit zurückgegeben werden soll, wird durch einen optionalen Parameter namens `to` bestimmt; dieser soll standardmäßig so gesetzt sein, dass die Temperatur in Kelvin zurückgegeben wird.
+
+Die Umrechnungsvorschriften lauten:
+
+$$F = C \cdot \frac{9}{5} + 32$$
+$$K = C + 273.15$$
+
+Rufen Sie Ihre Funktion dann auf, um folgende Temperaturen umzuwandeln:
+
+- 100°C in K
+- 38°C in °F
+- 0°C in K
+
+
+### Übung 4
+
+Schreiben Sie eine Funktion `decibel`, welche eine Zahl in die Einheit Dezibel umrechnet und zurückgibt. Es gibt zwei verschiedene Arten, diese Umrechnung für eine gegebene Zahl $x$ durchzuführen:
+
+1. $10 \cdot \log_{10}(x)$
+2. $20 \cdot \log_{10}(x)$
+
+Die Funktion soll beide Varianten berechnen können – welche berechnet wird soll durch einen optionalen Parameter bestimmt werden können. Standardmäßig soll die Variante 1 durchgeführt werden. Die beiden möglichen Werte dieses Parameters sollen die Strings `"power"` (Variante 1) bzw. `"amplitude"` (Variante 2) sein.
+
+Verwenden Sie die Funktion `log10` aus dem Modul `math`.
+
+Hier einige Beispiele für mögliche Funktionsaufrufe:
+
+```
+>>> decibel(10)
+10.0
+>>> decibel(10, "amplitude")
+20.0
+>>> decibel(2, "power")
+3.010299956639812
+```
+
+
+### Übung 5
+
+Schreiben Sie eine Funktion `product(n, k)`, die das Produkt aller Zahlen von 1 bis `n` berechnet, die durch `k` teilbar sind. Der Parameter `k` soll einen Standardwert von 1 haben.
+
+*Beispiele:*
+
+```python
+>>> product(10, 2)
+3840
+>>> product(5)
+120
+```
+
+
+## Kapitel 6 – Listen, Tupel und Dictionaries
+
+### Übung 1
+
+Erstellen Sie eine Liste `numbers`, welche die Wurzeln der Zahlen 0, 10, 20, ... , 990, 1000 beinhaltet. Verwenden Sie dazu eine List Comprehension.
+
+Bestimmen Sie dann mit einer geeigneten Python-Funktion die Anzahl und die Summe der Elemente der so entstandenen Liste.
+
+
+### Übung 2
+
+Die Standardabweichung $s$ von $N$ Werten $x_i$ kann mit folgender Formel berechnet werden:
+
+$$s = \sqrt{\frac{1}{N-1} \sum_{i=1}^{N}(x_i - \bar{x})^2}$$
+
+Dabei ist $\bar{x}$ der arithmetische Mittelwert der Werte:
+
+$$\bar{x} = \frac{1}{N} \sum_{i=1}^{N} x_i$$
+
+Schreiben Sie eine Funktion namens `std`, welche eine Liste an Zahlen als Argument entgegennimmt und deren Standardabweichung zurückgibt. Verwenden Sie in Ihrer Lösung *nicht* das Modul `statistics`, sondern berechnen Sie die Kenngrößen selbst (z.B. mittels List Comprehensions)!
+
+Testen Sie Ihre Funktion mit der Liste `[10, 12, 23, 23, 16, 23, 21, 16]`. Die Standardabweichung sollte ca. `5.237` betragen.
+
+
+### Übung 3
+
+Schreiben Sie eine Funktion `get_even`, welche eine Liste an Zahlen als Argument entgegennimmt und eine neue Liste, welche nur die *geraden* Zahlen der ursprünglichen Liste beinhaltet, zurückgibt.
+
+::: {.callout-note}
+Der Aufruf `get_even([1, 45, -4, -5, 17, 2])` gibt also die Liste `[-4, 2]` zurück.
+:::
+
+
+### Übung 4
+
+Gegeben ist eine Liste `x = [-13, 22, -2, -14, 33, -16]`. Erzeugen Sie mit einer List Comprehension eine neue Liste `y`, welche die Absolutwerte der Zahlen in `x` enthält.
+
+::: {.callout-note}
+Die eingebaute Funktion `abs` liefert den Absolutwert einer Zahl zurück.
+:::
+
+
+### Übung 5
+
+Angenommen Sie möchten zu einer bestehenden Liste `x` ein Element am Ende hinzufügen. Was stimmt nicht im folgenden Code:
+
+```python
+x = [1, 2, 3, 4]
+x = x.append(5)
+```
+
+Erklären Sie was hier passiert und geben Sie auch die korrekte Variante an!
+
+
+### Übung 6
+
+Erklären Sie, warum der folgende Code zur Berechnung der Summe von fünf Zahlen nicht funktioniert:
+
+```python
+sum(1, 2, 3, 4, 5)
+```
+
+Geben Sie einen korrekten Funktionsaufruf an, der die Summe dieser Zahlen berechnet!
+
+
+### Übung 7
+
+Gegeben sei eine Liste von Strings `x = ["This", "is", "a", "sample", "list"]`. Verwenden Sie eine List Comprehension, um eine neue Liste namens `lengths` zu erstellen, welche die Längen jedes Strings in `x` enthält.
+
+
+### Übung 8
+
+Ein Anagramm ist ein Wort, das durch Umordnen der Buchstaben eines anderen Wortes gebildet wird. Schreiben Sie eine Funktion `is_anagram`, die überprüft, ob zwei gegebene Strings Anagramme voneinander sind. Die Funktion soll `True` oder `False` zurückgeben. Testen Sie Ihre Funktion mit den Strings "listen" und "silent" sowie "hello" und "world" (die Funktion sollte für das erste Paar `True` und für das zweite Paar `False` zurückgeben).
+
+::: {.callout-note}
+Die eingebaute Funktion `sorted` könnte hilfreich sein.
+:::
+
+
+### Übung 9
+
+Definieren Sie eine Funktion `filter_numbers`, die eine Liste von Ganzzahlen als Argument entgegennimmt und eine neue Liste zurückgibt. Diese soll nur die geraden oder ungeraden Zahlen aus der Eingabeliste enthalten, abhängig vom Wert eines zweiten Arguments `even`. Wenn `even` gleich `True` ist (Standardwert), soll die Funktion eine Liste mit geraden Zahlen zurückgeben; wenn `even` gleich `False` ist, soll sie eine Liste mit ungeraden Zahlen zurückgeben.
+
+
+### Übung 10
+
+Erzeugen Sie eine Liste, welche die Wurzeln der *geraden* Zahlen im Bereich von 300 bis 700 (beides inklusive) beinhaltet. Bestimmen Sie die Anzahl der Elemente sowie die Summe aller Elemente!
+
+
+### Übung 11
+
+Definieren Sie eine Funktion `sum_squares`, die die Summe der Quadrate der in einer Liste enthaltenen Zahlen (als Argument übergeben) berechnet und zurückgibt. Testen Sie Ihre Funktion mit der folgenden Liste und überprüfen Sie, ob die Ausgabe korrekt ist:
+
+```
+>>> sum_squares([1, 2, 3, 4, 5])
+55
+```
+
+
+### Übung 12
+
+Erklären Sie, warum folgender Code nicht funktioniert und geben Sie eine korrekte Lösung an:
+
+```python
+x = (2)  # create tuple with one element
+print(x[0])  # access and print that element
+```
+
+Es soll ein Tuple mit einem einzigen Element angelegt werden. Anschließend soll dieses Element per Indizierung am Bildschirm ausgegeben werden.
+
+
+## Kapitel 7 – Strings
+
+### Übung 1
 
 Schreiben Sie eine Funktion `count_words`, welche die Anzahl der Wörter in einem Text zählt. Die Funktion soll zwei Parameter haben: `text` (der Text, in dem die Wörter gezählt werden sollen) und `sep` (das Trennzeichen, Standardwert ist ein Leerzeichen). Verwenden Sie dafür die String-Methode `split`, welche eine Liste von Strings zurückgibt; die Länge dieser Liste kann mit der Funktion `len` ermittelt werden.
 
@@ -74,58 +537,7 @@ text
 :::
 
 
-## Übung 4
-
-Schreiben Sie eine Funktion `factorial`, die die Fakultät $n!$ einer nichtnegativen ganzen Zahl $n$ berechnet. Dabei gilt
-
-$$n! = 1 \cdot 2 \cdot \ldots \cdot n,$$
-
-wobei $0! = 1$ definiert ist. Verwenden Sie Ihre Funktion anschließend, um $7!$ zu berechnen.
-
-
-## Übung 5
-
-Schreiben Sie eine Funktion `is_divisible`, welche überprüft, ob eine Zahl $n$ durch eine andere Zahl $m$ ohne Rest teilbar ist. Die Funktion soll zwei Parameter haben: `n` (die zu überprüfende Zahl) und `m` (die Zahl, durch die geteilt werden soll). Die Funktion soll `True` zurückgeben, wenn die Division ohne Rest möglich ist, andernfalls `False`.
-
-Testen Sie die Funktion mit den Zahlenpaaren (10, 2), (10, 3), (10, 5) und (10, 7).
-
-
-## Übung 6
-
-Was ist das Problem im folgenden Beispiel? Geben Sie auch den korrekten Code an.
-
-```python
-x = 10
-
-if x > 0:
-    print("x is positive.")
-else:
-    print("x is zero.")
-elif x < 0:
-    print("x is negative.")
-```
-
-
-## Übung 7
-
-Erstellen Sie eine Liste `numbers`, welche die Wurzeln der Zahlen 0, 10, 20, ... , 990, 1000 beinhaltet. Verwenden Sie dazu eine List Comprehension.
-
-Bestimmen Sie dann mit einer geeigneten Python-Funktion die Anzahl und die Summe der Elemente der so entstandenen Liste.
-
-
-## Übung 8
-
-Erklären Sie, warum folgender Code nicht funktioniert:
-
-```python
-for x in range(10)
-    print(x)
-```
-
-Geben Sie den korrekten Code an!
-
-
-## Übung 9
+### Übung 2
 
 Berechnen Sie mit Python den folgenden mathematischen Ausdruck und weisen Sie das Ergebnis dem Namen `result` zu.
 
@@ -134,101 +546,12 @@ $$\frac{17 \cdot (\sqrt{5} + \frac{2}{3})}{27.7 - 3^\pi} + 42^{\frac{2}{7}}$$
 Geben Sie mit Hilfe der `print`-Funktion das Ergebnis auf zwei Nachkommastellen gerundet aus (es sollte $-9.93$ lauten).
 
 
-## Übung 10
-
-Erklären Sie, warum folgender Code nicht funktioniert:
-
-```python
-alpha = 5
-lambda = 7
-print(alpha + lambda)
-```
-
-Geben Sie auch den korrekten Code an!
-
-
-## Übung 11
-
-Die Standardabweichung $s$ von $N$ Werten $x_i$ kann mit folgender Formel berechnet werden:
-
-$$s = \sqrt{\frac{1}{N-1} \sum_{i=1}^{N}(x_i - \bar{x})^2}$$
-
-Dabei ist $\bar{x}$ der arithmetische Mittelwert der Werte:
-
-$$\bar{x} = \frac{1}{N} \sum_{i=1}^{N} x_i$$
-
-Schreiben Sie eine Funktion namens `std`, welche eine Liste an Zahlen als Argument entgegennimmt und deren Standardabweichung zurückgibt. Verwenden Sie in Ihrer Lösung *nicht* das Modul `statistics`, sondern berechnen Sie die Kenngrößen selbst (z.B. mittels List Comprehensions)!
-
-Testen Sie Ihre Funktion mit der Liste `[10, 12, 23, 23, 16, 23, 21, 16]`. Die Standardabweichung sollte ca. `5.237` betragen.
-
-
-## Übung 12
-
-Schreiben Sie eine Funktion `get_even`, welche eine Liste an Zahlen als Argument entgegennimmt und eine neue Liste, welche nur die *geraden* Zahlen der ursprünglichen Liste beinhaltet, zurückgibt.
-
-::: {.callout-note}
-Der Aufruf `get_even([1, 45, -4, -5, 17, 2])` gibt also die Liste `[-4, 2]` zurück.
-:::
-
-
-### Übung 13
-
-Schreiben Sie eine Funktion `fizzbuzz`, welche eine Zahl als Argument entgegennimmt. Wenn die Zahl sowohl durch 3 als auch durch 5 teilbar ist, soll die Funktion den String `Fizzbuzz` zurückgeben. Wenn die Zahl nur durch 3 teilbar ist, soll die Funktion `Fizz` zurückgeben. Wenn die Zahl nur durch 5 teilbar ist, soll die Funktion `Buzz` zurückgeben. Für alle anderen Zahlen soll die Zahl selbst als String zurückgegeben werden.
-
-Rufen Sie die Funktion dann in einer Schleife mit den Zahlen von 1 bis 15 auf und geben Sie die zurückgegebenen Werte mit `print` am Bildschirm aus!
-
-Die ausgegebenen Werte sollten lauten: 1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, Fizzbuzz.
-
-::: {.callout-note}
-Der Rest-Operator `%` kann die Teilbarkeit einer Zahl überprüfen. Eine Zahl ist durch 3 teilbar, wenn der Rest der Division durch 3 Null ergibt. Eine Zahl ist sowohl durch 3 als auch durch 5 teilbar, wenn der Rest der Division durch 15 Null ergibt.
-:::
-
-
-## Übung 14
-
-Schreiben Sie eine Funktion `add`, welche zwei Zahlen addiert und deren Summe zurückgibt. Die Funktion soll also mit zwei Argumenten aufgerufen werden können, wobei aber das zweite Argument optional sein soll. Wenn nur ein Argument übergeben wird, soll die Funktion 1 zu diesem Wert addieren und zurückgeben.
-
-
-## Übung 15
-
-Gegeben sei folgender Funktionskopf:
-
-```python
-def test(x, y=1, z=5):
-```
-
-Erklären Sie, warum folgende drei Aufrufe nicht funktionieren:
-
-1. `test(y=2, z=2)`
-2. `test(4, y=2, x=2)`
-3. `test()`
-
-
-## Übung 16
-
-Schreiben Sie eine Funktion `is_even`, welche überprüft, ob das übergebene Argument gerade ist. Falls dies der Fall ist, soll die Funktion `True` zurückgeben, sonst `False`. Testen Sie Ihre Funktion, indem Sie sie mit mindestens zwei verschiedenen Argumenten (eine gerade Zahl und eine ungerade Zahl) aufrufen!
-
-
-## Übung 17
-
-Schreiben Sie eine Funktion `sign`, welche das Vorzeichen einer Zahl bestimmt. Die Funktion soll in Abhängigkeit der übergebenen Zahl folgende Werte zurückgeben:
-
-- Ist die Zahl positiv, soll `1` zurückgegeben werden.
-- Ist die Zahl negativ, soll `-1` zurückgegeben werden.
-- Ist die Zahl gleich Null, soll `0` zurückgegeben werden.
-
-
-## Übung 18
-
-Gegeben ist der String `x = "Pythonista"`. Schreiben Sie eine `for`-Schleife, welche über den String iteriert und jedes Zeichen dieses Strings in einer neuen Zeile ausgibt.
-
-
-## Übung 19
+### Übung 3
 
 Gegeben ist die Liste `y = ["This", "is", "a", "sample", "list"]`. Erzeugen Sie mit einer List Comprehension aus dieser Liste eine neue Liste `z`, welche alle Elemente von `y` in Großbuchstaben beinhaltet.
 
 
-## Übung 20
+### Übung 4
 
 Gegeben ist der String `s = "Donaudampfschifffahrtsgesellschaft"`. Verwenden Sie geeignete Funktionen oder String-Methoden um folgende Fragen zu beantworten:
 
@@ -237,54 +560,7 @@ Gegeben ist der String `s = "Donaudampfschifffahrtsgesellschaft"`. Verwenden Sie
 3. Wie viele `e` kommen in dem String vor?
 
 
-## Übung 21
-
-Gegeben ist eine Liste `x = [-13, 22, -2, -14, 33, -16]`. Erzeugen Sie mit einer List Comprehension eine neue Liste `y`, welche die Absolutwerte der Zahlen in `x` enthält.
-
-::: {.callout-note}
-Die eingebaute Funktion `abs` liefert den Absolutwert einer Zahl zurück.
-:::
-
-
-## Übung 22
-
-Erzeugen Sie ein NumPy-Array `x` mit 15 Zeilen und 5 Spalten, welches ganzzahlige Zufallszahlen im Bereich 0 bis 100 (inklusive) beinhalten soll. Initialisieren Sie den Zufallszahlengenerator mit dem Wert `1`. Berechnen Sie abschließend die fünf Spaltenmittelwerte von `x`.
-
-
-## Übung 23
-
-Erzeugen Sie ein NumPy-Array `x` mit 1000 Zahlen im gleichmäßigen Abstand von 10 bis 13 (inklusive).
-
-
-## Übung 24
-
-Gegeben ist ein NumPy-Array `x`, welches durch folgenden Code erzeugt werden kann:
-
-```{python}
-from numpy.random import default_rng
-
-rng = default_rng(2)
-x = 10 + 2 * rng.standard_normal(10000)
-```
-
-Erzeugen Sie mit Matplotlib ein Histogram mit 50 Bins von `x`.
-
-
-## Übung 25
-
-Gegeben ist ein NumPy-Array `x`, welches durch folgenden Code erzeugt werden kann:
-
-```{python}
-from numpy.random import default_rng
-
-rng = default_rng(2)
-x = 10 + 2 * rng.standard_normal(10000)
-```
-
-Stellen Sie mit Matplotlib die ersten 100 Werte von `x` als Balkengrafik dar.
-
-
-## Übung 26
+### Übung 5
 
 Gegeben sei folgender mehrzeiliger String (die ersten Zeilen eines Sonetts von William Shakespeare):
 
@@ -302,18 +578,7 @@ Mit der String-Methode `splitlines` können Sie einen mehrzeiligen String in ein
 :::
 
 
-## Übung 27
-
-Berechnen Sie die Summe aller natürlichen Zahlen von 0 bis 1000 (inklusive), die durch 3 *oder* 5 aber *nicht* durch 3 *und* 5 teilbar sind.
-
-::: {.callout-note}
-Eine Zahl ist durch 3 teilbar, wenn der Rest der Division durch 3 gleich Null ist. Eine Zahl ist durch 3 *und* 5 teilbar, wenn der Rest der Division durch 15 gleich Null ist.
-
-Verwenden Sie `and` bzw. `or`, um die Bedingungen zu verknüpfen und achten Sie auf die korrekte Klammersetzung.
-:::
-
-
-## Übung 28
+### Übung 6
 
 Gegeben ist der String `x = "Pythonista"`. Schreiben Sie eine `for`-Schleife, welche über den String iteriert und jedes Zeichen dieses Strings als Großbuchstaben getrennt durch Bindestriche ausgibt. Die gewünschte Ausgabe sollte also wie folgt aussehen:
 
@@ -322,32 +587,7 @@ P-Y-T-H-O-N-I-S-T-A-
 ```
 
 
-## Übung 29
-
-Definieren Sie zwei Funktionen `kmh_to_mph` bzw. `mph_to_kmh`, welche Geschwindigkeiten von Kilometer pro Stunde in Meilen pro Stunde bzw. umgekehrt umwandeln und zurückgeben. Die Umrechnungsvorschriften lauten:
-
-$$\mathrm{mph} = \frac{\mathrm{kmh}}{\mathrm{1.609}} \hspace{35pt} \mathrm{kmh} = 1.609 \cdot \mathrm{mph}$$
-
-Testen Sie die Funktionen dann mit folgendem Befehl:
-
-```python
-kmh_to_mph(mph_to_kmh(65))
-```
-
-
-## Übung 30
-
-Angenommen Sie möchten zu einer bestehenden Liste `x` ein Element am Ende hinzufügen. Was stimmt nicht im folgenden Code:
-
-```python
-x = [1, 2, 3, 4]
-x = x.append(5)
-```
-
-Erklären Sie was hier passiert und geben Sie auch die korrekte Variante an!
-
-
-## Übung 31
+### Übung 7
 
 Wie können Sie folgenden Text dem Namen `s` zuweisen:
 
@@ -356,7 +596,7 @@ Wie können Sie folgenden Text dem Namen `s` zuweisen:
 Geben Sie in Ihrer Antwort die korrekte Zuweisung an!
 
 
-## Übung 32
+### Übung 8
 
 Gegeben sei folgender String:
 
@@ -367,7 +607,7 @@ x = "abcdefghijklmnopqrstuvwxyz"
 Wie können Sie durch indizieren/slicen jedes zweite Zeichen herausgreifen? Erzeugen Sie damit einen neuen String `a` (beginnend mit dem Zeichen `"a"`) und einen neuen String `b` (beginnend mit dem Zeichen `"b"`).
 
 
-## Übung 33
+### Übung 9
 
 Erzeugen Sie eine Liste `words` mit den einzelnen Wörtern in folgendem String unter Verwendung einer geeigneten String-Methode:
 
@@ -376,7 +616,7 @@ s = "eins/zwei/drei/vier/fünf/sechs/sieben/acht"
 ```
 
 
-## Übung 34
+### Übung 10
 
 Definieren Sie eine Funktion `replace_vowels`, die einen Text und ein Zeichen als Argumente entgegennimmt. Die Funktion soll einen neuen String zurückgeben, in dem alle Vokale (Groß- und Kleinbuchstaben) im ursprünglichen Text durch das spezifizierte Zeichen ersetzt werden.
 
@@ -390,18 +630,7 @@ Beispiele:
 ```
 
 
-## Übung 35
-
-Erklären Sie, warum der folgende Code zur Berechnung der Summe von fünf Zahlen nicht funktioniert:
-
-```python
-sum(1, 2, 3, 4, 5)
-```
-
-Geben Sie einen korrekten Funktionsaufruf an, der die Summe dieser Zahlen berechnet!
-
-
-## Übung 36
+### Übung 11
 
 Define a function `countdown` that prints a countdown on the screen. The countdown should start from a given number and count down to zero. The start number and the step size should be optional arguments (with default values of 5 for the start number and 1 for the step size).
 Definieren Sie eine Funktion `countdown`, die einen Countdown am Bildschirm ausgibt. Der Countdown soll von einer gegebenen Zahl starten und bis Null herunterzählen. Die Startzahl und die Schrittweite sollen optionale Argumente sein (mit Standardwerten von 5 für die Startzahl und 1 für die Schrittweite).
@@ -418,40 +647,7 @@ Zwei mögliche Funktionsaufrufe und deren Ausgaben sind unten gezeigt:
 Stellen Sie sicher, dass die Ausgabe *genau* wie gezeigt aussieht!
 
 
-## Übung 37
-
-Gegeben sei ein NumPy-Array `y`, welches durch folgenden Code erzeugt wird:
-
-```python
-from numpy.random import default_rng
-
-rng = default_rng(2)
-y = 10 + 2 * rng.standard_normal(10000)
-```
-
-Erzeugen Sie mit Matplotlib eine Grafik mit zwei nebeneinanderliegenden Plots. Der linke Plot soll ein Streudiagramm der ersten 100 Werte von `y` (*y*-Achse) gegen eine Zahlenfolge von 1 bis 100 (*x*-Achse) enthalten. Der rechte Plot soll ein Histogramm der Werte in `y` mit 30 Bins enthalten.
-
-
-## Übung 38
-
-Gegeben sei eine Liste von Strings `x = ["This", "is", "a", "sample", "list"]`. Verwenden Sie eine List Comprehension, um eine neue Liste namens `lengths` zu erstellen, welche die Längen jedes Strings in `x` enthält.
-
-
-## Übung 39
-
-Ein Anagramm ist ein Wort, das durch Umordnen der Buchstaben eines anderen Wortes gebildet wird. Schreiben Sie eine Funktion `is_anagram`, die überprüft, ob zwei gegebene Strings Anagramme voneinander sind. Die Funktion soll `True` oder `False` zurückgeben. Testen Sie Ihre Funktion mit den Strings "listen" und "silent" sowie "hello" und "world" (die Funktion sollte für das erste Paar `True` und für das zweite Paar `False` zurückgeben).
-
-::: {.callout-note}
-The eingebaute Funktion `sorted` könnte hilfreich sein.
-:::
-
-
-## Übung 40
-
-Definieren Sie eine Funktion `filter_numbers`, die eine Liste von Ganzzahlen als Argument entgegennimmt und eine neue Liste zurückgibt. Diese soll nur die geraden oder ungeraden Zahlen aus der Eingabeliste enthalten, abhängig vom Wert eines zweiten Arguments `even`. Wenn `even` gleich `True` ist (Standardwert), soll die Funktion eine Liste mit geraden Zahlen zurückgeben; wenn `even` gleich `False` ist, soll sie eine Liste mit ungeraden Zahlen zurückgeben.
-
-
-## Übung 41
+### Übung 12
 
 Verwenden Sie eine Schleife, um den Text `"Hello number X!"` 10 Mal auszugeben, wobei `X` die aktuelle Iterationsnummer ist (beginnend bei 1). Die Ausgabe sollte wie folgt aussehen:
 
@@ -469,21 +665,7 @@ Hello number 10!
 ```
 
 
-## Übung 42
-
-Definieren Sie zwei Funktionen `ps_to_kw` und `kw_to_ps`, die zwischen Pferdestärken (PS) und Kilowatt (kW) umrechnen. 1 kW entspricht ungefähr 1.36 PS. Die Funktion `ps_to_kw` soll eine Leistung in PS in kW zurückgeben, während `kw_to_ps` eine Leistung in kW in PS zurückgeben soll.
-
-Testen Sie Ihre Funktionen mit den folgenden Argumenten:
-
-```python
->>> ps_to_kw(100)
-73.52941176470588
->>> kw_to_ps(73.53)
-100.00080000000001
-```
-
-
-## Übung 43
+### Übung 13
 
 Gegeben sei der String `s = "supercalifragilisticexpialidocious"`. Verwenden Sie geeignete String-Methoden oder eingebaute Funktionen, um folgendes herauszufinden:
 
@@ -499,7 +681,7 @@ Definieren Sie für die Lösung dieser Aufgabe keine eigenen Funktionen!
 :::
 
 
-## Übung 44
+### Übung 14
 
 Schreiben Sie eine Funktion `longest_word`, die einen String `sentence` als Eingabe erhält und das längste Wort in diesem String zurückgibt. Falls es mehrere längste Wörter mit derselben Länge gibt, soll einfach das erste längste Wort zurückgegeben werden. Testen Sie Ihre Funktion mit dem Satz `"The quick brown fox jumps over the lazy dog"` (das längste Wort in diesem Satz ist `"quick"`).
 
@@ -508,12 +690,7 @@ Verwenden Sie die String-Methode `split()`, um den String `sentence` in einzelne
 :::
 
 
-## Übung 45
-
-Erzeugen Sie eine Liste, welche die Wurzeln der *geraden* Zahlen im Bereich von 300 bis 700 (beides inklusive) beinhaltet. Bestimmen Sie die Anzahl der Elemente sowie die Summe aller Elemente!
-
-
-## Übung 46
+### Übung 15
 
 Definieren Sie eine Funktion `count_lower`, die die Anzahl der Kleinbuchstaben in einem String zählt und diese Anzahl zurückgibt (der String soll als Argument übergeben werden). Verwenden Sie die String-Methode `islower`, um jedes einzelne Zeichen im String zu überprüfen.
 
@@ -529,112 +706,7 @@ Rufen Sie Ihre Funktion mit den folgenden Argumenten auf und überprüfen Sie, o
 ```
 
 
-## Übung 47
-
-Definieren Sie eine Funktion `check_parity`, die überprüft, ob eine Zahl (als Argument übergeben) gerade oder ungerade ist. Der Rückgabewert soll wie folgt bestimmt werden:
-
-- Ist das Argument gerade, soll die Funktion 0 zurückgeben.
-- Ist das Argument ungerade, soll die Funktion 1 zurückgeben.
-
-Testen Sie Ihre Funktion mit den folgenden Argumenten und überprüfen Sie, ob die Ausgaben korrekt sind:
-
-```
->>> check_parity(4)
-0
->>> check_parity(-7)
-1
-```
-
-
-## Übung 48
-
-Erklären Sie, warum der folgende Code nicht funktioniert:
-
-```python
-def lambda(x):
-    return x + 1
-```
-
-Geben Sie eine korrekte Implementierung an!
-
-
-## Übung 49
-
-Definieren Sie zwei Funktionen `cm_to_inches` und `inches_to_cm`, die Zentimeter in Zoll und umgekehrt umrechnen. Die Umrechnungsfaktoren sind 1 Zoll = 2.54 cm und 1 cm = 1 / 2.54 Zoll. Testen Sie Ihre Funktionen mit den folgenden Argumenten und überprüfen Sie, ob die Ausgaben korrekt sind:
-
-```
->>> cm_to_inches(10)
-3.937007874015748
->>> inches_to_cm(5)
-12.7
->>> cm_to_inches(inches_to_cm(5))
-5.0
-```
-
-
-## Übung 50
-
-Definieren Sie eine Funktion `sum_squares`, die die Summe der Quadrate der in einer Liste enthaltenen Zahlen (als Argument übergeben) berechnet und zurückgibt. Testen Sie Ihre Funktion mit der folgenden Liste und überprüfen Sie, ob die Ausgabe korrekt ist:
-
-```
->>> sum_squares([1, 2, 3, 4, 5])
-55
-```
-
-
-## Übung 51
-
-Erzeugen Sie die folgenden drei NumPy-Arrays `x`, `y` und `z`:
-
-- `x` soll 1000 normalverteilte Zufallszahlen mit einem Mittelwert von 10 und einer Standardabweichung von 2 enthalten.
-- `y` soll 1000 gleichmäßig verteilte Zufallszahlen im Bereich von 5 bis 15 enthalten.
-- `z` soll 1000 Chi-Quadrat-verteilte Zufallszahlen mit 6 Freiheitsgraden enthalten.
-
-Initialisieren Sie den Zufallszahlengenerator mit dem Wert `1`.
-
-Verwenden Sie anschließend Matplotlib, um eine Grafik bestehend aus drei Streudiagrammen in einer Zeile zu erstellen. Das linke Streudiagramm soll `x` gegen `y`, das mittlere `x` gegen `z` und das rechte `y` gegen `z` darstellen. Setzen Sie abschließend `fig.set_tight_layout(True)` für ein schöneres Layout.
-
-::: {.callout-note}
-Zur Erzeugung der Zufallszahlen benötigen Sie die Methoden `normal`, `uniform` und `chisquare` des Zufallszahlengenerators.
-:::
-
-
-## Übung 52
-
-Eine Primzahl ist eine natürliche Zahl größer als 1, die keine positiven Teiler außer 1 und sich selbst hat. Schreiben Sie eine Funktion `is_prime`, die überprüft, ob eine gegebene Zahl eine Primzahl ist oder nicht. Die Funktion soll `True` oder `False` zurückgeben. Testen Sie Ihre Funktion mit den Zahlen 7 und 10 (die Funktion sollte für die erste Zahl `True` und für die zweite Zahl `False` zurückgeben).
-
-::: {.callout-note}
-Der Modulo-Operator `%` könnte im Zusammenhang mit der Tatsache, dass eine Primzahl nur durch 1 und sich selbst teilbar ist, hilfreich sein. Sie könnten also überprüfen, ob die Zahl $n$ durch irgendeine Zahl zwischen 2 und $n - 1$ teilbar ist. Falls ja, ist $n$ *keine* Primzahl (sonst schon).
-:::
-
-
-## Übung 53
-
-Definieren Sie eine Funktion `f`, welche eine beliebige positive ganze Zahl entgegennimmt und sich wie folgt verhält:
-
-- Falls die Zahl gerade ist, soll die Hälfte dieser Zahl zurückgegeben werden (verwenden Sie hier den Ganzzahl-Divisionsoperator).
-- Falls die Zahl ungerade ist, soll das um 1 erhöhte Dreifache der Zahl zurückgegeben werden.
-
-Rufen Sie diese Funktion mit der Zahl 1000 auf. Danach rufen Sie die Funktion erneut auf, und zwar mit dem Rückgabewert des ersten Funktionsaufrufs. Wiederholen Sie diese Prozedur (den Rückgabewert als neues Argument verwenden), bis die Funktion die Zahl `1` zurückgibt. Wie oft wird die Funktion insgesamt aufgerufen?
-
-::: {.callout-note}
-Verwenden Sie für den zweiten Teil der Aufgabenstellung eine `while`-Schleife!
-:::
-
-
-## Übung 54
-
-Erklären Sie, warum folgender Code nicht funktioniert:
-
-```python
-def f:
-    return 42
-```
-
-Geben Sie auch die korrekte Funktionsdefinition an!
-
-
-## Übung 55
+### Übung 16
 
 Geben Sie mit Hilfe einer Schleife den folgenden Text am Bildschirm aus:
 
@@ -655,133 +727,7 @@ Lift-off!
 ```
 
 
-## Übung 56
-
-Die *F*-Statistik berechnet sich mit folgender Formel:
-
-$$F = \frac{\text{MSM}}{\text{MSR}}$$
-
-Hier ist MSM die mittlere Modellquadratsumme und MSR die mittlere Residuenquadratsumme, welche sich wie folgt berechnen lassen:
-
-$$\text{MSM} = \frac{\text{SSM}}{p - 1}$$
-$$\text{MSR} = \frac{\text{SSR}}{N - p}$$
-
-Definieren Sie eine Funktion `f_statistic`, welche den Wert der *F*-Statistik in Abhängigkeit von SSM (Modellquadratsumme), SSR (Residuenquadratsumme), *p* (Anzahl der Modellparameter) und *N* (Stichprobengröße) zurückgibt! Wie lautet der Wert von *F* für die konkreten Werte von 2452, 1688, 4 und 412 für SSM, SSR, *p* sowie *n*?
-
-
-## Übung 57
-
-Definieren Sie eine Funktion namens `convert_celsius`, welche eine Temperatur in °C (Grad Celsius) entweder in K (Kelvin) oder °F (Grad Fahrenheit) umwandelt und zurückgibt! Ob Kelvin oder Fahrenheit zurückgegeben werden soll, wird durch einen optionalen Parameter namens `to` bestimmt; dieser soll standardmäßig so gesetzt sein, dass die Temperatur in Kelvin zurückgegeben wird.
-
-Die Umrechnungsvorschriften lauten:
-
-$$F = C \cdot \frac{9}{5} + 32$$
-$$K = C + 273.15$$
-
-Rufen Sie Ihre Funktion dann auf, um folgende Temperaturen umzuwandeln:
-
-- 100°C in K
-- 38°C in °F
-- 0°C in K
-
-
-## Übung 58
-
-Erklären Sie, warum folgender Code nicht funktioniert:
-
-```python
-sum = 0
-for i in range(10):
-    sum += i
-sum([1, 2, 3, 4, 5])
-```
-
-Geben Sie auch eine korrekte Implementierung an!
-
-
-## Übung 59
-
-Erklären Sie, warum folgender Code nicht funktioniert und geben Sie eine korrekte Lösung an:
-
-```python
-x = (2)  # create tuple with one element
-print(x[0])  # access and print that element
-```
-
-Es soll ein Tuple mit einem einzigen Element angelegt werden. Anschließend soll dieses Element per Indizierung am Bildschirm ausgegeben werden.
-
-
-## Übung 60
-
-Schreiben Sie eine Funktion `describe_number`, welche überprüft, ob eine per Argument übergebene ganze Zahl gleich 10, gerade oder ungerade ist. Ist sie gerade, soll die Zahl `1` zurückgegeben werden. Ist sie ungerade, soll `2` zurückgegeben werden. Ist die Zahl durch 10 teilbar, soll `10` zurückgegeben werden.
-
-Rufen Sie anschließend Ihre Funktion mit den ganzen Zahlen von $-110$ bis $230$ (inklusive) auf und summieren Sie alle Rückgabewerte. Die korrekte Summe beträgt 826.
-
-::: {.callout-note}
-Zahlen, die durch 10 teilbar sind, sind auch gerade Zahlen. Dennoch soll für diese Zahlen immer `10` zurückgegeben werden (und nicht `1`).
-:::
-
-
-## Übung 61
-
-Erklären Sie, warum folgender Code nicht funktioniert (er enthält zwei Fehler):
-
-```python
-a = 3
-if a < 10
-    print "a is less than 10."
-```
-
-Geben Sie auch den korrekten Code an!
-
-
-## Übung 62
-
-Definieren Sie eine Funktion `f`, welche zwei Parameter hat und damit folgenden mathematischen Ausdruck berechnet und zurückgibt:
-
-$$\sqrt{\frac{s_1^2 + s_2^2}{2}}$$
-
-Rufen Sie anschließend Ihre Funktion mit Werten von $s_1 = 5$ und $s_2 = 27$ auf!
-
-
-## Übung 63
-
-Schreiben Sie eine Funktion `decibel`, welche eine Zahl in die Einheit Dezibel umrechnet und zurückgibt. Es gibt zwei verschiedene Arten, diese Umrechnung für eine gegebene Zahl $x$ durchzuführen:
-
-1. $10 \cdot \log_{10}(x)$
-2. $20 \cdot \log_{10}(x)$
-
-Die Funktion soll beide Varianten berechnen können – welche berechnet wird soll durch einen optionalen Parameter bestimmt werden können. Standardmäßig soll die Variante 1 durchgeführt werden. Die beiden möglichen Werte dieses Parameters sollen die Strings `"power"` (Variante 1) bzw. `"amplitude"` (Variante 2) sein.
-
-Verwenden Sie die Funktion `log10` aus dem Modul `math`.
-
-Hier einige Beispiele für mögliche Funktionsaufrufe:
-
-```
->>> decibel(10)
-10.0
->>> decibel(10, "amplitude")
-20.0
->>> decibel(2, "power")
-3.010299956639812
-```
-
-
-## Übung 64
-
-Schreiben Sie eine Funktion `product(n, k)`, die das Produkt aller Zahlen von 1 bis `n` berechnet, die durch `k` teilbar sind. Der Parameter `k` soll einen Standardwert von 1 haben.
-
-*Beispiele:*
-
-```python
->>> product(10, 2)
-3840
->>> product(5)
-120
-```
-
-
-## Übung 65
+### Übung 17
 
 Gegeben ist die folgende Liste:
 
@@ -792,7 +738,7 @@ words = ["Python", "ist", "eine", "sehr", "beliebte", "Sprache"]
 Erstellen Sie daraus mit Hilfe einer List Comprehension eine neue Liste, welche nur die Wörter mit mehr als 4 Buchstaben enthält. Diese sollen in der neuen Liste in Großbuchstaben vorhanden sein.
 
 
-## Übung 66
+### Übung 18
 
 Schreiben Sie zwei Funktionen `meters_to_feet(meters)` und `feet_to_meters(feet)`, die jeweils Meter in Fuß bzw.&nbsp;Fuß in Meter umrechnen. Verwenden Sie dabei den Umrechnungsfaktor 1 Meter = 3.28084 Fuß.
 
@@ -810,7 +756,28 @@ Konvertieren Sie damit 6 Fuß in Meter und geben Sie das Ergebnis auf zwei Dezim
 ```
 
 
-## Übung 67
+### Übung 19
+
+Definieren Sie eine Funktion `f`, die eine Zahl `x` als Eingabe erhält und den folgenden mathematischen Ausdruck berechnet und zurückgibt:
+
+$$ f(x) = \frac{e^{2x} + \sin(x)}{\sqrt{1 + x^2}} $$
+
+Berechnen Sie den Funktionswert für $x = 0.5$ und geben Sie das Ergebnis auf vier Dezimalstellen gerundet aus! Das korrekte Ergebnis lautet 2.8601.
+
+
+## Kapitel 9 – NumPy
+
+### Übung 1
+
+Erzeugen Sie ein NumPy-Array `x` mit 15 Zeilen und 5 Spalten, welches ganzzahlige Zufallszahlen im Bereich 0 bis 100 (inklusive) beinhalten soll. Initialisieren Sie den Zufallszahlengenerator mit dem Wert `1`. Berechnen Sie abschließend die fünf Spaltenmittelwerte von `x`.
+
+
+### Übung 2
+
+Erzeugen Sie ein NumPy-Array `x` mit 1000 Zahlen im gleichmäßigen Abstand von 10 bis 13 (inklusive).
+
+
+### Übung 3
 
 Erklären Sie, warum folgender Code zur Erstellung eines zweidimensionalen NumPy-Arrays mit 3 Zeilen und 4 Spalten nicht funktioniert:
 
@@ -823,10 +790,62 @@ x = np.zeros(3, 4)
 Was ist der Fehler und wie sieht der korrekte Code aus?
 
 
-## Übung 68
+## Kapitel 10 – Matplotlib
 
-Definieren Sie eine Funktion `f`, die eine Zahl `x` als Eingabe erhält und den folgenden mathematischen Ausdruck berechnet und zurückgibt:
+### Übung 1
 
-$$ f(x) = \frac{e^{2x} + \sin(x)}{\sqrt{1 + x^2}} $$
+Gegeben ist ein NumPy-Array `x`, welches durch folgenden Code erzeugt werden kann:
 
-Berechnen Sie den Funktionswert für $x = 0.5$ und geben Sie das Ergebnis auf vier Dezimalstellen gerundet aus! Das korrekte Ergebnis lautet 2.8601.
+```{python}
+from numpy.random import default_rng
+
+rng = default_rng(2)
+x = rng.normal(loc=10, scale=2, size=10000)
+```
+
+Erzeugen Sie mit Matplotlib ein Histogram mit 50 Bins von `x`.
+
+
+### Übung 2
+
+Gegeben ist ein NumPy-Array `x`, welches durch folgenden Code erzeugt werden kann:
+
+```{python}
+from numpy.random import default_rng
+
+rng = default_rng(2)
+x = rng.normal(loc=10, scale=2, size=10000)
+```
+
+Stellen Sie mit Matplotlib die ersten 100 Werte von `x` als Balkengrafik dar.
+
+
+### Übung 3
+
+Gegeben sei ein NumPy-Array `y`, welches durch folgenden Code erzeugt wird:
+
+```python
+from numpy.random import default_rng
+
+rng = default_rng(2)
+y = rng.normal(loc=10, scale=2, size=10000)
+```
+
+Erzeugen Sie mit Matplotlib eine Grafik mit zwei nebeneinanderliegenden Plots. Der linke Plot soll ein Streudiagramm der ersten 100 Werte von `y` (*y*-Achse) gegen eine Zahlenfolge von 1 bis 100 (*x*-Achse) enthalten. Der rechte Plot soll ein Histogramm der Werte in `y` mit 30 Bins enthalten.
+
+
+### Übung 4
+
+Erzeugen Sie die folgenden drei NumPy-Arrays `x`, `y` und `z`:
+
+- `x` soll 1000 normalverteilte Zufallszahlen mit einem Mittelwert von 10 und einer Standardabweichung von 2 enthalten.
+- `y` soll 1000 gleichmäßig verteilte Zufallszahlen im Bereich von 5 bis 15 enthalten.
+- `z` soll 1000 exponentialverteilte Zufallszahlen mit dem Skalenparameter 5 enthalten.
+
+Initialisieren Sie den Zufallszahlengenerator mit dem Wert `1`.
+
+Verwenden Sie anschließend Matplotlib, um eine Grafik bestehend aus drei Streudiagrammen in einer Zeile zu erstellen. Das linke Streudiagramm soll `x` gegen `y`, das mittlere `x` gegen `z` und das rechte `y` gegen `z` darstellen. Setzen Sie abschließend `fig.set_tight_layout(True)` für ein schöneres Layout.
+
+::: {.callout-note}
+Zur Erzeugung der Zufallszahlen benötigen Sie die Methoden `normal`, `uniform` und `exponential` des Zufallszahlengenerators.
+:::

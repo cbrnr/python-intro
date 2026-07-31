@@ -17,7 +17,95 @@ author-title: "Autor"
 published-title: "Veröffentlicht"
 ---
 
-## Übung 1
+## Kapitel 2 – Objekte, Namen und Typen
+
+### Übung 1
+
+Der Code funktioniert nicht, weil `lambda` ein reserviertes Schlüsselwort in Python ist und daher nicht als Name verwendet werden kann. Der korrekte Code könnte wie folgt aussehen:
+
+```python
+alpha = 5
+lambda_ = 7
+print(alpha + lambda_)
+```
+
+
+## Kapitel 3 – Kontrollfluss
+
+### Übung 1
+
+Das Problem ist, dass der `elif`-Zweig *nach* dem `else`-Block steht. In Python muss der (optionale) `else`-Block immer am Ende eines `if`/`elif`/`else`-Blocks stehen. Die korrigierte Version sieht also wie folgt aus:
+
+```python
+x = 10
+
+if x > 0:
+    print("x is positive.")
+elif x < 0:
+    print("x is negative.")
+else:
+    print("x is zero.")
+```
+
+
+### Übung 2
+
+Der Code funktioniert nicht, weil nach der `for`-Schleife ein Doppelpunkt (`:`) fehlt. Der korrekte Code lautet:
+
+```python
+for x in range(10):
+    print(x)
+```
+
+
+### Übung 3
+
+```{python}
+x = "Pythonista"
+
+for c in x:
+    print(c)
+```
+
+
+### Übung 4
+
+```{python}
+numbers = []
+for n in range(1001):
+    if (n % 3 == 0 or n % 5 == 0) and n % 15 != 0:
+        numbers.append(n)
+
+sum(numbers)
+```
+
+
+### Übung 5
+
+Der Code funktioniert nicht, weil die eingebaute Funktion `sum` durch eine Ganzzahl "überschrieben" wird (nämlich mit der Summe, welche mittels Schleife berechnet wird). Danach kann die eingebaute Funktion `sum` nicht mehr aufgerufen werden. Es wäre hier also besser, anstelle von `sum` einen Namen zu verwenden, der keiner eingebauten Funktion entspricht, z.B. `s`:
+
+```{python}
+s = 0
+for i in range(10):
+    s += i
+sum([1, 2, 3, 4, 5])
+```
+
+
+### Übung 6
+
+Der Code enthält zwei Fehler: Nach `if a < 10` fehlt der abschließende Doppelpunkt, und der `print`-Aufruf verwendet die (in Python 2 gültige, in Python 3 aber ungültige) Anweisungsform ohne Klammern. Der korrekte Code lautet:
+
+```{python}
+a = 3
+if a < 10:  # Doppelpunkt am Ende fehlte
+    print("a is less than 10.")  # Klammern für Funktionsaufruf fehlten
+```
+
+
+## Kapitel 4 – Funktionen I
+
+### Übung 1
 
 ```{python}
 def serial(r1, r2):
@@ -38,7 +126,7 @@ print(parallel(serial(r1, r2), r3))
 ```
 
 
-## Übung 2
+### Übung 2
 
 Eine einfache Implementierung der Funktion verwendet einen langen `if`/`elif`/`else`-Block:
 
@@ -133,25 +221,7 @@ def month_name(month):
 :::
 
 
-## Übung 3
-
-```{python}
-def count_words(text, sep=" "):
-    return len(text.split(sep))
-
-
-text = (
-    "Python is an easy to learn, powerful programming language. It has efficient "
-    "high-level data structures and a simple but effective approach to object-oriented "
-    "programming. Python's elegant syntax and dynamic typing, together with its "
-    "interpreted nature, make it an ideal language for scripting and rapid application "
-    "development in many areas."
-)
-count_words(text)
-```
-
-
-## Übung 4
+### Übung 3
 
 ```{python}
 def factorial(n):
@@ -166,7 +236,7 @@ factorial(5)
 ```
 
 
-## Übung 5
+### Übung 4
 
 ```{python}
 def is_divisible(n, m):
@@ -180,89 +250,7 @@ print(is_divisible(10, 7))
 ```
 
 
-## Übung 6
-
-Das Problem ist, dass der `elif`-Zweig *nach* dem `else`-Block steht. In Python muss der (optionale) `else`-Block immer am Ende eines `if`/`elif`/`else`-Blocks stehen. Die korrigierte Version sieht also wie folgt aus:
-
-```python
-x = 10
-
-if x > 0:
-    print("x is positive.")
-elif x < 0:
-    print("x is negative.")
-else:
-    print("x is zero.")
-```
-
-
-## Übung 7
-
-```{python}
-import math
-
-numbers = [math.sqrt(i) for i in range(0, 1001, 10)]
-print(len(numbers), sum(numbers))
-```
-
-
-## Übung 8
-
-Der Code funktioniert nicht, weil nach der `for`-Schleife ein Doppelpunkt (`:`) fehlt. Der korrekte Code lautet:
-
-```python
-for x in range(10):
-    print(x)
-```
-
-
-## Übung 9
-
-```{python}
-import math
-
-result = (17 * (math.sqrt(5) + 2/3)) / (27.7 - 3**math.pi) + 42**(2/7)
-print(f"{result:.2f}")
-```
-
-
-## Übung 10
-
-Der Code funktioniert nicht, weil `lambda` ein reserviertes Schlüsselwort in Python ist und daher nicht als Name verwendet werden kann. Der korrekte Code könnte wie folgt aussehen:
-
-```python
-alpha = 5
-lambda_ = 7
-print(alpha + lambda_)
-```
-
-
-## Übung 11
-
-```{python}
-import math
-
-def std(x):
-    n = len(x)
-    mean = sum(x) / n
-    var = sum([(xi - mean)**2 for xi in x]) / (n - 1)
-    return math.sqrt(var)
-
-std([10, 12, 23, 23, 16, 23, 21, 16])
-```
-
-
-## Übung 12
-
-```{python}
-def get_even(x):
-    return [xi for xi in x if xi % 2 == 0]
-
-get_even([1, 45, -4, -5, 17, 2])
-```
-
-
-## Übung 13
+### Übung 5
 
 Wichtig ist, dass die Teilbarkeit durch 3 *und* 5 (also 15) zuerst überprüft wird!
 
@@ -282,22 +270,7 @@ for i in range(1, 16):
 ```
 
 
-## Übung 14
-
-```{python}
-def add(x, y=1):
-    return x + y
-```
-
-
-## Übung 15
-
-1. Es fehlt das verpflichtende Argument für `x`.
-2. Das Argument für `x` wurde doppelt übergeben, einmal als positionales Argument (`4`) und einmal als Schlüsselwortargument (`x=2`).
-3. Es fehlt das verpflichtende Argument für `x`.
-
-
-## Übung 16
+### Übung 6
 
 ```{python}
 def is_even(n):
@@ -308,7 +281,7 @@ print(is_even(11))
 ```
 
 
-## Übung 17
+### Übung 7
 
 ```{python}
 def sign(n):
@@ -343,36 +316,262 @@ Im Rahmen dieses Kurses ist diese Lösung aber zu fortgeschritten, da wir diese 
 :::
 
 
-## Übung 18
+### Übung 8
 
 ```{python}
-x = "Pythonista"
+def kmh_to_mph(kmh):
+    return kmh / 1.609
 
-for c in x:
-    print(c)
+def mph_to_kmh(mph):
+    return 1.609 * mph
+
+kmh_to_mph(mph_to_kmh(65))
 ```
 
 
-## Übung 19
+### Übung 9
 
 ```{python}
-y = ["This", "is", "a", "sample", "list"]
-z = [word.upper() for word in y]
-z
+def ps_to_kw(ps):
+    return ps / 1.36
+
+def kw_to_ps(kw):
+    return kw * 1.36
+
+print(ps_to_kw(100))
+print(kw_to_ps(73.53))
 ```
 
 
-## Übung 20
+### Übung 10
 
 ```{python}
-s = "Donaudampfschifffahrtsgesellschaft"
-print(len(s))
-print(s.index("f"))
-print(s.count("e"))
+def check_parity(n):
+    if n % 2 == 0:
+        return 0
+    else:
+        return 1
+
+print(check_parity(4))
+print(check_parity(-7))
 ```
 
 
-## Übung 21
+### Übung 11
+
+Der Code funktioniert nicht, weil `lambda` ein reserviertes Schlüsselwort in Python ist und daher nicht als Funktionsname verwendet werden kann. Um die Funktion korrekt zu implementieren, sollte ein anderer Name verwendet werden, zum Beispiel `lambda_`:
+
+```python
+def lambda_(x):
+    return x + 1
+```
+
+
+### Übung 12
+
+```{python}
+def cm_to_inches(cm):
+    return cm / 2.54
+
+def inches_to_cm(inches):
+    return inches * 2.54
+
+print(cm_to_inches(10))
+print(inches_to_cm(5))
+print(cm_to_inches(inches_to_cm(5)))
+```
+
+
+### Übung 13
+
+```{python}
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, n):
+        if n % i == 0:
+            return False
+    return True
+
+print(is_prime(7))
+print(is_prime(10))
+```
+
+::: {.callout-tip}
+Um die Effizienz der Funktion zu verbessern, können Sie die Schleife so ändern, dass sie nur bis zur Quadratwurzel von $n$ (inklusive) geht. Wenn $n$ durch eine Zahl größer als seine Quadratwurzel teilbar ist, muss es auch durch eine kleinere Zahl teilbar sein.
+:::
+
+
+### Übung 14
+
+```{python}
+def f(x):
+    return x // 2 if x % 2 == 0 else 3 * x + 1
+
+n = 1000
+i = 0
+while n > 1:
+    n = f(n)
+    i += 1
+print(i)
+```
+
+
+### Übung 15
+
+Im Funktionskopf fehlen die Klammern nach `f` für die (leere) Parameterliste. Der korrekte Code lautet:
+
+```python
+def f():
+    return 42
+```
+
+
+### Übung 16
+
+```{python}
+def f_statistic(ssm, ssr, p, n):
+    return (ssm / (p - 1)) / (ssr / (n - p))
+
+f_statistic(2452, 1688, 4, 412)
+```
+
+
+### Übung 17
+
+```{python}
+def describe_number(n):
+    if n % 10 == 0:
+        return 10
+    elif n % 2 == 0:
+        return 1
+    else:
+        return 2
+
+s = 0
+for n in range(-110, 231):
+    s += describe_number(n)
+print(s)  # 826
+```
+
+
+### Übung 18
+
+```{python}
+import math
+
+def f(s1, s2):
+    return math.sqrt((s1**2 + s2**2) / 2)
+
+f(5, 27)  # 19.4164878389476
+```
+
+
+## Kapitel 5 – Funktionen II
+
+### Übung 1
+
+```{python}
+def add(x, y=1):
+    return x + y
+```
+
+
+### Übung 2
+
+1. Es fehlt das verpflichtende Argument für `x`.
+2. Das Argument für `x` wurde doppelt übergeben, einmal als positionales Argument (`4`) und einmal als Schlüsselwortargument (`x=2`).
+3. Es fehlt das verpflichtende Argument für `x`.
+
+
+### Übung 3
+
+```{python}
+def convert_celsius(c, to="K"):
+    if to == "K":
+        return c + 273.15
+    elif to == "F":
+        return c * 9 / 5 + 32
+
+convert_celsius(100)
+convert_celsius(38, to="F")
+convert_celsius(0, to="K")
+```
+
+
+### Übung 4
+
+```{python}
+import math
+
+def decibel(x, to="power"):
+    if to == "power":
+        return 10 * math.log10(x)
+    elif to == "amplitude":
+        return 20 * math.log10(x)
+```
+
+
+### Übung 5
+
+```{python}
+def product(n, k=1):
+    result = 1
+    for i in range(1, n + 1):
+        if i % k == 0:
+            result *= i
+    return result
+```
+
+Oder noch kürzer (eleganter):
+
+```{python}
+def product(n, k=1):
+    result = 1
+    for i in range(k, n + 1, k):
+        result *= i
+    return result
+```
+
+
+## Kapitel 6 – Listen, Tupel und Dictionaries
+
+### Übung 1
+
+```{python}
+import math
+
+numbers = [math.sqrt(i) for i in range(0, 1001, 10)]
+print(len(numbers), sum(numbers))
+```
+
+
+### Übung 2
+
+```{python}
+import math
+
+def std(x):
+    n = len(x)
+    mean = sum(x) / n
+    var = sum([(xi - mean)**2 for xi in x]) / (n - 1)
+    return math.sqrt(var)
+
+std([10, 12, 23, 23, 16, 23, 21, 16])
+```
+
+
+### Übung 3
+
+```{python}
+def get_even(x):
+    return [xi for xi in x if xi % 2 == 0]
+
+get_even([1, 45, -4, -5, 17, 2])
+```
+
+
+### Übung 4
 
 ```{python}
 x = [-13, 22, -2, -14, 33, -16]
@@ -381,59 +580,140 @@ y
 ```
 
 
-## Übung 22
+### Übung 5
 
-```{python}
-from numpy.random import default_rng
+Jede Listen-Methode ändert die Liste *in-place* und gibt daher nichts (`None`) zurück – daher wird im Beispiel `x` auf `None` gesetzt. Die korrekte Variante ist:
 
-rng = default_rng(1)
-x = rng.integers(0, 101, size=(15, 5))
-x.mean(axis=0)
+```python
+x = [1, 2, 3, 4]
+x.append(5)
 ```
 
 
-## Übung 23
+### Übung 6
 
-```{python}
-import numpy as np
+Der Code funktioniert nicht, weil die eingebaute Funktion `sum` nur ein einziges Argument (wie z.B. eine Liste oder ein Tupel) akzeptiert. Der Versuch, mehrere separate Argumente zu übergeben, führt zu einem Fehler.
 
-x = np.linspace(10, 13, 1000)
+Ein korrekter Funktionsaufruf wäre daher:
+
+```python
+sum([1, 2, 3, 4, 5])
 ```
 
 
-## Übung 24
+### Übung 7
 
 ```{python}
-from numpy.random import default_rng
-
-rng = default_rng(2)
-x = 10 + 2 * rng.standard_normal(10000)
-
-import matplotlib.pyplot as plt
-
-fig, ax = plt.subplots()
-ax.hist(x, bins=50)
-plt.show()
+x = ["This", "is", "a", "sample", "list"]
+lengths = [len(word) for word in x]
+lengths
 ```
 
 
-## Übung 25
+### Übung 8
 
 ```{python}
-from numpy.random import default_rng
+def is_anagram(str1, str2):
+    return sorted(str1) == sorted(str2)
 
-rng = default_rng(2)
-x = 10 + 2 * rng.standard_normal(10000)
-
-import matplotlib.pyplot as plt
-
-fig, ax = plt.subplots()
-ax.bar(range(100), x[:100])
-plt.show()
+print(is_anagram("listen", "silent"))
+print(is_anagram("hello", "world"))
 ```
 
 
-## Übung 26
+### Übung 9
+
+```{python}
+def filter_numbers(numbers, even=True):
+    if even:
+        return [n for n in numbers if n % 2 == 0]
+    else:
+        return [n for n in numbers if n % 2 != 0]
+```
+
+
+### Übung 10
+
+```{python}
+import math
+
+x = [math.sqrt(i) for i in range(300, 701) if i % 2 == 0]
+
+print(len(x))
+print(sum(x))
+```
+
+
+### Übung 11
+
+```{python}
+def sum_squares(numbers):
+    return sum([x**2 for x in numbers])
+
+print(sum_squares([1, 2, 3, 4, 5]))
+```
+
+
+### Übung 12
+
+Ein Tuple mit einem einzigen Element erstellt man mit einem Komma am Ende:
+
+```{python}
+x = 2,
+print(x[0])
+```
+
+
+## Kapitel 7 – Strings
+
+### Übung 1
+
+```{python}
+def count_words(text, sep=" "):
+    return len(text.split(sep))
+
+
+text = (
+    "Python is an easy to learn, powerful programming language. It has efficient "
+    "high-level data structures and a simple but effective approach to object-oriented "
+    "programming. Python's elegant syntax and dynamic typing, together with its "
+    "interpreted nature, make it an ideal language for scripting and rapid application "
+    "development in many areas."
+)
+count_words(text)
+```
+
+
+### Übung 2
+
+```{python}
+import math
+
+result = (17 * (math.sqrt(5) + 2/3)) / (27.7 - 3**math.pi) + 42**(2/7)
+print(f"{result:.2f}")
+```
+
+
+### Übung 3
+
+```{python}
+y = ["This", "is", "a", "sample", "list"]
+z = [word.upper() for word in y]
+z
+```
+
+
+### Übung 4
+
+```{python}
+s = "Donaudampfschifffahrtsgesellschaft"
+print(len(s))
+print(s.find("f"))
+print(s.count("e"))
+```
+
+
+### Übung 5
 
 ```{python}
 text = """From fairest creatures we desire increase,
@@ -450,19 +730,7 @@ for i, line in enumerate(lines, start=1):
 ```
 
 
-## Übung 27
-
-```{python}
-numbers = []
-for n in range(1001):
-    if (n % 3 == 0 or n % 5 == 0) and n % 15 != 0:
-        numbers.append(n)
-
-sum(numbers)
-```
-
-
-## Übung 28
+### Übung 6
 
 ```{python}
 x = "Pythonista"
@@ -471,30 +739,7 @@ for c in x:
 ```
 
 
-## Übung 29
-
-```{python}
-def kmh_to_mph(kmh):
-    return kmh / 1.609
-
-def mph_to_kmh(mph):
-    return 1.609 * mph
-    
-kmh_to_mph(mph_to_kmh(65))
-```
-
-
-## Übung 30
-
-Jede Listen-Methode ändert die Liste *in-place* und gibt daher nichts (`None`) zurück – daher wird im Beispiel `x` auf `None` gesetzt. Die korrekte Variante ist:
-
-```python
-x = [1, 2, 3, 4]
-x.append(5)
-```
-
-
-## Übung 31
+### Übung 7
 
 Da der String selbst doppelte Anführungszeichen enthält, können wir diesen entweder mit einfachen Anführungszeichen umschließen:
 
@@ -509,7 +754,7 @@ s = "Er sagte: \"Sicher!\""
 ```
 
 
-## Übung 32
+### Übung 8
 
 ```{python}
 x = "abcdefghijklmnopqrstuvwxyz"
@@ -520,7 +765,7 @@ print(b)
 ```
 
 
-## Übung 33
+### Übung 9
 
 ```{python}
 s = "eins/zwei/drei/vier/fünf/sechs/sieben/acht"
@@ -529,7 +774,7 @@ words
 ```
 
 
-## Übung 34
+### Übung 10
 
 ```{python}
 def replace_vowels(text, char):
@@ -543,18 +788,7 @@ print(replace_vowels("PYTHON IS FUN", "#"))
 ```
 
 
-## Übung 35
-
-Der Code funktioniert nicht, weil die eingebaute Funktion `sum` nur ein einziges Argument (wie z.B. eine Liste oder ein Tupel) akzeptiert. Der Versuch, mehrere separate Argumente zu übergeben, führt zu einem Fehler.
-
-Ein korrekter Funktionsaufruf wäre daher:
-
-```python
-sum([1, 2, 3, 4, 5])
-```
-
-
-## Übung 36
+### Übung 11
 
 Lösung mit einer `while`-Schleife:
 
@@ -583,56 +817,7 @@ countdown(7, 2)
 ```
 
 
-## Übung 37
-
-```{python}
-from numpy.random import default_rng
-rng = default_rng(2)
-y = 10 + 2 * rng.standard_normal(10000)
-
-import matplotlib.pyplot as plt
-
-fig, axes = plt.subplots(1, 2)
-axes[0].scatter(range(1, 101), y[:100])
-axes[1].hist(y, bins=30)
-
-fig.set_tight_layout(True)
-plt.show()
-```
-
-
-## Übung 38
-
-```{python}
-x = ["This", "is", "a", "sample", "list"]
-lengths = [len(word) for word in x]
-lengths
-```
-
-
-## Übung 39
-
-```{python}
-def is_anagram(str1, str2):
-    return sorted(str1) == sorted(str2)
-
-print(is_anagram("listen", "silent"))
-print(is_anagram("hello", "world"))
-```
-
-
-## Übung 40
-
-```{python}
-def filter_numbers(numbers, even=True):
-    if even:
-        return [n for n in numbers if n % 2 == 0]
-    else:
-        return [n for n in numbers if n % 2 != 0]
-```
-
-
-## Übung 41
+### Übung 12
 
 ```{python}
 for i in range(1, 11):
@@ -640,28 +825,14 @@ for i in range(1, 11):
 ```
 
 
-## Übung 42
-
-```{python}
-def ps_to_kw(ps):
-    return ps / 1.36
-
-def kw_to_ps(kw):
-    return kw * 1.36
-
-print(ps_to_kw(100))
-print(kw_to_ps(73.53))
-```
-
-
-## Übung 43
+### Übung 13
 
 ```{python}
 s = "supercalifragilisticexpialidocious"
 print("1.", len(s))
-first_i = s.index("i")
+first_i = s.find("i")
 print("2.", first_i)
-second_i = s.index("i", first_i + 1)
+second_i = s.find("i", first_i + 1)
 print("3.", second_i)
 print("4.", s.count("i"))
 print("5.", s.upper())
@@ -669,7 +840,7 @@ print("6.", s.replace("i", "!"))
 ```
 
 
-## Übung 44
+### Übung 14
 
 ```{python}
 def longest_word(sentence):
@@ -684,19 +855,7 @@ longest_word("The quick brown fox jumps over the lazy dog")
 ```
 
 
-## Übung 45
-
-```{python}
-import math
-
-x = [math.sqrt(i) for i in range(300, 701) if i % 2 == 0]
-
-print(len(x))
-print(sum(x))
-```
-
-
-## Übung 46
+### Übung 15
 
 ```{python}
 def count_lower(s):
@@ -712,121 +871,7 @@ print(count_lower("nnYzKllLSIkcJD4eEx"))
 ```
 
 
-## Übung 47
-
-```{python}
-def check_parity(n):
-    if n % 2 == 0:
-        return 0
-    else:
-        return 1
-
-print(check_parity(4))
-print(check_parity(-7))
-```
-
-
-## Übung 48
-
-Der Code funktioniert nicht, weil `lambda` ein reserviertes Schlüsselwort in Python ist und daher nicht als Funktionsname verwendet werden kann. Um die Funktion korrekt zu implementieren, sollte ein anderer Name verwendet werden, zum Beispiel `lambda_`:
-
-```python
-def lambda_(x):
-    return x + 1
-```
-
-
-## Übung 49
-
-```{python}
-def cm_to_inches(cm):
-    return cm / 2.54
-
-def inches_to_cm(inches):
-    return inches * 2.54
-
-print(cm_to_inches(10))
-print(inches_to_cm(5))
-print(cm_to_inches(inches_to_cm(5)))
-```
-
-
-## Übung 50
-
-```{python}
-def sum_squares(numbers):
-    return sum([x**2 for x in numbers])
-
-print(sum_squares([1, 2, 3, 4, 5]))
-```
-
-
-## Übung 51
-
-```{python}
-from numpy.random import default_rng
-
-rng = default_rng(1)
-x = rng.normal(10, 2, 1000)
-y = rng.uniform(5, 15, 1000)
-z = rng.chisquare(6, 1000)
-
-import matplotlib.pyplot as plt
-
-fig, axes = plt.subplots(1, 3)
-axes[0].scatter(x, y)
-axes[1].scatter(x, z)
-axes[2].scatter(y, z)
-fig.set_tight_layout(True)
-```
-
-
-## Übung 52
-
-```{python}
-def is_prime(n):
-    if n <= 1:
-        return False
-    for i in range(2, n):
-        if n % i == 0:
-            return False
-    return True
-
-print(is_prime(7))
-print(is_prime(10))
-```
-
-::: {.callout-tip}
-Um die Effizienz der Funktion zu verbessern, können Sie die Schleife so ändern, dass sie nur bis zur Quadratwurzel von $n$ (inklusive) geht. Wenn $n$ durch eine Zahl größer als seine Quadratwurzel teilbar ist, muss es auch durch eine kleinere Zahl teilbar sein.
-:::
-
-
-## Übung 53
-
-```{python}
-def f(x):
-    return x // 2 if x % 2 == 0 else 3 * x + 1
-
-n = 1000
-i = 0
-while n > 1:
-    n = f(n)
-    i += 1
-print(i)
-```
-
-
-## Übung 54
-
-Im Funktionskopf fehlen die Klammern nach f für die (leere) Parameterliste. Der korrekte Code lautet:
-
-```python
-def f():
-    return 42
-```
-
-
-## Übung 55
+### Übung 16
 
 ```{python}
 print("Countdown starting now!")
@@ -836,131 +881,7 @@ print("Lift-off!")
 ```
 
 
-## Übung 56
-
-```{python}
-def f_statistic(ssm, ssr, p, n):
-    return (ssm / (p - 1)) / (ssr / (n - p))
-
-f_statistic(2452, 1688, 4, 412)
-```
-
-
-## Übung 57
-
-```{python}
-def convert_celsius(c, to="K"):
-    if to == "K":
-        return c + 273.15
-    elif to == "F":
-        return c * 9 / 5 + 32
-
-convert_celsius(100)
-convert_celsius(38, to="F")
-convert_celsius(0, to="K")
-```
-
-
-## Übung 58
-
-`sum` ist eine eingebaute Funktion und wird im Beispiel "überschrieben", und zwar mit
-einem Integer, welcher eine Summe über eine Schleife beinhaltet. Danach kann die eingebaute
-Funktion `sum` nicht mehr aufgerufen werden. Es wäre hier also besser, anstelle von `sum`
-einen Namen zu verwenden, der keiner eingebauten Funktion entspricht, z.B. `s`:
-
-```{python}
-s = 0
-for i in range(10):
-    s += i
-sum([1, 2, 3, 4, 5])
-```
-
-
-## Übung 59
-
-Ein Tuple mit einem einzigen Element erstellt man mit einem Komma am Ende:
-
-```{python}
-x = 2,
-print(x[0])
-```
-
-
-## Übung 60
-
-```{python}
-def describe_number(n):
-    if n % 10 == 0:
-        return 10
-    elif n % 2 == 0:
-        return 1
-    else:
-        return 2
-
-s = 0
-for n in range(-110, 231):
-    s += describe_number(n)
-print(s)  # 826
-```
-
-
-## Übung 61
-
-```{python}
-a = 3
-if a < 10:  # Doppelpunkt am Ende fehlte
-    print("a is less than 10.")  # Klammern für Funktionsaufruf fehlten
-```
-
-
-## Übung 62
-
-```{python}
-import math
-
-def f(s1, s2):
-    return math.sqrt((s1**2 + s2**2) / 2)
-
-f(5, 27)  # 19.4164878389476
-```
-
-
-## Übung 63
-
-```{python}
-import math
-
-def decibel(x, to="power"):
-    if to == "power":
-        return 10 * math.log10(x)
-    elif to == "amplitude":
-        return 20 * math.log10(x)
-```
-
-
-## Übung 64
-
-```{python}
-def product(n, k=1):
-    result = 1
-    for i in range(1, n + 1):
-        if i % k == 0:
-            result *= i
-    return result
-```
-
-Oder noch kürzer (eleganter):
-
-```{python}
-def product(n, k=1):
-    result = 1
-    for i in range(k, n + 1, k):
-        result *= i
-    return result
-```
-
-
-## Übung 65
+### Übung 17
 
 ```{python}
 words = ["Python", "ist", "eine", "sehr", "beliebte", "Sprache"]
@@ -969,7 +890,7 @@ new = [word.upper() for word in words if len(word) > 4]
 ```
 
 
-## Übung 66
+### Übung 18
 
 ```{python}
 def meters_to_feet(meters):
@@ -982,16 +903,7 @@ print(f"{feet_to_meters(6):.2f}")
 ```
 
 
-## Übung 67
-
-Der Fehler liegt darin, dass die Funktion `np.zeros` ein Tupel (oder eine Liste) mit den Dimensionen des Arrays erwartet, nicht zwei separate Argumente. Der korrekte Code lautet daher:
-
-```{python}
-x = np.zeros((3, 4))
-```
-
-
-## Übung 68
+### Übung 19
 
 ```{python}
 import math
@@ -1001,4 +913,107 @@ def f(x):
 
 
 print(f"{f(0.5):.4f}")
+```
+
+
+## Kapitel 9 – NumPy
+
+### Übung 1
+
+```{python}
+from numpy.random import default_rng
+
+rng = default_rng(1)
+x = rng.integers(low=0, high=101, size=(15, 5))
+x.mean(axis=0)
+```
+
+
+### Übung 2
+
+```{python}
+import numpy as np
+
+x = np.linspace(10, 13, 1000)
+```
+
+
+### Übung 3
+
+Der Fehler liegt darin, dass die Funktion `np.zeros` ein Tupel (oder eine Liste) mit den Dimensionen des Arrays erwartet, nicht zwei separate Argumente. Der korrekte Code lautet daher:
+
+```{python}
+x = np.zeros((3, 4))
+```
+
+
+## Kapitel 10 – Matplotlib
+
+### Übung 1
+
+```{python}
+from numpy.random import default_rng
+
+rng = default_rng(2)
+x = rng.normal(loc=10, scale=2, size=10000)
+
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots()
+ax.hist(x, bins=50)
+plt.show()
+```
+
+
+### Übung 2
+
+```{python}
+from numpy.random import default_rng
+
+rng = default_rng(2)
+x = rng.normal(loc=10, scale=2, size=10000)
+
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots()
+ax.bar(range(100), x[:100])
+plt.show()
+```
+
+
+### Übung 3
+
+```{python}
+from numpy.random import default_rng
+rng = default_rng(2)
+y = rng.normal(loc=10, scale=2, size=10000)
+
+import matplotlib.pyplot as plt
+
+fig, axes = plt.subplots(1, 2)
+axes[0].scatter(range(1, 101), y[:100])
+axes[1].hist(y, bins=30)
+
+fig.set_tight_layout(True)
+plt.show()
+```
+
+
+### Übung 4
+
+```{python}
+from numpy.random import default_rng
+
+rng = default_rng(1)
+x = rng.normal(10, 2, 1000)
+y = rng.uniform(5, 15, 1000)
+z = rng.exponential(5, 1000)
+
+import matplotlib.pyplot as plt
+
+fig, axes = plt.subplots(1, 3)
+axes[0].scatter(x, y)
+axes[1].scatter(x, z)
+axes[2].scatter(y, z)
+fig.set_tight_layout(True)
 ```
