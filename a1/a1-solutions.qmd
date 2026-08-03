@@ -17,7 +17,7 @@ author-title: "Autor"
 published-title: "Veröffentlicht"
 ---
 
-## Kapitel 2 – Objekte, Namen und Typen
+## 2 – Objekte, Namen und Typen
 
 ### Übung 1
 
@@ -30,7 +30,7 @@ print(alpha + lambda_)
 ```
 
 
-## Kapitel 3 – Kontrollfluss
+## 3 – Kontrollfluss
 
 ### Übung 1
 
@@ -103,7 +103,7 @@ if a < 10:  # Doppelpunkt am Ende fehlte
 ```
 
 
-## Kapitel 4 – Funktionen I
+## 4 – Funktionen I
 
 ### Übung 1
 
@@ -467,7 +467,7 @@ f(5, 27)  # 19.4164878389476
 ```
 
 
-## Kapitel 5 – Funktionen II
+## 5 – Funktionen II
 
 ### Übung 1
 
@@ -534,7 +534,7 @@ def product(n, k=1):
 ```
 
 
-## Kapitel 6 – Listen, Tupel und Dictionaries
+## 6 – Listen, Tupel und Dictionaries
 
 ### Übung 1
 
@@ -664,7 +664,7 @@ print(x[0])
 ```
 
 
-## Kapitel 7 – Strings
+## 7 – Strings
 
 ### Übung 1
 
@@ -916,7 +916,7 @@ print(f"{f(0.5):.4f}")
 ```
 
 
-## Kapitel 9 – NumPy
+## 9 – NumPy
 
 ### Übung 1
 
@@ -947,7 +947,7 @@ x = np.zeros((3, 4))
 ```
 
 
-## Kapitel 10 – Matplotlib
+## 10 – Matplotlib
 
 ### Übung 1
 

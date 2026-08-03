@@ -17,10 +17,7 @@ author-title: "Autor"
 published-title: "Veröffentlicht"
 ---
 
-Die folgenden Übungen sind nach Kapiteln sortiert. Um eine Übung zu lösen, genügt es, die Inhalte des jeweils angegebenen Kapitels sowie aller vorigen Kapitel zu kennen.
-
-
-## Kapitel 2 – Objekte, Namen und Typen
+## 2 – Objekte, Namen und Typen
 
 ### Übung 1
 
@@ -35,7 +32,7 @@ print(alpha + lambda)
 Geben Sie auch den korrekten Code an!
 
 
-## Kapitel 3 – Kontrollfluss
+## 3 – Kontrollfluss
 
 ### Übung 1
 
@@ -108,7 +105,7 @@ if a < 10
 Geben Sie auch den korrekten Code an!
 
 
-## Kapitel 4 – Funktionen I
+## 4 – Funktionen I
 
 ### Übung 1
 
@@ -317,7 +314,7 @@ $$\sqrt{\frac{s_1^2 + s_2^2}{2}}$$
 Rufen Sie anschließend Ihre Funktion mit Werten von $s_1 = 5$ und $s_2 = 27$ auf!
 
 
-## Kapitel 5 – Funktionen II
+## 5 – Funktionen II
 
 ### Übung 1
 
@@ -392,7 +389,7 @@ Schreiben Sie eine Funktion `product(n, k)`, die das Produkt aller Zahlen von 1 
 ```
 
 
-## Kapitel 6 – Listen, Tupel und Dictionaries
+## 6 – Listen, Tupel und Dictionaries
 
 ### Übung 1
 
@@ -503,7 +500,7 @@ print(x[0])  # access and print that element
 Es soll ein Tuple mit einem einzigen Element angelegt werden. Anschließend soll dieses Element per Indizierung am Bildschirm ausgegeben werden.
 
 
-## Kapitel 7 – Strings
+## 7 – Strings
 
 ### Übung 1
 
@@ -765,7 +762,7 @@ $$ f(x) = \frac{e^{2x} + \sin(x)}{\sqrt{1 + x^2}} $$
 Berechnen Sie den Funktionswert für $x = 0.5$ und geben Sie das Ergebnis auf vier Dezimalstellen gerundet aus! Das korrekte Ergebnis lautet 2.8601.
 
 
-## Kapitel 9 – NumPy
+## 9 – NumPy
 
 ### Übung 1
 
@@ -790,7 +787,7 @@ x = np.zeros(3, 4)
 Was ist der Fehler und wie sieht der korrekte Code aus?
 
 
-## Kapitel 10 – Matplotlib
+## 10 – Matplotlib
 
 ### Übung 1
 
@@ -849,3 +846,8 @@ Verwenden Sie anschließend Matplotlib, um eine Grafik bestehend aus drei Streud
 ::: {.callout-note}
 Zur Erzeugung der Zufallszahlen benötigen Sie die Methoden `normal`, `uniform` und `exponential` des Zufallszahlengenerators.
 :::
+
+
+## Lösungen
+
+Siehe [hier](a1-solutions.qmd).

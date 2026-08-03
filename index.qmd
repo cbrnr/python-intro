@@ -2,7 +2,7 @@
 title: "Einführung in Python und PsychoPy"
 ---
 
-Die folgenden Unterlagen dienen als Basis für die Lehrveranstaltung [Einführung in Python und PsychoPy](https://online.uni-graz.at/kfu_online/wbLv.wbShowLVDetail?pStpSpNr=940461).
+Die folgenden Unterlagen dienen als Basis für die Lehrveranstaltung [Einführung in Python und PsychoPy](https://online.uni-graz.at/kfu_online/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/1000802?$scrollTo=toc_overview).
 
  0. [Organisatorisches](00/00.qmd)
  1. [Erste Schritte](01/01.qmd) ([Lösungen](01/01-solutions.qmd))
