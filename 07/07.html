@@ -2,14 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Clemens Brunner">
 
-<title>7 – Listen und Dictionaries – Einführung in Python und PsychoPy</title>
+<title>7 – Strings – Einführung in Python und PsychoPy</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -68,19 +71,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6b6957c917596b414ec0b78690761e87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-94a11f9d2ef63b4d3e14a49c60b54d86.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-31dd7b97cc2105c3f43b9904fe8c5fac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-94a11f9d2ef63b4d3e14a49c60b54d86.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-0f1a520e41d12d84e925fcfd3dfb7140.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-70d97c5485b77d73a4316377cf99e6cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-0f1a520e41d12d84e925fcfd3dfb7140.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
@@ -113,6 +115,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -297,6 +328,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
+    <a class="nav-link" href="../00/00.html"> 
+<span class="menu-text">0</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../01/01.html"> 
 <span class="menu-text">1</span></a>
   </li>  
@@ -376,7 +411,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page">
-      <h1 class="title">7 – Listen und Dictionaries</h1>
+      <h1 class="title">7 – Strings</h1>
             <p class="subtitle lead">Einführung in Python und PsychoPy</p>
                       </div>
   </div>
@@ -394,7 +429,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Veröffentlicht</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">27. April 2026</p>
+        <p class="date">12. November 2026</p>
       </div>
     </div>
     
@@ -414,374 +449,88 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="listen-erstellen" class="level2">
-<h2 class="anchored" data-anchor-id="listen-erstellen">Listen erstellen</h2>
-<p>Eine Liste (<code>list</code>) ist wie ein String (<code>str</code>) ein Sequenzdatentyp. Im Gegensatz zu einem String kann eine Liste aber Elemente mit <em>unterschiedlichen</em> und <em>beliebigen</em> Datentypen enthalten, z.B. Strings, Zahlen, weitere Listen, und so weiter. Eine Liste erstellt man mit eckigen Klammern, innerhalb derer die einzelnen Elemente durch Kommas getrennt angegeben werden:</p>
-<div id="89b9ba3c" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">23</span>, <span class="st">"Hallo"</span>, <span class="st">"test"</span>, <span class="fl">1.44</span>, <span class="va">True</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="f16e57f9" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [<span class="dv">1</span>, <span class="st">"1"</span>, [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="st">"test"</span>, <span class="va">False</span>, [<span class="va">True</span>, <span class="va">True</span>, <span class="dv">2</span>, <span class="dv">4</span>]]]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="indizieren-und-slicen" class="level2">
-<h2 class="anchored" data-anchor-id="indizieren-und-slicen">Indizieren und Slicen</h2>
-<p>Der Zugriff auf einzelne (bzw. mehrere) Elemente funktioniert genau wie bei Strings durch Indizierung (bzw. Slicen) mit eckigen Klammern.</p>
-<div id="1ce52bea" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>]  <span class="co"># erstes Element</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>23</code></pre>
-</div>
-</div>
-<div id="50cbebde" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x[<span class="op">-</span><span class="dv">2</span>]  <span class="co"># vorletztes Element</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>1.44</code></pre>
-</div>
-</div>
-<div id="54d3601b" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>:<span class="dv">4</span>]  <span class="co"># drei Elemente</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>['Hallo', 'test', 1.44]</code></pre>
-</div>
-</div>
-<div id="1de33881" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x[::<span class="op">-</span><span class="dv">1</span>]  <span class="co"># Liste in umgekehrter Reihenfolge</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>[True, 1.44, 'test', 'Hallo', 23]</code></pre>
-</div>
-</div>
-</section>
-<section id="arbeiten-mit-listen" class="level2">
-<h2 class="anchored" data-anchor-id="arbeiten-mit-listen">Arbeiten mit Listen</h2>
-<section id="länge" class="level3">
-<h3 class="anchored" data-anchor-id="länge">Länge</h3>
-<p>Wie bei Strings gibt die Funktion <code>len</code> die Länge der Liste (also die Anzahl der Elemente in der Liste) zurück. Sehen wir uns noch einmal die beiden oben definierten Listen <code>x</code> und <code>y</code> an:</p>
-<div id="e7ec85a3" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>[23, 'Hallo', 'test', 1.44, True]</code></pre>
-</div>
-</div>
-<div id="aa746563" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>[1, '1', [1, 2, 3], ['test', False, [True, True, 2, 4]]]</code></pre>
-</div>
-</div>
-<p>Diese enthalten 5 bzw. 4 Elemente:</p>
-<div id="fb466ab3" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(x)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>5</code></pre>
-</div>
-</div>
-<div id="6369c6a2" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(y)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>4</code></pre>
-</div>
-</div>
-<p>In der Liste <code>y</code> sind das dritte und vierte Element selbst wieder Listen:</p>
-<div id="dd11ae4c" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>y[<span class="dv">2</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<pre><code>[1, 2, 3]</code></pre>
-</div>
-</div>
-<div id="559e931c" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>y[<span class="dv">3</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
-<pre><code>['test', False, [True, True, 2, 4]]</code></pre>
-</div>
-</div>
-<p>Letztere enthält eine weitere Liste am Ende (mit Index <code>2</code>):</p>
-<div id="45cf9d2a" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>y[<span class="dv">3</span>][<span class="dv">2</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>[True, True, 2, 4]</code></pre>
-</div>
-</div>
-<p>Eine leere Liste ist eine ganz normale Liste, nur eben mit keinen Elementen (also mit einer Länge 0):</p>
-<div id="ca67cab1" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> []</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(z)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>0</code></pre>
-</div>
-</div>
-<div id="a215569b" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(z)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
-<pre><code>list</code></pre>
-</div>
-</div>
-</section>
-<section id="elemente-verändern" class="level3">
-<h3 class="anchored" data-anchor-id="elemente-verändern">Elemente verändern</h3>
-<p>Nachdem Listen <em>mutable</em> sind, kann man einzelne Elemente auch nach der Erstellung der Liste ändern.</p>
-<div id="94c153ee" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
-<pre><code>[23, 'Hallo', 'test', 1.44, True]</code></pre>
-</div>
-</div>
-<div id="1cb2b1de" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">111111</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
-<pre><code>[23, 111111, 'test', 1.44, True]</code></pre>
-</div>
-</div>
-<div id="98c3ee61" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>] <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
-<pre><code>[None, 111111, 'test', 1.44, True]</code></pre>
-</div>
-</div>
-</section>
-<section id="operatoren-und" class="level3">
-<h3 class="anchored" data-anchor-id="operatoren-und">Operatoren <code>+</code> und <code>*</code></h3>
-<p>Zwei oder mehr Listen kann man mit dem <code>+</code>-Operator zu einer neuen Liste zusammenfügen:</p>
-<div id="0388b5ae" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">"drei"</span>] <span class="op">+</span> [<span class="st">"vier"</span>, <span class="dv">5</span>, <span class="fl">6.0</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
-<pre><code>[1, 2, 'drei', 'vier', 5, 6.0]</code></pre>
-</div>
-</div>
-<p>Der <code>*</code>-Operator vervielfältigt eine Liste:</p>
-<div id="47856dd6" class="cell" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>, <span class="fl">2.0</span>, <span class="st">"drei"</span>] <span class="op">*</span> <span class="dv">3</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="20">
-<pre><code>[1, 2.0, 'drei', 1, 2.0, 'drei', 1, 2.0, 'drei']</code></pre>
-</div>
-</div>
-</section>
-<section id="elemente-zu-listen-hinzufügen" class="level3">
-<h3 class="anchored" data-anchor-id="elemente-zu-listen-hinzufügen">Elemente zu Listen hinzufügen</h3>
-<p>Mit der Methode <code>append</code> kann man neue Elemente am Ende der Liste hinzufügen.</p>
-<div id="baa1724a" class="cell" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
-<pre><code>[None, 111111, 'test', 1.44, True]</code></pre>
-</div>
-</div>
-<div id="ccc31d81" class="cell" data-execution_count="22">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>x.append(<span class="dv">13</span>)</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
-<pre><code>[None, 111111, 'test', 1.44, True, 13]</code></pre>
-</div>
-</div>
-<p>Im Gegensatz zu Strings wird hier die Liste <em>direkt verändert</em>; eine erneute Zuweisung zu einem Namen ist nicht notwendig bzw. führt nicht zum gewünschten Ergebnis, was im folgenden Beispiel ersichtlich ist:</p>
-<div id="7f80f128" class="cell" data-execution_count="23">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> x.append(<span class="dv">25</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="35be9ffb" class="cell" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)  <span class="co"># Listen-Methoden geben None zurück, da Sie die Liste direkt ändern</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>None</code></pre>
-</div>
-</div>
-<div id="242a55e0" class="cell" data-execution_count="25">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>x  <span class="co"># geänderte Liste</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
-<pre><code>[None, 111111, 'test', 1.44, True, 13, 25]</code></pre>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Wichtig
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Listen-Methoden <em>verändern</em> die Liste <em>direkt</em> (in-place) und geben <em>nichts</em> (<code>None</code>) zurück. Im Gegensatz dazu können String-Methoden den String nicht verändern und geben daher immer einen neuen String zurück.</p>
-</div>
-</div>
-<p>Möchte man gleich mehrere Elemente hinzufügen, kann man die Methode <code>extend</code> benutzen:</p>
-<div id="18b174a3" class="cell" data-execution_count="26">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>x.extend([<span class="dv">99</span>, <span class="st">"HH"</span>, <span class="st">"zz"</span>])</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
-<pre><code>[None, 111111, 'test', 1.44, True, 13, 25, 99, 'HH', 'zz']</code></pre>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tipp
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Versuchen Sie anhand der folgenden zwei Befehle den Unterschied zwischen <code>append</code> und <code>extend</code> zu erklären:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>x.extend([<span class="dv">99</span>, <span class="st">"HH"</span>, <span class="st">"zz"</span>])</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>x.append([<span class="dv">99</span>, <span class="st">"HH"</span>, <span class="st">"zz"</span>])</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</section>
-<section id="elemente-aus-listen-entfernen" class="level3">
-<h3 class="anchored" data-anchor-id="elemente-aus-listen-entfernen">Elemente aus Listen entfernen</h3>
-<p>Um bestimmte Elemente aus der Liste zu entfernen, verwendet man den <code>del</code>-Befehl.</p>
-<div id="e0273643" class="cell" data-execution_count="27">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"b"</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="st">"fünf"</span>]</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> x[<span class="dv">1</span>]  <span class="co"># löscht das Element mit dem Index 1</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
-<pre><code>['A', 3, 4, 'fünf']</code></pre>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hinweis
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Beachten Sie, dass <code>del</code> ein Python-Keyword ist und keine Funktion. Daher handelt es sich bei <code>del x[1]</code> auch nicht um einen Funktionsaufruf, Klammern als Aufrufoperator sind also nicht notwendig!</p>
-</div>
-</div>
-<p>Alternativ kann man auch die Methode <code>pop</code> zum Löschen eines Elementes an einem bestimmten Index verwenden. Diese gibt das entfernte Element auch zurück (was <code>del</code> nicht tut).</p>
-<div id="f5f71024" class="cell" data-execution_count="28">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"b"</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="st">"fünf"</span>]</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>x.pop(<span class="dv">1</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="28">
-<pre><code>'b'</code></pre>
-</div>
-</div>
-<div id="da23ebe0" class="cell" data-execution_count="29">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="29">
-<pre><code>['A', 3, 4, 'fünf']</code></pre>
-</div>
-</div>
-<p>Die Methode <code>remove</code> entfernt das erste Element aus der Liste, welches dem gesuchten Wert entspricht. Hier gibt man also nicht den zu entfernenden Index an, sondern den zu löschenden Wert.</p>
-<div id="d6abedbe" class="cell" data-execution_count="30">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"b"</span>, <span class="dv">31</span>, <span class="dv">41</span>, <span class="st">"fünf"</span>]</span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>x.remove(<span class="dv">31</span>)</span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="30">
-<pre><code>['A', 'b', 41, 'fünf']</code></pre>
-</div>
-</div>
-</section>
-<section id="listen-sortieren" class="level3">
-<h3 class="anchored" data-anchor-id="listen-sortieren">Listen sortieren</h3>
-<p>Wenn eine Liste sortierbare Elemente enthält (z.B. lauter Zahlen), kann man sie mit der Methode <code>sort</code> sortieren.</p>
-<div id="2445b7de" class="cell" data-execution_count="31">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> [<span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">23</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">78</span>, <span class="dv">44</span>]</span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>h.sort()</span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>h</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="31">
-<pre><code>[-78, 1, 6, 9, 23, 44]</code></pre>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tipp
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Was passiert, wenn man eine Liste mit nicht sortierbaren Elementen sortieren möchte (z.B. die Liste <code>x</code> aus dem vorigen Beispiel)?</p>
-</div>
-</div>
-</section>
-<section id="listen-umkehren" class="level3">
-<h3 class="anchored" data-anchor-id="listen-umkehren">Listen umkehren</h3>
-<p>Eine Liste kann man wie einen String mit folgendem Slice umkehren (die ursprüngliche Liste ändert sich dabei aber nicht):</p>
-<div id="0e1f5cd3" class="cell" data-execution_count="32">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>h[::<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="32">
-<pre><code>[44, 23, 9, 6, 1, -78]</code></pre>
-</div>
-</div>
-<div id="21f0a060" class="cell" data-execution_count="33">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>h</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="33">
-<pre><code>[-78, 1, 6, 9, 23, 44]</code></pre>
-</div>
-</div>
-<p>Es gibt aber noch eine zweite Möglichkeit, welche die Liste direkt (in-place) verändert:</p>
-<div id="cf158749" class="cell" data-execution_count="34">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>h.reverse()</span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>h</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="34">
-<pre><code>[44, 23, 9, 6, 1, -78]</code></pre>
-</div>
-</div>
-</section>
-<section id="listen-iterieren" class="level3">
-<h3 class="anchored" data-anchor-id="listen-iterieren">Listen iterieren</h3>
-<p>Mit dem <code>in</code>-Operator kann man überprüfen, ob ein bestimmtes Element in einer Liste enthalten ist.</p>
-<div id="7b4725ab" class="cell" data-execution_count="35">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="kw">in</span> h</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="35">
-<pre><code>False</code></pre>
-</div>
-</div>
-<div id="f48cedb2" class="cell" data-execution_count="36">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="dv">78</span> <span class="kw">in</span> h</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="36">
-<pre><code>True</code></pre>
-</div>
-</div>
-<p>Eine Liste ist wie jeder Sequenzdatentyp iterierbar, d.h. man kann mit einer <code>for</code>-Schleife über die einzelnen Elemente iterieren:</p>
-<div id="abb12f59" class="cell" data-execution_count="37">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> [<span class="dv">2</span>, <span class="st">"fünf"</span>, <span class="fl">3.14</span>, <span class="st">"sieben"</span>]:</span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(k)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>2
-fünf
-3.14
-sieben</code></pre>
-</div>
-</div>
-<p>Die Schleifenvariable <code>k</code> nimmt in jeder Iteration die einzelnen Werte der Liste an.</p>
-</section>
-</section>
-<section id="tupel" class="level2">
-<h2 class="anchored" data-anchor-id="tupel">Tupel</h2>
-<p>Tupel (englische Schreibweise <em>Tuple</em>) verhalten sich wie Listen, sind aber <em>immutable</em>. Das bedeutet, dass man die im Tupel enthaltenen Elemente nicht verändern kann. Tupel erstellt man wie Listen, nur lässt man die eckigen Klammern weg (man benötigt auch keine runden Klammern, obwohl diese manchmal in Kombination mit anderen Befehlen syntaktisch notwendig sind, z.B. wenn man ein Tupel als Argument übergeben möchte).</p>
-<div id="fb337813" class="cell" data-execution_count="38">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="st">"A"</span>, <span class="st">"b"</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="st">"fünf"</span></span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>t</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="38">
-<pre><code>('A', 'b', 3, 4, 'fünf')</code></pre>
-</div>
-</div>
-<div id="df311ee7" class="cell" data-execution_count="39">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>t[<span class="dv">1</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="39">
-<pre><code>'b'</code></pre>
-</div>
-</div>
-<div id="d2c88c22" class="cell" data-execution_count="40">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>t[<span class="dv">1</span>] <span class="op">=</span> <span class="st">"c"</span>  <span class="co"># Fehler!</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="wiederholung" class="level2">
+<h2 class="anchored" data-anchor-id="wiederholung">Wiederholung</h2>
+<p>In der vorigen Einheit haben wir mit Listen, Tupeln und Dictionaries bereits Sammlungstypen kennengelernt und dabei gesehen, wie <em>Indizieren</em> und <em>Slicen</em> bei Sequenzdatentypen funktionieren. Der in dieser Einheit behandelte Datentyp <code>str</code> (String) ist ebenfalls ein Sequenzdatentyp – ein String besteht aus einer Sequenz von Zeichen.</p>
+<p>Wie Tupel sind Strings <em>immutable</em> – ein einmal erstellter String kann nicht mehr verändert werden. Der Versuch, ein einzelnes Zeichen zu überschreiben, führt zu einem Fehler:</p>
+<div id="36151ca3" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"Python"</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="a91fe2cc" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>s[<span class="dv">1</span>]  <span class="co"># das 2. Zeichen (Python beginnt mit 0 zu zählen)</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>'y'</code></pre>
+</div>
+</div>
+<div id="e6650041" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>s[<span class="dv">1</span>] <span class="op">=</span> <span class="st">"x"</span>  <span class="co"># Fehler, da Strings immutable sind</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[40]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">t</span><span class="ansi-yellow-bg">[</span><span class="ansi-green-fg ansi-yellow-bg">1</span><span class="ansi-yellow-bg">]</span> = <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">c</span><span class="ansi-yellow-fg">"</span>  <span style="font-style:italic;color:rgb(95,135,135)"># Fehler!</span>
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[3]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> s[<span class="ansi-green-fg">1</span>] = <span class="ansi-yellow-fg">"x"</span>  <span style="font-style:italic;color:rgb(95,135,135)"># Fehler, da Strings immutable sind</span>
 
-<span class="ansi-red-fg">TypeError</span>: 'tuple' object does not support item assignment</pre>
+<span class="ansi-red-fg">TypeError</span>: 'str' object does not support item assignment</pre>
 </div>
 </div>
 </div>
+<p>Möchte man einen String “ändern”, muss man stattdessen einen neuen String erzeugen (dazu weiter unten mehr).</p>
+</section>
+<section id="strings-erstellen" class="level2">
+<h2 class="anchored" data-anchor-id="strings-erstellen">Strings erstellen</h2>
+<p>Der Datentyp <code>str</code> stellt Zeichenketten (Strings) dar. Ein String besteht aus einer Sequenz an Zeichen (Buchstaben, Zahlen, Sonderzeichen). Strings werden von einfachen oder doppelten Anführungszeichen umschlossen (aber der Inhalt eines Strings selbst besteht nur aus den Zeichen <em>zwischen</em> diesen Anführungszeichen).</p>
+<div id="e5e47463" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="op">=</span> <span class="st">"String"</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>s1</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>'String'</code></pre>
+</div>
+</div>
+<div id="d0c2fec2" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>s2 <span class="op">=</span> <span class="st">'Dies ist ebenfalls ein String.'</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>s2</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>'Dies ist ebenfalls ein String.'</code></pre>
+</div>
+</div>
+<div id="ddb89e09" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>s3 <span class="op">=</span> <span class="st">'Auch "das" ist ein String'</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>s3</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>'Auch "das" ist ein String'</code></pre>
+</div>
+</div>
+<div id="fc67709a" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>s4 <span class="op">=</span> <span class="st">"And that's a string too!"</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>s4</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>"And that's a string too!"</code></pre>
+</div>
+</div>
+<p>Lange Strings, die sich auch über mehrere Zeilen erstrecken können (was bei den mit einfachen Anführungszeichen erzeugten Strings nicht möglich ist), kann man mit drei Anführungszeichen umschließen:</p>
+<div id="ea3f122c" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>s5 <span class="op">=</span> <span class="st">"""Dies ist ein sehr langer Text.</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="st">Man kann einfach</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="st">in die nächste Zeile gehen.</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="91f2b4b0" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s5)  <span class="co"># der Inhalt des Strings wird formatiert ausgegeben</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Dies ist ein sehr langer Text.
+Man kann einfach
+in die nächste Zeile gehen.
+</code></pre>
+</div>
+</div>
+<div id="564e5b23" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>s5  <span class="co"># tatsächlicher Wert des Strings, \n steht für Zeilenumbruch</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>'Dies ist ein sehr langer Text.\nMan kann einfach\nin die nächste Zeile gehen.\n'</code></pre>
+</div>
+</div>
+<p>Strings mit drei Anführungszeichen haben wir schon als Docstrings zur kurzen Beschreibung von Funktionen kennengelernt.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -792,389 +541,287 @@ Tipp
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Ein Tupel mit einem Element erstellt man mit einem nachgestellten Komma:</p>
-<div id="96698ee4" class="cell" data-execution_count="41">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="st">"A"</span>,</span>
-<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>t</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="41">
-<pre><code>('A',)</code></pre>
+<p>Möchte man einen String erzeugen, der sowohl <code>"</code> als auch <code>'</code> enthält, kann man weder das eine noch das andere Zeichen direkt verwenden. Man muss daher das Anführungszeichen, welches für die Definition des Strings verwendet wurde und auch im String vorkommen soll, mit einem vorangestellten <code>\</code> schreiben (man spricht hier von einer <a href="https://de.wikipedia.org/wiki/Escape-Sequenz">Escape-Sequenz</a>):</p>
+<div id="0932b453" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"Dieser String </span><span class="ch">\"</span><span class="st">enthält</span><span class="ch">\"</span><span class="st"> doppelte und 'einfache' Anführungszeichen."</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">'Dieser String "enthält" doppelte und </span><span class="ch">\'</span><span class="st">einfache</span><span class="ch">\'</span><span class="st"> Anführungszeichen.'</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Die beiden Strings <code>x</code> und <code>y</code> sind identisch:</p>
+<div id="08d9ec66" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">==</span> y</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>True</code></pre>
 </div>
 </div>
-<p>Die Klammern sind, wie bereits erwähnt, optional:</p>
-<div id="c5c26f68" class="cell" data-execution_count="42">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> (<span class="st">"A"</span>,)</span>
-<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>t</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="42">
-<pre><code>('A',)</code></pre>
+<p>Die <code>print</code>-Funktion stellt Escape-Sequenzen aber “richtig” formatiert dar:</p>
+<div id="47fa6801" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Dieser String "enthält" doppelte und 'einfache' Anführungszeichen.</code></pre>
 </div>
 </div>
+<p>Auch nicht druckbare Zeichen kann man mit Escape-Sequenzen darstellen, wie z.B. einen Zeilenumbruch <code>\n</code> oder einen Tabulator <code>\t</code>. Ein Backslash <code>\</code> muss ebenfalls als Escape-Sequenz <code>\\</code> geschrieben werden.</p>
 </div>
 </div>
 </section>
-<section id="list-comprehensions" class="level2">
-<h2 class="anchored" data-anchor-id="list-comprehensions">List Comprehensions</h2>
-<p>List Comprehensions sind eine alternative Möglichkeit zur Erstellung von Listen. List Comprehensions sind im Prinzip Schleifen, die aber syntaktisch wesentlich kompakter (kürzer) sind.</p>
-<p>Nehmen wir als Beispiel eine Liste der Quadratzahlen von 0 bis 9. Mit einer normalen Schleife würde man diese Liste so erstellen:</p>
-<div id="78375272" class="cell" data-execution_count="43">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> []  <span class="co"># wir beginnen mit einer leeren Liste</span></span>
-<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>    squares.append(x<span class="op">**</span><span class="dv">2</span>)  <span class="co"># Liste wird befüllt</span></span>
-<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>squares</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="43">
-<pre><code>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</code></pre>
+<section id="strings-indizieren-und-slicen" class="level2">
+<h2 class="anchored" data-anchor-id="strings-indizieren-und-slicen">Strings indizieren und slicen</h2>
+<p>Indizieren und Slicen funktionieren bei Strings genau wie bei Listen (siehe vorige Einheit): Das erste Zeichen hat den Index 0, negative Indizes zählen von hinten, und mit einem Doppelpunkt greift man einen <em>Slice</em> heraus (wobei der Endindex nicht mehr dazuzählt).</p>
+<div id="ff8e3338" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"String"</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="364c184d" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>s[<span class="dv">0</span>]  <span class="co"># erstes Zeichen</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>'S'</code></pre>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hinweis
+<div id="a5cb2afd" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>s[<span class="op">-</span><span class="dv">1</span>]  <span class="co"># letztes Zeichen</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>'g'</code></pre>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>Bei der Erstellung von vielen Listen startet man mit einer leeren Liste und fügt dann mit einer Schleife die einzelnen Elemente zur Liste hinzu.</p>
+<div id="267e4874" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>s[<span class="dv">0</span>:<span class="dv">4</span>]  <span class="co"># 4 Zeichen, Index 0, 1, 2, 3</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>'Stri'</code></pre>
 </div>
 </div>
-<p>Dasselbe Ergebnis kann mit einer List Comprehension viel kürzer geschrieben werden:</p>
-<div id="7a77592b" class="cell" data-execution_count="44">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> [x<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)]</span>
-<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>squares</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="44">
-<pre><code>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</code></pre>
+<div id="3a27690a" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>s[<span class="dv">2</span>:]  <span class="co"># ab Index 2 bis zum letzten Zeichen</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>'ring'</code></pre>
 </div>
 </div>
-<p>Die Zutaten einer List Comprehension sind:</p>
-<ul>
-<li>Zwei umschließende eckige Klammern (die ja eine Liste definieren)</li>
-<li>Ein Ausdruck (<code>x**2</code> im Beispiel)</li>
-<li>Eine <code>for</code>-Anweisung (<code>for x in range(10)</code> im Beispiel)</li>
-<li>Optional eine <code>if</code>-Bedingung</li>
-<li>Optional weitere <code>for</code>-Anweisungen</li>
-</ul>
-<p>Ein relativ komplexes Beispiel könnte wie folgt aussehen:</p>
-<div id="1d2e97b5" class="cell" data-execution_count="45">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> [(x <span class="op">-</span> <span class="dv">1</span>, y <span class="op">-</span> <span class="dv">2</span>) <span class="cf">for</span> x <span class="kw">in</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="cf">for</span> y <span class="kw">in</span> [<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>] <span class="cf">if</span> x <span class="op">!=</span> y]</span>
-<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>z</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="45">
-<pre><code>[(0, 1), (0, 2), (1, 1), (1, -1), (1, 2), (2, -1), (2, 2)]</code></pre>
+<div id="37b66332" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>s[::<span class="op">-</span><span class="dv">1</span>]  <span class="co"># ganzen String umdrehen</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>'gnirtS'</code></pre>
 </div>
 </div>
-<p>Diese List Comprehension entspricht exakt folgendem Konstrukt:</p>
-<div id="a9a6f07c" class="cell" data-execution_count="46">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> []</span>
-<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]:</span>
-<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> y <span class="kw">in</span> [<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>]:</span>
-<span id="cb88-4"><a href="#cb88-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> x <span class="op">!=</span> y:</span>
-<span id="cb88-5"><a href="#cb88-5" aria-hidden="true" tabindex="-1"></a>            z.append((x <span class="op">-</span> <span class="dv">1</span>, y <span class="op">-</span> <span class="dv">2</span>))</span>
-<span id="cb88-6"><a href="#cb88-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb88-7"><a href="#cb88-7" aria-hidden="true" tabindex="-1"></a>z</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="46">
-<pre><code>[(0, 1), (0, 2), (1, 1), (1, -1), (1, 2), (2, -1), (2, 2)]</code></pre>
-</div>
-</div>
-<p>Weitere Beispiele veranschaulichen, dass List Comprehensions eine Operation auf alle Elemente einer Liste anwenden oder bestimmte Elemente herausfiltern können:</p>
-<div id="a4cbf959" class="cell" data-execution_count="47">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>vec <span class="op">=</span> [<span class="op">-</span><span class="dv">4</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="67dc4435" class="cell" data-execution_count="48">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>[x <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> vec]  <span class="co"># neue Liste mit verdoppelten Einträgen</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="48">
-<pre><code>[-8, -4, 0, 4, 8]</code></pre>
-</div>
-</div>
-<div id="662dd22c" class="cell" data-execution_count="49">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>[x <span class="cf">for</span> x <span class="kw">in</span> vec <span class="cf">if</span> x <span class="op">&gt;=</span> <span class="dv">0</span>]  <span class="co"># negative Einträge herausfiltern</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="49">
-<pre><code>[0, 2, 4]</code></pre>
-</div>
-</div>
-<div id="0acfb6bd" class="cell" data-execution_count="50">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>[<span class="bu">abs</span>(x) <span class="cf">for</span> x <span class="kw">in</span> vec]  <span class="co"># eine Funktion auf alle Elemente separat anwenden</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="50">
-<pre><code>[4, 2, 0, 2, 4]</code></pre>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hinweis
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In Python ist es mit Listen also nicht einfach möglich, elementweise Berechnungen durchzuführen.</p>
-<div id="91898eb7" class="cell" data-execution_count="51">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">4</span>, <span class="op">-</span><span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">81</span>, <span class="dv">11</span>]</span>
-<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">*</span> <span class="dv">2</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="51">
-<pre><code>[4, -3, 7, 81, 11, 4, -3, 7, 81, 11]</code></pre>
-</div>
-</div>
-<p>So werden die einzelnen Elemente nicht mit 2 multipliziert, sondern die Liste wird “verdoppelt”. Immer dann, wenn man eine Operation elementweise anwenden möchte, muss man daher eine List Comprehension (oder die entsprechende Schleife) verwenden.</p>
-<p>Für numerische Anwendungen ist das aber denkbar unpraktisch. Wir werden in einer der folgenden Einheiten lernen, wie man Python dennoch für numerische Berechnungen verwenden kann (nämlich dank eines neuen Datentyps namens NumPy Array, welches vom Zusatzpaket NumPy zur Verfügung gestellt wird).</p>
-</div>
-</div>
-<p>In der Praxis verwendet man List Comprehensions, so lange diese noch relativ einfach und übersichtlich sind. Hat man aber mehrere geschachtelte Schleifen und Bedingungen, verwendet man besser explizite Schleifen, da diese dann besser lesbar sind.</p>
 </section>
-<section id="dictionaries" class="level2">
-<h2 class="anchored" data-anchor-id="dictionaries">Dictionaries</h2>
-<p>Der Datentyp Dictionary ist ein sogenannter Mapping-Datentyp. Man kann sich ein Dictionary wie ein Sprachwörterbuch vorstellen (daher auch der Name). Wenn man die Übersetzung zu einem bestimmten Wort wissen möchte, schlägt man unter dem gesuchten Wort (hier Key genannt) nach und findet dort die Übersetzung (hier als Value bezeichnet). In Python definiert man ein <code>dict</code> mit geschwungenen Klammern und trennt die Einträge wie bei Listen mit Kommas. Jeder Eintrag besteht aus einem Key und einem Value, welche durch einen Doppelpunkt voneinander getrennt sind.</p>
-<p>Folgendes Beispiel zeigt ein <code>dict</code> mit drei Einträgen:</p>
-<div id="e2067887" class="cell" data-execution_count="52">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> {<span class="st">"Haus"</span>: <span class="st">"house"</span>, <span class="st">"Schlange"</span>: <span class="st">"snake"</span>, <span class="st">"Katze"</span>: <span class="st">"cat"</span>}</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Alternativ kann man auch die <code>dict</code>-Funktion benutzen. Mit Keyword-Argumenten kann man so das Dictionary initialisieren:</p>
-<div id="16d3c9b7" class="cell" data-execution_count="53">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="bu">dict</span>(Haus<span class="op">=</span><span class="st">"house"</span>, Schlange<span class="op">=</span><span class="st">"snake"</span>, Katze<span class="op">=</span><span class="st">"cat"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hinweis
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Man beachte, dass die Keys den Keyword-Argumenten entsprechen und dementsprechend ohne Anführungszeichen geschrieben werden müssen. Diese werden dann aber in Strings umgewandelt und so als Keys im Dictionary verwendet.</p>
-</div>
-</div>
-<p>Einzelne Elemente kann man wieder mit Indizierung herausgreifen – anstelle eines numerischen Index (wie bei Listen) gibt man aber nun den jeweiligen Key als Index an:</p>
-<div id="8e30961e" class="cell" data-execution_count="54">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>d[<span class="st">"Haus"</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="54">
-<pre><code>'house'</code></pre>
-</div>
-</div>
-<div id="cf9a605d" class="cell" data-execution_count="55">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb103"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>d[<span class="st">"Schlange"</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="55">
-<pre><code>'snake'</code></pre>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Wichtig
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Ein Dictionary ist also gewissermaßen eine verallgemeinerte Liste. Ein wichtiger Unterschied zu Listen ist, dass die Reihenfolge der Einträge in Dictionaries keine Rolle spielt. D.h. man kann bei einem Dictionary <em>nicht</em> vom ersten, zweiten, dritten Element usw. sprechen – bei Listen hingegen schon.</p>
-</div>
-</div>
-<p>Genau wie in Listen kann man in Dictionaries Elemente mit unterschiedlichen Datentypen speichern. Eine Einschränkung gibt es aber für die Keys: diese müssen <em>immutable</em> sein (daher kann man z.B. keine Listen als Keys verwenden). Neue Elemente fügt man einfach durch Angabe von Key und Value zu einem bestehenden Dictionary hinzu.</p>
-<div id="7804e511" class="cell" data-execution_count="56">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="56">
-<pre><code>{'Haus': 'house', 'Schlange': 'snake', 'Katze': 'cat'}</code></pre>
-</div>
-</div>
-<div id="4829989a" class="cell" data-execution_count="57">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>d[<span class="dv">23</span>] <span class="op">=</span> <span class="st">"tt"</span>  <span class="co"># Key 23, Value "tt"</span></span>
-<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>d[<span class="dv">1</span>] <span class="op">=</span> <span class="fl">3.14</span>  <span class="co"># Key 1, Value 3.14</span></span>
-<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>d[<span class="st">"L"</span>] <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]  <span class="co"># Key "L", Value [1, 2, 3]</span></span>
-<span id="cb107-4"><a href="#cb107-4" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="57">
-<pre><code>{'Haus': 'house',
- 'Schlange': 'snake',
- 'Katze': 'cat',
- 23: 'tt',
- 1: 3.14,
- 'L': [1, 2, 3]}</code></pre>
-</div>
-</div>
-<p>Möchte man auf einen Eintrag mit einem Key zugreifen, der im Wörterbuch nicht existiert, erhält man eine Fehlermeldung.</p>
-<div id="414d3683" class="cell" data-execution_count="58">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>d[<span class="dv">0</span>]  <span class="co"># Fehler!</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[58]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">d</span><span class="ansi-yellow-bg">[</span><span class="ansi-green-fg ansi-yellow-bg">0</span><span class="ansi-yellow-bg">]</span>  <span style="font-style:italic;color:rgb(95,135,135)"># Fehler!</span>
-
-<span class="ansi-red-fg">KeyError</span>: 0</pre>
-</div>
-</div>
-</div>
-<section id="arbeiten-mit-dictionaries" class="level3">
-<h3 class="anchored" data-anchor-id="arbeiten-mit-dictionaries">Arbeiten mit Dictionaries</h3>
-<p>Die Länge eines Dictionaries, also die Anzahl der Einträge, bestimmt man mit der Funktion <code>len</code>:</p>
-<div id="01a525eb" class="cell" data-execution_count="59">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(d)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="59">
+<section id="arbeiten-mit-strings" class="level2">
+<h2 class="anchored" data-anchor-id="arbeiten-mit-strings">Arbeiten mit Strings</h2>
+<p>Die Funktion <code>len</code> gibt die Länge (d.h. die Anzahl der Elemente) einer Sequenz zurück.</p>
+<div id="ec30d8d2" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(s)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>6</code></pre>
 </div>
 </div>
-<p>Die Keys bekommt man mit der Methode <code>keys</code>, die Values mit der Methode <code>values</code> (beides sind im Prinzip Listen):</p>
-<div id="ccae49f9" class="cell" data-execution_count="60">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>d.keys()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="60">
-<pre><code>dict_keys(['Haus', 'Schlange', 'Katze', 23, 1, 'L'])</code></pre>
+<div id="ce49f086" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(<span class="st">"Das ist ein relativ langer String"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>33</code></pre>
 </div>
 </div>
-<div id="9e8aa884" class="cell" data-execution_count="61">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>d.values()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="61">
-<pre><code>dict_values(['house', 'snake', 'cat', 'tt', 3.14, [1, 2, 3]])</code></pre>
-</div>
-</div>
-<p>Ob ein Wert als Key vorkommt, kann man mit <code>in</code> überprüfen:</p>
-<div id="16faa067" class="cell" data-execution_count="62">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co">"Katze"</span> <span class="kw">in</span> d</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="62">
-<pre><code>True</code></pre>
-</div>
-</div>
-<div id="7f2bdea3" class="cell" data-execution_count="63">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co">"cat"</span> <span class="kw">in</span> d</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="63">
-<pre><code>False</code></pre>
-</div>
-</div>
-<p>Wenn man wissen möchte, ob ein Wert als Value vorkommt, verwendet man die <code>values</code>-Methode:</p>
-<div id="7d3571d0" class="cell" data-execution_count="64">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co">"cat"</span> <span class="kw">in</span> d.values()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="64">
-<pre><code>True</code></pre>
-</div>
-</div>
-<p>Selbstverständlich kann man über ein Dictionary auch iterieren – in diesem Fall wird über die Keys iteriert:</p>
-<div id="f0e903bd" class="cell" data-execution_count="65">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> d:</span>
-<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(k)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Haus
-Schlange
-Katze
-23
-1
-L</code></pre>
-</div>
-</div>
-<p>Auf die entsprechenden Values greift man dann durch Indizieren zu:</p>
-<div id="60d478f7" class="cell" data-execution_count="66">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> d:</span>
-<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(k, <span class="st">":"</span>, d[k])</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Haus : house
-Schlange : snake
-Katze : cat
-23 : tt
-1 : 3.14
-L : [1, 2, 3]</code></pre>
-</div>
-</div>
-<p>Eleganter funktioniert das mit der Methode <code>items</code>. Diese erzeugt eine Liste von Tupeln, welche die Key/Value-Paare enthalten:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb126"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>d.items()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Damit kann man in einer Schleife sowohl auf die Keys als auch auf die Values zugreifen.</p>
-<div id="5d35eb86" class="cell" data-execution_count="67">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb127"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, v <span class="kw">in</span> d.items():</span>
-<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(k, <span class="st">":"</span>, v)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Haus : house
-Schlange : snake
-Katze : cat
-23 : tt
-1 : 3.14
-L : [1, 2, 3]</code></pre>
-</div>
-</div>
-<p>Die gleichzeitige Zuweisung von Werten an die Namen <code>k</code> und <code>v</code> bezeichnet man in Python als <em>Unpacking</em> – nachdem <code>d.items()</code> jeweils ein Tupel bestehend aus zwei Elementen erzeugt, kann man diesen zwei Elementen direkt zwei Namen zuweisen.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tipp
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Ein weiteres Beispiel für Unpacking ist das Vertauschen von zwei Werten. Zunächst kann man damit zwei (oder mehr) Namen gleichzeitig zuweisen:</p>
-<div id="ebcddfa9" class="cell" data-execution_count="68">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a>a, b <span class="op">=</span> <span class="dv">15</span>, <span class="dv">23</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="176df3f4" class="cell" data-execution_count="69">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="69">
-<pre><code>15</code></pre>
-</div>
-</div>
-<div id="6a536b1a" class="cell" data-execution_count="70">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="70">
-<pre><code>23</code></pre>
-</div>
-</div>
-<p>Da Python immer zuerst die rechte Seite einer Zuweisung auswertet, kann man mit diesem Muster auch zwei Werte vertauschen:</p>
-<div id="a26b1628" class="cell" data-execution_count="71">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb134"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a>a, b <span class="op">=</span> b, a</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="07c2705a" class="cell" data-execution_count="72">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb135"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="72">
-<pre><code>23</code></pre>
-</div>
-</div>
-<div id="2a6bb2e5" class="cell" data-execution_count="73">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb137"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="73">
-<pre><code>15</code></pre>
-</div>
-</div>
-</div>
-</div>
-<p>Möchte man den Fehler beim Zugriff auf einen nicht existierenden Key vermeiden, kann man stattdessen die Methode <code>get</code> verwenden. Diese Methode hat zwei Parameter, nämlich einen Key und einen Standardwert, der zurückgegeben wird, falls der angegebene Key im Dictionary nicht existiert:</p>
-<div id="1af04fb9" class="cell" data-execution_count="74">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb139"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="74">
-<pre><code>{'Haus': 'house',
- 'Schlange': 'snake',
- 'Katze': 'cat',
- 23: 'tt',
- 1: 3.14,
- 'L': [1, 2, 3]}</code></pre>
-</div>
-</div>
-<div id="684af1fb" class="cell" data-execution_count="75">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb141"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a>d[<span class="st">"psy"</span>]  <span class="co"># Fehler, Key "psy" existiert nicht</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[75]</span><span class="ansi-green-fg">, line 1</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">d</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-fg ansi-yellow-bg">"</span><span class="ansi-yellow-fg ansi-yellow-bg">psy</span><span class="ansi-yellow-fg ansi-yellow-bg">"</span><span class="ansi-yellow-bg">]</span>  <span style="font-style:italic;color:rgb(95,135,135)"># Fehler, Key "psy" existiert nicht</span>
-
-<span class="ansi-red-fg">KeyError</span>: 'psy'</pre>
-</div>
-</div>
-</div>
-<div id="ce166ab7" class="cell" data-execution_count="76">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb142"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a>d.get(<span class="st">"psy"</span>, <span class="dv">0</span>)  <span class="co"># Key "psy" existiert nicht, also wird 0 zurückgegeben</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="76">
+<p>Ein String der Länge 0 ist ebenfalls ein regulärer String – er besitzt nur kein Element.</p>
+<div id="cd0660f2" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(s)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>0</code></pre>
 </div>
 </div>
-<div id="037c7ce1" class="cell" data-execution_count="77">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb144"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a>d.get(<span class="st">"Schlange"</span>, <span class="st">"Tier"</span>)  <span class="co"># Key "Schlange" existiert</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="77">
-<pre><code>'snake'</code></pre>
+<p>Nachdem Strings immutable sind, kann man sie nachträglich nicht mehr verändern. Man muss stattdessen immer einen neuen String mit den gewünschten Änderungen erstellen:</p>
+<div id="03003ad0" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"Haus"</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="a887d498" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>s[<span class="dv">0</span>] <span class="op">=</span> <span class="st">"M"</span>  <span class="co"># funktioniert nicht!</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[24]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> s[<span class="ansi-green-fg">0</span>] = <span class="ansi-yellow-fg">"M"</span>  <span style="font-style:italic;color:rgb(95,135,135)"># funktioniert nicht!</span>
+
+<span class="ansi-red-fg">TypeError</span>: 'str' object does not support item assignment</pre>
 </div>
 </div>
-<div id="ca2e4f16" class="cell" data-execution_count="78">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb146"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a>d.get(<span class="st">"snake"</span>, <span class="st">"Schlange"</span>)  <span class="co"># Key "snake" existiert nicht</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="78">
-<pre><code>'Schlange'</code></pre>
+</div>
+<div id="b59ab9a1" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">"M"</span> <span class="op">+</span> s[<span class="dv">1</span>:]  <span class="co"># neuen String erzeugen</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>'Maus'</code></pre>
+</div>
+</div>
+<p>Das obige Beispiel zeigt, dass man Strings mit dem <code>+</code>-Operator zusammenfügen kann:</p>
+<div id="68895793" class="cell" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"a"</span> <span class="op">+</span> <span class="st">"b"</span> <span class="op">+</span> <span class="st">"c"</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>'abc'</code></pre>
+</div>
+</div>
+<p>Dementsprechend kann man einen String mit dem <code>*</code>-Operator vervielfältigen:</p>
+<div id="8deb6e1f" class="cell" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">"Hallo"</span> <span class="op">*</span> <span class="dv">4</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>'HalloHalloHalloHallo'</code></pre>
+</div>
+</div>
+</section>
+<section id="string-methoden" class="level2">
+<h2 class="anchored" data-anchor-id="string-methoden">String-Methoden</h2>
+<p>Wie im vorigen Kapitel eingeführt, werden Methoden direkt auf ein Objekt angewandt. Für Strings gibt es in Python sehr viele praktische Methoden:</p>
+<div id="5b157328" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>x.upper()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>'ABC'</code></pre>
+</div>
+</div>
+<p>Hier wird also ein neuer String erzeugt, welcher aus den Zeichen des Strings <code>x</code> in Großbuchstaben besteht.</p>
+<div id="bd4e16e1" class="cell" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">"abcdefg"</span>.upper()  <span class="co"># Großbuchstaben</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<pre><code>'ABCDEFG'</code></pre>
+</div>
+</div>
+<p>Dementsprechend gibt es auch die Methode <code>lower</code>, welche einen neuen String in Kleinbuchstaben erzeugt:</p>
+<div id="02666a56" class="cell" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co">"dsKJsdJKJKK"</span>.lower()  <span class="co"># Kleinbuchstaben</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>'dskjsdjkjkk'</code></pre>
+</div>
+</div>
+<p>Viele String-Methoden erzeugen einen <em>neuen</em> String. Da Strings immutable sind, können diese Methoden den ursprünglichen String nicht verändern. Möchte man den neuen String weiterverwenden, muss man dem Rückgabewert einen Namen zuweisen. Man kann natürlich auch den ursprünglichen Namen verwenden:</p>
+<div id="e9ed76ef" class="cell" data-execution_count="31">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> x.upper()  <span class="co"># Namensschildchen x hängt am neuen String (in Großbuchstaben)</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>'ABC'</code></pre>
+</div>
+</div>
+<p>Im Folgenden werden einige praktische String-Methoden aufgelistet.</p>
+<p>Die Methode <code>strip</code> entfernt Leerzeichen am Anfang und am Ende eines Strings.</p>
+<div id="e66fbc7d" class="cell" data-execution_count="32">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co">"      Satz mit vielen unnötigen Leerzeichen         "</span>.strip()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>'Satz mit vielen unnötigen Leerzeichen'</code></pre>
+</div>
+</div>
+<p>Mit <code>replace</code> kann man alle Vorkommen eines Teilstrings durch einen anderen String ersetzen:</p>
+<div id="b16c576e" class="cell" data-execution_count="33">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co">"Edukational Neuroscience"</span>.replace(<span class="st">"k"</span>, <span class="st">"c"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<pre><code>'Educational Neuroscience'</code></pre>
+</div>
+</div>
+<p>Mit <code>split</code> kann man einen String in eine Liste von Strings aufteilen (splitten). Als Argument gibt man das Zeichen an, an dem man splitten will (standardmäßig wird dafür Whitespace, also Leerzeichen und Tabulatoren, verwendet).</p>
+<div id="d9aa9b52" class="cell" data-execution_count="34">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">"Viele Sätze. Getrennt mit Punkten. Warum?"</span>.split()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>['Viele', 'Sätze.', 'Getrennt', 'mit', 'Punkten.', 'Warum?']</code></pre>
+</div>
+</div>
+<div id="ab668d1b" class="cell" data-execution_count="35">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co">"Viele Sätze. Getrennt mit Punkten. Warum?"</span>.split(<span class="st">"."</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<pre><code>['Viele Sätze', ' Getrennt mit Punkten', ' Warum?']</code></pre>
+</div>
+</div>
+<p>Man erkennet, dass nicht alle String-Methoden einen String zurückgeben: <code>split</code> gibt eine Liste zurück, während <code>count</code> und <code>find</code> jeweils eine Ganzzahl zurückgeben (siehe weiter unten).</p>
+<p>Das Gegenteil von <code>split</code> ist <code>join</code>, welches eine Liste von Strings zu einem einzelnen String verbindet. Als Verbindungszeichen wird der angegebene String verwendet.</p>
+<div id="dedd1063" class="cell" data-execution_count="36">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co">";"</span>.join([<span class="st">"das"</span>, <span class="st">"ist"</span>, <span class="st">"ein"</span>, <span class="st">"Test"</span>])</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>'das;ist;ein;Test'</code></pre>
+</div>
+</div>
+<p>Listen haben wir in der vorigen Einheit im Detail kennengelernt. Die Möglichkeit, Strings in einer Liste mit <code>join</code> zu einem einzigen String zu verbinden, ist übrigens effizienter, als die einzelnen Strings mit <code>+</code> zu verbinden.</p>
+<p>Die Methode <code>count</code> zählt, wie oft das als Argument angegebene Zeichen im String vorkommt:</p>
+<div id="b787432f" class="cell" data-execution_count="37">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"Das ist ein kurzer Satz. Nur zum Testen."</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>s.count(<span class="st">"i"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>2</code></pre>
+</div>
+</div>
+<div id="337c9cd4" class="cell" data-execution_count="38">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>s.count(<span class="st">"e"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<pre><code>4</code></pre>
+</div>
+</div>
+<p>Die Methode <code>find</code> gibt den Index im String zurück, an dem das gesuchte Zeichen erstmalig auftritt:</p>
+<div id="e04a5918" class="cell" data-execution_count="39">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>s.find(<span class="st">"s"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>2</code></pre>
+</div>
+</div>
+<p>Optional kann man auch einen Startindex angeben:</p>
+<div id="8cd9197d" class="cell" data-execution_count="40">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>s.find(<span class="st">"s"</span>, <span class="dv">3</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<pre><code>5</code></pre>
+</div>
+</div>
+<p>Mit dem <code>in</code>-Operator kann man abfragen, ob ein bestimmtes Zeichen in einem String enthalten ist:</p>
+<div id="cc4d9578" class="cell" data-execution_count="41">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co">"y"</span> <span class="kw">in</span> s</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
+<pre><code>False</code></pre>
+</div>
+</div>
+<div id="7e1e4023" class="cell" data-execution_count="42">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co">"i"</span> <span class="kw">in</span> s</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+<section id="strings-iterieren" class="level2">
+<h2 class="anchored" data-anchor-id="strings-iterieren">Strings iterieren</h2>
+<p>Ein String ist iterierbar, d.h. man kann mit einer <code>for</code>-Schleife über die einzelnen Elemente iterieren:</p>
+<div id="f15ce155" class="cell" data-execution_count="43">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"abc"</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> s:</span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(c)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>a
+b
+c</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Möglich wäre auch folgende <code>for</code>-Schleife, wie sie in vielen anderen Programmiersprachen üblich ist:</p>
+<div id="73dc09f1" class="cell" data-execution_count="44">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"abc"</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(s)):  <span class="co"># sollte man in Python nicht machen!</span></span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s[i])</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>a
+b
+c</code></pre>
+</div>
+</div>
+<p>Dies ist aber schlechter lesbar als die direkte Variante, daher sollte man immer direkt über einen String iterieren!</p>
+</div>
+</div>
+</section>
+<section id="ausgabe-von-strings" class="level2">
+<h2 class="anchored" data-anchor-id="ausgabe-von-strings">Ausgabe von Strings</h2>
+<p>Wir haben bereits die <code>print</code>-Funktion kennengelernt, mit der sich Strings (und andere Objekte) als Text am Bildschirm ausgeben lassen. Sie kann <em>beliebig viele</em> Argumente entgegennehmen und gibt diese (standardmäßig durch Leerzeichen getrennt) am Bildschirm aus:</p>
+<div id="42c58b15" class="cell" data-execution_count="45">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a, <span class="st">"+"</span>, b, <span class="st">"="</span>, a <span class="op">+</span> b)  <span class="co"># fünf Argumente</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5 + 10 = 15</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -1187,124 +834,105 @@ Tipp
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Gibt man für <code>get</code> keinen Standardwert an, wird <code>None</code> zurückgegeben, falls der Key nicht existiert:</p>
-<div id="841444ce" class="cell" data-execution_count="79">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb148"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a>d.get(<span class="st">"psy"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Die <code>print</code>-Funktion hat zwei optionale Parameter <code>sep</code> bzw. <code>end</code>, welche das Trennzeichen zwischen den Argumenten und das Zeichen am Ende der Ausgabe beeinflussen:</p>
+<ul>
+<li><code>sep=" "</code>: Trennzeichen zwischen den Argumenten (Standard: Leerzeichen)</li>
+<li><code>end="\n"</code>: Zeichen am Ende der Ausgabe (Standard: Zeilenumbruch)</li>
+</ul>
+<p>Was wäre die Ausgabe des obigen Beispiels, wenn man <code>sep=""</code> setzen würde? Was bewirkt <code>end="!!!"</code>?</p>
 </div>
 </div>
-</div>
-<p>Zu beachten ist, dass in den Fällen, wo Standardwerte zurückgegeben werden, diese Einträge nicht automatisch zum Dictionary hinzugefügt werden:</p>
-<div id="a8e21857" class="cell" data-execution_count="80">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb149"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="80">
-<pre><code>{'Haus': 'house',
- 'Schlange': 'snake',
- 'Katze': 'cat',
- 23: 'tt',
- 1: 3.14,
- 'L': [1, 2, 3]}</code></pre>
+<p>Wie wir bereits wissen, kann man mehrere Strings mit <code>+</code> verketten. Mit der Funktion <code>str</code> kann man beliebige Objekte (also auch z.B. Ganzzahlen) in einen String umwandeln:</p>
+<div id="83b17f35" class="cell" data-execution_count="46">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="bu">str</span>(<span class="dv">55</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>'55'</code></pre>
 </div>
 </div>
-<p>Möchte man diese neuen Einträge gleich dem Dictionary hinzufügen, verwendet man die Methode <code>setdefault</code>:</p>
-<div id="4f1c2e56" class="cell" data-execution_count="81">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb151"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a>d.setdefault(<span class="st">"X"</span>, <span class="dv">42</span>)  <span class="co"># Key "X" existiert nicht</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="81">
-<pre><code>42</code></pre>
+<p>Daher könnte man die obige Ausgabe auch durch Verketten von einzelnen Strings erzeugen:</p>
+<div id="cf7f4d50" class="cell" data-execution_count="47">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">str</span>(a) <span class="op">+</span> <span class="st">" + "</span> <span class="op">+</span> <span class="bu">str</span>(b) <span class="op">+</span> <span class="st">" = "</span> <span class="op">+</span> <span class="bu">str</span>(a <span class="op">+</span> b))  <span class="co"># ein Argument</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5 + 10 = 15</code></pre>
 </div>
 </div>
-<div id="cbe0dba7" class="cell" data-execution_count="82">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb153"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a>d  <span class="co"># jetzt gibt es den Key "X"</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="82">
-<pre><code>{'Haus': 'house',
- 'Schlange': 'snake',
- 'Katze': 'cat',
- 23: 'tt',
- 1: 3.14,
- 'L': [1, 2, 3],
- 'X': 42}</code></pre>
-</div>
-</div>
-<div id="304b25d2" class="cell" data-execution_count="83">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb155"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a>d.setdefault(<span class="st">"X"</span>, <span class="dv">100</span>)  <span class="co"># Key "X" existiert bereits</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="83">
-<pre><code>42</code></pre>
-</div>
-</div>
-<div id="59876e56" class="cell" data-execution_count="84">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb157"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="84">
-<pre><code>{'Haus': 'house',
- 'Schlange': 'snake',
- 'Katze': 'cat',
- 23: 'tt',
- 1: 3.14,
- 'L': [1, 2, 3],
- 'X': 42}</code></pre>
-</div>
-</div>
+<p>Das ist allerdings umständlich. Eine wesentlich elegantere Möglichkeit sind sogenannte f-Strings.</p>
 </section>
+<section id="f-strings" class="level2">
+<h2 class="anchored" data-anchor-id="f-strings">f-Strings</h2>
+<p>f-Strings sind Strings, in die sich bei ihrer Erzeugung beliebige Ausdrücke einsetzen lassen. Dazu stellt man dem String ein <code>f</code> voran und schreibt die Ausdrücke in geschweifte Klammern <code>{}</code>. Diese werden ausgewertet und ihre Werte in den String eingesetzt (interpoliert):</p>
+<div id="4f5070fa" class="cell" data-execution_count="48">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">"World"</span></span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="ss">f"Hello </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>'Hello World!'</code></pre>
+</div>
+</div>
+<p>Den fertigen String kann man dann einfach mit <code>print</code> am Bildschirm ausgeben. Das Beispiel aus dem vorigen Abschnitt kann man daher wie folgt anschreiben:</p>
+<div id="2897175f" class="cell" data-execution_count="49">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss"> + </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>a <span class="op">+</span> b<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5 + 10 = 15</code></pre>
+</div>
+</div>
+<p>Ausdrücke wie z.B. Zahlen können optional auch <em>formatiert</em> werden. Dazu verwendet man einen Doppelpunkt und einen sogenannten <em>Format Specifier</em> innerhalb der geschwungenen Klammern direkt nach dem Ausdruck. Das folgende Beispiel formatiert die Kreiszahl <span class="math inline">\(\pi\)</span> so, dass sie mit drei Nachkommastellen ausgegeben wird:</p>
+<div id="2dc868af" class="cell" data-execution_count="50">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"π ≈ </span><span class="sc">{</span>math<span class="sc">.</span>pi<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>π ≈ 3.142</code></pre>
+</div>
+</div>
+<p>Die minimale Feldbreite kann mit einer Zahl direkt nach dem Doppelpunkt spezifiziert werden (im folgenden Beispiel 15 Zeichen). Standardmäßig wird rechtsbündig ausgerichtet (für Zahlen sinnvoll), mit <code>&lt;</code> wird linksbündig ausgerichtet:</p>
+<div id="857b2b2e" class="cell" data-execution_count="51">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"π ≈ </span><span class="sc">{</span>math<span class="sc">.</span>pi<span class="sc">:15.3f}</span><span class="ss">, more text"</span>)   <span class="co"># Feldbreite 15, rechtsbündig</span></span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"π ≈ </span><span class="sc">{</span>math<span class="sc">.</span>pi<span class="sc">:&lt;15.3f}</span><span class="ss">, more text"</span>)  <span class="co"># Feldbreite 15, linksbündig</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>π ≈           3.142, more text
+π ≈ 3.142          , more text</code></pre>
+</div>
+</div>
+<p>Für Ganzzahlen funktioniert die Feldbreite ebenso:</p>
+<div id="acfa82e1" class="cell" data-execution_count="52">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>number <span class="op">=</span> <span class="dv">42</span></span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"number = </span><span class="sc">{</span>number<span class="sc">:5}</span><span class="ss">"</span>)  <span class="co"># 5 Zeichen breit, rechtsbündig</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>number =    42</code></pre>
+</div>
+</div>
+<p>Alle Möglichkeiten, die Format Specifier bieten, finden sich in der <a href="https://docs.python.org/3/library/string.html#format-string-syntax">offiziellen Dokumentation</a> (inklusive einer Menge Beispiele).</p>
 </section>
 <section id="übungen" class="level2">
 <h2 class="anchored" data-anchor-id="übungen">Übungen</h2>
 <section id="übung-1" class="level3">
 <h3 class="anchored" data-anchor-id="übung-1">Übung 1</h3>
-<p>Schreiben Sie eine Funktion <code>histogram</code>, welche eine Liste mit Zahlen entgegennehmen und diese als vereinfachtes Histogramm am Bildschirm darstellen soll. Dieses Histogramm soll für jeden Wert eine Zeile ausgeben mit der entsprechenden Anzahl an Zeichen. Das Standardzeichen soll ein Stern (<code>*</code>) sein, aber dieses Zeichen soll mit einem Parameter namens <code>char</code> anpassbar sein. Beispiele für mögliche Funktionsaufrufe und deren Ergebnisse lauten:</p>
-<pre><code>&gt;&gt;&gt; histogram([1, 8, 5, 17, 14, 9, 2])
-*
-********
-*****
-*****************
-**************
-*********
-**</code></pre>
-<pre><code>&gt;&gt;&gt; histogram([1, 8, 5, 17, 2], char="-")
--
---------
------
------------------
---</code></pre>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hinweis
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Diese Funktion liefert keinen Wert zurück, sondern gibt das Histogramm (mit Hilfe der <code>print</code>-Funktion) am Bildschirm aus.</p>
-</div>
-</div>
+<p>Schreiben Sie eine Funktion <code>reverse</code>, welche einen String in umgekehrter Reihenfolge zurückgibt.</p>
 </section>
 <section id="übung-2" class="level3">
 <h3 class="anchored" data-anchor-id="übung-2">Übung 2</h3>
-<p>Schreiben Sie eine Funktion <code>sum_of_squares</code>, welche eine Liste mit Zahlen als Parameter entgegennimmt und die Quadratsumme dieser Zahlen (also eine einzige Zahl) zurückgibt.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<p>Gegeben sei folgender String:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"educational neuroscience"</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Gibt es eine Methode, die aus einem gegebenen String einen neuen String erzeugt, bei dem alle <em>Wörter</em> (nicht Buchstaben!) mit einem Großbuchstaben beginnen? Wenn ja, verwenden Sie diese Methode für <code>s</code> aus diesem Beispiel!</p>
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Hinweis
+Tipp
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Sie könnten in der Funktion z.B. zuerst eine Liste mit den quadrierten Zahlen erstellen, deren Elemente mit der Funktion <code>sum</code> addieren und das Ergebnis zurückgeben.</p>
+<p>Welche String-Methoden verfügbar sind, können Sie wie im vorigen Kapitel mit <code>dir(s)</code> oder durch Tab-Vervollständigung im interaktiven Interpreter herausfinden.</p>
 </div>
 </div>
 </section>
 <section id="übung-3" class="level3">
 <h3 class="anchored" data-anchor-id="übung-3">Übung 3</h3>
-<p>Erstellen Sie eine Liste mit den ganzen Zahlen von 1 bis 25 und weisen Sie dieser Liste den Namen <code>numbers</code> zu. Erstellen Sie dann fünf neue Listen, welche folgende Zahlen beinhalten (basierend auf <code>numbers</code>, die neuen Listen sollen wie angegeben benannt werden):</p>
-<ul>
-<li>Die Quadratzahlen <code>squares</code>.</li>
-<li>Die geraden Zahlen <code>evens</code>.</li>
-<li>Die ungeraden Zahlen <code>odds</code>.</li>
-<li>Die Wurzeln <code>roots</code>.</li>
-<li>Die natürlichen Logarithmen <code>logs</code>.</li>
-</ul>
-<p>Verwenden Sie zur Erstellung der neuen Listen jeweils eine geeignete List Comprehension.</p>
+<p>Gegeben sei folgender String:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"Edukational Neuroscience"</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Das Zeichen <code>k</code> an der Position 3 soll durch ein <code>c</code> ersetzt werden. Wie können Sie aus <code>s</code> einen neuen String erzeugen, in welcher diese Ersetzung vorgenommen wurde?</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1315,33 +943,105 @@ Hinweis
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Für die letzten beiden Listen verwenden Sie am besten Funktionen aus dem Modul <code>math</code>.</p>
+<p>Verwenden Sie Slices, um die Teile von <code>s</code> vor und nach dem <code>k</code> mit dem Ersatzzeichen <code>"c"</code> dazwischen zu einem neuen String zu verbinden.</p>
 </div>
 </div>
 </section>
 <section id="übung-4" class="level3">
 <h3 class="anchored" data-anchor-id="übung-4">Übung 4</h3>
-<p>Schreiben Sie folgende List Comprehension um, indem Sie zwei geschachtelte <code>for</code>-Schleifen verwenden:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb161"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> [x<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> y <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">7</span>) <span class="cf">for</span> y <span class="kw">in</span> [<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">5</span>] <span class="cf">if</span> x <span class="op">!=</span> y]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Palindrome sind Wörter, welche von vorn und hinten gelesen dasselbe ergeben, z.B. Anna, Lagerregal und Reittier.</p>
+<p>Schreiben Sie eine Funktion <code>is_palindrome</code>, welche ein Wort als String entgegennimmt und <code>True</code> zurückgibt, falls es sich dabei um ein Palindrom handelt. Wenn nicht, soll <code>False</code> zurückgegeben werden.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wandeln Sie das Wort zuerst in Kleinbuchstaben um, denn sonst wird Anna nicht als Palindrom erkannt, da ein A nicht gleich einem a ist.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Erweiterung: Palindrome können auch aus mehreren Wörtern oder ganzen Sätzen bestehen, z.B. “Dr.&nbsp;Awkward” oder “Was it a cat I saw?”. Erweitern Sie Ihre Funktion so, dass sie zusätzlich Leerzeichen sowie die Satzzeichen <code>?</code>, <code>!</code>, <code>.</code> und <code>,</code> ignoriert.</p>
+</div>
+</div>
 </section>
 <section id="übung-5" class="level3">
 <h3 class="anchored" data-anchor-id="übung-5">Übung 5</h3>
-<p>Erstellen Sie ein Dictionary <code>a</code>, welches drei Einträge hat und Übersetzungen der Wörter “eins”, “zwei” und “drei” auf Englisch beinhalten soll. Wie können Sie die Übersetzung von “zwei” dann aus <code>a</code> anzeigen lassen?</p>
+<p>Die String-Methode <code>find</code> verwendet man, um in einem String einen anderen String bzw. ein Zeichen zu suchen. Im folgenden Beispiel wird der String <code>"t"</code> in <code>s</code> gesucht:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"Educational Neuroscience"</span></span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>s.find(<span class="st">"t"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Die Position der ersten Fundstelle wird zurückgegeben, in diesem Beispiel also 5. Wird der gesuchte String gar nicht gefunden, wird −1 zurückgegeben.</p>
+<p>Schreiben Sie eine Funktion <code>find(s, char)</code>, welche diese Funktionalität repliziert (ohne aber die Methode <code>find</code> oder andere String-Methoden zu benutzen). Sie können davon ausgehen, dass <code>char</code> immer nur ein einzelnes Zeichen ist! Ihre Funktion sollte also dasselbe Ergebnis liefern wie im obigen Beispiel <code>s.find("t")</code>; der Aufruf Ihrer Funktion sieht für dieses Beispiel so aus:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb101"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>find(s, <span class="st">"t"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Verwenden Sie am besten eine <code>while</code>-Schleife, um über die einzelnen Buchstaben von <code>s</code> zu iterieren. In der Funktion ist eine Variable hilfreich, welche die aktuelle Position in <code>s</code> mitzählt (beginnend bei 0). Auch die Funktion <code>len</code>, welche die Länge eines Strings zurückgibt, könnte hilfreich sein. Beachten Sie auch, dass <code>return</code> die Funktion sofort verlässt und kein weiterer Code in der Funktion ausgeführt wird, und dass <code>return</code> an einer beliebigen Stelle in der Funktion und auch mehr als ein Mal vorhanden sein kann.</p>
+</div>
+</div>
 </section>
 <section id="übung-6" class="level3">
 <h3 class="anchored" data-anchor-id="übung-6">Übung 6</h3>
-<p>Fügen Sie dem Dictionary <code>a</code> aus der vorigen Übung einen neuen Eintrag (“vier” – “four”) hinzu und geben Sie das gesamte Dictionary am Bildschirm aus.</p>
+<p>Schreiben Sie eine Funktion <code>count(word, letter)</code>, welche die Anzahl der Zeichen <code>letter</code> im String <code>word</code> zurückgibt. Verwenden Sie für Ihre Lösung keine fertigen String-Methoden!</p>
+<p>Beispielsweise sollte der Aufruf <code>count("Werkstatttreppe", "t")</code> den Wert <code>4</code> zurückgeben, analog zur fertigen String-Methode <code>"Werkstatttreppe".count("t")</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Verwenden Sie eine ähnliche Struktur wie in Übung 5, eventuell ist hier eine <code>for</code>-Schleife geeigneter. Zählen Sie in einer Variablen mit, wie oft das gesuchte Zeichen aufgetreten ist und geben Sie diesen Wert dann zum Schluss zurück.</p>
+</div>
+</div>
 </section>
 <section id="übung-7" class="level3">
 <h3 class="anchored" data-anchor-id="übung-7">Übung 7</h3>
-<p>Was passiert, wenn Sie im Dictionary <code>a</code> auf den nicht existierenden Key <code>"zehn"</code> zugreifen wollen? Welche zwei Alternativen gibt es, um für nicht existierende Keys einen Standardwert (z.B. <code>"undefiniert"</code>) zurückzugeben (und daher die Fehlermeldung zu vermeiden)? Was ist der Unterschied zwischen diesen beiden Möglichkeiten? Geben Sie in Ihrer Antwort auch den konkreten Code für die drei Zugriffsmöglichkeiten auf das Element <code>"zehn"</code> von <code>a</code> an!</p>
+<p>In Übung 5 haben wir eine Funktion namens <code>find</code> definiert, welche sich wie die String-Methode <code>str.find</code> verhält. Allerdings findet diese Funktion (und auch die Methode) nur das erste Vorkommen des gesuchten Zeichens, z.B. <code>"Werkstatttreppe".find("t")</code> gibt <code>5</code> zurück (die Position des ersten <code>t</code>). Es wäre praktisch, wenn die Indizes <em>aller</em> gesuchten Zeichen in einer Liste zurückgegeben würden, also in diesem Beispiel <code>[5, 7, 8, 9]</code>. Falls das Zeichen gar nicht vorkommen sollte, soll eine leere Liste zurückgegeben werden. Schreiben Sie eine Funktion <code>find_all</code>, die sich entsprechend verhält!</p>
 </section>
 <section id="übung-8" class="level3">
 <h3 class="anchored" data-anchor-id="übung-8">Übung 8</h3>
-<p>In der letzten Einheit haben wir eine Funktion namens <code>find</code> definiert, welche sich wie die String-Methode <code>str.find</code> verhält. Allerdings findet diese Funktion (und auch die Methode) nur das erste Vorkommen des gesuchten Zeichens, z.B. <code>"Werkstatttreppe".find("t")</code> gibt <code>5</code> zurück (die Position des ersten <code>t</code>). Es wäre praktisch, wenn die Indizes <em>aller</em> gesuchten Zeichen in einer Liste zurückgegeben würden, also in diesem Beispiel <code>[5, 7, 8, 9]</code>. Falls das Zeichen gar nicht vorkommen sollte, soll eine leere Liste zurückgegeben werden. Schreiben Sie eine Funktion <code>find</code>, die sich entsprechend verhält!</p>
-
-
+<p>Schreiben Sie eine Funktion <code>greeting(name, a, b)</code>, die mit einem f-String eine Ausgabe der folgenden Form erzeugt:</p>
+<blockquote class="blockquote">
+<p>Hallo Anna! 7 / 13 ≈ 0.538, oder?</p>
+</blockquote>
+<p>Die Funktion soll für beliebige Werte von <code>name</code>, <code>a</code> und <code>b</code> funktionieren. Testen Sie sie mit <code>greeting("Anna", 7, 13)</code> und <code>greeting("Max", 5, 8)</code>.</p>
 </section>
+<section id="übung-9" class="level3">
+<h3 class="anchored" data-anchor-id="übung-9">Übung 9</h3>
+<p>Erstellen Sie einen String namens <code>path</code> mit dem folgenden Inhalt:</p>
+<pre><code>C:\Program Files\Python\Python3.12\python.exe</code></pre>
+<p>Geben Sie <code>path</code> dann mit Hilfe der <code>print</code>-Funktion am Bildschirm aus.</p>
+</section>
+</section>
+<section id="lösungen" class="level2">
+<h2 class="anchored" data-anchor-id="lösungen">Lösungen</h2>
+<p>Siehe <a href="../07/07-solutions.html">hier</a>.</p>
+
+
 </section>
 
 </main> <!-- /main -->

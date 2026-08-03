@@ -2,14 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Clemens Brunner">
 
-<title>5 – Bedingungen und Schleifen – Einführung in Python und PsychoPy</title>
+<title>5 – Funktionen II – Einführung in Python und PsychoPy</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -68,19 +71,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6b6957c917596b414ec0b78690761e87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-94a11f9d2ef63b4d3e14a49c60b54d86.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-31dd7b97cc2105c3f43b9904fe8c5fac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-94a11f9d2ef63b4d3e14a49c60b54d86.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-0f1a520e41d12d84e925fcfd3dfb7140.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-70d97c5485b77d73a4316377cf99e6cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-0f1a520e41d12d84e925fcfd3dfb7140.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
@@ -113,6 +115,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -297,6 +328,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
+    <a class="nav-link" href="../00/00.html"> 
+<span class="menu-text">0</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../01/01.html"> 
 <span class="menu-text">1</span></a>
   </li>  
@@ -376,7 +411,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page">
-      <h1 class="title">5 – Bedingungen und Schleifen</h1>
+      <h1 class="title">5 – Funktionen II</h1>
             <p class="subtitle lead">Einführung in Python und PsychoPy</p>
                       </div>
   </div>
@@ -394,7 +429,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Veröffentlicht</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">13. April 2026</p>
+        <p class="date">29. Oktober 2026</p>
       </div>
     </div>
     
@@ -414,446 +449,177 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="kontrollstrukturen" class="level2">
-<h2 class="anchored" data-anchor-id="kontrollstrukturen">Kontrollstrukturen</h2>
-<p>Komplexe Programme laufen nicht linear ab (also Zeile für Zeile vom Anfang eines Scripts bis zum Ende), sondern beinhalten Verzweigungen und Schleifen. Diese sogenannten Kontrollstrukturen steuern den Programmfluss. Wesentlich dabei sind Vergleiche, die bestimmen, ob bestimmte Codezeilen ausgeführt werden oder nicht bzw. wie oft diese wiederholt werden.</p>
-<p>Schon bei Funktionen haben wir beobachtet, dass Programmcode nicht linear ausgeführt wird, denn erst beim <em>Aufrufen</em> einer Funktion springt Python zu den entsprechenden Zeilen im Funktionskörper und führt diese aus.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tipp
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Mit Hilfe des sogenannten <a href="https://realpython.com/python-idle/#how-to-debug-in-idle">Debuggers</a> können wir ein Script in “Zeitlupe” ausführen. Im Debug-Modus wartet der Python-Interpreter nach jedem Befehl, bis der nächste manuell gestartet wird. Dadurch können wir den Programmfluss beobachten und den Zustand des Programms bei jedem Schritt inspizieren. Dabei geht man wie folgt vor:</p>
-<ol type="1">
-<li><p>In der IDLE-Shell wählt man Debug – Debugger. Dadurch wird ein neues Werkzeugfenster geöffnet und der Debugger aktiviert. Stellen Sie sicher, dass das Kontrollkästchen “Source” aktiviert ist, um die aktuelle Codezeile zu sehen.</p>
-<p><img src="idle-debug-1.png" class="img-fluid" style="width:50.0%"></p></li>
-<li><p>Setzen Sie dann einen Haltepunkt im Python-Skript, indem Sie mit der rechten Maustaste auf die Zeile klicken, an der Sie die Ausführung stoppen möchten und wählen Sie “Set Breakpoint”. Für dieses Beispiel setzen wir einen Haltepunkt gleich in der ersten Zeile (diese wird dann gelb).</p>
-<p><img src="idle-debug-2.png" class="img-fluid"></p></li>
-<li><p>Führen Sie jetzt das Skript mit Run – Run Module aus (oder drücken Sie <kbd>F5</kbd>). Das Skript wird dann am ersten Haltepunkt gestoppt (und diese Zeile wird noch <em>nicht</em> ausgeführt).</p></li>
-<li><p>Um die Ausführung fortzusetzen, wählen Sie “Step”, um die aktuelle Zeile auszuführen und in der nächsten Zeile anzuhalten. Wenn die aktuelle Zeile einen Funktionsaufruf enthält und Sie <em>nicht</em> in die Funktion springen möchten (zum Beispiel, weil Sie nicht daran interessiert sind, den Code einer eingebauten Funktion zu sehen), klicken Sie stattdessen auf “Over”.</p></li>
-<li><p>Wenn sich die aktuelle Zeile bereits in einer Funktion befindet und Sie diese Funktion sofort verlassen möchten, klicken Sie auf “Out”.</p></li>
-</ol>
-<p>Zum Ausprobieren kann man das folgende kurze Script debuggen:</p>
-<div id="a14291f0" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> f(x):</span>
-<span id="cb1-2"><a href="#cb1-2"></a>    y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>    <span class="cf">return</span> y</span>
-<span id="cb1-4"><a href="#cb1-4"></a></span>
-<span id="cb1-5"><a href="#cb1-5"></a>a <span class="op">=</span> f(<span class="dv">3</span>)</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="bu">print</span>(<span class="st">"Done."</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>In welcher Reihenfolge werden die Code-Zeilen ausgeführt?</p>
-<p>Alternativ kann die Website <a href="http://pythontutor.com/visualize.html#mode=edit">PythonTutor</a> den Programmfluss ebenfalls Schritt für Schritt darstellen. Dazu kopiert man einfach den gesamten Code in das Eingabefeld und klickt auf “Visualize Execution”. So kann man durch wiederholtes Klicken auf “Next” nachvollziehen, wie Python den Code ausführt.</p>
-</div>
-</div>
+<section id="allgemeines" class="level2">
+<h2 class="anchored" data-anchor-id="allgemeines">Allgemeines</h2>
+<p>In der vorigen Einheit haben wir gelernt, wie man Funktionen definiert, aufruft und mit <code>return</code> Werte zurückgibt. Nun vertiefen wir das Thema Funktionen: Wir sehen uns verschiedene Arten von Funktionsargumenten an – darunter Standard-, Schlüsselwort- und variable Argumente – und lernen außerdem, was es mit Gültigkeitsbereichen (Scopes) auf sich hat.</p>
 </section>
-<section id="vergleiche" class="level2">
-<h2 class="anchored" data-anchor-id="vergleiche">Vergleiche</h2>
-<p>Vergleiche sind logische Ausdrücke – ihr Ergebnis ist entweder wahr (<code>True</code>) oder falsch (<code>False</code>). In Python gibt es dafür den Datentyp <code>bool</code>. Folgende Vergleichsoperationen sind möglich:</p>
-<ul>
-<li>Gleichheit: <code>==</code></li>
-<li>Ungleichheit: <code>!=</code></li>
-<li>Kleiner: <code>&lt;</code></li>
-<li>Kleiner gleich: <code>&lt;=</code></li>
-<li>Größer: <code>&gt;</code></li>
-<li>Größer gleich: <code>&gt;=</code></li>
-</ul>
-<p>Man kann mehrere logische Ausdrücke mit den folgenden Operatoren verknüpfen:</p>
-<ul>
-<li>Und-Verknüpfung: <code>and</code></li>
-<li>Oder-Verknüpfung: <code>or</code></li>
-</ul>
-<p>Ein Ausdruck kann mit dem Operator <code>not</code> logisch invertiert werden (d.h. aus <code>True</code> wird <code>False</code> und aus <code>False</code> wird <code>True</code>). Weiters gibt es noch folgende Operatoren:</p>
-<ul>
-<li><code>is</code>: Identität (prüft, ob es sich um ein und dasselbe <em>Objekt</em> handelt, nicht nur um gleiche <em>Werte</em>)</li>
-<li><code>in</code>: Prüft, ob ein Wert in einer Sequenz enthalten ist</li>
-</ul>
-<p>Während <code>==</code> zwei <em>Werte</em> miteinander vergleicht, überprüft <code>is</code> zwei <em>Objekte</em> auf Gleichheit (also ob es sich um ein und dasselbe Objekt handelt). Ein Objekt hat einen Wert, zwei verschiedene Objekte können auch denselben Wert haben. Die Funktion <code>id</code> liefert eine eindeutige Nummer (ID) für ein Objekt zurück – zwei verschiedene Objekte haben immer eine unterschiedliche ID (ansonsten handelt es sich um ein und dasselbe Objekt).</p>
-<section id="beispiele" class="level3">
-<h3 class="anchored" data-anchor-id="beispiele">Beispiele</h3>
-<div id="5900178a" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">2</span>  <span class="co"># Zuweisung</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="argumente" class="level2">
+<h2 class="anchored" data-anchor-id="argumente">Argumente</h2>
+<section id="standard-argumente" class="level3">
+<h3 class="anchored" data-anchor-id="standard-argumente">Standard-Argumente</h3>
+<p>Eine Funktion kann ohne Parameter definiert werden oder eine bestimmte Anzahl an Parametern besitzen. Wenn eine bestimmte Anzahl an Parametern im Funktionskopf definiert wird, können einzelnen Parametern Standardwerte (sogenannte Standard- oder auch Default-Argumente) zugewiesen werden. Dies bedeutet, dass die Funktion auch mit weniger Argumenten aufgerufen werden kann, sofern für die entsprechenden Parameter Standardwerte definiert wurden.</p>
+<div id="16924591" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add(number, increment<span class="op">=</span><span class="dv">1</span>):  <span class="co"># increment hat den Standardwert 1</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> number <span class="op">+</span> increment</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="1e99b87d" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">==</span> <span class="dv">2</span>  <span class="co"># Vergleich</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Diese Funktion kann jetzt mit zwei Argumenten oder nur mit dem ersten Argument aufgerufen werden:</p>
+<div id="f5333fe8" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">7</span>, <span class="dv">1</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>True</code></pre>
+<pre><code>8</code></pre>
 </div>
 </div>
-<div id="27f47ef9" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">&gt;</span> <span class="dv">2</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="0ae23bfa" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">7</span>)  <span class="co"># hier wird das Standard-Argument 1 für increment verwendet</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>False</code></pre>
+<pre><code>8</code></pre>
 </div>
 </div>
-<div id="8af3a65a" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">&lt;</span> <span class="dv">10</span> <span class="kw">and</span> x <span class="op">&gt;</span> <span class="dv">5</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ed705cb0" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">7</span>, <span class="dv">3</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>False</code></pre>
+<pre><code>10</code></pre>
 </div>
 </div>
-<p>Die vorige <code>and</code>-Verknüpfung von zwei Vergleichen kann in Python kürzer dargestellt werden:</p>
-<div id="bb46231a" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="op">&lt;</span> x <span class="op">&lt;</span> <span class="dv">10</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="schlüsselwort-argumente" class="level3">
+<h3 class="anchored" data-anchor-id="schlüsselwort-argumente">Schlüsselwort-Argumente</h3>
+<p>Funktionen können auch so aufgerufen werden, dass die Namen der Parameter gemeinsam mit den Argumenten in der Form <code>name=value</code> explizit hingeschrieben werden. Man spricht dann von Schlüsselwort-Argumenten (englisch “Keyword Arguments”) (nicht zu verwechseln mit den Python-Schlüsselwörtern). D.h. die obige Funktion <code>add</code> kann auch so aufgerufen werden:</p>
+<div id="2d5346c0" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>add(number<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>False</code></pre>
+<pre><code>6</code></pre>
 </div>
 </div>
-<div id="ae51d440" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">&lt;</span> <span class="dv">10</span> <span class="kw">or</span> x <span class="op">&gt;</span> <span class="dv">5</span>  <span class="co"># macht das Sinn?</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="fe869950" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>add(number<span class="op">=</span><span class="dv">5</span>, increment<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>True</code></pre>
+<pre><code>7</code></pre>
 </div>
 </div>
-<div id="3c22e8b0" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">2</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="d4af8453" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>add(increment<span class="op">=</span><span class="dv">2</span>, number<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>7</code></pre>
 </div>
-<div id="186ba795" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">==</span> y  <span class="co"># Werte vergleichen</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Dies dient einerseits der besseren Lesbarkeit, da unmittelbar klar ist, welche Parameter welche konkreten Argumente erhalten. Werden alle Argumente als Schlüsselwort-Argumente angegeben, können sie in beliebiger Reihenfolge übergeben werden.</p>
+<p>Wenn der Argumentname nicht angegeben wird, wird das Argument anhand seiner Position dem entsprechenden Parameter zugewiesen. Man spricht in diesem Fall von <em>positionalen Argumenten</em>. Man kann positionale und Schlüsselwort-Argumente beim Funktionsaufruf auch mischen, aber alle positionalen Argumente müssen <em>vor</em> dem ersten Schlüsselwort-Argument kommen.</p>
+<div id="b137769d" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">5</span>, increment<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>True</code></pre>
+<pre><code>7</code></pre>
 </div>
 </div>
-<div id="064fa27b" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>x <span class="kw">is</span> y  <span class="co"># Objekte vergleichen</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>True</code></pre>
+<p>Zur Veranschaulichung dient folgende Funktionsdefinition:</p>
+<div id="4cf3862b" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test(name, number, exponent<span class="op">=</span><span class="dv">5</span>, offset<span class="op">=</span><span class="dv">7</span>, text<span class="op">=</span><span class="st">"Hello"</span>):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(text, name, end<span class="op">=</span><span class="st">" "</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> number<span class="op">**</span>exponent <span class="op">-</span> offset</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>Die folgenden drei Funktionsaufrufe verwenden nur positionale Argumente:</p>
+<div id="fa449b01" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>test(<span class="st">"Python"</span>, <span class="dv">2</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello Python </code></pre>
 </div>
-<p>Wir können mit der Funktion <code>id</code> die IDs der Objekte <code>x</code> und <code>y</code> bestimmen:</p>
-<div id="dafd91b9" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(x)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>4401800720</code></pre>
+<pre><code>25</code></pre>
 </div>
 </div>
-<div id="0dfdcb3c" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(y)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="82788c29" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>test(<span class="st">"Python"</span>, <span class="dv">3</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello Python </code></pre>
+</div>
 <div class="cell-output cell-output-display" data-execution_count="11">
-<pre><code>4401800720</code></pre>
+<pre><code>236</code></pre>
 </div>
 </div>
-<p>Man erkennt, dass beide Objekte <code>x</code> und <code>y</code> dieselbe ID haben. Dies bedeutet, dass das zugrundeliegende Objekt <code>2</code> ein und dasselbe Objekt ist und lediglich zwei Namen <code>x</code> und <code>y</code> hat.</p>
-<p><img src="names_2.png" class="img-fluid"></p>
-<p>Die tatsächlichen IDs von Objekten sind ein Implementierungsdetail von Python, d.h. es ist nicht relevant, welche Zahl hier zurückgegeben wird. Dennoch kann man diese IDs verwenden, um zwei Objekte auf Gleichheit zu überprüfen, denn nur dann haben beide Objekte dieselbe ID.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div id="a56669cb" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>test(<span class="st">"Test"</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello Test </code></pre>
 </div>
-<div class="callout-title-container flex-fill">
-Hinweis
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Ein weiteres Implementierungsdetail von Python ist, dass es kleine Ganzzahlen genau ein Mal gibt – d.h. wenn man zwei oder mehrere Male kleine Zahlen verwenden möchte (wie im vorigen Beispiel mit <code>x = 2</code> und <code>y = 2</code>), dann wird immer nur <em>ein</em> Objekt verwendet. Dies dient der Beschleunigung bzw. effizienteren Speichernutzung. Bei großen Zahlen ist das allerdings nicht mehr so:</p>
-<div id="d0bfefd3" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">500</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
-<pre><code>500</code></pre>
+<pre><code>74</code></pre>
 </div>
 </div>
-<div id="a453b45c" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(a)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Schlüsselwort-Argumente sind besonders praktisch, wenn man für die meisten Parameter die Standardwerte verwenden möchte. Dann müssen nur jene Argumente angegeben werden, deren Wert vom Standardwert abweicht.</p>
+<div id="fa53692b" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>test(<span class="st">"Test"</span>, <span class="dv">2</span>, offset<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello Test </code></pre>
+</div>
 <div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>4504324432</code></pre>
+<pre><code>30</code></pre>
 </div>
 </div>
-<div id="2194ff07" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a  <span class="co"># b und a sind Namen für dasselbe Objekt</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Ohne Schlüsselwort-Argumente würde derselbe Aufruf nämlich wie folgt aussehen:</p>
+<div id="296da24c" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>test(<span class="st">"Test"</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">2</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello Test </code></pre>
+</div>
 <div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>500</code></pre>
+<pre><code>30</code></pre>
 </div>
 </div>
-<div id="f5aeb08e" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(b)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
-<pre><code>4504324432</code></pre>
-</div>
-</div>
-<div id="84bd4b8f" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">500</span>  <span class="co"># b ist nun ein unterschiedliches Objekt 500</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
-<pre><code>500</code></pre>
-</div>
-</div>
-<div id="be8aea28" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(b)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
-<pre><code>4504326608</code></pre>
-</div>
-</div>
-<div id="c5198c1c" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">==</span> b  <span class="co"># Werte gleich?</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
-<pre><code>True</code></pre>
-</div>
-</div>
-<div id="39ae36af" class="cell" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>a <span class="kw">is</span> b  <span class="co"># Objekte gleich?</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
-<pre><code>False</code></pre>
-</div>
-</div>
-<p><img src="names_500.png" class="img-fluid"></p>
-</div>
-</div>
-<p>Das folgende Beispiel veranschaulicht, dass es einen Unterschied zwischen Ganzzahlen (<code>int</code>) und Kommazahlen (<code>float</code>) gibt, obwohl deren Werte (zumindest mathematisch) gleich sein können.</p>
-<div id="4f064be6" class="cell" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="fl">12.0</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="2c0f3dc1" class="cell" data-execution_count="22">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>c <span class="op">==</span> d</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
-<pre><code>True</code></pre>
-</div>
-</div>
-<div id="bf57a84e" class="cell" data-execution_count="23">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>c <span class="kw">is</span> d</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
-<pre><code>False</code></pre>
-</div>
-</div>
-<p>Man sollte Kommazahlen aber ohnehin nie auf Gleichheit überprüfen, da diese aufgrund der begrenzten Genauigkeit nicht exakt repräsentiert werden können (wie bereits in <a href="../03/03.html">Einheit 3</a> besprochen).</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tipp
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In Python kann man Dezimalzahlen auch in der sogenannten <a href="https://de.wikipedia.org/wiki/Wissenschaftliche_Notation">wissenschaftlichen Notation</a> anschreiben. Hier verwendet man eine Darstellung mit Zehnerpotenzen, die man in Python mit <code>e</code> eingeben kann – <code>e</code> kann man als “mal zehn hoch” lesen.</p>
-<div id="efe6d989" class="cell" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1e0</span>  <span class="co"># 1 mal 10 hoch 0</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
-<pre><code>1.0</code></pre>
-</div>
-</div>
-<div id="6cfb03ba" class="cell" data-execution_count="25">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="fl">4e0</span>  <span class="co"># -4 mal 10 hoch 0</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
-<pre><code>-4.0</code></pre>
-</div>
-</div>
-<div id="692520cd" class="cell" data-execution_count="26">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1e1</span>  <span class="co"># 1 mal 10 hoch 1</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
-<pre><code>10.0</code></pre>
-</div>
-</div>
-<div id="95077235" class="cell" data-execution_count="27">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fl">3.5e2</span>  <span class="co"># 3.5 mal 10 hoch 2</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
-<pre><code>350.0</code></pre>
-</div>
-</div>
-<div id="ea963bc2" class="cell" data-execution_count="28">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1e-2</span>  <span class="co"># 1 mal 10 hoch -2</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
-<pre><code>0.01</code></pre>
-</div>
-</div>
-<div id="e78977bd" class="cell" data-execution_count="29">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1e-15</span>  <span class="co"># 1 mal 10 hoch -15 = 0.000000000000001</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="28">
-<pre><code>1e-15</code></pre>
-</div>
-</div>
-</div>
-</div>
+<p>Man muss also in diesem Beispiel ein zusätzliches Argument <code>5</code> (für den Parameter <code>exponent</code>) übergeben, wenn man positionale Argumente verwendet, obwohl man ja ohnehin den Standardwert dieses Arguments verwendet.</p>
 </section>
-</section>
-<section id="bedingungen" class="level2">
-<h2 class="anchored" data-anchor-id="bedingungen">Bedingungen</h2>
-<p>Eine Bedingung wird in Python mit den Schlüsselwörtern <code>if</code>, <code>elif</code> und <code>else</code> realisiert. Dabei wird überprüft, ob ein Ausdruck wahr (<code>True</code>) oder falsch (<code>False</code>) ist. Nur falls dieser Ausdruck <code>True</code> ist, wird der nachfolgende eingerückte Codeblock ausgeführt, sonst nicht. Die grundsätzliche Struktur sieht wie folgt aus:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">&lt;</span>statement <span class="kw">is</span> <span class="va">True</span><span class="op">&gt;</span>:</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>do something<span class="op">&gt;</span></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> <span class="op">&lt;</span>statement <span class="kw">is</span> <span class="va">True</span><span class="op">&gt;</span>:  <span class="co"># optional</span></span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>do something<span class="op">&gt;</span></span>
-<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> <span class="op">&lt;</span>statement <span class="kw">is</span> <span class="va">True</span><span class="op">&gt;</span>:  <span class="co"># optional</span></span>
-<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>do something<span class="op">&gt;</span></span>
-<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:  <span class="co"># optional</span></span>
-<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>do something<span class="op">&gt;</span></span>
-<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Die Struktur einer Bedingung ist also im Prinzip dieselbe wie die einer Funktion. Zuerst gibt es den Kopf, welcher mit dem Keyword <code>if</code> eingeleitet wird. Danach folgt ein logischer Ausdruck (meist ein Vergleich), und zum Schluss wird die Kopfzeile mit einem <code>:</code> abgeschlossen. Der darauf folgende eingerückte Code wird nur ausgeführt, wenn der logische Ausdruck <code>True</code> ergibt – wenn das nicht der Fall ist, wird der gesamte eingerückte Codeblock übersprungen.</p>
-<p>Nur wenn der erste Ausdruck <code>True</code> ist, wird also der eingerückte Code ausgeführt. Danach wird der gesamte restliche <code>if</code>/<code>elif</code>/<code>else</code>-Block verlassen, es wird also kein weiterer Code mehr ausgeführt. Wenn der erste Ausdruck <code>False</code> ist, wird der zugehörige Codeblock nicht ausgeführt und es wird zum nächsten <code>elif</code>-Ausdruck gesprungen (falls vorhanden). Hier wird dann ein weiterer logischer Ausdruck ausgewertet, und falls dieser <code>True</code> ist, wird der dazugehörige eingerückte Codeblock ausgeführt. Falls kein logischer Ausdruck in den <code>elif</code>-Zweigen <code>True</code> ist, wird schließlich der Codeblock im <code>else</code>-Zweig ausgeführt (falls vorhanden).</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="variable-argumente" class="level3">
+<h3 class="anchored" data-anchor-id="variable-argumente">Variable Argumente</h3>
+<p>Bisher haben wir nur Funktionen betrachtet, die eine feste Anzahl an Parametern besitzen. Manchmal ist es jedoch praktisch, wenn eine Funktion mit einer beliebigen Anzahl an Argumenten aufgerufen werden kann. Dazu wird bei der Funktionsdefinition vor den Parameternamen ein Stern (<code>*</code>) geschrieben.</p>
+<div id="bc487c8c" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> greet(<span class="op">*</span>names):</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> name <span class="kw">in</span> names:</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Hallo"</span>, name)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout-title-container flex-fill">
-Wichtig
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In einer Bedingung wird maximal <em>ein</em> Codeblock ausgeführt, nämlich der erste, dessen logischer Ausdruck <code>True</code> ergibt. Deshalb ist auch die Reihenfolge der einzelnen Zweige von Bedeutung.</p>
-</div>
-</div>
-<section id="beispiele-1" class="level3">
-<h3 class="anchored" data-anchor-id="beispiele-1">Beispiele</h3>
-<p>Beginnen wir mit einem einfachen Beispiel, bei dem nur ein <code>if</code>-Zweig vorhanden ist:</p>
-<div id="9ab901eb" class="cell" data-execution_count="30">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"a is a positive number"</span>)</span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"this is good to know"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Der Parameter <code>names</code> kann beliebig viele Argumente aufnehmen. Beim Aufruf der Funktion können daher unterschiedlich viele Namen übergeben werden:</p>
+<div id="a142a65f" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>greet(<span class="st">"Anna"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>a is a positive number
-this is good to know</code></pre>
+<pre><code>Hallo Anna</code></pre>
 </div>
 </div>
-<p>Ergibt der Vergleich <code>a &gt; 0</code> also <code>False</code>, wird der eingerückte Code <em>nicht</em> ausgeführt:</p>
-<div id="afc90b81" class="cell" data-execution_count="31">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="op">-</span><span class="dv">10</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"a is a positive number"</span>)</span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"this is good to know"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Man kann optional einen <code>else</code>-Zweig verwenden, der immer dann ausgeführt wird, wenn <em>alle</em> vorhergehenden Zweige <code>False</code> waren:</p>
-<div id="09b29ab5" class="cell" data-execution_count="32">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"a is a positive number"</span>)</span>
-<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"this is good to know"</span>)</span>
-<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"a is either 0 or a negative number"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="e894070a" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>greet(<span class="st">"Anna"</span>, <span class="st">"Ben"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>a is either 0 or a negative number</code></pre>
+<pre><code>Hallo Anna
+Hallo Ben</code></pre>
 </div>
 </div>
-<p>Schließlich kann man noch mit <code>elif</code> beliebig viele weitere Zweige einbauen:</p>
-<div id="4c00d299" class="cell" data-execution_count="33">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"a is a positive number"</span>)</span>
-<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"this is good to know"</span>)</span>
-<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> a <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"a is a negative number"</span>)</span>
-<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"a is 0"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="51b7dad7" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>greet(<span class="st">"Anna"</span>, <span class="st">"Ben"</span>, <span class="st">"Clara"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>a is 0</code></pre>
+<pre><code>Hallo Anna
+Hallo Ben
+Hallo Clara</code></pre>
 </div>
 </div>
-<p>Sobald ein Ausdruck in einem <code>if</code>-Block <code>True</code> ist, wird dieser ausgeführt und der gesamte Block wird verlassen. Es werden also keine weiteren Vergleiche mehr durchgeführt.</p>
-<div id="57c9575f" class="cell" data-execution_count="34">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">==</span> <span class="dv">2</span>:</span>
-<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x is"</span>, x)</span>
-<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x is greater than 0"</span>)</span>
-<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x is negative"</span>)</span>
-<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x is 0"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Alle übergebenen Argumente werden im Parameter <code>names</code> gesammelt und können anschließend beispielsweise mit einer <code>for</code>-Schleife verarbeitet werden. Wie Python diese Werte intern speichert, werden wir später im Kurs (in der Einheit über Listen und Tupel) noch genauer betrachten.</p>
+<p>Variable Argumente können auch gemeinsam mit gewöhnlichen Parametern verwendet werden. Dabei müssen die gewöhnlichen Parameter immer vor dem Parameter mit <code>*</code> stehen.</p>
+<div id="06897b93" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> greet_all(greeting, <span class="op">*</span>names):</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> name <span class="kw">in</span> names:</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(greeting, name)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Hier wird das erste Argument dem Parameter <code>greeting</code> zugewiesen. Alle weiteren Argumente werden im Parameter <code>names</code> gesammelt.</p>
+<div id="ea27d0f7" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>greet_all(<span class="st">"Hallo"</span>, <span class="st">"Anna"</span>, <span class="st">"Ben"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>x is 2</code></pre>
+<pre><code>Hallo Anna
+Hallo Ben</code></pre>
 </div>
 </div>
-<p>Dementsprechend ist die Reihenfolge der einzelnen Zweige von Bedeutung:</p>
-<div id="3fc028ab" class="cell" data-execution_count="35">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a <span class="op">&gt;</span> <span class="dv">5</span>:</span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"One"</span>)</span>
-<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> a <span class="op">&lt;</span> <span class="dv">10</span>:</span>
-<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Two"</span>)</span>
-<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> a <span class="op">==</span> <span class="dv">4</span>:</span>
-<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Three"</span>)</span>
-<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Four"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="5ca7f9db" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>greet_all(<span class="st">"Guten Morgen"</span>, <span class="st">"Anna"</span>, <span class="st">"Ben"</span>, <span class="st">"Clara"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Two</code></pre>
+<pre><code>Guten Morgen Anna
+Guten Morgen Ben
+Guten Morgen Clara</code></pre>
 </div>
 </div>
-<div id="c005a063" class="cell" data-execution_count="36">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a <span class="op">&gt;</span> <span class="dv">5</span>:</span>
-<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"One"</span>)</span>
-<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> a <span class="op">==</span> <span class="dv">4</span>:</span>
-<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Three"</span>)</span>
-<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> a <span class="op">&lt;</span> <span class="dv">10</span>:</span>
-<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Two"</span>)</span>
-<span id="cb67-9"><a href="#cb67-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb67-10"><a href="#cb67-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Four"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Three</code></pre>
-</div>
-</div>
-<p>Selbstverständlich kann man Vergleiche nicht nur mit Zahlen durchführen:</p>
-<div id="2ffff5da" class="cell" data-execution_count="37">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"Python"</span></span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> s <span class="op">==</span> <span class="st">"Python"</span>:</span>
-<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Way to go!"</span>)</span>
-<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> s <span class="op">==</span> <span class="st">"R"</span>:</span>
-<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Statistics"</span>)</span>
-<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Unknown"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Way to go!</code></pre>
-</div>
-</div>
-<div id="be62e7ed" class="cell" data-execution_count="38">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"R"</span></span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> s <span class="op">==</span> <span class="st">"Python"</span>:</span>
-<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Way to go!"</span>)</span>
-<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> s <span class="op">==</span> <span class="st">"R"</span>:</span>
-<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Statistics"</span>)</span>
-<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Unknown"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Statistics</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="for-schleifen" class="level2">
-<h2 class="anchored" data-anchor-id="for-schleifen">for-Schleifen</h2>
-<p>Um Befehle zu wiederholen, gibt es die Möglichkeit, Schleifen zu verwenden. Eine häufig verwendete Schleife ist die sogenannte <code>for</code>-Schleife. Als einfaches Beispiel ersetzen wir folgenden repetitiven Code durch eine Schleife:</p>
-<div id="832b8536" class="cell" data-execution_count="39">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hallo"</span>)</span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hallo"</span>)</span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hallo"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Hallo
-Hallo
-Hallo</code></pre>
-</div>
-</div>
-<div id="b1ec85df" class="cell" data-execution_count="40">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Hallo"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Hallo
-Hallo
-Hallo</code></pre>
-</div>
-</div>
-<p>Die sogenannte Schleifenvariable <code>i</code> nimmt hier in den drei Durchläufen drei verschiedene Werte 0, 1 und 2 an – dies sind nämlich genau die Werte, die die Funktion <code>range</code> zurückgibt. Der Name der Schleifenvariable kann beliebig gewählt werden, oft wird für kurze Schleifen einfach <code>i</code> verwendet (man könnte auch <code>_</code> verwenden, um anzudeuten, dass man an diesem Namen eigentlich nicht weiter interessiert ist). Dieser Name bleibt nach dem Ausführen der Schleife übrigens bestehen, er unterscheidet sich nicht von anderen durch Zuweisung entstandenen Namen.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -864,109 +630,139 @@ Hinweis
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Überlegen Sie, welchen Wert <code>i</code> am Ende des folgenden Beispiels hat:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">800</span></span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
-<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Hello"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Die richtige Antwort lautet <code>2</code>, da dies der letzte Wert ist, welcher in der Schleife zugewiesen wird. Der Funktionsaufruf <code>range(3)</code> erzeugt nämlich die drei Werte <code>0</code>, <code>1</code> und <code>2</code>. Die Zuweisung <code>i = 800</code> zu Beginn hat hier eigentlich überhaupt keinen Effekt (oder anders formuliert, diese Zuweisung ist sinnlos und könnte daher ohne Auswirkungen entfernt werden).</p>
+<p>Der Parametername <code>args</code> ist in Python sehr verbreitet, aber nicht vorgeschrieben. Die folgende Funktionsdefinition ist daher gleichbedeutend mit der obigen:</p>
+<div id="7be24991" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> greet(<span class="op">*</span>args):</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> name <span class="kw">in</span> args:</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Hallo"</span>, name)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Der Stern (<code>*</code>) ist entscheidend – der Name des Parameters kann frei gewählt werden.</p>
 </div>
 </div>
-<p>Die Funktion <code>range</code> wird mit <code>range(start, stop, step)</code> aufgerufen (der Hilfetext verrät dazu mehr Details) und erzeugt eine Sequenz, welche aus ganzen Zahlen besteht, die von <code>start</code> (optional) bis <code>stop</code> in der Schrittweite <code>step</code> (optional) läuft. Wenn man sich die einzelnen Elemente in einem <code>range</code>-Objekt ansehen will, muss man dieses zuerst in eine Liste umwandeln:</p>
-<div id="a82316f7" class="cell" data-execution_count="41">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">range</span>(<span class="dv">10</span>)</span>
-<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="40">
-<pre><code>range(0, 10)</code></pre>
-</div>
-</div>
-<div id="a5378966" class="cell" data-execution_count="42">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(x)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="41">
-<pre><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
-</div>
-</div>
-<p>Grundsätzlich beginnt Python mit 0 zu zählen, d.h. auch <code>range</code> beginnt standardmäßig bei 0. Die letzte Zahl ist nicht mehr Teil der Sequenz, da man so einfach die Anzahl der erzeugten Elemente sehen kann (im Beispiel oben sieht man, dass <code>range(10)</code> aus 10 Elementen besteht).</p>
-<p>In Python iteriert eine <code>for</code>-Schleife über alle Elemente einer Sequenz (d.h. alle Datentypen, die aus mehreren Elementen bestehen und iterierbar sind, wie z.B. Strings oder Listen). Im folgenden Beispiel iteriert die Schleife über einen String, d.h. bei jedem Schleifendurchlauf werden die einzelnen Elemente (Buchstaben) eines Strings der Schleifenvariable <code>s</code> zugewiesen:</p>
-<div id="2bcd3943" class="cell" data-execution_count="43">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> <span class="st">"String"</span>:</span>
-<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>S
-t
-r
-i
-n
-g</code></pre>
-</div>
-</div>
-<p>Dies funktioniert genauso mit Listen, da diese auch zur Gruppe der Sequenzdatentypen gehören und mehrere Elemente beinhalten können:</p>
-<div id="2afd94f6" class="cell" data-execution_count="44">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="st">"Hello"</span>, <span class="st">"world!"</span>, <span class="st">"I"</span>, <span class="st">"love"</span>, <span class="st">"Python!"</span>]</span>
-<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> element <span class="kw">in</span> a:</span>
-<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(element)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Hello
-world!
-I
-love
-Python!</code></pre>
-</div>
-</div>
-<p>Der Befehl <code>break</code> bricht die Schleife ab. Python springt ans Ende der Schleife und macht von hier mit der Ausführung der noch folgenden Befehlszeilen weiter.</p>
-<div id="02ac8b02" class="cell" data-execution_count="45">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> <span class="st">"Suchstring"</span>:</span>
-<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> c <span class="op">==</span> <span class="st">"u"</span>:</span>
-<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span>  <span class="co"># beende Schleife sofort</span></span>
-<span id="cb86-6"><a href="#cb86-6" aria-hidden="true" tabindex="-1"></a>    i <span class="op">+=</span> <span class="dv">1</span>  <span class="co"># Abkürzung für i = i + 1</span></span>
-<span id="cb86-7"><a href="#cb86-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb86-8"><a href="#cb86-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(i)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>1</code></pre>
-</div>
-</div>
-<p>Im Beispiel oben wird ein bestimmtes Zeichen in einem String gesucht, dessen Position dann in <code>i</code> abzulesen ist.</p>
-<p>Der Befehl <code>continue</code> geht sofort zur nächsten Iteration der Schleife (überspringt also den restlichen Code der Schleife, der noch danach folgt).</p>
-<div id="9f958a74" class="cell" data-execution_count="46">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">10</span>):</span>
-<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> num <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:  <span class="co"># gerade Zahl?</span></span>
-<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Found an even number"</span>, num)</span>
-<span id="cb88-4"><a href="#cb88-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span>  <span class="co"># überspringe alle restlichen Zeilen innerhalb der Schleife</span></span>
-<span id="cb88-5"><a href="#cb88-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Found a number"</span>, num)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Found an even number 2
-Found a number 3
-Found an even number 4
-Found a number 5
-Found an even number 6
-Found a number 7
-Found an even number 8
-Found a number 9</code></pre>
-</div>
-</div>
-<p>Details zu Strings und Listen folgen in den nächsten Einheiten.</p>
 </section>
-<section id="while-schleifen" class="level2">
-<h2 class="anchored" data-anchor-id="while-schleifen">while-Schleifen</h2>
-<p>Im Gegensatz zu <code>for</code>-Schleifen sind <code>while</code>-Schleifen gut geeignet, wenn nicht im Vorhinein klar ist, wie oft die Schleife durchlaufen werden soll. Im folgenden Beispiel wird eine sogenannte <em>Endlosschleife</em> verwendet (<code>while True</code> ist immer <code>True</code>). Zum Verlassen dieser Endlosschleife wird dann aber auf <code>break</code> zurückgegriffen. Die Funktion <code>input</code> wird verwendet, um Tastatureingaben vom Benutzer abzufragen – die eingegebenen Zeichen werden von dieser Funktion als String zurückgegeben.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
-<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>    line <span class="op">=</span> <span class="bu">input</span>(<span class="st">"&gt; (enter 'q' to quit) "</span>)</span>
-<span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> line <span class="op">==</span> <span class="st">"q"</span>:</span>
-<span id="cb90-4"><a href="#cb90-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Ein weiteres Beispiel einer <code>while</code>-Schleife zeigt das folgende Zahlenratespiel:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>number <span class="op">=</span> <span class="dv">23</span>  <span class="co"># diese Zahl soll erraten werden</span></span>
-<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
-<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a>    guess <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">"Enter an integer: "</span>))</span>
-<span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> guess <span class="op">==</span> number:</span>
-<span id="cb91-6"><a href="#cb91-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Congratulations, you guessed it."</span>)</span>
-<span id="cb91-7"><a href="#cb91-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
-<span id="cb91-8"><a href="#cb91-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> guess <span class="op">&lt;</span> number:</span>
-<span id="cb91-9"><a href="#cb91-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"No, it is a little higher than that."</span>)</span>
-<span id="cb91-10"><a href="#cb91-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb91-11"><a href="#cb91-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"No, it is a little lower than that."</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="gültigkeitsbereiche" class="level2">
+<h2 class="anchored" data-anchor-id="gültigkeitsbereiche">Gültigkeitsbereiche</h2>
+<p>Jeder in Python definierte Name besitzt einen <em>Gültigkeitsbereich</em> (englisch <em>Scope</em>). Ein Name kann nur innerhalb seines Gültigkeitsbereichs verwendet werden.</p>
+<p>Namen, die innerhalb einer Funktion definiert werden, sind nur innerhalb dieser Funktion sichtbar. Man spricht von einem <em>lokalen</em> Gültigkeitsbereich.</p>
+<div id="76944357" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test():</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="dv">15</span>  <span class="co"># s ist nur innerhalb der Funktion sichtbar</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>test()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>15</code></pre>
+</div>
+</div>
+<p>Außerhalb der Funktion existiert dieser Name nicht:</p>
+<div id="f327038d" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[24]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> print(s)
+
+<span class="ansi-red-fg">NameError</span>: name 's' is not defined</pre>
+</div>
+</div>
+</div>
+<p>Umgekehrt kann eine Funktion auf Namen zugreifen, die außerhalb der Funktion definiert wurden:</p>
+<div id="69d01255" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="dv">15</span>  <span class="co"># globales s</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test():</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s)</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>test()</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>15
+15</code></pre>
+</div>
+</div>
+<p>Wird innerhalb der Funktion ein Name mit demselben Namen definiert, so ist innerhalb der Funktion nur noch dieser lokale Name sichtbar:</p>
+<div id="ec915c12" class="cell" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="dv">15</span>  <span class="co"># globales s</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test():</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="dv">12</span>  <span class="co"># lokales s</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s)</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>test()</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>12
+15</code></pre>
+</div>
+</div>
+<p>Das globale <code>s</code> bleibt dabei unverändert.</p>
+<p>Ein häufiger Fehler entsteht, wenn man innerhalb einer Funktion auf einen Namen zugreifen möchte, bevor man ihn lokal definiert:</p>
+<div id="4766e6c0" class="cell" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test():</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s)</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>test()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">UnboundLocalError</span>                         Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[27]</span><span class="ansi-green-fg">, line 7</span>
+<span class="ansi-green-fg">      3</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> test():
+<span class="ansi-green-fg">      4</span>     print(s)
+<span class="ansi-green-fg">      5</span>     s = <span class="ansi-green-fg">12</span>
+<span class="ansi-green-fg">      6</span> 
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">7</span> test()
+
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[27]</span><span class="ansi-green-fg">, line 4</span>, in <span class="ansi-cyan-fg">test</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">      3</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> test():
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">4</span>     print(s)
+<span class="ansi-green-fg">      5</span>     s = <span class="ansi-green-fg">12</span>
+
+<span class="ansi-red-fg">UnboundLocalError</span>: cannot access local variable 's' where it is not associated with a value</pre>
+</div>
+</div>
+</div>
+<p>Python erkennt bereits beim Einlesen der Funktion, dass <code>s</code> ein lokaler Name sein wird. Deshalb bezieht sich auch <code>print(s)</code> auf diesen lokalen Namen, obwohl er zu diesem Zeitpunkt noch keinen Wert besitzt.</p>
+<p>Mit dem Schlüsselwort <code>global</code> kann stattdessen auf den globalen Namen zugegriffen werden:</p>
+<div id="8731770f" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test():</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> s</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s)</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>test()</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>15
+12</code></pre>
+</div>
+</div>
+<p>Dadurch wird das globale <code>s</code> geändert. In der Praxis sollte man <code>global</code> jedoch möglichst vermeiden. Stattdessen übergibt man benötigte Werte als Argumente an die Funktion und gibt Ergebnisse mit <code>return</code> zurück:</p>
+<div id="acc097eb" class="cell" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test(s):</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s)</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> s</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s)</span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> test(s)</span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>15
+15
+12</code></pre>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -977,7 +773,28 @@ Tipp
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Die Funktion <code>int</code> wird hier verwendet, um die Benutzereingabe (ein String) in eine Ganzzahl zu konvertieren (z.B. wandelt <code>int("7")</code> den String <code>"7"</code> in eine Zahl <code>7</code> um).</p>
+<p>Auch Parameter besitzen einen lokalen Gültigkeitsbereich. Sie verhalten sich wie Namen, die innerhalb der Funktion definiert wurden, und erhalten beim Funktionsaufruf ihre Werte von den übergebenen Argumenten.</p>
+<p>Im letzten Beispiel heißen sowohl der globale Name als auch der Parameter <code>s</code>. Das ist jedoch Zufall – beide Namen sind unabhängig voneinander. Die Funktion könnte genauso gut mit einem anderen Namen oder direkt mit einem Wert aufgerufen werden:</p>
+<div id="d6797b2b" class="cell" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>test(x)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>15</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>12</code></pre>
+</div>
+</div>
+<p>Oder mithilfe eines Schlüsselwort-Arguments:</p>
+<div id="5ac018d5" class="cell" data-execution_count="31">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>test(s<span class="op">=</span>x)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>15</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>12</code></pre>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -985,38 +802,17 @@ Tipp
 <h2 class="anchored" data-anchor-id="übungen">Übungen</h2>
 <section id="übung-1" class="level3">
 <h3 class="anchored" data-anchor-id="übung-1">Übung 1</h3>
-<p>Schreiben Sie folgendes Programm:</p>
-<ul>
-<li>Lesen Sie zuerst mit der Funktion <code>input</code> zwei Zahlen ein (weisen Sie diesen beiden Zahlen die Namen <code>x</code> und <code>y</code> zu). Beachten Sie, dass <code>input</code> Strings zurückliefert und dass Sie diese mit der Funktion <code>int</code> in Ganzzahlen umwandeln können.</li>
-<li>Wenn die Summe der beiden Zahlen größer als 50 ist, geben Sie <code>x + y &gt; 50</code> am Bildschirm aus.</li>
-<li>Wenn die Summe der beiden Zahlen kleiner als 50 ist, geben Sie <code>x + y &lt; 50</code> am Bildschirm aus.</li>
-<li>Ansonsten geben Sie <code>x + y == 50</code> aus.</li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tipp
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Die Builtin-Funktion <code>input</code> ermöglicht es, Eingaben von der Tastatur einzulesen. Man kann beliebige Zeichen eingeben und mit der Eingabetaste bestätigen. Das Ergebnis der Eingabe wird dann von der Funktion <em>zurückgegeben</em> (d.h. man kann diesem Wert auch einen Namen zuweisen, z.B. <code>x = input()</code>). Der Typ des Rückgabewerts ist immer <code>str</code>.</p>
-</div>
-</div>
-</section>
-<section id="übung-2" class="level3">
-<h3 class="anchored" data-anchor-id="übung-2">Übung 2</h3>
-<p>Schreiben Sie eine Funktion <code>is_odd</code>, welche einen Parameter hat und überprüft, ob das übergebene Argument gerade oder ungerade ist (das können Sie z.B. durch den Rest der Division durch 2 überprüfen). Falls das Argument ungerade ist, soll die Funktion <code>True</code> mittels <code>return</code> zurückgeben, sonst <code>False</code>.</p>
-</section>
-<section id="übung-3" class="level3">
-<h3 class="anchored" data-anchor-id="übung-3">Übung 3</h3>
-<p>Gegeben ist eine Liste <code>lst = ["I", "love", "Python"]</code>. Schreiben Sie eine <code>for</code>-Schleife, welche die einzelnen Elemente in der Liste mit <code>print</code> Zeile für Zeile am Bildschirm ausgibt.</p>
-</section>
-<section id="übung-4" class="level3">
-<h3 class="anchored" data-anchor-id="übung-4">Übung 4</h3>
-<p>Gegeben ist wieder eine Liste <code>lst = ["I", "love", "Python"]</code>. Schreiben Sie eine <code>for</code>-Schleife, welche über die einzelnen Elemente in der Liste iteriert. Eine zweite (geschachtelte) <code>for</code>-Schleife soll dann über jeden Buchstaben der einzelnen Strings iterieren und jeden Buchstaben einzeln gefolgt vom Zeichen <code>-</code> ausgeben.</p>
+<p>Schreiben Sie eine Funktion namens <code>nonsense</code>, welche drei Parameter namens <code>a</code>, <code>b</code> und <code>c</code> hat. Die beiden Argumente <code>b</code> und <code>c</code> sollen optional sein und die Standardwerte 10 bzw. 13 besitzen. Die Funktion soll <code>a**2 - b * 2 + c**2</code> berechnen und zurückgeben (wir setzen voraus, dass man für <code>a</code>, <code>b</code> und <code>c</code> immer Zahlenwerte übergibt). Rufen Sie die Funktion dann mit folgenden Argumenten auf:</p>
+<ol type="1">
+<li>Ohne Argumente</li>
+<li>Mit drei positionalen Argumenten</li>
+<li>Mit zwei positionalen Argumenten</li>
+<li>Mit einem Keyword-Argument</li>
+<li>Mit zwei Keyword-Argumenten</li>
+<li>Mit zwei positionalen Argumenten und einem Keyword-Argument</li>
+<li>Mit einem positionalem und einem Keyword-Argument</li>
+</ol>
+<p>Wie sehen diese Funktionsaufrufe aus? Wie lauten die Rückgabewerte? Geben Sie für <em>jeden</em> Aufruf die Werte <em>aller drei Argumente</em> an!</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1027,29 +823,83 @@ Hinweis
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Verwenden Sie die Funktion <code>print</code> mit dem Argument <code>end="-"</code>. Die Ausgabe soll wie folgt aussehen:</p>
-<pre><code>I-l-o-v-e-P-y-t-h-o-n-</code></pre>
+<p>Nur der erste Funktionsaufruf (ohne Argumente) verursacht einen Fehler, alle weiteren Aufrufe sind möglich!</p>
 </div>
 </div>
+</section>
+<section id="übung-2" class="level3">
+<h3 class="anchored" data-anchor-id="übung-2">Übung 2</h3>
+<p>Schreiben Sie eine Funktion namens <code>maximum</code>, welche eine beliebige Anzahl an Zahlen als Argumente erhält und die größte dieser Zahlen zurückgibt.</p>
+<p>Beispiele:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>maximum(<span class="dv">7</span>)  <span class="co"># gibt 7 zurück</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>maximum(<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">9</span>, <span class="dv">4</span>)  <span class="co"># gibt 9 zurück</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Verwenden Sie dafür weder die Funktion <code>max()</code> noch andere Hilfsfunktionen.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Für diese Aufgabe benötigen Sie den ersten übergebenen Wert als Startwert für das zu findende Maximum. Der Ausdruck <code>numbers[0]</code> liefert diesen ersten Wert (vorausgesetzt ist hier, dass der erste Parameter der Funktion <code>numbers</code> heißt). Wie dieser Ausdruck genau funktioniert, lernen wir in einer späteren Einheit kennen.</p>
+</div>
+</div>
+</section>
+<section id="übung-3" class="level3">
+<h3 class="anchored" data-anchor-id="übung-3">Übung 3</h3>
+<p>Schreiben Sie eine Funktion namens <code>count_even</code>, welche eine beliebige Anzahl an ganzen Zahlen erhält und zurückgibt, wie viele davon gerade sind.</p>
+<p><em>Beispiele:</em></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>count_even(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)  <span class="co"># gibt 3 zurück</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>count_even(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)  <span class="co"># gibt 0 zurück</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="übung-4" class="level3">
+<h3 class="anchored" data-anchor-id="übung-4">Übung 4</h3>
+<p>Betrachten Sie das folgende Programm:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test(x):</span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> x <span class="op">+</span> <span class="dv">2</span></span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x)</span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a>test(x)</span>
+<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<ol type="1">
+<li>Welche Werte werden ausgegeben?</li>
+<li>Erklären Sie, warum sich der Wert von <code>x</code> außerhalb der Funktion nicht ändert.</li>
+<li>Ändern Sie das Programm so, dass die Variable <code>x</code> außerhalb der Funktion anschließend den Wert <code>7</code> besitzt, <strong>ohne</strong> das Schlüsselwort <code>global</code> zu verwenden.</li>
+</ol>
 </section>
 <section id="übung-5" class="level3">
 <h3 class="anchored" data-anchor-id="übung-5">Übung 5</h3>
-<p>Schreiben Sie das folgende verschachtelte <code>if</code>–<code>else</code>-Konstrukt als <code>if</code>–<code>elif</code>–<code>else</code>-Block:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x is positive"</span>)</span>
-<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb93-5"><a href="#cb93-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"x is negative"</span>)</span>
-<span id="cb93-6"><a href="#cb93-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb93-7"><a href="#cb93-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"x is equal to 0"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Überprüfen Sie Ihre Lösung mit den drei Werten <code>x = 5</code>, <code>x = -11</code> und <code>x = 0</code> (d.h. bei beiden Varianten soll dasselbe Ergebnis herauskommen).</p>
+<p>Welche Ausgabe erzeugt das folgende Programm?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show(a, b<span class="op">=</span><span class="dv">2</span>, c<span class="op">=</span><span class="dv">3</span>):</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(a, b, c)</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>show(<span class="dv">1</span>)</span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>show(<span class="dv">1</span>, <span class="dv">5</span>)</span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>show(<span class="dv">1</span>, c<span class="op">=</span><span class="dv">7</span>)</span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>show(c<span class="op">=</span><span class="dv">7</span>, a<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a>show(<span class="dv">1</span>, <span class="dv">5</span>, c<span class="op">=</span><span class="dv">7</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Begründen Sie bei jedem Funktionsaufruf, welcher Parameter welchen Wert erhält.</p>
 </section>
 <section id="übung-6" class="level3">
 <h3 class="anchored" data-anchor-id="übung-6">Übung 6</h3>
-<p>Schreiben Sie ein Programm, welches die Eingabe einer ganzen Zahl zwischen 1 und 10 erwartet. Falls die Eingabe nicht im erlaubten Bereich liegt, soll eine Meldung ausgegeben werden (“Invalid input. Please try again.”) und die Eingabe wiederholt werden. Falls die Eingabe im erlaubten Bereich liegt, soll die Schleife beendet werden und die eingegebene Zahl ausgegeben werden (z.B. “You entered: 5”).</p>
-
-
+<p>Schreiben Sie eine Funktion namens <code>power_sum</code>, welche einen Parameter <code>exponent</code> und eine beliebige Anzahl weiterer Zahlen erhält. Die Funktion soll die Summe aller Zahlen berechnen, nachdem jede Zahl mit <code>exponent</code> potenziert wurde.</p>
+<p><em>Beispiele:</em></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>power_sum(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>liefert den Rückgabewert <code>14</code>, da <span class="math inline">\(1^2 + 2^2 + 3^2 = 14\)</span>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>power_sum(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>liefert den Rückgabewert <code>36</code>, da <span class="math inline">\(1^3 + 2^3 + 3^3 = 36\)</span>.</p>
 </section>
+</section>
+<section id="lösungen" class="level2">
+<h2 class="anchored" data-anchor-id="lösungen">Lösungen</h2>
+<p>Siehe <a href="../05/05-solutions.html">hier</a>.</p>
+
+
 </section>
 
 </main> <!-- /main -->

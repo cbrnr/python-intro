@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Einführung in Python und PsychoPy</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -32,19 +35,18 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-561be5a2a1db154d7da5ba11a7c4bded.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-2a8264242e9424d063f3fbea50189b0f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-561be5a2a1db154d7da5ba11a7c4bded.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b80a1af37eb709807a3ed794448b3702.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-51caf8b01d5bbc1ff68e4057059ea281.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-b80a1af37eb709807a3ed794448b3702.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
@@ -261,6 +263,10 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
+    <a class="nav-link" href="./00/00.html"> 
+<span class="menu-text">0</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./01/01.html"> 
 <span class="menu-text">1</span></a>
   </li>  
@@ -364,21 +370,21 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Die folgenden Unterlagen dienen als Basis für die Lehrveranstaltung <a href="https://online.uni-graz.at/kfu_online/wbLv.wbShowLVDetail?pStpSpNr=940461">Einführung in Python und PsychoPy</a>.</p>
+<p>Die folgenden Unterlagen dienen als Basis für die Lehrveranstaltung <a href="https://online.uni-graz.at/kfu_online/ee/ui/ca2/app/desktop/#/slc.tm.cp/student/courses/1000802?$scrollTo=toc_overview">Einführung in Python und PsychoPy</a>.</p>
 <ol start="0" type="1">
 <li><a href="./00/00.html">Organisatorisches</a></li>
-<li><a href="./01/01.html">Grundlagen</a> (<a href="./01/01-solutions.html">Lösungen</a>)</li>
-<li><a href="./02/02.html">Die Python-Umgebung</a> (<a href="./02/02-solutions.html">Lösungen</a>)</li>
-<li><a href="./03/03.html">Namen, Ausdrücke, Anweisungen</a> (<a href="./03/03-solutions.html">Lösungen</a>)</li>
-<li><a href="./04/04.html">Funktionen</a> (<a href="./04/04-solutions.html">Lösungen</a>)</li>
-<li><a href="./05/05.html">Bedingungen und Schleifen</a> (<a href="./05/05-solutions.html">Lösungen</a>)</li>
-<li><a href="./06/06.html">Strings</a> (<a href="./06/06-solutions.html">Lösungen</a>)</li>
-<li><a href="./07/07.html">Listen und Dictionaries</a> (<a href="./07/07-solutions.html">Lösungen</a>)</li>
-<li><a href="./08/08.html">Ein- und Ausgabe</a> (<a href="./08/08-solutions.html">Lösungen</a>)</li>
-<li><a href="./09/09.html">Numerische Daten</a> (<a href="./09/09-solutions.html">Lösungen</a>)</li>
-<li><a href="./10/10.html">Grafiken</a> (<a href="./10/10-solutions.html">Lösungen</a>)</li>
-<li><a href="./11/11.html">PsychoPy (1)</a> (<a href="./11/11-solutions.html">Lösungen</a>)</li>
-<li><a href="./12/12.html">PsychoPy (2)</a> (<a href="./12/12-solutions.html">Lösungen</a>)</li>
+<li><a href="./01/01.html">Erste Schritte</a> (<a href="./01/01-solutions.html">Lösungen</a>)</li>
+<li><a href="./02/02.html">Objekte, Namen und Typen</a> (<a href="./02/02-solutions.html">Lösungen</a>)</li>
+<li><a href="./03/03.html">Kontrollfluss</a> (<a href="./03/03-solutions.html">Lösungen</a>)</li>
+<li><a href="./04/04.html">Funktionen I</a> (<a href="./04/04-solutions.html">Lösungen</a>)</li>
+<li><a href="./05/05.html">Funktionen II</a> (<a href="./05/05-solutions.html">Lösungen</a>)</li>
+<li><a href="./06/06.html">Listen, Tupel und Dictionaries</a> (<a href="./06/06-solutions.html">Lösungen</a>)</li>
+<li><a href="./07/07.html">Strings</a> (<a href="./07/07-solutions.html">Lösungen</a>)</li>
+<li><a href="./08/08.html">Pakete installieren und verwenden</a> (<a href="./08/08-solutions.html">Lösungen</a>)</li>
+<li><a href="./09/09.html">NumPy</a> (<a href="./09/09-solutions.html">Lösungen</a>)</li>
+<li><a href="./10/10.html">Matplotlib</a> (<a href="./10/10-solutions.html">Lösungen</a>)</li>
+<li><a href="./11/11.html">PsychoPy Builder</a> (<a href="./11/11-solutions.html">Lösungen</a>)</li>
+<li><a href="./12/12.html">PsychoPy Coder</a> (<a href="./12/12-solutions.html">Lösungen</a>)</li>
 </ol>
 <ul>
 <li><a href="./a1/a1.html">Übungen</a> (<a href="./a1/a1-solutions.html">Lösungen</a>)</li>

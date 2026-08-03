@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,6 +10,9 @@
 
 <title>Organisatorisches – Einführung in Python und PsychoPy</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -33,19 +36,18 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6b6957c917596b414ec0b78690761e87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-94a11f9d2ef63b4d3e14a49c60b54d86.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-31dd7b97cc2105c3f43b9904fe8c5fac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-94a11f9d2ef63b4d3e14a49c60b54d86.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-0f1a520e41d12d84e925fcfd3dfb7140.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-70d97c5485b77d73a4316377cf99e6cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-0f1a520e41d12d84e925fcfd3dfb7140.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
@@ -262,6 +264,10 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
+    <a class="nav-link active" href="../00/00.html" aria-current="page"> 
+<span class="menu-text">0</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../01/01.html"> 
 <span class="menu-text">1</span></a>
   </li>  
@@ -359,7 +365,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Veröffentlicht</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">2. März 2026</p>
+        <p class="date">1. Oktober 2026</p>
       </div>
     </div>
     
@@ -381,7 +387,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="allgemeines" class="level2">
 <h2 class="anchored" data-anchor-id="allgemeines">Allgemeines</h2>
-<p>In dieser Lehrveranstaltung werden Sie die Programmiersprache <a href="https://www.python.org/">Python</a> kennenlernen. Nach einer detaillierten Einführung in die Grundlagen werden auch praxisrelevante Themen wie das Importieren von Textdateien, die Arbeit mit numerischen Daten und das Erstellen von Grafiken behandelt. Außerdem werden Sie lernen, mit dem in der Psychologie populären Python-Paket <a href="https://www.psychopy.org">PsychoPy</a> einfache Experimente zu erstellen.</p>
+<p>In dieser Lehrveranstaltung werden Sie die Programmiersprache <a href="https://www.python.org/">Python</a> kennenlernen. Nach einer detaillierten Einführung in die Grundlagen werden auch praxisrelevante Themen wie das Installieren und Verwenden von Zusatzpaketen, die Arbeit mit numerischen Daten und das Erstellen von Grafiken behandelt. Außerdem werden Sie lernen, mit dem in der Psychologie populären Python-Paket <a href="https://www.psychopy.org">PsychoPy</a> einfache Experimente zu erstellen.</p>
 <p>Der Plan für dieses Semester sieht wie folgt aus:</p>
 <table class="caption-top table">
 <colgroup>
@@ -399,72 +405,77 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">2.3.2026</td>
-<td>Grundlagen</td>
+<td style="text-align: right;">1.10.2026</td>
+<td>Erste Schritte</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">9.3.2026</td>
-<td>Die Python-Umgebung</td>
+<td style="text-align: right;">8.10.2026</td>
+<td>Objekte, Namen und Typen</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">16.3.2026</td>
-<td>Namen, Ausdrücke, Anweisungen</td>
+<td style="text-align: right;">15.10.2026</td>
+<td>Kontrollfluss</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">23.3.2026</td>
-<td>Funktionen</td>
+<td style="text-align: right;">22.10.2026</td>
+<td>Funktionen I</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">5</td>
-<td style="text-align: right;">13.4.2026</td>
-<td>Bedingungen und Schleifen</td>
+<td style="text-align: right;">29.10.2026</td>
+<td>Funktionen II</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">6</td>
-<td style="text-align: right;">20.4.2026</td>
-<td>Strings</td>
+<td style="text-align: right;">5.11.2026</td>
+<td>Listen, Tupel und Dictionaries</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">7</td>
-<td style="text-align: right;">27.4.2026</td>
-<td>Listen und Dictionaries</td>
+<td style="text-align: right;">12.11.2026</td>
+<td>Strings</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">8</td>
-<td style="text-align: right;">4.5.2026</td>
-<td>Ein- und Ausgabe</td>
+<td style="text-align: right;">19.11.2026</td>
+<td>Pakete installieren und verwenden</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">9</td>
-<td style="text-align: right;">11.5.2026</td>
-<td>Numerische Daten</td>
+<td style="text-align: right;">26.11.2026</td>
+<td>NumPy</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">10</td>
-<td style="text-align: right;">18.5.2026</td>
-<td>Grafiken</td>
+<td style="text-align: right;">3.12.2026</td>
+<td>Matplotlib</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">11</td>
-<td style="text-align: right;">1.6.2026</td>
-<td>PsychoPy (1)</td>
+<td style="text-align: right;">10.12.2026</td>
+<td>PsychoPy Builder</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">12</td>
-<td style="text-align: right;">8.6.2026</td>
-<td>PsychoPy (2)</td>
+<td style="text-align: right;">17.12.2026</td>
+<td>PsychoPy Coder</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">13</td>
-<td style="text-align: right;">15.6.2026</td>
-<td>Prüfung</td>
+<td style="text-align: right;">14.1.2027</td>
+<td>Übungen</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">14</td>
-<td style="text-align: right;">22.6.2026</td>
+<td style="text-align: right;">21.1.2027</td>
+<td>Prüfung</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">28.1.2027</td>
 <td>Prüfung (Ersatztermin)</td>
 </tr>
 </tbody>
@@ -512,7 +523,7 @@ Hinweis
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Der Einsatz von Künstlicher Intelligenz, insbesondere von Large Language Models (wie z.B. <a href="https://chatgpt.com/">ChatGPT</a>, <a href="https://gemini.google.com/app">Gemini</a>, <a href="https://mistral.ai/">Mistral</a> oder <a href="https://claude.ai/login">Claude</a>), ist für die Vorbereitung der Einheiten ausdrücklich erlaubt und wird sogar empfohlen. Diese Werkzeuge können helfen, Konzepte zu verstehen, Codebeispiele nachzuvollziehen und alternative Erklärungen zu finden. Allerdings sollten Sie immer versuchen, die Übungsaufgaben selbständig zu lösen, um ein tiefes Verständnis der Materie zu entwickeln.</p>
+<p>Der Einsatz von Künstlicher Intelligenz (KI), insbesondere von Large Language Models (LLMs, wie z.B. <a href="https://claude.ai/">Claude</a>, <a href="https://chatgpt.com/">ChatGPT</a>, <a href="https://gemini.google.com/app">Gemini</a>, oder <a href="https://mistral.ai/">Mistral</a>), ist für die Vorbereitung der Einheiten ausdrücklich erlaubt und wird sogar empfohlen. Diese Werkzeuge können helfen, Konzepte zu verstehen, Codebeispiele nachzuvollziehen und alternative Erklärungen zu finden. Allerdings sollten Sie immer versuchen, die Übungsaufgaben selbständig zu lösen, um ein Verständnis der Materie zu entwickeln. Lassen Sie sich also von den KI-Tools Dinge erklären, aber kopieren Sie nicht einfach fertige Lösungen!</p>
 </div>
 </div>
 </section>
@@ -524,7 +535,7 @@ Hinweis
 </section>
 <section id="quizzes" class="level3">
 <h3 class="anchored" data-anchor-id="quizzes">Quizzes</h3>
-<p>Zu Beginn jeder Einheit (mit Ausnahme der ersten) findet ein Quiz auf Moodle statt. Es werden kurze Fragen zum jeweiligen Thema der Einheit gestellt (meist Multiple-Choice). Hilfsmittel (wie z.B. die Unterlagen) sind <em>nicht</em> erlaubt.</p>
+<p>Zu Beginn jeder Einheit (mit Ausnahme der ersten) findet ein Quiz auf Moodle statt. Es werden kurze Fragen zum jeweiligen Thema der Einheit gestellt (meist Multiple-Choice). Hilfsmittel (wie z.B. die Unterlagen) sind <em>nicht</em> erlaubt!</p>
 <p>Sie können bei einem Quiz maximal 10 Punkte erreichen (es gibt auch Teilpunkte). Das Quiz muss <em>vor Ort</em> auf einem Universitäts-PC absolviert werden. Ein nicht absolviertes Quiz (z.B. durch Fehlen oder Zuspätkommen) zählt 0 Punkte.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -542,8 +553,9 @@ Hinweis
 </section>
 <section id="prüfung" class="level3">
 <h3 class="anchored" data-anchor-id="prüfung">Prüfung</h3>
-<p>Am Ende des Semesters findet eine Prüfung über alle Inhalte der Lehrveranstaltung statt, welche vor Ort auf einem Universitäts-PC absolviert wird. Als einziges Hilfsmittel ist ein von Ihnen erstelltes, zweiseitig beschriebenes A4-Blatt erlaubt, auf dem Sie die wichtigsten Inhalte der Lehrveranstaltung zusammenfassen können. Fertig gelöste Beispiele dürfen darauf jedoch nicht enthalten sein. Da Sie mit dem interaktiven Python-Interpreter arbeiten werden (Ihre Lösung ist dann als Python-Script auf Moodle abzugeben), können Sie natürlich auch die integrierte Hilfe von Python nutzen, um Informationen zu Funktionen oder Paketen abzurufen.</p>
-<p>Es können maximal 10 Punkte erreicht werden (Teilpunkte sind möglich).</p>
+<p>Am Ende des Semesters findet eine Prüfung über alle Inhalte der Lehrveranstaltung statt, welche vor Ort auf einem Universitäts-PC absolviert wird. Als einziges Hilfsmittel ist ein von Ihnen erstelltes, zweiseitig beschriebenes A4-Blatt erlaubt, auf dem Sie die wichtigsten Inhalte der Lehrveranstaltung zusammenfassen können (Cheat Sheet). Fertig gelöste Beispiele dürfen darauf jedoch nicht enthalten sein. Der Cheat Sheet ist direkt nach der Prüfung abzugeben. Wenn dieser selbständig gestaltet und gut strukturiert ist, werden 0.25 Zusatzpunkte auf die Prüfungspunkte angerechnet.</p>
+<p>Da Sie mit dem interaktiven Python-Interpreter arbeiten werden (Ihre Lösung ist dann als Python-Script auf Moodle abzugeben), können Sie natürlich auch die integrierte Hilfe von Python nutzen, um Informationen zu Funktionen oder Paketen abzurufen.</p>
+<p>Es können maximal 10 Punkte erreicht werden (Teilpunkte sind möglich). Bei der Prüfung gibt es eine Bonusaufgabe, die 1 Zusatzpunkt einbringt. Die maximal erreichbare Punktezahl bei der Prüfung beträgt aber in jedem Fall 10 Punkte.</p>
 <p>Die Prüfung kann bei Bedarf wiederholt werden. In diesem Fall zählen die Punkte des zweiten Termins, d.h. man kann sich sowohl verbessern als auch verschlechtern.</p>
 </section>
 </section>
@@ -583,7 +595,7 @@ Hinweis
 </tr>
 </tbody>
 </table>
-<p>Die niedrigste Punkteanzahl einer Kategorie wird immer der besseren Note zugeordnet. Beispielsweise entsprechen exakt 9 Punkte der Note “Sehr gut”. Die gemittelte Punkteanzahl wird auch nicht mehr auf- oder abgerundet, daher entsprechen z.B. 8.97 Punkte der Note “Gut”.</p>
+<p>Die niedrigste Punkteanzahl einer Kategorie wird immer der besseren Note zugeordnet (beispielsweise entsprechen exakt 9 Punkte der Note “Sehr gut”). Die gemittelte Punkteanzahl wird nicht mehr auf- oder abgerundet, daher entsprechen z.B. 8.99 Punkte der Note “Gut”.</p>
 
 
 </section>

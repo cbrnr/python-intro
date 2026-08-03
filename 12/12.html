@@ -2,14 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Clemens Brunner">
 
-<title>12 – PsychoPy (2) – Einführung in Python und PsychoPy</title>
+<title>12 – PsychoPy Coder – Einführung in Python und PsychoPy</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -68,19 +71,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6b6957c917596b414ec0b78690761e87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-94a11f9d2ef63b4d3e14a49c60b54d86.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-31dd7b97cc2105c3f43b9904fe8c5fac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-94a11f9d2ef63b4d3e14a49c60b54d86.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-0f1a520e41d12d84e925fcfd3dfb7140.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-70d97c5485b77d73a4316377cf99e6cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-0f1a520e41d12d84e925fcfd3dfb7140.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
@@ -297,6 +299,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
+    <a class="nav-link" href="../00/00.html"> 
+<span class="menu-text">0</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../01/01.html"> 
 <span class="menu-text">1</span></a>
   </li>  
@@ -376,7 +382,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page">
-      <h1 class="title">12 – PsychoPy (2)</h1>
+      <h1 class="title">12 – PsychoPy Coder</h1>
             <p class="subtitle lead">Einführung in Python und PsychoPy</p>
                       </div>
   </div>
@@ -394,7 +400,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Veröffentlicht</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">8. Juni 2026</p>
+        <p class="date">17. Dezember 2026</p>
       </div>
     </div>
     
@@ -416,11 +422,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="psychopy-coder" class="level2">
 <h2 class="anchored" data-anchor-id="psychopy-coder">PsychoPy Coder</h2>
-<p>In dieser Einheit werden wir uns mit dem Python-Code beschäftigen, welcher jedem PsychoPy-Experiment zugrunde liegt. Selbst wenn ein Experiment mit der grafischen Oberfläche Builder erstellt wurde, wird dieses vor dem Ausführen zuerst in ein Python-Script konvertiert. Erst dieses Script wird dann tatsächlich von Python ausgeführt. Selbstverständlich kann man aber auch direkt ein Python-Script erstellen, um PsychoPy zu verwenden – dies führt in den meisten Fällen zu wesentlich kompakterem Code. Als einfachen Code-Editor für PsychoPy-Scripts verwendet man am besten PsychoPy Coder.</p>
+<p>In dieser Einheit beschäftigen wir uns mit dem Python-Code, der jedem PsychoPy-Experiment zugrunde liegt. Auch wenn ein Experiment mit der grafischen Oberfläche Builder erstellt wurde, wird es vor dem Ausführen in ein Python-Script konvertiert. Dieses wird dann von Python ausgeführt. Man kann aber auch direkt ein Python-Script erstellen, um PsychoPy zu verwenden – dies führt in vielen Fällen zu wesentlich kompakterem Code. Als Code-Editor für PsychoPy-Scripts eignet sich der mitgelieferte PsychoPy Coder.</p>
 </section>
 <section id="der-code-des-stroop-experiments" class="level2">
 <h2 class="anchored" data-anchor-id="der-code-des-stroop-experiments">Der Code des Stroop-Experiments</h2>
-<p>Wenn man in PsychoPy Builder ein Experiment grafisch erstellt hat, kann man sich den zugehörigen Code mit <em>Tools</em> – <em>Compile</em> (bzw. durch Klicken auf das Icon “Compile to Python script”) erzeugen lassen. PsychoPy Coder wird dann automatisch mit dem generierten Script geöffnet.</p>
+<p>Wenn man in PsychoPy Builder ein Experiment grafisch erstellt hat, kann man den zugehörigen Code über <em>Tools</em> – <em>Compile</em> bzw. durch Klicken auf das Icon “Compile to Python script” erzeugen. PsychoPy Coder öffnet sich dann automatisch mit dem generierten Script.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -431,25 +437,25 @@ Tipp
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Probieren wir das mit unserem <a href="../11/stroop.zip">Stroop-Experiment aus der letzten Einheit</a> aus. Wir vereinfachen dieses Experiment aber, indem wir die Routine “Feedback” entfernen (Rechtsklick auf die Routine und “remove” auswählen). Auch das entsprechende Tab können wir schließen und aus dem Experiment entfernen.</p>
+<p>Probieren wir das mit unserem <a href="../11/stroop.zip">Stroop-Experiment aus der letzten Einheit</a> aus. Dazu vereinfachen wir das Experiment, indem wir die Routine “Feedback” entfernen: Klicken Sie mit der rechten Maustaste auf die Routine und wählen Sie “remove”. Das entsprechende Tab kann ebenfalls geschlossen werden.</p>
 <p>Mit einem Klick auf das Icon “Compile to Python script” wird das Experiment dann in ein Python-Script konvertiert. Dieses wird auch gleich mit PsychoPy Coder geöffnet.</p>
-<p>Das erstellte Script ist für ein so einfaches Experiment mit fast 500 Zeilen relativ lang. Es enthält viel Code, der für das Experiment eigentlich gar nicht notwendig ist, wie z.B. viele <code>import</code>-Statements die im weiteren Script nicht verwendet werden. Wir werden uns dieses Script nicht genauer ansehen, sondern versuchen herauszufinden, wie einfachere Komponenten direkt mit Code geschrieben werden können.</p>
+<p>Das erstellte Script ist für ein so einfaches Experiment mit fast 500 Zeilen relativ lang. Es enthält viel Code, der für dieses Experiment nicht benötigt wird, beispielsweise <code>import</code>-Anweisungen für Module, die im weiteren Script nicht verwendet werden. Wir werden dieses Script nicht im Detail untersuchen, sondern einfachere Komponenten direkt mit Code erstellen.</p>
 </div>
 </div>
 </section>
 <section id="minimales-experiment" class="level2">
 <h2 class="anchored" data-anchor-id="minimales-experiment">Minimales Experiment</h2>
-<p>Ein minimales PsychoPy-Experiment besteht aus fünf Zeilen Code. Es erzeugt ein leeres Fenster, welches für zwei Sekunden sichtbar ist.</p>
+<p>Ein minimales PsychoPy-Experiment besteht aus fünf Zeilen Code. Es erzeugt ein leeres Fenster, das für zwei Sekunden sichtbar ist.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> psychopy <span class="im">import</span> core, visual</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>win <span class="op">=</span> visual.Window(size<span class="op">=</span>[<span class="dv">800</span>, <span class="dv">400</span>])</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>core.wait(<span class="dv">2</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>win.close()</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>core.quit()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Obwohl dieses Experiment nichts tut, kann man die grundlegende Struktur erkennen:</p>
+<p>Obwohl dieses Experiment nichts weiter tut, zeigt es die grundlegende Struktur:</p>
 <p>Zu Beginn importiert man alle nötigen Module aus dem <code>psychopy</code>-Paket. Die PsychoPy-Dokumentation enthält eine <a href="https://psychopy.org/api/index.html">detaillierte Beschreibung aller vorhandenen Module</a>, wir benötigen hier aber nur die Module <code>core</code> (Basisfunktionen) und <code>visual</code> (visuelle Stimuli).</p>
-<p>Danach erstellen wir das Programmfenster, in dem das Experiment läuft. Dazu rufen wir <code>visual.Window</code> auf, welches uns ein Programmfenster der angegebenen Größe erzeugt und zurückgibt (wir nennen dieses Fenster <code>win</code>).</p>
-<p>Ab jetzt könnte man alle Stimuli erzeugen, die im Verlauf des Experimentes benötigt werden. Wir werden dies in einem weiteren Beispiel sehen, dieses Experiment enthält aber keine Stimuli. Es wird mit <code>core.wait(2)</code> lediglich zwei Sekunden gewartet. Danach ist das Experiment zu Ende, und die beiden letzten Zeilen schließen das Programmfenster und beenden das Experiment.</p>
+<p>Danach erstellen wir das Programmfenster, in dem das Experiment läuft. Dazu rufen wir <code>visual.Window</code> auf. Die Funktion erzeugt ein Fenster mit der angegebenen Größe und gibt es zurück; wir weisen diesem Fenster den Namen <code>win</code> zu.</p>
+<p>Ab jetzt könnte man alle Stimuli erzeugen, die im Verlauf des Experimentes benötigt werden. Dieses Beispiel enthält jedoch keine Stimuli – es wartet mit <code>core.wait(2)</code> zwei Sekunden. Danach schließen die letzten beiden Zeilen das Programmfenster und beenden das Experiment.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -470,11 +476,11 @@ Hinweis
 <p>Die Darstellung von visuellen Stimuli am Bildschirm funktioniert wie folgt:</p>
 <ol type="1">
 <li>Zunächst wird das Fenster <code>win</code> erzeugt. Darin können später alle Stimuli gezeichnet werden.</li>
-<li>Anschließend kann ein Stimulus-Objekt <code>stim</code> erzeugt werden, welches dem Fenster zugeordnet wird. Beim Erzeugen des Stimulus kann man das Aussehen wie z.B. die Farbe, die Position, die Orientierung, etc. festlegen. Alle Eigenschaften eines Stimulus können aber auch nachträglich im Verlauf des Experimentes geändert werden.</li>
-<li>Schließlich wird der Stimulus <code>stim</code> mit der Methode <code>stim.draw()</code> gezeichnet. Das Zeichnen erfolgt aber zunächst <em>unsichtbar</em> im sogenannten <em>Backbuffer</em> – man kann sich diesen Buffer wie die Rückseite des Bildschirms vorstellen. Alles was gezeichnet wird, landet zuerst einmal im Backbuffer und ist somit noch nicht sichtbar.</li>
-<li>Wenn alle gewünschten Stimuli im Backbuffer gezeichnet sind, kann der gesamte Inhalt des Backbuffers mit <code>win.flip()</code> <em>sichtbar</em> gemacht werden. Dies bedeutet, dass der Inhalt des unsichtbaren Backbuffers in den sichtbaren Frontbuffer übertragen wird – der Backbuffer wird dadurch wieder geleert. Diese Operation ist mit der Bildwiederholfrequenz synchronisiert, d.h. bei einem Bildschirm mit 60 Hz wird das Bild 60 Mal pro Sekunde neu gezeichnet. Ein Aufruf von <code>win.flip()</code> wird dann bei der nächsten Bildschirm-Aktualisierung durchgeführt.</li>
+<li>Anschließend kann ein Stimulus-Objekt <code>stim</code> erzeugt werden, das dem Fenster zugeordnet ist. Beim Erzeugen des Stimulus kann man sein Aussehen festlegen, etwa Farbe, Position und Orientierung. Alle Eigenschaften eines Stimulus können auch nachträglich im Verlauf des Experimentes geändert werden.</li>
+<li>Schließlich wird der Stimulus <code>stim</code> mit der Methode <code>stim.draw()</code> gezeichnet. Das Zeichnen erfolgt zunächst <em>unsichtbar</em> im sogenannten <em>Backbuffer</em> – man kann sich diesen Buffer wie die Rückseite des Bildschirms vorstellen. Alles, was gezeichnet wird, landet zuerst im Backbuffer und ist damit noch nicht sichtbar.</li>
+<li>Wenn alle gewünschten Stimuli im Backbuffer gezeichnet sind, wird sein gesamter Inhalt mit <code>win.flip()</code> <em>sichtbar</em> gemacht. Der Backbuffer wird standardmäßig anschließend geleert. Diese Operation ist normalerweise mit der Bildwiederholfrequenz synchronisiert, d.h. der Aufruf von <code>win.flip()</code> wird genau bei der nächsten Bildschirm-Aktualisierung ausgeführt.</li>
 </ol>
-<p>Der Vorteil dieser Aufteilung in Backbuffer und Frontbuffer ist, dass alle Stimuli im Backbuffer <em>exakt gleichzeitig</em> sichtbar werden, und zwar genau dann, wenn man <code>win.flip()</code> aufruft. Würden die Stimuli direkt nach dem Zeichnen sichtbar werden, könnte es vorkommen, dass die verschiedenen Komponenten in einem Bild zu leicht unterschiedlichen Zeiten gezeichnet werden.</p>
+<p>Der Vorteil dieser Aufteilung in Backbuffer und Frontbuffer ist, dass alle Stimuli im Backbuffer gemeinsam beim nächsten <code>win.flip()</code> sichtbar werden. Würden die Stimuli direkt nach dem Zeichnen sichtbar, könnten die verschiedenen Komponenten eines Bildes zu leicht unterschiedlichen Zeiten erscheinen.</p>
 <p>Unser minimales Experiment können wir nun also mit einem Text-Stimulus wie folgt erweitern:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> psychopy <span class="im">import</span> core, visual</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -488,24 +494,40 @@ Hinweis
 </section>
 <section id="warten-auf-einen-tastendruck" class="level2">
 <h2 class="anchored" data-anchor-id="warten-auf-einen-tastendruck">Warten auf einen Tastendruck</h2>
-<p>Wir können nun schon fast einen Instruktionsbildschirm anzeigen – es fehlt nur mehr die Möglichkeit, die Instruktionen so lange anzuzeigen, bis die Versuchsperson eine bestimmte Taste (z.B. die Leertaste) drückt. Das PsychoPy-Modul <code>event</code> beinhaltet diverse Funktionen, um Benutzereingaben (wie z.B. von der Tastatur) abzufragen. Mit der Funktion <code>event.waitKeys()</code> kann man so lange warten, bis eine Taste gedrückt wird. Insbesondere kann man mit dem <code>keyList</code>-Argument die erlaubten Tasten als Liste angeben. Unser Beispiel kann damit wie folgt erweitert werden:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> psychopy <span class="im">import</span> core, visual, event</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>win <span class="op">=</span> visual.Window(fullscr<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"""Text Rotation</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="st">Press 'left' to rotate the text to the left.</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="st">Press 'right' to rotate the text to the right.</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="st">Press Space to start!</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> visual.TextStim(win<span class="op">=</span>win, text<span class="op">=</span>s, color<span class="op">=</span><span class="st">"white"</span>, height<span class="op">=</span><span class="fl">0.05</span>)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>text.draw()</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>win.flip()</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>event.waitKeys(keyList<span class="op">=</span>[<span class="st">"space"</span>])</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>win.close()</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>core.quit()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Durch die Angabe von <code>keyList=["space"]</code> wird also so lange gewartet, bis die Leertaste gedrückt wird. Erst dann wird das Script in der nächsten Zeile fortgesetzt.</p>
+<p>Wir können nun schon fast einen Instruktionsbildschirm anzeigen – es fehlt nur noch die Möglichkeit, die Instruktionen so lange anzuzeigen, bis die Versuchsperson eine bestimmte Taste (wie beispielsweise die Leertaste) drückt. Die aktuelle PsychoPy-Schnittstelle für Tastatureingaben ist <code>hardware.keyboard.Keyboard</code>. Mit der Methode <code>waitKeys()</code> kann man warten, bis eine Taste gedrückt wird. Mit dem Argument <code>keyList</code> geben wir die erlaubten Tasten als Liste an. Unser Beispiel kann damit wie folgt erweitert werden:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> psychopy <span class="im">import</span> core, visual</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> psychopy.hardware <span class="im">import</span> keyboard</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>win <span class="op">=</span> visual.Window(fullscr<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>kb <span class="op">=</span> keyboard.Keyboard()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"""Text Rotation</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="st">Press 'left' to rotate the text to the left.</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="st">Press 'right' to rotate the text to the right.</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="st">Press Space to start!</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> visual.TextStim(win<span class="op">=</span>win, text<span class="op">=</span>s, color<span class="op">=</span><span class="st">"white"</span>, height<span class="op">=</span><span class="fl">0.05</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>text.draw()</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>win.flip()</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>kb.waitKeys(keyList<span class="op">=</span>[<span class="st">"space"</span>])</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>win.close()</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>core.quit()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Durch die Angabe von <code>keyList=["space"]</code> wird gewartet, bis die Leertaste gedrückt wird. Erst dann wird das Script in der nächsten Zeile fortgesetzt.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Wichtig
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>kb.waitKeys()</code> <strong>blockiert</strong> den Programmablauf: Bis eine passende Taste gedrückt wird, wird keine weitere Zeile des Scripts ausgeführt. Das ist für einen Instruktionsbildschirm geeignet.</p>
+<p><code>kb.getKeys()</code> <strong>blockiert nicht</strong>: Die Methode gibt sofort eine Liste der seit dem letzten Aufruf gedrückten Tasten zurück. Wurde keine Taste gedrückt, ist die Liste leer. Deshalb verwenden wir <code>getKeys()</code> innerhalb von Animations- und Trial-Schleifen, damit Stimuli weiterhin gezeichnet und mit <code>win.flip()</code> angezeigt werden können (siehe Beispiel im nächsten Abschnitt).</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -516,54 +538,56 @@ Hinweis
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Die Verwendung von <code>event.waitKeys</code> (und <code>event.getKeys</code>) ist eigentlich nicht mehr empfohlen, da diese Funktionen nicht mehr gewartet werden und z.B. unter Linux auch gar nicht mehr funktionieren. Stattdessen sollte man auf <code>hardware.keyboard.Keyboard</code> zurückgreifen, welches wir aber hier nicht weiter behandeln, da diese Methode leider etwas komplexer ist. Zumindest im Moment sollte aber alles noch unter Windows funktionieren.</p>
+<p>Die ältere Schnittstelle <code>event.waitKeys</code> bzw. <code>event.getKeys</code> funktioniert weiterhin, bietet aber weniger präzise Zeitstempel. <code>hardware.keyboard.Keyboard</code> wird für neue Experimente empfohlen: Tastendrücke werden damit asynchron erfasst, und die Reaktionszeit ist direkt über das Attribut <code>.rt</code> verfügbar.</p>
 </div>
 </div>
 </section>
 <section id="verwenden-einer-schleife" class="level2">
 <h2 class="anchored" data-anchor-id="verwenden-einer-schleife">Verwenden einer Schleife</h2>
 <p>Wir versuchen jetzt, das im vorigen Beispiel beschriebene Experiment umzusetzen. Nach dem Instruktionsbildschirm soll ein Text (nämlich <code>PsychoPy</code>) am Bildschirm angezeigt werden. Wenn man die linke Pfeiltaste drückt, soll der Text nach links rotieren. Drückt man die linke Taste wiederholt, wird die Rotation schneller. Drückt man die rechte Pfeiltaste, verlangsamt die Rotation nach links und man kann den Text dann nach rechts rotieren lassen. Wenn die Leertaste gedrückt wird, soll das Experiment beendet werden.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> psychopy <span class="im">import</span> core, visual, event</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>win <span class="op">=</span> visual.Window(fullscr<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"""Text Rotation</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">Press 'left' to rotate the text to the left.</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">Press 'right' to rotate the text to the right.</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="st">Press Space to start!</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> visual.TextStim(win<span class="op">=</span>win, text<span class="op">=</span>s, color<span class="op">=</span><span class="st">"white"</span>, height<span class="op">=</span><span class="fl">0.05</span>)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>text.draw()</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>win.flip()</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>event.waitKeys(keyList<span class="op">=</span>[<span class="st">"space"</span>])</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>text.setText(<span class="st">"PsychoPy"</span>)</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>text.setHeight(<span class="fl">0.15</span>)</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>rotation <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>speed <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    keys <span class="op">=</span> event.getKeys(keyList<span class="op">=</span>[<span class="st">"space"</span>, <span class="st">"left"</span>, <span class="st">"right"</span>])</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> keys:  <span class="co"># eine Taste wurde gedrückt</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> keys[<span class="dv">0</span>] <span class="op">==</span> <span class="st">"space"</span>:  <span class="co"># exit</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> keys[<span class="dv">0</span>] <span class="op">==</span> <span class="st">"left"</span>:</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>            speed <span class="op">-=</span> <span class="dv">1</span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>            speed <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    rotation <span class="op">+=</span> speed</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    text.setOri(rotation)</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    text.draw()</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    win.flip()</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>win.close()</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>core.quit()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Ein neuer Bestandteil in diesem Experiment ist die Tatsache, dass wir unseren existierenden Text-Stimulus <code>text</code> wiederverwenden. Beim Initialisieren zeigen wir zunächst die Instruktionen damit an, danach setzen wir aber den Text mit <code>text.setText("PsychoPy")</code> sowie die Größe mit <code>text.setHeight(0.15)</code> auf andere Werte. Diese Operation ist oft schneller als das Erzeugen eines neuen Text-Stimulus und sollte deswegen in den meisten Fällen bevorzugt werden.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> psychopy <span class="im">import</span> core, visual</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> psychopy.hardware <span class="im">import</span> keyboard</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>win <span class="op">=</span> visual.Window(fullscr<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>kb <span class="op">=</span> keyboard.Keyboard()</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"""Text Rotation</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="st">Press 'left' to rotate the text to the left.</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="st">Press 'right' to rotate the text to the right.</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="st">Press Space to start!</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> visual.TextStim(win<span class="op">=</span>win, text<span class="op">=</span>s, color<span class="op">=</span><span class="st">"white"</span>, height<span class="op">=</span><span class="fl">0.05</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>text.draw()</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>win.flip()</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>kb.waitKeys(keyList<span class="op">=</span>[<span class="st">"space"</span>])</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>text.setText(<span class="st">"PsychoPy"</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>text.setHeight(<span class="fl">0.15</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>rotation <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>speed <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    keys <span class="op">=</span> kb.getKeys(keyList<span class="op">=</span>[<span class="st">"space"</span>, <span class="st">"left"</span>, <span class="st">"right"</span>])</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> keys:  <span class="co"># eine Taste wurde gedrückt</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> keys[<span class="dv">0</span>].name <span class="op">==</span> <span class="st">"space"</span>:</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> keys[<span class="dv">0</span>].name <span class="op">==</span> <span class="st">"left"</span>:</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>            speed <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>            speed <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    rotation <span class="op">+=</span> speed</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    text.setOri(rotation)</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    text.draw()</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>    win.flip()</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>win.close()</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>core.quit()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Ein neuer Bestandteil in diesem Experiment ist, dass wir den vorhandenen Text-Stimulus <code>text</code> wiederverwenden. Beim Initialisieren zeigen wir zunächst die Instruktionen damit an. Danach setzen wir den Text mit <code>text.setText("PsychoPy")</code> und die Größe mit <code>text.setHeight(0.15)</code> auf andere Werte. Das ist oft schneller als das Erzeugen eines neuen Text-Stimulus und sollte daher in den meisten Fällen bevorzugt werden.</p>
 <p>Danach folgt eine Endlosschleife <code>while True</code>. Man erkennt aber schon, dass diese Schleife mit <code>break</code> auch verlassen werden kann, und zwar wenn die Leertaste gedrückt wird.</p>
-<p>Die erste Anweisung innerhalb der Schleife gibt eine Liste der gedrückten Tasten zurück. Allerdings werden durch das <code>keyList</code>-Argument nur die angegebenen Tasten berücksichtigt (alle anderen Tasten werden ignoriert). Wenn keine Taste gedrückt wurde, ist <code>keys</code> eine leere Liste. Mit <code>if keys:</code> überprüft man daher, ob die Liste <code>keys</code> Einträge enthält oder nicht (wenn die Liste Einträge enthält, wurde eine Taste gedrückt und der ist Ausdruck <code>True</code>; wenn die Liste leer ist, wurde keine Taste gedrückt und der Ausdruck ist <code>False</code>).</p>
-<p>Wenn die gedrückte Taste (diese entspricht dem ersten Element in der Liste, also <code>keys[0]</code>) die linke Pfeiltaste ist, wird die Rotationsgeschwindigkeit <code>speed</code> (anfänglich auf <code>0</code> gesetzt) um den Wert <code>1</code> verringert. Wenn die gedrückte Taste die rechte Pfeiltaste ist, wird <code>speed</code> um den Wert <code>1</code> erhöht. Die Rotation <code>rotation</code> des Textes wird nun durch Addition des aktuellen Wertes von <code>rotation</code> und der Rotationsgeschwindigkeit <code>speed</code> bestimmt. Danach wird der Text mit <code>text.setOri(rotation)</code> auf den Winkel <code>rotation</code> gedreht. Jetzt kann der Text-Stimulus gezeichnet werden, und anschließend wird der Inhalt des Buffers mit <code>win.flip()</code> angezeigt. Sobald die Leertaste gedrückt wird, wird die Schleife verlassen, und die letzten beiden Zeilen des Scripts werden ausgeführt.</p>
+<p>Die erste Anweisung innerhalb der Schleife gibt eine Liste der gedrückten Tasten zurück. Durch das Argument <code>keyList</code> werden nur die angegebenen Tasten berücksichtigt. Wenn keine Taste gedrückt wurde, ist <code>keys</code> eine leere Liste. Mit <code>if keys:</code> überprüfen wir daher, ob die Liste Einträge enthält. Eine nicht leere Liste wird in einer Bedingung als <code>True</code> interpretiert, eine leere als <code>False</code>.</p>
+<p>Jeder Eintrag in <code>keys</code> ist ein <code>KeyPress</code>-Objekt. Der Name der Taste steht im Attribut <code>.name</code>. Wenn die erste gedrückte Taste, also <code>keys[0].name</code>, die linke Pfeiltaste ist, wird die Rotationsgeschwindigkeit <code>speed</code> (anfänglich <code>0</code>) um <code>1</code> verringert. Bei der rechten Pfeiltaste wird <code>speed</code> um <code>1</code> erhöht. Die Orientierung <code>rotation</code> des Textes wird durch Addition der aktuellen Rotationsgeschwindigkeit bestimmt. Danach dreht <code>text.setOri(rotation)</code> den Text auf den Winkel <code>rotation</code>. Jetzt wird der Text-Stimulus gezeichnet und mit <code>win.flip()</code> angezeigt. Sobald die Leertaste gedrückt wird, endet die Schleife, und die letzten beiden Zeilen des Scripts werden ausgeführt.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -577,54 +601,56 @@ Tipp
 <p>Die Schreibweise <code>x += 1</code> erhöht den Wert von <code>x</code> um <code>1</code>. Man könnte auch <code>x = x + 1</code> schreiben.</p>
 </div>
 </div>
-<p>Durch den Befehl <code>win.flip()</code> werden die aktuellen Stimuli mit der Bildwiederholfrequenz gezeichnet. In den meisten Fällen ist dies 60 Hz, d.h. die <code>while</code>-Schleife wird 60 mal pro Sekunde durchlaufen.</p>
+<p><code>win.flip()</code> wartet üblicherweise auf die nächste Bildschirm-Aktualisierung. Bei einem Bildschirm mit 60 Hz kann die Schleife daher höchstens ungefähr 60 Mal pro Sekunde durchlaufen werden. Benötigt der Code innerhalb der Schleife zu viel Zeit, werden einzelne Aktualisierungen ausgelassen.</p>
 </section>
 <section id="animierte-stimuli" class="level2">
 <h2 class="anchored" data-anchor-id="animierte-stimuli">Animierte Stimuli</h2>
 <p>Im vorigen Beispiel haben wir gesehen, wie wir die Orientierung eines Text-Stimulus mit <code>text.setOri(rotation)</code> in einer Schleife kontinuierlich verändern können. Dasselbe Prinzip können wir auf beliebige visuelle Stimuli übertragen, um diese zu animieren.</p>
 <p>Das folgende Beispiel zeigt, wie man einen Kreis bewegt und gleichzeitig dessen Farbe ändert (siehe dazu die <a href="https://www.psychopy.org/general/colours.html#colorspaces">PsychoPy-Hilfe über Farben</a>).</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> psychopy <span class="im">import</span> core, visual, event</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>win <span class="op">=</span> visual.Window(size<span class="op">=</span>[<span class="dv">800</span>, <span class="dv">800</span>])</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>pos <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>]  <span class="co"># initial x, y position</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>speed <span class="op">=</span> [<span class="fl">0.03</span>, <span class="op">-</span><span class="fl">0.02</span>]  <span class="co"># initial x, y speed</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">"red"</span>, <span class="st">"yellow"</span>, <span class="st">"green"</span>]</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>circle <span class="op">=</span> visual.Circle(win, radius<span class="op">=</span><span class="fl">0.1</span>, fillColor<span class="op">=</span>colors[<span class="dv">0</span>], lineColor<span class="op">=</span><span class="va">None</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    keys <span class="op">=</span> event.getKeys(keyList<span class="op">=</span>[<span class="st">"escape"</span>])</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> keys:</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    pos[<span class="dv">0</span>] <span class="op">+=</span> speed[<span class="dv">0</span>]</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    pos[<span class="dv">1</span>] <span class="op">+=</span> speed[<span class="dv">1</span>]</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pos[<span class="dv">0</span>] <span class="op">&lt;</span> <span class="op">-</span><span class="dv">1</span> <span class="kw">or</span> pos[<span class="dv">0</span>] <span class="op">&gt;</span> <span class="dv">1</span>:  <span class="co"># is the x position on the screen border?</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        speed[<span class="dv">0</span>] <span class="op">=</span> <span class="op">-</span>speed[<span class="dv">0</span>]  <span class="co"># flip x speed direction</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        color <span class="op">=</span> (color <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> <span class="dv">3</span>  <span class="co"># set next color</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pos[<span class="dv">1</span>] <span class="op">&lt;</span> <span class="op">-</span><span class="dv">1</span> <span class="kw">or</span> pos[<span class="dv">1</span>] <span class="op">&gt;</span> <span class="dv">1</span>:  <span class="co"># is the y position on the screen border?</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        speed[<span class="dv">1</span>] <span class="op">=</span> <span class="op">-</span>speed[<span class="dv">1</span>]  <span class="co"># flip y speed direction</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        color <span class="op">=</span> (color <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> <span class="dv">3</span>  <span class="co"># set next color</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    circle.setPos(pos)</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    circle.setFillColor(colors[color])</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    circle.draw()</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    win.flip()</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>win.close()</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>core.quit()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> psychopy <span class="im">import</span> core, visual</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> psychopy.hardware <span class="im">import</span> keyboard</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>win <span class="op">=</span> visual.Window(size<span class="op">=</span>[<span class="dv">800</span>, <span class="dv">800</span>])</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>kb <span class="op">=</span> keyboard.Keyboard()</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>pos <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>]  <span class="co"># anfängliche x- und y-Position</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>speed <span class="op">=</span> [<span class="fl">0.03</span>, <span class="op">-</span><span class="fl">0.02</span>]  <span class="co"># anfängliche x- und y-Geschwindigkeit</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">"red"</span>, <span class="st">"yellow"</span>, <span class="st">"green"</span>]</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>circle <span class="op">=</span> visual.Circle(win, radius<span class="op">=</span><span class="fl">0.1</span>, fillColor<span class="op">=</span>colors[<span class="dv">0</span>], lineColor<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    keys <span class="op">=</span> kb.getKeys(keyList<span class="op">=</span>[<span class="st">"escape"</span>])</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> keys:</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    pos[<span class="dv">0</span>] <span class="op">+=</span> speed[<span class="dv">0</span>]</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    pos[<span class="dv">1</span>] <span class="op">+=</span> speed[<span class="dv">1</span>]</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pos[<span class="dv">0</span>] <span class="op">&lt;</span> <span class="op">-</span><span class="dv">1</span> <span class="kw">or</span> pos[<span class="dv">0</span>] <span class="op">&gt;</span> <span class="dv">1</span>:  <span class="co"># x-Position am Bildschirmrand?</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        speed[<span class="dv">0</span>] <span class="op">=</span> <span class="op">-</span>speed[<span class="dv">0</span>]  <span class="co"># x-Richtung umkehren</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        color <span class="op">=</span> (color <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> <span class="dv">3</span>  <span class="co"># nächste Farbe setzen</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pos[<span class="dv">1</span>] <span class="op">&lt;</span> <span class="op">-</span><span class="dv">1</span> <span class="kw">or</span> pos[<span class="dv">1</span>] <span class="op">&gt;</span> <span class="dv">1</span>:  <span class="co"># y-Position am Bildschirmrand?</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        speed[<span class="dv">1</span>] <span class="op">=</span> <span class="op">-</span>speed[<span class="dv">1</span>]  <span class="co"># y-Richtung umkehren</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        color <span class="op">=</span> (color <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> <span class="dv">3</span>  <span class="co"># nächste Farbe setzen</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    circle.setPos(pos)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    circle.setFillColor(colors[color])</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    circle.draw()</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    win.flip()</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>win.close()</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>core.quit()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="timer" class="level2">
 <h2 class="anchored" data-anchor-id="timer">Timer</h2>
-<p>In den meisten Experimenten ist es wichtig, Stimuli zu definierten Zeitpunkten anzuzeigen. Wir haben bereits eine Möglichkeit kennengelernt, wie man in PsychoPy eine bestimmte Zeit warten kann: <code>core.wait(2)</code> wartet z.B. exakt zwei Sekunden, bevor die nächste Codezeile ausgeführt wird. Dies hat allerdings den großen Nachteil, dass während der Wartezeit nichts passieren kann, da das gesamte Experiment für diese Zeitdauer blockiert ist.</p>
+<p>In den meisten Experimenten ist es wichtig, Stimuli zu definierten Zeitpunkten anzuzeigen. Wir haben bereits eine Möglichkeit kennengelernt, eine bestimmte Zeit zu warten: <code>core.wait(2)</code> hält die Ausführung für ungefähr zwei Sekunden an. Während dieser Wartezeit kann das Script keine eigenen Anweisungen ausführen.</p>
 <p>Im Gegensatz dazu blockieren sogenannte Timer den Programmablauf nicht. Generell gibt es in PsychoPy zwei verschiedene Arten an Timern:</p>
 <ol type="1">
-<li><code>core.Clock</code> beinhaltet die seit der Erstellung des Timers vergangene Zeit (in Sekunden), zählt also hinauf.</li>
-<li><code>core.CountdownTimer</code> beinhaltet die seit der Erstellung des Timers noch übrige Zeit (in Sekunden), zählt also hinunter.</li>
+<li><code>core.Clock</code> misst die seit der Erstellung oder dem letzten Zurücksetzen vergangene Zeit in Sekunden und zählt hinauf.</li>
+<li><code>core.CountdownTimer</code> misst die noch übrige Zeit in Sekunden und zählt hinunter.</li>
 </ol>
-<p>Ersteren Timer erstellt man mit <code>clock = core.Clock()</code>. Mit dieser Zuweisung beginnt der Timer bei Sekunde 0 zu ticken. Mit <code>clock.getTime()</code> kann man dann die seit der Erstellung vergangenen Sekunden bekommen.</p>
-<p>Bei der Erstellung eines Countdown-Timers kann man bei der Erstellung die Startzeit (in Sekunden) angeben, von der man herunterzählen möchte, also z.B. <code>timer = core.CountdownTimer(10)</code> zählt von Sekunde 10 herunter. Zu beachten ist, dass die Zeit hier auch negativ werden kann (im Beispiel also wenn mehr als 10 Sekunden vergangen sind). Die aktuell noch übrige Zeit kann auch hier mit <code>timer.getTime()</code> abgefragt werden.</p>
-<p>Man kann in einem Script beliebig viele Timer erstellen. Man kann Timer außerdem jederzeit auf beliebige Werte zurücksetzen. Die beiden vorher erstellten Timer <code>clock</code> und <code>timer</code> kann man mit <code>clock.reset()</code> bzw. <code>timer.reset()</code> auf ihre ursprünglichen Zeiten zurücksetzen. Dies bewirkt, dass <code>clock</code> auf 0 und <code>timer</code> auf 10 gesetzt werden.</p>
-<p>Das folgende Beispiel zeigt, wie man Timer einsetzen kann. Man erkennt, dass die <code>while</code>-Schleifen so lange ausgeführt werden, bis die Werte der Timer Null erreichen. Das bedeutet, dass die Schleife genau so lange dauert, wie bei der Erstellung des Timers (bzw. beim Zurücksetzen) angegeben wird.</p>
+<p>Einen Timer der ersten Art erstellt man mit <code>clock = core.Clock()</code>. Damit beginnt der Timer bei Sekunde 0 zu laufen. Mit <code>clock.getTime()</code> erhalten wir die seit der Erstellung vergangenen Sekunden.</p>
+<p>Beim Erstellen eines Countdown-Timers kann man die Startzeit in Sekunden angeben, von der heruntergezählt werden soll. <code>timer = core.CountdownTimer(10)</code> zählt beispielsweise von 10 Sekunden herunter. Der Wert kann negativ werden, wenn mehr als 10 Sekunden vergangen sind. Die aktuell noch übrige Zeit erhalten wir ebenfalls mit <code>timer.getTime()</code>.</p>
+<p>Man kann in einem Script beliebig viele Timer erstellen und sie zurücksetzen. <code>clock.reset()</code> setzt einen <code>core.Clock</code> auf 0 zurück. <code>timer.reset()</code> setzt einen <code>core.CountdownTimer</code> auf seine zuletzt verwendete Startzeit zurück, im obigen Beispiel also auf 10 Sekunden. Mit <code>timer.reset(5)</code> kann die neue Startzeit auch direkt auf 5 Sekunden gesetzt werden.</p>
+<p>Das folgende Beispiel zeigt zwei Countdown-Timer. Die <code>while</code>-Schleifen laufen, solange die jeweilige verbleibende Zeit positiv ist. Damit werden die Zahlen für ungefähr drei beziehungsweise fünf Sekunden angezeigt.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> psychopy <span class="im">import</span> core, visual</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>win <span class="op">=</span> visual.Window(size<span class="op">=</span>[<span class="dv">800</span>, <span class="dv">800</span>])</span>
@@ -651,65 +677,72 @@ Tipp
 </section>
 <section id="stroop-als-script" class="level2">
 <h2 class="anchored" data-anchor-id="stroop-als-script">Stroop als Script</h2>
-<p>Dies führt uns zum Schluss wieder zum Stroop-Experiment, welches wir nun in nur 43 Zeilen selbst schreiben können. Es fehlt zwar die Abspeicherung der Daten wie z.B. Reaktionszeiten, dies würde aber nur wenige zusätzliche Zeilen in Anspruch nehmen. Im Vergleich mit den über 450 Zeilen des automatisch generierten Codes ist die selbst erstellte Variante aber wesentlich übersichtlicher (und dadurch vermutlich auch einfacher zu verstehen).</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> psychopy <span class="im">import</span> core, visual, event, data</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<p>Dies führt uns zum Schluss wieder zum Stroop-Experiment, das wir nun mit wenigen Zeilen selbst schreiben können. Es fehlt zwar die Speicherung von Daten wie Reaktionszeiten und Antwortgenauigkeit; diese würde jedoch nur einige zusätzliche Zeilen erfordern. Im Vergleich mit dem automatisch generierten Code ist die selbst erstellte Variante wesentlich übersichtlicher und dadurch einfacher zu verstehen.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> psychopy <span class="im">import</span> core, data, visual</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> psychopy.hardware <span class="im">import</span> keyboard</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>win <span class="op">=</span> visual.Window(fullscr<span class="op">=</span><span class="va">True</span>)  <span class="co"># Vollbildmodus</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"""Simple Stroop</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>win <span class="op">=</span> visual.Window(fullscr<span class="op">=</span><span class="va">True</span>)  <span class="co"># Vollbildmodus</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>kb <span class="op">=</span> keyboard.Keyboard()</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="st">Name the color of the word on the screen.</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="st">Do not read the word!</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="st">If the word is red, press 'r'.</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="st">If the word is blue, press 'b'.</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="st">If the word is green, press 'g'.</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="st">Press Space when you are ready.</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> visual.TextStim(win<span class="op">=</span>win, text<span class="op">=</span>s, color<span class="op">=</span><span class="st">"white"</span>, height<span class="op">=</span><span class="fl">0.05</span>)</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>text.draw()</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>win.flip()</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>event.waitKeys(keyList<span class="op">=</span>[<span class="st">"space"</span>])</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>conditions <span class="op">=</span> data.importConditions(<span class="st">"conditions.xlsx"</span>)</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>trials <span class="op">=</span> data.TrialHandler(trialList<span class="op">=</span>conditions, nReps<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>timer <span class="op">=</span> core.CountdownTimer()</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>text.setHeight(<span class="fl">0.1</span>)</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> trial <span class="kw">in</span> trials:</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    timer.reset(<span class="dv">2</span>)</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    text.setText(trial[<span class="st">"word"</span>])</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    text.setColor(trial[<span class="st">"color"</span>])</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> timer.getTime() <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> timer.getTime() <span class="op">&gt;</span> <span class="dv">1</span>:</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>            text.draw()</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>        keys <span class="op">=</span> event.getKeys(keyList<span class="op">=</span>[<span class="st">"r"</span>, <span class="st">"g"</span>, <span class="st">"b"</span>, <span class="st">"escape"</span>])</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>        win.flip()</span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> keys:</span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>            rt <span class="op">=</span> <span class="dv">2</span> <span class="op">-</span> timer.getTime()</span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> keys[<span class="dv">0</span>] <span class="op">==</span> <span class="st">"escape"</span>:</span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>                core.quit()</span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>win.close()</span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>core.quit()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Neu an diesem Script ist die Möglichkeit, mit <code>data.TrialHandler</code> automatisch Trials aus der Datei <code>conditions.xlsx</code> zu erzeugen. Über das Ergebnis dieses Befehls kann dann iteriert werden (was den einzelnen Trials entspricht).</p>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"""Simple Stroop</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="st">Name the color of the word on the screen.</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="st">Do not read the word!</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="st">If the word is red, press 'r'.</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="st">If the word is blue, press 'b'.</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="st">If the word is green, press 'g'.</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="st">Press Space when you are ready.</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> visual.TextStim(win<span class="op">=</span>win, text<span class="op">=</span>s, color<span class="op">=</span><span class="st">"white"</span>, height<span class="op">=</span><span class="fl">0.05</span>)</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>text.draw()</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>win.flip()</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>kb.waitKeys(keyList<span class="op">=</span>[<span class="st">"space"</span>])</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>conditions <span class="op">=</span> data.importConditions(<span class="st">"conditions.xlsx"</span>)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>trials <span class="op">=</span> data.TrialHandler(trialList<span class="op">=</span>conditions, nReps<span class="op">=</span><span class="dv">5</span>, method<span class="op">=</span><span class="st">"random"</span>)</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>timer <span class="op">=</span> core.CountdownTimer()</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>text.setHeight(<span class="fl">0.1</span>)</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> trial <span class="kw">in</span> trials:</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    timer.reset(<span class="dv">2</span>)</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    text.setText(trial[<span class="st">"word"</span>])</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    text.setColor(trial[<span class="st">"color"</span>])</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    kb.clearEvents()</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    kb.clock.reset()</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> timer.getTime() <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> timer.getTime() <span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>            text.draw()</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>        win.flip()</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>        keys <span class="op">=</span> kb.getKeys(keyList<span class="op">=</span>[<span class="st">"r"</span>, <span class="st">"g"</span>, <span class="st">"b"</span>, <span class="st">"escape"</span>])</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> keys:</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> keys[<span class="dv">0</span>].name <span class="op">==</span> <span class="st">"escape"</span>:</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>                core.quit()</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>win.close()</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>core.quit()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Neu an diesem Script ist die Möglichkeit, mit <code>data.TrialHandler</code> die Bedingungen aus der Datei <code>conditions.xlsx</code> zu Trials zusammenzustellen. Über das Ergebnis kann dann iteriert werden; jede Iteration entspricht einem Trial. Durch <code>method="random"</code> werden die Bedingungen bei jeder Wiederholung neu gemischt.</p>
 </section>
 <section id="weitere-literatur" class="level2">
 <h2 class="anchored" data-anchor-id="weitere-literatur">Weitere Literatur</h2>
-<p>PsychoPy Coder beinhaltet im Menüpunkt <em>Demos</em> viele Beispiel-Scripts, welche als Vorlage für eigene Experimente bzw. Lernmaterialien verwendet werden können. Die PsychoPy-Website bietet ein <a href="https://www.psychopy.org/coder/tutorial1.html">kurzes Tutorial über PsychoPy Coder</a>, in welchem mittels Code ein einfaches Experiment erstellt wird.</p>
+<p>PsychoPy Coder enthält im Menüpunkt <em>Demos</em> viele Beispiel-Scripts, die als Vorlage für eigene Experimente und Lernmaterialien dienen können. Die PsychoPy-Website bietet ein <a href="https://www.psychopy.org/coder/tutorial1.html">kurzes Tutorial über PsychoPy Coder</a>, in dem ein einfaches Experiment direkt mit Code erstellt wird.</p>
 </section>
 <section id="übungen" class="level2">
 <h2 class="anchored" data-anchor-id="übungen">Übungen</h2>
 <section id="übung-1" class="level3">
 <h3 class="anchored" data-anchor-id="übung-1">Übung 1</h3>
-<p>Erzeugen Sie mit PsychoPy folgendes Experiment direkt als Script (d.h. verwenden Sie PsychoPy Coder):</p>
-<p>Im Experiment sollen drei verschiedene visuelle Stimuli (z.B. Kreis, Polygon, Text, Bild) gleichzeitig animiert werden. Innerhalb einer Schleife, welche so lange laufen soll, bis die Escape-Taste gedrückt wird, soll von jedem der drei Stimuli zumindest eine Eigenschaft (wie z.B. Position, Größe, Farbe, Orientierung) kontinuierlich verändert werden. Alle drei Stimuli sollen gleichzeitig innerhalb der Schleife verändert werden.</p>
-
-
+<p>Erzeugen Sie das folgende PsychoPy-Experiment direkt als Script, also mit PsychoPy Coder:</p>
+<p>Im Experiment sollen drei verschiedene visuelle Stimuli, z.B. Kreis, Polygon, Text oder Bild, gleichzeitig animiert werden. Innerhalb einer Schleife, die bis zum Drücken der Escape-Taste läuft, soll sich bei jedem der drei Stimuli zumindest eine Eigenschaft wie Position, Größe, Farbe oder Orientierung kontinuierlich verändern. Alle drei Stimuli sollen in derselben Schleifeniteration aktualisiert werden.</p>
 </section>
+</section>
+<section id="lösungen" class="level2">
+<h2 class="anchored" data-anchor-id="lösungen">Lösungen</h2>
+<p>Siehe <a href="../12/12-solutions.html">hier</a>.</p>
+
+
 </section>
 
 </main> <!-- /main -->

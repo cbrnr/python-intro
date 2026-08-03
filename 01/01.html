@@ -2,14 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Clemens Brunner">
 
-<title>1 – Grundlagen – Einführung in Python und PsychoPy</title>
+<title>1 – Erste Schritte – Einführung in Python und PsychoPy</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -68,19 +71,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6b6957c917596b414ec0b78690761e87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-94a11f9d2ef63b4d3e14a49c60b54d86.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-31dd7b97cc2105c3f43b9904fe8c5fac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-94a11f9d2ef63b4d3e14a49c60b54d86.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-0f1a520e41d12d84e925fcfd3dfb7140.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-70d97c5485b77d73a4316377cf99e6cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-0f1a520e41d12d84e925fcfd3dfb7140.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
@@ -114,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -326,6 +328,10 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
+    <a class="nav-link" href="../00/00.html"> 
+<span class="menu-text">0</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link active" href="../01/01.html" aria-current="page"> 
 <span class="menu-text">1</span></a>
   </li>  
@@ -405,7 +411,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page">
-      <h1 class="title">1 – Grundlagen</h1>
+      <h1 class="title">1 – Erste Schritte</h1>
             <p class="subtitle lead">Einführung in Python und PsychoPy</p>
                       </div>
   </div>
@@ -423,7 +429,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Veröffentlicht</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">2. März 2026</p>
+        <p class="date">1. Oktober 2026</p>
       </div>
     </div>
     
@@ -445,8 +451,8 @@ window.Quarto = {
 
 <section id="überblick" class="level2">
 <h2 class="anchored" data-anchor-id="überblick">Überblick</h2>
-<p>Dieser Kurs vermittelt die Grundlagen der Programmiersprache <a href="https://www.python.org/">Python</a>. Zunächst werden die wichtigsten Elemente der Sprache wie Schleifen, Funktionen, Bedingungen und grundlegende Datentypen vorgestellt. Nach einer ausführlichen Behandlung dieser Grundlagen lernen Sie auch, wie man Python für die Datenanalyse verwenden kann. Dabei werden sehr grundlegende Themen wie das Einlesen von Textdateien, das Arbeiten mit numerischen Daten und das Erstellen einfacher Grafiken behandelt. Abschließend werden Sie mit dem in der Psychologie populären Python-Paket <a href="https://www.psychopy.org">PsychoPy</a> einfache Experimente erstellen.</p>
-<p>Für diesen Kurs sind keinerlei Vorkenntnisse erforderlich. Sie werden die Grundlagen der Programmierung anhand praktischer Beispiele erlernen und können dieses Wissen anschließend auf die meisten anderen Programmiersprachen übertragen. Aufgrund der begrenzten Zeit werden nur grundlegende Python-Konzepte behandelt, aber diese bilden die Basis für alle weiterführenden Anwendungen. Sie werden somit ein solides Wissen über diese Grundlagen erwerben, um anschließend selbständig weiterführende Methoden zu erlernen.</p>
+<p>Dieser Kurs vermittelt die Grundlagen der Programmiersprache <a href="https://www.python.org/">Python</a>. Zunächst werden die wichtigsten Elemente der Sprache wie Schleifen, Bedingungen, Funktionen, und häufig verwendete Datentypen vorgestellt. Nach einer ausführlichen Behandlung dieser Grundlagen lernen Sie auch, wie man Python für die Datenanalyse verwenden kann. Dabei werden essentielle Themen wie das Installieren von Zusatzpaketen, das Arbeiten mit numerischen Daten und das Erstellen einfacher Grafiken behandelt. Abschließend werden Sie mit dem in der Psychologie populären Python-Paket <a href="https://www.psychopy.org">PsychoPy</a> einfache Experimente erstellen.</p>
+<p>Für diesen Kurs sind keinerlei Vorkenntnisse erforderlich. Sie werden das Programmieren anhand praktischer Beispiele erlernen und können dieses Wissen anschließend auf die meisten anderen Programmiersprachen übertragen. Aufgrund der begrenzten Zeit werden nur die wichtigsten Python-Konzepte behandelt, aber diese bilden die Basis für alle weiterführenden Anwendungen. Sie werden somit ein solides Wissen über diese Grundlagen erwerben, um anschließend selbständig weiterführende Methoden zu erlernen.</p>
 </section>
 <section id="was-ist-python" class="level2">
 <h2 class="anchored" data-anchor-id="was-ist-python">Was ist Python?</h2>
@@ -478,32 +484,32 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="wie-sieht-python-code-aus">Wie sieht Python-Code aus?</h2>
 <p>Im Folgenden sehen Sie einige Beispiele für Python-Code. Manche Befehle sind vielleicht intuitiv verständlich, andere wiederum können durchaus verwirrend wirken. Alle Beispiele werden aber im Laufe der Lehrveranstaltung erklärt, im Moment sollen diese nur der Veranschaulichung dienen.</p>
 <p>Die grauen Kästchen zeigen Python-Befehle, unmittelbar darunter folgt das Ergebnis des jeweiligen Befehls.</p>
-<div id="78067026" class="cell" data-execution_count="1">
+<div id="0fab64f4" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello World!"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello World!</code></pre>
 </div>
 </div>
-<div id="070f1031" class="cell" data-execution_count="2">
+<div id="9ee10e22" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">"only lowercase letters"</span>.upper()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>'ONLY LOWERCASE LETTERS'</code></pre>
 </div>
 </div>
-<div id="eb0c2233" class="cell" data-execution_count="3">
+<div id="eabb18fc" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i, end<span class="op">=</span><span class="st">", "</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0, 1, 2, 3, 4, 5, 6, 7, 8, 9, </code></pre>
 </div>
 </div>
-<div id="60cfd834" class="cell" data-execution_count="4">
+<div id="424399de" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">", "</span>.join([<span class="bu">str</span>(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)]))</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0, 1, 2, 3, 4, 5, 6, 7, 8, 9</code></pre>
 </div>
 </div>
-<div id="9b35d25e" class="cell" data-execution_count="5">
+<div id="a8315d52" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>[k<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">10</span>)]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>[0, 100, 400, 900, 1600, 2500, 3600, 4900, 6400, 8100]</code></pre>
@@ -546,25 +552,25 @@ Hinweis
 </div>
 </div>
 <p>Versuchen wir nun, mit Python einfache arithmetische Aufgaben zu lösen. Die Symbole für die vier Grundrechenarten sind <code>+</code> (Addition), <code>-</code> (Subtraktion), <code>*</code> (Multiplikation) und <code>/</code> (Division). Tippen Sie dazu die folgenden Befehle in die IDLE-Shell ein und bestätigen Sie jeweils mit der Eingabetaste:</p>
-<div id="a0730d74" class="cell" data-execution_count="6">
+<div id="d6ea614e" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>2</code></pre>
 </div>
 </div>
-<div id="687fde2f" class="cell" data-execution_count="7">
+<div id="19938742" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="op">-</span> <span class="dv">7</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>3</code></pre>
 </div>
 </div>
-<div id="a90e2d8b" class="cell" data-execution_count="8">
+<div id="23148c38" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> <span class="op">*</span> <span class="dv">8</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>56</code></pre>
 </div>
 </div>
-<div id="712739ab" class="cell" data-execution_count="9">
+<div id="6d5e09a8" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dv">120</span> <span class="op">/</span> <span class="dv">7</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>17.142857142857142</code></pre>
@@ -597,58 +603,58 @@ Wichtig
 </div>
 </div>
 <p>Die ganzzahlige Division hat einen eigenen Operator <code>//</code>, der aus zwei Zeichen besteht:</p>
-<div id="a64d9437" class="cell" data-execution_count="10">
+<div id="20a36708" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dv">120</span> <span class="op">//</span> <span class="dv">7</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>17</code></pre>
 </div>
 </div>
 <p>Der ganzzahlige Rest einer Division wird mit dem Rest-Operator <code>%</code> berechnet:</p>
-<div id="ad577729" class="cell" data-execution_count="11">
+<div id="05f7c638" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="dv">120</span> <span class="op">%</span> <span class="dv">7</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>1</code></pre>
 </div>
 </div>
 <p>Potenzieren (also eine Zahl hoch eine andere Zahl) ist ebenso möglich:</p>
-<div id="528150e2" class="cell" data-execution_count="12">
+<div id="73e95676" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="op">**</span><span class="dv">64</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>18446744073709551616</code></pre>
 </div>
 </div>
 <p>Python kennt die Vorrangs- und Klammerregeln:</p>
-<div id="9e3daad0" class="cell" data-execution_count="13">
+<div id="3eb4ec56" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">13</span> <span class="op">+</span> <span class="dv">6</span>) <span class="op">*</span> <span class="dv">8</span> <span class="op">-</span> <span class="dv">12</span> <span class="op">/</span> (<span class="fl">2.5</span> <span class="op">+</span> <span class="fl">1.6</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>149.0731707317073</code></pre>
 </div>
 </div>
 <p>Wenn man mathematische Funktionen wie beispielsweise Sinus oder Kosinus verwenden möchte, muss man zuerst das <code>math</code>-Modul importieren (aktivieren). Dazu tippt man den folgenden Befehl ein:</p>
-<div id="9dee353e" class="cell" data-execution_count="14">
+<div id="a0aef60f" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Danach kann man eine Vielzahl an mathematischen Funktionen und Konstanten verwenden, z.B. <code>sqrt</code> (Quadratwurzel), <code>log</code> (Logarithmus), <code>sin</code> (Sinus), <code>cos</code> (Kosinus) sowie Konstanten wie <code>pi</code> (die <a href="https://de.wikipedia.org/wiki/Kreiszahl">Kreiszahl <span class="math inline">\(\pi\)</span></a>) oder <code>e</code> (<a href="https://de.wikipedia.org/wiki/Eulersche_Zahl">Eulersche Zahl</a>).</p>
 <p>Wichtig ist, dass diese Funktionen und Konstanten immer mit einem vorangestellten <code>math.</code> verwendet werden müssen:</p>
-<div id="72e646b7" class="cell" data-execution_count="15">
+<div id="eacf6928" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>math.sqrt(<span class="dv">2</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>1.4142135623730951</code></pre>
 </div>
 </div>
-<div id="95fa9928" class="cell" data-execution_count="16">
+<div id="64f2bb82" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>math.pi</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>3.141592653589793</code></pre>
 </div>
 </div>
-<div id="3bc381c4" class="cell" data-execution_count="17">
+<div id="fbca58e9" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>math.e</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>2.718281828459045</code></pre>
 </div>
 </div>
-<div id="4a3d7907" class="cell" data-execution_count="18">
+<div id="c499ae6a" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">+</span> math.sqrt(<span class="dv">5</span>) <span class="op">*</span> <span class="dv">7</span> <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> math.pi <span class="op">*</span> <span class="fl">1.222</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>8.974423397125074</code></pre>
@@ -668,6 +674,39 @@ Tipp
 </div>
 </div>
 </section>
+<section id="skripte" class="level2">
+<h2 class="anchored" data-anchor-id="skripte">Skripte</h2>
+<p>Der interaktive Interpreter ist ideal, um einzelne Befehle auszuprobieren und sofort das Ergebnis zu sehen. Allerdings speichert er den eingegebenen Code nicht – startet man IDLE neu, sind alle vorherigen Eingaben verloren.</p>
+<p>Um Code dauerhaft zu speichern, schreibt man ihn in eine Textdatei mit der Endung <code>.py</code> (solche Dateien nennt man <em>Python-Skripte</em> oder <em>Python-Programme</em>). IDLE bietet dafür einen einfachen Texteditor. Um ein neues Skript zu erstellen, wählt man im Menü “File” &gt; “New File”. Es öffnet sich ein Editor-Fenster, in dem man Python-Code schreiben und mit “File” &gt; “Save” in eine <code>.py</code>-Datei speichern kann.</p>
+<p><img src="idle-editor.png" class="img-fluid"></p>
+<p>Um das gesamte Skript auszuführen, wählt man im Menü “Run” &gt; “Run Module” (oder drückt <kbd>F5</kbd>). Das Skript wird dann von Anfang bis Ende ausgeführt.</p>
+<p>Ein wichtiger Unterschied zum interaktiven Modus: Im Skript-Modus zeigt Python die Ergebnisse <em>nicht</em> automatisch an. Angenommen, ein Skript enthält die folgende Zeile:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="op">+</span> <span class="dv">4</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Führt man dieses Skript aus, wird der Befehl zwar ausgeführt, aber es erscheint keine Ausgabe. Das ist durchaus beabsichtigt, weil ein Skript oft viele Befehle enthält und man nicht jedes Zwischenergebnis sehen möchte. Möchte man ein Ergebnis im Skript-Modus ausgeben, muss man das explizit mit der <code>print</code>-Funktion tun:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">1</span> <span class="op">+</span> <span class="dv">4</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Jedes Python-Programm beginnt immer “bei Null”, d.h. beim Ausführen sind keine Ergebnisse aus früheren Sitzungen vorhanden. Das ist sinnvoll, da es dazu beiträgt, reproduzierbaren Code zu schreiben.</p>
+</div>
+</div>
+</section>
+<section id="terminal-und-interpreter" class="level2">
+<h2 class="anchored" data-anchor-id="terminal-und-interpreter">Terminal und Interpreter</h2>
+<p>Neben der IDLE-Shell gibt es noch ein weiteres wichtiges Programm, das wir im Lauf des Kurses verwenden werden: das <em>Terminal</em>. Es ist wichtig, das Terminal <em>nicht</em> mit dem Python-Interpreter zu verwechseln.</p>
+<ul>
+<li>In der <strong>IDLE-Shell</strong> (bzw. im Python-Interpreter) tippt man <em>Python-Befehle</em> ein (z.B. <code>1 + 1</code> oder <code>import math</code>).</li>
+<li>Im <strong>Terminal</strong> läuft <em>kein</em> Python, sondern eine sogenannte <a href="https://de.wikipedia.org/wiki/Shell_(Betriebssystem)">Shell</a>. Hier tippt man <em>Shell-Befehle</em> ein, um z.B. Programme zu starten oder Dateien zu verwalten.</li>
+</ul>
+<p>Wir werden den Python-Interpreter in diesem Kurs hauptsächlich innerhalb von IDLE verwenden. Das Terminal benötigen wir später, um Zusatzpakete zu installieren (mehr dazu in einer späteren Einheit).</p>
+</section>
 <section id="anwendungsbeispiele" class="level2">
 <h2 class="anchored" data-anchor-id="anwendungsbeispiele">Anwendungsbeispiele</h2>
 <p>Python wird heutzutage in vielen verschiedenen Bereichen verwendet. Um zu verdeutlichen, wie vielfältig man Python vor allem in der Forschung einsetzen kann, sind hier einige relevante Beispiele angeführt. Diese Auswahl ist jedoch bei weitem nicht vollständig und spiegelt vor allem meine persönliche Erfahrung wider.</p>
@@ -686,27 +725,6 @@ Tipp
 <h3 class="anchored" data-anchor-id="statistische-datenanalyse">Statistische Datenanalyse</h3>
 <p>Zur statistischen Auswertung von Daten gibt es in Python ebenfalls eine große Anzahl an Paketen. Besonders hervorzuheben sind hier <a href="https://www.numpy.org/">NumPy</a>, <a href="https://scipy.org/">SciPy</a>, <a href="https://www.pola.rs/">Polars</a>, <a href="https://pandas.pydata.org/">pandas</a>, <a href="https://www.statsmodels.org/stable/index.html">statsmodels</a>, <a href="https://matplotlib.org/">Matplotlib</a>, <a href="https://seaborn.pydata.org/">seaborn</a> und <a href="https://scikit-learn.org/stable/">scikit-learn</a>. Einige dieser Pakete werden wir im Rahmen dieses Kurses kennenlernen (wenn auch nur sehr oberflächlich).</p>
 <p><img src="scatter.png" class="img-fluid"></p>
-</section>
-<section id="grafische-oberflächen" class="level3">
-<h3 class="anchored" data-anchor-id="grafische-oberflächen">Grafische Oberflächen</h3>
-<p>In Python kann man auch eigenständige Programme mit grafischen Oberflächen erstellen. Ein Beispiel dafür ist <a href="https://www.spyder-ide.org/">Spyder</a>, eine Entwicklungsumgebung für Python, welche selbst komplett in Python geschrieben ist. Auch die grafischen Oberflächen von <a href="http://www.psychopy.org/">PsychoPy</a> und <a href="https://github.com/cbrnr/mnelab">MNELAB</a> sind in Python geschrieben.</p>
-</section>
-<section id="astronomie" class="level3">
-<h3 class="anchored" data-anchor-id="astronomie">Astronomie</h3>
-<p>Zwei sehr prominente Beispiele dürfen an dieser Stelle nicht fehlen: das <a href="https://eventhorizontelescope.org/press-release-april-10-2019-astronomers-capture-first-image-black-hole">erste Bild eines schwarzen Lochs</a> (im Zentrum der etwa 55 Millionen Lichtjahre entfernten Galaxie <a href="https://de.wikipedia.org/wiki/Messier_87">Messier 87</a>) wurde <a href="https://numpy.org/case-studies/blackhole-image/">mit Hilfe von Python</a> erzeugt:</p>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="m87.png" class="img-fluid figure-img" width="500"></p>
-<figcaption>© <a href="https://eventhorizontelescope.org/press-release-april-10-2019-astronomers-capture-first-image-black-hole">EHT</a>, CC BY 4.0</figcaption>
-</figure>
-</div>
-<p>Auch bei der Visualisierung des <a href="https://eventhorizontelescope.org/blog/astronomers-reveal-first-image-black-hole-heart-our-galaxy">schwarzen Lochs Sagittarius A*</a> im Zentrum unser eigenen Galaxie wurde <a href="https://doi.org/10.3847/2041-8213/ac6736">Python</a> verwendet:</p>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="sgr_astar.png" class="img-fluid figure-img" width="500"></p>
-<figcaption>© <a href="https://eventhorizontelescope.org/blog/astronomers-reveal-first-image-black-hole-heart-our-galaxy">EHT</a>, CC BY 4.0</figcaption>
-</figure>
-</div>
 </section>
 </section>
 <section id="übungen" class="level2">
@@ -765,10 +783,14 @@ Hinweis
 <section id="übung-6" class="level3">
 <h3 class="anchored" data-anchor-id="übung-6">Übung 6</h3>
 <p>Warum funktioniert der folgende Befehl nicht (unter der Annahme, dass vorher <code>import math</code> ausgeführt wurde)?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>math.Sqrt(<span class="dv">4</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
-
-
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>math.Sqrt(<span class="dv">4</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
+</section>
+<section id="lösungen" class="level2">
+<h2 class="anchored" data-anchor-id="lösungen">Lösungen</h2>
+<p>Siehe <a href="../01/01-solutions.html">hier</a>.</p>
+
+
 </section>
 
 </main> <!-- /main -->

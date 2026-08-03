@@ -2,14 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Clemens Brunner">
 
-<title>11 – PsychoPy (1) – Einführung in Python und PsychoPy</title>
+<title>11 – PsychoPy Builder – Einführung in Python und PsychoPy</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -68,19 +71,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6b6957c917596b414ec0b78690761e87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-94a11f9d2ef63b4d3e14a49c60b54d86.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-31dd7b97cc2105c3f43b9904fe8c5fac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-94a11f9d2ef63b4d3e14a49c60b54d86.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-0f1a520e41d12d84e925fcfd3dfb7140.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-70d97c5485b77d73a4316377cf99e6cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-0f1a520e41d12d84e925fcfd3dfb7140.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
@@ -114,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -326,6 +328,10 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
+    <a class="nav-link" href="../00/00.html"> 
+<span class="menu-text">0</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../01/01.html"> 
 <span class="menu-text">1</span></a>
   </li>  
@@ -405,7 +411,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page">
-      <h1 class="title">11 – PsychoPy (1)</h1>
+      <h1 class="title">11 – PsychoPy Builder</h1>
             <p class="subtitle lead">Einführung in Python und PsychoPy</p>
                       </div>
   </div>
@@ -423,7 +429,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Veröffentlicht</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">1. Juni 2026</p>
+        <p class="date">10. Dezember 2026</p>
       </div>
     </div>
     
@@ -445,18 +451,18 @@ window.Quarto = {
 
 <section id="allgemeines" class="level2">
 <h2 class="anchored" data-anchor-id="allgemeines">Allgemeines</h2>
-<p><a href="https://www.psychopy.org/">PsychoPy</a> ist ein in Python geschriebenes Paket zur Erstellung von Experimenten in den Neurowissenschaften oder der experimentellen Psychologie. Es ist frei verfügbar (Open Source) und unterstützt zwei verschiedene Möglichkeiten Experimente zu erstellen:</p>
+<p><a href="https://www.psychopy.org/">PsychoPy</a> ist eine freie, in Python geschriebene Software zum Erstellen und Durchführen von Experimenten, insbesondere in der experimentellen Psychologie und den Neurowissenschaften. Es unterstützt zwei Arten um Experimente zu erstellen:</p>
 <ol type="1">
-<li>Visuelle Erstellung über eine grafische Oberfläche (GUI) namens <em>Builder</em></li>
+<li>Visuelle Erstellung über eine grafische Oberfläche namens <em>Builder</em></li>
 <li>Programmatische Erstellung mit Python-Code (z.B. mit dem mitgelieferten Editor namens <em>Coder</em>)</li>
 </ol>
-<p>Ersteres erleichtert den Einstieg, da keinerlei Programmierwissen notwendig ist. Ein mit Builder erstelltes Experiment wird automatisch in Python-Code übersetzt, welcher dann ausgeführt werden kann. Obwohl viele Parameter des Experimentes grafisch angepasst werden können, ist es mit dem Builder mitunter schwierig, komplexere Designs umzusetzen. Dafür ist die zweite Möglichkeit gedacht – man kann die grafische Oberfläche auch komplett ignorieren und das Experiment direkt mit Python-Code erstellen, oder man verfeinert ein mit dem Builder erstelltes Experiment mit angepasstem Python-Code. Dazu sind allerdings sowohl grundlegende Python-Kenntnisse als auch Wissen über die Funktionsweise von PsychoPy notwendig.</p>
+<p>Der Builder erleichtert den Einstieg, weil dafür zunächst kein Programmierwissen nötig ist. PsychoPy übersetzt ein damit erstelltes Experiment beim Ausführen automatisch in Python-Code. Viele Parameter lassen sich grafisch einstellen; bei komplexeren Designs ist direkter Python-Code jedoch oft flexibler. Man kann die grafische Oberfläche vollständig umgehen oder ein Builder-Experiment mit eigener Code-Komponente erweitern. Dafür sind grundlegende Python-Kenntnisse und ein Verständnis der PsychoPy-Abläufe nötig.</p>
 <p>In dieser Lehrveranstaltung werden wir beide Möglichkeiten kennenlernen. Zunächst werden wir die grafische Oberfläche Builder verwenden, um einfache Experimente zu erstellen. Im nächsten Kapitel werden wir dann den zugrundeliegenden Python-Code näher betrachten und Experimente direkt mit Python-Code erstellen.</p>
 </section>
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">Installation</h2>
-<p>Da PsychoPy ein Python-Paket ist, kann es prinzipiell mit <code>pip install psychopy</code> installiert werden. Allerdings ist es durch die vielen und teilweise sehr spezifischen Abhängigkeiten von PsychoPy in der Praxis relativ aufwändig, eine funktionsfähige PsychoPy-Umgebung zu erhalten.</p>
-<p>Die <a href="https://www.psychopy.org/download.html">offizielle Dokumentation</a> beschreibt einige mögliche Installationsvarianten für unterschiedliche Betriebssysteme. In vielen Fällen ist es am einfachsten, die vorgefertigten <a href="https://github.com/psychopy/psychopy/releases">Standalone-Pakete</a> zu verwenden. Diese Pakete beinhalten eine komplette Python-Umgebung inklusive aller notwendigen Zusatzpakete, welche parallel zu einer eventuell bereits vorhandenen Python-Umgebung installiert werden können. Es gibt diese Standalone-Pakete sowohl für Windows als auch macOS. Für Linux werden keine Installer angeboten, hier muss man PsychoPy manuell installieren (es gibt aber <a href="https://github.com/wieluk/psychopy_linux_installer">PsychoPy Installation Script for Linux</a>, welches die Installation automatisiert und daher drastisch vereinfacht).</p>
+<p>PsychoPy ist zwar ein Python-Paket und kann prinzipiell mit <code>pip</code> installiert werden. Wegen der zahlreichen, teils systemspezifischen Abhängigkeiten ist eine manuelle Installation aber fehleranfällig.</p>
+<p>Die <a href="https://www.psychopy.org/download.html">offizielle Installationsanleitung</a> beschreibt die Möglichkeiten für die einzelnen Betriebssysteme. Für diese Lehrveranstaltung sind die vorgefertigten <a href="https://github.com/psychopy/psychopy/releases">Standalone-Versionen</a> die verlässlichste Option. Sie enthalten eine passende Python-Umgebung mit allen benötigten Zusatzpaketen und werden getrennt von einer eventuell bereits vorhandenen Python-Installation eingerichtet.</p>
 </section>
 <section id="builder" class="level2">
 <h2 class="anchored" data-anchor-id="builder">Builder</h2>
@@ -481,7 +487,7 @@ window.Quarto = {
 <p>Wenden wir uns jetzt aber einem praktischen Beispiel zu. Die folgenden Schritte demonstrieren, wie man mit PsychoPy Builder ein Experiment erstellt, welches den <a href="https://en.wikipedia.org/wiki/Stroop_effect">Stroop-Effekt</a> misst.</p>
 <section id="experiment-einstellungen" class="level3">
 <h3 class="anchored" data-anchor-id="experiment-einstellungen">Experiment-Einstellungen</h3>
-<p>Zunächst sollte man grundlegende Eigenschaften in den “Experiment Settings” festlegen. Durch einen Klick auf das Icon mit dem Zahnrad (siehe Abbildung unten) öffnet sich ein Dialog, in dem man diverse Einstellungen für das Experiment vornehmen kann. Für unser Beispiel ändern wir den Namen auf “stroop” und löschen die zweite Zeile von “Experiment info” durch Klicken auf das Minus-Symbol ganz rechts in dieser Zeile. Dies bewirkt, dass vor dem Starten des Experiments nur der Name der Versuchsperson (“participant”) abgefragt wird.</p>
+<p>Zunächst sollte man grundlegende Eigenschaften in den “Experiment Settings” festlegen. Durch einen Klick auf das Icon mit dem Zahnrad öffnet sich ein Dialog, in dem man diverse Einstellungen für das Experiment vornehmen kann. Für unser Beispiel ändern wir den Namen auf “stroop” und löschen die zweite Zeile von “Experiment info” durch Klicken auf das Minus-Symbol ganz rechts in dieser Zeile. Dies bewirkt, dass vor dem Starten des Experiments nur der Name der Versuchsperson (“participant”) abgefragt wird.</p>
 <p>Das Dialogfenster sollte also wie folgt aussehen und kann durch Klicken auf OK bestätigt werden:</p>
 <p><img src="exp_settings.png" class="img-fluid"></p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -596,7 +602,7 @@ Wichtig
 </tbody>
 </table>
 <p>Die erste Zeile beinhaltet die Spaltennamen – diese Namen können wir dann in PsychoPy verwenden. Die erste Spalte beinhaltet den Text der am Bildschirm angezeigt werden soll, und die zweite Spalte bestimmt die Farbe des Textes. In der dritten Spalte halten wir den korrekten Tastendruck fest.</p>
-<p>Unsere Routine “trial” zeigt genau ein Wort an (mehr dazu gleich) – wir möchten diese Routine aber für jede Zeile in der Excel-Tabelle wiederholen. Dazu benötigen wir eine Schleife, die wir durch Klicken auf “Insert Loop” einfügen können. Als Startpunkt klicken wir auf den Punkt links von “trial”, und als Endpunkt auf den Punkt rechts von “trial”. Danach öffnet sich ein Dialog mit den Eigenschaften der Schleife. Hier können wir z.B. die Anzahl an Wiederholungen einstellen (standardmäßig ist hier <code>5</code> gesetzt, diesen Wert können wir beibehalten). Im Eingabefeld “Conditions” können wir nun durch Klicken auf das Ordner-Icon unsere Datei <code>conditions.xlsx</code> auswählen. Die neun Bedingungen und drei Parameter werden erkannt, und diese werden nach Klicken auf OK insgesamt fünf Mal wiederholt (d.h. das Experiment besteht aus insgesamt 45 Trials).</p>
+<p>Unsere Routine “trial” zeigt genau ein Wort an (mehr dazu gleich) – wir möchten diese Routine aber für jede Zeile in der Excel-Tabelle wiederholen. Dazu benötigen wir eine Schleife, die wir durch Klicken auf “Insert Loop” einfügen können. Als Startpunkt klicken wir auf den Punkt links von “trial”, und als Endpunkt auf den Punkt rechts von “trial”. Danach öffnet sich ein Dialog mit den Eigenschaften der Schleife. Stellen Sie die Anzahl der Wiederholungen auf <code>5</code> und den Schleifentyp auf “random”, damit PsychoPy die Bedingungen in jedem Durchlauf neu mischt. Im Eingabefeld “Conditions” können wir nun durch Klicken auf das Ordner-Icon unsere Datei <code>conditions.xlsx</code> auswählen. Die neun Bedingungen und drei Parameter werden erkannt und insgesamt fünfmal wiederholt, d.h. das Experiment besteht aus <span class="math inline">\(9 \cdot 5 = 45\)</span> Trials.</p>
 <p>Das PsychoPy-Fenster sollte jetzt in etwa so aussehen:</p>
 <p><img src="trial_loop.png" class="img-fluid"></p>
 <p>Nun müssen wir die Routine “trial” mit den benötigten Komponenten befüllen. Wir möchten die Wörter für jeweils eine Sekunde am Bildschirm anzeigen, daher fügen wir einen Text-Stimulus hinzu. Die Eigenschaften sollten wie folgt gesetzt werden:</p>
@@ -609,7 +615,7 @@ Wichtig
 <p>Es fehlt noch die Möglichkeit, Tastatureingaben als Antworten geben zu können. Dazu können wir eine Keyboard-Komponente mit folgenden Eigenschaften hinzufügen:</p>
 <p><img src="trial_key_1.png" class="img-fluid"></p>
 <p><img src="trial_key_2.png" class="img-fluid"></p>
-<p>Damit haben die Versuchspersonen 2 Sekunden Zeit, eine der drei Tasten <kbd>r</kbd>, <kbd>g</kbd> oder <kbd>b</kbd> zu drücken. Falls dies nicht geschieht, wird die Routine beendet und der nächste Schleifendurchlauf startet. Außerdem wird gespeichert, ob die Antwort korrekt war oder nicht – dies wird mit Hilfe der Spalte <code>correct</code> (aus des Excel-Datei) erreicht, die ja bereits die erwarteten korrekten Tasteneingaben enthält. Damit kann die erwartete Antwort mit der tatsächlichen Antwort verglichen werden – das Ergebnis dieses Vergleichs wird dann automatisch in die Ergebnisdateien gespeichert. Wir sollten auch den ersten Tastendruck (“first key”) speichern, da dieser für die Antwort relevant ist.</p>
+<p>Die Versuchspersonen haben damit 2 Sekunden Zeit, eine der drei Tasten <kbd>r</kbd>, <kbd>g</kbd> oder <kbd>b</kbd> zu drücken. Falls keine Antwort erfolgt, endet die Routine und der nächste Schleifendurchlauf beginnt. Der Text-Stimulus wird nach 1 Sekunde ausgeblendet; während der zweiten Sekunde bleibt das Fenster leer, die Tastatur bleibt aber aktiv. Außerdem wird gespeichert, ob die Antwort korrekt war. Dazu verwenden wir die Spalte <code>correct</code> aus der Excel-Datei, die bereits die erwartete Taste enthält. PsychoPy vergleicht diese mit der tatsächlich gedrückten Taste und schreibt das Ergebnis in die Ergebnisdatei. Speichern Sie nur den ersten Tastendruck (“first key”), weil nur dieser als Antwort zählen soll.</p>
 <p>Wir können das Experiment speichern und ausführen – unser einfaches Stroop-Experiment sollte bereits funktionieren. Das Experiment sollte in PsychoPy in etwa so aussehen:</p>
 <p><img src="simple_stroop.png" class="img-fluid"></p>
 </section>
@@ -1024,7 +1030,7 @@ Tipp
 </tr>
 </tbody>
 </table>
-<p>Man könnte nun beispielsweise die mittleren Reaktionszeiten (Spalte <code>trial_key.rt</code>) der kongruenten (Wort und Farbe stimmen überein) und inkongruenten (Wort und Farbei stimmen nicht überein) korrekt gelösten (Spalte <code>trial_key.corr</code>) Trials vergleichen.</p>
+<p>Man könnte nun beispielsweise die mittleren Reaktionszeiten (Spalte <code>trial_key.rt</code>) der korrekt gelösten Trials (Spalte <code>trial_key.corr</code>) vergleichen: zwischen kongruenten Trials, bei denen Wort und Farbe übereinstimmen, und inkongruenten Trials, bei denen sie nicht übereinstimmen. Trials ohne Antwort sollten dabei ausgeschlossen werden.</p>
 </section>
 </section>
 <section id="erweitertes-stroop-experiment" class="level2">
@@ -1040,7 +1046,7 @@ Tipp
 </section>
 <section id="feedback-nach-jedem-trial" class="level3">
 <h3 class="anchored" data-anchor-id="feedback-nach-jedem-trial">Feedback nach jedem Trial</h3>
-<p>Um nach jedem Trial rückzumelden, ob die Versuchsperson die richtige Taste gedrückt hat, fügen wir direkt nach der Routine “trial” eine neue Routine namens “feedback” hinzu. Es ist wichtig, dass sich diese noch <em>innerhalb der Schleife</em> befindet, da wir das Feedback nach jedem Trial geben möchten. Da wir dazu einen Text anzeigen möchten, fügen wir einen Text-Stimulus names “feedback_text” hinzu. Weil wir keinen fixen Text anzeigen können, geben wir die Namen <code>$msg</code> bei Text bzw. <code>$msg_color</code> (im Tab “Appearance”) bei der Textfarbe an (bei beiden Feldern muss “set every repeat” gesetzt werden). Diese beiden Python-Objekte sollen den Text (“Correct!”, “Wrong!” oder “Too slow!”) sowie die zugehörigen Farben (grün, rot oder weiß) beinhalten – dies werden wir im nächsten Schritt implementieren.</p>
+<p>Um nach jedem Trial rückzumelden, ob die Versuchsperson die richtige Taste gedrückt hat, fügen wir direkt nach der Routine “trial” eine neue Routine namens “feedback” hinzu. Sie muss <em>innerhalb der Schleife</em> liegen, damit das Feedback nach jedem Trial erscheint. Fügen Sie einen Text-Stimulus namens <code>feedback_text</code> hinzu. Weil dessen Inhalt vom vorherigen Trial abhängt, tragen wir bei Text <code>$msg</code> und im Tab “Appearance” bei der Textfarbe <code>$msg_color</code> ein. Diese beiden Python-Objekte enthalten später den Text (“Correct!”, “Wrong!” oder “Too slow!”) und die zugehörige Farbe (grün, rot oder weiß). Bei beiden Feldern muss “set every repeat” gesetzt sein. Setzen Sie außerdem die Stoppzeit auf 1 Sekunde.</p>
 <p><img src="feedback_text.png" class="img-fluid"></p>
 <p>Wir können Python-Objekte in einer Code-Komponente erstellen – dazu klickt man auf das entsprechende Icon in der Gruppe “Custom”. Im Dialogfeld kann man nun Python-Code einfügen.</p>
 <p>In PsychoPy muss man alle Python-Objekte zu Beginn des Experimentes erstellen und z.B. auf Standardwerte setzen. Dazu fügt man im Abschnitt “Begin Experiment” folgenden Code ein:</p>
@@ -1072,12 +1078,12 @@ Hinweis
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    msg <span class="op">=</span> <span class="st">"Too slow!"</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    msg_color <span class="op">=</span> <span class="st">"white"</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="feedback_code_2.png" class="img-fluid"></p>
-<p>Sehen wir uns an, wie dieser Code funktioniert. Wir verwenden hier die Keyboard-Komponente <code>trial_key</code>, welche wie jede Keyboard-Komponente zwei wichtige Eigenschaften (als Attribute) enthält:</p>
+<p>Sehen wir uns an, wie dieser Code funktioniert. Wir verwenden hier die Keyboard-Komponente <code>trial_key</code>, welche zwei wichtige Attribute enthält:</p>
 <ul>
-<li><code>trial_key.keys</code> ist eine Liste, welche die im aktuellen Trial gedrückte Taste(n) enthält. Wurde noch keine Taste gedrückt, ist diese Liste leer.</li>
-<li><code>trial_key.corr</code> ist ein <code>bool</code>-Wert (also <code>True</code> oder <code>False</code>), welcher angibt, ob die gedrückte Taste richtig oder falsch ist.</li>
+<li><code>trial_key.keys</code> enthält bei der Einstellung “first key” den Namen der ersten gedrückten Taste als Zeichenkette, beispielsweise <code>"r"</code>. Ohne Antwort ist der Wert leer bzw. nicht gesetzt.</li>
+<li><code>trial_key.corr</code> enthält <code>1</code> für eine korrekte und <code>0</code> für eine inkorrekte oder fehlende Antwort.</li>
 </ul>
-<p>Die Bedingung <code>if trial_key.keys</code> überprüft, ob die Liste Elemente enthält oder leer ist. Dies ist eine abgekürzte und empfohlene Schreibweise, denn eine nicht-leere Liste entspricht dem <code>bool</code>-Wert <code>True</code>, und eine leere Liste entspricht dem <code>bool</code>-Wert <code>False</code>.</p>
+<p>Die Bedingung <code>if trial_key.keys</code> überprüft, ob eine Taste gespeichert wurde. Ein nicht-leerer Text entspricht in einer Bedingung dem <code>bool</code>-Wert <code>True</code>; ein leerer bzw. nicht gesetzter Wert entspricht <code>False</code>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1091,7 +1097,7 @@ Tipp
 <p>Angenommen, wir hätten <code>x = True</code>, dann wäre die Bedingung <code>if x:</code> äquivalent zu <code>if x == True:</code>. Ebenso wäre <code>if not x:</code> äquivalent zu <code>if x == False:</code>. In Python ist es üblich, Bedingungen so kompakt wie möglich zu formulieren, daher werden diese abgekürzten Schreibweisen empfohlen.</p>
 </div>
 </div>
-<p>Wenn die Liste <code>trial_key.keys</code> also nicht leer ist, wurde eine Taste gedrückt, und der entsprechende Codezweig wird ausgeführt. Dieser besteht aus einer weiteren Bedingung, nämlich <code>if trial_key.corr</code> (auch das ist eine abgekürzte Schreibweise für <code>if trial_key.corr == True</code>). Dies bedeutet also, wenn die gedrückte Taste der korrekten Antwort entspricht, wird <code>msg</code> auf <code>"Correct!"</code> und <code>msg_color</code> auf <code>"green"</code> gesetzt. Falls die Taste nicht korrekt war, wird der <code>else</code>-Zweig ausgeführt (<code>msg = "Wrong!"</code> und <code>msg_color = "red"</code>).</p>
+<p>Wenn also eine Taste gespeichert wurde, wird der erste Codezweig ausgeführt. Dieser enthält die weitere Bedingung <code>if trial_key.corr</code>; <code>1</code> wird in einer Bedingung als <code>True</code> und <code>0</code> als <code>False</code> behandelt. Bei einer korrekten Antwort werden daher <code>msg</code> auf <code>"Correct!"</code> und <code>msg_color</code> auf <code>"green"</code> gesetzt. Bei einer inkorrekten Antwort wird der <code>else</code>-Zweig ausgeführt (<code>msg = "Wrong!"</code> und <code>msg_color = "red"</code>).</p>
 <p>Der abschließende <code>else</code>-Zweig wird nur ausgeführt, wenn keine Taste gedrückt wurde (also <code>trial_key.keys</code> leer ist). Dann werden <code>msg</code> und <code>msg_color</code> entsprechend gesetzt.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1123,11 +1129,15 @@ Wichtig
 <p>Verwenden Sie als Stimuli alle 20 Kombinationen der Zahlen von 1 bis 5, also z.B. 1–2, 1–3, 1–4, 1–5, 2–1, 2–3, usw. (die Excel-Datei soll also inklusive Kopfzeile 21 Zeilen beinhalten; gleiche Zahlen sollen nicht miteinander verglichen werden).</p>
 <p>Für die Antworten sollen entweder die Pfeil-nach-links-Taste oder die Pfeil-nach-rechts-Taste gedrückt werden können. Die Pfeil-nach-links-Taste heißt in PsychoPy <code>"left"</code> und bedeutet in diesem Experiment, dass die linke Zahl größer als die rechte ist. Die Pfeil-nach-rechts-Taste heißt <code>"right"</code> und bedeutet, dass die rechte Zahl größer ist.</p>
 <p>Ein Trial (also ein Zahlenpaar) soll maximal 2 Sekunden am Bildschirm sichtbar sein – falls bis dahin keine Antwort gegeben wurde, soll das nächste Trial starten. Nach einer gegebenen Antwort bzw. nach dem Timeout von 2 Sekunden soll ein kurzes Feedback gegeben werden, ob die Antwort richtig oder falsch war (Dauer 1 Sekunde). Wenn keine Antwort gegeben wurde, soll kein Text (also ein leerer String) angezeigt werden.</p>
-<p>Die 20 Bedingungen sollen alle in zufälliger Reihenfolge angezeigt werden und drei mal wiederholt werden, d.h. insgesamt soll das Experiment aus 60 Trials bestehen.</p>
+<p>Die 20 Bedingungen sollen in zufälliger Reihenfolge angezeigt und dreimal wiederholt werden, d.h. insgesamt soll das Experiment aus 60 Trials bestehen.</p>
 <p>Das Experiment soll außerdem einen Instruktionstext sowie einen Verabschiedungstext beinhalten, welche nur durch Drücken der Leertaste beendet werden können.</p>
-
-
 </section>
+</section>
+<section id="lösungen" class="level2">
+<h2 class="anchored" data-anchor-id="lösungen">Lösungen</h2>
+<p>Siehe <a href="../11/11-solutions.html">hier</a>.</p>
+
+
 </section>
 
 </main> <!-- /main -->

@@ -2,6 +2,11 @@
   font-style: italic;
 }
 
+figcaption {
+  margin: auto;
+  text-align: center;
+}
+
 kbd {
   padding: .2rem .2rem;
 }
