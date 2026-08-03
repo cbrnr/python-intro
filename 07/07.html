@@ -453,16 +453,16 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="wiederholung">Wiederholung</h2>
 <p>In der vorigen Einheit haben wir mit Listen, Tupeln und Dictionaries bereits Sammlungstypen kennengelernt und dabei gesehen, wie <em>Indizieren</em> und <em>Slicen</em> bei Sequenzdatentypen funktionieren. Der in dieser Einheit behandelte Datentyp <code>str</code> (String) ist ebenfalls ein Sequenzdatentyp – ein String besteht aus einer Sequenz von Zeichen.</p>
 <p>Wie Tupel sind Strings <em>immutable</em> – ein einmal erstellter String kann nicht mehr verändert werden. Der Versuch, ein einzelnes Zeichen zu überschreiben, führt zu einem Fehler:</p>
-<div id="3cbc02e6" class="cell" data-execution_count="1">
+<div id="cb75a9d6" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"Python"</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="5381f891" class="cell" data-execution_count="2">
+<div id="35d0a25a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>s[<span class="dv">1</span>]  <span class="co"># das 2. Zeichen (Python beginnt mit 0 zu zählen)</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>'y'</code></pre>
 </div>
 </div>
-<div id="77a9d29f" class="cell" data-execution_count="3">
+<div id="2dc431ea" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>s[<span class="dv">1</span>] <span class="op">=</span> <span class="st">"x"</span>  <span class="co"># Fehler, da Strings immutable sind</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
@@ -480,28 +480,28 @@ window.Quarto = {
 <section id="strings-erstellen" class="level2">
 <h2 class="anchored" data-anchor-id="strings-erstellen">Strings erstellen</h2>
 <p>Der Datentyp <code>str</code> stellt Zeichenketten (Strings) dar. Ein String besteht aus einer Sequenz an Zeichen (Buchstaben, Zahlen, Sonderzeichen). Strings werden von einfachen oder doppelten Anführungszeichen umschlossen (aber der Inhalt eines Strings selbst besteht nur aus den Zeichen <em>zwischen</em> diesen Anführungszeichen).</p>
-<div id="3a82cd6f" class="cell" data-execution_count="4">
+<div id="816fb235" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="op">=</span> <span class="st">"String"</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>s1</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>'String'</code></pre>
 </div>
 </div>
-<div id="dc401e6c" class="cell" data-execution_count="5">
+<div id="12f35050" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>s2 <span class="op">=</span> <span class="st">'Dies ist ebenfalls ein String.'</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>s2</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>'Dies ist ebenfalls ein String.'</code></pre>
 </div>
 </div>
-<div id="42e18a2a" class="cell" data-execution_count="6">
+<div id="867d6780" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>s3 <span class="op">=</span> <span class="st">'Auch "das" ist ein String'</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>s3</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>'Auch "das" ist ein String'</code></pre>
 </div>
 </div>
-<div id="9cb10659" class="cell" data-execution_count="7">
+<div id="31919bcd" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>s4 <span class="op">=</span> <span class="st">"And that's a string too!"</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>s4</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -509,13 +509,13 @@ window.Quarto = {
 </div>
 </div>
 <p>Lange Strings, die sich auch über mehrere Zeilen erstrecken können (was bei den mit einfachen Anführungszeichen erzeugten Strings nicht möglich ist), kann man mit drei Anführungszeichen umschließen:</p>
-<div id="ba37b687" class="cell" data-execution_count="8">
+<div id="78dfff7d" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>s5 <span class="op">=</span> <span class="st">"""Dies ist ein sehr langer Text.</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="st">Man kann einfach</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="st">in die nächste Zeile gehen.</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="14fe7be1" class="cell" data-execution_count="9">
+<div id="badaab96" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s5)  <span class="co"># der Inhalt des Strings wird formatiert ausgegeben</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Dies ist ein sehr langer Text.
@@ -524,7 +524,7 @@ in die nächste Zeile gehen.
 </code></pre>
 </div>
 </div>
-<div id="04207056" class="cell" data-execution_count="10">
+<div id="e68654f7" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>s5  <span class="co"># tatsächlicher Wert des Strings, \n steht für Zeilenumbruch</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>'Dies ist ein sehr langer Text.\nMan kann einfach\nin die nächste Zeile gehen.\n'</code></pre>
@@ -542,19 +542,19 @@ Tipp
 </div>
 <div class="callout-body-container callout-body">
 <p>Möchte man einen String erzeugen, der sowohl <code>"</code> als auch <code>'</code> enthält, kann man weder das eine noch das andere Zeichen direkt verwenden. Man muss daher das Anführungszeichen, welches für die Definition des Strings verwendet wurde und auch im String vorkommen soll, mit einem vorangestellten <code>\</code> schreiben (man spricht hier von einer <a href="https://de.wikipedia.org/wiki/Escape-Sequenz">Escape-Sequenz</a>):</p>
-<div id="4206dce4" class="cell" data-execution_count="11">
+<div id="2476ce87" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"Dieser String </span><span class="ch">\"</span><span class="st">enthält</span><span class="ch">\"</span><span class="st"> doppelte und 'einfache' Anführungszeichen."</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">'Dieser String "enthält" doppelte und </span><span class="ch">\'</span><span class="st">einfache</span><span class="ch">\'</span><span class="st"> Anführungszeichen.'</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Die beiden Strings <code>x</code> und <code>y</code> sind identisch:</p>
-<div id="657fa298" class="cell" data-execution_count="12">
+<div id="b4ef2e0f" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">==</span> y</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>True</code></pre>
 </div>
 </div>
 <p>Die <code>print</code>-Funktion stellt Escape-Sequenzen aber “richtig” formatiert dar:</p>
-<div id="2f01069a" class="cell" data-execution_count="13">
+<div id="895fc4ea" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Dieser String "enthält" doppelte und 'einfache' Anführungszeichen.</code></pre>
@@ -567,34 +567,34 @@ Tipp
 <section id="strings-indizieren-und-slicen" class="level2">
 <h2 class="anchored" data-anchor-id="strings-indizieren-und-slicen">Strings indizieren und slicen</h2>
 <p>Indizieren und Slicen funktionieren bei Strings genau wie bei Listen (siehe vorige Einheit): Das erste Zeichen hat den Index 0, negative Indizes zählen von hinten, und mit einem Doppelpunkt greift man einen <em>Slice</em> heraus (wobei der Endindex nicht mehr dazuzählt).</p>
-<div id="1968bdfb" class="cell" data-execution_count="14">
+<div id="6856a1fb" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"String"</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="aa88ed1b" class="cell" data-execution_count="15">
+<div id="5de8dc5b" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>s[<span class="dv">0</span>]  <span class="co"># erstes Zeichen</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>'S'</code></pre>
 </div>
 </div>
-<div id="9d0b58d6" class="cell" data-execution_count="16">
+<div id="f8723b0e" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>s[<span class="op">-</span><span class="dv">1</span>]  <span class="co"># letztes Zeichen</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>'g'</code></pre>
 </div>
 </div>
-<div id="ae6f6a84" class="cell" data-execution_count="17">
+<div id="bf9d763d" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>s[<span class="dv">0</span>:<span class="dv">4</span>]  <span class="co"># 4 Zeichen, Index 0, 1, 2, 3</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>'Stri'</code></pre>
 </div>
 </div>
-<div id="57f66a00" class="cell" data-execution_count="18">
+<div id="44dc010d" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>s[<span class="dv">2</span>:]  <span class="co"># ab Index 2 bis zum letzten Zeichen</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>'ring'</code></pre>
 </div>
 </div>
-<div id="2d0fa74d" class="cell" data-execution_count="19">
+<div id="61629b3f" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>s[::<span class="op">-</span><span class="dv">1</span>]  <span class="co"># ganzen String umdrehen</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>'gnirtS'</code></pre>
@@ -604,20 +604,20 @@ Tipp
 <section id="arbeiten-mit-strings" class="level2">
 <h2 class="anchored" data-anchor-id="arbeiten-mit-strings">Arbeiten mit Strings</h2>
 <p>Die Funktion <code>len</code> gibt die Länge (d.h. die Anzahl der Elemente) einer Sequenz zurück.</p>
-<div id="a301daf5" class="cell" data-execution_count="20">
+<div id="e16fe448" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(s)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>6</code></pre>
 </div>
 </div>
-<div id="2a857886" class="cell" data-execution_count="21">
+<div id="8aecd4db" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(<span class="st">"Das ist ein relativ langer String"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>33</code></pre>
 </div>
 </div>
 <p>Ein String der Länge 0 ist ebenfalls ein regulärer String – er besitzt nur kein Element.</p>
-<div id="27e86fc5" class="cell" data-execution_count="22">
+<div id="39fdce15" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">""</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(s)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
@@ -625,10 +625,10 @@ Tipp
 </div>
 </div>
 <p>Nachdem Strings immutable sind, kann man sie nachträglich nicht mehr verändern. Man muss stattdessen immer einen neuen String mit den gewünschten Änderungen erstellen:</p>
-<div id="269e162b" class="cell" data-execution_count="23">
+<div id="8a05de19" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"Haus"</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="98e3d97e" class="cell" data-execution_count="24">
+<div id="b88eb191" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>s[<span class="dv">0</span>] <span class="op">=</span> <span class="st">"M"</span>  <span class="co"># funktioniert nicht!</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
@@ -641,14 +641,14 @@ Tipp
 </div>
 </div>
 </div>
-<div id="549731f7" class="cell" data-execution_count="25">
+<div id="0825c53e" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">"M"</span> <span class="op">+</span> s[<span class="dv">1</span>:]  <span class="co"># neuen String erzeugen</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>'Maus'</code></pre>
 </div>
 </div>
 <p>Das obige Beispiel zeigt, dass man Strings mit dem <code>+</code>-Operator zusammenfügen kann:</p>
-<div id="b2e77fbf" class="cell" data-execution_count="26">
+<div id="b3c4bf45" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"a"</span> <span class="op">+</span> <span class="st">"b"</span> <span class="op">+</span> <span class="st">"c"</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
@@ -656,7 +656,7 @@ Tipp
 </div>
 </div>
 <p>Dementsprechend kann man einen String mit dem <code>*</code>-Operator vervielfältigen:</p>
-<div id="691bf2a3" class="cell" data-execution_count="27">
+<div id="1576b4df" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">"Hallo"</span> <span class="op">*</span> <span class="dv">4</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>'HalloHalloHalloHallo'</code></pre>
@@ -666,28 +666,28 @@ Tipp
 <section id="string-methoden" class="level2">
 <h2 class="anchored" data-anchor-id="string-methoden">String-Methoden</h2>
 <p>Wie im vorigen Kapitel eingeführt, werden Methoden direkt auf ein Objekt angewandt. Für Strings gibt es in Python sehr viele praktische Methoden:</p>
-<div id="743c7d45" class="cell" data-execution_count="28">
+<div id="2d7577cf" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>x.upper()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>'ABC'</code></pre>
 </div>
 </div>
 <p>Hier wird also ein neuer String erzeugt, welcher aus den Zeichen des Strings <code>x</code> in Großbuchstaben besteht.</p>
-<div id="804ccc99" class="cell" data-execution_count="29">
+<div id="7b3155ee" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">"abcdefg"</span>.upper()  <span class="co"># Großbuchstaben</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>'ABCDEFG'</code></pre>
 </div>
 </div>
 <p>Dementsprechend gibt es auch die Methode <code>lower</code>, welche einen neuen String in Kleinbuchstaben erzeugt:</p>
-<div id="549bea9e" class="cell" data-execution_count="30">
+<div id="23d75f13" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co">"dsKJsdJKJKK"</span>.lower()  <span class="co"># Kleinbuchstaben</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>'dskjsdjkjkk'</code></pre>
 </div>
 </div>
 <p>Viele String-Methoden erzeugen einen <em>neuen</em> String. Da Strings immutable sind, können diese Methoden den ursprünglichen String nicht verändern. Möchte man den neuen String weiterverwenden, muss man dem Rückgabewert einen Namen zuweisen. Man kann natürlich auch den ursprünglichen Namen verwenden:</p>
-<div id="13b3f7d9" class="cell" data-execution_count="31">
+<div id="17bad9f4" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> x.upper()  <span class="co"># Namensschildchen x hängt am neuen String (in Großbuchstaben)</span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
@@ -696,27 +696,27 @@ Tipp
 </div>
 <p>Im Folgenden werden einige praktische String-Methoden aufgelistet.</p>
 <p>Die Methode <code>strip</code> entfernt Leerzeichen am Anfang und am Ende eines Strings.</p>
-<div id="bcb75247" class="cell" data-execution_count="32">
+<div id="11c924c8" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co">"      Satz mit vielen unnötigen Leerzeichen         "</span>.strip()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>'Satz mit vielen unnötigen Leerzeichen'</code></pre>
 </div>
 </div>
 <p>Mit <code>replace</code> kann man alle Vorkommen eines Teilstrings durch einen anderen String ersetzen:</p>
-<div id="176ade39" class="cell" data-execution_count="33">
+<div id="2c149d74" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co">"Edukational Neuroscience"</span>.replace(<span class="st">"k"</span>, <span class="st">"c"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>'Educational Neuroscience'</code></pre>
 </div>
 </div>
 <p>Mit <code>split</code> kann man einen String in eine Liste von Strings aufteilen (splitten). Als Argument gibt man das Zeichen an, an dem man splitten will (standardmäßig wird dafür Whitespace, also Leerzeichen und Tabulatoren, verwendet).</p>
-<div id="fea5a362" class="cell" data-execution_count="34">
+<div id="24e1eddd" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">"Viele Sätze. Getrennt mit Punkten. Warum?"</span>.split()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>['Viele', 'Sätze.', 'Getrennt', 'mit', 'Punkten.', 'Warum?']</code></pre>
 </div>
 </div>
-<div id="5ecb8848" class="cell" data-execution_count="35">
+<div id="1d47a132" class="cell" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co">"Viele Sätze. Getrennt mit Punkten. Warum?"</span>.split(<span class="st">"."</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>['Viele Sätze', ' Getrennt mit Punkten', ' Warum?']</code></pre>
@@ -724,7 +724,7 @@ Tipp
 </div>
 <p>Man erkennet, dass nicht alle String-Methoden einen String zurückgeben: <code>split</code> gibt eine Liste zurück, während <code>count</code> und <code>find</code> jeweils eine Ganzzahl zurückgeben (siehe weiter unten).</p>
 <p>Das Gegenteil von <code>split</code> ist <code>join</code>, welches eine Liste von Strings zu einem einzelnen String verbindet. Als Verbindungszeichen wird der angegebene String verwendet.</p>
-<div id="431b378e" class="cell" data-execution_count="36">
+<div id="3cc9cf7d" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co">";"</span>.join([<span class="st">"das"</span>, <span class="st">"ist"</span>, <span class="st">"ein"</span>, <span class="st">"Test"</span>])</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>'das;ist;ein;Test'</code></pre>
@@ -732,41 +732,41 @@ Tipp
 </div>
 <p>Listen haben wir in der vorigen Einheit im Detail kennengelernt. Die Möglichkeit, Strings in einer Liste mit <code>join</code> zu einem einzigen String zu verbinden, ist übrigens effizienter, als die einzelnen Strings mit <code>+</code> zu verbinden.</p>
 <p>Die Methode <code>count</code> zählt, wie oft das als Argument angegebene Zeichen im String vorkommt:</p>
-<div id="daff8212" class="cell" data-execution_count="37">
+<div id="a4a444fa" class="cell" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"Das ist ein kurzer Satz. Nur zum Testen."</span></span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>s.count(<span class="st">"i"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>2</code></pre>
 </div>
 </div>
-<div id="ed41313a" class="cell" data-execution_count="38">
+<div id="d1f0a4b0" class="cell" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>s.count(<span class="st">"e"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <pre><code>4</code></pre>
 </div>
 </div>
 <p>Die Methode <code>find</code> gibt den Index im String zurück, an dem das gesuchte Zeichen erstmalig auftritt:</p>
-<div id="a817e545" class="cell" data-execution_count="39">
+<div id="161cbb8b" class="cell" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>s.find(<span class="st">"s"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>2</code></pre>
 </div>
 </div>
 <p>Optional kann man auch einen Startindex angeben:</p>
-<div id="f88bd9f9" class="cell" data-execution_count="40">
+<div id="225b1a74" class="cell" data-execution_count="40">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>s.find(<span class="st">"s"</span>, <span class="dv">3</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
 <pre><code>5</code></pre>
 </div>
 </div>
 <p>Mit dem <code>in</code>-Operator kann man abfragen, ob ein bestimmtes Zeichen in einem String enthalten ist:</p>
-<div id="0d994cff" class="cell" data-execution_count="41">
+<div id="9ef12c8c" class="cell" data-execution_count="41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co">"y"</span> <span class="kw">in</span> s</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>False</code></pre>
 </div>
 </div>
-<div id="62866d38" class="cell" data-execution_count="42">
+<div id="e251f476" class="cell" data-execution_count="42">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co">"i"</span> <span class="kw">in</span> s</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
 <pre><code>True</code></pre>
@@ -776,7 +776,7 @@ Tipp
 <section id="strings-iterieren" class="level2">
 <h2 class="anchored" data-anchor-id="strings-iterieren">Strings iterieren</h2>
 <p>Ein String ist iterierbar, d.h. man kann mit einer <code>for</code>-Schleife über die einzelnen Elemente iterieren:</p>
-<div id="f1875382" class="cell" data-execution_count="43">
+<div id="8615abda" class="cell" data-execution_count="43">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"abc"</span></span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> s:</span>
@@ -798,7 +798,7 @@ Hinweis
 </div>
 <div class="callout-body-container callout-body">
 <p>Möglich wäre auch folgende <code>for</code>-Schleife, wie sie in vielen anderen Programmiersprachen üblich ist:</p>
-<div id="54f37386" class="cell" data-execution_count="44">
+<div id="7bb81bb6" class="cell" data-execution_count="44">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"abc"</span></span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(s)):  <span class="co"># sollte man in Python nicht machen!</span></span>
@@ -816,7 +816,7 @@ c</code></pre>
 <section id="ausgabe-von-strings" class="level2">
 <h2 class="anchored" data-anchor-id="ausgabe-von-strings">Ausgabe von Strings</h2>
 <p>Wir haben bereits die <code>print</code>-Funktion kennengelernt, mit der sich Strings (und andere Objekte) als Text am Bildschirm ausgeben lassen. Sie kann <em>beliebig viele</em> Argumente entgegennehmen und gibt diese (standardmäßig durch Leerzeichen getrennt) am Bildschirm aus:</p>
-<div id="7454950b" class="cell" data-execution_count="45">
+<div id="6dda2afc" class="cell" data-execution_count="45">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a, <span class="st">"+"</span>, b, <span class="st">"="</span>, a <span class="op">+</span> b)  <span class="co"># fünf Argumente</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -843,14 +843,14 @@ Tipp
 </div>
 </div>
 <p>Wie wir bereits wissen, kann man mehrere Strings mit <code>+</code> verketten. Mit der Funktion <code>str</code> kann man beliebige Objekte (also auch z.B. Ganzzahlen) in einen String umwandeln:</p>
-<div id="0a7dbce0" class="cell" data-execution_count="46">
+<div id="8bbba64a" class="cell" data-execution_count="46">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="bu">str</span>(<span class="dv">55</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
 <pre><code>'55'</code></pre>
 </div>
 </div>
 <p>Daher könnte man die obige Ausgabe auch durch Verketten von einzelnen Strings erzeugen:</p>
-<div id="36e7052d" class="cell" data-execution_count="47">
+<div id="56ef3de6" class="cell" data-execution_count="47">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">str</span>(a) <span class="op">+</span> <span class="st">" + "</span> <span class="op">+</span> <span class="bu">str</span>(b) <span class="op">+</span> <span class="st">" = "</span> <span class="op">+</span> <span class="bu">str</span>(a <span class="op">+</span> b))  <span class="co"># ein Argument</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>5 + 10 = 15</code></pre>
@@ -861,7 +861,7 @@ Tipp
 <section id="f-strings" class="level2">
 <h2 class="anchored" data-anchor-id="f-strings">f-Strings</h2>
 <p>f-Strings sind Strings, in die sich bei ihrer Erzeugung beliebige Ausdrücke einsetzen lassen. Dazu stellt man dem String ein <code>f</code> voran und schreibt die Ausdrücke in geschweifte Klammern <code>{}</code>. Diese werden ausgewertet und ihre Werte in den String eingesetzt (interpoliert):</p>
-<div id="23b8d534" class="cell" data-execution_count="48">
+<div id="b8737c19" class="cell" data-execution_count="48">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">"World"</span></span>
 <span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="ss">f"Hello </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
@@ -869,14 +869,14 @@ Tipp
 </div>
 </div>
 <p>Den fertigen String kann man dann einfach mit <code>print</code> am Bildschirm ausgeben. Das Beispiel aus dem vorigen Abschnitt kann man daher wie folgt anschreiben:</p>
-<div id="6ed840cb" class="cell" data-execution_count="49">
+<div id="4c961e35" class="cell" data-execution_count="49">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss"> + </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>a <span class="op">+</span> b<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>5 + 10 = 15</code></pre>
 </div>
 </div>
 <p>Ausdrücke wie z.B. Zahlen können optional auch <em>formatiert</em> werden. Dazu verwendet man einen Doppelpunkt und einen sogenannten <em>Format Specifier</em> innerhalb der geschwungenen Klammern direkt nach dem Ausdruck. Das folgende Beispiel formatiert die Kreiszahl <span class="math inline">\(\pi\)</span> so, dass sie mit drei Nachkommastellen ausgegeben wird:</p>
-<div id="6e5e3311" class="cell" data-execution_count="50">
+<div id="7f6feaf5" class="cell" data-execution_count="50">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"π ≈ </span><span class="sc">{</span>math<span class="sc">.</span>pi<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -885,7 +885,7 @@ Tipp
 </div>
 </div>
 <p>Die minimale Feldbreite kann mit einer Zahl direkt nach dem Doppelpunkt spezifiziert werden (im folgenden Beispiel 15 Zeichen). Standardmäßig wird rechtsbündig ausgerichtet (für Zahlen sinnvoll), mit <code>&lt;</code> wird linksbündig ausgerichtet:</p>
-<div id="be15a92e" class="cell" data-execution_count="51">
+<div id="458253d1" class="cell" data-execution_count="51">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"π ≈ </span><span class="sc">{</span>math<span class="sc">.</span>pi<span class="sc">:15.3f}</span><span class="ss">, more text"</span>)   <span class="co"># Feldbreite 15, rechtsbündig</span></span>
 <span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"π ≈ </span><span class="sc">{</span>math<span class="sc">.</span>pi<span class="sc">:&lt;15.3f}</span><span class="ss">, more text"</span>)  <span class="co"># Feldbreite 15, linksbündig</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -894,7 +894,7 @@ Tipp
 </div>
 </div>
 <p>Für Ganzzahlen funktioniert die Feldbreite ebenso:</p>
-<div id="fbcd75de" class="cell" data-execution_count="52">
+<div id="ea538ee3" class="cell" data-execution_count="52">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>number <span class="op">=</span> <span class="dv">42</span></span>
 <span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"number = </span><span class="sc">{</span>number<span class="sc">:5}</span><span class="ss">"</span>)  <span class="co"># 5 Zeichen breit, rechtsbündig</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1039,7 +1039,7 @@ Hinweis
 </section>
 <section id="lösungen" class="level2">
 <h2 class="anchored" data-anchor-id="lösungen">Lösungen</h2>
-<p>Siehe <a href="../07/07-solutions.html">hier</a>.</p>
+<p>Die Lösungen zu diesen Übungen finden Sie <a href="../07/07-solutions.html">hier</a>.</p>
 
 
 </section>
