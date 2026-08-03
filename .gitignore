@@ -1,5 +1,7 @@
 *.html
+*.quarto_ipynb*
 *_files/
 /_site/
+/site-libs/
 /.quarto/
-**/*.quarto_ipynb
+uv.lock

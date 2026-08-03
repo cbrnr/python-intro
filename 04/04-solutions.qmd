@@ -2,7 +2,7 @@
 title: "4 – Lösungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2026-03-23
+date: 2026-10-22
 format:
   html:
     page-layout: full
@@ -172,36 +172,17 @@ Eine Funktion kann bei der Definition Parameter haben. Beim Aufruf einer Funktio
 
 ## Übung 5
 
-```{python}
-def nonsense(a, b=10, c=13):
-    return a**2 - b * 2 + c**2
+```python
+def is_odd(x):
+    if x % 2 == 1:
+        return True
+    else:
+        return False
 ```
 
-```{python}
-#| error: true
-nonsense()  # TypeError, da a=undefiniert, b=10, c=13
-```
+Oder kürzer:
 
-```{python}
-nonsense(22, 15, 78)  # 6538; a=22, b=15, c=78
-```
-
-```{python}
-nonsense(11, 3)  # 284; a=11, b=3, c=13
-```
-
-```{python}
-nonsense(a=42)  # 1913; a=42, b=10, c=13
-```
-
-```{python}
-nonsense(a=17, c=88)  # 8013; a=17, b=10, c=88
-```
-
-```{python}
-nonsense(3, 4, c=5)  # 26; a=3, b=4, c=5
-```
-
-```{python}
-nonsense(3, c=2)  # -7; a=3, b=10, c=2
+```python
+def is_odd(x):
+    return x % 2 == 1
 ```

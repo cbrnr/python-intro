@@ -1,8 +1,8 @@
 ---
-title: "5 – Bedingungen und Schleifen"
+title: "5 – Funktionen II"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2026-04-13
+date: 2026-10-29
 format:
   html:
     page-layout: full
@@ -17,474 +17,262 @@ author-title: "Autor"
 published-title: "Veröffentlicht"
 ---
 
-## Kontrollstrukturen
+## Allgemeines
 
-Komplexe Programme laufen nicht linear ab (also Zeile für Zeile vom Anfang eines Scripts bis zum Ende), sondern beinhalten Verzweigungen und Schleifen. Diese sogenannten Kontrollstrukturen steuern den Programmfluss. Wesentlich dabei sind Vergleiche, die bestimmen, ob bestimmte Codezeilen ausgeführt werden oder nicht bzw. wie oft diese wiederholt werden.
+In der vorigen Einheit haben wir gelernt, wie man Funktionen definiert, aufruft und mit `return` Werte zurückgibt. Nun vertiefen wir das Thema Funktionen: Wir sehen uns verschiedene Arten von Funktionsargumenten an – darunter Standard-, Schlüsselwort- und variable Argumente – und lernen außerdem, was es mit Gültigkeitsbereichen (Scopes) auf sich hat.
 
-Schon bei Funktionen haben wir beobachtet, dass Programmcode nicht linear ausgeführt wird, denn erst beim *Aufrufen* einer Funktion springt Python zu den entsprechenden Zeilen im Funktionskörper und führt diese aus.
 
-:::{.callout-tip}
-Mit Hilfe des sogenannten [Debuggers](https://realpython.com/python-idle/#how-to-debug-in-idle) können wir ein Script in "Zeitlupe" ausführen. Im Debug-Modus wartet der Python-Interpreter nach jedem Befehl, bis der nächste manuell gestartet wird. Dadurch können wir den Programmfluss beobachten und den Zustand des Programms bei jedem Schritt inspizieren. Dabei geht man wie folgt vor:
+## Argumente
 
-1. In der IDLE-Shell wählt man Debug – Debugger. Dadurch wird ein neues Werkzeugfenster geöffnet und der Debugger aktiviert. Stellen Sie sicher, dass das Kontrollkästchen "Source" aktiviert ist, um die aktuelle Codezeile zu sehen.
+### Standard-Argumente
 
-    ![](idle-debug-1.png){width=50%}
-
-2. Setzen Sie dann einen Haltepunkt im Python-Skript, indem Sie mit der rechten Maustaste auf die Zeile klicken, an der Sie die Ausführung stoppen möchten und wählen Sie "Set Breakpoint". Für dieses Beispiel setzen wir einen Haltepunkt gleich in der ersten Zeile (diese wird dann gelb).
-
-    ![](idle-debug-2.png)
-
-3. Führen Sie jetzt das Skript mit Run – Run Module aus (oder drücken Sie <kbd>F5</kbd>). Das Skript wird dann am ersten Haltepunkt gestoppt (und diese Zeile wird noch *nicht* ausgeführt).
-
-4. Um die Ausführung fortzusetzen, wählen Sie "Step", um die aktuelle Zeile auszuführen und in der nächsten Zeile anzuhalten. Wenn die aktuelle Zeile einen Funktionsaufruf enthält und Sie *nicht* in die Funktion springen möchten (zum Beispiel, weil Sie nicht daran interessiert sind, den Code einer eingebauten Funktion zu sehen), klicken Sie stattdessen auf "Over".
-
-5. Wenn sich die aktuelle Zeile bereits in einer Funktion befindet und Sie diese Funktion sofort verlassen möchten, klicken Sie auf "Out".
-
-Zum Ausprobieren kann man das folgende kurze Script debuggen:
+Eine Funktion kann ohne Parameter definiert werden oder eine bestimmte Anzahl an Parametern besitzen. Wenn eine bestimmte Anzahl an Parametern im Funktionskopf definiert wird, können einzelnen Parametern Standardwerte (sogenannte Standard- oder auch Default-Argumente) zugewiesen werden. Dies bedeutet, dass die Funktion auch mit weniger Argumenten aufgerufen werden kann, sofern für die entsprechenden Parameter Standardwerte definiert wurden.
 
 ```{python}
-#| eval: false
-#| code-line-numbers: true
-def f(x):
-    y = x * 2
-    return y
-
-a = f(3)
-print("Done.")
+def add(number, increment=1):  # increment hat den Standardwert 1
+    return number + increment
 ```
 
-In welcher Reihenfolge werden die Code-Zeilen ausgeführt?
-
-Alternativ kann die Website [PythonTutor](http://pythontutor.com/visualize.html#mode=edit) den Programmfluss ebenfalls Schritt für Schritt darstellen. Dazu kopiert man einfach den gesamten Code in das Eingabefeld und klickt auf "Visualize Execution". So kann man durch wiederholtes Klicken auf "Next" nachvollziehen, wie Python den Code ausführt.
-:::
-
-
-## Vergleiche
-
-Vergleiche sind logische Ausdrücke – ihr Ergebnis ist entweder wahr (`True`) oder falsch (`False`). In Python gibt es dafür den Datentyp `bool`. Folgende Vergleichsoperationen sind möglich:
-
-* Gleichheit: `==`
-* Ungleichheit: `!=`
-* Kleiner: `<`
-* Kleiner gleich: `<=`
-* Größer: `>`
-* Größer gleich: `>=`
-
-Man kann mehrere logische Ausdrücke mit den folgenden Operatoren verknüpfen:
-
-* Und-Verknüpfung: `and`
-* Oder-Verknüpfung: `or`
-
-Ein Ausdruck kann mit dem Operator `not` logisch invertiert werden (d.h. aus `True` wird `False` und aus `False` wird `True`). Weiters gibt es noch folgende Operatoren:
-
-* `is`: Identität (prüft, ob es sich um ein und dasselbe *Objekt* handelt, nicht nur um gleiche *Werte*)
-* `in`: Prüft, ob ein Wert in einer Sequenz enthalten ist
-
-Während `==` zwei *Werte* miteinander vergleicht, überprüft `is` zwei *Objekte* auf Gleichheit (also ob es sich um ein und dasselbe Objekt handelt). Ein Objekt hat einen Wert, zwei verschiedene Objekte können auch denselben Wert haben. Die Funktion `id` liefert eine eindeutige Nummer (ID) für ein Objekt zurück – zwei verschiedene Objekte haben immer eine unterschiedliche ID (ansonsten handelt es sich um ein und dasselbe Objekt).
-
-
-### Beispiele
+Diese Funktion kann jetzt mit zwei Argumenten oder nur mit dem ersten Argument aufgerufen werden:
 
 ```{python}
-x = 2  # Zuweisung
+add(7, 1)
 ```
 
 ```{python}
-x == 2  # Vergleich
+add(7)  # hier wird das Standard-Argument 1 für increment verwendet
 ```
 
 ```{python}
-x > 2
+add(7, 3)
+```
+
+
+### Schlüsselwort-Argumente
+
+Funktionen können auch so aufgerufen werden, dass die Namen der Parameter gemeinsam mit den Argumenten in der Form `name=value` explizit hingeschrieben werden. Man spricht dann von Schlüsselwort-Argumenten (englisch "Keyword Arguments") (nicht zu verwechseln mit den Python-Schlüsselwörtern). D.h. die obige Funktion `add` kann auch so aufgerufen werden:
+
+```{python}
+add(number=5)
 ```
 
 ```{python}
-x < 10 and x > 5
-```
-
-Die vorige `and`-Verknüpfung von zwei Vergleichen kann in Python kürzer dargestellt werden:
-
-```{python}
-5 < x < 10
+add(number=5, increment=2)
 ```
 
 ```{python}
-x < 10 or x > 5  # macht das Sinn?
+add(increment=2, number=5)
+```
+
+Dies dient einerseits der besseren Lesbarkeit, da unmittelbar klar ist, welche Parameter welche konkreten Argumente erhalten. Werden alle Argumente als Schlüsselwort-Argumente angegeben, können sie in beliebiger Reihenfolge übergeben werden.
+
+Wenn der Argumentname nicht angegeben wird, wird das Argument anhand seiner Position dem entsprechenden Parameter zugewiesen. Man spricht in diesem Fall von *positionalen Argumenten*. Man kann positionale und Schlüsselwort-Argumente beim Funktionsaufruf auch mischen, aber alle positionalen Argumente müssen *vor* dem ersten Schlüsselwort-Argument kommen.
+
+```{python}
+add(5, increment=2)
+```
+
+Zur Veranschaulichung dient folgende Funktionsdefinition:
+
+```{python}
+def test(name, number, exponent=5, offset=7, text="Hello"):
+    print(text, name, end=" ")
+    return number**exponent - offset
+```
+
+Die folgenden drei Funktionsaufrufe verwenden nur positionale Argumente:
+
+```{python}
+test("Python", 2)
 ```
 
 ```{python}
-y = 2
+test("Python", 3)
 ```
 
 ```{python}
-x == y  # Werte vergleichen
+test("Test", 3, 4)
+```
+
+Schlüsselwort-Argumente sind besonders praktisch, wenn man für die meisten Parameter die Standardwerte verwenden möchte. Dann müssen nur jene Argumente angegeben werden, deren Wert vom Standardwert abweicht.
+
+```{python}
+test("Test", 2, offset=2)
+```
+
+Ohne Schlüsselwort-Argumente würde derselbe Aufruf nämlich wie folgt aussehen:
+
+```{python}
+test("Test", 2, 5, 2)
+```
+
+Man muss also in diesem Beispiel ein zusätzliches Argument `5` (für den Parameter `exponent`) übergeben, wenn man positionale Argumente verwendet, obwohl man ja ohnehin den Standardwert dieses Arguments verwendet.
+
+
+### Variable Argumente
+
+Bisher haben wir nur Funktionen betrachtet, die eine feste Anzahl an Parametern besitzen. Manchmal ist es jedoch praktisch, wenn eine Funktion mit einer beliebigen Anzahl an Argumenten aufgerufen werden kann. Dazu wird bei der Funktionsdefinition vor den Parameternamen ein Stern (`*`) geschrieben.
+
+```{python}
+def greet(*names):
+    for name in names:
+        print("Hallo", name)
+```
+
+Der Parameter `names` kann beliebig viele Argumente aufnehmen. Beim Aufruf der Funktion können daher unterschiedlich viele Namen übergeben werden:
+
+```{python}
+greet("Anna")
 ```
 
 ```{python}
-x is y  # Objekte vergleichen
-```
-
-Wir können mit der Funktion `id` die IDs der Objekte `x` und `y` bestimmen:
-
-```{python}
-id(x)
+greet("Anna", "Ben")
 ```
 
 ```{python}
-id(y)
+greet("Anna", "Ben", "Clara")
 ```
 
-Man erkennt, dass beide Objekte `x` und `y` dieselbe ID haben. Dies bedeutet, dass das zugrundeliegende Objekt `2` ein und dasselbe Objekt ist und lediglich zwei Namen `x` und `y` hat.
+Alle übergebenen Argumente werden im Parameter `names` gesammelt und können anschließend beispielsweise mit einer `for`-Schleife verarbeitet werden. Wie Python diese Werte intern speichert, werden wir später im Kurs (in der Einheit über Listen und Tupel) noch genauer betrachten.
 
-![](names_2.png)
+Variable Argumente können auch gemeinsam mit gewöhnlichen Parametern verwendet werden. Dabei müssen die gewöhnlichen Parameter immer vor dem Parameter mit `*` stehen.
 
-Die tatsächlichen IDs von Objekten sind ein Implementierungsdetail von Python, d.h. es ist nicht relevant, welche Zahl hier zurückgegeben wird. Dennoch kann man diese IDs verwenden, um zwei Objekte auf Gleichheit zu überprüfen, denn nur dann haben beide Objekte dieselbe ID.
+```{python}
+def greet_all(greeting, *names):
+    for name in names:
+        print(greeting, name)
+```
+
+Hier wird das erste Argument dem Parameter `greeting` zugewiesen. Alle weiteren Argumente werden im Parameter `names` gesammelt.
+
+```{python}
+greet_all("Hallo", "Anna", "Ben")
+```
+
+```{python}
+greet_all("Guten Morgen", "Anna", "Ben", "Clara")
+```
 
 :::{.callout-note}
-Ein weiteres Implementierungsdetail von Python ist, dass es kleine Ganzzahlen genau ein Mal gibt – d.h. wenn man zwei oder mehrere Male kleine Zahlen verwenden möchte (wie im vorigen Beispiel mit `x = 2` und `y = 2`), dann wird immer nur *ein* Objekt verwendet. Dies dient der Beschleunigung bzw. effizienteren Speichernutzung. Bei großen Zahlen ist das allerdings nicht mehr so:
+Der Parametername `args` ist in Python sehr verbreitet, aber nicht vorgeschrieben. Die folgende Funktionsdefinition ist daher gleichbedeutend mit der obigen:
 
 ```{python}
-a = 500
-a
+def greet(*args):
+    for name in args:
+        print("Hallo", name)
 ```
 
-```{python}
-id(a)
-```
-
-```{python}
-b = a  # b und a sind Namen für dasselbe Objekt
-b
-```
-
-```{python}
-id(b)
-```
-
-```{python}
-b = 500  # b ist nun ein unterschiedliches Objekt 500
-b
-```
-
-```{python}
-id(b)
-```
-
-```{python}
-a == b  # Werte gleich?
-```
-
-```{python}
-a is b  # Objekte gleich?
-```
-
-![](names_500.png)
-:::
-
-Das folgende Beispiel veranschaulicht, dass es einen Unterschied zwischen Ganzzahlen (`int`) und Kommazahlen (`float`) gibt, obwohl deren Werte (zumindest mathematisch) gleich sein können.
-
-```{python}
-c = 12
-d = 12.0
-```
-
-```{python}
-c == d
-```
-
-```{python}
-c is d
-```
-
-Man sollte Kommazahlen aber ohnehin nie auf Gleichheit überprüfen, da diese aufgrund der begrenzten Genauigkeit nicht exakt repräsentiert werden können (wie bereits in [Einheit 3](../03/03.qmd) besprochen).
-
-:::{.callout-tip}
-In Python kann man Dezimalzahlen auch in der sogenannten [wissenschaftlichen Notation](https://de.wikipedia.org/wiki/Wissenschaftliche_Notation) anschreiben. Hier verwendet man eine Darstellung mit Zehnerpotenzen, die man in Python mit `e` eingeben kann – `e` kann man als "mal zehn hoch" lesen.
-
-```{python}
-1e0  # 1 mal 10 hoch 0
-```
-
-```{python}
--4e0  # -4 mal 10 hoch 0
-```
-
-```{python}
-1e1  # 1 mal 10 hoch 1
-```
-
-```{python}
-3.5e2  # 3.5 mal 10 hoch 2
-```
-
-```{python}
-1e-2  # 1 mal 10 hoch -2
-```
-
-```{python}
-1e-15  # 1 mal 10 hoch -15 = 0.000000000000001
-```
+Der Stern (`*`) ist entscheidend – der Name des Parameters kann frei gewählt werden.
 :::
 
 
-## Bedingungen
+## Gültigkeitsbereiche
 
-Eine Bedingung wird in Python mit den Schlüsselwörtern `if`, `elif` und `else` realisiert. Dabei wird überprüft, ob ein Ausdruck wahr (`True`) oder falsch (`False`) ist. Nur falls dieser Ausdruck `True` ist, wird der nachfolgende eingerückte Codeblock ausgeführt, sonst nicht. Die grundsätzliche Struktur sieht wie folgt aus:
+Jeder in Python definierte Name besitzt einen *Gültigkeitsbereich* (englisch *Scope*). Ein Name kann nur innerhalb seines Gültigkeitsbereichs verwendet werden.
 
-```python
-if <statement is True>:
-    <do something>
-    ...
-elif <statement is True>:  # optional
-    <do something>
-    ...
-elif <statement is True>:  # optional
-    <do something>
-    ...
-else:  # optional
-    <do something>
-    ...
-```
-
-Die Struktur einer Bedingung ist also im Prinzip dieselbe wie die einer Funktion. Zuerst gibt es den Kopf, welcher mit dem Keyword `if` eingeleitet wird. Danach folgt ein logischer Ausdruck (meist ein Vergleich), und zum Schluss wird die Kopfzeile mit einem `:` abgeschlossen. Der darauf folgende eingerückte Code wird nur ausgeführt, wenn der logische Ausdruck `True` ergibt – wenn das nicht der Fall ist, wird der gesamte eingerückte Codeblock übersprungen.
-
-Nur wenn der erste Ausdruck `True` ist, wird also der eingerückte Code ausgeführt. Danach wird der gesamte restliche `if`/`elif`/`else`-Block verlassen, es wird also kein weiterer Code mehr ausgeführt. Wenn der erste Ausdruck `False` ist, wird der zugehörige Codeblock nicht ausgeführt und es wird zum nächsten `elif`-Ausdruck gesprungen (falls vorhanden). Hier wird dann ein weiterer logischer Ausdruck ausgewertet, und falls dieser `True` ist, wird der dazugehörige eingerückte Codeblock ausgeführt. Falls kein logischer Ausdruck in den `elif`-Zweigen `True` ist, wird schließlich der Codeblock im `else`-Zweig ausgeführt (falls vorhanden).
-
-:::{.callout-important}
-In einer Bedingung wird maximal *ein* Codeblock ausgeführt, nämlich der erste, dessen logischer Ausdruck `True` ergibt. Deshalb ist auch die Reihenfolge der einzelnen Zweige von Bedeutung.
-:::
-
-
-### Beispiele
-
-Beginnen wir mit einem einfachen Beispiel, bei dem nur ein `if`-Zweig vorhanden ist:
+Namen, die innerhalb einer Funktion definiert werden, sind nur innerhalb dieser Funktion sichtbar. Man spricht von einem *lokalen* Gültigkeitsbereich.
 
 ```{python}
-a = 2
-
-if a > 0:
-    print("a is a positive number")
-    print("this is good to know")
-```
-
-Ergibt der Vergleich `a > 0` also `False`, wird der eingerückte Code *nicht* ausgeführt:
-
-```{python}
-a = -10
-
-if a > 0:
-    print("a is a positive number")
-    print("this is good to know")
-```
-
-Man kann optional einen `else`-Zweig verwenden, der immer dann ausgeführt wird, wenn *alle* vorhergehenden Zweige `False` waren:
-
-```{python}
-a = 0
-
-if a > 0:
-    print("a is a positive number")
-    print("this is good to know")
-else:
-    print("a is either 0 or a negative number")
-```
-
-Schließlich kann man noch mit `elif` beliebig viele weitere Zweige einbauen:
-
-```{python}
-a = 0
-
-if a > 0:
-    print("a is a positive number")
-    print("this is good to know")
-elif a < 0:
-    print("a is a negative number")
-else:
-    print("a is 0")
-```
-
-Sobald ein Ausdruck in einem `if`-Block `True` ist, wird dieser ausgeführt und der gesamte Block wird verlassen. Es werden also keine weiteren Vergleiche mehr durchgeführt.
-
-```{python}
-x = 2
-
-if x == 2:
-    print("x is", x)
-elif x > 0:
-    print("x is greater than 0")
-elif x < 0:
-    print("x is negative")
-else:
-    print("x is 0")
-```
-
-Dementsprechend ist die Reihenfolge der einzelnen Zweige von Bedeutung:
-
-```{python}
-a = 4
-
-if a > 5:
-    print("One")
-elif a < 10:
-    print("Two")
-elif a == 4:
-    print("Three")
-else:
-    print("Four")
-```
-
-```{python}
-a = 4
-
-if a > 5:
-    print("One")
-elif a == 4:
-    print("Three")
-elif a < 10:
-    print("Two")
-else:
-    print("Four")
-```
-
-Selbstverständlich kann man Vergleiche nicht nur mit Zahlen durchführen:
-
-```{python}
-s = "Python"
-
-if s == "Python":
-    print("Way to go!")
-elif s == "R":
-    print("Statistics")
-else:
-    print("Unknown")
-```
-
-```{python}
-s = "R"
-
-if s == "Python":
-    print("Way to go!")
-elif s == "R":
-    print("Statistics")
-else:
-    print("Unknown")
-```
-
-
-## for-Schleifen
-
-Um Befehle zu wiederholen, gibt es die Möglichkeit, Schleifen zu verwenden. Eine häufig verwendete Schleife ist die sogenannte `for`-Schleife. Als einfaches Beispiel ersetzen wir folgenden repetitiven Code durch eine Schleife:
-
-```{python}
-print("Hallo")
-print("Hallo")
-print("Hallo")
-```
-
-```{python}
-for i in range(3):
-    print("Hallo")
-```
-
-Die sogenannte Schleifenvariable `i` nimmt hier in den drei Durchläufen drei verschiedene Werte 0, 1 und 2 an – dies sind nämlich genau die Werte, die die Funktion `range` zurückgibt. Der Name der Schleifenvariable kann beliebig gewählt werden, oft wird für kurze Schleifen einfach `i` verwendet (man könnte auch `_` verwenden, um anzudeuten, dass man an diesem Namen eigentlich nicht weiter interessiert ist). Dieser Name bleibt nach dem Ausführen der Schleife übrigens bestehen, er unterscheidet sich nicht von anderen durch Zuweisung entstandenen Namen.
-
-:::{.callout-note}
-Überlegen Sie, welchen Wert `i` am Ende des folgenden Beispiels hat:
-
-```python
-i = 800
-for i in range(3):
-    print("Hello")
-```
-
-Die richtige Antwort lautet `2`, da dies der letzte Wert ist, welcher in der Schleife zugewiesen wird. Der Funktionsaufruf `range(3)` erzeugt nämlich die drei Werte `0`, `1` und `2`. Die Zuweisung `i = 800` zu Beginn hat hier eigentlich überhaupt keinen Effekt (oder anders formuliert, diese Zuweisung ist sinnlos und könnte daher ohne Auswirkungen entfernt werden).
-:::
-
-Die Funktion `range` wird mit `range(start, stop, step)` aufgerufen (der Hilfetext verrät dazu mehr Details) und erzeugt eine Sequenz, welche aus ganzen Zahlen besteht, die von `start` (optional) bis `stop` in der Schrittweite `step` (optional) läuft. Wenn man sich die einzelnen Elemente in einem `range`-Objekt ansehen will, muss man dieses zuerst in eine Liste umwandeln:
-
-```{python}
-x = range(10)
-x
-```
-
-```{python}
-list(x)
-```
-
-Grundsätzlich beginnt Python mit 0 zu zählen, d.h. auch `range` beginnt standardmäßig bei 0. Die letzte Zahl ist nicht mehr Teil der Sequenz, da man so einfach die Anzahl der erzeugten Elemente sehen kann (im Beispiel oben sieht man, dass `range(10)` aus 10 Elementen besteht).
-
-In Python iteriert eine `for`-Schleife über alle Elemente einer Sequenz (d.h. alle Datentypen, die aus mehreren Elementen bestehen und iterierbar sind, wie z.B. Strings oder Listen). Im folgenden Beispiel iteriert die Schleife über einen String, d.h. bei jedem Schleifendurchlauf werden die einzelnen Elemente (Buchstaben) eines Strings der Schleifenvariable `s` zugewiesen:
-
-```{python}
-for s in "String":
+def test():
+    s = 15  # s ist nur innerhalb der Funktion sichtbar
     print(s)
+
+test()
 ```
 
-Dies funktioniert genauso mit Listen, da diese auch zur Gruppe der Sequenzdatentypen gehören und mehrere Elemente beinhalten können:
+Außerhalb der Funktion existiert dieser Name nicht:
 
 ```{python}
-a = ["Hello", "world!", "I", "love", "Python!"]
-
-for element in a:
-    print(element)
+#| error: true
+print(s)
 ```
 
-Der Befehl `break` bricht die Schleife ab. Python springt ans Ende der Schleife und macht von hier mit der Ausführung der noch folgenden Befehlszeilen weiter.
+Umgekehrt kann eine Funktion auf Namen zugreifen, die außerhalb der Funktion definiert wurden:
 
 ```{python}
-i = 0
+s = 15  # globales s
 
-for c in "Suchstring":
-    if c == "u":
-        break  # beende Schleife sofort
-    i += 1  # Abkürzung für i = i + 1
+def test():
+    print(s)
 
-print(i)
+test()
+print(s)
 ```
 
-Im Beispiel oben wird ein bestimmtes Zeichen in einem String gesucht, dessen Position dann in `i` abzulesen ist.
-
-Der Befehl `continue` geht sofort zur nächsten Iteration der Schleife (überspringt also den restlichen Code der Schleife, der noch danach folgt).
+Wird innerhalb der Funktion ein Name mit demselben Namen definiert, so ist innerhalb der Funktion nur noch dieser lokale Name sichtbar:
 
 ```{python}
-for num in range(2, 10):
-    if num % 2 == 0:  # gerade Zahl?
-        print("Found an even number", num)
-        continue  # überspringe alle restlichen Zeilen innerhalb der Schleife
-    print("Found a number", num)
+s = 15  # globales s
+
+def test():
+    s = 12  # lokales s
+    print(s)
+
+test()
+print(s)
 ```
 
-Details zu Strings und Listen folgen in den nächsten Einheiten.
+Das globale `s` bleibt dabei unverändert.
 
+Ein häufiger Fehler entsteht, wenn man innerhalb einer Funktion auf einen Namen zugreifen möchte, bevor man ihn lokal definiert:
 
-## while-Schleifen
+```{python}
+#| error: true
+s = 15
 
-Im Gegensatz zu `for`-Schleifen sind `while`-Schleifen gut geeignet, wenn nicht im Vorhinein klar ist, wie oft die Schleife durchlaufen werden soll. Im folgenden Beispiel wird eine sogenannte *Endlosschleife* verwendet (`while True` ist immer `True`). Zum Verlassen dieser Endlosschleife wird dann aber auf `break` zurückgegriffen. Die Funktion `input` wird verwendet, um Tastatureingaben vom Benutzer abzufragen – die eingegebenen Zeichen werden von dieser Funktion als String zurückgegeben.
+def test():
+    print(s)
+    s = 12
 
-```python
-while True:
-    line = input("> (enter 'q' to quit) ")
-    if line == "q":
-        break
+test()
 ```
 
-Ein weiteres Beispiel einer `while`-Schleife zeigt das folgende Zahlenratespiel:
+Python erkennt bereits beim Einlesen der Funktion, dass `s` ein lokaler Name sein wird. Deshalb bezieht sich auch `print(s)` auf diesen lokalen Namen, obwohl er zu diesem Zeitpunkt noch keinen Wert besitzt.
 
-```python
-number = 23  # diese Zahl soll erraten werden
+Mit dem Schlüsselwort `global` kann stattdessen auf den globalen Namen zugegriffen werden:
 
-while True:
-    guess = int(input("Enter an integer: "))
-    if guess == number:
-        print("Congratulations, you guessed it.")
-        break
-    elif guess < number:
-        print("No, it is a little higher than that.")
-    else:
-        print("No, it is a little lower than that.")
+```{python}
+s = 15
+
+def test():
+    global s
+    print(s)
+    s = 12
+
+test()
+print(s)
+```
+
+Dadurch wird das globale `s` geändert. In der Praxis sollte man `global` jedoch möglichst vermeiden. Stattdessen übergibt man benötigte Werte als Argumente an die Funktion und gibt Ergebnisse mit `return` zurück:
+
+```{python}
+s = 15
+
+def test(s):
+    print(s)
+    s = 12
+    return s
+
+print(s)
+s = test(s)
+print(s)
 ```
 
 :::{.callout-tip}
-Die Funktion `int` wird hier verwendet, um die Benutzereingabe (ein String) in eine Ganzzahl zu konvertieren (z.B. wandelt `int("7")` den String `"7"` in eine Zahl `7` um).
+Auch Parameter besitzen einen lokalen Gültigkeitsbereich. Sie verhalten sich wie Namen, die innerhalb der Funktion definiert wurden, und erhalten beim Funktionsaufruf ihre Werte von den übergebenen Argumenten.
+
+Im letzten Beispiel heißen sowohl der globale Name als auch der Parameter `s`. Das ist jedoch Zufall – beide Namen sind unabhängig voneinander. Die Funktion könnte genauso gut mit einem anderen Namen oder direkt mit einem Wert aufgerufen werden:
+
+```{python}
+x = 15
+test(x)
+```
+
+Oder mithilfe eines Schlüsselwort-Arguments:
+
+```{python}
+test(s=x)
+```
 :::
 
 
@@ -492,58 +280,116 @@ Die Funktion `int` wird hier verwendet, um die Benutzereingabe (ein String) in e
 
 ### Übung 1
 
-Schreiben Sie folgendes Programm:
+Schreiben Sie eine Funktion namens `nonsense`, welche drei Parameter namens `a`, `b` und `c` hat. Die beiden Argumente `b` und `c` sollen optional sein und die Standardwerte 10 bzw. 13 besitzen. Die Funktion soll `a**2 - b * 2 + c**2` berechnen und zurückgeben (wir setzen voraus, dass man für `a`, `b` und `c` immer Zahlenwerte übergibt). Rufen Sie die Funktion dann mit folgenden Argumenten auf:
 
-- Lesen Sie zuerst mit der Funktion `input` zwei Zahlen ein (weisen Sie diesen beiden Zahlen die Namen `x` und `y` zu). Beachten Sie, dass `input` Strings zurückliefert und dass Sie diese mit der Funktion `int` in Ganzzahlen umwandeln können.
-- Wenn die Summe der beiden Zahlen größer als 50 ist, geben Sie `x + y > 50` am Bildschirm aus.
-- Wenn die Summe der beiden Zahlen kleiner als 50 ist, geben Sie `x + y < 50` am Bildschirm aus.
-- Ansonsten geben Sie `x + y == 50` aus.
+1. Ohne Argumente
+2. Mit drei positionalen Argumenten
+3. Mit zwei positionalen Argumenten
+4. Mit einem Keyword-Argument
+5. Mit zwei Keyword-Argumenten
+6. Mit zwei positionalen Argumenten und einem Keyword-Argument
+7. Mit einem positionalem und einem Keyword-Argument
 
-:::{.callout-tip}
-Die Builtin-Funktion `input` ermöglicht es, Eingaben von der Tastatur einzulesen. Man kann beliebige Zeichen eingeben und mit der Eingabetaste bestätigen. Das Ergebnis der Eingabe wird dann von der Funktion *zurückgegeben* (d.h. man kann diesem Wert auch einen Namen zuweisen, z.B. `x = input()`). Der Typ des Rückgabewerts ist immer `str`.
+Wie sehen diese Funktionsaufrufe aus? Wie lauten die Rückgabewerte? Geben Sie für *jeden* Aufruf die Werte *aller drei Argumente* an!
+
+:::{.callout-note}
+Nur der erste Funktionsaufruf (ohne Argumente) verursacht einen Fehler, alle weiteren Aufrufe sind möglich!
 :::
 
 
 ### Übung 2
 
-Schreiben Sie eine Funktion `is_odd`, welche einen Parameter hat und überprüft, ob das übergebene Argument gerade oder ungerade ist (das können Sie z.B. durch den Rest der Division durch 2 überprüfen). Falls das Argument ungerade ist, soll die Funktion `True` mittels `return` zurückgeben, sonst `False`.
+Schreiben Sie eine Funktion namens `maximum`, welche eine beliebige Anzahl an Zahlen als Argumente erhält und die größte dieser Zahlen zurückgibt.
+
+Beispiele:
+
+```python
+maximum(7)  # gibt 7 zurück
+```
+
+```python
+maximum(7, 2, 9, 4)  # gibt 9 zurück
+```
+
+Verwenden Sie dafür weder die Funktion `max()` noch andere Hilfsfunktionen.
+
+:::{.callout-note}
+Für diese Aufgabe benötigen Sie den ersten übergebenen Wert als Startwert für das zu findende Maximum. Der Ausdruck `numbers[0]` liefert diesen ersten Wert (vorausgesetzt ist hier, dass der erste Parameter der Funktion `numbers` heißt). Wie dieser Ausdruck genau funktioniert, lernen wir in einer späteren Einheit kennen.
+:::
 
 
 ### Übung 3
 
-Gegeben ist eine Liste `lst = ["I", "love", "Python"]`. Schreiben Sie eine `for`-Schleife, welche die einzelnen Elemente in der Liste mit `print` Zeile für Zeile am Bildschirm ausgibt.
+Schreiben Sie eine Funktion namens `count_even`, welche eine beliebige Anzahl an ganzen Zahlen erhält und zurückgibt, wie viele davon gerade sind.
+
+*Beispiele:*
+
+```python
+count_even(1, 2, 3, 4, 5, 6)  # gibt 3 zurück
+```
+
+```python
+count_even(1, 3, 5)  # gibt 0 zurück
+```
 
 
 ### Übung 4
 
-Gegeben ist wieder eine Liste `lst = ["I", "love", "Python"]`. Schreiben Sie eine `for`-Schleife, welche über die einzelnen Elemente in der Liste iteriert. Eine zweite (geschachtelte) `for`-Schleife soll dann über jeden Buchstaben der einzelnen Strings iterieren und jeden Buchstaben einzeln gefolgt vom Zeichen `-` ausgeben.
+Betrachten Sie das folgende Programm:
 
-:::{.callout-note}
-Verwenden Sie die Funktion `print` mit dem Argument `end="-"`. Die Ausgabe soll wie folgt aussehen:
+```python
+x = 5
 
+def test(x):
+    x = x + 2
+    print(x)
+
+test(x)
+print(x)
 ```
-I-l-o-v-e-P-y-t-h-o-n-
-```
-:::
+
+1. Welche Werte werden ausgegeben?
+2. Erklären Sie, warum sich der Wert von `x` außerhalb der Funktion nicht ändert.
+3. Ändern Sie das Programm so, dass die Variable `x` außerhalb der Funktion anschließend den Wert `7` besitzt, **ohne** das Schlüsselwort `global` zu verwenden.
 
 
 ### Übung 5
 
-Schreiben Sie das folgende verschachtelte `if`–`else`-Konstrukt als `if`–`elif`–`else`-Block:
+Welche Ausgabe erzeugt das folgende Programm?
 
 ```python
-if x > 0:
-    print("x is positive")
-else:
-    if x < 0:
-        print("x is negative")
-    else:
-        print("x is equal to 0")
+def show(a, b=2, c=3):
+    print(a, b, c)
+
+show(1)
+show(1, 5)
+show(1, c=7)
+show(c=7, a=1)
+show(1, 5, c=7)
 ```
 
-Überprüfen Sie Ihre Lösung mit den drei Werten `x = 5`, `x = -11` und `x = 0` (d.h. bei beiden Varianten soll dasselbe Ergebnis herauskommen).
+Begründen Sie bei jedem Funktionsaufruf, welcher Parameter welchen Wert erhält.
 
 
 ### Übung 6
 
-Schreiben Sie ein Programm, welches die Eingabe einer ganzen Zahl zwischen 1 und 10 erwartet. Falls die Eingabe nicht im erlaubten Bereich liegt, soll eine Meldung ausgegeben werden ("Invalid input. Please try again.") und die Eingabe wiederholt werden. Falls die Eingabe im erlaubten Bereich liegt, soll die Schleife beendet werden und die eingegebene Zahl ausgegeben werden (z.B. "You entered: 5").
+Schreiben Sie eine Funktion namens `power_sum`, welche einen Parameter `exponent` und eine beliebige Anzahl weiterer Zahlen erhält. Die Funktion soll die Summe aller Zahlen berechnen, nachdem jede Zahl mit `exponent` potenziert wurde.
+
+*Beispiele:*
+
+```python
+power_sum(2, 1, 2, 3)
+```
+
+liefert den Rückgabewert `14`, da $1^2 + 2^2 + 3^2 = 14$.
+
+```python
+power_sum(3, 1, 2, 3)
+```
+
+liefert den Rückgabewert `36`, da $1^3 + 2^3 + 3^3 = 36$.
+
+
+## Lösungen
+
+Siehe [hier](05-solutions.qmd).

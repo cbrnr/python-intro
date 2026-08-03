@@ -1,8 +1,8 @@
 ---
-title: "8 – Ein- und Ausgabe"
+title: "8 – Pakete installieren und verwenden"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2026-05-04
+date: 2026-11-19
 format:
   html:
     page-layout: full
@@ -17,443 +17,289 @@ author-title: "Autor"
 published-title: "Veröffentlicht"
 ---
 
-## Allgemeines
+## Standardbibliothek und Zusatzpakete
 
-Unter *Eingabe* versteht man die Eingabe von Informationen von der Tastatur bzw. aus einer Datei, um diese in einem Programm verarbeiten zu können. Unter *Ausgabe* versteht man die Ausgabe von Informationen am Bildschirm bzw. in eine Datei (also z.B. Ergebnisse einer Berechnung). Strings spielen dabei eine zentrale Rolle. Im Folgenden werden wir sehen, wie wir Strings für die Ausgabe formatieren können und wie wir damit Textdateien lesen bzw. schreiben können.
+Eine Python-Installation besteht aus der Programmiersprache Python, einem Interpreter (der Python-Code ausführt) und der umfangreichen [Standardbibliothek](https://docs.python.org/3/library/). Python selbst stellt nur *grundlegende* Programmierkonstrukte zur Verfügung (z.B. Schleifen, Bedingungen und einige eingebaute Funktionen). Die mitgelieferte Standardbibliothek erweitert diese Kernfunktionalität um zusätzliche Datentypen, Ein-/Ausgabe, mathematische Funktionen und vieles mehr. Auf die einzelnen Module der Standardbibliothek greift man mit `import` zu – so haben wir z.B. bereits `import math` verwendet, um `math.sqrt` oder `math.pi` benutzen zu können.
+
+Zusätzlich gibt es hunderttausende sogenannte *Python-Pakete*, die sehr einfach zu einer existierenden Python-Installation hinzugefügt werden können. Diese Pakete sind komplett unabhängig von Python, werden also auch nicht von denselben Personen entwickelt und veröffentlicht. Der [Python Package Index (PyPI)](https://pypi.org/) sammelt alle verfügbaren Pakete an einer zentralen Stelle. Das offizielle Werkzeug, um Pakete aus dem PyPI zu installieren, nennt sich `pip` und wird automatisch mit der offiziellen Python-Installation mitgeliefert.
+
+In dieser Einheit lernen wir, wie man mit `pip` Zusatzpakete verwaltet und wie man installierte Pakete mit `import` in eigenen Programmen verwendet. Dieses Wissen benötigen wir in den folgenden Einheiten, in denen wir die Zusatzpakete NumPy, Matplotlib und PsychoPy verwenden werden.
 
 
-## Ausgabe von Strings
+## Pakete mit pip verwalten
 
-### Strings verketten
+Das Werkzeug `pip` kann neue Pakete installieren, bereits installierte Pakete aktualisieren oder auch komplett wieder entfernen. Eine Python-Installation sollte damit regelmäßig gewartet werden, d.h. veraltete Pakete sollten nach Möglichkeit aktualisiert werden. Die Standardbibliothek wird dadurch allerdings nicht beeinflusst – diese ändert sich nur, wenn man eine neuere Python-Version installiert.
 
-Wir haben bereits die `print`-Funktion kennengelernt, welche Strings (und andere Objekte) als Text am Bildschirm ausgeben kann. Im einfachsten Fall kann so ein String ausgegeben werden:
+Dabei ist `pip` ein sogenanntes Kommandozeilenprogramm, d.h. es verfügt über keine grafische Oberfläche, sondern wird im *Terminal* ausgeführt. Um die folgenden Beispiele nachzuvollziehen, muss man also zuerst ein Terminal öffnen.
 
-```{python}
-print("Hallo")
-```
+:::{.callout-important}
+Das *Terminal* ist ein Programm bzw. Fenster, in dem man Textbefehle eingibt. Darin läuft eine sogenannte [Shell](https://de.wikipedia.org/wiki/Shell_(Betriebssystem)), die Betriebssystem-Befehle ausführen kann.
 
-Auch Zahlen kann man als Argument für `print` verwenden:
-
-```{python}
-print(55)
-```
-
-Mit der Funktion `str` kann man beliebige Objekte (also auch z.B. Ganzzahlen) in einen String "umwandeln":
-
-```{python}
-str(55)
-```
-
-::: {.callout-note}
-"Umwandeln" ist hier eigentlich nicht ganz korrekt, da die Funktion `str` eine String-Repräsentation des übergebenen Objekts zurückgibt (also ein neues String-Objekt erzeugt). Das ursprüngliche Objekt (z.B. die Zahl `55`) bleibt unverändert bestehen.
+Davon zu unterscheiden ist der Python-Interpreter: er führt Python-Code wie `import math` aus. Die folgenden `pip`-Befehle gehören daher ins Terminal bzw. in die Shell und *nicht* in die IDLE-Shell, in der der Python-Interpreter läuft!
 :::
 
-Die `print`-Funktion kann *beliebig viele* Argumente entgegennehmen. Sie gibt dann alle Argumente, getrennt mit Leerzeichen, am Bildschirm aus:
+Wir rufen `pip` immer über den Python-Interpreter mit der Option `-m` auf (mehr dazu weiter unten). Um zu testen, ob `pip` funktioniert und welche Version installiert ist, gibt man Folgendes ein:
 
-```{python}
-a = 5
-b = 10
-print(a, "+", b, "=", a + b)  # fünf Argumente
+::: {.panel-tabset}
+## Windows
+
+```sh
+py -m pip --version
+```
+
+## macOS/Linux
+
+```sh
+python3 -m pip --version
+```
+:::
+
+Wenn man hier eine Versionsnummer angezeigt bekommt (z.B. `25.2`), funktioniert `pip` korrekt. Falls hier eine Fehlermeldung ausgegeben wird, wurde vermutlich die Python-Installation nicht korrekt durchgeführt. In diesem Fall installiert man am besten anhand der in der ersten Einheit beschriebenen Schritte Python erneut.
+
+:::{.callout-note}
+In allen folgenden Beispielen verwenden wir unter Windows `py`, unter macOS und Linux hingegen `python3`. Ersetzen Sie `py -m pip` also je nach Betriebssystem durch `python3 -m pip`.
+:::
+
+Wenn man wissen möchte, welche Pakete installiert sind, verwendet man den folgenden Befehl:
+
+```sh
+py -m pip list
+```
+
+Die Ausgabe beinhaltet alle installierten Pakete, einschließlich ihrer Namen und Versionen. Wenn man Python gerade erst frisch installiert hat, enthält diese Liste nur wenige Einträge.
+
+Bevor man ein neues Paket installieren kann, muss man dessen Namen kennen. Die [PyPI-Website](https://pypi.org/) kann verwendet werden, um nach einem bestimmten Paket zu suchen. Ein Paket kann dann wie folgt installiert werden (`<package-name>` muss durch den tatsächlichen Namen ersetzt werden):
+
+```sh
+py -m pip install <package-name>
 ```
 
 :::{.callout-note}
-Die `print`-Funktion hat zwei optionale Parameter `sep` bzw. `end`, welche das Trennzeichen zwischen den Argumenten und das Zeichen am Ende der Ausgabe beeinflussen:
-
-- `sep=" "`: Trennzeichen zwischen den Argumenten (Standard: Leerzeichen)
-- `end="\n"`: Zeichen am Ende der Ausgabe (Standard: Zeilenumbruch)
-
-Was wäre die Ausgabe des obigen Beispiels, wenn man `sep=""` setzen würde? Was bewirkt `end="!!!"`?
+Der Name hinter `pip install` ist ein vorgegebener Projektname auf PyPI und kein selbstgewählter Name in einem Python-Programm. Daher muss er nicht den Regeln aus Kapitel 2 folgen: er kann beispielsweise Bindestriche enthalten. Außerdem kann er vom Namen abweichen, mit dem das Paket später importiert wird. So wird z.B. das Projekt `scikit-learn` mit `py -m pip install scikit-learn` installiert, aber im Python-Programm mit `import sklearn` verwendet.
 :::
 
-Wie wir bereits wissen, kann man mehrere Strings mit `+` verketten. Daher könnte man obige Ausgabe auch durch Ausgabe eines einzigen Strings durch Verketten von einzelnen Strings erzeugen:
+Das Entfernen eines Pakets ist ähnlich einfach:
 
-```{python}
-print(str(a) + " + " + str(b) + " = " + str(a + b))  # ein Argument
+```sh
+py -m pip uninstall <package_name>
 ```
 
+Eine Liste aller Pakete, die aktualisiert werden können, erhält man mit:
 
-### f-Strings
-
-Sogenannte f-Strings sind ganz normale Strings, man kann aber bei ihrer Erzeugung beliebige Ausdrücke verwenden, die dann ausgewertet in den String eingesetzt (interpoliert) werden. Man definiert einen f-String wie einen regulären String mittels Anführungszeichen, stellt aber ein `f` voran, also z.B.:
-
-```{python}
-f"Hallo"
+```sh
+py -m pip list --outdated
 ```
 
-Sinnvoll sind f-Strings nur dann, wenn man auch tatsächlich Ausdrücke integriert, welche innerhalb von geschwungenen Klammern `{}` angegeben werden. Alle Ausdrücke werden ausgewertet und in den String interpoliert:
+Falls dieser Befehl veraltete Pakete anzeigt, kann man jedes einzelne Paket mit folgendem Befehl aktualisieren:
 
-```{python}
-name = "World"
-f"Hello {name}!"
+```sh
+py -m pip install --upgrade <package-name>
 ```
 
-Den fertigen String kann man dann einfach mit `print` am Bildschirm ausgeben. Das Beispiel aus dem vorigen Abschnitt kann man daher wie folgt anschreiben:
+::: callout-tip
+Grundsätzlich könnte man `pip` auch direkt aufrufen (also einfach `pip install ...` bzw. `pip3 install ...`). Es kann aber vorkommen, dass mehrere Python-Versionen auf einem Computer installiert sind. Dann ist nicht immer eindeutig, zu welcher Python-Installation ein direkt aufgerufenes `pip` gehört – und man installiert das Paket womöglich in die "falsche" Python-Version.
 
-```{python}
-print(f"{a} + {b} = {a + b}")
-```
+Die Option `-m` weist den Python-Interpreter an, ein *Modul als Programm auszuführen* – in diesem Fall das Modul `pip`. Der große Vorteil: Man ruft `pip` immer über *genau jenen* Python-Interpreter auf, den man auch zum Ausführen von Programmen verwendet (`py` unter Windows bzw. `python3` unter macOS/Linux). So installiert man ein Paket garantiert in die richtige Python-Installation. Aus diesem Grund verwenden wir in diesem Kurs durchgängig die Schreibweise `py -m pip` bzw. `python3 -m pip`.
+:::
 
-Ausdrücke wie z.B. Zahlen, können optional auch *formatiert* werden. Sehen wir uns zunächst an, wie die Kreiszahl $\pi$ standardmäßig ausgegeben wird:
+
+## Pakete verwenden: `import`
+
+Ein installiertes Paket steht nicht automatisch in einem Programm zur Verfügung – man muss es zuerst mit `import` importieren (genau wie ein Modul aus der Standardbibliothek). Erst danach kann man auf die Funktionen und Objekte des Pakets zugreifen. Für den Zugriff verwendet man wieder die *Punktschreibweise* (Paketname, Punkt, Name des gewünschten Objekts).
+
+Die einfachste Form importiert ein ganzes Modul bzw. Paket:
 
 ```{python}
 import math
 
-print(f"π ≈ {math.pi}")
+math.sqrt(16)
 ```
 
-Mit einem optionalen Doppelpunkt und einem sogenannten *Format Specifier* innerhalb der geschwungenen Klammern kann ein Ausdruck gezielt formatiert werden. Das folgende Beispiel formatiert die Zahl $\pi$ so, dass sie mit drei Nachkommastellen ausgegeben wird:
+Man kann auch nur einzelne Namen aus einem Modul importieren. Diese stehen dann *direkt* (ohne vorangestellten Modulnamen) zur Verfügung:
 
 ```{python}
-print(f"π ≈ {math.pi:.3f}")
+from math import sqrt, pi
+
+sqrt(16)
 ```
 
-Oder mit 16 Nachkommastellen:
-
 ```{python}
-print(f"π ≈ {math.pi:.16f}")
+pi
 ```
 
-Eine Ganzzahl wird mit dem Format Specifier `d` ausgegeben:
+Schließlich kann man einem importierten Paket beim Import auch einen kürzeren *Aliasnamen* geben. Das ist bei Paketen mit langen Namen praktisch und bei manchen Paketen sogar üblich. So wird NumPy fast immer als `np` importiert:
 
 ```{python}
-number = 42
-print(f"number = {number:d}")
+import numpy as np
+
+np.array([1, 2, 3])
+```
+
+:::{.callout-note}
+Der Alias ist frei wählbar, aber für viele bekannte Pakete gibt es etablierte Konventionen (z.B. `import numpy as np` oder `import matplotlib.pyplot as plt`). Halten Sie sich an diese Konventionen, damit Ihr Code für andere gut lesbar bleibt. Wir werden NumPy und Matplotlib in den nächsten beiden Einheiten kennenlernen.
+:::
+
+
+## Module und Pakete
+
+Ein *Modul* ist eine einzelne Python-Datei mit der Endung `.py`. In einem Modul können Funktionen, Variablen und Klassen stehen, die man in anderen Programmen wiederverwenden möchte. Die Datei `math.py` wäre beispielsweise ein Modul mit dem Namen `math`.
+
+Ein *Paket* ist dagegen ein Verzeichnis, das mehrere Module zusammenfasst. So kann zusammengehöriger Code übersichtlich organisiert werden. Ein Paket kann auch weitere Pakete enthalten; diese nennt man *Unterpakete* (englisch *subpackages*). Ein einfaches Paket könnte so aussehen:
+
+```text
+my_package/
+  __init__.py
+  arithmetic.py
+  text.py
+  analysis/
+    __init__.py
+    statistics.py
+```
+
+Die Dateien `arithmetic.py`, `text.py` und `statistics.py` sind Module, `my_package` und `analysis` sind Pakete. Die Datei `__init__.py` markiert ein Verzeichnis üblicherweise als Paket; sie kann leer bleiben. Bei vielen modernen Paketen ist sie zwar nicht mehr zwingend erforderlich, für selbst geschriebene Pakete ist sie aber eine gute Konvention.
+
+Punkte in einem Import beschreiben diese Struktur. Im folgenden Beispiel ist `matplotlib` ein Paket und `pyplot` ein darin enthaltenes Modul:
+
+```python
+import matplotlib.pyplot as plt
+```
+
+Aus der oben gezeigten Struktur könnte man beispielsweise ein Modul aus einem Unterpaket importieren:
+
+```python
+from my_package.analysis import statistics
+```
+
+
+## Eigene Module schreiben
+
+Um ein eigenes Modul zu schreiben, erstellt man einfach eine Python-Datei. Angenommen, im selben Verzeichnis befinden sich die beiden folgenden Dateien:
+
+```python
+# greetings.py
+def greeting(name):
+    return f"Hallo, {name}!"
+```
+
+```python
+# main.py
+import greetings
+
+print(greetings.greeting("Mara"))
+```
+
+Wenn man `main.py` ausführt, findet Python die Datei `greetings.py` im selben Verzeichnis und importiert sie als Modul. Die Funktion wird mit `greetings.greeting(...)` aufgerufen. Dieses Beispiel zeigt auch, warum Modulnamen kurz, aussagekräftig und vollständig klein geschrieben werden sollten.
+
+Auch bei eigenen Modulen kann man einzelne Namen direkt importieren oder einen Alias verwenden:
+
+```python
+from greetings import greeting
+import greetings as gr
+
+print(greeting("Mara"))
+print(gr.greeting("Jonas"))
+```
+
+
+## Neue Pakete erkunden
+
+Nach dem Import eines neuen Moduls oder Pakets kann die eingebaute Funktion `dir` einen ersten Überblick geben. Sie gibt eine Liste der Namen zurück, die darin verfügbar sind:
+
+```python
+import math
+
+dir(math)
+```
+
+Viele Einträge, die mit zwei Unterstrichen beginnen und enden (z.B. `__name__`), gehören zu den internen Eigenschaften eines Moduls. Für die tägliche Arbeit sind meist die übrigen Namen interessant. Um nur diese anzuzeigen, kann man sie mit einer List Comprehension filtern:
+
+```python
+[name for name in dir(math) if not name.startswith("__")]
+```
+
+Bei einem neu installierten Paket funktioniert das genauso. Nach `import numpy` zeigt `dir(numpy)` beispielsweise die verfügbaren Funktionen, Klassen und Unterpakete. `dir` ersetzt keine Dokumentation, hilft aber beim ersten Erkunden eines unbekannten Pakets.
+
+
+## Code automatisch formatieren mit Ruff
+
+Als konkretes Beispiel für ein nützliches Zusatzpaket sehen wir uns [Ruff](https://docs.astral.sh/ruff/) an. Damit kann man Python-Code automatisch überprüfen und formatieren lassen.
+
+Das ist sinnvoll, weil es neben der Syntax, die man strikt einhalten muss, auch stilistische Konventionen gibt, die den Code lesbarer machen. Beispielsweise sind die folgenden drei Anweisungen alle syntaktisch korrekt und führen zum selben Ergebnis:
+
+```{python}
+x = 1 + 2 + 3 * (16 - 7)
+x=1+    2+  3*  (   16-7    )
+x=1+2+3*(16-7)
+```
+
+Der erste Befehl ist aber am besten lesbar, weil alle Operatoren von jeweils einem Leerzeichen umgeben sind. Viele solche Empfehlungen sind im [Python Enhancement Proposal 8 (PEP8)](https://peps.python.org/pep-0008/) zusammengefasst. Ruff kann Code automatisch entsprechend formatieren.
+
+Zunächst installiert man Ruff mit `pip`:
+
+```sh
+py -m pip install ruff
+```
+
+Danach kann man die folgenden Befehle im Terminal verwenden, um eine Datei namens `test.py` zu überprüfen und zu formatieren:
+
+```sh
+ruff check --fix test.py
+ruff format test.py
 ```
 
 ::: {.callout-note}
-`d` steht für "decimal" (Basis 10) und formatiert ganze Zahlen. Der Begriff "Dezimalzahl" kann im Alltag aber auch "Kommazahl" (Dezimalbruch) bedeuten – dafür verwendet man aber den Format Specifier `f` (steht für "float").
+Die beiden obigen Befehle sind Shell-Befehle und müssen, genau wie `pip`, im Terminal ausgeführt werden (*nicht* im Python-Interpreter). Damit sie funktionieren, muss sich die Datei `test.py` im aktuellen Verzeichnis befinden. Man kann den Befehl `ls` (bzw. `dir` unter Windows) verwenden, um den Inhalt des aktuellen Verzeichnisses anzuzeigen. Falls die Datei nicht aufscheint, kann man mit dem Befehl `cd <Verzeichnis>` in das entsprechende Verzeichnis wechseln.
+
+Je nach Installation kann es außerdem sein, dass man `ruff` nicht direkt aufrufen kann. In diesem Fall sollte es mit `py -m ruff` (bzw. `python3 -m ruff`) anstelle von `ruff` funktionieren.
 :::
-
-Die minimale Feldbreite kann mit einer Zahl direkt nach dem Doppelpunkt spezifiziert werden, im folgenden Beispiel soll diese 15 Zeichen betragen:
-
-```{python}
-print(f"π ≈ {math.pi:15.3f}")
-```
-
-Man kann auch die Ausrichtung innerhalb des Feldes spezifizieren. Standardmäßig wird rechtsbündig ausgerichtet (für Zahlen sinnvoll), mit `<` wird linksbündig ausgerichtet:
-
-```{python}
-print(f"π ≈ {math.pi:<15.3f}, more text")  # linksbündig
-print(f"π ≈ {math.pi:15.3f}, more text")  # rechtsbündig (Standard)
-```
-
-Führende Nullen können ebenfalls hinzugefügt werden, indem man eine `0` vor die Feldbreite setzt:
-
-```{python}
-print(f"number = {number:5d}")    # 5 Stellen, mit Leerzeichen
-print(f"number = {number:05d}")   # 5 Stellen, mit führenden Nullen
-```
-
-Dies funktioniert auch mit Dezimalzahlen:
-
-```{python}
-print(f"π ≈ {math.pi:015.3f}, more text")
-```
-
-Alle Möglichkeiten, die Format Specifier innerhalb der geschwungenen Klammern bieten, finden sich in der [offiziellen Dokumentation](https://docs.python.org/3/library/string.html#format-string-syntax) (inklusive einer Menge Beispiele).
-
-
-## Dateien lesen und schreiben
-
-Die Funktion `open` gibt ein Datei-Objekt zurück, welches zum Lesen oder Schreiben von Dateien verwendet werden kann (die im Beispiel verwendete Datei `test.txt` ist [hier](test.txt) verfügbar):
-
-```python
-f = open("test.txt", "w")
-```
-
-Das erste Argument ist der Dateiname, und das zweite Argument beschreibt den Modus (`"r"` lesen, `"w"` schreiben, `"a"` hinzufügen). Standardmäßig wird der Modus `"r"` angenommen, wenn das Argument nicht explizit übergeben wird.
-
-Mit dem Datei-Objekt `f` kann man dann aus der Datei lesen bzw. in die Datei schreiben (je nach Modus).
-
-:::{.callout-important}
-Nach Beendigung aller Lese- und Schreiboperationen muss man das Datei-Objekt wieder *schließen*:
-
-```python
-f.close()
-```
-
-Es ist sinnvoll, alle Datei-Operationen innerhalb eines `with`-Blocks durchzuführen. So wird die Datei bei Verlassen des Blocks *automatisch* geschlossen, d.h. man benötigt kein `f.close()`:
-
-```python
-with open("test.txt") as f:
-    data = f.read()
-```
-:::
-
-Zu Beachten ist noch, dass der Dateiname als String übergeben wird. Dieser enthält entweder den vollständigen Pfad der zu öffnenden Datei (z.B. `"C:/Program Files/Test Program/test.txt"`), oder nur den Dateinamen. Im letzteren Fall wird dann angenommen, dass sich die Datei im Arbeitsverzeichnis befindet.
-
-:::{.callout-note}
-Pfade sollten immer mit einem normalen `/` getrennt werden und nicht wie unter Windows üblich mit einem verkehrten `\`, da man mit letzterem eine Escape-Sequenz einleitet. Möchte man dennoch `\` verwenden, muss man diesen mit der Escape-Sequenz `\\` schreiben.
-:::
-
-Die Methode `read` eines Datei-Objektes liest die *gesamte Datei* ein und gibt den Inhalt als String zurück:
-
-```{python}
-f = open("test.txt")
-text = f.read()
-print(text)
-```
-
-Zu beachten ist hier, dass der *gesamte* Inhalt der Datei in den Speicher geladen wird. Bei sehr großen Dateien kann das eventuell zu Problemen führen, weswegen man diese *zeilenweise* einlesen sollte (dazu gleich mehr).
-
-:::{.callout-tip}
-Der Inhalt einer Datei kann immer nur *ein Mal* gelesen werden. Wenn bereits der gesamte Inhalt gelesen wurde, befindet sich der sogenannte Dateizeiger am Ende der Datei. Wenn dann nochmals gelesen wird, wird nur mehr ein leerer String zurückgegeben:
-
-```{python}
-f.read()  # Ende der Datei bereits erreicht
-```
-
-Möchte man die Datei erneut lesen, muss man sie schließen und kann sie dann wieder erneut öffnen:
-
-```{python}
-f.close()  # schließt Datei (notwendig wenn man kein with verwendet)
-```
-:::
-
-Die Methode `readline` liest *eine Zeile* aus der Datei:
-
-```{python}
-with open("test.txt") as f:
-    print("1. Zeile: ", f.readline(), end="")
-    print("2. Zeile: ", f.readline(), end="")
-    print("3. Zeile: ", f.readline(), end="")
-```
-
-In einer Schleife kann man die Datei ebenso Zeile für Zeile auslesen, in dem man über das Datei-Objekt iteriert:
-
-```{python}
-with open("test.txt") as f:
-    for line in f:
-        print(line, end="")
-```
-
-So kann man einzelne Zeilen einfach manipulieren, z.B. um Zeilennummern auszugeben (die nicht in der Datei selbst sind):
-
-```{python}
-with open("test.txt") as f:
-    for no, line in enumerate(f):
-        print(no, line, end="")
-```
-
-:::{.callout-tip}
-In der `for`-Schleife wird hier nicht direkt über `f`, sondern über `enumerate(f)` iteriert. Diese Funktion zählt die Schleifendurchläufe mit und gibt ein Tupel bestehend aus dem aktuellen Wert des Schleifenzählers sowie der aktuellen Zeile zurück.
-:::
-
-Text in Dateien schreiben funktioniert sehr ähnlich – man öffnet die Datei im `"w"`-Modus und übergibt der `write`-Methode den gewünschten Inhalt als String:
-
-```python
-with open("test2.txt", "w") as f:
-    f.write("Das ist ein Test.\nSo kann man einfach\nText\nin Dateien schreiben.")
-```
-
-In diesem Beispiel steht die Escape-Sequenz `\n` für einen Zeilenumbruch (neue Zeile).
-
-
-## Beispiel: CSV-Datei lesen
-
-Mit den bis jetzt vorgestellten Mitteln können wir bereits CSV[^1]-Dateien einlesen und rudimentäre Statistiken rechnen. CSV-Dateien werden häufig verwendet, um tabellarische Daten abzuspeichern. Diese Dateien sind reine Textdateien, in denen die Variablen (Spalten) durch Kommas getrennt sind und die einzelnen Datensätze zeilenweise vorliegen.
-
-Im Folgenden werden drei Möglichkeiten zum Lesen einer CSV-Datei vorgestellt (die Beispieldatei `correlation.csv` ist [hier](correlation.csv) verfügbar). Die erste Methode verwendet Python ohne spezielle Module, die zweite Methode ist eine Verallgemeinerung der ersten. Die dritte und einfachste Variante verwendet das Package [pandas](https://pandas.pydata.org/), welches wir in dieser Lehrveranstaltung aber nicht genauer kennenlernen werden (sie wird der Vollständigkeit halber trotzdem erwähnt).
-
-[^1]: Comma-Separated Values
-
-
-### Möglichkeit 1
-
-Wir starten mit einer leeren Liste `data`. Dieser Liste fügen wir den Inhalt jeder Zeile schrittweise (mittels `append`) hinzu. Eine Zeile wird dabei als Liste mit zwei Strings abgebildet. Zuerst entfernen wir eventuelle Leerzeichen am Anfang und Ende einer Zeile mittels `.strip()`, und danach spalten wir die Zeile am Komma in eine Liste mit zwei Elementen mittels `.split(",")` auf:
-
-```{python}
-data = []  # leere Liste
-with open("correlation.csv") as f:
-    for row in f:
-        data.append(row.strip().split(","))
-```
-
-```{python}
-data
-```
-
-Nun können die Daten in eine Struktur umgewandelt werden, die sich besser für nachfolgende Berechnungen eignet (mit der Funktion `float` werden die Strings in Dezimalzahlen umgewandelt).
-
-```{python}
-cols = [[], []]  # zwei leere Listen für die zwei Spalten
-for row in data[1:]:  # die erste Zeile 0 wird übersprungen (Kopfzeile)
-    cols[0].append(float(row[0]))  # erste Spalte
-    cols[1].append(float(row[1]))  # zweite Spalte
-```
-
-Nun stehen die beiden Spalten in der Liste `cols` zur weiteren Verfügung. Diese Liste hat zwei Elemente:
-
-```{python}
-len(cols)
-```
-
-Die beiden Einträge in `cols` sind ebenfalls Listen:
-
-```{python}
-type(cols[0]), type(cols[1])
-```
-
-Die Länge beider Listen entspricht der Anzahl an Zeilen in der CSV-Datei (ohne Kopfzeile):
-
-```{python}
-len(cols[0]), len(cols[1])
-```
-
-Die Elemente in diesen beiden Listen sind Zahlen:
-
-```{python}
-cols[0]
-```
-
-```{python}
-cols[1]
-```
-
-Mit diesen beiden Listen kann man jetzt also Berechnungen durchführen. Beispielsweise kann man die Spaltenmittelwerte so ausrechnen:
-
-```{python}
-sum(cols[0]) / len(cols[0])
-```
-
-```{python}
-sum(cols[1]) / len(cols[1])
-```
-
-Diese Lösung ist allerdings alles andere als ideal. Erstens sollte man immer bereits existierende Lösungen verwenden und nicht alles von Grund auf neu entwickeln (es gibt in Python wie bereits erwähnt ein eigenes `csv`-Modul, und das Package `pandas` ist für solche Aufgaben geradezu prädestiniert). Zweitens ist diese Lösung auch sehr auf die konkrete Datei angepasst, z.B. funktioniert der Ansatz nur für eine Datei mit exakt zwei Spalten.
-
-
-### Möglichkeit 2
-
-Eine verallgemeinerte Lösung für eine *beliebige* Anzahl an Spalten sieht wie folgt aus:
-
-```{python}
-with open("correlation.csv") as f:
-    header = f.readline().strip().split(",")  # erste Zeile
-
-    data = {}  # dict mit einem Eintrag pro Spalte
-    for name in header:
-        data[name] = []  # Key ist der Spaltenname, Value eine leere Liste
-
-    for row in f:  # restliche Zeilen
-        values = row.strip().split(",")
-        for h, v in zip(header, values):
-            data[h].append(float(v))  # füge zur jeweiligen Liste hinzu
-```
-
-Hier werden zunächst die Variablennamen aus der ersten Zeile (der Kopfzeile) gelesen. Die Daten werden dann in ein Dictionary geschrieben, wobei die Werte der Spalten zu den richtigen Dictionary-Einträgen (Listen) hinzugefügt werden. Die Funktion `zip` kombiniert die Werte von `header` und `values` in ein Tupel, die dann innerhalb der Schleife als `h` bzw. `v` zur Verfügung stehen (so kann man in einer Schleife also gleichzeitig über zwei Objekte iterieren).
-
-```{python}
-data
-```
-
-Diese Lösung funktioniert also bereits mit einer beliebigen Spaltenanzahl, setzt aber voraus, dass es eine Kopfzeile gibt. Die Spaltenmittelwerte können dann wie folgt berechnet werden:
-
-```{python}
-sum(data["essay"]) / len(data["essay"])
-```
-
-```{python}
-sum(data["hours"]) / len(data["hours"])
-```
-
-
-### Möglichkeit 3
-
-Das Package `pandas` eignet sich ideal zum Verarbeiten von tabellarischen Daten. Es beinhaltet auch Funktionen zum Lesen von Dateien. Damit würde der Code wie folgt aussehen:
-
-```{python}
-import pandas as pd
-
-data = pd.read_csv("correlation.csv")
-```
-
-```{python}
-data
-```
-
-Die Spaltenmittelwerte kann man dann wie folgt berechnen:
-
-```{python}
-#| scrolled: true
-data.mean()
-```
 
 
 ## Übungen
 
 ### Übung 1
 
-Gegeben sind die Zuweisungen `name = "Anna"`, `a = 7` und `b = 13`. Erzeugen Sie mit einem f-String eine Ausgabe der Form:
-
-> Hallo Anna! 7 / 13 ≈ 0.538, oder?
+Geben Sie eine Liste aller installierten Pakete in Ihrer Python-Installation aus – welchen Befehl verwenden Sie dazu und wie sieht die Liste aus? Wie viele Pakete sind installiert?
 
 
 ### Übung 2
 
-Erzeugen Sie eine tabellarische Ausgabe aus der folgenden Liste von Dictionaries:
+Aktualisieren Sie zunächst alle installierten Pakete (falls notwendig). Suchen Sie dann nach dem Paket `ipython` – ist dieses Paket bereits installiert? Falls nicht, installieren Sie es! Führen Sie diese beiden Schritte auch für das Paket `numpy` durch. Abschließend deinstallieren Sie `ipython` wieder.
 
-```python
-students = [
-    {"name": "Lukas", "score": 87.5},
-    {"name": "Maya", "score": 42.0},
-    {"name": "Anna", "score": 59.0},
-    {"name": "Tim", "score": 49.9},
-    {"name": "Zoe", "score": 100.0},
-]
-```
-
-Die Ausgabe soll wie folgt aussehen:
-
-```
- 1 | Lukas        |   87.5 | PASS
- 2 | Maya         |   42.0 | FAIL
- 3 | Anna         |   59.0 | PASS
- 4 | Tim          |   49.9 | FAIL
- 5 | Zoe          |  100.0 | PASS
-```
-
-Die Zahlen in der ersten Spalte sollen rechtsbündig in einem Feld der Breite 2 ausgegeben werden, die Namen in der zweiten Spalte linksbündig in einem Feld der Breite 12, und die Punktzahlen in der dritten Spalte rechtsbündig in einem Feld der Breite 6 mit einer Nachkommastelle. In der vierten Spalte soll "PASS" ausgegeben werden, wenn die Punktzahl größer oder gleich 50 ist, ansonsten "FAIL".
-
-Lösen Sie die Aufgabe mit einer `for`-Schleife, in der Sie mit einem f-String jeden Eintrag in der Liste `students` (ein Dictionary) formatieren und ausgeben. Die Zahlen in der ersten Spalte müssen Sie selbst generieren, indem Sie die Schleifendurchläufe mitzählen. Dies können Sie z.B. mit der Funktion `enumerate` erreichen:
-
-```python
-for no, student in enumerate(students, start=1):
-    ...  # ihre Lösung hier
-```
+Geben Sie dann die Liste aller installierten Pakete erneut aus – ist `ipython` noch vorhanden? Was ist mit den Abhängigkeiten dieses Pakets passiert – wurden diese ebenfalls deinstalliert?
 
 
 ### Übung 3
 
-Erstellen Sie eine Liste `lst`, welche die *geraden* Zahlen zwischen 0 und 100 (inklusive) beinhaltet, und speichern Sie diese Zahlen in eine Datei `ue1.txt`. In der Datei soll jede Zahl in einer eigenen Zeile stehen.
-
-:::{.callout-note}
-Zahlen sollten vor dem Schreiben in die Datei mit der Funktion `str` in Strings umgewandelt werden. Das Zeichen für einen Zeilenumbruch lautet `\n`. Sie können z.B. eine `for`-Schleife über die Zahlenliste machen und die einzelnen Elemente nacheinander in die Datei schreiben. Alternativ können Sie auch die Liste in einen richtig formatierten String umwandeln (die String-Methode `join` ist hier hilfreich) und diesen dann in die Datei schreiben.
-:::
+Importieren Sie das Modul `math` und berechnen Sie damit die Quadratwurzel von 144 sowie den Kosinus von 0. Importieren Sie anschließend nur die Funktion `factorial` aus dem Modul `math` und berechnen Sie damit $5!$ (Fakultät von 5).
 
 
 ### Übung 4
 
-Verwenden Sie wieder die Liste `lst` aus Übung 1, aber schreiben Sie die Zahlen nun so in eine Datei `ue2.txt`, dass diese durch Kommas getrennt in einer Zeile stehen.
+Installieren Sie das Paket Ruff (falls noch nicht vorhanden). Erstellen Sie mit IDLE ein Skript `test.py` mit folgendem (absichtlich schlecht formatierten) Inhalt und lassen Sie es anschließend mit Ruff formatieren. Was hat sich verändert?
+
+```python
+x=1+2
+y = [1,2,3 ,4]
+print( x,y )
+```
 
 
 ### Übung 5
 
-Das Spiel Scrabble eignet sich hervorragend, um über die Existenz von Wörtern zu diskutieren. Zumindest für die englische Ausgabe gibt es eine [offizielle Wortliste](http://www.freescrabbledictionary.com/sowpods/), die man konsultieren kann, wenn man nicht sicher ist, ob es sich bei einer Kreation um ein gültiges Wort handelt oder nicht. Alle Wörter in dieser Datenbank können als [Textdatei](https://www.wordgamedictionary.com/sowpods/download/sowpods.txt) heruntergeladen werden.
-
-Für diese Übung laden Sie sich diese Datei herunter und speichern Sie sie in Ihrem Arbeitsverzeichnis ab. Lesen Sie die Datei dann in Python ein und finden Sie heraus, wie viele Wörter (Zeilen) sich in der Datei befinden.
-
-:::{.callout-note}
-Iterieren Sie mit einer `for`-Schleife über das Datei-Objekt und zählen Sie die Schleifendurchläufe mit. Am Ende der Schleife (d.h. am Ende der Datei) entspricht dann ihr Zähler der Zeilenanzahl der Datei (d.h. der Anzahl der Wörter). Beachten Sie, dass die ersten paar Zeilen in der Datei keine Wörter beinhalten!
-
-Wenn man es ganz exakt machen möchte, sollte man auch noch überprüfen, ob die aktuelle Zeile auch tatsächlich ein Wort enthält (also keine Leerzeile ist).
-:::
+Erstellen Sie im selben Verzeichnis zwei Dateien. Schreiben Sie in `temperature.py` eine Funktion `celsius_to_fahrenheit`, die eine Temperatur in Grad Celsius entgegennimmt und den entsprechenden Wert in Grad Fahrenheit zurückgibt. Importieren Sie das Modul anschließend in `main.py` und berechnen Sie damit den Wert für 20 Grad Celsius.
 
 
 ### Übung 6
 
-Verwenden Sie die Wörter-Datei aus Übung 3 und finden Sie heraus, wie viele Wörter mit mehr als 14 Buchstaben in der Liste enthalten sind (also Wörter mit 15 Buchstaben oder mehr).
+Welche der folgenden Importanweisungen sind möglich? Erklären Sie jeweils kurz, unter welchem Namen Sie anschließend auf die Funktion `sqrt` zugreifen. Was zeigt `dir(math)` an?
 
-:::{.callout-note}
-Wenn Sie die Datei Zeile für Zeile einlesen, entfernen Sie unsichtbare Zeichen (wie z.B. Zeilenumbruch) mit der Methode `strip`, bevor Sie die Länge des aktuellen Wortes bestimmen (ansonsten ist die Länge immer um 1 größer als die Länge des Wortes, weil der Inhalt einer Zeile z.B. `abandon\n` lautet, und `\n` wird als ein Zeichen gezählt). Erhöhen Sie Ihren Zähler nur, wenn die Länge des aktuellen Wortes (ohne Zeilenumbruch) größer als 14 ist.
-:::
+```python
+import math
+import math as m
+from math import sqrt
+```
+
+
+## Lösungen
+
+Siehe [hier](08-solutions.qmd).

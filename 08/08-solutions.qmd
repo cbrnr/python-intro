@@ -2,7 +2,7 @@
 title: "8 – Lösungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2026-05-04
+date: 2026-11-19
 format:
   html:
     page-layout: full
@@ -19,80 +19,100 @@ published-title: "Veröffentlicht"
 
 ## Übung 1
 
-```{python}
-name = "Anna"
-a = 7
-b = 13
-print(f"Hallo {name}! {a} / {b} ≈ {a / b:.3f}, oder?")
+Die Liste der installierten Pakete erhält man im Terminal mit (unter macOS/Linux `python3` statt `py`):
+
+```sh
+py -m pip list
 ```
+
+Die Anzahl der installierten Pakete hängt von der jeweiligen Installation ab. Direkt nach einer frischen Python-Installation sind es nur wenige Pakete.
 
 
 ## Übung 2
 
-```{python}
-students = [
-    {"name": "Lukas", "score": 87.5},
-    {"name": "Maya", "score": 42.0},
-    {"name": "Anna", "score": 59.0},
-    {"name": "Tim", "score": 49.9},
-    {"name": "Zoe", "score": 100.0},
-]
+Alle Befehle werden im Terminal ausgeführt (unter macOS/Linux `python3` statt `py`):
 
-for i, s in enumerate(students, 1):
-    if s["score"] >= 50:
-        status = "PASS"
-    else:
-        status = "FAIL"
-    print(f"{i:2d} | {s['name']:<12} | {s['score']:6.1f} | {status}")
+```sh
+py -m pip list --outdated
+py -m pip install --upgrade <package-name>
+py -m pip install ipython
+py -m pip install numpy
+py -m pip uninstall ipython
+py -m pip list
 ```
+
+Nach dem Deinstallieren scheint `ipython` nicht mehr in der Liste auf. Die Abhängigkeiten von `ipython` (also Pakete, die zusammen mit `ipython` installiert wurden) werden allerdings *nicht* automatisch mitentfernt – diese bleiben installiert.
 
 
 ## Übung 3
 
-```python
-lst = range(0, 101, 2)
+```{python}
+import math
 
-with open("ex1.txt", "w") as f:
-    f.write("\n".join([str(x) for x in lst]))
+math.sqrt(144)
+```
+
+```{python}
+math.cos(0)
+```
+
+```{python}
+from math import factorial
+
+factorial(5)
 ```
 
 
 ## Übung 4
 
+Nach `ruff format test.py` (bzw. `ruff check --fix test.py`) ist das Skript ordentlich formatiert – rund um Operatoren und nach Kommas werden Leerzeichen eingefügt bzw. überflüssige Leerzeichen entfernt:
+
 ```python
-with open("ex2.txt", "w") as f:
-    f.write(",".join([str(x) for x in lst]))
+x = 1 + 2
+y = [1, 2, 3, 4]
+print(x, y)
 ```
 
 
 ## Übung 5
 
-```{python}
-with open("sowpods.txt") as f:
-    for _ in range(6):  # skip the first 6 lines
-        f.readline()
-    counter = 0
-    for line in f:
-        if len(line.strip()) > 0:  # there are empty lines in the file!
-            counter += 1
+Die Funktion wird in einem eigenen Modul namens `temperature.py` gespeichert:
 
-print(f"There are {counter} words in the Scrabble list.")
+```python
+# temperature.py
+def celsius_to_fahrenheit(celsius):
+  return celsius * 9 / 5 + 32
 ```
+
+Das Hauptprogramm `main.py` importiert das Modul. Beide Dateien müssen im selben Verzeichnis liegen:
+
+```python
+# main.py
+import temperature
+
+temperature.celsius_to_fahrenheit(20)
+```
+
+Der Rückgabewert ist `68.0`.
 
 
 ## Übung 6
 
-```{python}
-with open("sowpods.txt") as f:
-    for _ in range(6):  # skip the first 6 lines
-        f.readline()
-    counter = 0
-    for line in f:
-        if len(line.strip()) > 14:
-            counter += 1
-            # print(line.strip())  # print words with 15+ letters
+Alle drei Importanweisungen sind möglich. Sie erzeugen unterschiedliche Namen im eigenen Programm:
 
-print(f"There are {counter} words with 15+ letters in the Scrabble list.")
+```python
+import math
+math.sqrt(16)
 ```
 
-Wenn Sie die langen Wörter ausgeben lassen möchten, entfernen Sie einfach das Kommentarzeichen vor der `print`-Anweisung innerhalb der Schleife.
+```python
+import math as m
+m.sqrt(16)
+```
+
+```python
+from math import sqrt
+sqrt(16)
+```
+
+`dir(math)` gibt eine Liste der Namen zurück, die im Modul `math` verfügbar sind, darunter `sqrt`, `pi`, `cos` und viele weitere mathematische Funktionen und Konstanten. Interne Namen beginnen und enden meist mit zwei Unterstrichen.

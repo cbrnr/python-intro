@@ -5,6 +5,8 @@ website:
   title: Einführung in Python und PsychoPy
   navbar:
     left:
+      - text: "0"
+        href: 00/00.qmd
       - text: "1"
         href: 01/01.qmd
       - text: "2"

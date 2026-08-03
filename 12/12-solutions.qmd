@@ -2,7 +2,7 @@
 title: "12 – Lösungen"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2026-06-08
+date: 2026-12-17
 format:
   html:
     page-layout: full
@@ -20,9 +20,11 @@ published-title: "Veröffentlicht"
 ## Übung 1
 
 ```python
-from psychopy import core, visual, event
+from psychopy import core, visual
+from psychopy.hardware import keyboard
 
 win = visual.Window(size=[800, 800])
+kb = keyboard.Keyboard()
 
 radius = 0.1
 radius_change = 0.01
@@ -37,7 +39,7 @@ xpos_change = 0.01
 text = visual.TextStim(win, "PsychoPy", pos=[xpos, 0], color="blue")
 
 while True:
-    keys = event.getKeys(keyList=["escape"])
+    keys = kb.getKeys(keyList=["escape"])
     if keys:
         break
 

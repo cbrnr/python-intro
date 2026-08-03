@@ -1,8 +1,8 @@
 ---
-title: "4 – Funktionen"
+title: "4 – Funktionen I"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2026-03-23
+date: 2026-10-22
 format:
   html:
     page-layout: full
@@ -21,10 +21,10 @@ published-title: "Veröffentlicht"
 
 Funktionen kann man sich wie kleine Programme bzw. Skripte vorstellen. Sie fassen mehrere Anweisungen zu einem Block zusammen. Eine Funktion in Python lässt sich gut mit einer mathematischen Funktion vergleichen, zum Beispiel mit der Quadratfunktion $f(x) = x^2$. Diese berechnet aus einem gegebenen Wert $x$ einen neuen Wert $x^2$. Anschließend kann man die Funktion mit konkreten Werten für $x$ verwenden, um die entsprechenden Ergebnisse zu erhalten, z.B. $f(3) = 9$ oder $f(5) = 25$.
 
-Auch in Python hat eine Funktion eine klar definierte Aufgabe. Funktionen dienen unter anderem dazu, Programmcode zu strukturieren und dadurch die Lesbarkeit zu erhöhen. Außerdem ermöglichen sie es, Code wiederzuverwenden. Das bedeutet, dass man eine einmal definierte Funktion beliebig oft aufrufen (verwenden) kann. Funktionen machen Programme häufig auch kürzer, weil sich wiederkehrende Anweisungen in einer Funktion bündeln lassen. Sollten später einmal Änderungen notwendig sein, muss man den Code nur an einer Stelle (innerhalb der Funktion) anpassen. Funktionen lassen sich oft auch in anderen Programmen wiederverwenden.
+Auch in Python hat eine Funktion eine klar definierte Aufgabe. Funktionen dienen unter anderem dazu, Programmcode zu strukturieren und dadurch die Lesbarkeit zu erhöhen. Außerdem ermöglichen sie es, Code wiederzuverwenden. Das bedeutet, dass man eine einmal definierte Funktion beliebig oft aufrufen (verwenden) kann. Funktionen machen Programme häufig auch kürzer, weil sich wiederkehrende Anweisungen in einer Funktion bündeln lassen. Sollten später einmal Änderungen notwendig sein, muss man den Code nur an einer Stelle (in der Funktion) anpassen. Funktionen lassen sich auch in anderen Programmen wiederverwenden.
 
 :::{.callout-note}
-Einige Funktionen wie `print` und `type` haben wir bereits in den vorigen Einheiten kennengelernt und verwendet.
+Einige Funktionen wie `print`, `type` und `math.sqrt` haben wir bereits in den vorigen Einheiten kennengelernt und verwendet.
 :::
 
 
@@ -41,7 +41,7 @@ print("Hello")
 ```
 
 ```{python}
-type("Hello")
+type(3.14)
 ```
 
 ```{python}
@@ -70,7 +70,7 @@ Dabei handelt es sich um einen Namen, welcher auf ein Funktionsobjekt verweist:
 type(print)
 ```
 
-Das Konzept von Namen in Python haben wir bereits in der letzten Einheit kennengelernt. Es ist unerheblich, auf welches Objekt ein Name verweist, dies kann eine Ganzzahl, eine Funktion, oder jedes beliebige andere Objekt sein. So können wir z.B. auch den Namen `f` erstellen, welcher auf die Funktion `print` verweist:
+Das Konzept von Namen in Python haben wir bereits kennengelernt. Es ist unerheblich, auf welches Objekt ein Name verweist, dies kann eine Ganzzahl, eine Funktion, oder jedes beliebige andere Objekt sein. So können wir z.B. auch den Namen `f` erstellen, welcher auf die Funktion `print` verweist:
 
 ```{python}
 f = print
@@ -119,7 +119,7 @@ Unabhängig von der Anzahl der Parameter schließt ein Doppelpunkt den sogenannt
 def test_function(n, v):
 ```
 
-Nun folgt der Code, welcher von der Funktion ausgeführt wird, wenn diese aufgerufen wird – dieser Code muss um eine Ebene *eingerückt* werden (also normalerweise vier Leerzeichen). Man spricht hier vom sogenannten *Funktionskörper*. Im Funktionskörper kann man insbesondere alle Parameter wie normale Namen verwenden – diese sind nur innerhalb der Funktion vorhanden und erhalten dann die konkreten Werte der Argumente, welche beim Funktionsaufruf übergeben wurden.
+Nun folgt der Code, welcher von der Funktion ausgeführt wird, wenn diese aufgerufen wird – dieser Code muss um eine Ebene *eingerückt* werden (also vier Leerzeichen). Man spricht hier vom sogenannten *Funktionskörper*. Im Funktionskörper kann man insbesondere alle Parameter wie normale Namen verwenden – diese sind nur innerhalb der Funktion vorhanden und erhalten dann die konkreten Werte der Argumente, welche beim Funktionsaufruf übergeben wurden.
 
 :::{.callout-important}
 Eine Funktion kann *Parameter* haben, welche bei der *Definition* aufgelistet werden müssen. Wenn man die Funktion aufruft, muss man für alle Parameter konkrete Werte übergeben – diese konkreten Werte nennt man *Argumente*.
@@ -133,7 +133,7 @@ def test_function():
     print(s)
 ```
 
-Man beachte, dass die Funktion hier lediglich definiert wurde, d.h. sie wurde noch nicht ausgeführt. Sie ist aber dem Python-Interpreter ab jetzt bekannt (d.h. es existiert ein Name `test_function`, welcher auf ein Funktionsobjekt verweist):
+Man beachte, dass die Funktion hier lediglich definiert wurde, d.h. sie wurde noch *nicht* ausgeführt. Sie ist aber dem Python-Interpreter ab jetzt bekannt (d.h. es existiert ein Name `test_function`, welcher auf ein Funktionsobjekt verweist):
 
 ```{python}
 test_function
@@ -155,7 +155,7 @@ Wir können eine bereits definierte Funktion beliebig oft aufrufen.
 test_function()
 ```
 
-Im Fall einer Funktion mit Parametern würden die Definition und der Aufruf z.B. so aussehen (wir haben den verwendeten `if`-Befehl noch nicht besprochen, es ist aber nicht wichtig, dass Sie verstehen, was diese Funktion genau macht):
+Im Fall einer Funktion mit Parametern würden die Definition und der Aufruf z.B. so aussehen:
 
 ```{python}
 def test_function_2(n, v):  # Definition, zwei Parameter
@@ -198,7 +198,7 @@ Ein solcher Docstring ist übrigens kein Kommentar! Verwenden Sie für Kommentar
 
 ## Rückgabewerte
 
-Funktionen können Werte (Ergebnisse) *zurückgeben*. In beiden soeben definierten Funktionen `test_function` und `test_function_2` wird allerdings *kein* Wert explizit zurückgegeben (d.h. die Funktionen führen nur Code aus und geben implizit `None` zurück, der spezielle Wert für "nichts" in Python). Diese beiden Funktionen können also nicht auf einen Wert reduziert werden, wenn man sie aufruft – sie sind also keine Ausdrücke.
+Funktionen können Werte (Ergebnisse) *zurückgeben*. In beiden soeben definierten Funktionen `test_function` und `test_function_2` wird allerdings *kein* Wert explizit zurückgegeben (d.h. die Funktionen führen nur Code aus und geben implizit `None` zurück, der spezielle Wert für "nichts" in Python). Diese beiden Funktionsaufrufe können also nicht auf einen Wert reduziert werden – sie sind also keine Ausdrücke.
 
 Wenn eine Funktion explizit einen Wert (ein Ergebnis) zurückgeben soll, verwendet man dazu das Schlüsselwort `return`, gefolgt vom gewünschten Rückgabewert:
 
@@ -239,236 +239,47 @@ add_one(add_one(add_one(1)))
 :::
 
 
-## Argumente
+## Debugging
 
-### Standard-Argumente
+Mit Hilfe des sogenannten [Debuggers](https://realpython.com/python-idle/#how-to-debug-in-idle) können wir ein Script in "Zeitlupe" ausführen. Im Debug-Modus wartet der Python-Interpreter nach jedem Befehl, bis der nächste manuell gestartet wird. Dadurch können wir den Programmfluss beobachten und den Zustand des Programms bei jedem Schritt inspizieren. Dabei geht man wie folgt vor:
 
-Eine Funktion kann keine Parameter haben oder eine bestimmte Anzahl an Parametern erwarten. Wenn eine bestimmte Anzahl an Parametern im Funktionskopf definiert wird, können einzelnen Parametern Standardwerte (sogenannte Standard- oder auch Default-Argumente) zugewiesen werden. Dies bedeutet, dass die Funktion auch mit weniger Argumenten als erwartet aufgerufen werden kann, wenn für die fehlenden Argumente Standardwerte existieren.
+1. In der IDLE-Shell wählt man Debug – Debugger. Dadurch wird ein neues Werkzeugfenster geöffnet und der Debugger aktiviert. Stellen Sie sicher, dass das Kontrollkästchen "Source" aktiviert ist, um die aktuelle Codezeile zu sehen.
 
-```{python}
-def add(number, increment=1):  # das Standard-Argument für increment ist 1
-    return number + increment
-```
+    ![](idle-debug-1.png){width=50%}
 
-Diese Funktion kann jetzt mit zwei Argumenten oder nur mit dem ersten Argument aufgerufen werden:
+2. Setzen Sie dann einen Haltepunkt im Python-Skript, indem Sie mit der rechten Maustaste auf die Zeile klicken, an der Sie die Ausführung stoppen möchten und wählen Sie "Set Breakpoint". Für dieses Beispiel setzen wir einen Haltepunkt gleich in der ersten Zeile (diese wird dann gelb).
 
-```{python}
-add(7, 1)
-```
+    ![](idle-debug-2.png)
 
-```{python}
-add(7)  # hier wird das Standard-Argument 1 für increment verwendet
-```
+3. Führen Sie jetzt das Skript mit Run – Run Module aus (oder drücken Sie <kbd>F5</kbd>). Das Skript wird dann am ersten Haltepunkt gestoppt (und diese Zeile wird noch *nicht* ausgeführt).
 
-```{python}
-add(7, 3)
-```
+4. Um die Ausführung fortzusetzen, wählen Sie "Step", um die aktuelle Zeile auszuführen und in der nächsten Zeile anzuhalten. Wenn die aktuelle Zeile einen Funktionsaufruf enthält und Sie *nicht* in die Funktion springen möchten (zum Beispiel, weil Sie nicht daran interessiert sind, den Code einer eingebauten Funktion zu sehen), klicken Sie stattdessen auf "Over".
 
+5. Wenn sich die aktuelle Zeile bereits in einer Funktion befindet und Sie diese Funktion sofort verlassen möchten, klicken Sie auf "Out".
 
-### Schlüsselwort-Argumente
-
-Funktionen können auch so aufgerufen werden, dass die Namen der Parameter gemeinsam mit den Argumenten in der Form `kwarg=value` explizit hingeschrieben werden. Man spricht dann von Schlüsselwort-Argumenten (englisch "Keyword Arguments") (nicht zu verwechseln mit den Python-Schlüsselwörtern). D.h. die obige Funktion `add` kann auch so aufgerufen werden:
+Zum Ausprobieren kann man das folgende kurze Script debuggen:
 
 ```{python}
-add(number=5)
+#| eval: false
+#| code-line-numbers: true
+def f(x):
+    y = x * 2
+    return y
+
+a = f(3)
+print("Done.")
 ```
 
-```{python}
-add(number=5, increment=2)
-```
+In welcher Reihenfolge werden die Code-Zeilen ausgeführt?
 
-```{python}
-add(increment=2, number=5)
-```
-
-Dies dient einerseits der besseren Lesbarkeit, da unmittelbar klar ist, welche Parameter welche konkreten Argumente erhalten. Andererseits kann man so die Argumente auch in beliebiger Reihenfolge übergeben.
-
-Wenn der Argumentname nicht angegeben wird, wird die Position des Arguments bei der Zuweisung herangezogen. Man spricht in diesem Fall von *positionalen Argumenten*. Man kann positionale und Schlüsselwort-Argumente beim Funktionsaufruf auch mischen, aber alle positionalen Argumente müssen *vor* dem ersten Schlüsselwort-Argument kommen.
-
-```{python}
-add(5, increment=2)
-```
-
-Zur Veranschaulichung dient folgende Funktionsdefinition:
-
-```{python}
-def test(name, number, exponent=5, skip=7, text="Hello"):
-    print(text, name, end=" ")
-    return number**exponent - skip
-```
-
-Die folgenden drei Funktionsaufrufe verwenden nur positionale Argumente:
-
-```{python}
-test("Python", 2)
-```
-
-```{python}
-test("Python", 3)
-```
-
-```{python}
-test("Test", 3, 4)
-```
-
-Schlüsselwort-Argumente sind sehr praktisch, wenn man für viele Parameter deren Standard-Argumente verwenden möchte, aber z.B. für einen einzigen Parameter einen anderen Wert setzen will. Dann muss man nämlich nicht alle Argumente der Reihe nach übergeben, sondern nur jene, für die man andere Werte als die Standardwerte haben möchte:
-
-```{python}
-test("Test", 2, skip=2)
-```
-
-Ohne Schlüsselwort-Argumente würde derselbe Aufruf nämlich wie folgt aussehen:
-
-```{python}
-test("Test", 2, 5, 2)
-```
-
-Man muss also in diesem Beispiel ein zusätzliches Argument `5` (für den Parameter `exponent`) übergeben, wenn man positionale Argumente verwendet, obwohl man ja ohnehin den Standardwert dieses Arguments verwendet.
-
-:::{.callout-note}
-In Python gibt es auch Funktionen, die eine *beliebige/variable* Anzahl an Parametern besitzen. Dies bedeutet, dass bei der Funktionsdefinition festgelegt wird, dass eine beliebige Anzahl an Argumenten übergeben werden kann. Die `print`-Funktion ist ein Beispiel für eine solche Funktion: diese kann man mit keinem, einem, zwei, oder beliebig vielen Argumenten aufrufen:
-
-```{python}
-print()
-print("Hello")
-print("Hello", "Python")
-print("Hello", "Python", 1, 2, 3, 4)
-```
-
-Wir werden solche Funktionen nicht im Detail besprechen (vor allem nicht, wie man diese selbst definieren kann), aber wir werden solche Funktionen mitunter verwenden (aufrufen).
-:::
-
-
-## Gültigkeitsbereiche
-
-Alles, was innerhalb einer Funktion (im Funktionskörper) definiert wird, ist nur innerhalb dieser Funktion sichtbar und zugreifbar. Man spricht von einem *lokalen* Gültigkeitsbereich (englisch "Scope"), welcher sich auf die Funktion und eventuelle weitere in ihr vorhandene untergeordnete Bereiche erstreckt. Gültigkeitsbereiche entsprechen in Python im Prinzip den Einrückungen.
-
-Im folgenden Beispiel wird innerhalb der Funktion `test` der Name `s = 15` definiert. Dieser kann innerhalb der Funktion verwendet werden.
-
-```{python}
-def test():
-    s = 15  # s ist nur lokal in der Funktion definiert
-    print(s)
-
-test()
-```
-
-Außerhalb dieser Funktion existiert dieses `s` aber nicht:
-
-```{python}
-#| error: true
-print(s)  # außerhalb der Funktion existiert s nicht
-```
-
-Umgekehrt kann man aber sehr wohl auf Namen, die *außerhalb* (bzw. oberhalb) eines Gültigkeitsbereichs definiert wurden, zugreifen:
-
-```{python}
-s = 15  # "globales" s
-
-def test():
-    print(s)  # s aus dem globalen Scope ist zugänglich
-
-test()
-print(s)  # s existiert global
-```
-
-Wenn man innerhalb einer Funktion einen neuen Namen erstellt, welcher auch außerhalb existiert, dann ist nur der neue lokale Name zugänglich und der Name von außerhalb wird innerhalb der Funktion versteckt (englisch "shadowed"). Im folgenden Beispiel verweisen die beiden Namen `s` auf *unterschiedliche* Objekte:
-
-```{python}
-s = 15  # globales s
-
-def test():
-    s = 12  # lokales s ändert globales s nicht, versteckt es aber in der Funktion
-    print(s)
-
-test()
-print(s)
-```
-
-Besonders seltsam mutet folgendes Beispiel an, welches eine Fehlermeldung verursacht:
-
-```{python}
-#| error: true
-s = 15  # globales s
-
-def test():
-    print(s)  # lokales s existiert noch nicht - daher Fehler!
-    s = 12  # lokales s
-    print(s)
-
-test()
-print(s)
-```
-
-Die Zeile `print(s)` in der Funktion verursacht einen Fehler, weil Python aufgrund der folgenden Zeile bereits weiß, dass `s` ein lokaler Name sein wird. Daher kann `print(s)` auch nicht funktionieren, weil `s` in der ersten Zeile noch nicht existiert! Hier mischt Python also nicht zwischen globalen und lokalen Namen.
-
-Möchte man aber tatsächlich den global definierten Namen verwenden, kann man dies mit dem Schlüsselwort `global` tun:
-
-```{python}
-s = 15  # globales s
-
-def test():
-    global s  # Ermöglicht Zugriff auf das globale s
-    print(s)
-    s = 12  # ändert globales s
-    print(s)
-
-test()
-print(s)
-```
-
-Prinzipiell sollte man die Deklaration `global` aber vermeiden und globale/lokale Scopes sauber voneinander trennen. Will man auf ein Objekt aus einem äußeren Scope zugreifen, definiert man am besten einen Parameter, damit man das gewünschte Objekt als Argument an die Funktion übergeben kann:
-
-```{python}
-s = 15  # globales s
-
-def test(s):  # Parameter s
-    print(s)  # lokales s (übergebenes Argument)
-    s = 12
-    print(s)
-
-print(s)
-test(s)
-print(s)
-```
-
-Will man eine lokale Variable in einem äußeren Scope weiter nutzen, gibt man den entsprechenden Wert am besten mit `return` zurück:
-
-```{python}
-s = 15  # globales s
-
-def test(s):
-    print(s)  # lokales s (Argument)
-    s = 12
-    print(s)
-    return s
-
-print(s)
-s = test(s)  # globales s bekommt Rückgabewert der Funktion (lokales s)
-print(s)
-```
-
-:::{.callout-tip}
-Das hier beschriebene Verhalten gilt auch für Parameter. Diese verhalten sich wie lokal innerhalb der Funktion definierte Namen und erhalten automatisch die Werte, die mit den entsprechenden Argumenten beim Aufruf übergeben wurden. In den letzten beiden Beispielen hatten die Funktionen jeweils einen Parameter namens `s`. Zufälligerweise wurden die Funktionen auch mit einem Argument namens `s` aufgerufen – dabei handelt es sich aber um zwei unterschiedliche Namen bzw. Objekte. Man könnte die Funktion genauso gut auch direkt mit einem Wert oder mit einem beliebigen anderen Namen aufrufen:
-
-```{python}
-x = 15
-test(x)  # Parameter s erhält den Wert x = 15
-```
-
-Dies sieht man insbesondere dann, wenn man Schlüsselwort-Argumente verwendet:
-
-```{python}
-test(s=x)
-```
-:::
+Alternativ kann die Website [PythonTutor](http://pythontutor.com/visualize.html#mode=edit) den Programmfluss ebenfalls Schritt für Schritt darstellen. Dazu kopiert man einfach den gesamten Code in das Eingabefeld und klickt auf "Visualize Execution". So kann man durch wiederholtes Klicken auf "Next" nachvollziehen, wie Python den Code ausführt.
 
 
 ## Übungen
 
 ### Übung 1
 
-Suchen Sie sich aus der Liste der eingebauten Funktionen (siehe vorige Einheit) drei beliebige Funktionen aus.
+Suchen Sie sich aus der Liste der eingebauten Funktionen (siehe Einheit 2) drei beliebige Funktionen aus.
 
 - Rufen Sie den Hilfetext zu jeder Funktion auf und lesen Sie diesen durch, um herauszufinden was die Funktion tut.
 - Rufen Sie die drei Funktionen mit geeigneten Argumenten auf.
@@ -486,6 +297,7 @@ Schreiben Sie eine Funktion `to_fahrenheit`, welche einen Parameter `celsius` ha
 
 Schreiben Sie außerdem eine Funktion `to_celsius` (mit entsprechendem Parameter `fahrenheit`) und wandeln Sie die vier Fahrenheit-Temperaturen, die Sie vorher beim Aufruf der Funktion `to_fahrenheit` erhalten haben, wieder in Celsius-Temperaturen um!
 
+
 ### Übung 4
 
 Nennen Sie Gründe, warum man Funktionen verwendet. Erklären Sie auch kurz den Unterschied zwischen Funktionsdefinition und Funktionsaufruf! Was ist der Unterschied zwischen Parametern und Argumenten?
@@ -493,18 +305,9 @@ Nennen Sie Gründe, warum man Funktionen verwendet. Erklären Sie auch kurz den 
 
 ### Übung 5
 
-Schreiben Sie eine Funktion namens `nonsense`, welche drei Parameter namens `a`, `b` und `c` hat. Die beiden Argumente `b` und `c` sollen optional sein und die Standardwerte 10 bzw. 13 besitzen. Die Funktion soll `a**2 - b * 2 + c**2` berechnen und zurückgeben (wir setzen voraus, dass man für `a`, `b` und `c` immer Zahlenwerte übergibt). Rufen Sie die Funktion dann mit folgenden Argumenten auf:
+Schreiben Sie eine Funktion `is_odd`, welche einen Parameter hat und überprüft, ob das übergebene Argument gerade oder ungerade ist (das können Sie z.B. durch den Rest der Division durch 2 überprüfen). Falls das Argument ungerade ist, soll die Funktion `True` mittels `return` zurückgeben, sonst `False`.
 
-1. Ohne Argumente
-2. Mit drei positionalen Argumenten
-3. Mit zwei positionalen Argumenten
-4. Mit einem Keyword-Argument
-5. Mit zwei Keyword-Argumenten
-6. Mit zwei positionalen Argumenten und einem Keyword-Argument
-7. Mit einem positionalem und einem Keyword-Argument
 
-Wie sehen diese Funktionsaufrufe aus? Wie lauten die Rückgabewerte? Geben Sie für *jeden* Aufruf die Werte *aller drei Argumente* an!
+## Lösungen
 
-:::{.callout-note}
-Nur der erste Funktionsaufruf (ohne Argumente) verursacht einen Fehler, alle weiteren Aufrufe sind möglich!
-:::
+Siehe [hier](04-solutions.qmd).

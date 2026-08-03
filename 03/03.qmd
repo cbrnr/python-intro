@@ -1,8 +1,8 @@
 ---
-title: "3 – Namen, Ausdrücke, Anweisungen"
+title: "3 – Kontrollfluss"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2026-03-16
+date: 2026-10-15
 format:
   html:
     page-layout: full
@@ -17,427 +17,453 @@ author-title: "Autor"
 published-title: "Veröffentlicht"
 ---
 
-## Objekte, Werte und Typen
+## Kontrollstrukturen
 
-Alles in Python ist ein *Objekt*. Ein Objekt hat einen bestimmten Wert, z.B.
+Komplexe Programme laufen nicht linear ab (also Zeile für Zeile vom Anfang eines Scripts bis zum Ende), sondern beinhalten Verzweigungen und Schleifen. Diese sogenannten Kontrollstrukturen steuern den Programmfluss. Wesentlich dabei sind Vergleiche, die bestimmen, ob bestimmte Codezeilen ausgeführt werden oder nicht bzw. wie oft diese wiederholt werden.
+
+
+## Vergleiche
+
+Vergleiche sind logische Ausdrücke – ihr Ergebnis ist entweder wahr (`True`) oder falsch (`False`). In Python gibt es dafür den Datentyp `bool`. Folgende Vergleichsoperationen sind möglich:
+
+* Gleichheit: `==`
+* Ungleichheit: `!=`
+* Kleiner: `<`
+* Kleiner gleich: `<=`
+* Größer: `>`
+* Größer gleich: `>=`
+
+Man kann mehrere logische Ausdrücke mit den folgenden Operatoren verknüpfen:
+
+* Und-Verknüpfung: `and`
+* Oder-Verknüpfung: `or`
+
+Ein Ausdruck kann mit dem Operator `not` logisch invertiert werden (d.h. aus `True` wird `False` und aus `False` wird `True`). Weiters gibt es noch folgende Operatoren:
+
+* `is`: Identität (prüft, ob es sich um ein und dasselbe *Objekt* handelt, nicht nur um gleiche *Werte*)
+* `in`: Prüft, ob ein Wert in einer Sequenz enthalten ist
+
+Während `==` zwei *Werte* miteinander vergleicht, überprüft `is` zwei *Objekte* auf Gleichheit (also ob es sich um ein und dasselbe Objekt handelt).
+
+
+### Beispiele
 
 ```{python}
-1
+x = 2  # Zuweisung
 ```
 
 ```{python}
-2.15
+x == 2  # Vergleich
 ```
 
 ```{python}
-"Hallo"
+x > 2
 ```
 
 ```{python}
-"3"
+x < 10 and x > 5
+```
+
+Die vorige `and`-Verknüpfung von zwei Vergleichen kann in Python kürzer dargestellt werden:
+
+```{python}
+5 < x < 10
+```
+
+```{python}
+x < 10 or x > 5  # macht das Sinn?
+```
+
+```{python}
+y = 2
+```
+
+```{python}
+x == y  # Werte vergleichen
+```
+
+```{python}
+x is y  # Objekte vergleichen
+```
+
+Wir können mit der Funktion `id` die IDs der Objekte `x` und `y` bestimmen:
+
+```{python}
+id(x)
+```
+
+```{python}
+id(y)
+```
+
+Man erkennt, dass beide Objekte `x` und `y` dieselbe ID haben. Dies bedeutet, dass das zugrundeliegende Objekt `2` ein und dasselbe Objekt ist und lediglich zwei Namen `x` und `y` hat.
+
+![](names_2.png)
+
+Die tatsächlichen IDs von Objekten sind ein Implementierungsdetail von Python, d.h. es ist nicht relevant, welche Zahl hier zurückgegeben wird. Dennoch kann man diese IDs verwenden, um zwei Objekte auf Gleichheit zu überprüfen, denn nur dann haben beide Objekte dieselbe ID.
+
+Das folgende Beispiel veranschaulicht, dass es einen Unterschied zwischen Ganzzahlen (`int`) und Kommazahlen (`float`) gibt, obwohl deren Werte (zumindest mathematisch) gleich sein können.
+
+```{python}
+c = 12
+d = 12.0
+```
+
+```{python}
+c == d
+```
+
+```{python}
+c is d
 ```
 
 :::{.callout-tip}
-Zur Erinnerung: Python gibt im interaktiven Modus Werte automatisch aus.
+In Python kann man Dezimalzahlen auch in der sogenannten [wissenschaftlichen Notation](https://de.wikipedia.org/wiki/Wissenschaftliche_Notation) anschreiben. Hier verwendet man eine Darstellung mit Zehnerpotenzen, die man in Python mit `e` eingeben kann – `e` kann man als "mal zehn hoch" lesen.
+
+```{python}
+1e0  # 1 mal 10 hoch 0
+```
+
+```{python}
+-4e0  # -4 mal 10 hoch 0
+```
+
+```{python}
+1e1  # 1 mal 10 hoch 1
+```
+
+```{python}
+3.5e2  # 3.5 mal 10 hoch 2
+```
+
+```{python}
+1e-2  # 1 mal 10 hoch -2
+```
+
+```{python}
+1e-15  # 1 mal 10 hoch -15 = 0.000000000000001
+```
 :::
 
-Jedes Objekt hat neben einem Wert auch einen bestimmten Typ. Mit `type` kann man den Typ eines beliebigen Objekts herausfinden:
 
-```{python}
-type(1)
+## Bedingungen
+
+Eine Bedingung wird in Python mit den Schlüsselwörtern `if`, `elif` und `else` realisiert. Dabei wird überprüft, ob ein Ausdruck wahr (`True`) oder falsch (`False`) ist. Nur falls dieser Ausdruck `True` ist, wird der nachfolgende eingerückte Codeblock ausgeführt, sonst nicht. Die grundsätzliche Struktur sieht wie folgt aus:
+
+```python
+if <statement is True>:
+    <do something>
+    ...
+elif <statement is True>:  # optional
+    <do something>
+    ...
+elif <statement is True>:  # optional
+    <do something>
+    ...
+else:  # optional
+    <do something>
+    ...
 ```
 
-```{python}
-type(2.15)
-```
+Zuerst gibt es eine Kopfzeile, welche mit dem Schlüsselword `if` eingeleitet wird. Danach folgt ein logischer Ausdruck (meist ein Vergleich), und zum Schluss wird die Kopfzeile mit einem `:` abgeschlossen. Der darauf folgende eingerückte Code wird nur ausgeführt, wenn der logische Ausdruck `True` ergibt – wenn das nicht der Fall ist, wird der gesamte eingerückte Codeblock übersprungen.
+
+Nur wenn der erste Ausdruck `True` ist, wird also der eingerückte Code ausgeführt. Danach wird der gesamte restliche `if`/`elif`/`else`-Block verlassen, es wird also kein weiterer Code mehr ausgeführt. Wenn der erste Ausdruck `False` ist, wird der zugehörige Codeblock nicht ausgeführt und es wird zum nächsten `elif`-Ausdruck gesprungen (falls vorhanden). Hier wird dann ein weiterer logischer Ausdruck ausgewertet, und falls dieser `True` ist, wird der dazugehörige eingerückte Codeblock ausgeführt. Falls kein logischer Ausdruck in den `elif`-Zweigen `True` ist, wird schließlich der Codeblock im `else`-Zweig ausgeführt (falls vorhanden).
+
+:::{.callout-important}
+In einer Bedingung wird maximal *ein* Codeblock ausgeführt, nämlich der erste, dessen logischer Ausdruck `True` ergibt. Deshalb ist auch die Reihenfolge der einzelnen Zweige von Bedeutung.
+:::
+
+
+### Beispiele
+
+Beginnen wir mit einem einfachen Beispiel, bei dem nur ein `if`-Zweig vorhanden ist:
 
 ```{python}
-type("Hallo")
+a = 2
+
+if a > 0:
+    print("a is a positive number")
+    print("this is good to know")
 ```
+
+Ergibt der Vergleich `a > 0` also `False`, wird der eingerückte Code *nicht* ausgeführt:
 
 ```{python}
-type("3")
+a = -10
+
+if a > 0:
+    print("a is a positive number")
+    print("this is good to know")
 ```
 
-Man kann sich ein Objekt als eine Entität eines bestimmten Typs vorstellen, die einen bestimmten Wert hat und im Speicher des Computers lebt:
-
-![Ein Python-Objekt.](python_object.png)
-
-Jedes Objekt hat auch einen eindeutigen Identifikator. Mit der Funktion `id` kann man diesen herausfinden:
+Man kann optional einen `else`-Zweig verwenden, der immer dann ausgeführt wird, wenn *alle* vorhergehenden Zweige `False` waren:
 
 ```{python}
-id(3)
+a = 0
+
+if a > 0:
+    print("a is a positive number")
+    print("this is good to know")
+else:
+    print("a is either 0 or a negative number")
 ```
+
+Schließlich kann man noch mit `elif` beliebig viele weitere Zweige einbauen:
 
 ```{python}
-id(4)
+a = 0
+
+if a > 0:
+    print("a is a positive number")
+    print("this is good to know")
+elif a < 0:
+    print("a is a negative number")
+else:
+    print("a is 0")
 ```
 
-Die tatsächlichen Identifikationsnummern sind irrelevant (und sehr wahrscheinlich von Sitzung zu Sitzung unterschiedlich). Es ist nur wichtig, ob zwei Identifikationsnummern in einer laufenden Python-Sitzung identisch sind oder nicht. Im vorherigen Beispiel hat das Objekt `3` eine andere Identifikationsnummer als das Objekt `4`, daher wissen wir, dass dies zwei verschiedene Objekte sind.
-
-
-## Namen
-
-Namen in Python sind nichts anderes als Namen für bestimmte Objekte (in anderen Programmiersprachen werden Namen meistens als Variablen bezeichnet). Mit dem Zuweisungsoperator `=` können wir einem Objekt einen Namen geben:
-
-```{python}
-a = 1
-```
-
-Einen Namen kann man sich als Etikett vorstellen, das an ein Objekt gehängt wird:
-
-![Der Name `a` ist dem Objekt `1` zugeordnet. Ein weiteres Objekt `2.4` hat (noch) keinen Namen.](python_names_1.png)
-
-In Python kann man einen existierenden Namen jederzeit einem anderen Objekt zuweisen. Dabei verliert der Name seine Verbindung zum alten Objekt (im folgenden Beispiel hat das Objekt `1` danach keinen Namen mehr):
-
-```{python}
-a = 2.4
-```
-
-![Nun ist `a` dem Objekt `2.4` zugeordnet, und das Objekt `1` hat keinen Namen mehr.](python_names_2.png)
-
-Ein Objekt kann auch mehr als einen Namen haben:
-
-```{python}
-b = a
-```
-
-![Jetzt hat das Objekt `2.4` zwei Namen `a` und `b`.](python_names_3.png)
-
-Wir können bestätigen, dass die Namen `a` und `b` auf dasselbe Objekt verweisen, indem wir ihre entsprechenden Identifikatoren überprüfen:
-
-```{python}
-id(a)
-```
-
-```{python}
-id(b)
-```
-
-Tatsächlich sind sie identisch, es gibt also nur ein Objekt mit zwei Namen. Wenn wir überprüfen wollen, ob zwei Namen an ein und dasselbe Objekt gebunden sind, können wir auch das Schlüsselwort `is` als Abkürzung verwenden:
-
-```{python}
-a is b
-```
-
-Der Typ eines Namens entspricht dem Typ des Objekts, auf das er verweist:
-
-```{python}
-type(a)
-```
-
-```{python}
-type(b)
-```
-
-Wenn Python einen Namen verwendet, ersetzt es diesen Namen immer durch den Wert des entsprechenden Objekts. Außerdem wertet Python immer zuerst die rechte Seite einer Zuweisung aus, bevor es den Namen zuweist. Betrachten wir folgendes Beispiel:
-
-```{python}
-x = 11
-9 + x  # x wird zu 11 ausgewertet, dann wird 9 + 11 zu 20 ausgewertet
-```
-
-Nun hat `x` immer noch den Wert `11`:
-
-```{python}
-x
-```
-
-Wir können jetzt den Namen `x` einem anderen Objekt `2` zuweisen:
+Sobald ein Ausdruck in einem `if`-Block `True` ist, wird dieser ausgeführt und der gesamte Block wird verlassen. Es werden also keine weiteren Vergleiche mehr durchgeführt.
 
 ```{python}
 x = 2
-2 * x  # x wird zu 2 ausgewertet, dann wird 2 * 2 zu 4 ausgewertet
+
+if x == 2:
+    print("x is", x)
+elif x > 0:
+    print("x is greater than 0")
+elif x < 0:
+    print("x is negative")
+else:
+    print("x is 0")
 ```
 
-An dieser Stelle hat `x` nach wie vor den Wert `2` (und nicht `4`). Wir können `x` jedoch erneut zuweisen und sogar den alten Wert von `x` auf der rechten Seite der Zuweisung verwenden:
+Dementsprechend ist die Reihenfolge der einzelnen Zweige von Bedeutung:
 
 ```{python}
-x = 2 * x  # zuerst wird die rechte Seite zu 2 * 2 = 4 ausgewertet, dann wird x = 4 zugewiesen
-x
-```
+a = 4
 
-
-## Gültige und gute Namen
-
-### Grundregeln
-
-Gültige Namen können Buchstaben (Groß- und Kleinbuchstaben), Ziffern und Unterstriche enthalten (aber ein Name darf nicht mit einer Ziffer beginnen). Zusätzlich gibt es noch [PEP8](https://www.python.org/dev/peps/pep-0008/#naming-conventions), welches Empfehlungen zur Auswahl guter Namen enthält. Vorerst ist nur eine Konvention für uns wichtig, nämlich dass alle Namen in Kleinbuchstaben geschrieben werden sollten und, wenn nötig, auch Unterstriche enthalten dürfen, wie z.B. `lower_case_with_underscores`.
-
-Namen sollten Bedeutung vermitteln, daher sollte man anstelle eines generischen `x` oder `i` versuchen, einen Namen zu finden, der etwas über die beabsichtigte Verwendung aussagt. Außerdem ist es gute Praxis, englische (und nicht z.B. deutsche) Namen zu verwenden, da man nie weiß, wer den eigenen Code in Zukunft lesen wird.
-
-Hier sind einige Beispiele für die Benennung eines Objekts, das die Anzahl der Schüler in einer Schulklasse darstellt:
-
-```{python}
-number_of_students_in_class = 23  # zu lang
-NumberOfStudents = 23  # falscher Stil, nicht mit Unterstrichen getrennt
-n_students = 23  # sehr gut
-n = 23  # wahrscheinlich zu kurz (aber manchmal OK)
-```
-
-
-### Schlüsselwörter
-
-Es gibt in Python vordefinierte Namen (sogenannte *Schlüsselwörter* oder englisch *Keywords*) – diese können *nicht* als eigene Namen verwendet werden, da sie vom Python-Interpreter benötigt werden, um die Struktur eines Programmes zu erkennen. Mit folgenden Befehlen bekommt man eine Liste aller Schlüsselwörter:
-
-```{python}
-import keyword
-keyword.kwlist
-```
-
-Das bedeutet zum Beispiel, dass man den Namen `lambda` nicht verwenden kann. Wenn man es doch tut, wird Python einen Fehler ausgeben:
-
-```{python}
-#| error: true
-lambda = 7
-```
-
-
-### Eingebaute Funktionen
-
-Neben Schlüsselwörtern gibt es aber auch sogenannte [eingebaute Funktionen](https://docs.python.org/3/library/functions.html), die standardmäßig in Python verfügbar sind. Diese Funktionen kann man also ohne `import` direkt verwenden. Es ist nicht sinnvoll, diese Funktionen zu "überschreiben", obwohl dies nicht explizit verboten ist. Eine Liste aller eingebauten Funktionen bekommt man mit folgendem Funktionsaufruf (beachten Sie, dass `dir` ebenfalls eine eingebaute Funktion ist):
-
-```python
-dir(__builtins__)
-```
-
-:::{.callout-tip}
-Wenn man wirklich einen Namen einer eingebauten Funktion oder eines Schlüsselwortes verwenden möchte, kann man z.B. einfach einen Unterstrich anhängen. Anstelle von `lambda` könnte man daher `lambda_` verwenden, anstelle von `dir` wäre `dir_` möglich, usw.
-:::
-
-
-## Operatoren
-
-Operatoren sind spezielle Symbole, mit denen man Berechnungen wie Additionen, Subtraktionen usw. durchführen kann, also z.B. `+`, `-`, `*`, `/`, `**`, `//`, `%`, usw. Wir haben einige Operatoren bereits bei der Verwendung von Python als Taschenrechner kennengelernt. Manche Operatoren benötigen zwei Operanden (z.B. die Multiplikation `2 * 3`), andere brauchen hingegen nur einen einzigen Operanden (z.B. die Negierung `-5`). Solche Operatoren werden als *binäre* bzw. *unäre* Operatoren bezeichnet.
-
-
-## Ausdrücke
-
-Ein Ausdruck ist Code, der zu einem Wert ausgewertet (reduziert) werden kann. Das kann ein einzelner Wert (z.B. `42`), ein Name (z.B. `x`) oder eine Kombination aus Werten, Namen und Operatoren (z.B. `x + 2`) sein. Hier sind einige Beispiele für Ausdrücke:
-
-```{python}
-17  # nur ein Wert
+if a > 5:
+    print("One")
+elif a < 10:
+    print("Two")
+elif a == 4:
+    print("Three")
+else:
+    print("Four")
 ```
 
 ```{python}
-23 + 4**2 - 2  # vier Werte und drei Operatoren
+a = 4
+
+if a > 5:
+    print("One")
+elif a == 4:
+    print("Three")
+elif a < 10:
+    print("Two")
+else:
+    print("Four")
 ```
 
-```{python}
-n = 25  # eine Zuweisung ist kein Ausdruck!
-```
-
-```{python}
-n + 5  # ein Name, ein Wert und ein Operator
-```
-
-Python reduziert einen Ausdruck immer auf einen *einzigen Wert*. Ein komplexerer Ausdruck wird schrittweise gemäß den Regeln der [Operatorpräzedenz](https://de.wikipedia.org/wiki/Operatorrangfolge) (z.B. Punkt- vor Strichrechnung) von links nach rechts ausgewertet. Wie bereits erwähnt, wertet Python zuerst die rechte Seite einer Zuweisung aus, bevor es einen Namen zuweist.
-
-
-## Anweisungen
-
-Eine Anweisung ist eine Einheit Code, die Python ausführen kann. Dies ist eine recht breite Definition, und Anweisungen umfassen daher Ausdrücke als Sonderfall (ein Ausdruck ist also eine Anweisung mit einem Wert). Es gibt jedoch auch Anweisungen, die *keinen* Wert haben, wie z.B. eine Zuweisung. Hier sind zwei Beispiele für Anweisungen, die keine Ausdrücke sind:
-
-```{python}
-x = 13
-print("Hello world!")
-```
-
-Wenn man diese Anweisungen im interaktiven Interpreter ausführt, gibt es keine Ausgaben – der Grund dafür ist, dass diese beiden Anweisungen keine Werte haben, d.h. es gibt hier im interaktiven Modus des Python-Interpreters nichts, was ausgegeben werden könnte.
-
-:::{.callout-note}
-Dass der Aufruf der `print`-Funktion trotzdem eine Ausgabe am Bildschirm bewirkt, liegt an der Funktion, deren Zweck ja genau diese Ausgabe ist. Dies kann man sehen, wenn man dem Funktionsaufruf einen Namen zuweist:
-
-```{python}
-s = print("Python")
-```
-
-Der Typ des Wertes von `print("Python")`, der ja jetzt den Namen `s` hat, ist also:
-
-```{python}
-type(s)
-```
-
-Damit ist also klar, dass `print("Python")` keinen Wert hat (eigentlich `None`, denn in Python gibt es einen speziellen Wert `None` vom Typ `NoneType`, welcher für "kein Wert" steht).
-:::
-
-
-## Datentypen
-
-Python bringt eine Menge nützlicher Datentypen mit. Im Folgenden werden die wichtigsten Typen aufgelistet und kurz beschrieben. Eine ausführliche Behandlung ausgewählter (wichtiger) Datentypen folgt dann in den nächsten Einheiten.
-
-
-### Logische Typen
-
-Der Typ `bool` wird für Vergleiche verwendet; es gibt nur zwei mögliche Werte, nämlich `True` und `False`.
-
-```{python}
-b = True
-type(b)
-```
-
-```{python}
-c = False
-type(c)
-```
-
-
-### Numerische Typen
-
-- `int` (Ganzzahlen)
-- `float` (Dezimalzahlen)
-- `complex` (Komplexe Zahlen)
-
-```{python}
-a = 17
-type(a)
-```
-
-```{python}
-a = 23.221
-type(a)
-```
-
-Aufgrund der begrenzten Rechengenauigkeit, mit denen Computer Dezimalzahlen darstellen, kann es zu Rundungsfehlern kommen (Dezimalzahlen können im Allgemeinen nicht exakt repräsentiert werden). Beispiel:
-
-```{python}
-0.1 + 0.2
-```
-
-Man sollte daher Dezimalzahlen nie miteinander vergleichen:
-
-```{python}
-0.1 + 0.2 == 0.3
-```
-
-:::{.callout-note}
-Statt Dezimalzahlen mit `==` zu vergleichen ist es besser, wenn man überprüft, ob der Unterschied zwischen den beiden Zahlen sehr klein ist. Dazu gibt es im `math`-Modul eine eigene Funktion `math.isclose`, die man wie folgt verwendet:
-
-```{python}
-import math
-
-math.isclose(0.1 + 0.2, 0.3)
-```
-:::
-
-Bei Ganzzahlen ist ein Vergleich aber kein Problem, da diese Zahlen exakt repräsentiert werden.
-
-In speziellen Anwendungsfällen benötigt man komplexe Zahlen, welche direkt von Python unterstützt werden. Die imaginäre Einheit wird durch `j` dargestellt.
-
-```{python}
-a = 3 + 5.5j
-type(a)
-```
-
-
-### Sequenzen
-
-Sequenzdatentypen können mehrere Elemente beinhalten. Folgende wichtige Sequenzdatentypen werden von Python unterstützt:
-
-- `str` (String bzw. Zeichenkette)
-- `list` (Liste)
-- `tuple` (ähnlich wie `list`, kann aber nachträglich nicht mehr verändert werden)
-- `set` (Ansammlung von *unterschiedlichen* Elementen, d.h. keine Duplikate)
+Man kann Vergleiche nicht nur mit Zahlen durchführen, sondern auch z.B. mit Strings:
 
 ```{python}
 s = "Python"
-type(s)
+
+if s == "Python":
+    print("Way to go!")
+elif s == "R":
+    print("Statistics")
+else:
+    print("Unknown")
 ```
 
 ```{python}
-s = 'String'
-type(s)
+s = "R"
+
+if s == "Python":
+    print("Way to go!")
+elif s == "R":
+    print("Statistics")
+else:
+    print("Unknown")
+```
+
+
+## for-Schleifen
+
+Um Befehle zu wiederholen, gibt es die Möglichkeit, Schleifen zu verwenden. Eine häufig verwendete Schleifenart ist die sogenannte `for`-Schleife. Als einfaches Beispiel ersetzen wir folgenden repetitiven Code durch eine Schleife:
+
+```{python}
+print("Hallo")
+print("Hallo")
+print("Hallo")
 ```
 
 ```{python}
-k = [1, 2, 18.33, "Python", 44]
-type(k)
+for i in range(3):
+    print("Hallo")
+```
+
+Die sogenannte Schleifenvariable `i` nimmt hier in den drei Durchläufen drei verschiedene Werte 0, 1 und 2 an – dies sind nämlich genau die Werte, die der Funktionsaufruf `range(3)` zurückgibt. Der Name der Schleifenvariable kann beliebig gewählt werden, oft wird für kurze Schleifen einfach `i` verwendet (man könnte auch `_` verwenden, um anzudeuten, dass man an diesem Namen eigentlich nicht weiter interessiert ist). Dieser Name bleibt nach dem Ausführen der Schleife übrigens bestehen, er unterscheidet sich nicht von anderen durch Zuweisung entstandenen Namen.
+
+:::{.callout-tip}
+Überlegen Sie, welchen Wert `i` am Ende des folgenden Beispiels hat:
+
+```python
+i = 800
+for i in range(3):
+    print("Hello")
+```
+
+Die richtige Antwort lautet `2`, da dies der letzte Wert ist, der in der Schleife zugewiesen wird. Der Funktionsaufruf `range(3)` erzeugt nämlich die drei Werte `0`, `1` und `2`. Die Zuweisung `i = 800` zu Beginn hat hier überhaupt keinen Effekt. Anders ausgedrückt ist diese Zuweisung überflüssig und könnte ohne Auswirkungen entfernt werden, da die Schleife `i` unmittelbar danach nacheinander die Werte `0`, `1` und `2` zuweist.
+:::
+
+Die Funktion `range` wird mit `range(start, stop, step)` aufgerufen (der Hilfetext verrät dazu mehr Details) und erzeugt eine Sequenz, welche aus ganzen Zahlen besteht, die von `start` (optional) bis `stop` in der Schrittweite `step` (optional) läuft. Wenn man sich die einzelnen Elemente in einem `range`-Objekt ansehen will, muss man dieses zuerst in eine Liste umwandeln:
+
+```{python}
+x = range(10)
+x
 ```
 
 ```{python}
-t = 1, 2, 18.33, "Python", 44
-type(t)
+list(x)
 ```
+
+Grundsätzlich beginnt Python mit 0 zu zählen, d.h. auch `range` beginnt standardmäßig bei 0. Die letzte Zahl ist nicht mehr Teil der Sequenz, da man so einfach die Anzahl der erzeugten Elemente sehen kann (im Beispiel oben sieht man, dass `range(10)` aus 10 Elementen besteht).
+
+In Python iteriert eine `for`-Schleife also eigentlich über alle Elemente einer Sequenz. Im folgenden Beispiel iteriert die Schleife über einen String, d.h. bei jedem Schleifendurchlauf werden die einzelnen Elemente (Buchstaben) eines Strings der Schleifenvariable `s` zugewiesen:
 
 ```{python}
-s = {1, 2, "test", "test", "test", 1, 2, 3}
-s
+for s in "String":
+    print(s)
 ```
+
+Dies funktioniert genauso mit Listen, da diese auch zur Gruppe der Sequenzdatentypen gehören und mehrere Elemente beinhalten können:
 
 ```{python}
-type(s)
+a = ["Hello", "world!", "I", "love", "Python!"]
+
+for element in a:
+    print(element)
 ```
 
-
-### Zuordnungen
-
-Der Datentyp `dict` beinhaltet Wertepaare, also Schlüssel (Keys) und zugehörige Werte (Values). Dieser Mechanismus funktioniert ähnlich wie ein Wörterbuch, daher auch die englische Bezeichnung "dictionary".
+Der Befehl `break` bricht die Schleife vorzeitig ab. Python springt sofort ans Ende der Schleife und macht von hier mit der Ausführung der noch folgenden Befehlszeilen weiter.
 
 ```{python}
-d = {"a": 12, "b": 3.14, 5: "Python", "c": "yes"}
-type(d)
+i = 0
+
+for c in "Suchstring":
+    if c == "u":
+        break  # beende Schleife sofort
+    i += 1  # Abkürzung für i = i + 1
+
+print(i)
 ```
+
+Im Beispiel oben wird ein bestimmtes Zeichen in einem String gesucht, dessen Position dann in `i` abzulesen ist.
+
+Der Befehl `continue` geht sofort zur nächsten Iteration der Schleife (überspringt also den restlichen Code der Schleife, der noch danach folgt).
+
+```{python}
+for num in range(2, 10):
+    if num % 2 == 0:  # gerade Zahl?
+        print("Found an even number", num)
+        continue  # überspringe alle restlichen Zeilen innerhalb der Schleife
+    print("Found a number", num)
+```
+
+Details zu Strings und Listen folgen in den nächsten Einheiten.
+
+
+## while-Schleifen
+
+Im Gegensatz zu `for`-Schleifen sind `while`-Schleifen gut geeignet, wenn nicht im Vorhinein klar ist, wie oft die Schleife durchlaufen werden soll. Im folgenden Beispiel wird eine sogenannte *Endlosschleife* verwendet (`while True` ist immer `True`). Zum Verlassen dieser Endlosschleife wird dann aber auf `break` zurückgegriffen. Die Funktion `input` wird verwendet, um Tastatureingaben vom Benutzer abzufragen – die eingegebenen Zeichen werden von dieser Funktion als String zurückgegeben.
+
+```python
+while True:
+    line = input("> (enter 'q' to quit) ")
+    if line == "q":
+        break
+```
+
+Ein weiteres Beispiel einer `while`-Schleife zeigt das folgende Zahlenratespiel:
+
+```python
+number = 23  # diese Zahl soll erraten werden
+
+while True:
+    guess = int(input("Enter an integer: "))
+    if guess == number:
+        print("Congratulations, you guessed it.")
+        break
+    elif guess < number:
+        print("No, it is a little higher than that.")
+    else:
+        print("No, it is a little lower than that.")
+```
+
+:::{.callout-tip}
+Die Funktion `int` wird hier verwendet, um die Benutzereingabe (ein String) in eine Ganzzahl zu konvertieren (z.B. wandelt `int("7")` den String `"7"` in eine Zahl `7` um).
+:::
 
 
 ## Übungen
 
 ### Übung 1
 
-Gegeben seien folgende Anweisungen:
+Schreiben Sie folgendes Programm:
 
-```python
-width = 17
-height = 12
-delimiter = "."
-```
+- Lesen Sie zuerst mit der Funktion `input` zwei Zahlen ein (weisen Sie diesen beiden Zahlen die Namen `x` und `y` zu). Beachten Sie, dass `input` Strings zurückliefert und dass Sie diese mit der Funktion `int` in Ganzzahlen umwandeln können.
+- Wenn die Summe der beiden Zahlen größer als 50 ist, geben Sie `x + y > 50` am Bildschirm aus.
+- Wenn die Summe der beiden Zahlen kleiner als 50 ist, geben Sie `x + y < 50` am Bildschirm aus.
+- Ansonsten geben Sie `x + y == 50` aus.
 
-Geben Sie zu jedem der folgenden Ausdrücke dessen Wert und Typ an. Versuchen Sie zunächst, die Antworten durch Überlegen herauszufinden und verwenden Sie erst dann den Python-Interpreter zum Überprüfen Ihrer Antworten.
-
-- `width / 2`
-- `height / 3`
-- `height * 3`
-- `height * 3.0`
-- `delimiter * 5`
-- `2 * (width + height) + 1.5`
-- `12 + 3`
-- `"12 + 3"`
+:::{.callout-tip}
+Die Builtin-Funktion `input` ermöglicht es, Eingaben von der Tastatur einzulesen. Man kann beliebige Zeichen eingeben und mit der Eingabetaste bestätigen. Das Ergebnis der Eingabe wird dann von der Funktion *zurückgegeben* (d.h. man kann diesem Wert auch einen Namen zuweisen, z.B. `x = input()`). Der Typ des Rückgabewerts ist immer `str`.
+:::
 
 
 ### Übung 2
 
-Was ist der Unterschied zwischen einem Ausdruck und einer Anweisung? Führen Sie jeweils ein Beispiel an.
+Gegeben ist eine Liste `lst = ["I", "love", "Python"]`. Schreiben Sie eine `for`-Schleife, welche die einzelnen Elemente in der Liste mit `print` Zeile für Zeile am Bildschirm ausgibt.
 
 
 ### Übung 3
 
-Was sind Schlüsselwörter in Python und wie erhalten Sie eine Liste aller Schlüsselwörter? Was sind eingebaute Funktionen und wie erhalten Sie eine Liste aller eingebauten Funktionen? Was müssen Sie beim Erstellen von Namen im Zusammenhang mit diesen beiden Konzepten beachten?
+Gegeben ist wieder eine Liste `lst = ["I", "love", "Python"]`. Schreiben Sie eine `for`-Schleife, welche über die einzelnen Elemente in der Liste iteriert. Eine zweite (geschachtelte) `for`-Schleife soll dann über jeden Buchstaben der einzelnen Strings iterieren und jeden Buchstaben einzeln gefolgt vom Zeichen `-` ausgeben.
 
-Nennen Sie außerdem einige Richtlinien, wie man gute Namen erstellt. Führen Sie ein Beispiel für einen guten Namen an!
+:::{.callout-note}
+Verwenden Sie die Funktion `print` mit dem Argument `end="-"`. Die Ausgabe soll wie folgt aussehen:
+
+```
+I-l-o-v-e-P-y-t-h-o-n-
+```
+:::
 
 
 ### Übung 4
 
-Wie groß ist die Oberfläche bzw. das Volumen einer Kugel mit einem Radius von $r=5$? Führen Sie die Berechnung mit Python durch und weisen Sie den Ergebnissen die Namen `area` bzw. `volume` zu. Verwenden Sie für den Radius den Namen `r` und setzen Sie den Wert von `r` auf 5.
-
-:::{.callout-note}
-Sie können die Zahl $\pi$ als `math.pi` verwenden, wenn Sie folgende Zeile ganz am Anfang Ihres Scripts hinzufügen:
+Schreiben Sie das folgende verschachtelte `if`–`else`-Konstrukt als `if`–`elif`–`else`-Block:
 
 ```python
-import math
+if x > 0:
+    print("x is positive")
+else:
+    if x < 0:
+        print("x is negative")
+    else:
+        print("x is equal to 0")
 ```
 
-Die Formel für die Oberfläche $A$ einer Kugel lautet:
-
-$$A = 4 \pi r^2$$
-
-Das Volumen $V$ einer Kugel kann man mit folgender Formel berechnen:
-
-$$V = \frac{4}{3} \pi r^3$$
-:::
+Überprüfen Sie Ihre Lösung mit den drei Werten `x = 5`, `x = -11` und `x = 0` (d.h. bei beiden Varianten soll dasselbe Ergebnis herauskommen).
 
 
 ### Übung 5
 
-Mit welchem Befehl können Sie den Typ des Wertes `True` bestimmen? Um welchen Typ handelt es sich dabei? Welchen Typ hat der Name `x`, wenn Sie vorher `x = "True"` ausführen? Achtung: die Werte `True` und `"True"` in diesem Beispiel haben unterschiedliche Typen!
+Schreiben Sie ein Programm, welches die Eingabe einer ganzen Zahl zwischen 1 und 10 erwartet. Falls die Eingabe nicht im erlaubten Bereich liegt, soll eine Meldung ausgegeben werden ("Invalid input. Please try again.") und die Eingabe wiederholt werden. Falls die Eingabe im erlaubten Bereich liegt, soll die Schleife beendet werden und die eingegebene Zahl ausgegeben werden (z.B. "You entered: 5").
 
-Wenn Sie in Übung 4 den Befehl `import math` ausgeführt haben, welchen Typ hat der Name `math`?
+
+## Lösungen
+
+Siehe [hier](03-solutions.qmd).

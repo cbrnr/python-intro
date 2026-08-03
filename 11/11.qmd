@@ -1,8 +1,8 @@
 ---
-title: "11 – PsychoPy (1)"
+title: "11 – PsychoPy Builder"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2026-06-01
+date: 2026-12-10
 format:
   html:
     page-layout: full
@@ -19,21 +19,21 @@ published-title: "Veröffentlicht"
 
 ## Allgemeines
 
-[PsychoPy](https://www.psychopy.org/) ist ein in Python geschriebenes Paket zur Erstellung von Experimenten in den Neurowissenschaften oder der experimentellen Psychologie. Es ist frei verfügbar (Open Source) und unterstützt zwei verschiedene Möglichkeiten Experimente zu erstellen:
+[PsychoPy](https://www.psychopy.org/) ist eine freie, in Python geschriebene Software zum Erstellen und Durchführen von Experimenten, insbesondere in der experimentellen Psychologie und den Neurowissenschaften. Es unterstützt zwei Arten um Experimente zu erstellen:
 
-1. Visuelle Erstellung über eine grafische Oberfläche (GUI) namens *Builder*
+1. Visuelle Erstellung über eine grafische Oberfläche namens *Builder*
 2. Programmatische Erstellung mit Python-Code (z.B. mit dem mitgelieferten Editor namens *Coder*)
 
-Ersteres erleichtert den Einstieg, da keinerlei Programmierwissen notwendig ist. Ein mit Builder erstelltes Experiment wird automatisch in Python-Code übersetzt, welcher dann ausgeführt werden kann. Obwohl viele Parameter des Experimentes grafisch angepasst werden können, ist es mit dem Builder mitunter schwierig, komplexere Designs umzusetzen. Dafür ist die zweite Möglichkeit gedacht – man kann die grafische Oberfläche auch komplett ignorieren und das Experiment direkt mit Python-Code erstellen, oder man verfeinert ein mit dem Builder erstelltes Experiment mit angepasstem Python-Code. Dazu sind allerdings sowohl grundlegende Python-Kenntnisse als auch Wissen über die Funktionsweise von PsychoPy notwendig.
+Der Builder erleichtert den Einstieg, weil dafür zunächst kein Programmierwissen nötig ist. PsychoPy übersetzt ein damit erstelltes Experiment beim Ausführen automatisch in Python-Code. Viele Parameter lassen sich grafisch einstellen; bei komplexeren Designs ist direkter Python-Code jedoch oft flexibler. Man kann die grafische Oberfläche vollständig umgehen oder ein Builder-Experiment mit eigener Code-Komponente erweitern. Dafür sind grundlegende Python-Kenntnisse und ein Verständnis der PsychoPy-Abläufe nötig.
 
 In dieser Lehrveranstaltung werden wir beide Möglichkeiten kennenlernen. Zunächst werden wir die grafische Oberfläche Builder verwenden, um einfache Experimente zu erstellen. Im nächsten Kapitel werden wir dann den zugrundeliegenden Python-Code näher betrachten und Experimente direkt mit Python-Code erstellen.
 
 
 ## Installation
 
-Da PsychoPy ein Python-Paket ist, kann es prinzipiell mit `pip install psychopy` installiert werden. Allerdings ist es durch die vielen und teilweise sehr spezifischen Abhängigkeiten von PsychoPy in der Praxis relativ aufwändig, eine funktionsfähige PsychoPy-Umgebung zu erhalten.
+PsychoPy ist zwar ein Python-Paket und kann prinzipiell mit `pip` installiert werden. Wegen der zahlreichen, teils systemspezifischen Abhängigkeiten ist eine manuelle Installation aber fehleranfällig.
 
-Die [offizielle Dokumentation](https://www.psychopy.org/download.html) beschreibt einige mögliche Installationsvarianten für unterschiedliche Betriebssysteme. In vielen Fällen ist es am einfachsten, die vorgefertigten [Standalone-Pakete](https://github.com/psychopy/psychopy/releases) zu verwenden. Diese Pakete beinhalten eine komplette Python-Umgebung inklusive aller notwendigen Zusatzpakete, welche parallel zu einer eventuell bereits vorhandenen Python-Umgebung installiert werden können. Es gibt diese Standalone-Pakete sowohl für Windows als auch macOS. Für Linux werden keine Installer angeboten, hier muss man PsychoPy manuell installieren (es gibt aber [PsychoPy Installation Script for Linux](https://github.com/wieluk/psychopy_linux_installer), welches die Installation automatisiert und daher drastisch vereinfacht).
+Die [offizielle Installationsanleitung](https://www.psychopy.org/download.html) beschreibt die Möglichkeiten für die einzelnen Betriebssysteme. Für diese Lehrveranstaltung sind die vorgefertigten [Standalone-Versionen](https://github.com/psychopy/psychopy/releases) die verlässlichste Option. Sie enthalten eine passende Python-Umgebung mit allen benötigten Zusatzpaketen und werden getrennt von einer eventuell bereits vorhandenen Python-Installation eingerichtet.
 
 
 ## Builder
@@ -67,7 +67,7 @@ Wenden wir uns jetzt aber einem praktischen Beispiel zu. Die folgenden Schritte 
 
 ### Experiment-Einstellungen
 
-Zunächst sollte man grundlegende Eigenschaften in den "Experiment Settings" festlegen. Durch einen Klick auf das Icon mit dem Zahnrad (siehe Abbildung unten) öffnet sich ein Dialog, in dem man diverse Einstellungen für das Experiment vornehmen kann. Für unser Beispiel ändern wir den Namen auf "stroop" und löschen die zweite Zeile von "Experiment info" durch Klicken auf das Minus-Symbol ganz rechts in dieser Zeile. Dies bewirkt, dass vor dem Starten des Experiments nur der Name der Versuchsperson ("participant") abgefragt wird.
+Zunächst sollte man grundlegende Eigenschaften in den "Experiment Settings" festlegen. Durch einen Klick auf das Icon mit dem Zahnrad öffnet sich ein Dialog, in dem man diverse Einstellungen für das Experiment vornehmen kann. Für unser Beispiel ändern wir den Namen auf "stroop" und löschen die zweite Zeile von "Experiment info" durch Klicken auf das Minus-Symbol ganz rechts in dieser Zeile. Dies bewirkt, dass vor dem Starten des Experiments nur der Name der Versuchsperson ("participant") abgefragt wird.
 
 Das Dialogfenster sollte also wie folgt aussehen und kann durch Klicken auf OK bestätigt werden:
 
@@ -137,7 +137,7 @@ Dazu können wir alle möglichen Bedingungen in einer Excel-Tabelle zusammenfass
 
 Die erste Zeile beinhaltet die Spaltennamen – diese Namen können wir dann in PsychoPy verwenden. Die erste Spalte beinhaltet den Text der am Bildschirm angezeigt werden soll, und die zweite Spalte bestimmt die Farbe des Textes. In der dritten Spalte halten wir den korrekten Tastendruck fest.
 
-Unsere Routine "trial" zeigt genau ein Wort an (mehr dazu gleich) – wir möchten diese Routine aber für jede Zeile in der Excel-Tabelle wiederholen. Dazu benötigen wir eine Schleife, die wir durch Klicken auf "Insert Loop" einfügen können. Als Startpunkt klicken wir auf den Punkt links von "trial", und als Endpunkt auf den Punkt rechts von "trial". Danach öffnet sich ein Dialog mit den Eigenschaften der Schleife. Hier können wir z.B. die Anzahl an Wiederholungen einstellen (standardmäßig ist hier `5` gesetzt, diesen Wert können wir beibehalten). Im Eingabefeld "Conditions" können wir nun durch Klicken auf das Ordner-Icon unsere Datei `conditions.xlsx` auswählen. Die neun Bedingungen und drei Parameter werden erkannt, und diese werden nach Klicken auf OK insgesamt fünf Mal wiederholt (d.h. das Experiment besteht aus insgesamt 45 Trials).
+Unsere Routine "trial" zeigt genau ein Wort an (mehr dazu gleich) – wir möchten diese Routine aber für jede Zeile in der Excel-Tabelle wiederholen. Dazu benötigen wir eine Schleife, die wir durch Klicken auf "Insert Loop" einfügen können. Als Startpunkt klicken wir auf den Punkt links von "trial", und als Endpunkt auf den Punkt rechts von "trial". Danach öffnet sich ein Dialog mit den Eigenschaften der Schleife. Stellen Sie die Anzahl der Wiederholungen auf `5` und den Schleifentyp auf "random", damit PsychoPy die Bedingungen in jedem Durchlauf neu mischt. Im Eingabefeld "Conditions" können wir nun durch Klicken auf das Ordner-Icon unsere Datei `conditions.xlsx` auswählen. Die neun Bedingungen und drei Parameter werden erkannt und insgesamt fünfmal wiederholt, d.h. das Experiment besteht aus $9 \cdot 5 = 45$ Trials.
 
 Das PsychoPy-Fenster sollte jetzt in etwa so aussehen:
 
@@ -164,7 +164,7 @@ Es fehlt noch die Möglichkeit, Tastatureingaben als Antworten geben zu können.
 
 ![](trial_key_2.png)
 
-Damit haben die Versuchspersonen 2 Sekunden Zeit, eine der drei Tasten <kbd>r</kbd>, <kbd>g</kbd> oder <kbd>b</kbd> zu drücken. Falls dies nicht geschieht, wird die Routine beendet und der nächste Schleifendurchlauf startet. Außerdem wird gespeichert, ob die Antwort korrekt war oder nicht – dies wird mit Hilfe der Spalte `correct` (aus des Excel-Datei) erreicht, die ja bereits die erwarteten korrekten Tasteneingaben enthält. Damit kann die erwartete Antwort mit der tatsächlichen Antwort verglichen werden – das Ergebnis dieses Vergleichs wird dann automatisch in die Ergebnisdateien gespeichert. Wir sollten auch den ersten Tastendruck ("first key") speichern, da dieser für die Antwort relevant ist.
+Die Versuchspersonen haben damit 2 Sekunden Zeit, eine der drei Tasten <kbd>r</kbd>, <kbd>g</kbd> oder <kbd>b</kbd> zu drücken. Falls keine Antwort erfolgt, endet die Routine und der nächste Schleifendurchlauf beginnt. Der Text-Stimulus wird nach 1 Sekunde ausgeblendet; während der zweiten Sekunde bleibt das Fenster leer, die Tastatur bleibt aber aktiv. Außerdem wird gespeichert, ob die Antwort korrekt war. Dazu verwenden wir die Spalte `correct` aus der Excel-Datei, die bereits die erwartete Taste enthält. PsychoPy vergleicht diese mit der tatsächlich gedrückten Taste und schreibt das Ergebnis in die Ergebnisdatei. Speichern Sie nur den ersten Tastendruck ("first key"), weil nur dieser als Antwort zählen soll.
 
 Wir können das Experiment speichern und ausführen – unser einfaches Stroop-Experiment sollte bereits funktionieren. Das Experiment sollte in PsychoPy in etwa so aussehen:
 
@@ -241,7 +241,7 @@ Die drei Dateinamen lauten dann `s01_stroop_2022-10-30_11h32.51.619` mit den End
 | blue  | green | g       | g              | 1              | 0.6172059    |
 | red   | green | g       | g              | 1              | 0.4211524    |
 
-Man könnte nun beispielsweise die mittleren Reaktionszeiten (Spalte `trial_key.rt`) der kongruenten (Wort und Farbe stimmen überein) und inkongruenten (Wort und Farbei stimmen nicht überein) korrekt gelösten (Spalte `trial_key.corr`) Trials vergleichen.
+Man könnte nun beispielsweise die mittleren Reaktionszeiten (Spalte `trial_key.rt`) der korrekt gelösten Trials (Spalte `trial_key.corr`) vergleichen: zwischen kongruenten Trials, bei denen Wort und Farbe übereinstimmen, und inkongruenten Trials, bei denen sie nicht übereinstimmen. Trials ohne Antwort sollten dabei ausgeschlossen werden.
 
 
 ## Erweitertes Stroop-Experiment
@@ -259,7 +259,7 @@ Um einen Text am Ende des Experimentes anzuzeigen, können wir ähnlich wie bei 
 
 ### Feedback nach jedem Trial
 
-Um nach jedem Trial rückzumelden, ob die Versuchsperson die richtige Taste gedrückt hat, fügen wir direkt nach der Routine "trial" eine neue Routine namens "feedback" hinzu. Es ist wichtig, dass sich diese noch *innerhalb der Schleife* befindet, da wir das Feedback nach jedem Trial geben möchten. Da wir dazu einen Text anzeigen möchten, fügen wir einen Text-Stimulus names "feedback_text" hinzu. Weil wir keinen fixen Text anzeigen können, geben wir die Namen `$msg` bei Text bzw. `$msg_color` (im Tab "Appearance") bei der Textfarbe an (bei beiden Feldern muss "set every repeat" gesetzt werden). Diese beiden Python-Objekte sollen den Text ("Correct!", "Wrong!" oder "Too slow!") sowie die zugehörigen Farben (grün, rot oder weiß) beinhalten – dies werden wir im nächsten Schritt implementieren.
+Um nach jedem Trial rückzumelden, ob die Versuchsperson die richtige Taste gedrückt hat, fügen wir direkt nach der Routine "trial" eine neue Routine namens "feedback" hinzu. Sie muss *innerhalb der Schleife* liegen, damit das Feedback nach jedem Trial erscheint. Fügen Sie einen Text-Stimulus namens `feedback_text` hinzu. Weil dessen Inhalt vom vorherigen Trial abhängt, tragen wir bei Text `$msg` und im Tab "Appearance" bei der Textfarbe `$msg_color` ein. Diese beiden Python-Objekte enthalten später den Text ("Correct!", "Wrong!" oder "Too slow!") und die zugehörige Farbe (grün, rot oder weiß). Bei beiden Feldern muss "set every repeat" gesetzt sein. Setzen Sie außerdem die Stoppzeit auf 1 Sekunde.
 
 ![](feedback_text.png)
 
@@ -295,18 +295,18 @@ else:
 
 ![](feedback_code_2.png)
 
-Sehen wir uns an, wie dieser Code funktioniert. Wir verwenden hier die Keyboard-Komponente `trial_key`, welche wie jede Keyboard-Komponente zwei wichtige Eigenschaften (als Attribute) enthält:
+Sehen wir uns an, wie dieser Code funktioniert. Wir verwenden hier die Keyboard-Komponente `trial_key`, welche zwei wichtige Attribute enthält:
 
-- `trial_key.keys` ist eine Liste, welche die im aktuellen Trial gedrückte Taste(n) enthält. Wurde noch keine Taste gedrückt, ist diese Liste leer.
-- `trial_key.corr` ist ein `bool`-Wert (also `True` oder `False`), welcher angibt, ob die gedrückte Taste richtig oder falsch ist.
+- `trial_key.keys` enthält bei der Einstellung "first key" den Namen der ersten gedrückten Taste als Zeichenkette, beispielsweise `"r"`. Ohne Antwort ist der Wert leer bzw. nicht gesetzt.
+- `trial_key.corr` enthält `1` für eine korrekte und `0` für eine inkorrekte oder fehlende Antwort.
 
-Die Bedingung `if trial_key.keys` überprüft, ob die Liste Elemente enthält oder leer ist. Dies ist eine abgekürzte und empfohlene Schreibweise, denn eine nicht-leere Liste entspricht dem `bool`-Wert `True`, und eine leere Liste entspricht dem `bool`-Wert `False`.
+Die Bedingung `if trial_key.keys` überprüft, ob eine Taste gespeichert wurde. Ein nicht-leerer Text entspricht in einer Bedingung dem `bool`-Wert `True`; ein leerer bzw. nicht gesetzter Wert entspricht `False`.
 
 ::: {.callout-tip}
 Angenommen, wir hätten `x = True`, dann wäre die Bedingung `if x:` äquivalent zu `if x == True:`. Ebenso wäre `if not x:` äquivalent zu `if x == False:`. In Python ist es üblich, Bedingungen so kompakt wie möglich zu formulieren, daher werden diese abgekürzten Schreibweisen empfohlen.
 :::
 
-Wenn die Liste `trial_key.keys` also nicht leer ist, wurde eine Taste gedrückt, und der entsprechende Codezweig wird ausgeführt. Dieser besteht aus einer weiteren Bedingung, nämlich `if trial_key.corr` (auch das ist eine abgekürzte Schreibweise für `if trial_key.corr == True`). Dies bedeutet also, wenn die gedrückte Taste der korrekten Antwort entspricht, wird `msg` auf `"Correct!"` und `msg_color` auf `"green"` gesetzt. Falls die Taste nicht korrekt war, wird der `else`-Zweig ausgeführt (`msg = "Wrong!"` und `msg_color = "red"`).
+Wenn also eine Taste gespeichert wurde, wird der erste Codezweig ausgeführt. Dieser enthält die weitere Bedingung `if trial_key.corr`; `1` wird in einer Bedingung als `True` und `0` als `False` behandelt. Bei einer korrekten Antwort werden daher `msg` auf `"Correct!"` und `msg_color` auf `"green"` gesetzt. Bei einer inkorrekten Antwort wird der `else`-Zweig ausgeführt (`msg = "Wrong!"` und `msg_color = "red"`).
 
 Der abschließende `else`-Zweig wird nur ausgeführt, wenn keine Taste gedrückt wurde (also `trial_key.keys` leer ist). Dann werden `msg` und `msg_color` entsprechend gesetzt.
 
@@ -338,6 +338,11 @@ Für die Antworten sollen entweder die Pfeil-nach-links-Taste oder die Pfeil-nac
 
 Ein Trial (also ein Zahlenpaar) soll maximal 2 Sekunden am Bildschirm sichtbar sein – falls bis dahin keine Antwort gegeben wurde, soll das nächste Trial starten. Nach einer gegebenen Antwort bzw. nach dem Timeout von 2 Sekunden soll ein kurzes Feedback gegeben werden, ob die Antwort richtig oder falsch war (Dauer 1 Sekunde). Wenn keine Antwort gegeben wurde, soll kein Text (also ein leerer String) angezeigt werden.
 
-Die 20 Bedingungen sollen alle in zufälliger Reihenfolge angezeigt werden und drei mal wiederholt werden, d.h. insgesamt soll das Experiment aus 60 Trials bestehen.
+Die 20 Bedingungen sollen in zufälliger Reihenfolge angezeigt und dreimal wiederholt werden, d.h. insgesamt soll das Experiment aus 60 Trials bestehen.
 
 Das Experiment soll außerdem einen Instruktionstext sowie einen Verabschiedungstext beinhalten, welche nur durch Drücken der Leertaste beendet werden können.
+
+
+## Lösungen
+
+Siehe [hier](11-solutions.qmd).
