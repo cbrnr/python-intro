@@ -209,7 +209,7 @@ def month_name(month):
     return months[month]
 ```
 
-::: {.callout-note}
+::: callout-note
 Eine sehr kompakte Lösung ergibt sich, wenn man das Modul `calendar` aus der Standardbibliothek verwendet. Dies setzt aber natürlich voraus, dass man das Modul kennt (in diesem Kurs haben wir es nicht behandelt, daher ist diese Lösung nur der Vollständigkeit halber aufgeführt):
 
 ```python
@@ -304,7 +304,7 @@ def sign(n):
     return 0
 ```
 
-::: {.callout-tip}
+::: callout-tip
 Eine noch kompaktere Version verwendet die Tatsache, dass in Python Werte vom Typ `bool` als Ganzzahlen interpretiert werden können (`True` entspricht `1`, `False` entspricht `0`):
 
 ```{python}
@@ -397,7 +397,7 @@ print(is_prime(7))
 print(is_prime(10))
 ```
 
-::: {.callout-tip}
+::: callout-tip
 Um die Effizienz der Funktion zu verbessern, können Sie die Schleife so ändern, dass sie nur bis zur Quadratwurzel von $n$ (inklusive) geht. Wenn $n$ durch eine Zahl größer als seine Quadratwurzel teilbar ist, muss es auch durch eine kleinere Zahl teilbar sein.
 :::
 

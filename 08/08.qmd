@@ -32,7 +32,7 @@ Das Werkzeug `pip` kann neue Pakete installieren, bereits installierte Pakete ak
 
 Dabei ist `pip` ein sogenanntes Kommandozeilenprogramm, d.h. es verfügt über keine grafische Oberfläche, sondern wird im *Terminal* ausgeführt. Um die folgenden Beispiele nachzuvollziehen, muss man also zuerst ein Terminal öffnen.
 
-:::{.callout-important}
+::: callout-important
 Das *Terminal* ist ein Programm bzw. Fenster, in dem man Textbefehle eingibt. Darin läuft eine sogenannte [Shell](https://de.wikipedia.org/wiki/Shell_(Betriebssystem)), die Betriebssystem-Befehle ausführen kann.
 
 Davon zu unterscheiden ist der Python-Interpreter: er führt Python-Code wie `import math` aus. Die folgenden `pip`-Befehle gehören daher ins Terminal bzw. in die Shell und *nicht* in die IDLE-Shell, in der der Python-Interpreter läuft!
@@ -56,7 +56,7 @@ python3 -m pip --version
 
 Wenn man hier eine Versionsnummer angezeigt bekommt (z.B. `25.2`), funktioniert `pip` korrekt. Falls hier eine Fehlermeldung ausgegeben wird, wurde vermutlich die Python-Installation nicht korrekt durchgeführt. In diesem Fall installiert man am besten anhand der in der ersten Einheit beschriebenen Schritte Python erneut.
 
-:::{.callout-note}
+::: callout-note
 In allen folgenden Beispielen verwenden wir unter Windows `py`, unter macOS und Linux hingegen `python3`. Ersetzen Sie `py -m pip` also je nach Betriebssystem durch `python3 -m pip`.
 :::
 
@@ -74,7 +74,7 @@ Bevor man ein neues Paket installieren kann, muss man dessen Namen kennen. Die [
 py -m pip install <package-name>
 ```
 
-:::{.callout-note}
+::: callout-note
 Der Name hinter `pip install` ist ein vorgegebener Projektname auf PyPI und kein selbstgewählter Name in einem Python-Programm. Daher muss er nicht den Regeln aus Kapitel 2 folgen: er kann beispielsweise Bindestriche enthalten. Außerdem kann er vom Namen abweichen, mit dem das Paket später importiert wird. So wird z.B. das Projekt `scikit-learn` mit `py -m pip install scikit-learn` installiert, aber im Python-Programm mit `import sklearn` verwendet.
 :::
 
@@ -135,7 +135,7 @@ import numpy as np
 np.array([1, 2, 3])
 ```
 
-:::{.callout-note}
+::: callout-note
 Der Alias ist frei wählbar, aber für viele bekannte Pakete gibt es etablierte Konventionen (z.B. `import numpy as np` oder `import matplotlib.pyplot as plt`). Halten Sie sich an diese Konventionen, damit Ihr Code für andere gut lesbar bleibt. Wir werden NumPy und Matplotlib in den nächsten beiden Einheiten kennenlernen.
 :::
 
@@ -247,7 +247,7 @@ ruff check --fix test.py
 ruff format test.py
 ```
 
-::: {.callout-note}
+::: callout-note
 Die beiden obigen Befehle sind Shell-Befehle und müssen, genau wie `pip`, im Terminal ausgeführt werden (*nicht* im Python-Interpreter). Damit sie funktionieren, muss sich die Datei `test.py` im aktuellen Verzeichnis befinden. Man kann den Befehl `ls` (bzw. `dir` unter Windows) verwenden, um den Inhalt des aktuellen Verzeichnisses anzuzeigen. Falls die Datei nicht aufscheint, kann man mit dem Befehl `cd <Verzeichnis>` in das entsprechende Verzeichnis wechseln.
 
 Je nach Installation kann es außerdem sein, dass man `ruff` nicht direkt aufrufen kann. In diesem Fall sollte es mit `py -m ruff` (bzw. `python3 -m ruff`) anstelle von `ruff` funktionieren.

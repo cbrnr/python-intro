@@ -26,7 +26,7 @@ In dieser Einheit beschäftigen wir uns mit dem Python-Code, der jedem PsychoPy-
 
 Wenn man in PsychoPy Builder ein Experiment grafisch erstellt hat, kann man den zugehörigen Code über *Tools* – *Compile* bzw. durch Klicken auf das Icon "Compile to Python script" erzeugen. PsychoPy Coder öffnet sich dann automatisch mit dem generierten Script.
 
-:::{.callout-tip}
+::: callout-tip
 Probieren wir das mit unserem [Stroop-Experiment aus der letzten Einheit](../11/stroop.zip) aus. Dazu vereinfachen wir das Experiment, indem wir die Routine "Feedback" entfernen: Klicken Sie mit der rechten Maustaste auf die Routine und wählen Sie "remove". Das entsprechende Tab kann ebenfalls geschlossen werden.
 
 Mit einem Klick auf das Icon "Compile to Python script" wird das Experiment dann in ein Python-Script konvertiert. Dieses wird auch gleich mit PsychoPy Coder geöffnet.
@@ -56,7 +56,7 @@ Danach erstellen wir das Programmfenster, in dem das Experiment läuft. Dazu ruf
 
 Ab jetzt könnte man alle Stimuli erzeugen, die im Verlauf des Experimentes benötigt werden. Dieses Beispiel enthält jedoch keine Stimuli – es wartet mit `core.wait(2)` zwei Sekunden. Danach schließen die letzten beiden Zeilen das Programmfenster und beenden das Experiment.
 
-:::{.callout-note}
+::: callout-note
 Das Script kann durch Klicken auf das Icon "Run experiment" ausgeführt werden.
 :::
 
@@ -116,13 +116,13 @@ core.quit()
 
 Durch die Angabe von `keyList=["space"]` wird gewartet, bis die Leertaste gedrückt wird. Erst dann wird das Script in der nächsten Zeile fortgesetzt.
 
-:::{.callout-important}
+::: callout-important
 `kb.waitKeys()` **blockiert** den Programmablauf: Bis eine passende Taste gedrückt wird, wird keine weitere Zeile des Scripts ausgeführt. Das ist für einen Instruktionsbildschirm geeignet.
 
 `kb.getKeys()` **blockiert nicht**: Die Methode gibt sofort eine Liste der seit dem letzten Aufruf gedrückten Tasten zurück. Wurde keine Taste gedrückt, ist die Liste leer. Deshalb verwenden wir `getKeys()` innerhalb von Animations- und Trial-Schleifen, damit Stimuli weiterhin gezeichnet und mit `win.flip()` angezeigt werden können (siehe Beispiel im nächsten Abschnitt).
 :::
 
-:::{.callout-note}
+::: callout-note
 Die ältere Schnittstelle `event.waitKeys` bzw. `event.getKeys` funktioniert weiterhin, bietet aber weniger präzise Zeitstempel. `hardware.keyboard.Keyboard` wird für neue Experimente empfohlen: Tastendrücke werden damit asynchron erfasst, und die Reaktionszeit ist direkt über das Attribut `.rt` verfügbar.
 :::
 
@@ -181,7 +181,7 @@ Die erste Anweisung innerhalb der Schleife gibt eine Liste der gedrückten Taste
 
 Jeder Eintrag in `keys` ist ein `KeyPress`-Objekt. Der Name der Taste steht im Attribut `.name`. Wenn die erste gedrückte Taste, also `keys[0].name`, die linke Pfeiltaste ist, wird die Rotationsgeschwindigkeit `speed` (anfänglich `0`) um `1` verringert. Bei der rechten Pfeiltaste wird `speed` um `1` erhöht. Die Orientierung `rotation` des Textes wird durch Addition der aktuellen Rotationsgeschwindigkeit bestimmt. Danach dreht `text.setOri(rotation)` den Text auf den Winkel `rotation`. Jetzt wird der Text-Stimulus gezeichnet und mit `win.flip()` angezeigt. Sobald die Leertaste gedrückt wird, endet die Schleife, und die letzten beiden Zeilen des Scripts werden ausgeführt.
 
-:::{.callout-tip}
+::: callout-tip
 Die Schreibweise `x += 1` erhöht den Wert von `x` um `1`. Man könnte auch `x = x + 1` schreiben.
 :::
 

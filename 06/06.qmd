@@ -52,7 +52,7 @@ y = [1, "1", [1, 2, 3], ["test", False, [True, True, 2, 4]]]
 
 Auf einzelne Elemente einer Liste greift man durch *Indizieren* zu. Den Index (also die Position des gewünschten Elements) gibt man dabei nach dem Objekt in eckigen Klammern an.
 
-:::{.callout-important}
+::: callout-important
 Python beginnt mit 0 zu zählen, d.h. das erste Element hat den Index 0. Den Index kann man daher als Unterschied/Abstand zum ersten Element interpretieren.
 :::
 
@@ -76,7 +76,7 @@ x[-2]  # vorletztes Element
 
 Man kann auch mehrere Elemente auf einmal herausgreifen. Dazu schreibt man in die eckigen Klammern den Startindex, einen Doppelpunkt, und den Endindex. Wenn man auf diese Art (also unter Verwendung des Doppelpunkts) mehrere Elemente herausgreift, spricht man von einem *Slice*.
 
-:::{.callout-important}
+::: callout-important
 Der Endindex zählt _nicht_ mehr zum Bereich dazu!
 :::
 
@@ -94,7 +94,7 @@ x[:2]  # die ersten 2 Elemente
 x[2:]  # ab Index 2 bis zum letzten Element
 ```
 
-:::{.callout-tip}
+::: callout-tip
 Die Tatsache, dass der Startindex immer inklusive und der Endindex immer exklusive ist, hat den Vorteil, dass man sich durch die Differenz der beiden Indizes sofort die Anzahl der Elemente im Slice ausrechnen kann. Beispielsweise erkennt man so, dass `x[73:81]` genau $81 - 73 = 8$ Elemente enthält.
 :::
 
@@ -247,7 +247,7 @@ print(a)  # Listen-Methoden geben nichts (None) zurück, da Sie die Liste direkt
 x  # geänderte Liste
 ```
 
-:::{.callout-important}
+::: callout-important
 Listen-Methoden *verändern* die Liste *direkt* (in-place) und geben *nichts* (`None`) zurück.
 :::
 
@@ -258,7 +258,7 @@ x.extend([99, "HH", "zz"])
 x
 ```
 
-:::{.callout-tip}
+::: callout-tip
 Versuchen Sie anhand der folgenden zwei Befehle den Unterschied zwischen `append` und `extend` zu erklären:
 
 ```python
@@ -278,7 +278,7 @@ del x[1]  # löscht das Element mit dem Index 1
 x
 ```
 
-:::{.callout-note}
+::: callout-note
 Beachten Sie, dass `del` ein Python-Keyword ist und keine Funktion. Daher handelt es sich bei `del x[1]` auch nicht um einen Funktionsaufruf, Klammern als Aufrufoperator sind also nicht notwendig!
 :::
 
@@ -312,7 +312,7 @@ h.sort()
 h
 ```
 
-:::{.callout-tip}
+::: callout-tip
 Was passiert, wenn man eine Liste mit nicht sortierbaren Elementen sortieren möchte (z.B. die Liste `x` aus dem vorigen Beispiel)?
 :::
 
@@ -379,7 +379,7 @@ t[1]
 t[1] = "c"  # Fehler!
 ```
 
-:::{.callout-tip}
+::: callout-tip
 Ein Tupel mit einem Element erstellt man mit einem nachgestellten Komma:
 
 ```{python}
@@ -410,7 +410,7 @@ for x in range(10):
 squares
 ```
 
-:::{.callout-note}
+::: callout-note
 Ein gängiges Muster zur Erstellung einer Liste besteht darin, mit einer leeren Liste zu beginnen und ihr dann in einer Schleife die einzelnen Elemente hinzuzufügen.
 :::
 
@@ -446,7 +446,7 @@ vec = [-4, -2, 0, 2, 4]
 [abs(x) for x in vec]  # eine Funktion auf alle Elemente separat anwenden
 ```
 
-:::{.callout-note}
+::: callout-note
 In Python ist es mit Listen also nicht einfach möglich, elementweise Berechnungen durchzuführen.
 
 ```{python}
@@ -478,7 +478,7 @@ Alternativ kann man die Funktion `dict` verwenden und das Dictionary mit Keyword
 d = dict(Haus="house", Schlange="snake", Katze="cat")
 ```
 
-:::{.callout-note}
+::: callout-note
 Die Namen der Keyword-Argumente werden ohne Anführungszeichen geschrieben. Python verwendet sie dabei als Strings und somit als Keys im Dictionary.
 :::
 
@@ -492,7 +492,7 @@ d["Haus"]
 d["Schlange"]
 ```
 
-:::{.callout-important}
+::: callout-important
 Bei Dictionaries erfolgt der Zugriff über Keys, nicht über die Position eines Elements. Daher spricht man bei Dictionaries nicht vom ersten, zweiten oder dritten Eintrag, bei Listen hingegen schon.
 :::
 
@@ -580,7 +580,7 @@ for k, v in d.items():
 
 Die gleichzeitige Zuweisung an die Namen `k` und `v` bezeichnet man in Python als *Unpacking*. Da `d.items()` in jeder Iteration ein Tupel mit Key und Value liefert, kann man dessen beiden Elementen direkt zwei Namen zuweisen.
 
-:::{.callout-tip}
+::: callout-tip
 Ein weiteres Beispiel für Unpacking ist das Vertauschen von zwei Werten. Zunächst kann man damit zwei (oder mehr) Namen gleichzeitig zuweisen:
 
 ```{python}
@@ -633,7 +633,7 @@ d.get("Schlange", "Tier")  # Key "Schlange" existiert
 d.get("snake", "Schlange")  # Key "snake" existiert nicht
 ```
 
-:::{.callout-tip}
+::: callout-tip
 Gibt man für `get` keinen Standardwert an, wird `None` zurückgegeben, falls der Key nicht existiert:
 
 ```{python}
@@ -700,7 +700,7 @@ Schreiben Sie eine Funktion `histogram`, welche eine Liste mit Zahlen entgegenne
 --
 ```
 
-:::{.callout-note}
+::: callout-note
 Diese Funktion liefert keinen Wert zurück, sondern gibt das Histogramm (mit Hilfe der `print`-Funktion) am Bildschirm aus.
 :::
 
@@ -709,7 +709,7 @@ Diese Funktion liefert keinen Wert zurück, sondern gibt das Histogramm (mit Hil
 
 Schreiben Sie eine Funktion `sum_of_squares`, welche eine Liste mit Zahlen als Parameter entgegennimmt und die Quadratsumme dieser Zahlen (also eine einzige Zahl) zurückgibt.
 
-:::{.callout-note}
+::: callout-note
 Sie könnten in der Funktion z.B. zuerst eine Liste mit den quadrierten Zahlen erstellen, deren Elemente mit der Funktion `sum` addieren und das Ergebnis zurückgeben.
 :::
 
@@ -726,7 +726,7 @@ Erstellen Sie eine Liste mit den ganzen Zahlen von 1 bis 25 und weisen Sie diese
 
 Verwenden Sie zur Erstellung der neuen Listen jeweils eine geeignete List Comprehension.
 
-:::{.callout-note}
+::: callout-note
 Für die letzten beiden Listen verwenden Sie am besten Funktionen aus dem Modul `math`.
 :::
 

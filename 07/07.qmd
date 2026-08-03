@@ -82,7 +82,7 @@ s5  # tatsächlicher Wert des Strings, \n steht für Zeilenumbruch
 
 Strings mit drei Anführungszeichen haben wir schon als Docstrings zur kurzen Beschreibung von Funktionen kennengelernt.
 
-:::{.callout-tip}
+::: callout-tip
 Möchte man einen String erzeugen, der sowohl `"` als auch `'` enthält, kann man weder das eine noch das andere Zeichen direkt verwenden. Man muss daher das Anführungszeichen, welches für die Definition des Strings verwendet wurde und auch im String vorkommen soll, mit einem vorangestellten `\` schreiben (man spricht hier von einer [Escape-Sequenz](https://de.wikipedia.org/wiki/Escape-Sequenz)):
 
 ```{python}
@@ -394,7 +394,7 @@ s = "educational neuroscience"
 
 Gibt es eine Methode, die aus einem gegebenen String einen neuen String erzeugt, bei dem alle *Wörter* (nicht Buchstaben!) mit einem Großbuchstaben beginnen? Wenn ja, verwenden Sie diese Methode für `s` aus diesem Beispiel!
 
-:::{.callout-tip}
+::: callout-tip
 Welche String-Methoden verfügbar sind, können Sie wie im vorigen Kapitel mit `dir(s)` oder durch Tab-Vervollständigung im interaktiven Interpreter herausfinden.
 :::
 
@@ -409,7 +409,7 @@ s = "Edukational Neuroscience"
 
 Das Zeichen `k` an der Position 3 soll durch ein `c` ersetzt werden. Wie können Sie aus `s` einen neuen String erzeugen, in welcher diese Ersetzung vorgenommen wurde?
 
-:::{.callout-note}
+::: callout-note
 Verwenden Sie Slices, um die Teile von `s` vor und nach dem `k` mit dem Ersatzzeichen `"c"` dazwischen zu einem neuen String zu verbinden.
 :::
 
@@ -420,11 +420,11 @@ Palindrome sind Wörter, welche von vorn und hinten gelesen dasselbe ergeben, z.
 
 Schreiben Sie eine Funktion `is_palindrome`, welche ein Wort als String entgegennimmt und `True` zurückgibt, falls es sich dabei um ein Palindrom handelt. Wenn nicht, soll `False` zurückgegeben werden.
 
-:::{.callout-note}
+::: callout-note
 Wandeln Sie das Wort zuerst in Kleinbuchstaben um, denn sonst wird Anna nicht als Palindrom erkannt, da ein A nicht gleich einem a ist.
 :::
 
-:::{.callout-tip}
+::: callout-tip
 Erweiterung: Palindrome können auch aus mehreren Wörtern oder ganzen Sätzen bestehen, z.B. "Dr. Awkward" oder "Was it a cat I saw?". Erweitern Sie Ihre Funktion so, dass sie zusätzlich Leerzeichen sowie die Satzzeichen `?`, `!`, `.` und `,` ignoriert.
 :::
 
@@ -445,7 +445,7 @@ Schreiben Sie eine Funktion `find(s, char)`, welche diese Funktionalität repliz
 find(s, "t")
 ```
 
-:::{.callout-note}
+::: callout-note
 Verwenden Sie am besten eine `while`-Schleife, um über die einzelnen Buchstaben von `s` zu iterieren. In der Funktion ist eine Variable hilfreich, welche die aktuelle Position in `s` mitzählt (beginnend bei 0). Auch die Funktion `len`, welche die Länge eines Strings zurückgibt, könnte hilfreich sein. Beachten Sie auch, dass `return` die Funktion sofort verlässt und kein weiterer Code in der Funktion ausgeführt wird, und dass `return` an einer beliebigen Stelle in der Funktion und auch mehr als ein Mal vorhanden sein kann.
 :::
 
@@ -456,7 +456,7 @@ Schreiben Sie eine Funktion `count(word, letter)`, welche die Anzahl der Zeichen
 
 Beispielsweise sollte der Aufruf `count("Werkstatttreppe", "t")` den Wert `4` zurückgeben, analog zur fertigen String-Methode `"Werkstatttreppe".count("t")`.
 
-:::{.callout-note}
+::: callout-note
 Verwenden Sie eine ähnliche Struktur wie in Übung 5, eventuell ist hier eine `for`-Schleife geeigneter. Zählen Sie in einer Variablen mit, wie oft das gesuchte Zeichen aufgetreten ist und geben Sie diesen Wert dann zum Schluss zurück.
 :::
 

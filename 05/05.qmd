@@ -153,7 +153,7 @@ greet_all("Hallo", "Anna", "Ben")
 greet_all("Guten Morgen", "Anna", "Ben", "Clara")
 ```
 
-:::{.callout-note}
+::: callout-note
 Der Parametername `args` ist in Python sehr verbreitet, aber nicht vorgeschrieben. Die folgende Funktionsdefinition ist daher gleichbedeutend mit der obigen:
 
 ```{python}
@@ -258,7 +258,7 @@ s = test(s)
 print(s)
 ```
 
-:::{.callout-tip}
+::: callout-tip
 Auch Parameter besitzen einen lokalen Gültigkeitsbereich. Sie verhalten sich wie Namen, die innerhalb der Funktion definiert wurden, und erhalten beim Funktionsaufruf ihre Werte von den übergebenen Argumenten.
 
 Im letzten Beispiel heißen sowohl der globale Name als auch der Parameter `s`. Das ist jedoch Zufall – beide Namen sind unabhängig voneinander. Die Funktion könnte genauso gut mit einem anderen Namen oder direkt mit einem Wert aufgerufen werden:
@@ -292,7 +292,7 @@ Schreiben Sie eine Funktion namens `nonsense`, welche drei Parameter namens `a`,
 
 Wie sehen diese Funktionsaufrufe aus? Wie lauten die Rückgabewerte? Geben Sie für *jeden* Aufruf die Werte *aller drei Argumente* an!
 
-:::{.callout-note}
+::: callout-note
 Nur der erste Funktionsaufruf (ohne Argumente) verursacht einen Fehler, alle weiteren Aufrufe sind möglich!
 :::
 
@@ -313,7 +313,7 @@ maximum(7, 2, 9, 4)  # gibt 9 zurück
 
 Verwenden Sie dafür weder die Funktion `max()` noch andere Hilfsfunktionen.
 
-:::{.callout-note}
+::: callout-note
 Für diese Aufgabe benötigen Sie den ersten übergebenen Wert als Startwert für das zu findende Maximum. Der Ausdruck `numbers[0]` liefert diesen ersten Wert (vorausgesetzt ist hier, dass der erste Parameter der Funktion `numbers` heißt). Wie dieser Ausdruck genau funktioniert, lernen wir in einer späteren Einheit kennen.
 :::
 

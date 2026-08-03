@@ -23,7 +23,7 @@ Funktionen kann man sich wie kleine Programme bzw. Skripte vorstellen. Sie fasse
 
 Auch in Python hat eine Funktion eine klar definierte Aufgabe. Funktionen dienen unter anderem dazu, Programmcode zu strukturieren und dadurch die Lesbarkeit zu erhöhen. Außerdem ermöglichen sie es, Code wiederzuverwenden. Das bedeutet, dass man eine einmal definierte Funktion beliebig oft aufrufen (verwenden) kann. Funktionen machen Programme häufig auch kürzer, weil sich wiederkehrende Anweisungen in einer Funktion bündeln lassen. Sollten später einmal Änderungen notwendig sein, muss man den Code nur an einer Stelle (in der Funktion) anpassen. Funktionen lassen sich auch in anderen Programmen wiederverwenden.
 
-:::{.callout-note}
+::: callout-note
 Einige Funktionen wie `print`, `type` und `math.sqrt` haben wir bereits in den vorigen Einheiten kennengelernt und verwendet.
 :::
 
@@ -57,7 +57,7 @@ print()
 
 Wie viele Argumente eine Funktion tatsächlich benötigt, hängt ganz alleine von der jeweiligen Funktion ab (dies ist in ihrer Dokumentation nachzulesen).
 
-:::{.callout-important}
+::: callout-important
 Lässt man die Klammern weg, wird die Funktion *nicht* aufgerufen – es wird dann lediglich der Wert des Namens (also das Funktionsobjekt) angezeigt, wenn man Python im interaktiven Modus verwendet.
 
 ```{python}
@@ -121,7 +121,7 @@ def test_function(n, v):
 
 Nun folgt der Code, welcher von der Funktion ausgeführt wird, wenn diese aufgerufen wird – dieser Code muss um eine Ebene *eingerückt* werden (also vier Leerzeichen). Man spricht hier vom sogenannten *Funktionskörper*. Im Funktionskörper kann man insbesondere alle Parameter wie normale Namen verwenden – diese sind nur innerhalb der Funktion vorhanden und erhalten dann die konkreten Werte der Argumente, welche beim Funktionsaufruf übergeben wurden.
 
-:::{.callout-important}
+::: callout-important
 Eine Funktion kann *Parameter* haben, welche bei der *Definition* aufgelistet werden müssen. Wenn man die Funktion aufruft, muss man für alle Parameter konkrete Werte übergeben – diese konkreten Werte nennt man *Argumente*.
 :::
 
@@ -178,11 +178,11 @@ test_function_2("Hi!", False)  # weiterer Aufruf mit anderen Argumenten
 test_function_2()  # zwei Argumente erwartet, aber keine übergeben!
 ```
 
-:::{.callout-important}
+::: callout-important
 Alle in der Funktionsdefinition definierten Parameter müssen beim Aufrufen der Funktion mit konkreten Argumenten befüllt werden!
 :::
 
-:::{.callout-tip}
+::: callout-tip
 Es ist üblich, gleich in der ersten Zeile des Funktionskörpers eine kurze Beschreibung der Funktion in einem sogenannten *Docstring* anzugeben (dieser kann sich auch über mehr als eine Zeile erstrecken). Ein Docstring wird von jeweils drei Anführungszeichen `"""` umschlossen. Das Vorhandensein eines Docstrings ändert nichts an der Funktionsweise, dient aber der Dokumentation und gehört zum guten Coding-Stil dazu, wie folgendes Beispiel demonstriert:
 
 ```{python}
@@ -230,7 +230,7 @@ Man kann den Wert einer Funktion (also den Rückgabewert) auch explizit mit Hilf
 print(add_one(122))
 ```
 
-:::{.callout-tip}
+::: callout-tip
 Man kann überall dort, wo man einen Wert angeben kann, auch einen Ausdruck (eine beliebige Kombination aus Werten und Operatoren) einsetzen – eben auch einen Funktionsaufruf, der einen Wert zurückgibt. Dies wird als *Komposition* bezeichnet. Die Werte werden der Reihe nach (von *innen* nach *außen*) verarbeitet und eingesetzt, bis zum Schluss ein einziger Wert übrig bleibt:
 
 ```{python}

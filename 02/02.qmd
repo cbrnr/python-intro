@@ -37,7 +37,7 @@ Alles in Python ist ein *Objekt*. Ein Objekt hat einen bestimmten Wert, z.B.
 "3"
 ```
 
-:::{.callout-tip}
+::: callout-tip
 Zur Erinnerung: Python gibt im interaktiven Modus Werte automatisch aus.
 :::
 
@@ -210,7 +210,7 @@ Neben Schlüsselwörtern gibt es aber auch sogenannte [eingebaute Funktionen](ht
 dir(__builtins__)
 ```
 
-:::{.callout-tip}
+::: callout-tip
 Wenn man wirklich einen Namen einer eingebauten Funktion oder gar eines Schlüsselwortes verwenden möchte, kann man z.B. einfach einen Unterstrich anhängen. Anstelle von `lambda` könnte man daher `lambda_` verwenden, anstelle von `dir` wäre `dir_` möglich und sinnvoll, usw.
 :::
 
@@ -254,7 +254,7 @@ print("Hello world!")
 
 Wenn man diese Anweisungen im interaktiven Interpreter ausführt, gibt es keine automatischen Ausgaben – der Grund dafür ist, dass diese beiden Anweisungen keine Werte haben, d.h. es gibt hier im interaktiven Modus des Python-Interpreters nichts, was ausgegeben werden könnte.
 
-:::{.callout-note}
+::: callout-note
 Dass der Aufruf der `print`-Funktion trotzdem eine Ausgabe am Bildschirm bewirkt, liegt an der Funktion selbst, deren Zweck ja genau diese Ausgabe ist. Dies kann man sehen, wenn man dem Funktionsaufruf einen Namen zuweist:
 
 ```{python}
@@ -370,13 +370,13 @@ Zunächst fällt auf, dass in den Zeilen 1 und 6 sogenannte Kommentare verwendet
 
 Wenden wir uns nun den einzelnen durch Einrückungen definierten Blöcken in diesem Beispiel zu. Ein Block wird mit *vier Leerzeichen* eingerückt, d.h. der erste Block beginnt in Zeile 2. Zu diesem Block gehören alle folgenden eingerückten Codezeilen, also Zeilen 3–9. Da die Zeilen 11–12 nicht mehr eingerückt sind, gehören diese auch nicht zu diesem Block.
 
-:::{.callout-note}
+::: callout-note
 Ein neuer Block wird immer durch eine Code-Zeile eingeleitet, welche mit einem `:` endet.
 :::
 
 Des Weiteren sieht man noch die Verwendung von Funktionen – diese werden mit ihrem Namen und den Argumenten in *Klammern* aufgerufen, z.B. `print(counter)` in Zeile 12. Es gibt auch Funktionen ohne Argumente, diese müssen aber trotzdem mit den Klammern aufgerufen werden, z.B. `do_something()` in Zeile 11. Mehr zu Funktionen werden wir in einer der nächsten Einheiten lernen. Wichtig ist zu diesem Zeitpunkt nur, dass Sie erkennen können, wie ein Funktionsaufruf aussieht. Ein solcher ist nämlich immer über das *Klammernpaar* (innerhalb derer eventuelle Argumente vorkommen können) erkennbar, welches direkt auf den Namen der Funktion folgt.
 
-:::{.callout-important}
+::: callout-important
 Das Klammernpaar `()` wird benötigt, um eine Funktion *aufzurufen*. Man nennt es daher auch *Aufrufoperator*.
 :::
 
@@ -388,7 +388,7 @@ import math
 math.sqrt(4)
 ```
 
-:::{.callout-tip}
+::: callout-tip
 Python ist sehr genau, was die Syntax betrifft. Zum Beispiel ist es wichtig, die korrekte Groß-/Kleinschreibung zu beachten, d.h. `print` ist nicht dasselbe wie `Print`. Ein fehlender `:` an Stellen, an denen dieser notwendig ist, führt zu einem Syntaxfehler. Falsche Einrückungen können entweder zu einem Syntaxfehler oder zu unerwünschtem Verhalten führen.
 
 Es ist auf jeden Fall sehr lehrreich, fehlerhaften Code im interaktiven Interpreter auszuprobieren, zum Beispiel:
@@ -453,7 +453,7 @@ Nennen Sie außerdem einige Richtlinien, wie man gute Namen erstellt. Führen Si
 
 Wie groß ist die Oberfläche bzw. das Volumen einer Kugel mit einem Radius von $r=5$? Führen Sie die Berechnung mit Python durch und weisen Sie den Ergebnissen die Namen `area` bzw. `volume` zu. Verwenden Sie für den Radius den Namen `r` und setzen Sie den Wert von `r` auf 5.
 
-:::{.callout-note}
+::: callout-note
 Sie können die Zahl $\pi$ als `math.pi` verwenden, wenn Sie folgende Zeile ganz am Anfang Ihres Scripts hinzufügen:
 
 ```python

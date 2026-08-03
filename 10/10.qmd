@@ -40,7 +40,7 @@ In den folgenden Abschnitten beschäftigen wir uns mit Matplotlib und lernen die
 
 Mit Matplotlib kann man verschiedenste Grafiken vor allem für wissenschaftliche Anwendungen erstellen. Meist stehen die darzustellenden Daten als NumPy-Arrays zur Verfügung.
 
-:::{.callout-note}
+::: callout-note
 Die offizielle Matplotlib-Website beinhaltet einige [Tutorials](https://matplotlib.org/stable/tutorials/index.html). Insbesondere der [Quick Start Guide](https://matplotlib.org/stable/tutorials/introductory/quick_start.html) ist eine gute Ergänzung zu den Unterlagen dieser Einheit.
 :::
 
@@ -53,7 +53,7 @@ import matplotlib.pyplot as plt
 
 Wir importieren hier `matplotlib.pyplot` (als `plt`) und nicht direkt `matplotlib`. Dies hat historische Gründe, denn die allermeisten Funktionen zur Erstellung von Grafiken befinden sich in `matplotlib.pyplot` und nicht direkt in `matplotlib`.
 
-:::{.callout-important}
+::: callout-important
 Um eine mit Matplotlib erstellte Grafik in einem separaten Fenster anzuzeigen, muss man explizit den folgenden Befehl ausführen:
 
 ```python
@@ -326,7 +326,7 @@ _ = ax.hist(x, bins=50, edgecolor="white")
 
 In diesem Beispiel haben wir die Anzahl der Bins manuell auf 50 gesetzt. Außerdem verwenden wir eine weiße Randfarbe, um die einzelnen Balken besser voneinander abzugrenzen.
 
-:::{.callout-tip}
+::: callout-tip
 Alle Methoden (also z.B. auch `plot`, `scatter`, `bar`, `stem`) haben optionale Argumente, mit denen man das Aussehen der Grafik anpassen kann. Diese sind in den jeweiligen Dokumentationen beschrieben.
 :::
 
@@ -354,7 +354,7 @@ fig, ax = plt.subplots()
 _ = ax.boxplot([x, y, z])
 ```
 
-:::{.callout-note}
+::: callout-note
 Eine Box erstreckt sich vom ersten bis zum dritten Quartil, ihre Höhe entspricht also dem Interquartilsabstand (IQR). Die orange Linie innerhalb der Box entspricht dem Median. Die sogenannten Whiskers erstrecken sich standardmäßig bis zum letzten Datenpunkt, der höchstens das 1,5-Fache des IQR unter dem ersten bzw. über dem dritten Quartil liegt. Punkte außerhalb dieser Grenzen werden einzeln als Ausreißer dargestellt.
 :::
 
@@ -440,7 +440,7 @@ air = np.genfromtxt("airquality.csv", delimiter=",", skip_header=1)
 
 Dieser Datensatz enthält den Verlauf von vier verschiedenen Luftgütewerten über einen Zeitraum von fünf Monaten.
 
-:::{.callout-note}
+::: callout-note
 Einige Werte im Datensatz fehlen und werden beim Einlesen als `nan` (*not a number*) gespeichert. Das ist für die folgenden Grafiken kein Problem: Matplotlib lässt diese Werte an den betroffenen Stellen aus.
 :::
 

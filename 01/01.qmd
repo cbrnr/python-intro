@@ -82,7 +82,7 @@ print(", ".join([str(i) for i in range(10)]))
 
 Die [offizielle Python-Website](https://www.python.org/) enthält viele nützliche Informationen rund um Python. Im [Download-Bereich](https://www.python.org/downloads/) findet man Installationspakete für Windows und macOS. Unter Windows installiert man den Python Install Manager, welchen man auch aus dem [Microsoft Store](https://apps.microsoft.com/detail/9NQ7512CXL7T) beziehen kann. Weitere Informationen zur Verwendung von Python unter Windows finden Sie in der [offiziellen Python-Dokumentation](https://docs.python.org/3/using/windows.html). Für weiterführende Informationen zur Verwendung von Python unter macOS lesen Sie bitte die [offizielle Python-Dokumentation](https://docs.python.org/3/using/mac.html). Bei den meisten Linux-Distributionen ist Python bereits vorinstalliert, ansonsten kann man dieses sehr einfach über den Paketmanager der jeweiligen Distribution installieren.
 
-:::{.callout-note}
+::: callout-note
 Es ist sinnvoll, stets die neueste Python-Version zu verwenden.
 :::
 
@@ -95,7 +95,7 @@ Es gibt viele Möglichkeiten, den Python-Interpreter zu starten. Eine der einfac
 
 ![](idle.png){width=75%}
 
-:::{.callout-note}
+::: callout-note
 In den Kursunterlagen wird Python-Code immer in grauen Kästchen dargestellt. Der Prompt `>>>` wird dabei weggelassen, da er nicht Teil des Python-Codes ist.
 :::
 
@@ -117,11 +117,11 @@ Versuchen wir nun, mit Python einfache arithmetische Aufgaben zu lösen. Die Sym
 120 / 7
 ```
 
-:::{.callout-tip}
+::: callout-tip
 Aus Gründen der besseren Lesbarkeit sollten Leerzeichen vor und nach einem Operator eingefügt werden, also besser `10 - 7` und nicht `10-7`. Für Python ist zwar beides korrekt, aber die erste Variante ist leichter lesbar.
 :::
 
-:::{.callout-important}
+::: callout-important
 Beachten Sie, dass Python die *englische* Zahlenschreibweise mit einem *Punkt* als Dezimaltrennzeichen verwendet und nicht das im deutschen Sprachraum übliche *Komma*. Dezimalzahlen müssen daher immer mit einem Punkt eingegeben werden, ganz egal welche Sprache im Betriebssystem eingestellt ist.
 :::
 
@@ -175,7 +175,7 @@ math.e
 1 + math.sqrt(5) * 7 - 2 * math.pi * 1.222
 ```
 
-::: {.callout-tip}
+::: callout-tip
 In Python ist es notwendig, Module zu *importieren*, um deren Funktionen und Variablen verwenden zu können. Wir werden im Laufe dieses Kurses viele verschiedene Module importieren und verwenden.
 :::
 
@@ -202,7 +202,7 @@ Führt man dieses Skript aus, wird der Befehl zwar ausgeführt, aber es erschein
 print(1 + 4)
 ```
 
-:::{.callout-tip}
+::: callout-tip
 Jedes Python-Programm beginnt immer "bei Null", d.h. beim Ausführen sind keine Ergebnisse aus früheren Sitzungen vorhanden. Das ist sinnvoll, da es dazu beiträgt, reproduzierbaren Code zu schreiben.
 :::
 
@@ -274,7 +274,7 @@ $$\bar x = \frac{1}{n} \sum_{i=1}^n x_i$$
 
 $$\bar x_g = \sqrt[n]{\prod_{i=1}^n x_i}$$
 
-:::{.callout-note}
+::: callout-note
 Die *n*-te Wurzel kann man auch als Potenz anschreiben, also $\sqrt[n]{x}$ ist gleichbedeutend mit $x^\frac{1}{n}$.
 :::
 
@@ -285,7 +285,7 @@ Berechnen Sie das Ergebnis des folgenden Ausdrucks mit einem Befehl (in einer Ze
 
 $$\frac{(5^5 - \pi) \cdot \frac{19}{3}}{\sqrt{13} + 7^\frac{2}{3}}$$
 
-:::{.callout-note}
+::: callout-note
 Achten Sie auf die Klammersetzung! Das richtige Ergebnis beträgt ungefähr 2722.
 :::
 

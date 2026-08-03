@@ -73,7 +73,7 @@ Das Dialogfenster sollte also wie folgt aussehen und kann durch Klicken auf OK b
 
 ![](exp_settings.png)
 
-:::{.callout-tip}
+::: callout-tip
 Während man ein Experiment erstellt, sollte man den Vollbildmodus ausschalten (da es sonst teilweise nicht möglich ist, ein laufendes Experiment vorzeitig abzubrechen). Dies kann man in den Experiment Settings im Tab "Screen" tun, indem man die Option "Full-screen window" deaktiviert. Wenn das Experiment dann fertig ist, kann man den Vollbildmodus wieder aktivieren.
 :::
 
@@ -106,7 +106,7 @@ Das PsychoPy-Fenster sollte nun wie folgt aussehen:
 
 Wir können nun bereits versuchen, das Experiment zu starten. Dazu klickt man auf das grüne "Run experiment" Icon. Nachdem unser Experiment noch nicht gespeichert ist, müssen wir dies nun tun (z.B. unter dem Namen `stroop.psyexp`). Danach öffnet sich der Runner-Dialog und das Experiment startet.
 
-:::{.callout-important}
+::: callout-important
 Unter macOS muss man PsychoPy erlauben, den Computer zu steuern (sonst funktionieren die Experimente nicht). Dies kann man in den Systemeinstellungen im Bereich "Sicherheit & Datenschutz" tun, indem man im Tab "Datenschutz" unter "Bedienungshilfen" auf "PsychoPy" klickt (zuvor muss man auf das Schloss links unten klicken und das Administratorpasswort eingeben).
 
 ![](macos-accessibility.png)
@@ -181,7 +181,7 @@ Nachdem ein Experiment erfolgreich ausgeführt wurde, befinden sich im Ergebniso
 
 Die Namen dieser Dateien setzen sich normalerweise aus dem Probandencode, dem Experimentnamen, dem Datum sowie der Uhrzeit zusammen (dies kann aber in den Experiment-Einstellungen angepasst werden, falls man ein anderes Namensschema verwenden möchte).
 
-:::{.callout-tip}
+::: callout-tip
 Angenommen, wir hätten die folgende Aufzeichnung durchgeführt:
 
 - Für den Probandencode wurde im Dialogfenster gleich nach dem Start des Experimentes `s01` eingegeben.
@@ -274,7 +274,7 @@ msg_color = "white"
 
 ![](feedback_code_1.png)
 
-:::{.callout-note}
+::: callout-note
 Den Wert von "Code Type" können wir auf "Py" setzen, da wir unser Experiment nur mit Python erstellen wollen. PsychoPy unterstützt zusätzlich noch Javascript, was eine Ausführung des Experiments im Browser ermöglicht. Wir benötigen diese Funktionalität aber nicht.
 :::
 
@@ -302,7 +302,7 @@ Sehen wir uns an, wie dieser Code funktioniert. Wir verwenden hier die Keyboard-
 
 Die Bedingung `if trial_key.keys` überprüft, ob eine Taste gespeichert wurde. Ein nicht-leerer Text entspricht in einer Bedingung dem `bool`-Wert `True`; ein leerer bzw. nicht gesetzter Wert entspricht `False`.
 
-::: {.callout-tip}
+::: callout-tip
 Angenommen, wir hätten `x = True`, dann wäre die Bedingung `if x:` äquivalent zu `if x == True:`. Ebenso wäre `if not x:` äquivalent zu `if x == False:`. In Python ist es üblich, Bedingungen so kompakt wie möglich zu formulieren, daher werden diese abgekürzten Schreibweisen empfohlen.
 :::
 
@@ -310,7 +310,7 @@ Wenn also eine Taste gespeichert wurde, wird der erste Codezweig ausgeführt. Di
 
 Der abschließende `else`-Zweig wird nur ausgeführt, wenn keine Taste gedrückt wurde (also `trial_key.keys` leer ist). Dann werden `msg` und `msg_color` entsprechend gesetzt.
 
-:::{.callout-important}
+::: callout-important
 Es ist wichtig, dass die Code-Komponente ganz am Beginn der Routine ausgeführt wird, d.h. sie muss sich auch ganz oben in der Zeitübersicht (über dem Text-Stimulus) befinden. Die Position in der Liste der Komponenten kann man verändern, wenn man auf eine Komponente rechtsklickt und z.B. "move to top" auswählt.
 :::
 

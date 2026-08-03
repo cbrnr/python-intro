@@ -33,7 +33,7 @@ Darüber hinaus gibt es viele weitere Pakete für spezifischere Anwendungen wie 
 
 Für umfangreiche numerische Berechnungen sind normale Python-Listen nur bedingt geeignet. Sie können zwar beliebige Datentypen enthalten, benötigen dadurch aber mehr Speicher und viele Berechnungen werden vergleichsweise langsam ausgeführt. Für solche Anwendungsfälle stellt NumPy einen effizienten Datentyp bereit: das homogene multidimensionale (n-dimensionale) Array (kurz ND-Array, ndarray oder einfach Array). Ein Array speichert Werte eines gemeinsamen Datentyps sehr kompakt und NumPy kann viele Operationen effizient ausführen. Homogen bedeutet dabei, dass alle Elemente eines Arrays denselben Datentyp haben (z.B. lauter `float`-Werte). Multidimensional bedeutet, dass ein Array beliebig viele Dimensionen (auch Achsen genannt) besitzen kann. Jedes Element wird daher mit einem Tupel indiziert, das seine genaue Position innerhalb des Arrays beschreibt (dazu später mehr).
 
-::: {.callout-tip}
+::: callout-tip
 Das offizielle Tutorial [NumPy: the absolute basics for beginners](https://numpy.org/doc/stable/user/absolute_beginners.html) ergänzt bzw. vertieft die Inhalte dieser Unterlagen – die Lektüre ist sehr zu empfehlen!
 :::
 
@@ -122,7 +122,7 @@ c
 c.shape  # 2 Zeilen, 3 Spalten
 ```
 
-:::{.callout-note}
+::: callout-note
 Ein eindimensionales Array kann man sich wie eine Liste vorstellen, wohingegen ein zweidimensionales Array einer Tabelle entspricht.
 :::
 
@@ -135,11 +135,11 @@ Im Gegensatz zu Listen, welche dynamisch wachsen können (z.B. mit der `append`-
 np.zeros((3, 4))  # Nullen in 3 Zeilen und 4 Spalten
 ```
 
-:::{.callout-important}
+::: callout-important
 Die Funktion `np.zeros` erwartet als erstes Argument die gewünschte Form (Shape) des Arrays. Diese wird als Tupel angegeben, im vorigen Beispiel also `(3, 4)`. Deshalb sind zwei Klammerpaare erforderlich: eines für den Funktionsaufruf und eines für das Tupel. Der Aufruf `np.zeros(3, 4)` funktioniert *nicht*, da `3` und `4` dabei als zwei getrennte Argumente interpretiert werden. Lesen Sie in der Dokumentation nach, welche Bedeutung die ersten beiden Parameter der Funktion haben!
 :::
 
-:::{.callout-tip}
+::: callout-tip
 Übersichtlicher ist es, wenn man Keyword-Argumente nutzt, also beispielsweise:
 
 ```python
@@ -170,7 +170,7 @@ np.arange(5, 17)
 np.arange(0.3, 5.4, 0.6)  # von 0.3 bis 5.4 mit Schrittweite 0.6
 ```
 
-::: {.callout-tip}
+::: callout-tip
 Auch hier sind Keyword-Argumente übersichtlicher:
 
 ```python
@@ -207,7 +207,7 @@ Oft möchte man auch Zufallszahlen erzeugen. Dazu gibt es in NumPy einen sogenan
 from numpy.random import default_rng
 ```
 
-:::{.callout-tip}
+::: callout-tip
 Die Abkürzung `rng` steht für Random Number Generator, also Zufallszahlengenerator.
 :::
 
@@ -233,7 +233,7 @@ rng.uniform(size=(2, 2))  # gleichverteilte Zufallszahlen
 rng.integers(low=-3, high=99, size=(2, 5))  # Ganzzahlen von -3 bis 98
 ```
 
-:::{.callout-note}
+::: callout-note
 Wenn Sie die obigen Beispiele auf Ihrem Rechner nachvollziehen, sollten Sie *dieselben* Zufallszahlen bekommen – vorausgesetzt Sie initialisieren den Generator so wie hier mit dem Wert `42`.
 :::
 
@@ -342,7 +342,7 @@ a.min()
 
 Man kann diese Funktionen/Methoden aber auch auf einzelne Dimensionen (auch "Achsen" genannt) anwenden, z.B. auf Zeilen oder Spalten. Dabei entspricht die Dimension `0` den Zeilen und die Dimension `1` den Spalten.
 
-::: {.callout-note}
+::: callout-note
 Bei einem zweidimensionalen Array entsprechen die beiden Achsen den Zeilen (Achse 0) und Spalten (Achse 1). Ein dreidimensionales Array mit der Shape `(3, 4, 5)` besteht aus 3 Blöcken mit je 4 Zeilen und 5 Spalten: Achse 0 beschreibt die Blöcke, Achse 1 die Zeilen und Achse 2 die Spalten. Somit entsprechen immer die letzten beiden Achsen den Zeilen und Spalten.
 :::
 
@@ -354,7 +354,7 @@ a.mean(axis=0)  # Mittelwert entlang der Zeilen, d.h. Spaltenmittelwerte
 a.mean(axis=1)  # Mittelwert entlang der Spalten, d.h. Zeilenmittelwerte
 ```
 
-:::{.callout-tip}
+::: callout-tip
 Das `axis`-Argument gibt an, welche Dimensionen *verschwinden*. Bei `a.mean(axis=0)` verschwinden also die Zeilen (es wird der Mittelwert über die Zeilen gerechnet), und übrig bleiben nur mehr die Spaltenmittelwerte.
 :::
 
@@ -372,7 +372,7 @@ a
 a[0]  # erstes Element (Indizierung beginnt bei 0)
 ```
 
-::: {.callout-note}
+::: callout-note
 Ein einzelnes Element eines NumPy-Arrays ist kein Array mehr, sondern ein Skalar (also eine einzelne Zahl). Der NumPy-Datentyp wird dabei beibehalten und entspricht meist nicht den eingebauten Python-Datentypen wie `int` oder `float` (sondern z.B. `numpy.int64` oder `numpy.float64`). Solche Skalare lassen sich in Berechnungen in der Regel wie die entsprechenden Python-Zahlen verwenden. Mit `item()` kann man einen Wert bei Bedarf explizit in einen eingebauten Python-Datentyp umwandeln; normalerweise ist das aber nicht notwendig:
 
 ```{python}
@@ -498,7 +498,7 @@ c = c.reshape((1, -1))  # daher sollte man einen Namen zuweisen
 c
 ```
 
-:::{.callout-tip}
+::: callout-tip
 Man muss bei `reshape` nicht alle Dimensionen angeben – eine kann man auf `-1` setzen, was bedeutet, dass NumPy die passende Anzahl automatisch bestimmt. Dies ist möglich, da die Anzahl aller Elemente konstant bleiben muss.
 :::
 
@@ -598,7 +598,7 @@ Erstellen Sie ein zweidimensionales Array `u` der Form (100, 8), welches aus zuf
 
 Erstellen Sie ein dreidimensionales Array `x` der Form (3, 10, 5), welches die Zahlen von 1 bis 150 enthält. Wie lauten die *drei* Mittelwerte, wenn Sie über die letzten beiden Dimensionen mitteln?
 
-:::{.callout-note}
+::: callout-note
 Das Array `x` kann man sich als 3 Tabellen à 10 Zeilen und 5 Spalten vorstellen. Der Mittelwert aller Elemente von `x[0, :, :]` ist der erste gesuchte Mittelwert, jener von `x[1, :, :]` der zweite, und der Mittelwert von `x[2, :, :]` ist der dritte gesuchte Wert. Sie können so die drei Mittelwerte berechnen, oder kürzer wenn Sie das `axis`-Argument von `np.mean` auf ein Tupel setzen, welches die Achsen beschreibt, über die Sie mitteln möchten (also die Achsen 1 und 2, da Python bei 0 zu zählen beginnt).
 :::
 
