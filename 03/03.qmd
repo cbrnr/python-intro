@@ -466,4 +466,4 @@ Schreiben Sie ein Programm, welches die Eingabe einer ganzen Zahl zwischen 1 und
 
 ## Lösungen
 
-Siehe [hier](03-solutions.qmd).
+Die Lösungen zu diesen Übungen finden Sie [hier](03-solutions.qmd).

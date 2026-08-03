@@ -302,4 +302,4 @@ from math import sqrt
 
 ## Lösungen
 
-Siehe [hier](08-solutions.qmd).
+Die Lösungen zu diesen Übungen finden Sie [hier](08-solutions.qmd).

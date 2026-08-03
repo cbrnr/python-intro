@@ -345,4 +345,4 @@ Das Experiment soll außerdem einen Instruktionstext sowie einen Verabschiedungs
 
 ## Lösungen
 
-Siehe [hier](11-solutions.qmd).
+Die Lösungen zu diesen Übungen finden Sie [hier](11-solutions.qmd).

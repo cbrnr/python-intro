@@ -345,4 +345,4 @@ Im Experiment sollen drei verschiedene visuelle Stimuli, z.B. Kreis, Polygon, Te
 
 ## Lösungen
 
-Siehe [hier](12-solutions.qmd).
+Die Lösungen zu diesen Übungen finden Sie [hier](12-solutions.qmd).

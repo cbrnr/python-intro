@@ -748,4 +748,4 @@ Was passiert, wenn Sie im Dictionary `a` auf den nicht existierenden Key `"zehn"
 
 ## Lösungen
 
-Siehe [hier](06-solutions.qmd).
+Die Lösungen zu diesen Übungen finden Sie [hier](06-solutions.qmd).

@@ -485,4 +485,4 @@ Fügen Sie geeignete Achsenbeschriftungen hinzu und vergessen Sie nicht, zum Sch
 
 ## Lösungen
 
-Siehe [hier](10-solutions.qmd).
+Die Lösungen zu diesen Übungen finden Sie [hier](10-solutions.qmd).

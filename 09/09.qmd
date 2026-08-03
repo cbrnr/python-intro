@@ -610,4 +610,4 @@ Erstellen Sie ein (8, 8)-Array namens `chess` mit einem Schachbrettmuster (verwe
 
 ## Lösungen
 
-Siehe [hier](09-solutions.qmd).
+Die Lösungen zu diesen Übungen finden Sie [hier](09-solutions.qmd).

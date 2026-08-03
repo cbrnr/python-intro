@@ -310,4 +310,4 @@ Schreiben Sie eine Funktion `is_odd`, welche einen Parameter hat und überprüft
 
 ## Lösungen
 
-Siehe [hier](04-solutions.qmd).
+Die Lösungen zu diesen Übungen finden Sie [hier](04-solutions.qmd).

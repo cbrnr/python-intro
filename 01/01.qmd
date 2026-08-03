@@ -301,4 +301,4 @@ math.Sqrt(4)
 
 ## Lösungen
 
-Siehe [hier](01-solutions.qmd).
+Die Lösungen zu diesen Übungen finden Sie [hier](01-solutions.qmd).

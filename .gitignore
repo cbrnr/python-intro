@@ -2,6 +2,6 @@
 *.quarto_ipynb*
 *_files/
 /_site/
-/site-libs/
+/site_libs/
 /.quarto/
 uv.lock

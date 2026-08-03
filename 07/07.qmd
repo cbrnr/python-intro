@@ -488,4 +488,4 @@ Geben Sie `path` dann mit Hilfe der `print`-Funktion am Bildschirm aus.
 
 ## Lösungen
 
-Siehe [hier](07-solutions.qmd).
+Die Lösungen zu diesen Übungen finden Sie [hier](07-solutions.qmd).

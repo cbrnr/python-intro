@@ -850,4 +850,4 @@ Zur Erzeugung der Zufallszahlen benötigen Sie die Methoden `normal`, `uniform` 
 
 ## Lösungen
 
-Siehe [hier](a1-solutions.qmd).
+Die Lösungen zu diesen Übungen finden Sie [hier](a1-solutions.qmd).

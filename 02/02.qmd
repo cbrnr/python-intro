@@ -479,4 +479,4 @@ Wenn Sie in Übung 4 den Befehl `import math` ausgeführt haben, welchen Typ hat
 
 ## Lösungen
 
-Siehe [hier](02-solutions.qmd).
+Die Lösungen zu diesen Übungen finden Sie [hier](02-solutions.qmd).
