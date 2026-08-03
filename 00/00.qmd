@@ -19,7 +19,7 @@ published-title: "Veröffentlicht"
 
 ## Allgemeines
 
-In dieser Lehrveranstaltung werden Sie die Programmiersprache [Python](https://www.python.org/) kennenlernen. Nach einer detaillierten Einführung in die Grundlagen werden auch praxisrelevante Themen wie das Installieren und Verwenden von Zusatzpaketen, die Arbeit mit numerischen Daten und das Erstellen von Grafiken behandelt. Außerdem werden Sie lernen, mit dem in der Psychologie populären Python-Paket [PsychoPy](https://www.psychopy.org) einfache Experimente zu erstellen.
+In dieser Lehrveranstaltung lernen Sie die Programmiersprache [Python](https://www.python.org/) kennen. Nach einer detaillierten Einführung in die Grundlagen werden auch praxisrelevante Themen wie das Installieren und Verwenden von Zusatzpaketen, die Arbeit mit numerischen Daten und das Erstellen von Grafiken behandelt. Außerdem werden Sie lernen, mit dem in der Psychologie populären Python-Paket [PsychoPy](https://www.psychopy.org) einfache Experimente zu erstellen.
 
 Der Plan für dieses Semester sieht wie folgt aus:
 
