@@ -2,7 +2,7 @@
 title: "8 – Pakete installieren und verwenden"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2026-05-04
+date: 2026-11-19
 format:
   html:
     page-layout: full

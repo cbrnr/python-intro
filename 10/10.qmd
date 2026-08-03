@@ -2,7 +2,7 @@
 title: "10 – Matplotlib"
 subtitle: "Einführung in Python und PsychoPy"
 author: "Clemens Brunner"
-date: 2026-05-18
+date: 2026-12-03
 format:
   html:
     page-layout: full
