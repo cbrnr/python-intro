@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -13,10 +13,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -75,14 +78,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6b6957c917596b414ec0b78690761e87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-5a1953863e1f72ef3b996ef827f01ca7.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-0f1a520e41d12d84e925fcfd3dfb7140.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-70d97c5485b77d73a4316377cf99e6cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-0f1a520e41d12d84e925fcfd3dfb7140.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-cf036aabbe95ff2a42c176f2c6878f2b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-c2ee0f7a8eac174693c8805b2a01ccd8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-cf036aabbe95ff2a42c176f2c6878f2b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
@@ -116,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -472,19 +475,19 @@ Hinweis
 <p>Eine Funktion <em>aufrufen</em> bedeutet, dass der in ihr enthaltene Code ausgeführt wird – die Funktion verrichtet also ihre Arbeit.</p>
 <p>In Python ruft man eine Funktion mit ihrem Namen gefolgt von einem <em>Paar runder Klammern</em> auf. Innerhalb der Klammern werden die <em>Argumente</em> für die Funktion übergeben (falls notwendig). Mit Argumenten übergibt man der Funktion Werte, welche diese für die Ausführung benötigt. Beispielsweise benötigt die Funktion <code>type</code> ein Argument, denn sonst kann sie ihre Aufgabe nicht erfüllen – nämlich den Typ des übergebenen Arguments zu bestimmen. Gleichermaßen braucht auch die Funktion <code>math.sqrt</code> aus dem <code>math</code>-Modul ein Argument, damit diese die Wurzel der übergebenen Zahl berechnen kann.</p>
 <p>Hier sind drei Beispiele für Aufrufe von bereits bekannten Funktionen mit jeweils einem Argument:</p>
-<div id="6378cbf6" class="cell" data-execution_count="1">
+<div id="b27b68e4" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello</code></pre>
 </div>
 </div>
-<div id="95e1e79e" class="cell" data-execution_count="2">
+<div id="e5ef1758" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(<span class="fl">3.14</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>float</code></pre>
 </div>
 </div>
-<div id="70067abd" class="cell" data-execution_count="3">
+<div id="9edd0014" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>math.sqrt(<span class="dv">16</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -492,7 +495,7 @@ Hinweis
 </div>
 </div>
 <p>Es gibt aber auch Funktionen, die man <em>ohne</em> Argument aufrufen kann (der folgende Funktionsaufruf bewirkt eine Ausgabe einer Leerzeile am Bildschirm):</p>
-<div id="88f689b5" class="cell" data-execution_count="4">
+<div id="a327be33" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code></code></pre>
@@ -510,25 +513,25 @@ Wichtig
 </div>
 <div class="callout-body-container callout-body">
 <p>Lässt man die Klammern weg, wird die Funktion <em>nicht</em> aufgerufen – es wird dann lediglich der Wert des Namens (also das Funktionsobjekt) angezeigt, wenn man Python im interaktiven Modus verwendet.</p>
-<div id="9229f6cc" class="cell" data-execution_count="5">
+<div id="320a69ac" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>&lt;function print(*args, sep=' ', end='\n', file=None, flush=False)&gt;</code></pre>
 </div>
 </div>
 <p>Dabei handelt es sich um einen Namen, welcher auf ein Funktionsobjekt verweist:</p>
-<div id="d9d9fad1" class="cell" data-execution_count="6">
+<div id="ce52e457" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(<span class="bu">print</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>builtin_function_or_method</code></pre>
 </div>
 </div>
 <p>Das Konzept von Namen in Python haben wir bereits kennengelernt. Es ist unerheblich, auf welches Objekt ein Name verweist, dies kann eine Ganzzahl, eine Funktion, oder jedes beliebige andere Objekt sein. So können wir z.B. auch den Namen <code>f</code> erstellen, welcher auf die Funktion <code>print</code> verweist:</p>
-<div id="8b8fb89e" class="cell" data-execution_count="7">
+<div id="e01789cc" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="bu">print</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Nun hat die Funktion zwei Namen, nämlich <code>print</code> und <code>f</code>:</p>
-<div id="d11fda83" class="cell" data-execution_count="8">
+<div id="c3882686" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>f(<span class="st">"Hello via f"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello via f</code></pre>
@@ -567,55 +570,55 @@ Wichtig
 </div>
 </div>
 <p>Das folgende Beispiel definiert eine Funktion namens <code>test_function</code>, welche aus zwei Zeilen Code im Funktionskörper besteht:</p>
-<div id="6738aae7" class="cell" data-execution_count="9">
+<div id="915d2c85" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_function():</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="st">"Hello world!"</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Man beachte, dass die Funktion hier lediglich definiert wurde, d.h. sie wurde noch <em>nicht</em> ausgeführt. Sie ist aber dem Python-Interpreter ab jetzt bekannt (d.h. es existiert ein Name <code>test_function</code>, welcher auf ein Funktionsobjekt verweist):</p>
-<div id="7d30bfc7" class="cell" data-execution_count="10">
+<div id="4784b680" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>test_function</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>&lt;function __main__.test_function()&gt;</code></pre>
 </div>
 </div>
-<div id="33740fe8" class="cell" data-execution_count="11">
+<div id="d91d03d7" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(test_function)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>function</code></pre>
 </div>
 </div>
 <p>Aufgerufen kann unsere Funktion nun wie folgt werden (die runden Klammern sind essentiell):</p>
-<div id="4c1e066e" class="cell" data-execution_count="12">
+<div id="c872db3e" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>test_function()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello world!</code></pre>
 </div>
 </div>
 <p>Wir können eine bereits definierte Funktion beliebig oft aufrufen.</p>
-<div id="8ae91971" class="cell" data-execution_count="13">
+<div id="149d9dd0" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>test_function()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello world!</code></pre>
 </div>
 </div>
 <p>Im Fall einer Funktion mit Parametern würden die Definition und der Aufruf z.B. so aussehen:</p>
-<div id="5ec966de" class="cell" data-execution_count="14">
+<div id="b73e23ad" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_function_2(n, v):  <span class="co"># Definition, zwei Parameter</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v:</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(n)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="1112f67b" class="cell" data-execution_count="15">
+<div id="164f2342" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>test_function_2(<span class="st">"Hello world!"</span>, <span class="va">True</span>)  <span class="co"># Aufruf mit zwei konkreten Argumenten</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello world!</code></pre>
 </div>
 </div>
-<div id="13d12b0a" class="cell" data-execution_count="16">
+<div id="47fd5822" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>test_function_2(<span class="st">"Hi!"</span>, <span class="va">False</span>)  <span class="co"># weiterer Aufruf mit anderen Argumenten</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Übergibt man beim Aufruf dieser Funktion nicht genau die erwartete Anzahl an Argumenten, bekommt man einen Fehler:</p>
-<div id="348b92b2" class="cell" data-execution_count="17">
+<div id="e89b46c5" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>test_function_2()  <span class="co"># zwei Argumente erwartet, aber keine übergeben!</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
@@ -652,7 +655,7 @@ Tipp
 </div>
 <div class="callout-body-container callout-body">
 <p>Es ist üblich, gleich in der ersten Zeile des Funktionskörpers eine kurze Beschreibung der Funktion in einem sogenannten <em>Docstring</em> anzugeben (dieser kann sich auch über mehr als eine Zeile erstrecken). Ein Docstring wird von jeweils drei Anführungszeichen <code>"""</code> umschlossen. Das Vorhandensein eines Docstrings ändert nichts an der Funktionsweise, dient aber der Dokumentation und gehört zum guten Coding-Stil dazu, wie folgendes Beispiel demonstriert:</p>
-<div id="bda26854" class="cell" data-execution_count="18">
+<div id="6bbba2c1" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_function():</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Print hello world."""</span></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="st">"Hello world!"</span></span>
@@ -666,30 +669,30 @@ Tipp
 <h2 class="anchored" data-anchor-id="rückgabewerte">Rückgabewerte</h2>
 <p>Funktionen können Werte (Ergebnisse) <em>zurückgeben</em>. In beiden soeben definierten Funktionen <code>test_function</code> und <code>test_function_2</code> wird allerdings <em>kein</em> Wert explizit zurückgegeben (d.h. die Funktionen führen nur Code aus und geben implizit <code>None</code> zurück, der spezielle Wert für “nichts” in Python). Diese beiden Funktionsaufrufe können also nicht auf einen Wert reduziert werden – sie sind also keine Ausdrücke.</p>
 <p>Wenn eine Funktion explizit einen Wert (ein Ergebnis) zurückgeben soll, verwendet man dazu das Schlüsselwort <code>return</code>, gefolgt vom gewünschten Rückgabewert:</p>
-<div id="62dedaba" class="cell" data-execution_count="19">
+<div id="1005c406" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_one(number):</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Increment a given number by one."""</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> number <span class="op">+</span> <span class="dv">1</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Beim Aufrufen der Funktion wird ihr Code im Funktionskörper ausgeführt, bis die Zeile mit <code>return</code> erreicht wird. Diese bewirkt, dass die Funktion sofort verlassen und der angegebene Wert <code>number + 1</code> zurückgegeben wird (hier wird für <code>number</code> natürlich der als Argument übergebene konkrete Wert verwendet). Sollten also nach dem <code>return</code>-Befehl noch weitere Zeilen Code im Funktionskörper folgen, werden diese nicht mehr ausgeführt.</p>
-<div id="f52fe23d" class="cell" data-execution_count="20">
+<div id="17568383" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>add_one(<span class="dv">5</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>6</code></pre>
 </div>
 </div>
 <p>Ein Funktionsaufruf wird also immer auf seinen Rückgabewert reduziert. Ein Aufruf einer Funktion, die einen Wert zurückgibt, ist also ein Ausdruck. Nun könnte man diesem auch einen Namen geben:</p>
-<div id="4d0f3946" class="cell" data-execution_count="21">
+<div id="2f3dfb82" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> add_one(<span class="dv">9</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="ea4d9ae1" class="cell" data-execution_count="22">
+<div id="056c20ae" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>10</code></pre>
 </div>
 </div>
 <p>Man kann den Wert einer Funktion (also den Rückgabewert) auch explizit mit Hilfe der <code>print</code>-Funktion am Bildschirm ausgeben:</p>
-<div id="dd7c1146" class="cell" data-execution_count="23">
+<div id="18fa2d05" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(add_one(<span class="dv">122</span>))</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>123</code></pre>
@@ -706,7 +709,7 @@ Tipp
 </div>
 <div class="callout-body-container callout-body">
 <p>Man kann überall dort, wo man einen Wert angeben kann, auch einen Ausdruck (eine beliebige Kombination aus Werten und Operatoren) einsetzen – eben auch einen Funktionsaufruf, der einen Wert zurückgibt. Dies wird als <em>Komposition</em> bezeichnet. Die Werte werden der Reihe nach (von <em>innen</em> nach <em>außen</em>) verarbeitet und eingesetzt, bis zum Schluss ein einziger Wert übrig bleibt:</p>
-<div id="f071dbdc" class="cell" data-execution_count="24">
+<div id="3d22f045" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>add_one(add_one(add_one(<span class="dv">1</span>)))</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>4</code></pre>
@@ -728,13 +731,13 @@ Tipp
 <li><p>Wenn sich die aktuelle Zeile bereits in einer Funktion befindet und Sie diese Funktion sofort verlassen möchten, klicken Sie auf “Out”.</p></li>
 </ol>
 <p>Zum Ausprobieren kann man das folgende kurze Script debuggen:</p>
-<div id="15fb36ad" class="cell" data-execution_count="25">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="kw">def</span> f(x):</span>
-<span id="cb46-2"><a href="#cb46-2"></a>    y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span></span>
-<span id="cb46-3"><a href="#cb46-3"></a>    <span class="cf">return</span> y</span>
-<span id="cb46-4"><a href="#cb46-4"></a></span>
-<span id="cb46-5"><a href="#cb46-5"></a>a <span class="op">=</span> f(<span class="dv">3</span>)</span>
-<span id="cb46-6"><a href="#cb46-6"></a><span class="bu">print</span>(<span class="st">"Done."</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="3b89063a" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-label="1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb46-2"><a href="#cb46-2" aria-label="2"></a>    y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-label="3"></a>    <span class="cf">return</span> y</span>
+<span id="cb46-4"><a href="#cb46-4" aria-label="4"></a></span>
+<span id="cb46-5"><a href="#cb46-5" aria-label="5"></a>a <span class="op">=</span> f(<span class="dv">3</span>)</span>
+<span id="cb46-6"><a href="#cb46-6" aria-label="6"></a><span class="bu">print</span>(<span class="st">"Done."</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>In welcher Reihenfolge werden die Code-Zeilen ausgeführt?</p>
 <p>Alternativ kann die Website <a href="http://pythontutor.com/visualize.html#mode=edit">PythonTutor</a> den Programmfluss ebenfalls Schritt für Schritt darstellen. Dazu kopiert man einfach den gesamten Code in das Eingabefeld und klickt auf “Visualize Execution”. So kann man durch wiederholtes Klicken auf “Next” nachvollziehen, wie Python den Code ausführt.</p>

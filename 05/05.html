@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -13,10 +13,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -75,14 +78,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6b6957c917596b414ec0b78690761e87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-5a1953863e1f72ef3b996ef827f01ca7.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-0f1a520e41d12d84e925fcfd3dfb7140.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-70d97c5485b77d73a4316377cf99e6cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-0f1a520e41d12d84e925fcfd3dfb7140.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-cf036aabbe95ff2a42c176f2c6878f2b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-c2ee0f7a8eac174693c8805b2a01ccd8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-cf036aabbe95ff2a42c176f2c6878f2b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
@@ -116,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -458,24 +461,24 @@ window.Quarto = {
 <section id="standard-argumente" class="level3">
 <h3 class="anchored" data-anchor-id="standard-argumente">Standard-Argumente</h3>
 <p>Eine Funktion kann ohne Parameter definiert werden oder eine bestimmte Anzahl an Parametern besitzen. Wenn eine bestimmte Anzahl an Parametern im Funktionskopf definiert wird, können einzelnen Parametern Standardwerte (sogenannte Standard- oder auch Default-Argumente) zugewiesen werden. Dies bedeutet, dass die Funktion auch mit weniger Argumenten aufgerufen werden kann, sofern für die entsprechenden Parameter Standardwerte definiert wurden.</p>
-<div id="a8d4dc92" class="cell" data-execution_count="1">
+<div id="1febba78" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add(number, increment<span class="op">=</span><span class="dv">1</span>):  <span class="co"># increment hat den Standardwert 1</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> number <span class="op">+</span> increment</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Diese Funktion kann jetzt mit zwei Argumenten oder nur mit dem ersten Argument aufgerufen werden:</p>
-<div id="55bef685" class="cell" data-execution_count="2">
+<div id="b2b19e30" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">7</span>, <span class="dv">1</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>8</code></pre>
 </div>
 </div>
-<div id="fc0c286a" class="cell" data-execution_count="3">
+<div id="bc53e6c0" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">7</span>)  <span class="co"># hier wird das Standard-Argument 1 für increment verwendet</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>8</code></pre>
 </div>
 </div>
-<div id="b0a888af" class="cell" data-execution_count="4">
+<div id="b42d351d" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">7</span>, <span class="dv">3</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>10</code></pre>
@@ -485,19 +488,19 @@ window.Quarto = {
 <section id="schlüsselwort-argumente" class="level3">
 <h3 class="anchored" data-anchor-id="schlüsselwort-argumente">Schlüsselwort-Argumente</h3>
 <p>Funktionen können auch so aufgerufen werden, dass die Namen der Parameter gemeinsam mit den Argumenten in der Form <code>name=value</code> explizit hingeschrieben werden. Man spricht dann von Schlüsselwort-Argumenten (englisch “Keyword Arguments”) (nicht zu verwechseln mit den Python-Schlüsselwörtern). D.h. die obige Funktion <code>add</code> kann auch so aufgerufen werden:</p>
-<div id="0e046eaf" class="cell" data-execution_count="5">
+<div id="cfb1d8ed" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>add(number<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>6</code></pre>
 </div>
 </div>
-<div id="0beba3f6" class="cell" data-execution_count="6">
+<div id="e0ec851b" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>add(number<span class="op">=</span><span class="dv">5</span>, increment<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>7</code></pre>
 </div>
 </div>
-<div id="21d71743" class="cell" data-execution_count="7">
+<div id="45151842" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>add(increment<span class="op">=</span><span class="dv">2</span>, number<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>7</code></pre>
@@ -505,20 +508,20 @@ window.Quarto = {
 </div>
 <p>Dies dient einerseits der besseren Lesbarkeit, da unmittelbar klar ist, welche Parameter welche konkreten Argumente erhalten. Werden alle Argumente als Schlüsselwort-Argumente angegeben, können sie in beliebiger Reihenfolge übergeben werden.</p>
 <p>Wenn der Argumentname nicht angegeben wird, wird das Argument anhand seiner Position dem entsprechenden Parameter zugewiesen. Man spricht in diesem Fall von <em>positionalen Argumenten</em>. Man kann positionale und Schlüsselwort-Argumente beim Funktionsaufruf auch mischen, aber alle positionalen Argumente müssen <em>vor</em> dem ersten Schlüsselwort-Argument kommen.</p>
-<div id="2002520f" class="cell" data-execution_count="8">
+<div id="7407037c" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">5</span>, increment<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>7</code></pre>
 </div>
 </div>
 <p>Zur Veranschaulichung dient folgende Funktionsdefinition:</p>
-<div id="591ef049" class="cell" data-execution_count="9">
+<div id="d8c76834" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test(name, number, exponent<span class="op">=</span><span class="dv">5</span>, offset<span class="op">=</span><span class="dv">7</span>, text<span class="op">=</span><span class="st">"Hello"</span>):</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(text, name, end<span class="op">=</span><span class="st">" "</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> number<span class="op">**</span>exponent <span class="op">-</span> offset</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Die folgenden drei Funktionsaufrufe verwenden nur positionale Argumente:</p>
-<div id="b6f70e54" class="cell" data-execution_count="10">
+<div id="97cdeb41" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>test(<span class="st">"Python"</span>, <span class="dv">2</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello Python </code></pre>
@@ -527,7 +530,7 @@ window.Quarto = {
 <pre><code>25</code></pre>
 </div>
 </div>
-<div id="cf4dffa8" class="cell" data-execution_count="11">
+<div id="768bfcd5" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>test(<span class="st">"Python"</span>, <span class="dv">3</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello Python </code></pre>
@@ -536,7 +539,7 @@ window.Quarto = {
 <pre><code>236</code></pre>
 </div>
 </div>
-<div id="e75a7130" class="cell" data-execution_count="12">
+<div id="88b142ab" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>test(<span class="st">"Test"</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello Test </code></pre>
@@ -546,7 +549,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Schlüsselwort-Argumente sind besonders praktisch, wenn man für die meisten Parameter die Standardwerte verwenden möchte. Dann müssen nur jene Argumente angegeben werden, deren Wert vom Standardwert abweicht.</p>
-<div id="f0c6d8e8" class="cell" data-execution_count="13">
+<div id="dd9a56bc" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>test(<span class="st">"Test"</span>, <span class="dv">2</span>, offset<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello Test </code></pre>
@@ -556,7 +559,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Ohne Schlüsselwort-Argumente würde derselbe Aufruf nämlich wie folgt aussehen:</p>
-<div id="8b94795d" class="cell" data-execution_count="14">
+<div id="63b5a7ed" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>test(<span class="st">"Test"</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">2</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello Test </code></pre>
@@ -570,26 +573,26 @@ window.Quarto = {
 <section id="variable-argumente" class="level3">
 <h3 class="anchored" data-anchor-id="variable-argumente">Variable Argumente</h3>
 <p>Bisher haben wir nur Funktionen betrachtet, die eine feste Anzahl an Parametern besitzen. Manchmal ist es jedoch praktisch, wenn eine Funktion mit einer beliebigen Anzahl an Argumenten aufgerufen werden kann. Dazu wird bei der Funktionsdefinition vor den Parameternamen ein Stern (<code>*</code>) geschrieben.</p>
-<div id="b1962ef1" class="cell" data-execution_count="15">
+<div id="0dffb4e1" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> greet(<span class="op">*</span>names):</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> name <span class="kw">in</span> names:</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Hallo"</span>, name)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Der Parameter <code>names</code> kann beliebig viele Argumente aufnehmen. Beim Aufruf der Funktion können daher unterschiedlich viele Namen übergeben werden:</p>
-<div id="2993fb98" class="cell" data-execution_count="16">
+<div id="d61b4b0b" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>greet(<span class="st">"Anna"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hallo Anna</code></pre>
 </div>
 </div>
-<div id="57e1fc84" class="cell" data-execution_count="17">
+<div id="8de2a158" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>greet(<span class="st">"Anna"</span>, <span class="st">"Ben"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hallo Anna
 Hallo Ben</code></pre>
 </div>
 </div>
-<div id="d3a696af" class="cell" data-execution_count="18">
+<div id="cc6e4d13" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>greet(<span class="st">"Anna"</span>, <span class="st">"Ben"</span>, <span class="st">"Clara"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hallo Anna
@@ -599,20 +602,20 @@ Hallo Clara</code></pre>
 </div>
 <p>Alle übergebenen Argumente werden im Parameter <code>names</code> gesammelt und können anschließend beispielsweise mit einer <code>for</code>-Schleife verarbeitet werden. Wie Python diese Werte intern speichert, werden wir später im Kurs (in der Einheit über Listen und Tupel) noch genauer betrachten.</p>
 <p>Variable Argumente können auch gemeinsam mit gewöhnlichen Parametern verwendet werden. Dabei müssen die gewöhnlichen Parameter immer vor dem Parameter mit <code>*</code> stehen.</p>
-<div id="52cec52a" class="cell" data-execution_count="19">
+<div id="16a7cd2f" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> greet_all(greeting, <span class="op">*</span>names):</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> name <span class="kw">in</span> names:</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(greeting, name)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Hier wird das erste Argument dem Parameter <code>greeting</code> zugewiesen. Alle weiteren Argumente werden im Parameter <code>names</code> gesammelt.</p>
-<div id="73d1ea37" class="cell" data-execution_count="20">
+<div id="9ab967ca" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>greet_all(<span class="st">"Hallo"</span>, <span class="st">"Anna"</span>, <span class="st">"Ben"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hallo Anna
 Hallo Ben</code></pre>
 </div>
 </div>
-<div id="b536189c" class="cell" data-execution_count="21">
+<div id="887a8525" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>greet_all(<span class="st">"Guten Morgen"</span>, <span class="st">"Anna"</span>, <span class="st">"Ben"</span>, <span class="st">"Clara"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Guten Morgen Anna
@@ -631,7 +634,7 @@ Hinweis
 </div>
 <div class="callout-body-container callout-body">
 <p>Der Parametername <code>args</code> ist in Python sehr verbreitet, aber nicht vorgeschrieben. Die folgende Funktionsdefinition ist daher gleichbedeutend mit der obigen:</p>
-<div id="246ef396" class="cell" data-execution_count="22">
+<div id="ea046f9d" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> greet(<span class="op">*</span>args):</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> name <span class="kw">in</span> args:</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Hallo"</span>, name)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -645,7 +648,7 @@ Hinweis
 <h2 class="anchored" data-anchor-id="gültigkeitsbereiche">Gültigkeitsbereiche</h2>
 <p>Jeder in Python definierte Name besitzt einen <em>Gültigkeitsbereich</em> (englisch <em>Scope</em>). Ein Name kann nur innerhalb seines Gültigkeitsbereichs verwendet werden.</p>
 <p>Namen, die innerhalb einer Funktion definiert werden, sind nur innerhalb dieser Funktion sichtbar. Man spricht von einem <em>lokalen</em> Gültigkeitsbereich.</p>
-<div id="bac28b79" class="cell" data-execution_count="23">
+<div id="8ab78b3c" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test():</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="dv">15</span>  <span class="co"># s ist nur innerhalb der Funktion sichtbar</span></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(s)</span>
@@ -656,7 +659,7 @@ Hinweis
 </div>
 </div>
 <p>Außerhalb der Funktion existiert dieser Name nicht:</p>
-<div id="a7be218c" class="cell" data-execution_count="24">
+<div id="1a041b3f" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
@@ -670,7 +673,7 @@ Hinweis
 </div>
 </div>
 <p>Umgekehrt kann eine Funktion auf Namen zugreifen, die außerhalb der Funktion definiert wurden:</p>
-<div id="22c975eb" class="cell" data-execution_count="25">
+<div id="77db93e3" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="dv">15</span>  <span class="co"># globales s</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test():</span>
@@ -684,7 +687,7 @@ Hinweis
 </div>
 </div>
 <p>Wird innerhalb der Funktion ein Name mit demselben Namen definiert, so ist innerhalb der Funktion nur noch dieser lokale Name sichtbar:</p>
-<div id="d22b42bf" class="cell" data-execution_count="26">
+<div id="0adfaa59" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="dv">15</span>  <span class="co"># globales s</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test():</span>
@@ -700,7 +703,7 @@ Hinweis
 </div>
 <p>Das globale <code>s</code> bleibt dabei unverändert.</p>
 <p>Ein häufiger Fehler entsteht, wenn man innerhalb einer Funktion auf einen Namen zugreifen möchte, bevor man ihn lokal definiert:</p>
-<div id="7fd65fb5" class="cell" data-execution_count="27">
+<div id="b3331a1f" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="dv">15</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test():</span>
@@ -730,7 +733,7 @@ Hinweis
 </div>
 <p>Python erkennt bereits beim Einlesen der Funktion, dass <code>s</code> ein lokaler Name sein wird. Deshalb bezieht sich auch <code>print(s)</code> auf diesen lokalen Namen, obwohl er zu diesem Zeitpunkt noch keinen Wert besitzt.</p>
 <p>Mit dem Schlüsselwort <code>global</code> kann stattdessen auf den globalen Namen zugegriffen werden:</p>
-<div id="d6b70d0d" class="cell" data-execution_count="28">
+<div id="63ccd587" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="dv">15</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test():</span>
@@ -746,7 +749,7 @@ Hinweis
 </div>
 </div>
 <p>Dadurch wird das globale <code>s</code> geändert. In der Praxis sollte man <code>global</code> jedoch möglichst vermeiden. Stattdessen übergibt man benötigte Werte als Argumente an die Funktion und gibt Ergebnisse mit <code>return</code> zurück:</p>
-<div id="b8306c0c" class="cell" data-execution_count="29">
+<div id="6ee7d2ae" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="dv">15</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test(s):</span>
@@ -775,7 +778,7 @@ Tipp
 <div class="callout-body-container callout-body">
 <p>Auch Parameter besitzen einen lokalen Gültigkeitsbereich. Sie verhalten sich wie Namen, die innerhalb der Funktion definiert wurden, und erhalten beim Funktionsaufruf ihre Werte von den übergebenen Argumenten.</p>
 <p>Im letzten Beispiel heißen sowohl der globale Name als auch der Parameter <code>s</code>. Das ist jedoch Zufall – beide Namen sind unabhängig voneinander. Die Funktion könnte genauso gut mit einem anderen Namen oder direkt mit einem Wert aufgerufen werden:</p>
-<div id="21d0d176" class="cell" data-execution_count="30">
+<div id="c66c685c" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">15</span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>test(x)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -786,7 +789,7 @@ Tipp
 </div>
 </div>
 <p>Oder mithilfe eines Schlüsselwort-Arguments:</p>
-<div id="b2ba9db6" class="cell" data-execution_count="31">
+<div id="eb629bac" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>test(s<span class="op">=</span>x)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>15</code></pre>

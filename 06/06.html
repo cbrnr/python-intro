@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -13,10 +13,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -75,14 +78,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-6b6957c917596b414ec0b78690761e87.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-5a1953863e1f72ef3b996ef827f01ca7.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-0f1a520e41d12d84e925fcfd3dfb7140.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-70d97c5485b77d73a4316377cf99e6cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-0f1a520e41d12d84e925fcfd3dfb7140.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-cf036aabbe95ff2a42c176f2c6878f2b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-c2ee0f7a8eac174693c8805b2a01ccd8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-cf036aabbe95ff2a42c176f2c6878f2b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
@@ -116,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -468,10 +471,10 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="listen-erstellen">Listen erstellen</h2>
 <p>Wir widmen uns nun dem Sammlungstyp <code>list</code>. Listen zählen zu den wichtigsten Datentypen in Python und eignen sich hervorragend, um mehrere zusammengehörige Werte zu speichern. Viele Konzepte, die wir anhand von Listen kennenlernen, lassen sich später auch auf andere Sammlungstypen übertragen.</p>
 <p>Eine Liste (<code>list</code>) gehört auch zu den <em>Sequenzdatentypen</em>. Sequenzen sind Sammlungstypen, deren Elemente in einer festen Reihenfolge gespeichert werden. Im Gegensatz zu anderen Sequenzdatentypen können Listen Elemente mit unterschiedlichen und beliebigen Datentypen enthalten, zum Beispiel Zahlen, Wahrheitswerte oder sogar weitere Listen. Eine Liste erstellt man mit eckigen Klammern, innerhalb derer die einzelnen Elemente durch Kommas getrennt angegeben werden:</p>
-<div id="ddd3bf4b" class="cell" data-execution_count="1">
+<div id="83e66f80" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">23</span>, <span class="st">"Hallo"</span>, <span class="st">"test"</span>, <span class="fl">1.44</span>, <span class="va">True</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="58132416" class="cell" data-execution_count="2">
+<div id="acecaaee" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [<span class="dv">1</span>, <span class="st">"1"</span>, [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="st">"test"</span>, <span class="va">False</span>, [<span class="va">True</span>, <span class="va">True</span>, <span class="dv">2</span>, <span class="dv">4</span>]]]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -491,26 +494,26 @@ Wichtig
 <p>Python beginnt mit 0 zu zählen, d.h. das erste Element hat den Index 0. Den Index kann man daher als Unterschied/Abstand zum ersten Element interpretieren.</p>
 </div>
 </div>
-<div id="01a7588e" class="cell" data-execution_count="3">
+<div id="1fd140db" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>]  <span class="co"># erstes Element</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>23</code></pre>
 </div>
 </div>
-<div id="4e14cb8e" class="cell" data-execution_count="4">
+<div id="83726184" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>]  <span class="co"># zweites Element</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>'Hallo'</code></pre>
 </div>
 </div>
 <p>Mit negativen Indizes kann man Elemente von hinten nach vorne ansprechen, d.h. −1 ist das letzte Element, −2 das vorletzte, usw.</p>
-<div id="b28c86ca" class="cell" data-execution_count="5">
+<div id="6cdb4446" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x[<span class="op">-</span><span class="dv">1</span>]  <span class="co"># letztes Element</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>True</code></pre>
 </div>
 </div>
-<div id="9dfa48ba" class="cell" data-execution_count="6">
+<div id="82860fde" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x[<span class="op">-</span><span class="dv">2</span>]  <span class="co"># vorletztes Element</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>1.44</code></pre>
@@ -530,20 +533,20 @@ Wichtig
 <p>Der Endindex zählt <em>nicht</em> mehr zum Bereich dazu!</p>
 </div>
 </div>
-<div id="ce1becf6" class="cell" data-execution_count="7">
+<div id="ec38dbce" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>:<span class="dv">4</span>]  <span class="co"># 3 Elemente, Index 1, 2, 3</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>['Hallo', 'test', 1.44]</code></pre>
 </div>
 </div>
 <p>Gibt man den ersten Index nicht an, wird vom ersten Element (inklusive) gezählt. Gibt man den Endindex nicht an, wird bis zum letzten Element (inklusive) gezählt.</p>
-<div id="ddb4203f" class="cell" data-execution_count="8">
+<div id="a11f2d29" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x[:<span class="dv">2</span>]  <span class="co"># die ersten 2 Elemente</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>[23, 'Hallo']</code></pre>
 </div>
 </div>
-<div id="a64b1712" class="cell" data-execution_count="9">
+<div id="82e6c0a7" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>:]  <span class="co"># ab Index 2 bis zum letzten Element</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>['test', 1.44, True]</code></pre>
@@ -563,14 +566,14 @@ Tipp
 </div>
 </div>
 <p>Man kann optional nach dem Endindex noch einen weiteren Doppelpunkt gefolgt von der Schrittweite angeben (standardmäßig ist diese Schrittweite 1). So kann man z.B. jedes zweite Element herausgreifen:</p>
-<div id="c53ef7e4" class="cell" data-execution_count="10">
+<div id="38172f0e" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x[::<span class="dv">2</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>[23, 'test', True]</code></pre>
 </div>
 </div>
 <p>Wenn man die Reihenfolge der Elemente umdrehen möchte, gibt man als Schrittweite −1 an:</p>
-<div id="1dc5a1a6" class="cell" data-execution_count="11">
+<div id="b24e4ad0" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>x[::<span class="op">-</span><span class="dv">1</span>]  <span class="co"># Liste in umgekehrter Reihenfolge</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>[True, 1.44, 'test', 'Hallo', 23]</code></pre>
@@ -583,7 +586,7 @@ Tipp
 <section id="methoden" class="level3">
 <h3 class="anchored" data-anchor-id="methoden">Methoden</h3>
 <p>Für Listen gibt es in Python viele praktische spezielle Funktionen. Diese werden direkt auf ein Listen-Objekt angewandt:</p>
-<div id="0b894f2c" class="cell" data-execution_count="12">
+<div id="c14099d7" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>x.append(<span class="dv">13</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Zuerst gibt man das Objekt an (im Beispiel die Liste <code>x</code>), gefolgt von einem Punkt, gefolgt vom Namen der Funktion (im Beispiel <code>append</code>), die man aufrufen möchte. Eine solche Funktion nennt man <em>Methode</em>, da sie direkt auf ein zuvor spezifiziertes Objekt angewendet wird. Diese Schreibweise hat den Vorteil, dass sofort klar wird, dass die Methode zum Objekt gehört.</p>
@@ -606,60 +609,60 @@ Tipp
 <section id="länge" class="level3">
 <h3 class="anchored" data-anchor-id="länge">Länge</h3>
 <p>Die Funktion <code>len</code> gibt die Länge der Liste (also die Anzahl der Elemente in der Liste) zurück. Sehen wir uns noch einmal die beiden oben definierten Listen <code>x</code> und <code>y</code> an:</p>
-<div id="1306fe72" class="cell" data-execution_count="13">
+<div id="262f0302" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>[23, 'Hallo', 'test', 1.44, True, 13]</code></pre>
 </div>
 </div>
-<div id="197fffd9" class="cell" data-execution_count="14">
+<div id="ea80300e" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>[1, '1', [1, 2, 3], ['test', False, [True, True, 2, 4]]]</code></pre>
 </div>
 </div>
 <p>Diese enthalten 5 bzw. 4 Elemente:</p>
-<div id="4b8adb38" class="cell" data-execution_count="15">
+<div id="8927706c" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(x)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>6</code></pre>
 </div>
 </div>
-<div id="8c5c2781" class="cell" data-execution_count="16">
+<div id="d56190c3" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(y)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>4</code></pre>
 </div>
 </div>
 <p>In der Liste <code>y</code> sind das dritte und vierte Element selbst wieder Listen:</p>
-<div id="1c5d336f" class="cell" data-execution_count="17">
+<div id="00a32589" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>y[<span class="dv">2</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>[1, 2, 3]</code></pre>
 </div>
 </div>
-<div id="a36b94c4" class="cell" data-execution_count="18">
+<div id="51f56752" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>y[<span class="dv">3</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>['test', False, [True, True, 2, 4]]</code></pre>
 </div>
 </div>
 <p>Letztere enthält eine weitere Liste am Ende (mit Index <code>2</code>):</p>
-<div id="03ec4959" class="cell" data-execution_count="19">
+<div id="17fcee32" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>y[<span class="dv">3</span>][<span class="dv">2</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>[True, True, 2, 4]</code></pre>
 </div>
 </div>
 <p>Eine leere Liste ist eine ganz normale Liste, nur eben mit keinen Elementen (also mit einer Länge 0):</p>
-<div id="ce6c4f21" class="cell" data-execution_count="20">
+<div id="8b0f7050" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> []</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(z)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>0</code></pre>
 </div>
 </div>
-<div id="ef31776c" class="cell" data-execution_count="21">
+<div id="4769e050" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(z)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>list</code></pre>
@@ -669,20 +672,20 @@ Tipp
 <section id="elemente-verändern" class="level3">
 <h3 class="anchored" data-anchor-id="elemente-verändern">Elemente verändern</h3>
 <p>Nachdem Listen <em>mutable</em> sind, kann man einzelne Elemente auch nach der Erstellung der Liste ändern (neu zuweisen).</p>
-<div id="f697469b" class="cell" data-execution_count="22">
+<div id="595a63e8" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>[23, 'Hallo', 'test', 1.44, True, 13]</code></pre>
 </div>
 </div>
-<div id="f9618056" class="cell" data-execution_count="23">
+<div id="d017a565" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">111111</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>[23, 111111, 'test', 1.44, True, 13]</code></pre>
 </div>
 </div>
-<div id="fc5d8dce" class="cell" data-execution_count="24">
+<div id="b76d834b" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>] <span class="op">=</span> <span class="va">None</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
@@ -693,14 +696,14 @@ Tipp
 <section id="operatoren-und" class="level3">
 <h3 class="anchored" data-anchor-id="operatoren-und">Operatoren <code>+</code> und <code>*</code></h3>
 <p>Zwei oder mehr Listen kann man mit dem <code>+</code>-Operator zu einer neuen Liste verbinden:</p>
-<div id="e2aa52bd" class="cell" data-execution_count="25">
+<div id="02e15eae" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">"drei"</span>] <span class="op">+</span> [<span class="st">"vier"</span>, <span class="dv">5</span>, <span class="fl">6.0</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>[1, 2, 'drei', 'vier', 5, 6.0]</code></pre>
 </div>
 </div>
 <p>Der <code>*</code>-Operator vervielfältigt eine Liste:</p>
-<div id="25cf969e" class="cell" data-execution_count="26">
+<div id="fa5bd840" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>, <span class="fl">2.0</span>, <span class="st">"drei"</span>] <span class="op">*</span> <span class="dv">3</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>[1, 2.0, 'drei', 1, 2.0, 'drei', 1, 2.0, 'drei']</code></pre>
@@ -710,13 +713,13 @@ Tipp
 <section id="elemente-zu-listen-hinzufügen" class="level3">
 <h3 class="anchored" data-anchor-id="elemente-zu-listen-hinzufügen">Elemente zu Listen hinzufügen</h3>
 <p>Mit der bereits im einführenden Beispiel erwähnten Methode <code>append</code> kann man neue Elemente am Ende einer Liste hinzufügen.</p>
-<div id="45996c06" class="cell" data-execution_count="27">
+<div id="8a54413b" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>[None, 111111, 'test', 1.44, True, 13]</code></pre>
 </div>
 </div>
-<div id="b6aab17f" class="cell" data-execution_count="28">
+<div id="516f0e79" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>x.append(<span class="dv">13</span>)</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
@@ -724,16 +727,16 @@ Tipp
 </div>
 </div>
 <p>Weil Listen mutable sind, wird hier die Liste <em>direkt verändert</em>; eine erneute Zuweisung zu einem Namen ist nicht notwendig bzw. führt nicht zum gewünschten Ergebnis, was im folgenden Beispiel ersichtlich ist:</p>
-<div id="adb10d64" class="cell" data-execution_count="29">
+<div id="0787d64a" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> x.append(<span class="dv">25</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="ac211264" class="cell" data-execution_count="30">
+<div id="4fa6363b" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)  <span class="co"># Listen-Methoden geben nichts (None) zurück, da Sie die Liste direkt ändern</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>None</code></pre>
 </div>
 </div>
-<div id="c49ff232" class="cell" data-execution_count="31">
+<div id="97213613" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>x  <span class="co"># geänderte Liste</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>[None, 111111, 'test', 1.44, True, 13, 13, 25]</code></pre>
@@ -753,7 +756,7 @@ Wichtig
 </div>
 </div>
 <p>Möchte man gleich mehrere Elemente hinzufügen, kann man die Methode <code>extend</code> benutzen:</p>
-<div id="66c82904" class="cell" data-execution_count="32">
+<div id="37c394e0" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>x.extend([<span class="dv">99</span>, <span class="st">"HH"</span>, <span class="st">"zz"</span>])</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
@@ -779,7 +782,7 @@ Tipp
 <section id="elemente-aus-listen-entfernen" class="level3">
 <h3 class="anchored" data-anchor-id="elemente-aus-listen-entfernen">Elemente aus Listen entfernen</h3>
 <p>Um bestimmte Elemente aus der Liste zu entfernen, verwendet man den <code>del</code>-Befehl.</p>
-<div id="7950cb46" class="cell" data-execution_count="33">
+<div id="b5bda246" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"b"</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="st">"fünf"</span>]</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> x[<span class="dv">1</span>]  <span class="co"># löscht das Element mit dem Index 1</span></span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -801,21 +804,21 @@ Hinweis
 </div>
 </div>
 <p>Alternativ kann man auch die Methode <code>pop</code> zum Löschen eines Elementes an einem bestimmten Index verwenden. Diese gibt das entfernte Element auch zurück (was <code>del</code> nicht tut).</p>
-<div id="16183bcd" class="cell" data-execution_count="34">
+<div id="2894273a" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"b"</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="st">"fünf"</span>]</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>x.pop(<span class="dv">1</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>'b'</code></pre>
 </div>
 </div>
-<div id="735f98ae" class="cell" data-execution_count="35">
+<div id="ac8e0deb" class="cell" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>['A', 3, 4, 'fünf']</code></pre>
 </div>
 </div>
 <p>Die Methode <code>remove</code> entfernt das erste Element aus der Liste, welches dem gesuchten Wert entspricht. Hier gibt man also nicht den zu entfernenden Index an, sondern den zu löschenden Wert.</p>
-<div id="42e917a9" class="cell" data-execution_count="36">
+<div id="6c6b864e" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"b"</span>, <span class="dv">31</span>, <span class="dv">41</span>, <span class="st">"fünf"</span>]</span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>x.remove(<span class="dv">31</span>)</span>
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -827,7 +830,7 @@ Hinweis
 <section id="listen-sortieren" class="level3">
 <h3 class="anchored" data-anchor-id="listen-sortieren">Listen sortieren</h3>
 <p>Wenn eine Liste sortierbare Elemente enthält (z.B. lauter Zahlen), kann man sie mit der Methode <code>sort</code> sortieren.</p>
-<div id="0a24c955" class="cell" data-execution_count="37">
+<div id="47aab636" class="cell" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> [<span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">23</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">78</span>, <span class="dv">44</span>]</span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>h.sort()</span>
 <span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>h</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -852,20 +855,20 @@ Tipp
 <section id="listen-umkehren" class="level3">
 <h3 class="anchored" data-anchor-id="listen-umkehren">Listen umkehren</h3>
 <p>Eine Liste kann man mit folgendem Slice umkehren (die ursprüngliche Liste ändert sich dabei aber nicht):</p>
-<div id="13ccef63" class="cell" data-execution_count="38">
+<div id="26ea8a4c" class="cell" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>h[::<span class="op">-</span><span class="dv">1</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <pre><code>[44, 23, 9, 6, 1, -78]</code></pre>
 </div>
 </div>
-<div id="2fa7d1f3" class="cell" data-execution_count="39">
+<div id="dea742a3" class="cell" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>h</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>[-78, 1, 6, 9, 23, 44]</code></pre>
 </div>
 </div>
 <p>Es gibt aber noch eine zweite Möglichkeit mit der Methode <code>reverse</code>, welche die Liste direkt (in-place) verändert:</p>
-<div id="1a38fde7" class="cell" data-execution_count="40">
+<div id="f094509e" class="cell" data-execution_count="40">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>h.reverse()</span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>h</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
@@ -876,20 +879,20 @@ Tipp
 <section id="listen-iterieren" class="level3">
 <h3 class="anchored" data-anchor-id="listen-iterieren">Listen iterieren</h3>
 <p>Mit dem <code>in</code>-Operator kann man überprüfen, ob ein bestimmtes Element in einer Liste enthalten ist.</p>
-<div id="59a97b19" class="cell" data-execution_count="41">
+<div id="bc2bbd00" class="cell" data-execution_count="41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="kw">in</span> h</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>False</code></pre>
 </div>
 </div>
-<div id="6b2b4531" class="cell" data-execution_count="42">
+<div id="54980045" class="cell" data-execution_count="42">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="dv">78</span> <span class="kw">in</span> h</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
 <pre><code>True</code></pre>
 </div>
 </div>
 <p>Eine Liste ist wie jeder Sequenzdatentyp iterierbar, d.h. man kann mit einer <code>for</code>-Schleife über die einzelnen Elemente iterieren:</p>
-<div id="53b03921" class="cell" data-execution_count="43">
+<div id="a01cdab4" class="cell" data-execution_count="43">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> [<span class="dv">2</span>, <span class="st">"fünf"</span>, <span class="fl">3.14</span>, <span class="st">"sieben"</span>]:</span>
 <span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(k)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -906,20 +909,20 @@ sieben</code></pre>
 <h2 class="anchored" data-anchor-id="tupel">Tupel</h2>
 <p>Tupel (englische Schreibweise <em>Tuple</em>) verhalten sich wie Listen, sind aber <em>immutable</em>. Das kann sinnvoll sein, wenn man sicherstellen möchte, dass die Daten in einem Tupel nicht versehentlich geändert werden.</p>
 <p>Tupel erstellt man wie Listen, nur lässt man die eckigen Klammern weg (man benötigt auch keine runden Klammern, obwohl diese manchmal in Kombination mit anderen Befehlen syntaktisch notwendig sind, z.B. wenn man ein Tupel als Argument übergeben möchte).</p>
-<div id="44927cb0" class="cell" data-execution_count="44">
+<div id="6007acdd" class="cell" data-execution_count="44">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="st">"A"</span>, <span class="st">"b"</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="st">"fünf"</span></span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>t</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="44">
 <pre><code>('A', 'b', 3, 4, 'fünf')</code></pre>
 </div>
 </div>
-<div id="d97c195b" class="cell" data-execution_count="45">
+<div id="c5ebb6ac" class="cell" data-execution_count="45">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>t[<span class="dv">1</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
 <pre><code>'b'</code></pre>
 </div>
 </div>
-<div id="8f79b636" class="cell" data-execution_count="46">
+<div id="a6dbf93c" class="cell" data-execution_count="46">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>t[<span class="dv">1</span>] <span class="op">=</span> <span class="st">"c"</span>  <span class="co"># Fehler!</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
@@ -943,7 +946,7 @@ Tipp
 </div>
 <div class="callout-body-container callout-body">
 <p>Ein Tupel mit einem Element erstellt man mit einem nachgestellten Komma:</p>
-<div id="36b588f6" class="cell" data-execution_count="47">
+<div id="fa207363" class="cell" data-execution_count="47">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="st">"A"</span>,</span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>t</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
@@ -951,7 +954,7 @@ Tipp
 </div>
 </div>
 <p>Die Klammern sind, wie bereits erwähnt, optional:</p>
-<div id="67704092" class="cell" data-execution_count="48">
+<div id="8ec31d35" class="cell" data-execution_count="48">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> (<span class="st">"A"</span>,)</span>
 <span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>t</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
@@ -965,7 +968,7 @@ Tipp
 <h2 class="anchored" data-anchor-id="list-comprehensions">List Comprehensions</h2>
 <p>List Comprehensions sind eine alternative Möglichkeit zur Erstellung von Listen. List Comprehensions sind im Prinzip Schleifen, die aber syntaktisch wesentlich kompakter (kürzer) sind.</p>
 <p>Nehmen wir als Beispiel eine Liste der Quadratzahlen von 0 bis 9. Mit einer normalen Schleife würde man diese Liste so erzeugen:</p>
-<div id="0ab85f78" class="cell" data-execution_count="49">
+<div id="05faaa38" class="cell" data-execution_count="49">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> []  <span class="co"># wir beginnen mit einer leeren Liste</span></span>
 <span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
 <span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>    squares.append(x<span class="op">**</span><span class="dv">2</span>)  <span class="co"># Liste wird befüllt</span></span>
@@ -989,7 +992,7 @@ Hinweis
 </div>
 </div>
 <p>Mit einer List Comprehension kann man das wesentlich kompakter schreiben:</p>
-<div id="5d83e295" class="cell" data-execution_count="50">
+<div id="3d9a6052" class="cell" data-execution_count="50">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> [x<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)]</span>
 <span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>squares</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="50">
@@ -1004,22 +1007,22 @@ Hinweis
 <li>Optional eine <code>if</code>-Bedingung</li>
 </ul>
 <p>Weitere Beispiele veranschaulichen, dass List Comprehensions eine Operation auf alle Elemente einer Liste anwenden oder bestimmte Elemente herausfiltern können:</p>
-<div id="942a3ff7" class="cell" data-execution_count="51">
+<div id="c6627155" class="cell" data-execution_count="51">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>vec <span class="op">=</span> [<span class="op">-</span><span class="dv">4</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="3e235fcf" class="cell" data-execution_count="52">
+<div id="181bd24f" class="cell" data-execution_count="52">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>[x <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> vec]  <span class="co"># neue Liste mit verdoppelten Einträgen</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="52">
 <pre><code>[-8, -4, 0, 4, 8]</code></pre>
 </div>
 </div>
-<div id="5fae6ac6" class="cell" data-execution_count="53">
+<div id="a9d50835" class="cell" data-execution_count="53">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>[x <span class="cf">for</span> x <span class="kw">in</span> vec <span class="cf">if</span> x <span class="op">&gt;=</span> <span class="dv">0</span>]  <span class="co"># negative Einträge herausfiltern</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>[0, 2, 4]</code></pre>
 </div>
 </div>
-<div id="d6aeb3a8" class="cell" data-execution_count="54">
+<div id="0b559124" class="cell" data-execution_count="54">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb103"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>[<span class="bu">abs</span>(x) <span class="cf">for</span> x <span class="kw">in</span> vec]  <span class="co"># eine Funktion auf alle Elemente separat anwenden</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="54">
 <pre><code>[4, 2, 0, 2, 4]</code></pre>
@@ -1036,7 +1039,7 @@ Hinweis
 </div>
 <div class="callout-body-container callout-body">
 <p>In Python ist es mit Listen also nicht einfach möglich, elementweise Berechnungen durchzuführen.</p>
-<div id="b3a09ee0" class="cell" data-execution_count="55">
+<div id="7d0743fe" class="cell" data-execution_count="55">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">4</span>, <span class="op">-</span><span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">81</span>, <span class="dv">11</span>]</span>
 <span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">*</span> <span class="dv">2</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="55">
@@ -1053,11 +1056,11 @@ Hinweis
 <h2 class="anchored" data-anchor-id="dictionaries">Dictionaries</h2>
 <p>Dictionaries (<code>dict</code>) sind Sammlungstypen, die Werte (<em>Values</em>) jeweils einem Schlüssel (<em>Key</em>) zuordnen. Man kann sie sich wie ein Sprachwörterbuch vorstellen: Um die Übersetzung eines Wortes zu finden, schlägt man das Wort als Schlüssel nach und erhält den zugehörigen Wert. In Python erstellt man ein Dictionary mit geschwungenen Klammern. Die einzelnen Key-Value-Paare werden, wie die Elemente einer Liste, durch Kommas getrennt; Key und Value trennt ein Doppelpunkt.</p>
 <p>Folgendes Beispiel zeigt ein <code>dict</code> mit drei Einträgen:</p>
-<div id="3df7d2b9" class="cell" data-execution_count="56">
+<div id="a143f567" class="cell" data-execution_count="56">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> {<span class="st">"Haus"</span>: <span class="st">"house"</span>, <span class="st">"Schlange"</span>: <span class="st">"snake"</span>, <span class="st">"Katze"</span>: <span class="st">"cat"</span>}</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Alternativ kann man die Funktion <code>dict</code> verwenden und das Dictionary mit Keyword-Argumenten erstellen:</p>
-<div id="20d63d7a" class="cell" data-execution_count="57">
+<div id="42472f0d" class="cell" data-execution_count="57">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="bu">dict</span>(Haus<span class="op">=</span><span class="st">"house"</span>, Schlange<span class="op">=</span><span class="st">"snake"</span>, Katze<span class="op">=</span><span class="st">"cat"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1074,13 +1077,13 @@ Hinweis
 </div>
 </div>
 <p>Auf einen einzelnen Value greift man wieder mit eckigen Klammern zu. Anders als bei Listen verwendet man dabei keinen numerischen Index, sondern den jeweiligen Key:</p>
-<div id="f491ba2c" class="cell" data-execution_count="58">
+<div id="7354f45a" class="cell" data-execution_count="58">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>d[<span class="st">"Haus"</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
 <pre><code>'house'</code></pre>
 </div>
 </div>
-<div id="20d624b7" class="cell" data-execution_count="59">
+<div id="234684ab" class="cell" data-execution_count="59">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>d[<span class="st">"Schlange"</span>]</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="59">
 <pre><code>'snake'</code></pre>
@@ -1100,13 +1103,13 @@ Wichtig
 </div>
 </div>
 <p>Wie Listen können Dictionaries Werte unterschiedlicher Datentypen enthalten. Als Keys eignen sich beispielsweise Strings, Zahlen und Tupel; Listen können nicht als Keys verwendet werden. Neue Einträge fügt man hinzu, indem man einem neuen Key einen Value zuweist.</p>
-<div id="17ace3c3" class="cell" data-execution_count="60">
+<div id="0e1f9036" class="cell" data-execution_count="60">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="60">
 <pre><code>{'Haus': 'house', 'Schlange': 'snake', 'Katze': 'cat'}</code></pre>
 </div>
 </div>
-<div id="e7ab307d" class="cell" data-execution_count="61">
+<div id="a297e5bd" class="cell" data-execution_count="61">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>d[<span class="dv">23</span>] <span class="op">=</span> <span class="st">"tt"</span>  <span class="co"># Key 23, Value "tt"</span></span>
 <span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>d[<span class="dv">1</span>] <span class="op">=</span> <span class="fl">3.14</span>  <span class="co"># Key 1, Value 3.14</span></span>
 <span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a>d[<span class="st">"L"</span>] <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]  <span class="co"># Key "L", Value [1, 2, 3]</span></span>
@@ -1121,7 +1124,7 @@ Wichtig
 </div>
 </div>
 <p>Möchte man auf einen Eintrag mit einem Key zugreifen, der im Wörterbuch nicht existiert, erhält man eine Fehlermeldung.</p>
-<div id="182ce090" class="cell" data-execution_count="62">
+<div id="4bda4981" class="cell" data-execution_count="62">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb117"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>d[<span class="dv">0</span>]  <span class="co"># Fehler!</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
@@ -1137,47 +1140,47 @@ Wichtig
 <section id="arbeiten-mit-dictionaries" class="level3">
 <h3 class="anchored" data-anchor-id="arbeiten-mit-dictionaries">Arbeiten mit Dictionaries</h3>
 <p>Die Länge eines Dictionaries, also die Anzahl der Einträge, bestimmt man mit der Funktion <code>len</code>:</p>
-<div id="9a629de6" class="cell" data-execution_count="63">
+<div id="04eca617" class="cell" data-execution_count="63">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(d)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="63">
 <pre><code>6</code></pre>
 </div>
 </div>
 <p>Mit den Methoden <code>keys</code> und <code>values</code> kann man sich alle Keys beziehungsweise Values eines Dictionaries ausgeben lassen:</p>
-<div id="eb38eccf" class="cell" data-execution_count="64">
+<div id="4ae9ea9f" class="cell" data-execution_count="64">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>d.keys()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="64">
 <pre><code>dict_keys(['Haus', 'Schlange', 'Katze', 23, 1, 'L'])</code></pre>
 </div>
 </div>
-<div id="e3aa71a0" class="cell" data-execution_count="65">
+<div id="c2e67a5d" class="cell" data-execution_count="65">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>d.values()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="65">
 <pre><code>dict_values(['house', 'snake', 'cat', 'tt', 3.14, [1, 2, 3]])</code></pre>
 </div>
 </div>
 <p>Ob ein Wert als Key vorkommt, kann man mit <code>in</code> überprüfen:</p>
-<div id="f2423cf1" class="cell" data-execution_count="66">
+<div id="18b11f1a" class="cell" data-execution_count="66">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co">"Katze"</span> <span class="kw">in</span> d</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="66">
 <pre><code>True</code></pre>
 </div>
 </div>
-<div id="201b8c7d" class="cell" data-execution_count="67">
+<div id="82a12fd8" class="cell" data-execution_count="67">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb126"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co">"cat"</span> <span class="kw">in</span> d</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="67">
 <pre><code>False</code></pre>
 </div>
 </div>
 <p>Wenn man wissen möchte, ob ein Wert als Value vorkommt, verwendet man die <code>values</code>-Methode:</p>
-<div id="c3cd57bc" class="cell" data-execution_count="68">
+<div id="9ad0d052" class="cell" data-execution_count="68">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb128"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co">"cat"</span> <span class="kw">in</span> d.values()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="68">
 <pre><code>True</code></pre>
 </div>
 </div>
 <p>Selbstverständlich kann man über ein Dictionary auch iterieren – in diesem Fall wird über die Keys iteriert:</p>
-<div id="ebe0781a" class="cell" data-execution_count="69">
+<div id="d62b22f7" class="cell" data-execution_count="69">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> d:</span>
 <span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(k)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1190,7 +1193,7 @@ L</code></pre>
 </div>
 </div>
 <p>Auf die entsprechenden Values greift man dann durch Indizieren zu:</p>
-<div id="79f9b249" class="cell" data-execution_count="70">
+<div id="b95723a2" class="cell" data-execution_count="70">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> d:</span>
 <span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(k, <span class="st">":"</span>, d[k])</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1203,14 +1206,14 @@ L : [1, 2, 3]</code></pre>
 </div>
 </div>
 <p>Die Methode <code>items</code> gibt alle Key-Value-Paare als Tupel zurück:</p>
-<div id="a38ce8a0" class="cell" data-execution_count="71">
+<div id="bc78b91e" class="cell" data-execution_count="71">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb134"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a>d.items()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="71">
 <pre><code>dict_items([('Haus', 'house'), ('Schlange', 'snake'), ('Katze', 'cat'), (23, 'tt'), (1, 3.14), ('L', [1, 2, 3])])</code></pre>
 </div>
 </div>
 <p>Damit kann man in einer Schleife sowohl auf die Keys als auch auf die Values direkt zugreifen:</p>
-<div id="dc454f28" class="cell" data-execution_count="72">
+<div id="9bb5a59f" class="cell" data-execution_count="72">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb136"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, v <span class="kw">in</span> d.items():</span>
 <span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(k, <span class="st">":"</span>, v)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1234,32 +1237,32 @@ Tipp
 </div>
 <div class="callout-body-container callout-body">
 <p>Ein weiteres Beispiel für Unpacking ist das Vertauschen von zwei Werten. Zunächst kann man damit zwei (oder mehr) Namen gleichzeitig zuweisen:</p>
-<div id="cd5b8219" class="cell" data-execution_count="73">
+<div id="6325a60c" class="cell" data-execution_count="73">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb138"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a>a, b <span class="op">=</span> <span class="dv">15</span>, <span class="dv">23</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="670fa992" class="cell" data-execution_count="74">
+<div id="88e0b84f" class="cell" data-execution_count="74">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb139"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="74">
 <pre><code>15</code></pre>
 </div>
 </div>
-<div id="66535a82" class="cell" data-execution_count="75">
+<div id="45cff55b" class="cell" data-execution_count="75">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb141"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="75">
 <pre><code>23</code></pre>
 </div>
 </div>
 <p>Da Python immer zuerst die rechte Seite einer Zuweisung auswertet, kann man mit diesem Muster auch zwei Werte vertauschen:</p>
-<div id="d59edffe" class="cell" data-execution_count="76">
+<div id="48939735" class="cell" data-execution_count="76">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb143"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a>a, b <span class="op">=</span> b, a</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="59e531d3" class="cell" data-execution_count="77">
+<div id="9d0adcc6" class="cell" data-execution_count="77">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb144"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="77">
 <pre><code>23</code></pre>
 </div>
 </div>
-<div id="405af730" class="cell" data-execution_count="78">
+<div id="3f9104ae" class="cell" data-execution_count="78">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb146"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="78">
 <pre><code>15</code></pre>
@@ -1268,7 +1271,7 @@ Tipp
 </div>
 </div>
 <p>Möchte man den Fehler beim Zugriff auf einen nicht existierenden Key vermeiden, kann man stattdessen die Methode <code>get</code> verwenden. Diese Methode hat zwei Parameter, nämlich einen Key und einen Standardwert, der zurückgegeben wird, falls der angegebene Key im Dictionary nicht existiert:</p>
-<div id="95fd8091" class="cell" data-execution_count="79">
+<div id="8ad2aa9e" class="cell" data-execution_count="79">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb148"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="79">
 <pre><code>{'Haus': 'house',
@@ -1279,7 +1282,7 @@ Tipp
  'L': [1, 2, 3]}</code></pre>
 </div>
 </div>
-<div id="7c6560ef" class="cell" data-execution_count="80">
+<div id="4028fdc6" class="cell" data-execution_count="80">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb150"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a>d[<span class="st">"psy"</span>]  <span class="co"># Fehler, Key "psy" existiert nicht</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
@@ -1292,19 +1295,19 @@ Tipp
 </div>
 </div>
 </div>
-<div id="130da412" class="cell" data-execution_count="81">
+<div id="57d20eae" class="cell" data-execution_count="81">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb151"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a>d.get(<span class="st">"psy"</span>, <span class="dv">0</span>)  <span class="co"># Key "psy" existiert nicht, also wird 0 zurückgegeben</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="81">
 <pre><code>0</code></pre>
 </div>
 </div>
-<div id="e7acdec8" class="cell" data-execution_count="82">
+<div id="6add0ece" class="cell" data-execution_count="82">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb153"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a>d.get(<span class="st">"Schlange"</span>, <span class="st">"Tier"</span>)  <span class="co"># Key "Schlange" existiert</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="82">
 <pre><code>'snake'</code></pre>
 </div>
 </div>
-<div id="2157741a" class="cell" data-execution_count="83">
+<div id="3864340d" class="cell" data-execution_count="83">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb155"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a>d.get(<span class="st">"snake"</span>, <span class="st">"Schlange"</span>)  <span class="co"># Key "snake" existiert nicht</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="83">
 <pre><code>'Schlange'</code></pre>
@@ -1321,13 +1324,13 @@ Tipp
 </div>
 <div class="callout-body-container callout-body">
 <p>Gibt man für <code>get</code> keinen Standardwert an, wird <code>None</code> zurückgegeben, falls der Key nicht existiert:</p>
-<div id="affce682" class="cell" data-execution_count="84">
+<div id="6c8c2e59" class="cell" data-execution_count="84">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb157"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a>d.get(<span class="st">"psy"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 <p>Zu beachten ist, dass in den Fällen, wo Standardwerte zurückgegeben werden, diese Einträge nicht automatisch zum Dictionary hinzugefügt werden:</p>
-<div id="4744e4a8" class="cell" data-execution_count="85">
+<div id="c1290425" class="cell" data-execution_count="85">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb158"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="85">
 <pre><code>{'Haus': 'house',
@@ -1338,13 +1341,13 @@ Tipp
  'L': [1, 2, 3]}</code></pre>
 </div>
 </div>
-<div id="fc7b382c" class="cell" data-execution_count="86">
+<div id="c912f06c" class="cell" data-execution_count="86">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb160"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a>d.get(<span class="st">"X"</span>, <span class="dv">42</span>)  <span class="co"># Key "X" existiert nicht</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="86">
 <pre><code>42</code></pre>
 </div>
 </div>
-<div id="0a3aeff1" class="cell" data-execution_count="87">
+<div id="100dc84f" class="cell" data-execution_count="87">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb162"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a>d  <span class="co"># Key "X" existiert immer noch nicht</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="87">
 <pre><code>{'Haus': 'house',
@@ -1356,13 +1359,13 @@ Tipp
 </div>
 </div>
 <p>Möchte man diese neuen Einträge gleich dem Dictionary hinzufügen, verwendet man die Methode <code>setdefault</code>:</p>
-<div id="74469241" class="cell" data-execution_count="88">
+<div id="d810d8fe" class="cell" data-execution_count="88">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb164"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a>d.setdefault(<span class="st">"X"</span>, <span class="dv">42</span>)  <span class="co"># Key "X" existiert nicht</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="88">
 <pre><code>42</code></pre>
 </div>
 </div>
-<div id="34d51fe4" class="cell" data-execution_count="89">
+<div id="22339258" class="cell" data-execution_count="89">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb166"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a>d  <span class="co"># jetzt gibt es den Key "X"</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="89">
 <pre><code>{'Haus': 'house',
@@ -1374,13 +1377,13 @@ Tipp
  'X': 42}</code></pre>
 </div>
 </div>
-<div id="f6b76e13" class="cell" data-execution_count="90">
+<div id="cd063871" class="cell" data-execution_count="90">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb168"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a>d.setdefault(<span class="st">"X"</span>, <span class="dv">100</span>)  <span class="co"># Key "X" existiert bereits</span></span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="90">
 <pre><code>42</code></pre>
 </div>
 </div>
-<div id="db3fbe54" class="cell" data-execution_count="91">
+<div id="73cbc4a1" class="cell" data-execution_count="91">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb170"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="91">
 <pre><code>{'Haus': 'house',
