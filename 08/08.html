@@ -83,9 +83,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-cf036aabbe95ff2a42c176f2c6878f2b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-c2ee0f7a8eac174693c8805b2a01ccd8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-cf036aabbe95ff2a42c176f2c6878f2b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-2b7eca8567fdbee962e3cedeeddf1829.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-a3c44dc60ae31181bce8460d4dcf3f72.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-2b7eca8567fdbee962e3cedeeddf1829.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
@@ -545,7 +545,7 @@ Tipp
 <h2 class="anchored" data-anchor-id="pakete-verwenden-import">Pakete verwenden: <code>import</code></h2>
 <p>Ein installiertes Paket steht nicht automatisch in einem Programm zur Verfügung – man muss es zuerst mit <code>import</code> importieren (genau wie ein Modul aus der Standardbibliothek). Erst danach kann man auf die Funktionen und Objekte des Pakets zugreifen. Für den Zugriff verwendet man wieder die <em>Punktschreibweise</em> (Paketname, Punkt, Name des gewünschten Objekts).</p>
 <p>Die einfachste Form importiert ein ganzes Modul bzw. Paket:</p>
-<div id="195888f6" class="cell" data-execution_count="1">
+<div id="d43f29a7" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>math.sqrt(<span class="dv">16</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -554,7 +554,7 @@ Tipp
 </div>
 </div>
 <p>Man kann auch nur einzelne Namen aus einem Modul importieren. Diese stehen dann <em>direkt</em> (ohne vorangestellten Modulnamen) zur Verfügung:</p>
-<div id="63f23d8e" class="cell" data-execution_count="2">
+<div id="95593a95" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt, pi</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>sqrt(<span class="dv">16</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -562,14 +562,14 @@ Tipp
 <pre><code>4.0</code></pre>
 </div>
 </div>
-<div id="59403c93" class="cell" data-execution_count="3">
+<div id="deb7de9a" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pi</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>3.141592653589793</code></pre>
 </div>
 </div>
 <p>Schließlich kann man einem importierten Paket beim Import auch einen kürzeren <em>Aliasnamen</em> geben. Das ist bei Paketen mit langen Namen praktisch und bei manchen Paketen sogar üblich. So wird NumPy fast immer als <code>np</code> importiert:</p>
-<div id="83adcc32" class="cell" data-execution_count="4">
+<div id="15563d19" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
@@ -640,7 +640,7 @@ Hinweis
 <h2 class="anchored" data-anchor-id="code-automatisch-formatieren-mit-ruff">Code automatisch formatieren mit Ruff</h2>
 <p>Als konkretes Beispiel für ein nützliches Zusatzpaket sehen wir uns <a href="https://docs.astral.sh/ruff/">Ruff</a> an. Damit kann man Python-Code automatisch überprüfen und formatieren lassen.</p>
 <p>Das ist sinnvoll, weil es neben der Syntax, die man strikt einhalten muss, auch stilistische Konventionen gibt, die den Code lesbarer machen. Beispielsweise sind die folgenden drei Anweisungen alle syntaktisch korrekt und führen zum selben Ergebnis:</p>
-<div id="ea7dfb1c" class="cell" data-execution_count="5">
+<div id="eb27daa6" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span> <span class="op">*</span> (<span class="dv">16</span> <span class="op">-</span> <span class="dv">7</span>)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span><span class="dv">1</span><span class="op">+</span>    <span class="dv">2</span><span class="op">+</span>  <span class="dv">3</span><span class="op">*</span>  (   <span class="dv">16</span><span class="op">-</span><span class="dv">7</span>    )</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span><span class="dv">1</span><span class="op">+</span><span class="dv">2</span><span class="op">+</span><span class="dv">3</span><span class="op">*</span>(<span class="dv">16</span><span class="op">-</span><span class="dv">7</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
