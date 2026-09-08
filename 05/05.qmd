@@ -64,7 +64,7 @@ add(number=5, increment=2)
 add(increment=2, number=5)
 ```
 
-Dies dient einerseits der besseren Lesbarkeit, da unmittelbar klar ist, welche Parameter welche konkreten Argumente erhalten. Werden alle Argumente als Schlüsselwort-Argumente angegeben, können sie in beliebiger Reihenfolge übergeben werden.
+Dies dient einerseits der besseren Lesbarkeit, da unmittelbar klar ist, welche Parameter welche konkreten Argumente erhalten. Werden alle Argumente als Schlüsselwort-Argumente angegeben, können diese auch in beliebiger Reihenfolge übergeben werden.
 
 Wenn der Argumentname nicht angegeben wird, wird das Argument anhand seiner Position dem entsprechenden Parameter zugewiesen. Man spricht in diesem Fall von *positionalen Argumenten*. Man kann positionale und Schlüsselwort-Argumente beim Funktionsaufruf auch mischen, aber alle positionalen Argumente müssen *vor* dem ersten Schlüsselwort-Argument kommen.
 
@@ -106,7 +106,7 @@ Ohne Schlüsselwort-Argumente würde derselbe Aufruf nämlich wie folgt aussehen
 test("Test", 2, 5, 2)
 ```
 
-Man muss also in diesem Beispiel ein zusätzliches Argument `5` (für den Parameter `exponent`) übergeben, wenn man positionale Argumente verwendet, obwohl man ja ohnehin den Standardwert dieses Arguments verwendet.
+Man muss also in diesem Beispiel ein zusätzliches Argument `5` (für den Parameter `exponent`) übergeben, wenn man positionale Argumente verwendet, obwohl man ja ohnehin einfach den Standardwert dieses Arguments verwendet.
 
 
 ### Variable Argumente
