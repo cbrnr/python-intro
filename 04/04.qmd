@@ -241,7 +241,7 @@ add_one(add_one(add_one(1)))
 
 ## Debugging
 
-Mit Hilfe des sogenannten [Debuggers](https://realpython.com/python-idle/#how-to-debug-in-idle) können wir ein Script in "Zeitlupe" ausführen. Im Debug-Modus wartet der Python-Interpreter nach jedem Befehl, bis der nächste manuell gestartet wird. Dadurch können wir den Programmfluss beobachten und den Zustand des Programms bei jedem Schritt inspizieren. Dabei geht man wie folgt vor:
+Mit Hilfe des sogenannten [Debuggers](https://realpython.com/python-idle/#how-to-debug-in-idle) können wir ein Script in "Zeitlupe" ausführen. Im Debug-Modus wartet der Python-Interpreter nach jedem Befehl, bis der nächste manuell gestartet wird. Dadurch können wir den Programmfluss beobachten und den Zustand des Programms bei jedem Schritt inspizieren. In IDLE geht man dabei wie folgt vor:
 
 1. In der IDLE-Shell wählt man Debug – Debugger. Dadurch wird ein neues Werkzeugfenster geöffnet und der Debugger aktiviert. Stellen Sie sicher, dass das Kontrollkästchen "Source" aktiviert ist, um die aktuelle Codezeile zu sehen.
 
