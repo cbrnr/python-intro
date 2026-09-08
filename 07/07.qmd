@@ -185,7 +185,7 @@ Dementsprechend kann man einen String mit dem `*`-Operator vervielfältigen:
 
 ## String-Methoden
 
-Wie im vorigen Kapitel eingeführt, werden Methoden direkt auf ein Objekt angewandt. Für Strings gibt es in Python sehr viele praktische Methoden:
+Wie im vorigen Kapitel eingeführt, werden Methoden direkt auf ein Objekt angewendet. Für Strings gibt es in Python sehr viele praktische Methoden:
 
 ```{python}
 x.upper()
@@ -209,6 +209,17 @@ Viele String-Methoden erzeugen einen *neuen* String. Da Strings immutable sind, 
 x = x.upper()  # Namensschildchen x hängt am neuen String (in Großbuchstaben)
 x
 ```
+
+::: callout-tip
+Da viele Methoden einen neuen String zurückgeben, kann man mehrere Methodenaufrufe auch direkt hintereinander schreiben:
+
+```{python}
+x = "abcde"
+x.upper().replace("A", "X").lower()
+```
+
+Die Methoden werden dabei von links nach rechts aufgerufen, d.h. zuerst `upper`, dann `replace` und zuletzt `lower`.
+:::
 
 Im Folgenden werden einige praktische String-Methoden aufgelistet.
 
