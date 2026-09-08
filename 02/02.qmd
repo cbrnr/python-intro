@@ -61,7 +61,7 @@ type("3")
 
 Man kann sich ein Objekt als eine Entität eines bestimmten Typs vorstellen, die einen bestimmten Wert hat und im Speicher des Computers lebt:
 
-![Ein Python-Objekt.](python_object.png)
+![Ein Python-Objekt.](python_object.png){width=20%}
 
 Jedes Objekt hat auch einen eindeutigen Identifikator (ID). Mit der Funktion `id` kann man diesen herausfinden:
 
@@ -86,7 +86,7 @@ a = 1
 
 Einen Namen kann man sich als Etikett vorstellen, das an ein Objekt gehängt wird:
 
-![Der Name `a` ist dem Objekt `1` zugeordnet. Ein weiteres Objekt `2.4` hat (noch) keinen Namen.](python_names_1.png)
+![Der Name `a` ist dem Objekt `1` zugeordnet. Ein weiteres (fiktives) Objekt `2.4` hat (noch) keinen Namen.](python_names_1.png){width=75%}
 
 In Python kann man einen existierenden Namen jederzeit einem anderen Objekt zuweisen. Dabei verliert der Name seine Verbindung zum alten Objekt (im folgenden Beispiel hat das Objekt `1` danach keinen Namen mehr):
 
@@ -94,7 +94,7 @@ In Python kann man einen existierenden Namen jederzeit einem anderen Objekt zuwe
 a = 2.4
 ```
 
-![Nun ist `a` dem Objekt `2.4` zugeordnet, und das Objekt `1` hat keinen Namen mehr.](python_names_2.png)
+![Nun ist `a` dem Objekt `2.4` zugeordnet, und das Objekt `1` hat keinen Namen mehr.](python_names_2.png){width=75%}
 
 Ein Objekt kann auch mehr als einen Namen haben:
 
@@ -102,7 +102,7 @@ Ein Objekt kann auch mehr als einen Namen haben:
 b = a
 ```
 
-![Jetzt hat das Objekt `2.4` zwei Namen `a` und `b`.](python_names_3.png)
+![Jetzt hat das Objekt `2.4` zwei Namen `a` und `b`.](python_names_3.png){width=75%}
 
 Wir können bestätigen, dass die Namen `a` und `b` auf dasselbe Objekt verweisen, indem wir ihre entsprechenden IDs überprüfen:
 
@@ -233,11 +233,7 @@ Ein Ausdruck ist Code, der zu einem einzigen Wert reduziert werden kann. Ein Aus
 ```
 
 ```{python}
-n = 25  # eine Zuweisung ist kein Ausdruck!
-```
-
-```{python}
-n + 5  # ein Name, ein Wert und ein Operator
+a + 5  # ein Name (wurde bereits vorher zugewiesen), ein Operator und ein Wert
 ```
 
 Python reduziert einen Ausdruck immer auf einen *einzigen Wert*. Ein komplexerer Ausdruck wird schrittweise gemäß den Regeln der [Operatorpräzedenz](https://de.wikipedia.org/wiki/Operatorrangfolge) (z.B. Punkt- vor Strichrechnung) von links nach rechts ausgewertet. Wie bereits erwähnt, wertet Python zuerst die rechte Seite einer Zuweisung aus, bevor es einen Namen zuweist.
@@ -273,7 +269,7 @@ Damit ist also klar, dass `print("Python")` keinen Wert hat (eigentlich `None`, 
 
 ## Datentypen
 
-Python bringt eine Menge nützlicher Datentypen mit. Im Folgenden werden die wichtigsten Typen aufgelistet und kurz beschrieben. Eine ausführliche Behandlung ausgewählter (wichtiger) Datentypen folgt dann in den nächsten Einheiten.
+Python bringt eine Menge nützlicher Datentypen mit. Im Folgenden werden die wichtigsten Typen aufgelistet und kurz beschrieben. Eine ausführliche Behandlung ausgewählter Datentypen folgt dann in den nächsten Einheiten.
 
 
 ### Logische Typen
