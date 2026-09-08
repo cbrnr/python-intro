@@ -80,11 +80,7 @@ print(", ".join([str(i) for i in range(10)]))
 
 ## Installation
 
-Die [offizielle Python-Website](https://www.python.org/) enthält viele nützliche Informationen rund um Python. Im [Download-Bereich](https://www.python.org/downloads/) findet man Installationspakete für Windows und macOS. Unter Windows installiert man den Python Install Manager, welchen man auch aus dem [Microsoft Store](https://apps.microsoft.com/detail/9NQ7512CXL7T) beziehen kann. Weitere Informationen zur Verwendung von Python unter Windows finden Sie in der [offiziellen Python-Dokumentation](https://docs.python.org/3/using/windows.html). Für weiterführende Informationen zur Verwendung von Python unter macOS lesen Sie bitte die [offizielle Python-Dokumentation](https://docs.python.org/3/using/mac.html). Bei den meisten Linux-Distributionen ist Python bereits vorinstalliert, ansonsten kann man dieses sehr einfach über den Paketmanager der jeweiligen Distribution installieren.
-
-::: callout-note
-Es ist sinnvoll, stets die neueste Python-Version zu verwenden.
-:::
+Die [offizielle Python-Website](https://www.python.org/) bietet zahlreiche Informationen rund um Python. Im [Download-Bereich](https://www.python.org/downloads/) stehen Installationspakete für Windows und macOS bereit (unter Windows wird der Python Install Manager installiert, der auch im [Microsoft Store](https://apps.microsoft.com/detail/9NQ7512CXL7T) erhältlich ist). Hinweise zur Verwendung von Python unter Windows und macOS finden Sie jeweils in der [Dokumentation für Windows](https://docs.python.org/3/using/windows.html) und der [Dokumentation für macOS](https://docs.python.org/3/using/mac.html). Bei den meisten Linux-Distributionen ist Python bereits vorinstalliert; andernfalls lässt es sich unkompliziert über den Paketmanager der jeweiligen Distribution installieren.
 
 
 ## Erste Schritte
@@ -96,7 +92,7 @@ Es gibt viele Möglichkeiten, den Python-Interpreter zu starten. Eine der einfac
 ![](idle.png){width=75%}
 
 ::: callout-note
-In den Kursunterlagen wird Python-Code immer in grauen Kästchen dargestellt. Der Prompt `>>>` wird dabei weggelassen, da er nicht Teil des Python-Codes ist.
+In den Kursunterlagen wird Python-Code immer in grauen Kästchen dargestellt. Der Prompt `>>>` wird dabei weggelassen, da er nicht Teil des Codes ist.
 :::
 
 Versuchen wir nun, mit Python einfache arithmetische Aufgaben zu lösen. Die Symbole für die vier Grundrechenarten sind `+` (Addition), `-` (Subtraktion), `*` (Multiplikation) und `/` (Division). Tippen Sie dazu die folgenden Befehle in die IDLE-Shell ein und bestätigen Sie jeweils mit der Eingabetaste:
@@ -196,7 +192,7 @@ Ein wichtiger Unterschied zum interaktiven Modus: Im Skript-Modus zeigt Python d
 1 + 4
 ```
 
-Führt man dieses Skript aus, wird der Befehl zwar ausgeführt, aber es erscheint keine Ausgabe. Das ist durchaus beabsichtigt, weil ein Skript oft viele Befehle enthält und man nicht jedes Zwischenergebnis sehen möchte. Möchte man ein Ergebnis im Skript-Modus ausgeben, muss man das explizit mit der `print`-Funktion tun:
+Führt man dieses Skript aus, wird der Befehl zwar ausgeführt, aber es erscheint keine Ausgabe. Das ist durchaus beabsichtigt, weil ein Skript oft viele Befehle enthält und man nicht jedes Zwischenergebnis sehen will. Möchte man ein Ergebnis im Skript-Modus ausgeben, muss man das explizit mit der `print`-Funktion tun:
 
 ```python
 print(1 + 4)
