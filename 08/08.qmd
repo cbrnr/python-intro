@@ -47,17 +47,23 @@ Wir rufen `pip` immer über den Python-Interpreter mit der Option `-m` auf (mehr
 py -m pip --version
 ```
 
-## macOS/Linux
+## macOS
 
 ```sh
 python3 -m pip --version
+```
+
+## Linux
+
+```sh
+python -m pip --version
 ```
 :::
 
 Wenn man hier eine Versionsnummer angezeigt bekommt (z.B. `25.2`), funktioniert `pip` korrekt. Falls hier eine Fehlermeldung ausgegeben wird, wurde vermutlich die Python-Installation nicht korrekt durchgeführt. In diesem Fall installiert man am besten anhand der in der ersten Einheit beschriebenen Schritte Python erneut.
 
 ::: callout-note
-In allen folgenden Beispielen verwenden wir unter Windows `py`, unter macOS und Linux hingegen `python3`. Ersetzen Sie `py -m pip` also je nach Betriebssystem durch `python3 -m pip`.
+In allen folgenden Beispielen verwenden wir unter Windows `py`, unter macOS `python3`, und unter Linux `python`. Ersetzen Sie `py -m pip` also je nach Betriebssystem durch `python3 -m pip` oder `python -m pip`.
 :::
 
 Wenn man wissen möchte, welche Pakete installiert sind, verwendet man den folgenden Befehl:
@@ -99,7 +105,7 @@ py -m pip install --upgrade <package-name>
 ::: callout-tip
 Grundsätzlich könnte man `pip` auch direkt aufrufen (also einfach `pip install ...` bzw. `pip3 install ...`). Es kann aber vorkommen, dass mehrere Python-Versionen auf einem Computer installiert sind. Dann ist nicht immer eindeutig, zu welcher Python-Installation ein direkt aufgerufenes `pip` gehört – und man installiert das Paket womöglich in die "falsche" Python-Version.
 
-Die Option `-m` weist den Python-Interpreter an, ein *Modul als Programm auszuführen* – in diesem Fall das Modul `pip`. Der große Vorteil: Man ruft `pip` immer über *genau jenen* Python-Interpreter auf, den man auch zum Ausführen von Programmen verwendet (`py` unter Windows bzw. `python3` unter macOS/Linux). So installiert man ein Paket garantiert in die richtige Python-Installation. Aus diesem Grund verwenden wir in diesem Kurs durchgängig die Schreibweise `py -m pip` bzw. `python3 -m pip`.
+Die Option `-m` weist den Python-Interpreter an, ein *Modul als Programm auszuführen* – in diesem Fall das Modul `pip`. Der große Vorteil: Man ruft `pip` immer über *genau jenen* Python-Interpreter auf, den man auch zum Ausführen von Programmen verwendet (`py` unter Windows bzw. `python3`/`python` unter macOS/Linux). So installiert man ein Paket garantiert in die richtige Python-Installation. Aus diesem Grund verwenden wir in diesem Kurs durchgängig die Schreibweise `py -m pip` bzw. `python3 -m pip`/`python -m pip`.
 :::
 
 
@@ -127,7 +133,7 @@ sqrt(16)
 pi
 ```
 
-Schließlich kann man einem importierten Paket beim Import auch einen kürzeren *Aliasnamen* geben. Das ist bei Paketen mit langen Namen praktisch und bei manchen Paketen sogar üblich. So wird NumPy fast immer als `np` importiert:
+Schließlich kann man einem importierten Paket beim Import auch einen kürzeren *Aliasnamen* geben. Das ist bei Paketen mit langen Namen praktisch und bei manchen Paketen sogar üblich. So wird NumPy immer als `np` importiert:
 
 ```{python}
 import numpy as np
